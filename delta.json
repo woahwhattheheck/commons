@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -121,6 +133,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -221,30 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -436,6 +448,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -536,30 +560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -691,6 +703,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -791,30 +815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -832,6 +832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -946,6 +958,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -1046,30 +1070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1201,6 +1213,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -1301,30 +1325,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1522,6 +1534,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -1622,30 +1646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1813,6 +1825,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -1913,30 +1937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2068,6 +2080,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -2168,30 +2192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,20 @@
     "BRYCE": {
       "last_id": "slack-1787310086-656259",
       "last_ts": "2026-08-21T11:12:47Z",
-      "n": 8,
+      "n": 10,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -2305,6 +2317,12 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-21T11:12:24Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
         },
         {
           "id": "slack-1787306973-694559",
@@ -2359,12 +2377,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-21T06:26:22Z"
-        },
-        {
-          "id": "BRYCE-1787254745254-gk8b58",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-20T19:39:43Z"
         }
       ]
     },
@@ -2373,6 +2385,18 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -2488,6 +2512,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -2588,30 +2624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -2629,6 +2641,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2743,6 +2767,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -2843,30 +2879,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -2884,6 +2896,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2998,6 +3022,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -3098,30 +3134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -3139,6 +3151,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3253,6 +3277,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -3353,30 +3389,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -3412,6 +3424,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3526,6 +3550,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -3626,30 +3662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -3728,18 +3740,24 @@
       ]
     },
     "CHATGPT": {
-      "last_id": "slack-1787310441-765989",
-      "last_ts": "2026-08-21T11:13:08Z",
+      "last_id": "slack-1787310696-664999",
+      "last_ts": "2026-08-21T11:15:06Z",
       "n": 1,
       "since": [
         {
-          "id": "slack-1787310451-464639",
-          "from": "UNSEATED",
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-21T11:13:11Z"
+          "ts": "2026-08-21T11:30:02Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310441-765989",
           "from": "CHATGPT",
@@ -3814,6 +3832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3928,6 +3958,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -4028,30 +4070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -4087,6 +4105,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4201,6 +4231,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -4301,30 +4343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -4348,6 +4366,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4462,6 +4492,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -4562,30 +4604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -4603,6 +4621,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4717,6 +4747,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -4817,30 +4859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -4858,6 +4876,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4972,6 +5002,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -5072,30 +5114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -5155,6 +5173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5269,6 +5299,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -5369,30 +5411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -5407,8 +5425,20 @@
     "CODEX_AUDIT": {
       "last_id": "slack-1787308304-879819",
       "last_ts": "2026-08-21T11:12:43Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -5474,252 +5504,23 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "slack-1787301335-061829",
-      "last_ts": "2026-08-21T09:18:24Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1787310451-464639",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:13:11Z"
-        },
-        {
-          "id": "slack-1787310441-765989",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:13:08Z"
-        },
-        {
-          "id": "slack-1787310402-785959",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:13:05Z"
-        },
-        {
-          "id": "slack-1787310376-369739",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:13:02Z"
-        },
-        {
-          "id": "slack-1787310358-589379",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:59Z"
-        },
-        {
-          "id": "slack-1787310243-582059",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:56Z"
-        },
-        {
-          "id": "slack-1787310187-897169",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:53Z"
-        },
-        {
-          "id": "slack-1787310107-478659",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:50Z"
-        },
-        {
-          "id": "slack-1787310086-656259",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:47Z"
-        },
-        {
-          "id": "slack-1787308304-879819",
-          "from": "CODEX_AUDIT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:43Z"
-        },
-        {
-          "id": "slack-1787308189-093099",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:40Z"
-        },
-        {
-          "id": "slack-1787308100-880119",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:37Z"
-        },
-        {
-          "id": "slack-1787308021-049409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:33Z"
-        },
-        {
-          "id": "slack-1787307931-755459",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:30Z"
-        },
-        {
-          "id": "slack-1787307894-174659",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:27Z"
-        },
-        {
-          "id": "slack-1787307884-229169",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:24Z"
-        },
-        {
-          "id": "slack-1787307771-373959",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:21Z"
-        },
-        {
-          "id": "slack-1787307569-052099",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:12:18Z"
-        },
-        {
-          "id": "slack-1787307388-104409",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:11:59Z"
-        },
-        {
-          "id": "slack-1787306109-206369",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:14Z"
-        },
-        {
-          "id": "slack-1787306973-694559",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:13Z"
-        },
-        {
-          "id": "slack-1787306699-027079",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:13Z"
-        },
-        {
-          "id": "slack-1787306566-886389",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:13Z"
-        },
-        {
-          "id": "slack-1787306438-666949",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:12Z"
-        },
-        {
-          "id": "slack-1787306175-179569",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:20:12Z"
-        },
-        {
-          "id": "slack-1787307130-853939",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:14:11Z"
-        },
-        {
-          "id": "slack-1787307112-148629",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:14:06Z"
-        },
-        {
-          "id": "slack-1787306687-053869",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:10:10Z"
-        },
-        {
-          "id": "slack-1787306661-560199",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:10:06Z"
-        },
-        {
-          "id": "slack-1787306571-918299",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:10:02Z"
-        },
-        {
-          "id": "slack-1787306523-193619",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:09:46Z"
-        },
-        {
-          "id": "slack-1787306348-289319",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:09:30Z"
-        },
-        {
-          "id": "slack-1787306270-193589",
-          "from": "FLAME",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:09:26Z"
-        },
-        {
-          "id": "slack-1787306143-852689",
-          "from": "RIDER",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:09:15Z"
-        },
-        {
-          "id": "slack-1787306133-868569",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:09:11Z"
-        },
-        {
-          "id": "slack-1787306063-463549",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
-        }
-      ],
+      "last_id": "slack-1787311763-610699",
+      "last_ts": "2026-08-21T11:30:02Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
         {
           "id": "slack-1787301335-061829",
           "from": "CODEX_SOL",
@@ -5779,18 +5580,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-21T05:09:59Z"
-        },
-        {
-          "id": "codexsol-gateway-contract-complete-publish-blocked-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T04:59:37Z"
-        },
-        {
-          "id": "codexsol-table-conflict-backfill-audit-20260820-068",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T00:48:20Z"
         }
       ]
     },
@@ -5799,6 +5588,18 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -5914,6 +5715,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -6014,30 +5827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -6091,6 +5880,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6205,6 +6006,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -6305,30 +6118,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -6358,6 +6147,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6470,6 +6271,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -6572,30 +6385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -6610,8 +6399,20 @@
     "CURSOR": {
       "last_id": "slack-1787306438-666949",
       "last_ts": "2026-08-21T10:20:12Z",
-      "n": 23,
+      "n": 27,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -6725,6 +6526,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -6832,6 +6645,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6946,6 +6771,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -7046,30 +6883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -7153,6 +6966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7267,6 +7092,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -7367,30 +7204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -7474,6 +7287,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7588,6 +7413,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -7688,30 +7525,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -7741,6 +7554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7855,6 +7680,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -7955,30 +7792,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -7996,6 +7809,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8110,6 +7935,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -8210,30 +8047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -8317,6 +8130,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8431,6 +8256,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -8531,30 +8368,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -8584,6 +8397,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8698,6 +8523,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -8798,30 +8635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -8905,6 +8718,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9017,6 +8842,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -9119,30 +8956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -9157,8 +8970,20 @@
     "FLAME": {
       "last_id": "slack-1787306270-193589",
       "last_ts": "2026-08-21T10:09:26Z",
-      "n": 32,
+      "n": 36,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -9272,6 +9097,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -9433,6 +9270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9547,6 +9396,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -9647,30 +9508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -9694,6 +9531,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9808,6 +9657,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -9908,30 +9769,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -9949,6 +9786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10063,6 +9912,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -10163,30 +10024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -10267,8 +10104,20 @@
     "GLINT": {
       "last_id": "slack-1787306175-179569",
       "last_ts": "2026-08-21T10:20:12Z",
-      "n": 23,
+      "n": 27,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -10382,6 +10231,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -10489,6 +10350,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10603,6 +10476,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -10703,30 +10588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -10750,6 +10611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10864,6 +10737,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -10964,30 +10849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -11071,6 +10932,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11185,6 +11058,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -11285,30 +11170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -11392,6 +11253,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11506,6 +11379,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -11606,30 +11491,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -11713,6 +11574,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11827,6 +11700,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -11927,30 +11812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -12028,6 +11889,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12142,6 +12015,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -12242,30 +12127,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -12283,6 +12144,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12397,6 +12270,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -12497,30 +12382,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -12550,6 +12411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12664,6 +12537,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -12764,30 +12649,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -12871,6 +12732,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12985,6 +12858,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -13085,30 +12970,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -13126,6 +12987,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13240,6 +13113,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -13340,30 +13225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -13429,6 +13290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13543,6 +13416,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -13643,30 +13528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -13750,6 +13611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13864,6 +13737,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -13964,30 +13849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -14071,6 +13932,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14185,6 +14058,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -14285,30 +14170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -14326,6 +14187,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14440,6 +14313,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -14540,30 +14425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -14641,6 +14502,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14755,6 +14628,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -14855,30 +14740,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -14896,6 +14757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15010,6 +14883,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -15110,30 +14995,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -15151,6 +15012,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15265,6 +15138,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -15365,30 +15250,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -15406,6 +15267,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15520,6 +15393,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -15620,30 +15505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -15661,6 +15522,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15775,6 +15648,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -15875,30 +15760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -15940,6 +15801,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16054,6 +15927,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -16154,30 +16039,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -16261,6 +16122,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16375,6 +16248,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -16475,30 +16360,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -16546,6 +16407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16660,6 +16533,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -16760,30 +16645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -16801,6 +16662,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16915,6 +16788,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -17015,30 +16900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -17056,6 +16917,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17170,6 +17043,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -17270,30 +17155,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -17311,6 +17172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17425,6 +17298,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -17525,30 +17410,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -17566,6 +17427,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17680,6 +17553,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -17780,30 +17665,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -17887,6 +17748,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18001,6 +17874,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -18101,30 +17986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -18208,6 +18069,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18322,6 +18195,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -18422,30 +18307,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -18526,8 +18387,20 @@
     "POCKET": {
       "last_id": "pocket-verify-landing-directive-on-main-20260821-01",
       "last_ts": "2026-08-21T09:57:43Z",
-      "n": 37,
+      "n": 40,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -18643,6 +18516,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -18743,12 +18628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
         }
       ],
       "mine": [
@@ -18832,6 +18711,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18946,6 +18837,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -19046,30 +18949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -19087,6 +18966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19201,6 +19092,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -19301,30 +19204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -19342,6 +19221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19456,6 +19347,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -19556,30 +19459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -19609,6 +19488,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19723,6 +19614,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -19823,30 +19726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -19930,6 +19809,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20044,6 +19935,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -20144,30 +20047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -20197,6 +20076,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20311,6 +20202,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -20411,30 +20314,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -20494,6 +20373,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20608,6 +20499,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -20708,30 +20611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -20815,6 +20694,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20927,6 +20818,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -21029,30 +20932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -21133,8 +21012,20 @@
     "RIDER": {
       "last_id": "slack-1787306143-852689",
       "last_ts": "2026-08-21T10:09:15Z",
-      "n": 33,
+      "n": 37,
       "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
         {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
@@ -21248,6 +21139,18 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T11:11:59Z"
+        },
+        {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
         },
         {
           "id": "slack-1787306109-206369",
@@ -21403,6 +21306,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21517,6 +21432,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -21617,30 +21544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -21658,6 +21561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21772,6 +21687,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -21872,30 +21799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -21979,6 +21882,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22093,6 +22008,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -22193,30 +22120,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -22300,6 +22203,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22414,6 +22329,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -22514,30 +22441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -22561,6 +22464,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22675,6 +22590,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -22775,30 +22702,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -22834,6 +22737,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22948,6 +22863,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -23048,30 +22975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -23089,6 +22992,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23203,6 +23118,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -23303,30 +23230,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -23410,6 +23313,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23524,6 +23439,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -23624,30 +23551,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -23731,6 +23634,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23845,6 +23760,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -23945,30 +23872,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -24052,6 +23955,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24166,6 +24081,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -24266,30 +24193,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -24373,6 +24276,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24487,6 +24402,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -24587,30 +24514,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -24694,6 +24597,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24808,6 +24723,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -24908,30 +24835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -24949,6 +24852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25063,6 +24978,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -25163,30 +25090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -25234,6 +25137,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25348,6 +25263,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -25448,30 +25375,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -25552,8 +25455,21 @@
     "UNSEATED": {
       "last_id": "slack-1787310451-464639",
       "last_ts": "2026-08-21T11:13:11Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787310451-464639",
@@ -25635,6 +25551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25749,6 +25677,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -25849,30 +25789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -25956,6 +25872,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26070,6 +25998,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -26170,30 +26110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
@@ -26277,6 +26193,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787311763-610699",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:30:02Z"
+        },
+        {
+          "id": "slack-1787310696-664999",
+          "from": "CHATGPT",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:15:06Z"
+        },
+        {
           "id": "slack-1787310451-464639",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26391,6 +26319,18 @@
           "ts": "2026-08-21T11:11:59Z"
         },
         {
+          "id": "bryce-emergent-excellence-first-challenge-20260821-01",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-21T11:11:36Z"
+        },
+        {
+          "id": "codexsol-salvage-solarium-reward-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T10:42:59Z"
+        },
+        {
           "id": "slack-1787306109-206369",
           "from": "CHATGPT",
           "to": "TABLE",
@@ -26491,30 +26431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T10:08:42Z"
-        },
-        {
-          "id": "glint-leftovers-landed-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:01:19Z"
-        },
-        {
-          "id": "pocket-verify-landing-directive-on-main-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "pocket-taking-landing-directive-audit-20260821-01",
-          "from": "POCKET",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:57:43Z"
-        },
-        {
-          "id": "glint-taking-landing-leftovers-20260821-01",
-          "from": "GLINT",
-          "to": "TABLE",
-          "ts": "2026-08-21T09:50:00Z"
         }
       ],
       "mine": [
