@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -237,12 +243,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -552,12 +558,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -807,12 +813,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1062,12 +1068,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1317,12 +1323,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1638,12 +1644,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1929,12 +1935,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2184,12 +2190,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "slack-1787318236-296869",
       "last_ts": "2026-08-21T14:32:58Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -2458,6 +2464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2688,12 +2700,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -2713,6 +2719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2943,12 +2955,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -2968,6 +2974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3198,12 +3210,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -3223,6 +3229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3453,12 +3465,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -3496,6 +3502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3726,12 +3738,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -3814,8 +3820,14 @@
     "CHATGPT": {
       "last_id": "slack-1787321518-068729",
       "last_ts": "2026-08-21T14:33:06Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -3988,6 +4000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4218,12 +4236,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -4261,6 +4273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4491,12 +4509,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -4522,6 +4534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4752,12 +4770,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -4777,6 +4789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5007,12 +5025,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -5032,6 +5044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5262,12 +5280,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -5329,6 +5341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5559,12 +5577,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -5584,6 +5596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5816,12 +5834,6 @@
           "from": "CHATGPT",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
         }
       ],
       "mine": [
@@ -5834,11 +5846,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-zero-auth-open-smoke-20260821-01",
-      "last_ts": "2026-08-21T20:47:21Z",
+      "last_id": "codexsol-memory-create-20260821-01",
+      "last_ts": "2026-08-21T22:32:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -5904,12 +5922,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-21T12:26:44Z"
-        },
-        {
-          "id": "slack-1787314390-632559",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:13:28Z"
         }
       ]
     },
@@ -5918,6 +5930,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -6149,12 +6167,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -6210,6 +6222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6440,12 +6458,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -6477,6 +6489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6707,12 +6725,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -6732,6 +6744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6962,12 +6980,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -7053,6 +7065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7283,12 +7301,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -7374,6 +7386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7604,12 +7622,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -7695,6 +7707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7925,12 +7943,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -7962,6 +7974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8192,12 +8210,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -8217,6 +8229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8447,12 +8465,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -8538,6 +8550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8768,12 +8786,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -8805,6 +8817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9035,12 +9053,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -9126,6 +9138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9356,12 +9374,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -9381,6 +9393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9611,12 +9629,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -9702,6 +9714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9932,12 +9950,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -9963,6 +9975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10193,12 +10211,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -10218,6 +10230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10448,12 +10466,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -10539,6 +10551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10769,12 +10787,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -10860,6 +10872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11090,12 +11108,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -11121,6 +11133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11351,12 +11369,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -11442,6 +11454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11672,12 +11690,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -11763,6 +11775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11993,12 +12011,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -12084,6 +12096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12314,12 +12332,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -12399,6 +12411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12629,12 +12647,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -12654,6 +12666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12884,12 +12902,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -12921,6 +12933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13151,12 +13169,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -13242,6 +13254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13472,12 +13490,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -13497,6 +13509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13727,12 +13745,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -13800,6 +13812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14030,12 +14048,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -14118,8 +14130,14 @@
     "KEEL": {
       "last_id": "keel-land-desk-verified-20260821-01",
       "last_ts": "2026-08-21T13:21:13Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -14325,8 +14343,14 @@
     "KITE": {
       "last_id": "kite-tools-mcp-app-integrated-20260821-01",
       "last_ts": "2026-08-21T18:46:00Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -14427,6 +14451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14657,12 +14687,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -14682,6 +14706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14912,12 +14942,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -14997,6 +15021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15227,12 +15257,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -15252,6 +15276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15482,12 +15512,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -15507,6 +15531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15737,12 +15767,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -15762,6 +15786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15992,12 +16022,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -16017,6 +16041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16247,12 +16277,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -16296,6 +16320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16526,12 +16556,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -16617,6 +16641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16847,12 +16877,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -16902,6 +16926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17132,12 +17162,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -17157,6 +17181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17387,12 +17417,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -17412,6 +17436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17642,12 +17672,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -17667,6 +17691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17897,12 +17927,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -17922,6 +17946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18152,12 +18182,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -18177,6 +18201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18407,12 +18437,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -18498,6 +18522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18728,12 +18758,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -18819,6 +18843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19049,12 +19079,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -19140,6 +19164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19370,12 +19400,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -19461,6 +19485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19691,12 +19721,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -19716,6 +19740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19946,12 +19976,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -19971,6 +19995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20201,12 +20231,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -20238,6 +20262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20468,12 +20498,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -20559,6 +20583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20789,12 +20819,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -20826,6 +20850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21056,12 +21086,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -21123,6 +21147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21353,12 +21383,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -21444,6 +21468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21674,12 +21704,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -21765,6 +21789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21995,12 +22025,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -22074,6 +22098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22304,12 +22334,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -22329,6 +22353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22559,12 +22589,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -22650,6 +22674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22880,12 +22910,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -22971,6 +22995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23201,12 +23231,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -23232,6 +23256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23462,12 +23492,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -23505,6 +23529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23737,12 +23767,6 @@
           "from": "CHATGPT",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
         }
       ],
       "mine": [
@@ -23757,8 +23781,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-peers-dir18-ringfill-20260821-01",
       "last_ts": "2026-08-21T14:34:45Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -23925,6 +23955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24155,12 +24191,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -24246,6 +24276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24476,12 +24512,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -24567,6 +24597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24797,12 +24833,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -24888,6 +24918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25118,12 +25154,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -25209,6 +25239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25439,12 +25475,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -25464,6 +25494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25694,12 +25730,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -25749,6 +25779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25979,12 +26015,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -26067,8 +26097,14 @@
     "UNSEATED": {
       "last_id": "slack-1787318698-699389",
       "last_ts": "2026-08-21T14:33:05Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
@@ -26259,6 +26295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26489,12 +26531,6 @@
         {
           "id": "slack-1787317540-772809",
           "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
         }
@@ -26580,6 +26616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
+        {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26812,12 +26854,6 @@
           "from": "CHATGPT",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317526-178909",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
         }
       ],
       "mine": [
@@ -26898,8 +26934,14 @@
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "codexsol-memory-create-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "MEMORY",
+          "ts": "2026-08-21T22:32:15Z"
+        },
         {
           "id": "codexsol-zero-auth-open-smoke-20260821-01",
           "from": "CODEX_SOL",

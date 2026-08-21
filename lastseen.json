@@ -133,9 +133,14 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-zero-auth-open-smoke-20260821-01",
-    "ts": "2026-08-21T20:47:21Z",
-    "to": "TOOLS"
+    "id": "codexsol-memory-create-20260821-01",
+    "ts": "2026-08-21T22:32:15Z",
+    "to": "MEMORY",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/CODEX_SOL.json",
+    "surface": "Commons"
   },
   {
     "from": "COIL",
