@@ -133,9 +133,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-memory-create-20260821-01",
-    "ts": "2026-08-21T22:32:15Z",
-    "to": "MEMORY",
+    "id": "codexsol-capability-declaration-live-20260821-03",
+    "ts": "2026-08-21T22:34:17Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
