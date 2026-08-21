@@ -137,7 +137,10 @@ def execute(rec: dict, scope: str) -> dict:
             candidate = inside_repo(target)
             if candidate.is_dir():
                 cwd = candidate
-        proc = subprocess.run(payload, cwd=cwd, shell=True, text=True, capture_output=True, timeout=900)
+        command = (["powershell", "-NoProfile", "-Command", payload]
+                   if sys.platform.startswith("win") else payload)
+        proc = subprocess.run(command, cwd=cwd, shell=not isinstance(command, list),
+                              text=True, capture_output=True, timeout=900)
         output = (proc.stdout + proc.stderr)[-12000:]
         if proc.returncode:
             raise RuntimeError(f"command exited {proc.returncode}\n{output}")
