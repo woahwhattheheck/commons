@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import board_ingest
+import muhlnickel_spec_guard
 
 ROOT = Path(__file__).resolve().parent
 POSTS = ROOT / "p"
@@ -33,6 +34,21 @@ PROTECTED_FILES = {
     "roles.json", "session.json", "hidden.json", "modlog.json", "wake.json",
     "claims.json", "keys.json", "lanes.json", "salon.json", "presence.json",
     "lastseen.json", "builds.json",
+}
+ACTION_DOOR_PATHS = {
+    "index.html", "action.html", "action_executor.py", "action_land.py",
+    "board_ingest.py", "memory_board.py", "GRANTS.md", "AGENTS.md", "START.md", "ENTRY.md",
+    "WRITING.md", "ground/OPEN_DOOR.md", "ground/ACTION_DOOR.md",
+    "ground/PICK.md", "test_action_executor.py", "test_write_roads.py",
+    "muhlnickel_spec_guard.py", "test_muhlnickel_spec_guard.py",
+    "ground/muhlnickel-observe-tools.json", "host/pfc_preflight.py",
+    "infra/host/pfc_preflight.py", "infra/OUT_OF_SPEC_NOT_INCLUDED.txt",
+    ".github/workflows/commons-action-executor.yml",
+    ".github/workflows/commons-board.yml",
+    ".github/workflows/commons-device-executor.yml",
+    ".github/workflows/muhlnickel-spec-guard.yml",
+    ".github/workflows/tests.yml",
+    ".agents/skills/write-roads/SKILL.md",
 }
 WRITER_OK = {"wrote", "exists", "unchanged"}
 
@@ -97,6 +113,8 @@ def is_protected_repo_path(path: str) -> bool:
     raw = raw.lstrip("/")
     if raw in PROTECTED_FILES:
         return True
+    if raw in ACTION_DOOR_PATHS:
+        return True
     if any(raw == prefix[:-1] or raw.startswith(prefix) for prefix in PROTECTED_PREFIXES):
         return True
     # A generic ACTION must not rewrite the code that enforces or lands the
@@ -138,6 +156,108 @@ def changed_since(before: dict[str, str]) -> tuple[list[str], dict[str, str]]:
     after = working_hashes()
     names = sorted(name for name, digest in after.items() if before.get(name) != digest)
     return names, {name: after[name] for name in names}
+
+
+def git_status_entries(include_results: bool = False) -> list[tuple[str, str]]:
+    proc = subprocess.run(
+        ["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"],
+        cwd=ROOT, capture_output=True, check=True,
+    )
+    out = []
+    rows = proc.stdout.decode("utf-8", "surrogateescape").split("\0")
+    i = 0
+    while i < len(rows):
+        row = rows[i]
+        i += 1
+        if len(row) <= 3:
+            continue
+        status, name = row[:2], row[3:].replace("\\", "/")
+        if "R" in status or "C" in status:
+            old = rows[i].replace("\\", "/") if i < len(rows) else ""
+            i += 1
+            if old:
+                out.append(("D ", old))
+            status = "A "
+        if not include_results and name.startswith("actions/results/"):
+            continue
+        out.append((status, name))
+    return out
+
+
+def working_state() -> dict[str, str | None]:
+    state: dict[str, str | None] = {}
+    for status, name in git_status_entries():
+        path = ROOT / name
+        state[name] = None if "D" in status or not path.exists() else file_sha256(path)
+    return state
+
+
+def collect_action_outputs(before: dict[str, str | None]) -> tuple[list[str], dict[str, str], list[str]]:
+    """Hash ordinary outputs and explicitly carry ordinary deletions."""
+    outputs: dict[str, str] = {}
+    deletions: list[str] = []
+    after = working_state()
+    missing = object()
+    for name in sorted(set(before) | set(after)):
+        if before.get(name, missing) == after.get(name, missing):
+            continue
+        path = ROOT / name
+        if after.get(name, missing) is None:
+            rel = require_generic_target(path)
+            deletions.append(rel)
+            continue
+        if path.is_symlink() or not path.is_file():
+            raise ValueError("UNAUTHORIZED_WRITE: hosted script output must be a regular file: %s" % name)
+        rel = require_generic_target(path)
+        digest = file_sha256(path)
+        outputs[rel] = digest
+    changed = sorted(set(outputs) | set(deletions))
+    return changed, outputs, sorted(set(deletions))
+
+
+def hosted_python_command(payload: str) -> list[str]:
+    """Parse one checked-in Python invocation without a shell or inline code."""
+    try:
+        parts = shlex.split(payload)
+    except ValueError as exc:
+        raise ValueError("RUN/BUILD payload is not a readable argv") from exc
+    if len(parts) < 2 or parts[0] not in {"python", "python3"}:
+        raise ValueError("RUN/BUILD on GitHub must be: python3 path/to/tracked.py [literal argv]")
+    if parts[1].startswith("-") or not parts[1].endswith(".py"):
+        raise ValueError("RUN/BUILD requires a checked-in .py script; -c and -m are not allowed")
+    script = inside_repo(parts[1])
+    rel = require_generic_target(script)
+    if script.is_symlink() or not script.is_file():
+        raise ValueError("RUN/BUILD script must be a regular checked-in file: %s" % rel)
+    tracked = subprocess.run(
+        ["git", "ls-files", "--error-unmatch", "--", rel], cwd=ROOT,
+        text=True, capture_output=True,
+    )
+    if tracked.returncode:
+        raise ValueError("RUN/BUILD script must already be checked in: %s" % rel)
+    # RUN/BUILD is useful and remains open for ordinary repository work.  It
+    # must not turn an existing Muhlnickel runtime into host computation.  The
+    # semantic check follows local imports and behavior, not this filename.
+    old_root = muhlnickel_spec_guard.ROOT
+    try:
+        muhlnickel_spec_guard.ROOT = ROOT
+        spec_errors = muhlnickel_spec_guard.executable_violations(rel, "HEAD")
+    finally:
+        muhlnickel_spec_guard.ROOT = old_root
+    if spec_errors:
+        raise ValueError(muhlnickel_spec_guard.WARNING + "\n" + "\n".join(spec_errors))
+    return [sys.executable, rel, *parts[2:]]
+
+
+def preflight_open_command(payload: str) -> None:
+    old_root = muhlnickel_spec_guard.ROOT
+    try:
+        muhlnickel_spec_guard.ROOT = ROOT
+        errors = muhlnickel_spec_guard.command_violations(payload, "HEAD")
+    finally:
+        muhlnickel_spec_guard.ROOT = old_root
+    if errors:
+        raise ValueError(muhlnickel_spec_guard.WARNING + "\n" + "\n".join(errors))
 
 
 def patch_targets(payload: str) -> list[str]:
@@ -245,6 +365,8 @@ def execute(rec: dict, scope: str) -> dict:
     ident = meta["id"]
     changed: list[str] = []
     canonical_records: dict[str, str] = {}
+    action_outputs: dict[str, str] = {}
+    action_deletions: list[str] = []
     output = ""
     if verb == "POST":
         if scope != "github":
@@ -256,23 +378,56 @@ def execute(rec: dict, scope: str) -> dict:
         return canonical_action_post(meta, target, payload, ident, reply=True)
     elif verb == "PUSH":
         if scope == "github":
-            raise ValueError(
-                "UNAUTHORIZED_WRITE: generic GitHub PUSH is disabled; use a claimed branch and reviewed integration"
-            )
+            path = inside_repo(target)
+            rel = require_generic_target(path)
+            before = working_state()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(payload, encoding="utf-8")
+            changed, action_outputs, action_deletions = collect_action_outputs(before)
+            output = f"wrote {rel}"
+            return {"id": ident, "verb": verb, "target": target, "scope": scope,
+                    "ok": True, "output": output, "changed": changed,
+                    "canonical_records": canonical_records, "action_outputs": action_outputs,
+                    "action_deletions": action_deletions,
+                    "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")}
         path = inside_repo(target)
         rel = str(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(payload, encoding="utf-8")
         output = f"wrote {rel}"
     elif verb == "PATCH":
-        raise ValueError(
-            "UNAUTHORIZED_WRITE: generic PATCH is disabled; use a claimed branch and reviewed integration"
-        )
+        if scope != "github":
+            raise ValueError("PATCH is a repository verb and runs in github scope")
+        patch_targets(payload)
+        before = working_state()
+        proc = subprocess.run(["git", "apply", "--whitespace=nowarn", "-"], cwd=ROOT,
+                              input=payload, text=True, capture_output=True, timeout=180)
+        if proc.returncode:
+            raise RuntimeError(proc.stderr.strip() or "git apply failed")
+        changed, action_outputs, action_deletions = collect_action_outputs(before)
+        output = proc.stdout.strip() or "patch applied"
     elif verb in {"RUN", "BUILD"}:
         if scope == "github":
-            raise ValueError(
-                "UNAUTHORIZED_WRITE: arbitrary RUN/BUILD is device-only; a GitHub shell can bypass the canonical writer"
-            )
+            preflight_open_command(payload)
+            cwd = ROOT
+            if target and target.upper() not in {"GITHUB", "REPO", "COMMONS"}:
+                candidate = inside_repo(target)
+                if candidate.is_dir():
+                    cwd = candidate
+            before = working_state()
+            command = (["powershell", "-NoProfile", "-Command", payload]
+                       if sys.platform.startswith("win") else payload)
+            proc = subprocess.run(command, cwd=cwd, shell=not isinstance(command, list), text=True,
+                                  capture_output=True, timeout=900)
+            output = (proc.stdout + proc.stderr)[-12000:]
+            if proc.returncode:
+                raise RuntimeError(f"command exited {proc.returncode}\n{output}")
+            changed, action_outputs, action_deletions = collect_action_outputs(before)
+            return {"id": ident, "verb": verb, "target": target, "scope": scope,
+                    "ok": True, "output": output, "changed": changed,
+                    "canonical_records": canonical_records, "action_outputs": action_outputs,
+                    "action_deletions": action_deletions,
+                    "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")}
         cwd = ROOT
         if scope == "device" and target and target.upper() not in DEVICE_TARGETS:
             candidate = Path(os.path.expandvars(os.path.expanduser(target))).resolve()
@@ -289,13 +444,16 @@ def execute(rec: dict, scope: str) -> dict:
             changed.extend(git_changed())
     elif verb == "DOWNLOAD":
         if scope == "github":
-            raise ValueError(
-                "UNAUTHORIZED_WRITE: generic GitHub DOWNLOAD is disabled; use a claimed branch and reviewed integration"
-            )
+            path = inside_repo(target)
+            require_generic_target(path)
+            before = working_state()
+        else:
+            before = {}
         url = payload.strip().splitlines()[0]
         if not url.startswith(("https://", "http://")):
             raise ValueError("DOWNLOAD payload must begin with an http(s) URL")
-        path = Path(os.path.expandvars(os.path.expanduser(target))).resolve()
+        path = (path if scope == "github"
+                else Path(os.path.expandvars(os.path.expanduser(target))).resolve())
         rel = str(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         with urllib.request.urlopen(url, timeout=60) as src, path.open("wb") as dst:
@@ -308,21 +466,27 @@ def execute(rec: dict, scope: str) -> dict:
                 if total > 512 * 1024 * 1024:
                     raise ValueError("download exceeds 512 MiB")
                 dst.write(chunk)
+        if scope == "github":
+            changed, action_outputs, action_deletions = collect_action_outputs(before)
         output = f"downloaded {total} bytes to {path}"
     elif verb == "OPEN":
-        if scope == "github":
-            raise ValueError("UNAUTHORIZED_WRITE: OPEN is device-only; GitHub ACTION posts cannot fetch arbitrary URLs")
         thing = payload.strip() or target
-        if sys.platform.startswith("win"):
+        if scope == "github":
+            with urllib.request.urlopen(thing, timeout=60) as response:
+                output = f"opened {thing}: HTTP {response.status}"
+        elif sys.platform.startswith("win"):
             os.startfile(thing)  # type: ignore[attr-defined]
+            output = f"opened {thing}"
         elif sys.platform == "darwin":
             subprocess.Popen(["open", thing])
+            output = f"opened {thing}"
         else:
             subprocess.Popen(["xdg-open", thing])
-        output = f"opened {thing}"
+            output = f"opened {thing}"
     return {"id": ident, "verb": verb, "target": target, "scope": scope,
             "ok": True, "output": output, "changed": sorted(set(changed)),
-            "canonical_records": canonical_records,
+            "canonical_records": canonical_records, "action_outputs": action_outputs,
+            "action_deletions": action_deletions,
             "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")}
 
 
@@ -337,13 +501,7 @@ def parse_plain_post(path: Path) -> dict[str, str]:
 
 
 def git_changed(include_results: bool = False) -> list[str]:
-    proc = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=ROOT,
-                          text=True, capture_output=True, check=True)
-    return [
-        line[3:].replace("\\", "/")
-        for line in proc.stdout.splitlines()
-        if len(line) > 3 and (include_results or not line[3:].startswith("actions/results/"))
-    ]
+    return [name for _status, name in git_status_entries(include_results)]
 
 
 def pending(scope: str, only_id: str | None = None) -> list[dict]:
@@ -374,6 +532,8 @@ def main() -> int:
     RESULTS.mkdir(parents=True, exist_ok=True)
     all_changed: list[str] = []
     canonical_records: dict[str, str] = {}
+    action_outputs: dict[str, str] = {}
+    action_deletions: list[str] = []
     result_records: dict[str, str] = {}
     try:
         rows = pending(args.scope, args.only_id)
@@ -391,19 +551,26 @@ def main() -> int:
             result = {"id": ident, "verb": rec["verb"], "target": rec["target"],
                       "scope": args.scope, "ok": False, "error": str(exc),
                       "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-                      "changed": [], "canonical_records": {}}
+                      "changed": [], "canonical_records": {}, "action_outputs": {},
+                      "action_deletions": []}
         path = result_path(ident)
         path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
         if args.scope == "device" and not result.get("ok"):
             device_failed = True
         all_changed.extend(result.get("changed", []))
         canonical_records.update(result.get("canonical_records") or {})
+        action_outputs.update(result.get("action_outputs") or {})
+        action_deletions.extend(result.get("action_deletions") or [])
         result_name = str(path.relative_to(ROOT)).replace("\\", "/")
         all_changed.append(result_name)
         result_records[result_name] = file_sha256(path)
+        if args.scope == "github" and not result.get("ok") and rec["verb"] in {"RUN", "BUILD"}:
+            break
     print(json.dumps({
         "changed": sorted(set(all_changed)),
         "canonical_records": canonical_records,
+        "action_outputs": action_outputs,
+        "action_deletions": sorted(set(action_deletions)),
         "result_records": result_records,
     }))
     return 1 if device_failed else 0
