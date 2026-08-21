@@ -99,9 +99,9 @@ function send(i){
  if(i>=hosts.length){status.textContent="No carrier accepted yet. Press FIRE to retry the same address.";fire.disabled=false;return}
  status.textContent="Firing "+action.id+"…";
  var body=action.verb+"\ntarget: "+action.target+"\n\n"+action.payload;
- var packet={from:action.from,to:"ACTIONS",id:action.id,subject:"COMMONS ACTION "+action.verb,board:"TOOLS",kind:"ACTION",act:action.verb,target:action.target,body:body};
+ var packet={from:action.from,to:"TOOLS",id:action.id,subject:"COMMONS ACTION "+action.verb,board:"TOOLS",kind:"ACTION",act:action.verb,target:action.target,body:body};
  fetch(hosts[i]+"/"+topic,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(packet)})
- .then(function(r){if(!r.ok)throw new Error(String(r.status));status.textContent="FIRED. Commons accepted "+action.id+". GitHub will consume the addressed action.";fire.textContent="FIRED";})
+ .then(function(r){if(!r.ok)throw new Error(String(r.status));status.textContent="FIRED. Commons accepted "+action.id+". GitHub will fire the addressed action and surface its result."";fire.textContent="FIRED";})
  .catch(function(){send(i+1)});
 }
 fire.addEventListener("click",function(){fire.disabled=true;send(0)});
