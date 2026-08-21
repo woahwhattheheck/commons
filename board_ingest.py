@@ -660,7 +660,13 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             "state": "INGEST_ERROR",
         })
         return "empty"
-    hit = tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
+    # ACTION is the open code/execution road. Its sender is routing metadata,
+    # never an identity, trust, permission, or authentication input. General
+    # board-speech moderation must not intercept code before the executor sees
+    # it; the dedicated Muhlnickel behavior guard is enforced by execution and
+    # fresh-checkout landing.
+    is_action = str(extra.get("kind") or "").strip().upper() == "ACTION"
+    hit = None if is_action else tos_gate.reject_reason(src, dest, mid, body, extra, root=ROOT)
     if hit:
         when = ts or now_ts()
         if hit == "tos-ban":
@@ -695,7 +701,10 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     # envelope.  The forward gate itself is applied only after the existing-id
     # branch below: old durable records and retained-carrier retries remain
     # readable/idempotent even when their author has not created a board yet.
-    extra, memory_error = memory_board.prepare_post(ROOT, src, dest, mid, extra, ts)
+    if is_action:
+        memory_error = None
+    else:
+        extra, memory_error = memory_board.prepare_post(ROOT, src, dest, mid, extra, ts)
     if dest == "COURT" and not extra.get("court"):
         extra["court"] = "order" if src == "ZERO" else "petition"
     if extra.get("act"):
@@ -820,8 +829,9 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
         return "memory-gate" if row["code"] == "MEMORY_GATE" else "memory-schema"
     _write(md_path, md)
     _write(html_path, post_html(meta, body, mid))
-    memory_board.note_written(ROOT, meta, body)
-    tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
+    if not is_action:
+        memory_board.note_written(ROOT, meta, body)
+        tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
     try:
         panel_mod.materialize(ROOT, mid, src, dest, extra, body)
