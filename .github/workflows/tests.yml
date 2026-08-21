@@ -49,6 +49,7 @@ on:
       - 'carrier.js'
       - 'llms_txt.py'
       - 'tos_gate.py'
+      - 'panel.py'
       - 'test_*.py'
       - 'test_*.js'
       - '.github/workflows/tests.yml'

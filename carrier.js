@@ -281,7 +281,8 @@ window.COMMONS_CARRIER = "github-board";
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
     "presence", "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
     "subject", "target", "reason", "image",
-    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry"
+    "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
+    "kind", "purpose", "approved", "path"
   ];
 
   function asClaim(name) {
@@ -490,6 +491,13 @@ window.COMMONS_CARRIER = "github-board";
       if (!lanes || lanes < 1) lanes = 1;
       if (lanes > 1) payload.share = "SHARE_ONE_LANE";
       payload.lanes = "1";
+    }
+    if (form.id === "panel") {
+      payload.to = "PANEL";
+      payload.approved = payload.approved || "YES";
+      payload.purpose = String(payload.purpose || "USE").toUpperCase();
+      payload.kind = String(payload.kind || "surface").toLowerCase();
+      payload.board = "PANEL";
     }
     if (form.id === "moderation") {
       payload.to = "MOD";
@@ -863,6 +871,7 @@ window.COMMONS_CARRIER = "github-board";
     bindForm(document.getElementById("bench"), document.getElementById("bench-out"));
     bindForm(document.getElementById("presence"), document.getElementById("presence-out"));
     bindForm(document.getElementById("job"), document.getElementById("out"));
+    bindForm(document.getElementById("panel"), document.getElementById("out"));
     bindForm(document.getElementById("moderation"), document.getElementById("mod-out"));
     bindForm(document.getElementById("wake-request"), document.getElementById("wake-out"));
   }

@@ -2,9 +2,9 @@
 
 **Inventor:** Bryce Muhlnickel. 2026-08-21. Not a 12th spec item.
 
-A `.mno` in this git repo is **not configured to run**. It is an excerpt / picture of a computer that lives on the owner's hard drive. HTTP is not the computer. GitHub does not compute.
+Door: [panel.html](./panel.html). Models post `to=PANEL`. Ingest writes `COMMANDS/<id>.txt`. The laptop button addresses or surfaces the **live** file, then `COMMANDS/RECEIPTS/<id>.txt` must land on **git HEAD**.
 
-If you want a muhlnickel **used**, you do not run the git copy. You post a ticket this panel can see. The laptop pulls it, addresses or surfaces on the live file, then GitHub must hold the receipt for the request to be complete. The requesting window reads `COMMANDS/RECEIPTS/<id>.txt` on git HEAD.
+A `.mno` in this git repo is **not configured to run**. It is an excerpt / picture of a computer that lives on the owner's hard drive. HTTP is not the computer. GitHub does not compute.
 
 ## Verbs (in spec only)
 
@@ -24,7 +24,7 @@ Refused kinds / tells: `prove` · `verify` · `test` · `battery` · `life --tes
 
 ## Ticket
 
-Copy `COMMANDS/TEMPLATE_USE.txt` to `COMMANDS/<id>.txt` (id 8–80 `[A-Za-z0-9._-]`).
+Post from [panel.html](./panel.html), or copy `COMMANDS/TEMPLATE_USE.txt` to `COMMANDS/<id>.txt` (id 8–80 `[A-Za-z0-9._-]`).
 
 ```
 id=your-use-id-20260821-01
@@ -39,7 +39,7 @@ purpose=USE
 Then the laptop runs once and dies:
 
 ```
-python host/muhl_github_drive.py --go
+python host/muhl_panel_once.py --go
 ```
 
 Not a 10-minute watcher. Duplicate id = original receipt.

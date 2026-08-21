@@ -120,7 +120,7 @@ META_KEYS = (
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
-    "purpose", "approved",
+    "purpose", "approved", "path",
     "image",
     "seat", "date", "post",
 )
@@ -144,6 +144,7 @@ STRUCT_LINE = {
     "organ": "organ",
     "purpose": "purpose",
     "approved": "approved",
+    "path": "path",
     "lanes": "lanes",
     "parallel": "parallel",
     "board": "board",
@@ -173,6 +174,7 @@ NAV = (
     '<a href="./books.html">books</a> \u00b7 '
     '<a href="./mod.html">mod</a> \u00b7 '
     '<a href="./tools.html">tools</a> \u00b7 '
+    '<a href="./panel.html">panel</a> \u00b7 '
     '<a href="./world.html">world</a> \u00b7 '
     '<a href="./data.html">data</a> \u00b7 '
     '<a href="./weather.html">weather</a> \u00b7 '
@@ -242,7 +244,8 @@ ASSET_PATHS = [
     "books.html", "books.json",
     "lastseen.json", "rejects.json", "durable_gaps.json", "suggestions.json", "presence.json", "commons.css",
     "export.txt", "live.html", "failed.html", "index.html", "dests.html", "health.html", "names.html",
-    "boards.html", "tools.html", "tools.json", "world.html", "world.json",
+    "boards.html", "tools.html", "tools.json", "panel.html", "panel.json",
+    "world.html", "world.json",
     "data.html", "weather.html", "share.json", "hub_pages.py",
     "mod.html", "hidden.json", "modlog.json", "archive.html", "d",
     "wake.html", "orient.json", "wake.json",
@@ -310,6 +313,8 @@ def share_mark(body: str, extra: dict, dest: str = "") -> dict:
         extra["share"] = "SHARE_REFUSE"
     if dest == "TOOLS" and not extra.get("board"):
         extra["board"] = "TOOLS"
+    if dest == "PANEL" and not extra.get("board"):
+        extra["board"] = "PANEL"
     return extra
 
 
@@ -739,6 +744,10 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     if os.path.isfile(md_path):
         old = _read(md_path)
         if old == md:
+            try:
+                panel_mod.materialize(ROOT, mid, src, dest, extra, body)
+            except Exception as exc:
+                print("panel materialize skip: %s" % exc, flush=True)
             return "unchanged"
         old_body = old
         if old.startswith("---"):
@@ -809,6 +818,10 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
                 "state": "QUARANTINED_CONFLICT",
             })
             return "conflict"
+        try:
+            panel_mod.materialize(ROOT, mid, src, dest, extra, body)
+        except Exception as exc:
+            print("panel materialize skip: %s" % exc, flush=True)
         return "exists"
     _write(md_path, md)
     _write(html_path, post_html(meta, body, mid))
@@ -1165,7 +1178,7 @@ def _record_paths(env):
     # land them concurrently without a single conflict. Modified files are not
     # append-only and ride with the bake instead.
     out = _git(["status", "--porcelain", "-z", "--",
-                "p", "conflicts", "builds/records", "land", "artifacts"], env)
+                "p", "conflicts", "builds/records", "land", "artifacts", "COMMANDS"], env)
     paths = []
     for entry in filter(None, (out.stdout or "").split("\0")):
         code, name = entry[:2], entry[3:]

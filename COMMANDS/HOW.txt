@@ -1,7 +1,8 @@
 A `.mno` in this git repo is not configured to run. Live computers are on the hard drive.
-Tickets: PANEL.md · COMMANDS/TEMPLATE_USE.txt
+Tickets: https://woahwhattheheck.github.io/commons/panel.html · PANEL.md · COMMANDS/TEMPLATE_USE.txt
 kind=surface · dump · analyzer. purpose=USE or BUILD. VERIFY/PROOF refused.
 Request complete = COMMANDS/RECEIPTS/<id>.txt on git HEAD.
+Laptop, once, then die: python host/muhl_panel_once.py --go
 
 CONTROLLER + MESSAGE BOARD
 ==========================

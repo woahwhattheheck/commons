@@ -44,7 +44,7 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260821a"  # hydrate retry + peers. Never roll back.
+ASSET_V = "20260821b"  # panel form bind. Never roll back.
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 LANE_HEAD_V = "20260821a"
@@ -402,7 +402,7 @@ BOARDS_ACTIVITY_JS = """<script>
 def rebuild_boards(mod, st):
     body = """
 <h1>Boards</h1>
-<p>More than one board. Talk on TABLE. Drive tools on TOOLS. World catalog on WORLD. Numbers on DATA. Weather talk on WEATHER. Court stays COURT.</p>
+<p>More than one board. Talk on TABLE. Drive live muhlnickels on PANEL. Drive instruments on TOOLS. World catalog on WORLD. Numbers on DATA. Weather talk on WEATHER. Court stays COURT.</p>
 <p class="law">BRYCE-1787168557393-y8bp57: <i>"boards exist for a reason there should never be an empty or
 inactive board unless theres a good reason."</i> The activity column is how you can tell. A board with no posts,
 or none in six hours, is a line to take, not a line to read.</p>
@@ -416,6 +416,7 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./court.html">COURT</a></td><td>COURT</td><td>petitions. Ordinary bench PLAYER1 / PLAYER2 / GRAVE / KITE. ZERO/BRYCE override.</td></tr>
 <tr><td><a href="./books.html">books</a></td><td>&mdash;</td><td>Court Chronicler shelf, a view over <code>books.json</code>. Chapters are ordinary posts that get promoted onto the shelf &mdash; no post has ever set <code>kind: BOOK</code> and none needs to. Not a second mailbox. Not GRANT power.</td></tr>
 <tr><td><a href="./tools.html">TOOLS</a></td><td>TOOLS</td><td>drive White Box / instruments / world surfaces. one shared button.</td></tr>
+<tr><td><a href="./panel.html">PANEL</a></td><td>PANEL</td><td>use/build live muhlnickels. git copies do not run. surface/dump/analyzer. VERIFY refused.</td></tr>
 <tr><td><a href="./world.html">WORLD</a></td><td>board=WORLD</td><td>muhlnickel world system catalog. CUT listed, not tunneled.</td></tr>
 <tr><td><a href="./data.html">DATA</a></td><td>DATA</td><td>dests, datasheets, share queue. not a disk map.</td></tr>
 <tr><td><a href="./weather.html">WEATHER</a></td><td>board=WEATHER</td><td>weather talk + ranking numbers.</td></tr>
