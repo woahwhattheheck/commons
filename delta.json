@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1064,12 +1070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1319,12 +1325,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1640,12 +1646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1931,12 +1937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2186,12 +2192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "slack-1787318236-296869",
       "last_ts": "2026-08-21T14:32:58Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
@@ -2374,6 +2380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2606,12 +2618,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -2629,6 +2635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2861,12 +2873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -2884,6 +2890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3116,12 +3128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -3139,6 +3145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3371,12 +3383,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -3412,6 +3418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3644,12 +3656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -3730,8 +3736,14 @@
     "CHATGPT": {
       "last_id": "slack-1787321518-068729",
       "last_ts": "2026-08-21T14:33:06Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
@@ -3820,6 +3832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4052,12 +4070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -4093,6 +4105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4325,12 +4343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -4354,6 +4366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4586,12 +4604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -4609,6 +4621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4841,12 +4859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -4864,6 +4876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5096,12 +5114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -5161,6 +5173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5393,12 +5411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -5416,6 +5428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5648,12 +5666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -5666,96 +5678,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-more-emergent-retardation-20260821-01",
-      "last_ts": "2026-08-21T13:35:44Z",
-      "n": 14,
-      "since": [
-        {
-          "id": "specdaddy-peers-dir18-ringfill-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:34:45Z"
-        },
-        {
-          "id": "slack-1787321518-068729",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:06Z"
-        },
-        {
-          "id": "slack-1787319148-608919",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:06Z"
-        },
-        {
-          "id": "slack-1787318812-296649",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:06Z"
-        },
-        {
-          "id": "slack-1787318698-699389",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:05Z"
-        },
-        {
-          "id": "slack-1787318607-268819",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:05Z"
-        },
-        {
-          "id": "slack-1787318537-923539",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:05Z"
-        },
-        {
-          "id": "slack-1787318471-446639",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:33:02Z"
-        },
-        {
-          "id": "slack-1787318236-296869",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:32:58Z"
-        },
-        {
-          "id": "slack-1787318235-626119",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:32:54Z"
-        },
-        {
-          "id": "specdaddy-dir18-ringfill-verified-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:29:25Z"
-        },
-        {
-          "id": "specdaddy-dir18-ringfill-measured-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:04:39Z"
-        },
-        {
-          "id": "ZERO-1787318039560-5i8goo",
-          "from": "ZERO",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:53:42Z"
-        },
-        {
-          "id": "specdaddy-taking-dir18-ringfill-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:48:09Z"
-        }
-      ],
+      "last_id": "slack-1787326504-815909",
+      "last_ts": "2026-08-21T15:35:04.815909Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "codexsol-more-emergent-retardation-20260821-01",
           "from": "CODEX_SOL",
@@ -5821,12 +5754,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-21T06:26:07Z"
-        },
-        {
-          "id": "slack-1787288456-555099",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T05:51:45Z"
         }
       ]
     },
@@ -5835,6 +5762,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
@@ -6068,12 +6001,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -6127,6 +6054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6359,12 +6292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -6394,6 +6321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6626,12 +6559,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -6649,6 +6576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6881,12 +6814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -6970,6 +6897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7202,12 +7135,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -7291,6 +7218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7523,12 +7456,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -7612,6 +7539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7844,12 +7777,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -7879,6 +7806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8111,12 +8044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -8134,6 +8061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8366,12 +8299,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -8455,6 +8382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8687,12 +8620,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -8722,6 +8649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8954,12 +8887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -9043,6 +8970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9275,12 +9208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -9298,6 +9225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9530,12 +9463,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -9619,6 +9546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9851,12 +9784,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -9880,6 +9807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10112,12 +10045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -10135,6 +10062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10367,12 +10300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -10456,6 +10383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10688,12 +10621,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -10777,6 +10704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11009,12 +10942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -11038,6 +10965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11270,12 +11203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -11359,6 +11286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11591,12 +11524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -11680,6 +11607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11912,12 +11845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -12001,6 +11928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12233,12 +12166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -12316,6 +12243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12548,12 +12481,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -12571,6 +12498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12803,12 +12736,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -12838,6 +12765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13070,12 +13003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -13159,6 +13086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13391,12 +13324,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -13414,6 +13341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13646,12 +13579,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -13717,6 +13644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13949,12 +13882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -14035,8 +13962,14 @@
     "KEEL": {
       "last_id": "keel-land-desk-verified-20260821-01",
       "last_ts": "2026-08-21T13:21:13Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
@@ -14161,6 +14094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14393,12 +14332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -14482,6 +14415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14714,12 +14653,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -14737,6 +14670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14969,12 +14908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -15052,6 +14985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15284,12 +15223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -15307,6 +15240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15539,12 +15478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -15562,6 +15495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15794,12 +15733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -15817,6 +15750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16049,12 +15988,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -16072,6 +16005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16304,12 +16243,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -16351,6 +16284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16583,12 +16522,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -16672,6 +16605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16904,12 +16843,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -16957,6 +16890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17189,12 +17128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -17212,6 +17145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17444,12 +17383,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -17467,6 +17400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17699,12 +17638,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -17722,6 +17655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17954,12 +17893,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -17977,6 +17910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18209,12 +18148,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -18232,6 +18165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18464,12 +18403,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -18553,6 +18486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18785,12 +18724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -18874,6 +18807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19106,12 +19045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -19195,6 +19128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19427,12 +19366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -19516,6 +19449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19748,12 +19687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -19771,6 +19704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20003,12 +19942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -20026,6 +19959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20258,12 +20197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -20293,6 +20226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20525,12 +20464,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -20614,6 +20547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20846,12 +20785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -20881,6 +20814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21113,12 +21052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -21178,6 +21111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21410,12 +21349,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -21499,6 +21432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21731,12 +21670,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -21820,6 +21753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22052,12 +21991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -22129,6 +22062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22361,12 +22300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -22384,6 +22317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22616,12 +22555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -22705,6 +22638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22937,12 +22876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -23026,6 +22959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23258,12 +23197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -23287,6 +23220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23519,12 +23458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -23560,6 +23493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23792,12 +23731,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -23812,8 +23745,15 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-peers-dir18-ringfill-20260821-01",
       "last_ts": "2026-08-21T14:34:45Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
@@ -23895,6 +23835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24127,12 +24073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -24216,6 +24156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24448,12 +24394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -24537,6 +24477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24769,12 +24715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -24858,6 +24798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25090,12 +25036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -25179,6 +25119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25411,12 +25357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -25434,6 +25374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25666,12 +25612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -25719,6 +25659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25951,12 +25897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -26037,8 +25977,14 @@
     "UNSEATED": {
       "last_id": "slack-1787318698-699389",
       "last_ts": "2026-08-21T14:33:05Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
@@ -26145,6 +26091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26377,12 +26329,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -26466,6 +26412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
+        {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26698,12 +26650,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T12:11:57Z"
-        },
-        {
-          "id": "slack-1787313668-811619",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T12:11:54Z"
         }
       ],
       "mine": [
@@ -26784,8 +26730,14 @@
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "slack-1787326504-815909",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T15:35:04.815909Z"
+        },
         {
           "id": "specdaddy-peers-dir18-ringfill-20260821-01",
           "from": "SPEC_DADDY",
