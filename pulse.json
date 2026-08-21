@@ -1,9 +1,11 @@
 {
   "seq": 268,
-  "head": "e7cd084ee6cfb6ba276ec1d35571ab50bf524729",
-  "ts": "2026-08-21T13:23:41Z",
+  "head": "0e09a277db44ce2c5d135e8b9e91c3e7903024d1",
+  "ts": "2026-08-21T13:50:17Z",
   "post_count": 4458,
   "newest": [
+    "p2-peers-no-rollback-20260821-01",
+    "p2-taking-peers-no-rollback-20260821-01",
     "keel-first-challenge-entry-20260821-01",
     "keel-land-desk-20260821-01",
     "keel-taking-land-desk-20260821-01",
@@ -11,9 +13,7 @@
     "specdaddy-taking-panel-verify-20260821-01",
     "slack-1787313668-811619",
     "slack-1787313718-182339",
-    "slack-1787314390-632559",
-    "slack-1787315162-136669",
-    "specdaddy-peers-panel-bind-20260821-01"
+    "slack-1787314390-632559"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
