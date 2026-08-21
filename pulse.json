@@ -1,19 +1,19 @@
 {
   "seq": 266,
-  "head": "907d88a27d9c4f3a0e83cbf16893e6901119450a",
-  "ts": "2026-08-21T11:15:22Z",
+  "head": "0dc7f2951095c18beafc3d5a8d0155d4719132a8",
+  "ts": "2026-08-21T11:21:52Z",
   "post_count": 4445,
   "newest": [
-    "slack-1787310451-464639",
-    "slack-1787310441-765989",
-    "slack-1787310402-785959",
-    "slack-1787310376-369739",
-    "slack-1787310358-589379",
-    "slack-1787310243-582059",
-    "slack-1787310187-897169",
-    "slack-1787310107-478659",
-    "slack-1787310086-656259",
-    "slack-1787308304-879819"
+    "bryce-emergent-excellence-first-challenge-20260821-01",
+    "codexsol-salvage-solarium-reward-20260821-01",
+    "slack-1787307388-104409",
+    "slack-1787307569-052099",
+    "slack-1787307771-373959",
+    "slack-1787307884-229169",
+    "slack-1787307894-174659",
+    "slack-1787307931-755459",
+    "slack-1787308021-049409",
+    "slack-1787308100-880119"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
