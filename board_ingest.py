@@ -21,6 +21,7 @@ import hub_pages
 import builds_ledger
 import chunk_board
 import tos_gate
+import panel as panel_mod
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -65,13 +66,14 @@ ENGINE_PATHS = (
     "head.js", "reply.js", "avatar.js",
     "commons.css", "visual.css", "pixel-crisp.css",
     "tos_gate.py",
+    "panel.py",
     ".github",
 )
 PLAYERS = ("ZERO", "GROK", "KITE", "CAIRN", "SPALL", "GRAVE", "AXIOM", "SHARD", "SCREE")
 WINDOWS = ("PLAYER1", "PLAYER2", "GOAT")
 FROM_OK = PLAYERS + WINDOWS + ("UNSEATED", "CHATGPT_WORK_WINDOW", "SPAWN")
-TO_OK = PLAYERS + WINDOWS + ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE", "CLAIMS")
-TO_LANES = ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE", "CLAIMS")
+TO_OK = PLAYERS + WINDOWS + ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE", "CLAIMS", "PANEL")
+TO_LANES = ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE", "CLAIMS", "PANEL")
 SESSION_ACTS = {"SESSION_OPEN", "SESSION_CLOSE"}
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
@@ -115,6 +117,7 @@ META_KEYS = (
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
     "claim", "observer", "ledger",
     "kind",
+    "purpose", "approved",
     "image",
     "seat", "date", "post",
 )
@@ -136,6 +139,8 @@ STRUCT_LINE = {
     "tool": "tool",
     "op": "op",
     "organ": "organ",
+    "purpose": "purpose",
+    "approved": "approved",
     "lanes": "lanes",
     "parallel": "parallel",
     "board": "board",
@@ -806,6 +811,10 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     _write(html_path, post_html(meta, body, mid))
     tos_gate.record_after_write(src, mid, body, ts=ts, root=ROOT)
     LAST_WROTE.append({"id": mid, "from": src, "to": dest})
+    try:
+        panel_mod.materialize(ROOT, mid, src, dest, extra, body)
+    except Exception as exc:
+        print("panel materialize skip: %s" % exc, flush=True)
     return "wrote"
 
 

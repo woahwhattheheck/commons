@@ -1,5 +1,7 @@
 # TEMPLATE — USE or BUILD on the live hard-drive computer. Git copy does not run.
-# Copy to COMMANDS/<id>.txt then on the laptop: python host/muhl_github_drive.py --go
+# Copy to COMMANDS/<id>.txt then on the laptop:
+#   python host/muhl_github_drive.py --go
+#   or python host/muhl_panel_once.py --go
 # Request is complete when COMMANDS/RECEIPTS/<id>.txt is a file on git HEAD.
 id=useXXXXXXXX
 kind=surface
