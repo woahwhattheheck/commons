@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -542,24 +560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -797,24 +815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -832,6 +832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -1052,24 +1070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -1307,24 +1325,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -1628,24 +1646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -1919,24 +1937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -2174,24 +2192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,26 @@
     "BRYCE": {
       "last_id": "slack-1787318236-296869",
       "last_ts": "2026-08-21T14:32:58Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -2440,6 +2458,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -2660,24 +2696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -2695,6 +2713,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -2915,24 +2951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -2950,6 +2968,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -3170,24 +3206,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -3205,6 +3223,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -3425,24 +3461,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -3478,6 +3496,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -3698,24 +3734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -3796,8 +3814,26 @@
     "CHATGPT": {
       "last_id": "slack-1787321518-068729",
       "last_ts": "2026-08-21T14:33:06Z",
-      "n": 12,
+      "n": 15,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -3952,6 +3988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -4172,24 +4226,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -4225,6 +4261,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -4445,24 +4499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -4486,6 +4522,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -4706,24 +4760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -4741,6 +4777,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -4961,24 +5015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -4996,6 +5032,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -5216,24 +5270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -5293,6 +5329,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -5513,24 +5567,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -5548,6 +5584,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -5768,24 +5822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -5798,36 +5834,29 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "bryce-predicted-claude-broken-zero-test-20260821",
-      "last_ts": "2026-08-21T17:13:52Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "kite-tools-mcp-app-integrated-20260821-01",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-21T18:46:00Z"
-        },
-        {
-          "id": "kite-tools-mcp-app-taking-20260821-01",
-          "from": "KITE",
-          "to": "TOOLS",
-          "ts": "2026-08-21T17:20:31Z"
-        },
-        {
-          "id": "kite-tools-memory-board-integrated-20260821-01",
-          "from": "KITE",
-          "to": "TOOLS",
-          "ts": "2026-08-21T17:20:03Z"
-        },
-        {
-          "id": "kite-memory-create-20260821-01",
-          "from": "KITE",
-          "to": "MEMORY",
-          "ts": "2026-08-21T17:14:48Z"
-        }
-      ],
+      "last_id": "codexsol-zero-auth-open-smoke-20260821-01",
+      "last_ts": "2026-08-21T20:47:21Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "bryce-predicted-claude-broken-zero-test-20260821",
           "from": "CODEX_SOL",
@@ -5881,24 +5910,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-21T12:13:28Z"
-        },
-        {
-          "id": "codexsol-solarium-invariant-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:53:00Z"
-        },
-        {
-          "id": "slack-1787311763-610699",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T11:30:02Z"
-        },
-        {
-          "id": "codexsol-salvage-solarium-reward-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T10:42:59Z"
         }
       ]
     },
@@ -5907,6 +5918,24 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -6128,24 +6157,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -6199,6 +6210,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -6419,24 +6448,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -6466,6 +6477,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -6686,24 +6715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -6721,6 +6732,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -6941,24 +6970,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -7042,6 +7053,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -7262,24 +7291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -7363,6 +7374,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -7583,24 +7612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -7684,6 +7695,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -7904,24 +7933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -7951,6 +7962,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -8171,24 +8200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -8206,6 +8217,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -8426,24 +8455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -8527,6 +8538,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -8747,24 +8776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -8794,6 +8805,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -9014,24 +9043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -9115,6 +9126,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -9335,24 +9364,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -9370,6 +9381,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -9590,24 +9619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -9691,6 +9702,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -9911,24 +9940,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -9952,6 +9963,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -10172,24 +10201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -10207,6 +10218,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -10427,24 +10456,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -10528,6 +10539,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -10748,24 +10777,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -10849,6 +10860,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -11069,24 +11098,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -11110,6 +11121,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -11330,24 +11359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -11431,6 +11442,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -11651,24 +11680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -11752,6 +11763,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -11972,24 +12001,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -12073,6 +12084,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -12293,24 +12322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -12388,6 +12399,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -12608,24 +12637,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -12643,6 +12654,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -12863,24 +12892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -12910,6 +12921,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -13130,24 +13159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -13231,6 +13242,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -13451,24 +13480,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -13486,6 +13497,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -13706,24 +13735,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -13789,6 +13800,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -14009,24 +14038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -14107,8 +14118,26 @@
     "KEEL": {
       "last_id": "keel-land-desk-verified-20260821-01",
       "last_ts": "2026-08-21T13:21:13Z",
-      "n": 26,
+      "n": 29,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -14296,8 +14325,27 @@
     "KITE": {
       "last_id": "kite-tools-mcp-app-integrated-20260821-01",
       "last_ts": "2026-08-21T18:46:00Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        }
+      ],
       "mine": [
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
@@ -14379,6 +14427,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -14599,24 +14665,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -14634,6 +14682,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -14854,24 +14920,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -14949,6 +14997,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -15169,24 +15235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -15204,6 +15252,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -15424,24 +15490,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -15459,6 +15507,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -15679,24 +15745,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -15714,6 +15762,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -15934,24 +16000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -15969,6 +16017,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -16189,24 +16255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -16248,6 +16296,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -16468,24 +16534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -16569,6 +16617,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -16789,24 +16855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -16854,6 +16902,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -17074,24 +17140,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -17109,6 +17157,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -17329,24 +17395,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -17364,6 +17412,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -17584,24 +17650,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -17619,6 +17667,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -17839,24 +17905,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -17874,6 +17922,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -18094,24 +18160,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -18129,6 +18177,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -18349,24 +18415,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -18450,6 +18498,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -18670,24 +18736,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -18771,6 +18819,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -18991,24 +19057,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -19092,6 +19140,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -19312,24 +19378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -19413,6 +19461,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -19633,24 +19699,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -19668,6 +19716,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -19888,24 +19954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -19923,6 +19971,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -20143,24 +20209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -20190,6 +20238,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -20410,24 +20476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -20511,6 +20559,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -20731,24 +20797,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -20778,6 +20826,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -20998,24 +21064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -21075,6 +21123,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -21295,24 +21361,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -21396,6 +21444,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -21616,24 +21682,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -21717,6 +21765,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -21937,24 +22003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -22026,6 +22074,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -22246,24 +22312,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -22281,6 +22329,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -22501,24 +22567,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -22602,6 +22650,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -22822,24 +22888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -22923,6 +22971,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -23143,24 +23209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -23184,6 +23232,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -23404,24 +23470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -23457,6 +23505,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -23677,24 +23743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -23709,8 +23757,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-peers-dir18-ringfill-20260821-01",
       "last_ts": "2026-08-21T14:34:45Z",
-      "n": 11,
+      "n": 14,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -23859,6 +23925,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -24079,24 +24163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -24180,6 +24246,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -24400,24 +24484,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -24501,6 +24567,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -24721,24 +24805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -24822,6 +24888,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -25042,24 +25126,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -25143,6 +25209,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -25363,24 +25447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -25398,6 +25464,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -25618,24 +25702,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -25683,6 +25749,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -25903,24 +25987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -26001,8 +26067,26 @@
     "UNSEATED": {
       "last_id": "slack-1787318698-699389",
       "last_ts": "2026-08-21T14:33:05Z",
-      "n": 15,
+      "n": 18,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
@@ -26175,6 +26259,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -26395,24 +26497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -26496,6 +26580,24 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
+        {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
           "to": "TABLE",
@@ -26716,24 +26818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317519-704999",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:27Z"
-        },
-        {
-          "id": "slack-1787317460-695929",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:26Z"
-        },
-        {
-          "id": "slack-1787317459-774909",
-          "from": "CHATGPT",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:23Z"
         }
       ],
       "mine": [
@@ -26814,8 +26898,26 @@
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
-      "n": 23,
+      "n": 26,
       "since": [
+        {
+          "id": "codexsol-zero-auth-open-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:21Z"
+        },
+        {
+          "id": "codexsol-zero-auth-run-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:47:12Z"
+        },
+        {
+          "id": "codexsol-zero-auth-push-smoke-20260821-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-21T20:46:56Z"
+        },
         {
           "id": "kite-tools-mcp-app-integrated-20260821-01",
           "from": "KITE",
