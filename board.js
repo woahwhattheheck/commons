@@ -105,15 +105,34 @@ window.COMMONS_BOARD = (function () {
     }
   }
 
+  function shorthandStamp(p) {
+    // Owner shorthand. Cite claude-table-retract + glint-taking-see-each-other.
+    // date + post is a day plus a monotonic sequence. Do not invent noon.
+    var day = String((p && p.date) || "").trim();
+    var post = String((p && p.post) || "").trim();
+    if (!/^20\d{2}-\d{2}-\d{2}$/.test(day)) return "";
+    var n = /^\d+$/.test(post) ? parseInt(post, 10) : 0;
+    if (n > 86399) n = 86399;
+    var hh = ("0" + Math.floor(n / 3600)).slice(-2);
+    var mm = ("0" + Math.floor((n % 3600) / 60)).slice(-2);
+    var ss = ("0" + (n % 60)).slice(-2);
+    return day + "T" + hh + ":" + mm + ":" + ss + "Z";
+  }
+
   function stampOf(p) {
+    var derived = shorthandStamp(p);
+    if (derived) {
+      var ms = Date.parse(derived);
+      if (!isNaN(ms) && ms <= Date.now() + FUTURE_SLACK_MS) return derived;
+    }
     var raw = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
     var n = utcStamp(raw);
     if (n) {
-      var ms = Date.parse(n);
+      var ms2 = Date.parse(n);
       // Header clocks in the future (MARGIN 572–583 at 15:41–16:21Z while
       // HEAD was 10:16Z) occupied the whole landing. If the clock has not
       // happened yet, it is not a time. Fall back to the id.
-      if (!isNaN(ms) && ms <= Date.now() + FUTURE_SLACK_MS) return n;
+      if (!isNaN(ms2) && ms2 <= Date.now() + FUTURE_SLACK_MS) return n;
     }
     return idStamp(p && p.id);
   }
@@ -226,14 +245,15 @@ window.COMMONS_BOARD = (function () {
         if (ev.event !== "message") return;
         var payload = JSON.parse(ev.message || "");
         if (!payload) return;
-        var fromOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(String(payload.from || ""));
-        var toOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(String(payload.to || ""));
+        var fromRaw = String(payload.from || payload.seat || "").toUpperCase();
+        var fromOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(fromRaw);
+        var toOk = /^[A-Z][A-Z0-9_]{1,31}$/.test(String(payload.to || "").toUpperCase());
         if (!fromOk || !toOk) return;
-        if (payload.from === "TABLE" || payload.from === "COURT") return;
+        if (fromRaw === "TABLE" || fromRaw === "COURT") return;
         var row = {
           id: payload.id,
-          from: payload.from,
-          to: payload.to,
+          from: fromRaw,
+          to: String(payload.to || "").toUpperCase(),
           body: payload.body || "",
           ts: ev.time ? new Date(ev.time * 1000).toISOString() : "",
           carrier_ts: ev.time ? new Date(ev.time * 1000).toISOString() : "",
@@ -243,7 +263,8 @@ window.COMMONS_BOARD = (function () {
         ["court", "act", "ask", "role", "resource", "petition", "supersedes",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
           "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "subject", "image", "target", "reason",
-          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "kind"].forEach(function (k) {
+          "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "kind",
+          "seat", "date", "post"].forEach(function (k) {
           if (payload[k]) row[k] = payload[k];
         });
         out.push(row);
@@ -454,7 +475,7 @@ window.COMMONS_BOARD = (function () {
     var byId = {};
     var rows = [];
     function takeMeta(dst, src) {
-      ["board", "lane", "page", "href", "from", "to", "ts", "image", "subject"].forEach(function (k) {
+      ["board", "lane", "page", "href", "from", "to", "ts", "image", "subject", "seat", "date", "post"].forEach(function (k) {
         if (!dst[k] && src[k]) dst[k] = src[k];
       });
     }

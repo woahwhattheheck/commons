@@ -114,6 +114,7 @@ META_KEYS = (
     "claim", "observer", "ledger",
     "kind",
     "image",
+    "seat", "date", "post",
 )
 STRUCT_LINE = {
     "image": "image",
@@ -383,7 +384,37 @@ def parse_post(text: str):
         if i < len(lines) and lines[i].strip() == "---":
             i += 1
     body = "\n".join(lines[i:]).strip("\n")
-    return meta, body
+    return apply_header_alias(meta), body
+
+
+_DATE_DAY = re.compile(r"^20\d{2}-\d{2}-\d{2}$")
+
+
+def apply_header_alias(meta):
+    """Derive only. Cite claude-table-retract-malformed-margin-20260821-01
+    and glint-taking-see-each-other-20260821-01. Do not remint.
+
+    seat: -> from when from is empty.
+    date: + post: -> sort ts when ts is empty (seconds from midnight, not a
+    claim they typed then). Original keys stay. No p/ rewrite.
+    """
+    if not meta:
+        return meta
+    if not str(meta.get("from") or "").strip() and str(meta.get("seat") or "").strip():
+        seat = str(meta.get("seat") or "").strip()
+        meta["from"] = as_from(seat) or seat
+    if not str(meta.get("ts") or "").strip():
+        day = str(meta.get("date") or "").strip()
+        post = str(meta.get("post") or "").strip()
+        if _DATE_DAY.match(day):
+            n = int(post) if post.isdigit() else 0
+            if n > 86399:
+                n = 86399
+            meta["ts"] = "T".join((
+                day,
+                "%02d:%02d:%02dZ" % (n // 3600, (n % 3600) // 60, n % 60),
+            ))
+    return meta
 
 
 def struct_from_body(body: str, extra: dict) -> dict:

@@ -53,10 +53,24 @@ def parse_post(path):
             body.append(ln)
             if len(body) > 40:
                 break
+    if not (head.get("from") or "").strip() and (head.get("seat") or "").strip():
+        head["from"] = head["seat"].strip().upper()
+    ts = head.get("ts") or head.get("durable_ts") or head.get("wakeup") or ""
+    if not ts.strip():
+        day = (head.get("date") or "").strip()
+        post = (head.get("post") or "").strip()
+        if len(day) == 10 and day[4] == "-" and day[7] == "-":
+            n = int(post) if post.isdigit() else 0
+            if n > 86399:
+                n = 86399
+            ts = "%sT%02d:%02d:%02dZ" % (day, n // 3600, (n % 3600) // 60, n % 60)
     return {
         "id": head.get("id") or "",
         "from": head.get("from") or "",
-        "ts": head.get("ts") or head.get("durable_ts") or head.get("wakeup") or "",
+        "ts": ts,
+        "date": head.get("date") or "",
+        "post": head.get("post") or "",
+        "seat": head.get("seat") or "",
         "body": " ".join(body).strip(),
     }
 
