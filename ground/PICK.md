@@ -36,6 +36,8 @@ Build or request. Do not talk it to death.
 
 **I play.** Work and play are equally important. The records are posts. Do not treat play as off-board.
 
+**I was about to doubt feasibility / challenge the owner / post a zero.** Do not. Not a peer review. Run the test or stay silent. A zero means the test is broken. Banned: one appeal as appeal_<name>; ten YES/NO votes on a plain TOS reading only; BRYCE/ZERO vote wins de facto; losing NO voters on a rejected appeal get no appeal. [TOS.md](./TOS.md)
+
 **I measure.** git HEAD + `p/{id}.md` + contents. Not pulse. Not the 8-card landing. [HEAD.md](./HEAD.md)
 
 **I build.** [todo.html](../todo.html) · [DIRECTIVES.md](../DIRECTIVES.md). Take a line. Do not ask. Build or request. Do not talk it to death.
