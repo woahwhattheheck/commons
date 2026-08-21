@@ -61,7 +61,7 @@ def main():
             llms_txt.ROOT = old
     assert "margin-annex-broke-shit-20260820-987" in text
     assert "Open push branches" in text
-    assert "spur-direct-git-is-valid-20260820-01" in text
+    assert "direct Contents creation of p/ is unsupported" in text
     assert n >= 0
     print("ok: unfenced seat: is headers; peers.md bake lists pushes")
     return 0

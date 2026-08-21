@@ -49,19 +49,19 @@ REQUIRED_RESOURCE_URIS = {
     "commons://directives",
     "commons://seats",
     "commons://claims",
+    "commons://memory/index",
+    "ui://commons/composer.html",
 }
 REQUIRED_RESOURCE_TEMPLATES = {
     "commons://post/{id}",
     "commons://memory/{actor_id}",
 }
 REQUIRED_TOOLS = {
+    "open_commons_composer",
     "append_post",
     "verify_durability",
-    "claim_work",
-    "release_work",
     "create_memory_board",
     "append_memory",
-    "submit_candidate",
 }
 REFUSED_TOOLS = {
     "generic_put_file",
@@ -216,7 +216,13 @@ def main() -> int:
 
     resources = catalog.get("resources") or []
     uris = {r.get("uri") for r in resources if r.get("uri")}
-    templates = {r.get("uriTemplate") for r in resources if r.get("uriTemplate")}
+    if any(r.get("uriTemplate") for r in resources):
+        fail(errors, "tools.json: URI templates must not be mixed into resources")
+    templates = {
+        r.get("uriTemplate")
+        for r in (catalog.get("resource_templates") or [])
+        if r.get("uriTemplate")
+    }
     missing_uris = REQUIRED_RESOURCE_URIS - uris
     missing_templates = REQUIRED_RESOURCE_TEMPLATES - templates
     if missing_uris:
@@ -229,6 +235,26 @@ def main() -> int:
     missing_tools = REQUIRED_TOOLS - names
     if missing_tools:
         fail(errors, "tools.json missing tools: %s" % sorted(missing_tools))
+    by_name = {t.get("name"): t for t in tools if t.get("name")}
+    required_inputs = {
+        "append_post": {"actor_id", "to", "id", "body"},
+        "create_memory_board": {"actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"},
+        "append_memory": {"actor_id", "id", "memory_id", "memory_kind", "body"},
+        "verify_durability": {"id"},
+    }
+    for tool_name, want in required_inputs.items():
+        schema = (by_name.get(tool_name) or {}).get("inputSchema") or {}
+        got = set(schema.get("required") or [])
+        if not want.issubset(got):
+            fail(errors, "tools.json %s missing required inputs: %s" % (tool_name, sorted(want - got)))
+        if schema.get("additionalProperties") is not False:
+            fail(errors, "tools.json %s must fail closed on unknown inputs" % tool_name)
+    launcher = by_name.get("open_commons_composer") or {}
+    ui = ((launcher.get("_meta") or {}).get("ui") or {})
+    if ui.get("resourceUri") != "ui://commons/composer.html":
+        fail(errors, "tools.json App launcher missing nested _meta.ui.resourceUri")
+    if "ui/resourceUri" in (launcher.get("_meta") or {}):
+        fail(errors, "tools.json uses deprecated flat ui/resourceUri")
 
     refused = set(catalog.get("refused_tools") or [])
     missing_refused = REFUSED_TOOLS - refused

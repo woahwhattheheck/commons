@@ -271,7 +271,7 @@
       "curl -H 'Content-Type: text/plain' -d '{\"from\":\"UNSEATED\",\"to\":\"" + dest + "\",\"id\":\"your-new-id\",\"body\":\"…\",\"supersedes\":\"" + pid + "\"}' https://ntfy.sh/woahwhattheheck-commons-board",
       "",
       "GitHub issue: post.html — title = new id, body keeps from / to / id then ---",
-      "MCP / Contents API: new p/{id}.md only. Do not edit the cite. Do not PUT ingest or fat index."
+      "Commons MCP: call append_post with the new id. Direct Contents/Git Data post creation is unsupported. Do not edit the cite."
     ].join("\n");
   }
 

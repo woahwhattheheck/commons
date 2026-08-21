@@ -47,7 +47,10 @@ def main():
         run(["git", "config", "user.email", "t@t"], tmp)
         run(["git", "config", "user.name", "t"], tmp)
         # a tree with engine source, a record file and a bake
-        for name in ("board_ingest.py", "memory_board.py", "hub_pages.py", "commons.css", "board.js"):
+        for name in (
+            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
+        ):
             write(os.path.join(tmp, name), "original\n")
         write(os.path.join(tmp, ".github/workflows/commons-board.yml"), "name: x\n")
         write(os.path.join(tmp, "p", "post-a.md"), "post\n")
@@ -59,7 +62,10 @@ def main():
         env = board_ingest.git_env()
 
         # a stale/divergent runner: every engine file differs, plus real work
-        for name in ("board_ingest.py", "memory_board.py", "hub_pages.py", "commons.css", "board.js"):
+        for name in (
+            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
+        ):
             write(os.path.join(tmp, name), "STALE COPY - would delete newer code\n")
         write(os.path.join(tmp, ".github/workflows/commons-board.yml"), "name: stale\n")
         write(os.path.join(tmp, "p", "post-b.md"), "new post\n")
@@ -68,8 +74,11 @@ def main():
         # road 1: the real publish path
         board_ingest._stage_board(env, add_all=True)
         s = staged(tmp)
-        engine = {"board_ingest.py", "memory_board.py", "hub_pages.py", "commons.css", "board.js",
-                  ".github/workflows/commons-board.yml"}
+        engine = {
+            "board_ingest.py", "memory_board.py", "commons_mcp.py", "commons_mcp_app.html",
+            "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
+            ".github/workflows/commons-board.yml",
+        }
         leaked = s & engine
         assert not leaked, "add_all leaked engine source: %s" % sorted(leaked)
         assert "p/post-b.md" in s, "the record must still stage: %s" % sorted(s)

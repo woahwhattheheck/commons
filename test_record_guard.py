@@ -16,10 +16,11 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import builds_ledger
 
-REC_PATHS = ["p/*.md", "conflicts/*"]
+REC_PATHS = ["p/*.md", "conflicts/*", "memory/*"]
 CODE_PATHS = [
     "board.js", "carrier.js", "court.js", "session.js", "commons.css",
-    "index.html", "hub_pages.py", "board_ingest.py", "memory_board.py", "grave-card.html",
+    "index.html", "hub_pages.py", "board_ingest.py", "memory_board.py",
+    "commons_mcp.py", "commons_mcp_app.html", "action_executor.py", "action_land.py", "action.html", "grave-card.html",
     "docket.json", "resources.json", "roles.json", "session.json", "hidden.json",
     "modlog.json", "wake.json", "claims.json", "keys.json", "lanes.json", "salon.json",
     "presence.json", "lastseen.json",
@@ -27,6 +28,7 @@ CODE_PATHS = [
     ".github/workflows/*.yml", ".github/workflows/*.yaml",
 ]
 BREC_PATHS = ["builds/records/*"]
+ACTION_RESULT_PATHS = ["actions/results/*.json"]
 
 
 def main():
@@ -52,7 +54,7 @@ def main():
 
         git("init", "-q")
         git("config", "user.email", "t@t"); git("config", "user.name", "t")
-        for d in ("p", "conflicts", "builds/records", ".github/workflows"):
+        for d in ("p", "conflicts", "memory", "builds/records", "actions/results", ".github/workflows"):
             os.makedirs(os.path.join(tmp, d))
         open(os.path.join(tmp, "seed.txt"), "w").write("seed")
         commit("seed")
@@ -76,6 +78,25 @@ def main():
         case("M conflict-row-file", detect("AMDRT", REC_PATHS), "M")
         git("rm", "-q", "conflicts/some-id.jsonl"); git("commit", "-qm", "d")
         case("D conflict-row-file", detect("AMDRT", REC_PATHS), "D")
+
+        # memory boards/index are deterministic durable projections: direct
+        # additions, edits, and removals all alert outside the trusted writer.
+        memory = os.path.join(tmp, "memory", "FAKE.json")
+        open(memory, "w").write("{}\n"); commit("a memory")
+        case("A memory projection", detect("AMDRT", REC_PATHS), "A")
+        open(memory, "a").write("{}\n"); commit("m memory")
+        case("M memory projection", detect("AMDRT", REC_PATHS), "M")
+        git("rm", "-q", "memory/FAKE.json"); git("commit", "-qm", "d memory")
+        case("D memory projection", detect("AMDRT", REC_PATHS), "D")
+
+        # action result latches are durable one-shot records: all touches alert
+        latch = os.path.join(tmp, "actions", "results", "sol-action-0001.json")
+        open(latch, "w").write("{}\n"); commit("a action latch")
+        case("A action result latch", detect("AMDRT", ACTION_RESULT_PATHS), "A")
+        open(latch, "a").write("{}\n"); commit("m action latch")
+        case("M action result latch", detect("AMDRT", ACTION_RESULT_PATHS), "M")
+        git("rm", "-q", "actions/results/sol-action-0001.json"); git("commit", "-qm", "d action latch")
+        case("D action result latch", detect("AMDRT", ACTION_RESULT_PATHS), "D")
 
         # protected source A/M, runtime css M, protected state T (file->symlink)
         open(os.path.join(tmp, "carrier.js"), "w").write("js"); commit("a")

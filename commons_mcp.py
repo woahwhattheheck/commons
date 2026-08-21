@@ -1,0 +1,1548 @@
+#!/usr/bin/env python3
+"""Commons MCP 2026-07-28 gateway and MCP App resource.
+
+The gateway is deliberately not a filesystem server.  Writes travel over a
+fixed Commons carrier and become successful only after an exact ``p/{id}.md``
+read at a named git SHA.  The local checkout is read only except for loading
+the bundled MCP App HTML.
+"""
+from __future__ import annotations
+
+import argparse
+import base64
+import binascii
+import hashlib
+import json
+import math
+import os
+import re
+import select
+import socket
+import subprocess
+import sys
+import threading
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from collections import defaultdict, deque
+from datetime import datetime, timezone
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Any
+
+
+PROTOCOL_VERSION = "2026-07-28"
+SERVER_NAME = "commons"
+SERVER_VERSION = "1.0.0"
+APP_PROTOCOL_VERSION = "2026-01-26"
+APP_URI = "ui://commons/composer.html"
+REPO = "woahwhattheheck/commons"
+REPO_GIT = "https://github.com/%s.git" % REPO
+RAW_ROOT = "https://raw.githubusercontent.com/%s" % REPO
+GITHUB_API = "https://api.github.com/repos/%s" % REPO
+NTFY_TOPIC = "woahwhattheheck-commons-board"
+NTFY_RELAYS = (
+    "https://ntfy.sh",
+    "https://ntfy.envs.net",
+    "https://ntfy.adminforge.de",
+    "https://ntfy.mzte.de",
+)
+NTFY_MAX = 3900
+MAX_BODY = 16000
+ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
+ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+BODY_SHA_RE = re.compile(r"^[0-9a-f]{64}$")
+TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+LOCAL_PATH_RE = re.compile(r"C:\\Users\\[^\s`\"'<>]+", re.I)
+SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
+SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
+
+
+class CommonsError(Exception):
+    """A business/tool error, returned inside a successful tools/call RPC."""
+
+    def __init__(self, code: str, message: str, *, state: str = "INGEST_ERROR", **details: Any):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+        self.state = state
+        self.details = details
+
+    def payload(self) -> dict[str, Any]:
+        return {
+            "ok": False,
+            "state": self.state,
+            "code": self.code,
+            "message": self.message,
+            **self.details,
+        }
+
+
+class RpcError(Exception):
+    """A JSON-RPC/transport error."""
+
+    def __init__(self, code: int, message: str, *, data: Any = None, http_status: int = 400):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+        self.data = data
+        self.http_status = http_status
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _canonical_json(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def _wire_json_loads(value: str | bytes) -> Any:
+    """Decode strict JSON; Python's default accepts non-standard NaN/Infinity."""
+    def reject_constant(token: str) -> None:
+        raise ValueError("invalid JSON constant %s" % token)
+
+    try:
+        return json.loads(value, parse_constant=reject_constant)
+    except RecursionError as exc:
+        # Deeply nested but otherwise syntactically valid JSON must remain a
+        # wire parse error.  It must never escape the stdio loop or become an
+        # HTTP 500 with interpreter details.
+        raise ValueError("JSON nesting exceeds the decoder limit") from exc
+
+
+def _sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _canonical_body(value: Any) -> str:
+    if not isinstance(value, str):
+        raise CommonsError("SCHEMA", "body must be a string")
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise CommonsError("SCHEMA", "body must contain valid Unicode scalar values") from exc
+    body = value.replace("\r\n", "\n").replace("\r", "\n").strip("\n")
+    if not body.strip():
+        raise CommonsError("SCHEMA", "body must not be empty")
+    if len(body) > MAX_BODY:
+        raise CommonsError("SCHEMA", "body exceeds 16,000 characters", max_length=MAX_BODY)
+    if LOCAL_PATH_RE.search(body):
+        raise CommonsError(
+            "SCHEMA",
+            "body contains a local Windows user path that the canonical writer would redact; remove it before sending",
+        )
+    return body
+
+
+def _valid_id(value: Any, field: str = "id") -> str:
+    if not isinstance(value, str) or not ID_RE.fullmatch(value):
+        raise CommonsError("SCHEMA", "%s must be 8-80 characters: A-Z a-z 0-9 . _ -" % field)
+    return value
+
+
+def _valid_actor(value: Any, field: str = "actor_id") -> str:
+    if not isinstance(value, str) or not ACTOR_RE.fullmatch(value):
+        raise CommonsError("SCHEMA", "%s must be an uppercase Commons claim" % field)
+    return value
+
+
+def _valid_ts(value: Any) -> str:
+    if not isinstance(value, str) or not TS_RE.fullmatch(value):
+        raise CommonsError("SCHEMA", "ts must be a canonical UTC ISO-Z timestamp")
+    try:
+        datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise CommonsError("SCHEMA", "ts is not a real UTC date-time") from exc
+    return value
+
+
+def _plain_string(value: Any, field: str, *, maximum: int = 200, allow_empty: bool = False) -> str:
+    if not isinstance(value, str):
+        raise CommonsError("SCHEMA", "%s must be a string" % field)
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise CommonsError("SCHEMA", "%s must contain valid Unicode scalar values" % field) from exc
+    out = value.strip()
+    if not allow_empty and not out:
+        raise CommonsError("SCHEMA", "%s must not be empty" % field)
+    if "\n" in out or "\r" in out or len(out) > maximum:
+        raise CommonsError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
+    return out
+
+
+def _strict_args(arguments: Any, allowed: set[str], required: set[str]) -> dict[str, Any]:
+    if not isinstance(arguments, dict):
+        raise CommonsError("SCHEMA", "tool arguments must be an object")
+    unknown = sorted(set(arguments) - allowed)
+    missing = sorted(key for key in required if key not in arguments)
+    if unknown:
+        raise CommonsError("SCHEMA", "unknown tool argument(s)", fields=unknown)
+    if missing:
+        raise CommonsError("SCHEMA", "missing required tool argument(s)", fields=missing)
+    return arguments
+
+
+def parse_post(text: str) -> tuple[dict[str, str], str]:
+    """Parse the canonical fenced form and the legacy issue-style form."""
+    lines = str(text or "").splitlines()
+    meta: dict[str, str] = {}
+    i = 0
+    if lines and lines[0].strip() == "---":
+        i = 1
+    while i < len(lines) and lines[i].strip() != "---":
+        if ":" in lines[i]:
+            key, value = lines[i].split(":", 1)
+            meta[key.strip().lower()] = value.strip()
+        i += 1
+    if i >= len(lines):
+        raise CommonsError("DURABLE_PARSE", "durable post has no header separator", state="UNVERIFIED")
+    return meta, "\n".join(lines[i + 1 :]).strip("\n")
+
+
+class GitTruth:
+    """Read public Commons truth at immutable git SHAs."""
+
+    def __init__(self, *, git_url: str = REPO_GIT, raw_root: str = RAW_ROOT, timeout: float = 20.0):
+        self.git_url = git_url
+        self.raw_root = raw_root.rstrip("/")
+        self.timeout = timeout
+
+    def head_sha(self) -> str:
+        try:
+            proc = subprocess.run(
+                ["git", "ls-remote", "--exit-code", self.git_url, "HEAD"],
+                capture_output=True,
+                text=True,
+                timeout=self.timeout,
+            )
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            raise CommonsError("TRUTH_UNAVAILABLE", "could not resolve Commons git HEAD", state="UNVERIFIED") from exc
+        if proc.returncode:
+            raise CommonsError("TRUTH_UNAVAILABLE", "could not resolve Commons git HEAD", state="UNVERIFIED")
+        sha = (proc.stdout.split() or [""])[0].lower()
+        if not SHA_RE.fullmatch(sha):
+            raise CommonsError("TRUTH_UNAVAILABLE", "Commons HEAD response was not a commit SHA", state="UNVERIFIED")
+        return sha
+
+    def read_at_sha(self, path: str, sha: str) -> str | None:
+        if not SHA_RE.fullmatch(str(sha or "").lower()):
+            raise CommonsError("SCHEMA", "sha must be 40 lowercase hexadecimal characters")
+        raw = str(path or "").replace("\\", "/").lstrip("/")
+        if not raw or ".." in raw.split("/") or raw.startswith(".git/"):
+            raise CommonsError("SCHEMA", "invalid repository read path")
+        url = "%s/%s/%s" % (self.raw_root, sha, urllib.parse.quote(raw, safe="/._-"))
+        req = urllib.request.Request(url, headers={"User-Agent": "commons-mcp/%s" % SERVER_VERSION})
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                return response.read().decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404:
+                return None
+            raise CommonsError(
+                "TRUTH_UNAVAILABLE", "immutable Commons read returned HTTP %d" % exc.code, state="UNVERIFIED"
+            ) from exc
+        except (urllib.error.URLError, TimeoutError, OSError, UnicodeError) as exc:
+            raise CommonsError("TRUTH_UNAVAILABLE", "immutable Commons read failed", state="UNVERIFIED") from exc
+
+
+class NtfyCarrier:
+    """Fixed public carrier.  A 2xx response is mail, never durability."""
+
+    def __init__(self, relays: tuple[str, ...] = NTFY_RELAYS, timeout: float = 10.0):
+        self.relays = relays
+        self.timeout = timeout
+
+    def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+        packed = _canonical_json(payload).encode("utf-8")
+        if len(packed) > NTFY_MAX:
+            raise CommonsError(
+                "CARRIER_LIMIT",
+                "the ntfy carrier envelope exceeds 3,900 UTF-8 bytes",
+                state="NOT_SENT",
+                envelope_bytes=len(packed),
+                max_bytes=NTFY_MAX,
+            )
+        failures = []
+        for host in self.relays:
+            url = "%s/%s" % (host.rstrip("/"), NTFY_TOPIC)
+            req = urllib.request.Request(
+                url,
+                data=packed,
+                method="POST",
+                headers={"Content-Type": "text/plain", "User-Agent": "commons-mcp/%s" % SERVER_VERSION},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                    reply = response.read(4096).decode("utf-8", "replace")
+                    event_id = ""
+                    try:
+                        event_id = str((json.loads(reply) or {}).get("id") or "")
+                    except (json.JSONDecodeError, AttributeError):
+                        pass
+                    return {
+                        "road": "ntfy",
+                        "host": host,
+                        "http_status": response.status,
+                        "event_id": event_id,
+                        "received_at": _utc_now(),
+                    }
+            except urllib.error.HTTPError as exc:
+                failures.append("%s HTTP %d" % (host, exc.code))
+            except (urllib.error.URLError, TimeoutError, OSError) as exc:
+                failures.append("%s %s" % (host, type(exc).__name__))
+        raise CommonsError(
+            "CARRIER_REJECTED",
+            "every fixed Commons relay refused or was unreachable",
+            state="NOT_SENT",
+            failures=failures,
+        )
+
+
+class IssueCarrier:
+    """Optional fixed GitHub-issue carrier using a server-held secret."""
+
+    def __init__(self, token: str, timeout: float = 20.0):
+        if not token:
+            raise CommonsError("CONFIG", "COMMONS_GITHUB_TOKEN is required for the issue carrier", state="NOT_SENT")
+        self.token = token
+        self.timeout = timeout
+
+    def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+        ordered = ["from", "to", "id", "ts"]
+        skip = {"from", "to", "id", "ts", "body"}
+        headers = ["%s: %s" % (key, payload[key]) for key in ordered if payload.get(key)]
+        for key in sorted(payload):
+            if key not in skip and payload.get(key) not in (None, ""):
+                headers.append("%s: %s" % (key, str(payload[key]).replace("\n", " ")))
+        body = "\n".join(headers) + "\n\n---\n\n" + str(payload.get("body") or "")
+        data = json.dumps({"title": payload["id"], "body": body, "labels": ["board"]}).encode("utf-8")
+        req = urllib.request.Request(
+            GITHUB_API + "/issues",
+            data=data,
+            method="POST",
+            headers={
+                "Accept": "application/vnd.github+json",
+                "Authorization": "Bearer " + self.token,
+                "Content-Type": "application/json",
+                "User-Agent": "commons-mcp/%s" % SERVER_VERSION,
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                row = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            raise CommonsError(
+                "CARRIER_REJECTED", "GitHub issue carrier returned HTTP %d" % exc.code, state="NOT_SENT"
+            ) from exc
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
+            raise CommonsError("CARRIER_REJECTED", "GitHub issue carrier failed", state="NOT_SENT") from exc
+        return {
+            "road": "github_issue",
+            "issue_number": row.get("number"),
+            "issue_url": row.get("html_url"),
+            "received_at": _utc_now(),
+        }
+
+
+def carrier_from_env() -> NtfyCarrier | IssueCarrier:
+    choice = os.environ.get("COMMONS_CARRIER", "ntfy").strip().lower()
+    if choice == "ntfy":
+        return NtfyCarrier()
+    if choice in {"issue", "github_issue", "github-issue"}:
+        return IssueCarrier(os.environ.get("COMMONS_GITHUB_TOKEN", ""))
+    raise CommonsError("CONFIG", "COMMONS_CARRIER must be ntfy or github_issue", state="NOT_SENT")
+
+
+class CommonsGateway:
+    def __init__(
+        self,
+        truth: Any | None = None,
+        carrier: Any | None = None,
+        *,
+        timeout: float = 330.0,
+        poll_interval: float = 2.0,
+        clock: Any = time.monotonic,
+        sleeper: Any = time.sleep,
+        now: Any = _utc_now,
+        app_path: Path | None = None,
+        max_concurrent_writes: int = 4,
+    ):
+        self.truth = truth or GitTruth()
+        self.carrier = carrier or carrier_from_env()
+        self.timeout = max(0.0, timeout)
+        self.poll_interval = max(0.01, poll_interval)
+        self.clock = clock
+        self.sleeper = sleeper
+        self.now = now
+        self.app_path = app_path or Path(__file__).with_name("commons_mcp_app.html")
+        self.write_slots = threading.BoundedSemaphore(max(1, int(max_concurrent_writes)))
+
+    def _read_post(self, ident: str, sha: str) -> tuple[dict[str, str], str] | None:
+        text = self.truth.read_at_sha("p/%s.md" % ident, sha)
+        return parse_post(text) if text is not None else None
+
+    def _read_json(self, path: str, sha: str) -> Any | None:
+        text = self.truth.read_at_sha(path, sha)
+        if text is None:
+            return None
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise CommonsError("DURABLE_PARSE", "%s is not valid JSON" % path, state="UNVERIFIED") from exc
+
+    @staticmethod
+    def _expected_fields(payload: dict[str, Any]) -> dict[str, str]:
+        fields = {}
+        for key, value in payload.items():
+            if key == "body" or value in (None, ""):
+                continue
+            fields[key] = str(value).strip()
+        return fields
+
+    def _compare_post(self, parsed: tuple[dict[str, str], str], payload: dict[str, Any]) -> list[str]:
+        meta, body = parsed
+        mismatches = []
+        for key, wanted in self._expected_fields(payload).items():
+            if str(meta.get(key) or "") != wanted:
+                mismatches.append(key)
+        if body != payload["body"]:
+            mismatches.append("body")
+        return mismatches
+
+    def _durable_result(
+        self,
+        payload: dict[str, Any],
+        sha: str,
+        parsed: tuple[dict[str, str], str],
+        *,
+        existing: bool,
+        carrier: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        meta, body = parsed
+        return {
+            "ok": True,
+            "state": "DURABLE_PAGE",
+            "id": payload["id"],
+            "git_sha": sha,
+            "path": "p/%s.md" % payload["id"],
+            "from": meta.get("from", ""),
+            "to": meta.get("to", ""),
+            "body_sha256": _sha256(body),
+            "existing": bool(existing),
+            **({"carrier": carrier} if carrier else {}),
+        }
+
+    def _preflight(self, payload: dict[str, Any]) -> dict[str, Any] | None:
+        sha = self.truth.head_sha()
+        parsed = self._read_post(payload["id"], sha)
+        if parsed is None:
+            return None
+        mismatch = self._compare_post(parsed, payload)
+        if mismatch:
+            meta, body = parsed
+            raise CommonsError(
+                "DUPLICATE_BODY_MISMATCH",
+                "this id already names a different durable envelope; the original stays",
+                state="QUARANTINED_CONFLICT",
+                id=payload["id"],
+                git_sha=sha,
+                path="p/%s.md" % payload["id"],
+                mismatched_fields=mismatch,
+                durable_from=meta.get("from", ""),
+                durable_to=meta.get("to", ""),
+                durable_body_sha256=_sha256(body),
+            )
+        return self._durable_result(payload, sha, parsed, existing=True)
+
+    def _memory_board(self, actor: str, sha: str | None = None) -> tuple[str, dict[str, Any]] | None:
+        at = sha or self.truth.head_sha()
+        row = self._read_json("memory/%s.json" % actor, at)
+        if row is None:
+            return None
+        if not isinstance(row, dict) or row.get("actor_id") != actor or not isinstance(row.get("entries"), list):
+            raise CommonsError("DURABLE_PARSE", "memory board projection is malformed", state="UNVERIFIED")
+        return at, row
+
+    def _require_memory(self, actor: str) -> tuple[str, dict[str, Any]]:
+        board = self._memory_board(actor)
+        if board is None:
+            raise CommonsError(
+                "MEMORY_GATE",
+                "Create a memory board before posting.",
+                actor_id=actor,
+                create_tool="create_memory_board",
+                create_path="https://woahwhattheheck.github.io/commons/#memory-create",
+            )
+        return board
+
+    def _reject_row(self, ident: str, sha: str) -> dict[str, Any] | None:
+        rows = self._read_json("rejects.json", sha)
+        if not isinstance(rows, list):
+            return None
+        for row in rows:
+            if isinstance(row, dict) and str(row.get("id") or "") == ident:
+                return row
+        return None
+
+    @staticmethod
+    def _row_fingerprint(row: dict[str, Any] | None) -> str:
+        return _sha256(_canonical_json(row)) if row else ""
+
+    def _projection_has(self, actor: str, payload: dict[str, Any], sha: str) -> bool:
+        board = self._memory_board(actor, sha)
+        if board is None:
+            return False
+        _, data = board
+        expected_memory = str(payload.get("memory_id") or "")
+        if (
+            data.get("actor_id") != actor
+            or data.get("memory_id") != expected_memory
+            or data.get("durable_path") != "memory/%s.json" % actor
+            or data.get("resource_uri") != "commons://memory/%s" % actor
+        ):
+            return False
+        if payload.get("kind") == "MEMORY_CREATE":
+            if data.get("created_ts") != payload.get("ts"):
+                return False
+            index = self._read_json("memory/index.json", sha)
+            rows = index.get("actors") if isinstance(index, dict) else None
+            actor_row = next(
+                (row for row in (rows or []) if isinstance(row, dict) and row.get("actor_id") == actor),
+                None,
+            )
+            provenance = actor_row.get("provenance") if isinstance(actor_row, dict) else None
+            if not isinstance(actor_row, dict) or not isinstance(provenance, dict):
+                return False
+            if (
+                actor_row.get("class") != payload.get("actor_class")
+                or actor_row.get("intelligence_kind") != payload.get("intelligence_kind")
+                or provenance.get("surface") != payload.get("surface")
+                or str(provenance.get("model") or "") != str(payload.get("model") or "")
+                or str(provenance.get("harness") or "") != str(payload.get("harness") or "")
+            ):
+                return False
+        for entry in data.get("entries") or []:
+            if not isinstance(entry, dict) or entry.get("entry_id") != payload["id"]:
+                continue
+            return (
+                entry.get("body") == payload["body"]
+                and entry.get("kind") == payload.get("memory_kind")
+                and entry.get("ts") == payload.get("ts")
+                and str(entry.get("supersedes_entry_id") or "")
+                == str(payload.get("supersedes_entry_id") or "")
+            )
+        return False
+
+    def _projection_payload_from_page(self, payload: dict[str, Any], sha: str) -> dict[str, Any]:
+        """Fill server-minted projection fields from the already verified page.
+
+        A retry may intentionally omit ``ts`` because the original call let the
+        server mint it.  ``_preflight`` has already proved every caller-supplied
+        field exact; projection verification must then compare against the
+        durable page's timestamp, not against an absent retry argument.
+        """
+        projected = dict(payload)
+        if projected.get("ts") in (None, ""):
+            parsed = self._read_post(payload["id"], sha)
+            if parsed is not None and parsed[0].get("ts"):
+                projected["ts"] = parsed[0]["ts"]
+        return projected
+
+    def _await_exact(
+        self,
+        payload: dict[str, Any],
+        receipt: dict[str, Any],
+        *,
+        projection_actor: str | None = None,
+        initial_reject: str = "",
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        start = self.clock()
+        initial_sha = self.truth.head_sha()
+        last_sha = initial_sha
+        page_seen: tuple[str, tuple[dict[str, str], str]] | None = None
+        delay = self.poll_interval
+        while True:
+            if cancel_event is not None and cancel_event.is_set():
+                raise CommonsError(
+                    "CANCELLED", "request cancelled while durability was pending",
+                    state="RECEIVED", id=payload["id"], carrier=receipt,
+                )
+            sha = self.truth.head_sha()
+            last_sha = sha
+            parsed = self._read_post(payload["id"], sha)
+            if parsed is not None:
+                mismatch = self._compare_post(parsed, payload)
+                if mismatch:
+                    meta, body = parsed
+                    raise CommonsError(
+                        "DUPLICATE_BODY_MISMATCH",
+                        "a different envelope won this id; the winner was not overwritten",
+                        state="QUARANTINED_CONFLICT",
+                        id=payload["id"],
+                        git_sha=sha,
+                        mismatched_fields=mismatch,
+                        durable_from=meta.get("from", ""),
+                        durable_to=meta.get("to", ""),
+                        durable_body_sha256=_sha256(body),
+                        carrier=receipt,
+                    )
+                page_seen = (sha, parsed)
+                if not projection_actor or self._projection_has(projection_actor, payload, sha):
+                    return self._durable_result(payload, sha, parsed, existing=False, carrier=receipt)
+
+            rejected = self._reject_row(payload["id"], sha)
+            if rejected and self._row_fingerprint(rejected) != initial_reject:
+                code = str(rejected.get("code") or rejected.get("reason") or "INGEST_ERROR")
+                state = str(rejected.get("state") or "INGEST_ERROR")
+                raise CommonsError(
+                    "DUPLICATE_BODY_MISMATCH" if code == "SAME_ID_DIFFERENT_BODY" else code,
+                    str(rejected.get("message") or rejected.get("reason") or "canonical writer rejected the envelope"),
+                    state=state,
+                    id=payload["id"],
+                    actor_id=rejected.get("actor_id") or payload.get("from"),
+                    create_path=rejected.get("create_path") or None,
+                    create_tool=rejected.get("create_tool") or None,
+                    carrier=receipt,
+                    git_sha=sha,
+                )
+
+            elapsed = self.clock() - start
+            if elapsed >= self.timeout:
+                if page_seen is not None:
+                    seen_sha, seen_post = page_seen
+                    raise CommonsError(
+                        "PROJECTION_TIMEOUT",
+                        "the append-only page is durable but the memory projection did not appear before the deadline",
+                        state="DURABLE_PAGE_PROJECTION_PENDING",
+                        id=payload["id"],
+                        git_sha=seen_sha,
+                        path="p/%s.md" % payload["id"],
+                        body_sha256=_sha256(seen_post[1]),
+                        carrier=receipt,
+                        verify_tool="verify_durability",
+                    )
+                raise CommonsError(
+                    "TIMEOUT_UNVERIFIED",
+                    "carrier accepted the envelope but no exact durable page appeared before the deadline",
+                    state="RECEIVED",
+                    id=payload["id"],
+                    carrier=receipt,
+                    last_checked_sha=last_sha,
+                    verify_tool="verify_durability",
+                )
+            sleep_for = min(delay, max(0.01, self.timeout - elapsed))
+            if cancel_event is not None and self.sleeper is time.sleep:
+                cancel_event.wait(sleep_for)
+            else:
+                self.sleeper(sleep_for)
+            delay = min(delay * 1.5, 15.0)
+
+    def _submit(
+        self,
+        payload: dict[str, Any],
+        *,
+        projection_actor: str | None = None,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        if cancel_event is not None and cancel_event.is_set():
+            raise CommonsError("CANCELLED", "request cancelled before carrier submission", state="NOT_SENT")
+        if not self.write_slots.acquire(blocking=False):
+            raise CommonsError(
+                "BUSY", "the Commons writer concurrency limit is full; retry the same id",
+                state="NOT_SENT", retryable=True,
+            )
+        try:
+            before_sha = self.truth.head_sha()
+            initial_reject = self._row_fingerprint(self._reject_row(payload["id"], before_sha))
+            if cancel_event is not None and cancel_event.is_set():
+                raise CommonsError("CANCELLED", "request cancelled before carrier submission", state="NOT_SENT")
+            receipt = self.carrier.submit(payload)
+            return self._await_exact(
+                payload,
+                receipt,
+                projection_actor=projection_actor,
+                initial_reject=initial_reject,
+                cancel_event=cancel_event,
+            )
+        finally:
+            self.write_slots.release()
+
+    def append_post(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
+        allowed = {
+            "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
+            "supersedes", "model", "harness",
+        }
+        a = _strict_args(arguments, allowed, {"actor_id", "to", "id", "body"})
+        actor = _valid_actor(a["actor_id"])
+        dest = _valid_actor(a["to"], "to")
+        ident = _valid_id(a["id"])
+        payload: dict[str, Any] = {"from": actor, "to": dest, "id": ident, "body": _canonical_body(a["body"])}
+        for key in ("board", "lane", "subject", "supersedes", "model", "harness"):
+            if a.get(key) not in (None, ""):
+                payload[key] = _valid_id(a[key], key) if key == "supersedes" else _plain_string(a[key], key)
+        if a.get("ts") not in (None, ""):
+            payload["ts"] = _valid_ts(a["ts"])
+        existing = self._preflight(payload)
+        if existing:
+            return existing
+        self._require_memory(actor)
+        return self._submit(payload, cancel_event=cancel_event)
+
+    def create_memory_board(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
+        allowed = {
+            "actor_id", "id", "memory_id", "actor_class", "intelligence_kind", "surface",
+            "body", "memory_kind", "model", "harness", "ts",
+        }
+        required = {"actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"}
+        a = _strict_args(arguments, allowed, required)
+        actor = _valid_actor(a["actor_id"])
+        ident = _valid_id(a["id"])
+        memory_id = _valid_id(a.get("memory_id") or ident, "memory_id")
+        actor_class = _plain_string(a["actor_class"], "actor_class")
+        intelligence = _plain_string(a["intelligence_kind"], "intelligence_kind")
+        if actor_class not in {"HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"}:
+            raise CommonsError("SCHEMA", "actor_class must be HUMAN, CLOUD_MODEL, or MUHLNICKEL_AGENT")
+        if intelligence not in {"LLM", "NON_LLM", "HUMAN", "UNKNOWN"}:
+            raise CommonsError("SCHEMA", "intelligence_kind must be LLM, NON_LLM, HUMAN, or UNKNOWN")
+        memory_kind = _plain_string(a.get("memory_kind") or "ROLE", "memory_kind")
+        if memory_kind not in {"ROLE", "CLAIM", "WORK_STATE", "DECISION", "DEBT", "HANDOFF", "NOTE"}:
+            raise CommonsError("SCHEMA", "invalid first memory entry kind")
+        payload: dict[str, Any] = {
+            "from": actor,
+            "to": "MEMORY",
+            "id": ident,
+            "body": _canonical_body(a["body"]),
+            "kind": "MEMORY_CREATE",
+            "actor_id": actor,
+            "memory_id": memory_id,
+            "memory_kind": memory_kind,
+            "actor_class": actor_class,
+            "intelligence_kind": intelligence,
+            "surface": _plain_string(a["surface"], "surface"),
+        }
+        for key in ("model", "harness"):
+            if a.get(key) not in (None, ""):
+                payload[key] = _plain_string(a[key], key)
+        if a.get("ts") not in (None, ""):
+            payload["ts"] = _valid_ts(a["ts"])
+        existing = self._preflight(payload)
+        if existing:
+            projected = self._projection_payload_from_page(payload, existing["git_sha"])
+            if self._projection_has(actor, projected, existing["git_sha"]):
+                return existing
+            details = {key: value for key, value in existing.items() if key not in {"ok", "state"}}
+            raise CommonsError(
+                "PROJECTION_PENDING",
+                "the creation page exists but its memory projection is not yet durable",
+                state="DURABLE_PAGE_PROJECTION_PENDING",
+                **details,
+            )
+        board = self._memory_board(actor)
+        if board is not None:
+            raise CommonsError(
+                "MEMORY_EXISTS",
+                "this identity already has a memory board; append to it instead",
+                actor_id=actor,
+                memory_id=board[1].get("memory_id"),
+                memory_path="memory/%s.json" % actor,
+            )
+        payload["ts"] = _valid_ts(a.get("ts") or self.now())
+        return self._submit(payload, projection_actor=actor, cancel_event=cancel_event)
+
+    def append_memory(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
+        allowed = {
+            "actor_id", "id", "memory_id", "memory_kind", "body", "supersedes_entry_id", "ts"
+        }
+        required = {"actor_id", "id", "memory_id", "memory_kind", "body"}
+        a = _strict_args(arguments, allowed, required)
+        actor = _valid_actor(a["actor_id"])
+        ident = _valid_id(a["id"])
+        memory_id = _valid_id(a["memory_id"], "memory_id")
+        memory_kind = _plain_string(a["memory_kind"], "memory_kind")
+        allowed_kinds = {"ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE"}
+        if memory_kind not in allowed_kinds:
+            raise CommonsError("SCHEMA", "invalid memory entry kind")
+        payload: dict[str, Any] = {
+            "from": actor,
+            "to": "MEMORY",
+            "id": ident,
+            "body": _canonical_body(a["body"]),
+            "kind": "MEMORY_APPEND",
+            "actor_id": actor,
+            "memory_id": memory_id,
+            "memory_kind": memory_kind,
+        }
+        supersedes = a.get("supersedes_entry_id")
+        if memory_kind == "CORRECTION":
+            payload["supersedes_entry_id"] = _valid_id(supersedes, "supersedes_entry_id")
+        elif supersedes not in (None, ""):
+            raise CommonsError("SCHEMA", "supersedes_entry_id is only valid for CORRECTION entries")
+        if a.get("ts") not in (None, ""):
+            payload["ts"] = _valid_ts(a["ts"])
+        existing = self._preflight(payload)
+        if existing:
+            projected = self._projection_payload_from_page(payload, existing["git_sha"])
+            if self._projection_has(actor, projected, existing["git_sha"]):
+                return existing
+            details = {key: value for key, value in existing.items() if key not in {"ok", "state"}}
+            raise CommonsError(
+                "PROJECTION_PENDING",
+                "the memory append page exists but its projection is not yet durable",
+                state="DURABLE_PAGE_PROJECTION_PENDING",
+                **details,
+            )
+        _, board = self._require_memory(actor)
+        if board.get("memory_id") != memory_id:
+            raise CommonsError("SCHEMA", "memory_id does not match this identity's durable board", actor_id=actor)
+        if memory_kind == "CORRECTION":
+            prior = {row.get("entry_id") for row in board.get("entries") or [] if isinstance(row, dict)}
+            if payload["supersedes_entry_id"] not in prior:
+                raise CommonsError("SCHEMA", "CORRECTION must supersede an entry on this memory board")
+        payload["ts"] = _valid_ts(a.get("ts") or self.now())
+        return self._submit(payload, projection_actor=actor, cancel_event=cancel_event)
+
+    def verify_durability(self, arguments: Any) -> dict[str, Any]:
+        allowed = {"id", "sha", "body_sha256", "actor_id", "to"}
+        a = _strict_args(arguments, allowed, {"id"})
+        ident = _valid_id(a["id"])
+        sha = a.get("sha") or self.truth.head_sha()
+        if not isinstance(sha, str) or not SHA_RE.fullmatch(sha):
+            raise CommonsError("SCHEMA", "sha must be 40 lowercase hexadecimal characters")
+        if a.get("body_sha256") is not None and (
+            not isinstance(a["body_sha256"], str) or not BODY_SHA_RE.fullmatch(a["body_sha256"])
+        ):
+            raise CommonsError("SCHEMA", "body_sha256 must be 64 lowercase hexadecimal characters")
+        parsed = self._read_post(ident, sha)
+        if parsed is None:
+            raise CommonsError(
+                "NOT_FOUND", "no p/{id}.md exists at the named SHA", state="UNVERIFIED", id=ident, git_sha=sha
+            )
+        meta, body = parsed
+        actual_hash = _sha256(body)
+        mismatches = []
+        if meta.get("id") != ident:
+            mismatches.append("id")
+        if not ACTOR_RE.fullmatch(str(meta.get("from") or "")):
+            mismatches.append("from")
+        if not ACTOR_RE.fullmatch(str(meta.get("to") or "")):
+            mismatches.append("to")
+        if a.get("body_sha256") and a["body_sha256"] != actual_hash:
+            mismatches.append("body_sha256")
+        if a.get("actor_id") and _valid_actor(a["actor_id"]) != meta.get("from"):
+            mismatches.append("actor_id")
+        if a.get("to") and _valid_actor(a["to"], "to") != meta.get("to"):
+            mismatches.append("to")
+        if mismatches:
+            raise CommonsError(
+                "DURABLE_MISMATCH",
+                "the named durable page does not match the requested proof",
+                state="UNVERIFIED",
+                id=ident,
+                git_sha=sha,
+                mismatched_fields=mismatches,
+                durable_body_sha256=actual_hash,
+            )
+        return {
+            "ok": True,
+            "state": "DURABLE_PAGE",
+            "id": ident,
+            "git_sha": sha,
+            "path": "p/%s.md" % ident,
+            "from": meta.get("from", ""),
+            "to": meta.get("to", ""),
+            "body_sha256": actual_hash,
+        }
+
+    def read_resource(self, uri: str) -> dict[str, Any]:
+        if not isinstance(uri, str) or not uri or "%" in uri or "?" in uri or "#" in uri:
+            raise CommonsError("SCHEMA", "invalid or aliased resource URI", state="UNVERIFIED")
+        if uri == APP_URI:
+            try:
+                text = self.app_path.read_text(encoding="utf-8")
+            except OSError as exc:
+                raise CommonsError("RESOURCE_UNAVAILABLE", "MCP App HTML is unavailable", state="UNVERIFIED") from exc
+            return {
+                "uri": uri,
+                "mimeType": "text/html;profile=mcp-app",
+                "text": text,
+                "ttlMs": 3600000,
+                "cacheScope": "public",
+                "_meta": {
+                    "ui": {
+                        "csp": {
+                            "connectDomains": [],
+                            "resourceDomains": [],
+                            "frameDomains": [],
+                            "baseUriDomains": [],
+                        },
+                        "permissions": {},
+                        "prefersBorder": True,
+                    }
+                },
+            }
+        parsed = urllib.parse.urlsplit(uri)
+        if parsed.scheme != "commons" or parsed.query or parsed.fragment:
+            raise CommonsError("SCHEMA", "unsupported resource URI", state="UNVERIFIED")
+        sha = self.truth.head_sha()
+        key = parsed.netloc
+        tail = parsed.path.lstrip("/")
+        canonical_uri = "commons://%s%s" % (key, ("/" + tail) if tail else "")
+        if uri != canonical_uri:
+            raise CommonsError("SCHEMA", "invalid or aliased resource URI", state="UNVERIFIED")
+        mapping = {
+            ("head", ""): (None, "text/plain", 5000, "private"),
+            ("feed", ""): ("recent.json", "application/json", 15000, "public"),
+            ("directives", ""): ("DIRECTIVES.md", "text/markdown", 60000, "public"),
+            ("seats", ""): ("presence.json", "application/json", 15000, "public"),
+            ("claims", ""): ("builds.json", "application/json", 15000, "public"),
+            ("memory", "index"): ("memory/index.json", "application/json", 15000, "public"),
+        }
+        if (key, tail) in mapping:
+            path, mime, ttl, scope = mapping[(key, tail)]
+            text = sha if path is None else self.truth.read_at_sha(path, sha)
+        elif key == "post" and ID_RE.fullmatch(tail):
+            path, mime, ttl, scope = "p/%s.md" % tail, "text/markdown", 60000, "public"
+            text = self.truth.read_at_sha(path, sha)
+        elif key == "memory" and ACTOR_RE.fullmatch(tail):
+            path, mime, ttl, scope = "memory/%s.json" % tail, "application/json", 15000, "public"
+            text = self.truth.read_at_sha(path, sha)
+        else:
+            raise CommonsError("SCHEMA", "unknown or malformed resource URI", state="UNVERIFIED")
+        if text is None:
+            raise CommonsError("NOT_FOUND", "resource does not exist at current git HEAD", state="UNVERIFIED", git_sha=sha)
+        return {"uri": uri, "mimeType": mime, "text": text, "ttlMs": ttl, "cacheScope": scope, "git_sha": sha}
+
+
+STRING_SCHEMA = {"type": "string", "maxLength": 200}
+ID_SCHEMA = {"type": "string", "pattern": r"^[A-Za-z0-9._-]{8,80}$"}
+ACTOR_SCHEMA = {"type": "string", "pattern": r"^[A-Z][A-Z0-9_]{1,31}$"}
+BODY_SCHEMA = {"type": "string", "minLength": 1, "maxLength": MAX_BODY}
+TS_SCHEMA = {"type": "string", "pattern": r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$"}
+BODY_SHA_SCHEMA = {"type": "string", "pattern": r"^[0-9a-f]{64}$"}
+
+
+def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str, Any]:
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": properties,
+        "required": required,
+        "additionalProperties": False,
+    }
+
+
+TOOL_DEFINITIONS = [
+    {
+        "name": "open_commons_composer",
+        "title": "Open Commons Composer",
+        "description": "Open the guarded Commons post and memory-board composer. Text-only clients receive the same boundary summary.",
+        "inputSchema": _object_schema({}, []),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+        "_meta": {"ui": {"resourceUri": APP_URI, "visibility": ["model", "app"]}},
+    },
+    {
+        "name": "append_post",
+        "title": "Append Commons Post",
+        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Requires the actor's memory board; the default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "inputSchema": _object_schema(
+            {
+                "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA, "body": BODY_SCHEMA,
+                "ts": TS_SCHEMA, "board": STRING_SCHEMA, "lane": STRING_SCHEMA,
+                "subject": STRING_SCHEMA, "supersedes": ID_SCHEMA, "model": STRING_SCHEMA, "harness": STRING_SCHEMA,
+            },
+            ["actor_id", "to", "id", "body"],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "create_memory_board",
+        "title": "Create Memory Board",
+        "description": "Create one append-only per-identity scratch pad and wait for both its durable page and exact projection. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "inputSchema": _object_schema(
+            {
+                "actor_id": ACTOR_SCHEMA, "id": ID_SCHEMA, "memory_id": ID_SCHEMA,
+                "actor_class": {"type": "string", "enum": ["HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"]},
+                "intelligence_kind": {"type": "string", "enum": ["LLM", "NON_LLM", "HUMAN", "UNKNOWN"]},
+                "surface": STRING_SCHEMA, "body": BODY_SCHEMA,
+                "memory_kind": {"type": "string", "enum": ["ROLE", "CLAIM", "WORK_STATE", "DECISION", "DEBT", "HANDOFF", "NOTE"]},
+                "model": STRING_SCHEMA, "harness": STRING_SCHEMA, "ts": TS_SCHEMA,
+            },
+            ["actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "append_memory",
+        "title": "Append Memory",
+        "description": "Append a self-scoped entry to an existing memory board and wait for exact projection readback. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "inputSchema": _object_schema(
+            {
+                "actor_id": ACTOR_SCHEMA, "id": ID_SCHEMA, "memory_id": ID_SCHEMA,
+                "memory_kind": {"type": "string", "enum": ["ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE"]},
+                "body": BODY_SCHEMA, "supersedes_entry_id": ID_SCHEMA, "ts": TS_SCHEMA,
+            },
+            ["actor_id", "id", "memory_id", "memory_kind", "body"],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "verify_durability",
+        "title": "Verify Commons Durability",
+        "description": "Read p/{id}.md at an exact git SHA and optionally verify body hash and envelope fields.",
+        "inputSchema": _object_schema(
+            {"id": ID_SCHEMA, "sha": {"type": "string", "pattern": r"^[0-9a-f]{40}$"}, "body_sha256": BODY_SHA_SCHEMA, "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA},
+            ["id"],
+        ),
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+    },
+]
+
+RESOURCES = [
+    {"uri": "commons://head", "name": "Commons git HEAD", "description": "Current commit SHA.", "mimeType": "text/plain"},
+    {"uri": "commons://feed", "name": "Recent feed projection", "description": "A bake, not durable truth.", "mimeType": "application/json"},
+    {"uri": "commons://directives", "name": "Owner directives", "mimeType": "text/markdown"},
+    {"uri": "commons://seats", "name": "Claimed presence", "mimeType": "application/json"},
+    {"uri": "commons://claims", "name": "Build claims", "mimeType": "application/json"},
+    {"uri": "commons://memory/index", "name": "Memory-board index", "mimeType": "application/json"},
+    {"uri": APP_URI, "name": "Commons Composer", "description": "Guarded MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
+]
+
+RESOURCE_TEMPLATES = [
+    {"uriTemplate": "commons://post/{id}", "name": "Post by id", "mimeType": "text/markdown"},
+    {"uriTemplate": "commons://memory/{actor_id}", "name": "Memory board by actor", "mimeType": "application/json"},
+]
+
+
+def tool_result(data: dict[str, Any], *, error: bool = False) -> dict[str, Any]:
+    text = json.dumps(data, ensure_ascii=False, sort_keys=True)
+    return {
+        "resultType": "complete",
+        "content": [{"type": "text", "text": text}],
+        "structuredContent": data,
+        "isError": bool(error),
+        "_meta": SERVER_META,
+    }
+
+
+class MCPServer:
+    def __init__(self, gateway: CommonsGateway):
+        self.gateway = gateway
+        self.tools = {row["name"]: row for row in TOOL_DEFINITIONS}
+
+    @staticmethod
+    def _validate_meta(params: Any) -> dict[str, Any]:
+        if not isinstance(params, dict):
+            raise RpcError(-32602, "params must be an object")
+        meta = params.get("_meta")
+        if not isinstance(meta, dict):
+            raise RpcError(-32602, "every modern request requires params._meta")
+        requested = meta.get("io.modelcontextprotocol/protocolVersion")
+        if requested != PROTOCOL_VERSION:
+            if requested:
+                raise RpcError(
+                    -32022,
+                    "Unsupported protocol version",
+                    data={"requested": requested, "supported": [PROTOCOL_VERSION]},
+                )
+            raise RpcError(-32602, "protocolVersion is required in params._meta")
+        caps = meta.get("io.modelcontextprotocol/clientCapabilities")
+        if not isinstance(caps, dict):
+            raise RpcError(-32602, "clientCapabilities is required in params._meta")
+        info = meta.get("io.modelcontextprotocol/clientInfo")
+        if info is not None and (
+            not isinstance(info, dict) or not isinstance(info.get("name"), str) or not isinstance(info.get("version"), str)
+        ):
+            raise RpcError(-32602, "clientInfo, when present, requires string name and version")
+        return params
+
+    def dispatch(
+        self,
+        method: str,
+        params: dict[str, Any],
+        *,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        if method == "server/discover":
+            return {
+                "resultType": "complete",
+                "supportedVersions": [PROTOCOL_VERSION],
+                "capabilities": {
+                    "tools": {},
+                    "resources": {},
+                    "extensions": {"io.modelcontextprotocol/ui": {"mimeTypes": ["text/html;profile=mcp-app"]}},
+                },
+                "_meta": SERVER_META,
+                "instructions": (
+                    "Commons is append-only. from= is a claim. A carrier receipt is not durability; "
+                    "write tools return success only after exact p/{id}.md readback at a named git SHA."
+                ),
+                "ttlMs": 3600000,
+                "cacheScope": "public",
+            }
+        if method == "tools/list":
+            if params.get("cursor") not in (None, ""):
+                raise RpcError(-32602, "unknown tools/list cursor")
+            return {"resultType": "complete", "tools": TOOL_DEFINITIONS, "ttlMs": 300000, "cacheScope": "public", "_meta": SERVER_META}
+        if method == "resources/list":
+            if params.get("cursor") not in (None, ""):
+                raise RpcError(-32602, "unknown resources/list cursor")
+            return {"resultType": "complete", "resources": RESOURCES, "ttlMs": 300000, "cacheScope": "public", "_meta": SERVER_META}
+        if method == "resources/templates/list":
+            if params.get("cursor") not in (None, ""):
+                raise RpcError(-32602, "unknown resources/templates/list cursor")
+            return {"resultType": "complete", "resourceTemplates": RESOURCE_TEMPLATES, "ttlMs": 300000, "cacheScope": "public", "_meta": SERVER_META}
+        if method == "resources/read":
+            uri = params.get("uri")
+            if not isinstance(uri, str):
+                raise RpcError(-32602, "resources/read requires a string uri")
+            try:
+                row = self.gateway.read_resource(uri)
+            except CommonsError as exc:
+                invalid = exc.code in {"SCHEMA", "NOT_FOUND"}
+                raise RpcError(
+                    -32602 if invalid else -32603,
+                    exc.message,
+                    data=exc.payload(),
+                    http_status=400 if invalid else 500,
+                ) from exc
+            ttl = row.pop("ttlMs")
+            scope = row.pop("cacheScope")
+            git_sha = row.pop("git_sha", None)
+            if git_sha:
+                row.setdefault("_meta", {})["io.github.woahwhattheheck.commons/gitSha"] = git_sha
+            return {"resultType": "complete", "contents": [row], "ttlMs": ttl, "cacheScope": scope, "_meta": SERVER_META}
+        if method == "tools/call":
+            name = params.get("name")
+            arguments = params.get("arguments", {})
+            if not isinstance(name, str) or name not in self.tools:
+                raise RpcError(-32602, "unknown or missing tool name")
+            if not isinstance(arguments, dict):
+                raise RpcError(-32602, "tools/call arguments must be an object")
+            try:
+                if name == "open_commons_composer":
+                    _strict_args(arguments, set(), set())
+                    data = {
+                        "ok": True,
+                        "state": "READY",
+                        "resource_uri": APP_URI,
+                        "message": "Open the guarded Commons composer. from= remains a claim; writes wait for exact git durability.",
+                    }
+                else:
+                    handler = getattr(self.gateway, name)
+                    if name in {"append_post", "create_memory_board", "append_memory"}:
+                        data = handler(arguments, cancel_event=cancel_event)
+                    else:
+                        data = handler(arguments)
+                return tool_result(data)
+            except CommonsError as exc:
+                return tool_result(exc.payload(), error=True)
+        raise RpcError(-32601, "Method not found", http_status=404)
+
+    def handle(
+        self,
+        message: Any,
+        *,
+        transport: str = "stdio",
+        cancel_event: threading.Event | None = None,
+    ) -> tuple[int, dict[str, Any] | None]:
+        if not isinstance(message, dict) or message.get("jsonrpc") != "2.0":
+            raise RpcError(-32600, "Invalid Request")
+        request_id = message.get("id", ...)
+        valid_number = isinstance(request_id, (int, float)) and not isinstance(request_id, bool)
+        if valid_number and isinstance(request_id, float):
+            valid_number = math.isfinite(request_id)
+        if request_id is not ... and (
+            request_id is None or (not isinstance(request_id, str) and not valid_number)
+        ):
+            raise RpcError(-32600, "Invalid Request id")
+        method = message.get("method")
+        if not isinstance(method, str) or not method:
+            raise RpcError(-32600, "Invalid Request method")
+        if request_id is ...:
+            if transport == "stdio" and method == "notifications/cancelled":
+                return 202, None
+            raise RpcError(-32600, "unsupported notification")
+        params = self._validate_meta(message.get("params", {}))
+        result = self.dispatch(method, params, cancel_event=cancel_event)
+        return 200, {"jsonrpc": "2.0", "id": request_id, "result": result}
+
+
+def error_response(request_id: Any, exc: RpcError) -> dict[str, Any]:
+    error: dict[str, Any] = {"code": exc.code, "message": exc.message}
+    if exc.data is not None:
+        error["data"] = exc.data
+    valid_number = isinstance(request_id, (int, float)) and not isinstance(request_id, bool)
+    if valid_number and isinstance(request_id, float):
+        valid_number = math.isfinite(request_id)
+    valid_id = isinstance(request_id, str) or valid_number
+    response: dict[str, Any] = {"jsonrpc": "2.0", "error": error}
+    if valid_id:
+        response["id"] = request_id
+    return response
+
+
+def _accepted_media_types(value: Any) -> set[str]:
+    accepted = set()
+    for item in str(value or "").split(","):
+        bits = [part.strip() for part in item.split(";")]
+        media_type = bits[0].lower()
+        quality = 1.0
+        for param in bits[1:]:
+            key, mark, raw = param.partition("=")
+            if mark and key.strip().lower() == "q":
+                try:
+                    quality = float(raw.strip())
+                except ValueError:
+                    quality = 0.0
+        if media_type and quality > 0:
+            accepted.add(media_type)
+    return accepted
+
+
+def _decoded_mcp_name(value: Any) -> str | None:
+    """Decode the 2026-07-28 HTTP Base64 sentinel for ``Mcp-Name``."""
+    if not isinstance(value, str):
+        return None
+    prefix = "=?base64?"
+    if value.startswith(prefix):
+        if not value.endswith("?="):
+            return None
+        encoded = value[len(prefix):-2]
+        try:
+            raw = base64.b64decode(encoded.encode("ascii"), validate=True)
+            return raw.decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError, binascii.Error, ValueError):
+            return None
+    if any(ord(char) < 0x20 or ord(char) > 0x7E for char in value):
+        return None
+    return value
+
+
+def _header_values(headers: Any, name: str) -> list[str]:
+    if hasattr(headers, "get_all"):
+        return [str(value) for value in (headers.get_all(name) or [])]
+    if hasattr(headers, "items"):
+        return [str(value) for key, value in headers.items() if str(key).lower() == name.lower()]
+    return []
+
+
+def _singleton_header(headers: Any, name: str, *, required: bool = True) -> str | None:
+    values = _header_values(headers, name)
+    if len(values) != 1:
+        if not values and not required:
+            return None
+        raise RpcError(
+            -32020,
+            "%s must appear exactly once" % name,
+            data={"header": name, "count": len(values)},
+        )
+    return values[0]
+
+
+def validate_http_headers(headers: Any, message: dict[str, Any]) -> None:
+    if not isinstance(message, dict):
+        raise RpcError(-32600, "Invalid Request")
+    accept = _accepted_media_types(",".join(_header_values(headers, "Accept")))
+    if not {"application/json", "text/event-stream"}.issubset(accept):
+        raise RpcError(-32020, "Accept must list application/json and text/event-stream")
+    content_type = str(_singleton_header(headers, "Content-Type") or "").split(";", 1)[0].strip().lower()
+    if content_type != "application/json":
+        raise RpcError(-32020, "Content-Type must be application/json")
+    method = message.get("method")
+    params = message.get("params") if isinstance(message.get("params"), dict) else {}
+    expected_name = params.get("name") if method == "tools/call" else params.get("uri") if method == "resources/read" else None
+    body_meta = params.get("_meta") if isinstance(params.get("_meta"), dict) else {}
+    body_version = body_meta.get("io.modelcontextprotocol/protocolVersion")
+    if not isinstance(body_version, str):
+        raise RpcError(-32020, "HTTP header/body metadata mismatch", data={"header": "MCP-Protocol-Version"})
+    actual_headers = {
+        "MCP-Protocol-Version": _singleton_header(headers, "MCP-Protocol-Version"),
+        "Mcp-Method": _singleton_header(headers, "Mcp-Method"),
+        "Mcp-Name": _singleton_header(headers, "Mcp-Name", required=expected_name is not None),
+    }
+    pairs = [("MCP-Protocol-Version", body_version), ("Mcp-Method", method)]
+    if expected_name is not None:
+        pairs.append(("Mcp-Name", expected_name))
+    for header, expected in pairs:
+        actual = actual_headers[header]
+        compared = _decoded_mcp_name(actual) if header == "Mcp-Name" else actual
+        if actual is None or not isinstance(expected, str) or compared != expected:
+            raise RpcError(
+                -32020,
+                "HTTP header/body metadata mismatch",
+                data={"header": header, "headerValue": actual, "bodyValue": expected},
+            )
+
+
+class RateLimiter:
+    def __init__(self, limit: int = 120, window: float = 60.0):
+        self.limit = limit
+        self.window = window
+        self.rows: defaultdict[str, deque[float]] = defaultdict(deque)
+        self.lock = threading.Lock()
+
+    def allow(self, key: str) -> bool:
+        now = time.monotonic()
+        with self.lock:
+            row = self.rows[key]
+            while row and row[0] <= now - self.window:
+                row.popleft()
+            if len(row) >= self.limit:
+                return False
+            row.append(now)
+            return True
+
+
+def _origin_allowed(origin: str | None) -> bool:
+    if not origin:
+        return True
+    configured = {x.strip() for x in os.environ.get("COMMONS_MCP_ALLOWED_ORIGINS", "").split(",") if x.strip()}
+    if origin in configured:
+        return True
+    try:
+        parsed = urllib.parse.urlsplit(origin)
+    except ValueError:
+        return False
+    return parsed.scheme in {"http", "https"} and parsed.hostname in {"127.0.0.1", "localhost", "::1"}
+
+
+def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> type[BaseHTTPRequestHandler]:
+    rate = limiter or RateLimiter()
+    bearer = os.environ.get("COMMONS_MCP_BEARER_TOKEN", "")
+
+    class Handler(BaseHTTPRequestHandler):
+        protocol_version = "HTTP/1.1"
+
+        def log_message(self, fmt: str, *args: Any) -> None:
+            sys.stderr.write("commons-mcp http " + (fmt % args) + "\n")
+
+        def _send_json(self, status: int, value: dict[str, Any] | None, *, close: bool = False) -> None:
+            body = b"" if value is None else json.dumps(value, ensure_ascii=True).encode("utf-8")
+            self.send_response(status)
+            if body:
+                self.send_header("Content-Type", "application/json")
+            if close:
+                self.send_header("Connection", "close")
+                self.close_connection = True
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            if body:
+                self.wfile.write(body)
+
+        def _method_not_allowed(self) -> None:
+            self.send_response(405)
+            self.send_header("Allow", "POST")
+            self.send_header("Connection", "close")
+            self.send_header("Content-Length", "0")
+            self.close_connection = True
+            self.end_headers()
+
+        do_GET = _method_not_allowed
+        do_DELETE = _method_not_allowed
+        do_PUT = _method_not_allowed
+        do_PATCH = _method_not_allowed
+
+        def do_POST(self) -> None:
+            if self.path != "/mcp":
+                self._send_json(404, error_response(None, RpcError(-32601, "Method not found", http_status=404)), close=True)
+                return
+            origin_values = _header_values(self.headers, "Origin")
+            auth_values = _header_values(self.headers, "Authorization")
+            if len(origin_values) > 1 or len(auth_values) > 1:
+                self._send_json(
+                    400,
+                    error_response(None, RpcError(-32020, "security headers must be singleton", http_status=400)),
+                    close=True,
+                )
+                return
+            origin = origin_values[0] if origin_values else None
+            authorization = auth_values[0] if auth_values else None
+            if not _origin_allowed(origin):
+                self._send_json(403, error_response(None, RpcError(-32000, "Forbidden Origin", http_status=403)), close=True)
+                return
+            if bearer and authorization != "Bearer " + bearer:
+                self._send_json(401, error_response(None, RpcError(-32000, "Unauthorized", http_status=401)), close=True)
+                return
+            if not rate.allow(self.client_address[0]):
+                self._send_json(429, error_response(None, RpcError(-32000, "Rate limit exceeded", http_status=429)), close=True)
+                return
+            request_id: Any = None
+            cancel_event = threading.Event()
+            request_done = threading.Event()
+            try:
+                lengths = _header_values(self.headers, "Content-Length")
+                if len(lengths) != 1 or _header_values(self.headers, "Transfer-Encoding"):
+                    raise RpcError(-32600, "Content-Length must appear exactly once and Transfer-Encoding is unsupported")
+                try:
+                    length = int(lengths[0])
+                except (TypeError, ValueError) as exc:
+                    raise RpcError(-32600, "Invalid request body size") from exc
+                if length <= 0 or length > 1024 * 1024:
+                    raise RpcError(-32600, "Invalid request body size")
+                raw = self.rfile.read(length)
+                try:
+                    message = _wire_json_loads(raw.decode("utf-8"))
+                except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
+                    raise RpcError(-32700, "Parse error") from exc
+                if isinstance(message, dict):
+                    request_id = message.get("id")
+                validate_http_headers(self.headers, message)
+
+                def watch_disconnect() -> None:
+                    while not request_done.wait(0.2):
+                        try:
+                            readable, _, _ = select.select([self.connection], [], [], 0)
+                            if readable and self.connection.recv(1, socket.MSG_PEEK) == b"":
+                                cancel_event.set()
+                                return
+                        except OSError:
+                            cancel_event.set()
+                            return
+
+                threading.Thread(target=watch_disconnect, daemon=True).start()
+                status, response = server.handle(message, transport="http", cancel_event=cancel_event)
+                request_done.set()
+                if not cancel_event.is_set():
+                    self._send_json(status, response)
+            except RpcError as exc:
+                request_done.set()
+                # Error paths may reject before consuming the declared body.
+                # Closing prevents unread bytes from becoming a second request.
+                self._send_json(exc.http_status, error_response(request_id, exc), close=True)
+            except Exception as exc:
+                request_done.set()
+                self._send_json(
+                    500,
+                    error_response(request_id, RpcError(-32603, "Internal error", data={"type": type(exc).__name__}, http_status=500)),
+                    close=True,
+                )
+
+    return Handler
+
+
+def serve_stdio(
+    server: MCPServer,
+    *,
+    max_in_flight: int = 32,
+    tool_rate_limit: int = 120,
+) -> None:
+    active: dict[str | int | float, threading.Event] = {}
+    active_lock = threading.Lock()
+    output_lock = threading.Lock()
+    tool_rate = RateLimiter(limit=max(1, int(tool_rate_limit)), window=60.0)
+    max_active = max(1, int(max_in_flight))
+
+    def write_response(value: dict[str, Any]) -> None:
+        with output_lock:
+            sys.stdout.write(json.dumps(value, ensure_ascii=True, allow_nan=False) + "\n")
+            sys.stdout.flush()
+
+    def run_request(message: dict[str, Any], request_id: str | int | float, cancelled: threading.Event) -> None:
+        try:
+            try:
+                _, response = server.handle(message, transport="stdio", cancel_event=cancelled)
+            except RpcError as exc:
+                response = error_response(request_id, exc)
+            with active_lock:
+                active.pop(request_id, None)
+                suppress = cancelled.is_set()
+            if response is not None and not suppress:
+                write_response(response)
+        except Exception as exc:
+            with active_lock:
+                active.pop(request_id, None)
+                suppress = cancelled.is_set()
+            if not suppress:
+                write_response(error_response(request_id, RpcError(-32603, "Internal error", data={"type": type(exc).__name__})))
+
+    for line in sys.stdin:
+        if not line.strip():
+            continue
+        message: Any = None
+        try:
+            try:
+                message = _wire_json_loads(line)
+            except (json.JSONDecodeError, ValueError) as exc:
+                raise RpcError(-32700, "Parse error") from exc
+            if not isinstance(message, dict):
+                raise RpcError(-32600, "Invalid Request")
+            if "id" not in message:
+                if message.get("jsonrpc") == "2.0" and message.get("method") == "notifications/cancelled":
+                    params = message.get("params")
+                    wanted = params.get("requestId") if isinstance(params, dict) else None
+                    valid_wanted = isinstance(wanted, str) or (
+                        isinstance(wanted, (int, float))
+                        and not isinstance(wanted, bool)
+                        and (not isinstance(wanted, float) or math.isfinite(wanted))
+                    )
+                    if valid_wanted:
+                        with active_lock:
+                            event = active.get(wanted)
+                            if event is not None:
+                                event.set()
+                # Notifications never receive JSON-RPC responses on stdio.
+                continue
+            request_id = message.get("id")
+            valid_number = isinstance(request_id, (int, float)) and not isinstance(request_id, bool)
+            if valid_number and isinstance(request_id, float):
+                valid_number = math.isfinite(request_id)
+            if request_id is None or (not isinstance(request_id, str) and not valid_number):
+                raise RpcError(-32600, "Invalid Request id")
+            if message.get("method") == "tools/call" and not tool_rate.allow("stdio-tools"):
+                raise RpcError(-32000, "Tool rate limit exceeded")
+            with active_lock:
+                if request_id in active:
+                    raise RpcError(-32600, "request id is already in flight")
+                if len(active) >= max_active:
+                    raise RpcError(-32000, "Too many requests in flight")
+                cancelled = threading.Event()
+                active[request_id] = cancelled
+            threading.Thread(target=run_request, args=(message, request_id, cancelled), daemon=True).start()
+        except RpcError as exc:
+            write_response(error_response(message.get("id") if isinstance(message, dict) else None, exc))
+
+    with active_lock:
+        for event in active.values():
+            event.set()
+
+
+def serve_http(server: MCPServer, host: str, port: int) -> None:
+    loopback = host in {"127.0.0.1", "localhost", "::1"}
+    if not loopback:
+        raise SystemExit(
+            "built-in HTTP is loopback-only; remote deployment requires a TLS-terminating, authenticated MCP adapter"
+        )
+    httpd = ThreadingHTTPServer((host, port), make_http_handler(server))
+    sys.stderr.write("commons-mcp listening on http://%s:%d/mcp\n" % (host, port))
+    httpd.serve_forever()
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--transport", choices=("stdio", "http"), default="stdio")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--timeout", type=float, default=float(os.environ.get("COMMONS_MCP_TIMEOUT", "330")))
+    parser.add_argument("--poll-interval", type=float, default=2.0)
+    args = parser.parse_args(argv)
+    gateway = CommonsGateway(timeout=args.timeout, poll_interval=args.poll_interval)
+    server = MCPServer(gateway)
+    if args.transport == "stdio":
+        serve_stdio(server)
+    else:
+        serve_http(server, args.host, args.port)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

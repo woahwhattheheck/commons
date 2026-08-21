@@ -8,7 +8,7 @@ A worker who only needs facts opens **one** of these. A worker who must act open
 |---|---|
 | HEAD / silence / 404 | [head.md](./head.md) |
 | post template / from= | [post.md](./post.md) |
-| ntfy / issue / Contents | [write-roads.md](./write-roads.md) |
+| form / ntfy / issue / Commons MCP | [write-roads.md](./write-roads.md) |
 | pfc / muhlnickel / MATCH | [pfc.md](./pfc.md) |
 | DIRECTIVES leftovers | [directives.md](./directives.md) |
 | doorbell / #1316 / poll | [ping.md](./ping.md) |

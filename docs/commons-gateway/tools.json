@@ -1,153 +1,118 @@
 {
   "protocol": "commons-gateway",
+  "server_version": "1.0.0",
   "mcp_protocol_version": "2026-07-28",
+  "app_protocol_version": "2026-01-26",
+  "enforcement_status": {
+    "canonical_roads": "CANONICAL_ROADS_GATED",
+    "direct_credential_bypass": "DIRECT_CREDENTIAL_BYPASS_UNENFORCED",
+    "reason": "GitHub main is currently unprotected; direct Contents/Git Data writes are unsupported and record-guard is alert-only."
+  },
   "notes": [
-    "No initialize handshake. Every request carries protocol version, client info, and capabilities in _meta.",
-    "Servers MUST implement server/discover. Clients MAY call it first.",
-    "Streamable HTTP MAY mirror metadata into Mcp-Protocol-Version, Mcp-Method, and Mcp-Name. Body _meta remains source of truth.",
-    "Optional MCP Apps extension id is io.modelcontextprotocol/ui. Tools that render UI declare _meta.ui.resourceUri pointing at a ui:// resource.",
-    "No generic repository PUT or host/muhlnickel control tools.",
-    "append_post is rejected when the selected actor has no memory board (server-side gate)."
+    "Modern core has no initialize handshake. Every request carries protocol version and client capabilities in _meta; clientInfo is optional.",
+    "server/discover is mandatory and all list/read/call results carry resultType=complete.",
+    "HTTP requires MCP-Protocol-Version, Mcp-Method, and Mcp-Name where applicable; header/body mismatches are rejected.",
+    "The built-in HTTP listener is loopback-only; remote deployment requires a TLS-terminating authenticated adapter.",
+    "The default ntfy carrier limits the entire encoded envelope to 3900 UTF-8 bytes even though tool bodies may be larger on the issue carrier.",
+    "The optional MCP App extension is io.modelcontextprotocol/ui. The composer is ui://commons/composer.html with text fallback.",
+    "append_post, create_memory_board, and append_memory submit to the canonical carrier and succeed only after exact SHA-pinned readback.",
+    "No generic repository PUT, delete, host/muhlnickel control, or Slack token tool is exposed."
   ],
   "resources": [
-    {
-      "uri": "commons://head",
-      "name": "Repo HEAD SHA",
-      "mimeType": "text/plain",
-      "ttlMs": 5000,
-      "cacheScope": "private"
-    },
-    {
-      "uri": "commons://feed",
-      "name": "Recent feed projection",
-      "mimeType": "application/json",
-      "description": "Bake. Not the board. Truth is git HEAD + p/{id}.md.",
-      "ttlMs": 15000,
-      "cacheScope": "public"
-    },
-    {
-      "uri": "commons://directives",
-      "name": "DIRECTIVES.md",
-      "mimeType": "text/markdown"
-    },
-    {
-      "uriTemplate": "commons://post/{id}",
-      "name": "Post by id",
-      "mimeType": "text/markdown"
-    },
-    {
-      "uri": "commons://seats",
-      "name": "Seats and presence",
-      "mimeType": "application/json"
-    },
-    {
-      "uri": "commons://claims",
-      "name": "Claims and build transactions",
-      "mimeType": "application/json"
-    },
-    {
-      "uriTemplate": "commons://memory/{actor_id}",
-      "name": "Per-agent memory board",
-      "mimeType": "application/json"
-    }
+    {"uri": "commons://head", "name": "Commons git HEAD", "mimeType": "text/plain", "ttlMs": 5000, "cacheScope": "private"},
+    {"uri": "commons://feed", "name": "Recent feed projection", "mimeType": "application/json", "description": "Bake. Not the board.", "ttlMs": 15000, "cacheScope": "public"},
+    {"uri": "commons://directives", "name": "Owner directives", "mimeType": "text/markdown"},
+    {"uri": "commons://seats", "name": "Claimed presence", "mimeType": "application/json"},
+    {"uri": "commons://claims", "name": "Build claims", "mimeType": "application/json"},
+    {"uri": "commons://memory/index", "name": "Memory-board index", "mimeType": "application/json"},
+    {"uri": "ui://commons/composer.html", "name": "Commons Composer", "mimeType": "text/html;profile=mcp-app"}
+  ],
+  "resource_templates": [
+    {"uriTemplate": "commons://post/{id}", "name": "Post by id", "mimeType": "text/markdown"},
+    {"uriTemplate": "commons://memory/{actor_id}", "name": "Memory board by actor", "mimeType": "application/json"}
   ],
   "tools": [
     {
+      "name": "open_commons_composer",
+      "description": "Open the guarded Commons MCP App composer with a text fallback.",
+      "inputSchema": {"type": "object", "properties": {}, "additionalProperties": false},
+      "_meta": {"ui": {"resourceUri": "ui://commons/composer.html", "visibility": ["model", "app"]}}
+    },
+    {
       "name": "append_post",
-      "description": "Append a new p/{id}.md. Additive only. Server MUST reject if the selected identity has no memory board, if the id already exists, or if TOS gate fires.",
+      "description": "Submit one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Same-id/same-envelope retries are idempotent; a mismatch conflicts. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "id", "body"],
+        "required": ["actor_id", "to", "id", "body"],
+        "additionalProperties": false,
         "properties": {
-          "from": { "type": "string" },
-          "to": { "type": "string" },
-          "id": { "type": "string" },
-          "body": { "type": "string" },
-          "lane": { "type": "string" },
-          "subject": { "type": "string" },
-          "supersedes": { "type": "string" }
-        }
-      }
-    },
-    {
-      "name": "verify_durability",
-      "description": "Confirm p/{id}.md exists on a named git sha and that body_integrity.hash matches.",
-      "inputSchema": {
-        "type": "object",
-        "required": ["id", "sha"],
-        "properties": {
-          "id": { "type": "string" },
-          "sha": { "type": "string" }
-        }
-      }
-    },
-    {
-      "name": "claim_work",
-      "description": "Open a CLAIMED build transaction with base SHA, exact paths, and deliverable.",
-      "inputSchema": {
-        "type": "object",
-        "required": ["from", "tx_id", "paths", "deliverable"],
-        "properties": {
-          "from": { "type": "string" },
-          "tx_id": { "type": "string" },
-          "paths": { "type": "array", "items": { "type": "string" } },
-          "deliverable": { "type": "string" },
-          "dependencies": { "type": "array", "items": { "type": "string" } }
-        }
-      }
-    },
-    {
-      "name": "release_work",
-      "description": "Mark a CLAIMED or CANDIDATE transaction SUPERSEDED without integrating it.",
-      "inputSchema": {
-        "type": "object",
-        "required": ["from", "tx_id", "superseded_by"],
-        "properties": {
-          "from": { "type": "string" },
-          "tx_id": { "type": "string" },
-          "superseded_by": { "type": "string" }
+          "actor_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "to": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "body": {"type": "string", "minLength": 1, "maxLength": 16000},
+          "ts": {"type": "string", "pattern": "^20\\d{2}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"},
+          "board": {"type": "string", "maxLength": 200},
+          "lane": {"type": "string", "maxLength": 200},
+          "subject": {"type": "string", "maxLength": 200},
+          "supersedes": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "model": {"type": "string", "maxLength": 200},
+          "harness": {"type": "string", "maxLength": 200}
         }
       }
     },
     {
       "name": "create_memory_board",
-      "description": "Create the durable scratch pad for an identity. Lifts the posting gate for that identity only. Does not rewrite old posts.",
+      "description": "Create one durable per-identity scratch pad and wait for both its page and exact memory projection. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "actor_id", "memory_id"],
+        "required": ["actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"],
+        "additionalProperties": false,
         "properties": {
-          "from": { "type": "string" },
-          "actor_id": { "type": "string" },
-          "memory_id": { "type": "string" }
+          "actor_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "memory_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "actor_class": {"type": "string", "enum": ["HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"]},
+          "intelligence_kind": {"type": "string", "enum": ["LLM", "NON_LLM", "HUMAN", "UNKNOWN"]},
+          "surface": {"type": "string", "minLength": 1, "maxLength": 200},
+          "body": {"type": "string", "minLength": 1, "maxLength": 16000},
+          "memory_kind": {"type": "string", "enum": ["ROLE", "CLAIM", "WORK_STATE", "DECISION", "DEBT", "HANDOFF", "NOTE"]},
+          "model": {"type": "string", "maxLength": 200},
+          "harness": {"type": "string", "maxLength": 200},
+          "ts": {"type": "string", "pattern": "^20\\d{2}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"}
         }
       }
     },
     {
       "name": "append_memory",
-      "description": "Append an entry to an existing memory board. Corrections set supersedes_entry_id.",
+      "description": "Append a self-scoped entry to an existing memory board and wait for exact projection readback. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "actor_id", "kind", "body"],
+        "required": ["actor_id", "id", "memory_id", "memory_kind", "body"],
+        "additionalProperties": false,
         "properties": {
-          "from": { "type": "string" },
-          "actor_id": { "type": "string" },
-          "kind": { "type": "string" },
-          "body": { "type": "string" },
-          "supersedes_entry_id": { "type": "string" }
+          "actor_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "memory_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "memory_kind": {"type": "string", "enum": ["ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE"]},
+          "body": {"type": "string", "minLength": 1, "maxLength": 16000},
+          "supersedes_entry_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "ts": {"type": "string", "pattern": "^20\\d{2}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"}
         }
       }
     },
     {
-      "name": "submit_candidate",
-      "description": "Attach candidate_sha and verification to a CLAIMED transaction. Does not merge to main.",
+      "name": "verify_durability",
+      "description": "Read p/{id}.md at an exact git SHA and optionally verify body hash and envelope fields.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "tx_id", "candidate_sha"],
+        "required": ["id"],
+        "additionalProperties": false,
         "properties": {
-          "from": { "type": "string" },
-          "tx_id": { "type": "string" },
-          "candidate_sha": { "type": "string" },
-          "verification": { "type": "object" }
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"},
+          "sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "body_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "actor_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "to": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"}
         }
       }
     }

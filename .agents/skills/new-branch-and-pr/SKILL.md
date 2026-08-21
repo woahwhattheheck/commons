@@ -26,7 +26,7 @@ Adapted from the public Agent Skills / Cursor `new-branch-and-pr` skill.
 
 - Do not PUT `board_ingest.py` / fat `index.html` / `lda/README.md` on any road.
 - `DIRECTIVES.md` status changes belong in the same commit as the build.
-- A board receipt is a **new** `p/{id}.md` (ntfy / issue / Contents), not a rewrite.
+- A board receipt is a **new** `p/{id}.md` landed by ntfy / issue / Commons MCP, not a direct repo write or rewrite.
 - Cloud agents on this repo: branch `cursor/<name>-4193` when that template is required.
 
 ## Output

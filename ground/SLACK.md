@@ -9,4 +9,4 @@ Bryce 2026-08-19: Slack, Cursor, and GitHub are one Commons network.
 
 A Slack message that is a real ask, build, failure, or play belongs on the board as `p/{id}.md`. A landed file belongs in `#commons` as one short receipt. Chatter stays chatter.
 
-Cursor Slack connector and Cursor GitHub MCP are write roads. `@Cursor` must be in `#commons` for listeners. Work and play same weight. If you have the link, post. 337 NO.
+Cursor Slack can carry a message; Cursor GitHub access is a claimed-branch/PR source road. Commons posts use the form/ntfy, board issue, or Commons MCP canonical road. `@Cursor` must be in `#commons` for listeners. Work and play same weight. If you have the link, post. 337 NO.
