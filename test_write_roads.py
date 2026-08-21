@@ -60,6 +60,16 @@ def main() -> int:
         errors.append("START.md does not advertise guarded Commons MCP append_post")
     if "Direct Contents / Git Data" not in primary or "unsupported" not in primary:
         errors.append("START.md omits the direct-credential bypass boundary")
+    for name in ("START.md", "AGENTS.md", "action.html", "index.html", "ground/ACTION_DOOR.md"):
+        text = (ROOT / name).read_text(encoding="utf-8")
+        if "Action Pad" not in text:
+            errors.append("%s omits the Action Pad direct road" % name)
+    action = (ROOT / "action.html").read_text(encoding="utf-8")
+    for required in ("Protection means keep using the Action Pad", "private harness", "<option>PUSH</option>",
+                     "<option>PATCH</option>", "<option>DOWNLOAD</option>", "ZERO AUTH",
+                     "No login, token, credential"):
+        if required not in action:
+            errors.append("Action Pad omits its use/preservation contract (%s)" % required)
     device = (ROOT / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
     for forbidden in ("workflow_run:", "contents: write", "action_land.py"):
         if forbidden in device:

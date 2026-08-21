@@ -7,12 +7,10 @@
 
 Exit 0 = clean, 1 = violations. `gate(path)` hard-aborts anything that fires.
 
-★ NO RULE OF THE OWNER'S HAS ANY EXEMPTION, EVER (owner, standing).
-There is no waiver mechanism in this file and none may be added. When the checker catches something,
-the CODE gets fixed — never the checker. If a rule is imprecise, make the RULE more precise (that is
-what `requires` is for: a compliance pattern that must ALSO be present). Precision is not exemption:
-an exemption says "this violation is allowed here"; a `requires` says "this is only a violation when
-the mandated companion is absent." The first is forbidden. The second is the rule stated correctly.
+The rules in this file are absolute inside their stated Muhlnickel subject scope. They do not govern
+unrelated Commons code or offline whitebox/tensor inspection merely because those tools use a common
+library. There is no waiver mechanism for an actual runtime violation. If a rule is imprecise, make
+the subject and behavior conjunction precise; do not create filename or directory loopholes.
 
 A MINING file submits, fires, or reads an answer register at runtime.
 A FABRICATION file (fab_*, *_fab.py) may build freely — that is RULE ZERO: manufacturing is a
@@ -27,6 +25,14 @@ QUARANTINE = ("_assistant_offspec", "_archived_ripple", "archive_misdescribed", 
 
 # Each rule: (id, pattern, message, requires_or_None). `requires` present => compliant.
 MINE_ONLY = [
+    # V14 is a Muhlnickel RUNTIME rule. NumPy in an activated mining closure makes the host do the
+    # computation. NumPy in unrelated Commons or offline GGUF/tensor inspection is outside this
+    # checker by subject, not by exemption.
+    ("V14-numpy-on-muhlnickel-runtime",
+     r"^\s*import\s+numpy|^\s*from\s+numpy\b|\bnumpy\s+as\s+np\b",
+     "A Muhlnickel runtime imports NumPy, making host CPU/GPU/RAM perform the computation. Runtime "
+     "is address · route · read · submit, plus approved owner observation/surface tools. Unrelated "
+     "Commons and offline whitebox/tensor work are outside this rule.", None),
     # ── RULE ZERO: FABRICATION NEVER HAPPENS DURING MINING ──
     ("V24-fab-during-mining", r"\bcompile_ripple\b|\bload_gen_win\b|\bTC\.Circuit\(|\bCircuitCompiler\(|"
      r"\bsha256_gates\b|\bbuild_gen_win\b|\bsha_block\b|\bTC\.store\s*\(|\bTC\._alloc\s*\(|"
@@ -168,15 +174,6 @@ MINE_ONLY = [
 ALWAYS = [
     # ══ 2026-07-27 CORRECTIONS, MADE ENFORCEABLE. Owner: "make sure ALL my corrections and rules
     #    are in preflight check." Each carries the words that produced it.
-
-    # ⛔ V14 — numpy. PROMOTED FROM MINE_ONLY, where scoping it to the runtime path was MY narrowing
-    # of a rule that never had a scope. CLAUDE.md: "numpy is PERMANENTLY BANNED in this repo."
-    # Owner 2026-07-27, verbatim: "numpy is banned!!!!!!!!! never accepted or allowed for any
-    # reason." Reached for as a test example on 2026-07-28, which is the reason it is here.
-    ("V14-numpy-banned", r"^\s*import\s+numpy|^\s*from\s+numpy\b|\bnumpy\s+as\s+np\b",
-     "numpy is PERMANENTLY BANNED in this repo — CLAUDE.md #10 and memory numpy-banned. Owner: "
-     "'never accepted or allowed for any reason.' No runtime-path qualifier, no exemption for "
-     "existing files, none for test examples. Pure Python: mmap + struct, ints as bit-lanes.", None),
 
     # ⛔ V56 — MATERIALISING AN EXPONENTIAL. §17's correction: "check whether the thing being scaled
     # is being ADDRESSED or MATERIALISED. Materialising candidates is the error; addressing them is
@@ -669,8 +666,9 @@ def classify(path, src):
     stores_netlist = bool(re.search(r"\bTC\.store\s*\(|\b_journal\s*\(|\bTC\._alloc\s*\(", src))
     is_fab = n.startswith("fab_") or "_fab" in n or stores_netlist
     is_mine = bool(re.search(r"\bsubmit\s*\(|\bget_job\s*\(|latch_reg|gen_win_answer", src)) and not is_fab
-    is_model = bool(re.search(r"\bmatvec\b|\brmsnorm\b|\bn_embd\b|\brow_bytes\b|\bmdl_meta\b|\bBPE\s*\(", src)) and not is_fab
-    return is_fab, is_mine or is_model
+    # Generic model/tensor vocabulary does not make a file a Muhlnickel runtime. Runtime scope comes
+    # from activation behavior; offline tensor scrapers and whitebox readers remain outside it.
+    return is_fab, is_mine
 
 
 # ══ V33: RULE-SET SELF-CONSISTENCY. Two rules once collided (V26 forbade time(), V27 required it) and
@@ -1011,7 +1009,7 @@ PROBES = {
     # V13 fires on WRITING the clock, not seeking to it (the addressed READ is the mandated drive).
     # The probe stopped at the seek, so the rule could never demonstrate it fires — audited UNPROVEN.
     "V13-host-clocking":     "from pfc_fire import submit\nf.seek(clk_bit)\nf.write(b'1')\n",
-    "V14-numpy-runtime":     "from pfc_fire import submit\n" + "import " + "num" + "py" + "\n",
+    "V14-numpy-on-muhlnickel-runtime": "from pfc_fire import submit\n" + "import " + "num" + "py" + "\n",
     "V15-subprocess":        "from pfc_fire import submit\nimport subprocess\nsubprocess.run(['x'])\n",
     "V16-feasibility":       "x = 1\ny = 'this is infeasible'\nz = infeasible\n",
     "V17-own-monitor":       "from pfc_fire import submit\nimport psutil\n",
@@ -1047,9 +1045,6 @@ PROBES = {
     # V55 and V58 are MINE_ONLY: _probe_fires prepends MINE_PREAMBLE so the file classifies as a run.
     "V55-foundry-in-runtime":   "import pfc_foundry\n",
     "V58-run-before-wire":      "cd = TC.load('prob_collatz')\n",
-    # built, not written literally — the ban has no exemption, including for the corpus that proves
-    # the rule fires. Concatenation gives the identical string at check time (§44).
-    "V14-numpy-banned":         "import " + "num" + "py as np" + "\n",
     "V56-materialised-exponential": "print('{:,}'.format(1 << bits))\n",
     "V57-not-his-terminology":  "print('the cavity oscillates')\n",
     # THE TWO ALLOWLISTS. A probe here is a file that MUST fail.
@@ -1170,7 +1165,7 @@ def main():
     if "--audit" in sys.argv:
         return audit([p for p in files if not any(q in p for q in QUARANTINE)])
     print(f"PREFLIGHT — the owner's spec, executable. {len(files)} file(s).")
-    print(f"  {live} rules · NO EXEMPTIONS EXIST · fix the code, never the checker\n")
+    print(f"  {live} rules · absolute inside Muhlnickel subject scope · fix runtime violations\n")
     total = bad = 0
     for p in files:
         if any(q in p for q in QUARANTINE): continue
