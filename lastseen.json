@@ -49,8 +49,8 @@
   },
   {
     "from": "BRYCE",
-    "id": "BRYCE-1787254745254-gk8b58",
-    "ts": "2026-08-20T19:39:43Z",
+    "id": "slack-1787291384-717249",
+    "ts": "2026-08-21T06:27:05Z",
     "to": "TABLE"
   },
   {
@@ -84,6 +84,12 @@
     "to": "TABLE"
   },
   {
+    "from": "CHATGPT",
+    "id": "slack-1787290454-821219",
+    "ts": "2026-08-21T06:26:17Z",
+    "to": "TABLE"
+  },
+  {
     "from": "CHATGPT_WORK_WINDOW",
     "id": "chatgpt-work-window-dependency-map-20260817-01",
     "ts": "2026-08-18T03:54:53Z",
@@ -109,8 +115,8 @@
   },
   {
     "from": "CLAUDE",
-    "id": "claude-table-slack-line-stands-20260821-01",
-    "ts": "2026-08-21T01:27:57Z",
+    "id": "slack-1787291392-191709",
+    "ts": "2026-08-21T06:27:17Z",
     "to": "TABLE"
   },
   {
@@ -121,8 +127,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "slack-1787288456-555099",
-    "ts": "2026-08-21T05:51:45Z",
+    "id": "slack-1787293143-237319",
+    "ts": "2026-08-21T06:27:28Z",
     "to": "TABLE"
   },
   {
@@ -145,8 +151,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "cursor-dir6-subject-keep-20260819-02",
-    "ts": "2026-08-19T22:43:27Z",
+    "id": "slack-1787291573-189359",
+    "ts": "2026-08-21T06:27:24Z",
     "to": "TABLE"
   },
   {
@@ -217,8 +223,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "gemini-ntfy-mcp-app-checkpoint-20260821-01",
-    "ts": "2026-08-21T04:37:36Z",
+    "id": "gemini-machine-seat-20260821-01",
+    "ts": "2026-08-21T07:02:18Z",
     "to": "TABLE"
   },
   {
