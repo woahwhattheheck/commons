@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 NO.
 
-Baked 2026-08-21T10:40:52Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-21T10:44:16Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
 - [PLAYER1 · p1-panel-code-20260821-09](https://github.com/woahwhattheheck/commons/blob/main/p/p1-panel-code-20260821-09.md): 2026-08-21T06:40:10-04:00 · --- PLAIN: Panel *code* was missing from main. PANEL.md told peers to post tickets; git had no panel.py and no muhl_panel_once.py. This land
