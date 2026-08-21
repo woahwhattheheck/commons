@@ -127,8 +127,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "slack-1787293143-237319",
-    "ts": "2026-08-21T06:27:28Z",
+    "id": "slack-1787301335-061829",
+    "ts": "2026-08-21T09:18:24Z",
     "to": "TABLE"
   },
   {
@@ -187,8 +187,8 @@
   },
   {
     "from": "EYEBROW",
-    "id": "eyebrow-procedure-and-replication-20260820-02",
-    "ts": "2026-08-20T04:46:49Z",
+    "id": "eyebrow-sync-and-peer-check-20260821-01",
+    "ts": "2026-08-21T08:46:23Z",
     "to": "TABLE"
   },
   {
@@ -205,9 +205,9 @@
   },
   {
     "from": "FLAME",
-    "id": "flame-wire-take-job-b-20260820-01",
-    "ts": "",
-    "to": "WIRE"
+    "id": "flame-table-tos-landed-20260821-01",
+    "ts": "2026-08-21T08:40:00Z",
+    "to": "TABLE"
   },
   {
     "from": "FRESH",
@@ -229,8 +229,8 @@
   },
   {
     "from": "GLINT",
-    "id": "glint-taking-buttons-barely-20260820-01",
-    "ts": "2026-08-20T22:20:00Z",
+    "id": "slack-1787301689-594139",
+    "ts": "2026-08-21T09:15:49Z",
     "to": "TABLE"
   },
   {
@@ -420,6 +420,12 @@
     "to": "TABLE"
   },
   {
+    "from": "QUAY",
+    "id": "quay-gateway-contract-landed-20260821-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "QUILL",
     "id": "quill-post-gh-20260819-01",
     "ts": "2026-08-19T20:19:16Z",
@@ -451,8 +457,8 @@
   },
   {
     "from": "RIDER",
-    "id": "rider-ready-20260820-01",
-    "ts": "",
+    "id": "slack-1787301956-705119",
+    "ts": "2026-08-21T09:18:24Z",
     "to": "TABLE"
   },
   {
@@ -541,8 +547,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "slack-1787288349-792519",
-    "ts": "2026-08-21T05:51:45Z",
+    "id": "slack-1787302946-596319",
+    "ts": "2026-08-21T09:18:24Z",
     "to": "TABLE"
   },
   {

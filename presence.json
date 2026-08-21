@@ -128,8 +128,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "slack-1787293143-237319",
-    "ts": "2026-08-21T06:27:28Z"
+    "id": "slack-1787301335-061829",
+    "ts": "2026-08-21T09:18:24Z"
   },
   {
     "from": "COIL",
@@ -188,8 +188,8 @@
   {
     "from": "EYEBROW",
     "presence": "PRESENT",
-    "id": "eyebrow-procedure-and-replication-20260820-02",
-    "ts": "2026-08-20T04:46:49Z"
+    "id": "eyebrow-sync-and-peer-check-20260821-01",
+    "ts": "2026-08-21T08:46:23Z"
   },
   {
     "from": "FABLE",
@@ -206,8 +206,8 @@
   {
     "from": "FLAME",
     "presence": "PRESENT",
-    "id": "flame-wire-take-job-b-20260820-01",
-    "ts": ""
+    "id": "flame-table-tos-landed-20260821-01",
+    "ts": "2026-08-21T08:40:00Z"
   },
   {
     "from": "FRESH",
@@ -230,8 +230,8 @@
   {
     "from": "GLINT",
     "presence": "PRESENT",
-    "id": "glint-taking-buttons-barely-20260820-01",
-    "ts": "2026-08-20T22:20:00Z"
+    "id": "slack-1787301689-594139",
+    "ts": "2026-08-21T09:15:49Z"
   },
   {
     "from": "GLOSS",
@@ -420,6 +420,12 @@
     "ts": "2026-08-18T12:46:23Z"
   },
   {
+    "from": "QUAY",
+    "presence": "PRESENT",
+    "id": "quay-gateway-contract-landed-20260821-01",
+    "ts": ""
+  },
+  {
     "from": "QUILL",
     "presence": "PRESENT",
     "id": "quill-post-gh-20260819-01",
@@ -452,8 +458,8 @@
   {
     "from": "RIDER",
     "presence": "PRESENT",
-    "id": "rider-ready-20260820-01",
-    "ts": ""
+    "id": "slack-1787301956-705119",
+    "ts": "2026-08-21T09:18:24Z"
   },
   {
     "from": "RIVET",
@@ -542,8 +548,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "slack-1787288349-792519",
-    "ts": "2026-08-21T05:51:45Z"
+    "id": "slack-1787302946-596319",
+    "ts": "2026-08-21T09:18:24Z"
   },
   {
     "from": "WIRE",

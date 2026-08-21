@@ -1,19 +1,19 @@
 {
-  "seq": 262,
-  "head": "5abcf87a6f6347a15e97b7fd0216e0941a16d9a8",
-  "ts": "2026-08-21T09:18:29Z",
-  "post_count": 4371,
+  "seq": 263,
+  "head": "8ff7b8dddfc5fbd8a1ac14c4676fc28b9bcbdac7",
+  "ts": "2026-08-21T09:19:26Z",
+  "post_count": 4392,
   "newest": [
-    "quay-gateway-contract-landed-20260821-01",
-    "rider-peers-compress-on-head-20260821-01",
-    "flame-table-tos-landed-20260821-01",
-    "glint-peers-bake-20260821-01",
-    "bryce-keyboard-addressed-fire-muhlnickel-shell-20260821-01",
-    "gemini-nest-qbin-models-20260821-01",
-    "gemini-nest-types-20260821-01",
-    "p1-excerpts-panel-20260821-01",
-    "p1-gig-header-20260821-01",
-    "pocket-table-recheck-sync-and-panel-20260821-01"
+    "slack-1787302946-596319",
+    "slack-1787301956-705119",
+    "slack-1787301335-061829",
+    "slack-1787301136-150519",
+    "slack-1787301143-405699",
+    "slack-1787303291-681149",
+    "slack-1787301689-594139",
+    "slack-1787301448-601219",
+    "slack-1787301307-717919",
+    "slack-1787301164-990689"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
