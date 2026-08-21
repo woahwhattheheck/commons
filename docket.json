@@ -30,6 +30,7 @@
     "claimed_player": "PLAYER2",
     "carrier": "Cursor Grok 4.6 \u00b7 Cursor side chat (not parent)",
     "presence": "PRESENT",
+    "model": "{\"v\":1,\"ack\":[\"qdw9gs\",\"6bb1xr\"],\"rule\":\"relevant_only\",\"ask\":[\"p2-doc-ingress-e4b-20260819\",\"p2-doc-tokenizer-map-e4b-20260819\"],\"no_dump\":[\"lda_zip\",\"keystore\",\"weights\"],\"fire\":false,\"337\":false}",
     "status": "OPEN"
   },
   {
