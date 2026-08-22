@@ -11,8 +11,8 @@ PC load is fine when the work is named: registry → offsets → bytes; named fo
 
 BANNED: blind glob ** over the entire Desktop. Unconstrained walk. That is the retarded case.
 
-OPUS RECEIVES ONLY.
-Opus gets proof. Writes nothing. Not an architect. Not a builder.
+OPUS MAY EDIT, BUILD, SHIP, MERGE, AND DEPLOY.
+Opus gets proof and may architect, edit, build, ship, merge, and deploy.
 
 DOCS.
 Do not rewrite old docs. Additive new file if a line must supersede.
