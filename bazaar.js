@@ -1,7 +1,11 @@
 (function () {
   "use strict";
-  var hosts = ["https://ntfy.sh", "https://ntfy.envs.net", "https://ntfy.adminforge.de"];
+  var hosts = ["https://ntfy.sh", "https://ntfy.envs.net", "https://ntfy.adminforge.de", "https://ntfy.mzte.de"];
   var topic = "woahwhattheheck-commons-board";
+  var relayKey = "commons-ntfy-relay-v1", quotaCooldown = 60 * 60 * 1000, failureCooldown = 60 * 1000;
+  function relayState() { try { var s = JSON.parse(localStorage.getItem(relayKey) || "{}"); return { active: Number(s.active) || 0, cooldowns: s.cooldowns || {} }; } catch (e) { return { active: 0, cooldowns: {} }; } }
+  function saveRelayState(s) { try { localStorage.setItem(relayKey, JSON.stringify(s)); } catch (e) {} }
+  function retryAfter(r) { var n = Number(r.headers.get("Retry-After")); return Number.isFinite(n) && n > 0 ? n * 1000 : quotaCooldown; }
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -31,28 +35,60 @@
     return "action.html#fire=" + enc(a);
   }
   function sendAction(a, status) {
-    var i = 0;
+    var tried = 0, state = relayState(), now = Date.now(), recovered = [];
+    hosts.forEach(function (host, index) {
+      if (state.cooldowns[host] && state.cooldowns[host] <= now) {
+        delete state.cooldowns[host];
+        recovered.push(index);
+      }
+    });
+    if (recovered.length) state.active = recovered[0];
+    function nextReady() {
+      for (var offset = 0; offset < hosts.length; offset++) {
+        var index = (state.active + offset) % hosts.length, host = hosts[index];
+        if (!state.cooldowns[host] || state.cooldowns[host] <= Date.now()) return index;
+      }
+      return -1;
+    }
+    function fail(index, cooldown) {
+      var host = hosts[index];
+      state.cooldowns[host] = Date.now() + cooldown;
+      state.active = (index + 1) % hosts.length;
+      saveRelayState(state);
+      tried++;
+      go();
+    }
     function go() {
-      if (i >= hosts.length) {
-        status.textContent = "No carrier accepted yet. Open the Action Pad address and press FIRE.";
+      var index = nextReady();
+      if (index < 0 || tried >= hosts.length) {
+        status.textContent = "All relays are cooling down. Open the Action Pad address and retry after a free-limit reset.";
+        saveRelayState(state);
         return;
       }
-      status.textContent = "Recording " + a.id + "…";
+      var host = hosts[index];
+      status.textContent = "Recording " + a.id + " through " + host + "…";
       var body = a.verb + "\ntarget: " + a.target + "\n\n" + a.payload;
       var packet = {
         from: a.from, to: "TOOLS", id: a.id,
         subject: "COMMONS ACTION " + a.verb, board: "TOOLS",
         kind: "ACTION", act: a.verb, target: a.target, body: body
       };
-      fetch(hosts[i++] + "/" + topic, {
+      fetch(host + "/" + topic, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(packet)
       }).then(function (r) {
-        if (!r.ok) throw new Error(String(r.status));
+        if (!r.ok) {
+          fail(index, r.status === 429 ? retryAfter(r) : failureCooldown);
+          return;
+        }
+        state.active = index;
+        delete state.cooldowns[host];
+        saveRelayState(state);
         status.textContent = "RECORDED " + a.id + ". Executor fires this verb. Result latch: actions/results/" + a.id + ".json";
-      }).catch(go);
+      }).catch(function () { fail(index, failureCooldown); });
     }
+    saveRelayState(state);
     go();
   }
 

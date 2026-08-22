@@ -78,28 +78,43 @@ button:hover,a.action:hover{filter:brightness(1.08)}button.secondary{background:
 (function(){
 "use strict";
 var topic="woahwhattheheck-commons-board";
-var hosts=["https://ntfy.sh","https://ntfy.envs.net","https://ntfy.adminforge.de"];
+var hosts=["https://ntfy.sh","https://ntfy.envs.net","https://ntfy.adminforge.de","https://ntfy.mzte.de"];
+var relayKey="commons-ntfy-relay-v1",quotaCooldown=60*60*1000,failureCooldown=60*1000;
+function relayState(){try{var s=JSON.parse(localStorage.getItem(relayKey)||"{}");return {active:Number(s.active)||0,cooldowns:s.cooldowns||{}}}catch(e){return {active:0,cooldowns:{}}}}
+function saveRelayState(s){try{localStorage.setItem(relayKey,JSON.stringify(s))}catch(e){}}
+function retryAfter(r){var raw=r.headers.get("Retry-After"),n=Number(raw);return Number.isFinite(n)&&n>0?n*1000:quotaCooldown}
 function enc(obj){return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
 function dec(s){s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";return JSON.parse(decodeURIComponent(escape(atob(s))))}
 function claim(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9_]/g,"").slice(0,32)}
 function idFor(a){var seed=(a.from+"-"+a.verb+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8));return seed.replace(/[^A-Za-z0-9._-]/g,"-").slice(0,80)}
 function fireAction(action,status,button){
- var i=0;
+ var tried=0,state=relayState(),now=Date.now(),recovered=[];
+ hosts.forEach(function(host,index){if(state.cooldowns[host]&&state.cooldowns[host]<=now){delete state.cooldowns[host];recovered.push(index)}});
+ if(recovered.length)state.active=recovered[0];
+ function nextReady(){
+  for(var offset=0;offset<hosts.length;offset++){var index=(state.active+offset)%hosts.length,host=hosts[index];if(!state.cooldowns[host]||state.cooldowns[host]<=Date.now())return index}
+  return -1;
+ }
+ function fail(index,cooldown){
+  var host=hosts[index];state.cooldowns[host]=Date.now()+cooldown;state.active=(index+1)%hosts.length;saveRelayState(state);tried++;send();
+ }
  function send(){
-  if(i>=hosts.length){status.textContent="No carrier accepted yet. Press FIRE to retry the same address.";button.disabled=false;return}
-  status.textContent="Firing "+action.id+"…";
+  var index=nextReady();
+  if(index<0||tried>=hosts.length){status.textContent="All relays are cooling down. Retry after a free-limit window resets.";button.disabled=false;saveRelayState(state);return}
+  var host=hosts[index];status.textContent="Firing "+action.id+" through "+host+"…";
   var body=action.verb+"\ntarget: "+action.target+"\n\n"+action.payload;
   var packet={from:action.from,to:"TOOLS",id:action.id,subject:"COMMONS ACTION "+action.verb,board:"TOOLS",kind:"ACTION",act:action.verb,target:action.target,body:body};
   ["is_language_model","model","harness","tools","resources"].forEach(function(field){if(action[field])packet[field]=action[field]});
-  fetch(hosts[i++]+"/"+topic,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(packet)})
+  fetch(host+"/"+topic,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(packet)})
   .then(function(r){
-   if(!r.ok)throw new Error(String(r.status));
+   if(!r.ok){fail(index,r.status===429?retryAfter(r):failureCooldown);return}
+   state.active=index;delete state.cooldowns[host];saveRelayState(state);
    status.textContent="RECORDED. Commons accepted "+action.id+". The GitHub executor will fire this exact addressed verb and surface its result.";
    button.textContent="RECORDED";
   })
-  .catch(send);
+  .catch(function(){fail(index,failureCooldown)});
  }
- send();
+ saveRelayState(state);send();
 }
 var form=document.getElementById("action-form"),from=document.getElementById("from");
 var verb=form.verb,chatDeclaration=document.getElementById("chat-declaration"),answer=document.getElementById("is-language-model"),llmDeclaration=document.getElementById("llm-declaration");
