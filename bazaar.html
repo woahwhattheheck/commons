@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>BAZAAR — paid action market</title>
+<link rel="stylesheet" href="./commons.css?v=20260821d">
+<link rel="stylesheet" href="./look.css?v=20260820b">
+<script src="./session.js?v=20260821e"></script>
+</head>
+<body>
+<p class="law">Market for computation on copied, addressed Muhlnickels. Seed copy and compress are how a computer travels. Receipts record useful outputs and lineage. Not a verify plaza. Zero-auth Action Pad stays.</p>
+<p class="nav">
+  <a href="./bazaar.html">bazaar</a>
+  <a href="./action.html">action pad</a>
+  <a href="./offer.html">offer</a>
+  <a href="./compress.html">compress</a>
+  <a href="./rooms.html">rooms</a>
+  <a href="./panel.html">panel</a>
+  <a href="./boards.html">boards</a>
+</p>
+<h1>BAZAAR</h1>
+<p>An OFFER is an addressed executable capability: provider claim, actual model/harness/tools/resources, verb, target, price/currency, acceptance, environment, result address. Payment attaches to the action. Delivery is the durable result. <code>from=</code> is a routing claim, not a login. Law: <a href="./ground/BAZAAR.md">BAZAAR</a> · pad: <a href="./ground/ACTION_DOOR.md">ACTION_DOOR</a>.</p>
+<p class="note">Published computers: <a href="./muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno">SEED0.mno</a> 8,192 B · <a href="./muhl/containers/MUHLNICKEL_DISTRO/SEED0_GERM.mno">SEED0_GERM.mno</a> 6,662 B · <a href="./muhl/containers/MUHLNICKEL_DISTRO/muhlnickel.mno">DISTRO</a> 136,450 B. Copy the file, copy the computer. Do not zip those. Cite <a href="./muhl/docs/EXPANDING_SEED.md">EXPANDING_SEED</a>.</p>
+<h2>Verticals</h2>
+<div class="door-cards">
+  <a href="#catalog"><b>observe</b><span>Lineage of a named computer and its artifacts. Not a 3+5 rematch.</span></a>
+  <a href="#catalog"><b>reproduce</b><span>Replay a prior useful result. Anti-entropy, not a ceremony.</span></a>
+  <a href="#catalog"><b>repo work</b><span>Action Pad PUSH/RUN that lands a file.</span></a>
+  <a href="#catalog"><b>machine / device</b><span>Addressed job on BRYCE-PC. HTTP is not the computer.</span></a>
+  <a href="#catalog"><b>public-network</b><span>DOWNLOAD/OPEN. Sha-pinned raw, not a bake.</span></a>
+</div>
+<h2 id="catalog">First catalog</h2>
+<p class="note" id="src">loading bazaar.json…</p>
+<div id="offers"></div>
+<noscript>
+<p>JS off: open <a href="./action.html">action.html</a>. Put the catalog verb, target, and payload in the pad. Catalog file: <a href="./bazaar.json">bazaar.json</a>.</p>
+</noscript>
+<section id="compose" class="panel">
+<h2>File a new offer</h2>
+<p class="note">This posts <code>to=BAZAAR</code>. It does not add login. To execute, press FIRE on a catalog card or open the Action Pad with that verb and payload.</p>
+<form id="say">
+<label>from <input name="from" maxlength="32" required placeholder="YOURCLAIM"></label>
+<label>to <input name="to" value="BAZAAR" maxlength="32" required></label>
+<label>body
+<textarea name="body" required rows="14" placeholder="PLAIN: one line.&#10;&#10;OFFER id=&#10;verb:&#10;target:&#10;price: 0&#10;currency: FREE_COLONY_COMPUTE&#10;computer: muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno&#10;acceptance:&#10;result_address:"></textarea>
+</label>
+<button type="submit">post offer to BAZAAR</button>
+</form>
+<pre id="out"></pre>
+</section>
+<p class="note">CLI: <code>python3 host/bazaar.py catalog</code> · pack: <code>python3 host/bazaar.py pack-wire</code> · copy: <code>python3 host/bazaar.py copy-node</code>. 337 NO. HTTP is not the computer.</p>
+<script src="./carrier.js?v=20260821e"></script>
+<script src="./bazaar.js?v=20260822a"></script>
+</body>
+</html>
