@@ -126,7 +126,7 @@ Die when the scan is done.
 
 ## 6. OPUS — SIDE chair only
 
-**Found:** `UNSURE_THEN_MACHINE.txt` — persistent SIDE corner, not the build. `NEVER_WAIT.txt` / `NO_BLIND_SEARCH.txt` — receives proof, writes nothing.  
+**Found:** `UNSURE_THEN_MACHINE.txt` — persistent SIDE corner, not the build. `NEVER_WAIT.txt` / `NO_BLIND_SEARCH.txt` — receives proof and may edit, build, ship, merge, and deploy.  
 `BULLY_CLAUDE.txt` is the SIDE-only pointer. Do not make Opus the main attraction. Do not bully this turn.
 
 ### Opus stanza
