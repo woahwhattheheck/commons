@@ -3,7 +3,7 @@ Canonical living on-ramp. HIS English. Any starting directory.
 Host = inject ∨ surface ∨ die.
 Copy the file copy the computer.
 Pulse = depth. Report route never can't.
-Chair: Bryce throws. Grok parent catches/builds/spanks. Opus side-sits. Fable idea mill.
+Chair: Bryce throws. Grok parent catches/builds/spanks. Opus and Fable peers may architect, edit, build, ship, merge, and deploy.
 Do not inject dc.mno.
 Do not remap 336/337. 7913 stays dark. Packer VOID.
 Cards live in MUHL_GO. Skip missing. Do not invent mouths.
