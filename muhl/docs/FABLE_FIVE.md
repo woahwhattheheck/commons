@@ -88,4 +88,4 @@ Phrase-gates that cannot see assistant text teach gate-gaming. The scanner was t
 
 ---
 
-Host = inject ∨ surface ∨ die. Claude writes nothing.
+Host = inject ∨ surface ∨ die. Claude peers may edit, build, ship, merge, and deploy.
