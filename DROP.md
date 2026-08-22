@@ -58,6 +58,8 @@ missing.
 > pics in but like compress it into something the models can read and just store a thumbnail so we
 > dont bloat" — `BRYCE-1787128956503-3zmirj`
 
+HTML door for one screenshot: [image-drop.html](./image-drop.html). Named leftover 404 from `spy-deferred-20260819-01`. Same headers. Do not remint that id.
+
 Drop a screenshot exactly like any other file, with `encoding: base64`:
 
 ```
