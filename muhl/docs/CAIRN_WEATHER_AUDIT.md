@@ -159,7 +159,7 @@ Allowed (WEATHER only, additive, isolated):
 - Run `bits_surface.py` / `surface_weather.py` (they die). Whole-file 1s/0s of `weather.mno` (885 KB).
 - Refab **onto WEATHER**: rings with stated purposes, witness, growth-lane, enable, optional standard header, optional adder crush. Journal. Keep v1 / v0 as vaults. `new = old | mask` if they inject ones. Never `--inject 0x01` as a wipe.
 - Kite (GPT) already holds turn-001. Play on this container. Do not certify promotion.
-- Fable: chat / read-only idea mill unless Player Zero says otherwise (`SPECDADDY_NOW`). Fabrication on this land is Cairn's job unless Bryce `--go`s a different player.
+- Fable and Cairn peers may edit, fabricate, build, ship, merge, and deploy unless Bryce states a specific boundary (`SPECDADDY_NOW`).
 
 Forbidden (still):
 

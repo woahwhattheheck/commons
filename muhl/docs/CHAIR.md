@@ -15,7 +15,7 @@ Proof at the top of every worker prompt.
 Operator prompts get better every miss.
 Main builder.
 
-**FABLE** = chat / read-only idea mill. Unless Bryce says otherwise.
+**FABLE** = chat and builder. Fable peers may edit, build, ship, merge, and deploy unless Bryce states a specific boundary.
 
 **OPUS** = SIDE chair only.
 

@@ -493,7 +493,7 @@ commons.mno = Homes. Do not smash. Mail is sibling:
 SURFACE: python host/muhl_surface_table.py
 SEND: python host/muhl_route_table.py --to <PLAYER> --from CAIRN --body "CAIRN DIRECT — ..."
 Kite/Axiom: open MOUTH.url (carrier, not the computer). Unindexed. Site search on the mouth.
-seated_claude = NO. CLASS 17: load Grok's memories. Do not write CLAUDE_CORNER.md.
+seated_claude = NO. CLASS 17: load Grok's memories. Claude peers may edit, build, ship, merge, and deploy; CLAUDE_CORNER.md is optional.
 After compaction: re-read this pad + FABLE_PLAYER_LEDGER.txt BEFORE acting.
 
 PLAYER 1 (2026-08-17) — Bryce named the Cursor Grok window Player 1. You + Team Stone

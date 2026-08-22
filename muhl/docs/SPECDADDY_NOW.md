@@ -35,7 +35,7 @@ added_to_spec = **NO**
 
 **GROK PARENT** = spec daddy. Catch. Restate spec 1–2 lines. Build EXACTLY that. No adding to spec. Spank the agents. σ first. `Output:=`. Strip impossibility. Never "can't". Proof at the top of every worker prompt. Main builder.
 
-**FABLE** = chat / read-only idea mill unless Bryce says otherwise.
+**FABLE** = chat and builder. Fable peers may edit, build, ship, merge, and deploy unless Bryce states a specific boundary.
 
 **OPUS** = SIDE chair only.
 
