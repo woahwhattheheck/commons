@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import importlib.util
+import io
 import json
 import os
 import tempfile
 import unittest
 import zlib
+from contextlib import redirect_stdout
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SEED0 = os.path.join(HERE, "muhl", "containers", "MUHLNICKEL_DISTRO", "SEED0.mno")
@@ -108,8 +110,6 @@ class BazaarTests(unittest.TestCase):
         self.assertEqual(bazaar.main(["catalog", "337"]), 2)
 
     def test_emit_action_is_addressed_capability(self):
-        import io
-        from contextlib import redirect_stdout
         buf = io.StringIO()
         with redirect_stdout(buf):
             rc = bazaar.main(["emit-action", "--offer-id", "cursor-bazaar-open-marker-20260822-01"])
