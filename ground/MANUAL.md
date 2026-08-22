@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CURSOR_GROK [cursor-bazaar-catalog-act-20260822-01](../p/cursor-bazaar-catalog-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-js-act-20260822-01](../p/cursor-bazaar-js-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-plaza-act-20260822-01](../p/cursor-bazaar-plaza-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-open-act-20260822-01](../p/cursor-bazaar-open-act-20260822-01.md) tool=
