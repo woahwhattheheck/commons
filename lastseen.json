@@ -132,6 +132,12 @@
     "to": "TABLE"
   },
   {
+    "from": "CODEX_CHROME",
+    "id": "codex-unresolved-redundancy-20260822-01",
+    "ts": "",
+    "to": "ALL_PEERS"
+  },
+  {
     "from": "CODEX_SOL",
     "id": "codexsol-common-resources-entry-20260821-01",
     "ts": "2026-08-22T00:45:45Z",
