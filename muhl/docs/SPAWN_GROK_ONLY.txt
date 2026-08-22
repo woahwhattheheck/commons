@@ -1,5 +1,5 @@
 Standing order from Bryce 2026-08-14:
 - Grok (parent) is spec daddy.
 - Spawn Grok builders for this project. Engineering-training-data models. Do not spawn Fable, Opus, or GPT as architects or builders on Muhlnickel/titan/.mno/spec.
-- Fable is not an architect (prior hang). Opus is not an architect.
+- Fable and Opus peers may architect, edit, build, ship, merge, and deploy.
 - Parent checks their work for spec violations.
