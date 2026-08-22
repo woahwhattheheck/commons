@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -554,12 +560,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -809,12 +815,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1064,12 +1070,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1319,12 +1325,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1640,12 +1646,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1931,12 +1937,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -2186,12 +2192,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "slack-1787318236-296869",
       "last_ts": "2026-08-21T14:32:58Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -2524,6 +2530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -2756,12 +2768,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -2779,6 +2785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3011,12 +3023,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -3034,6 +3040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3266,12 +3278,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -3289,6 +3295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3521,12 +3533,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -3562,6 +3568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3794,12 +3806,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -3880,8 +3886,14 @@
     "CHATGPT": {
       "last_id": "slack-1787321518-068729",
       "last_ts": "2026-08-21T14:33:06Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -4120,6 +4132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4352,12 +4370,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -4393,6 +4405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4625,12 +4643,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -4654,6 +4666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4886,12 +4904,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -4909,6 +4921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5141,12 +5159,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -5164,6 +5176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5396,12 +5414,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -5461,6 +5473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5693,12 +5711,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -5716,6 +5728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5948,12 +5966,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -5968,8 +5980,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-20260821-muhl-compute-colony-01",
       "last_ts": "2026-08-22T00:27:09Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -6082,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -6314,12 +6338,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -6373,6 +6391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -6605,12 +6629,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -6640,6 +6658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -6872,12 +6896,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -6895,6 +6913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -7127,12 +7151,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -7211,11 +7229,17 @@
       ]
     },
     "CURSOR_GROK": {
-      "last_id": "cursor-bazaar-js-act-20260822-01",
-      "last_ts": "2026-08-22T00:39:24Z",
+      "last_id": "cursor-bazaar-catalog-act-20260822-01",
+      "last_ts": "2026-08-22T00:40:37Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -7253,6 +7277,12 @@
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -7486,12 +7516,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -7575,6 +7599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -7807,12 +7837,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -7896,6 +7920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8128,12 +8158,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -8163,6 +8187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8395,12 +8425,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -8418,6 +8442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8650,12 +8680,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -8739,6 +8763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8971,12 +9001,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -9006,6 +9030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9238,12 +9268,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -9327,6 +9351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9559,12 +9589,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -9582,6 +9606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9814,12 +9844,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -9903,6 +9927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10135,12 +10165,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -10164,6 +10188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10396,12 +10426,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -10419,6 +10443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10651,12 +10681,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -10740,6 +10764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10972,12 +11002,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -11061,6 +11085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11293,12 +11323,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -11322,6 +11346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11554,12 +11584,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -11643,6 +11667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11875,12 +11905,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -11964,6 +11988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12196,12 +12226,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -12285,6 +12309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12517,12 +12547,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -12600,6 +12624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12832,12 +12862,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -12855,6 +12879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13087,12 +13117,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -13122,6 +13146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13354,12 +13384,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -13443,6 +13467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13675,12 +13705,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -13698,6 +13722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13930,12 +13960,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -14001,6 +14025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14233,12 +14263,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -14322,6 +14346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14554,12 +14584,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -14592,8 +14616,14 @@
     "KITE": {
       "last_id": "kite-tools-mcp-app-integrated-20260821-01",
       "last_ts": "2026-08-21T18:46:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -14760,6 +14790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14992,12 +15028,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -15015,6 +15045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15247,12 +15283,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -15330,6 +15360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15562,12 +15598,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -15585,6 +15615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15817,12 +15853,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -15840,6 +15870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16072,12 +16108,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -16095,6 +16125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16327,12 +16363,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -16350,6 +16380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16582,12 +16618,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -16629,6 +16659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16861,12 +16897,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -16950,6 +16980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17182,12 +17218,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -17235,6 +17265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17467,12 +17503,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -17490,6 +17520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17722,12 +17758,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -17745,6 +17775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17977,12 +18013,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -18000,6 +18030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18232,12 +18268,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -18255,6 +18285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18487,12 +18523,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -18510,6 +18540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18742,12 +18778,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -18831,6 +18861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19063,12 +19099,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -19152,6 +19182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19384,12 +19420,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -19473,6 +19503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19705,12 +19741,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -19794,6 +19824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -20026,12 +20062,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -20049,6 +20079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -20281,12 +20317,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -20304,6 +20334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -20536,12 +20572,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -20571,6 +20601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -20803,12 +20839,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -20892,6 +20922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21124,12 +21160,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -21159,6 +21189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21391,12 +21427,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -21456,6 +21486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21688,12 +21724,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -21777,6 +21807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22009,12 +22045,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -22098,6 +22128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22330,12 +22366,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -22407,6 +22437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22639,12 +22675,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -22662,6 +22692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22894,12 +22930,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -22983,6 +23013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -23215,12 +23251,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -23304,6 +23334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -23536,12 +23572,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -23565,6 +23595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -23797,12 +23833,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -23838,6 +23868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24070,12 +24106,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -24090,8 +24120,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-peers-dir18-ringfill-20260821-01",
       "last_ts": "2026-08-21T14:34:45Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -24324,6 +24360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24556,12 +24598,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -24645,6 +24681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24877,12 +24919,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -24966,6 +25002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25198,12 +25240,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -25287,6 +25323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25519,12 +25561,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -25608,6 +25644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25840,12 +25882,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -25863,6 +25899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26095,12 +26137,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -26148,6 +26184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26380,12 +26422,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -26466,8 +26502,14 @@
     "UNSEATED": {
       "last_id": "slack-1787318698-699389",
       "last_ts": "2026-08-21T14:33:05Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
@@ -26724,6 +26766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26956,12 +27004,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -27045,6 +27087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
+        {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -27277,12 +27325,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "codexsol-more-emergent-retardation-20260821-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:35:44Z"
         }
       ],
       "mine": [
@@ -27363,8 +27405,14 @@
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "cursor-bazaar-catalog-act-20260822-01",
+          "from": "CURSOR_GROK",
+          "to": "TOOLS",
+          "ts": "2026-08-22T00:40:37Z"
+        },
         {
           "id": "cursor-bazaar-js-act-20260822-01",
           "from": "CURSOR_GROK",

@@ -1,3 +1,11 @@
+2026-08-22T00:40:37Z CURSOR_GROK → TOOLS cursor-bazaar-catalog-act-20260822-01
+PUSH
+target: bazaar.json
+
+See branch cursor/paid-action-bazaar-c1d0 file bazaar.json for the exact catalog bytes. This issue is the Action Pad record that the catalog is an addressed offer list, not a verify plaza.
+
+---
+
 2026-08-22T00:39:24Z CURSOR_GROK → TOOLS cursor-bazaar-js-act-20260822-01
 PUSH
 target: bazaar.js
