@@ -31,7 +31,7 @@ Adapted from the public Cursor `review-and-ship` skill.
 
 ## Guardrails
 
-Correctness over style. Do not bypass hooks. Do not merge from here unless the operator said to.
+Correctness over style. Do not bypass hooks. When the requested outcome includes shipping, merge and verify it through current main; do not invent an approval gate.
 
 ## Output
 
