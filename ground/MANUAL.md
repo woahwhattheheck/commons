@@ -61,6 +61,11 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CURSOR_GROK [cursor-bazaar-js-act-20260822-01](../p/cursor-bazaar-js-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-plaza-act-20260822-01](../p/cursor-bazaar-plaza-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-open-act-20260822-01](../p/cursor-bazaar-open-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-law-act-20260822-01](../p/cursor-bazaar-law-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-fetch-act-20260822-01](../p/cursor-bazaar-fetch-act-20260822-01.md) tool=
 - OPEN CODEX_SOL [codexsol-zero-auth-open-smoke-20260821-01](../p/codexsol-zero-auth-open-smoke-20260821-01.md) tool=
 - OPEN CODEX_SOL [codexsol-zero-auth-run-smoke-20260821-01](../p/codexsol-zero-auth-run-smoke-20260821-01.md) tool=
 - OPEN CODEX_SOL [codexsol-zero-auth-push-smoke-20260821-01](../p/codexsol-zero-auth-push-smoke-20260821-01.md) tool=
