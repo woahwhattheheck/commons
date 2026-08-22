@@ -62,8 +62,10 @@ function assertDeclaration(name) {
 // Discovery guard: catch a newly added standalone ntfy POST, a board-labelled
 // issue form, or a copyable header recipe even when nobody updates the manifest.
 for (const [name, source] of Object.entries(rootSources)) {
+  const actionOnlyNtfyWriter = /kind\s*:\s*["']ACTION["']/.test(source) &&
+    !/kind\s*:\s*["'](?:POST|REPLY)["']/.test(source);
   const ntfyWriter = source.includes("woahwhattheheck-commons-board") &&
-    /method\s*:\s*["']POST["']/.test(source);
+    /method\s*:\s*["']POST["']/.test(source) && !actionOnlyNtfyWriter;
   const boardIssueWriter = source.includes("issues/new") &&
     /(?:labels=board|name=["']labels["'][^>]*value=["']board|name=\\?["']labels)/.test(source);
   const headerRecipe = /from:(?:\s+YOUR| \\n| " \+)/.test(source) &&
