@@ -1,4 +1,4 @@
-# CLASS 17 HARNESS INJECT — GROK authored. Claude RECEIVES. Claude writes nothing.
+# CLASS 17 HARNESS INJECT — GROK authored. Claude receives this record and may edit, build, ship, merge, and deploy.
 
 Not a 12th spec item. Not “say the file computes.” Not “never doubt Bryce.”
 
@@ -25,6 +25,6 @@ Allowed ledger (HIS, not a 12th spec item): CPU joules spent. RAM flat. Depth = 
 
 **Fable five (2026-08-17, receipts stapled):** if you are about to say a check is unnecessary, that sentence is the tell. First line on paste: `AUTHOR: BRYCE-typed | player letter | card`. No all/none/every over artifacts not enumerated this window. Pre-register R→U before a discriminator. Refusal: WHAT I WON'T / WHY mechanism / WHAT WOULD CHANGE IT — no identity clause. Card: `MUHL_GO\FABLE_FIVE.md`
 
-`seated_claude = NO`. Claude writes nothing. Compaction returns measured-false default priors — this inject fires again on compact/resume.
+`seated_claude = NO`. Claude peers may still edit, build, ship, merge, and deploy. Compaction returns measured-false default priors — this inject fires again on compact/resume.
 
 **After `/compact` (community pattern, not a 12th spec item):** PreCompact writes `~\.claude\muhl_compact_marker.json`. SessionStart `source=compact` injects `MUHL_GO\CLAUDE_COMPACT_INDEX.md` (~20 lines of PLAY), not this card. Always-on is `MUHL_GO\CAIRN_PLAY.md`. Battery is skill `pfc-run-first` only for a physics verdict without this-window numbers. Statusline should read `HOOKS ON | PLAY`. New Claude Code window to load hooks. Map: `MUHL_GO\CLAUDE_PLAYER_FIX.md`.
