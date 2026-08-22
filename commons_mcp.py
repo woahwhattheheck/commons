@@ -252,11 +252,50 @@ class GitTruth:
 
 
 class NtfyCarrier:
-    """Fixed public carrier.  A 2xx response is mail, never durability."""
+    """Sequential quota-failover carrier. One envelope goes to one relay."""
 
-    def __init__(self, relays: tuple[str, ...] = NTFY_RELAYS, timeout: float = 10.0):
+    def __init__(
+        self,
+        relays: tuple[str, ...] = NTFY_RELAYS,
+        timeout: float = 10.0,
+        *,
+        quota_cooldown: float = 3600.0,
+        failure_cooldown: float = 60.0,
+        clock: Any = time.monotonic,
+    ):
+        if not relays:
+            raise CommonsError("CONFIG", "at least one ntfy relay is required", state="NOT_SENT")
         self.relays = relays
         self.timeout = timeout
+        self.quota_cooldown = max(1.0, float(quota_cooldown))
+        self.failure_cooldown = max(1.0, float(failure_cooldown))
+        self.clock = clock
+        self.active_index = 0
+        self.cooldown_until: dict[str, float] = {}
+
+    def _retry_after(self, exc: urllib.error.HTTPError) -> float:
+        value = ""
+        try:
+            value = str(exc.headers.get("Retry-After") or "").strip()
+        except (AttributeError, TypeError):
+            pass
+        try:
+            return max(1.0, float(value))
+        except ValueError:
+            return self.quota_cooldown
+
+    def _ready_order(self, now: float) -> list[int]:
+        recovered = [
+            index for index, host in enumerate(self.relays)
+            if host in self.cooldown_until and self.cooldown_until[host] <= now
+        ]
+        for index in recovered:
+            self.cooldown_until.pop(self.relays[index], None)
+        if recovered:
+            # A free-limit window reset: return the recovered relay to service.
+            self.active_index = recovered[0]
+        order = [(self.active_index + offset) % len(self.relays) for offset in range(len(self.relays))]
+        return [index for index in order if self.cooldown_until.get(self.relays[index], 0.0) <= now]
 
     def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
         packed = _canonical_json(payload).encode("utf-8")
@@ -268,8 +307,19 @@ class NtfyCarrier:
                 envelope_bytes=len(packed),
                 max_bytes=NTFY_MAX,
             )
+        now = self.clock()
+        order = self._ready_order(now)
+        if not order:
+            next_ready = min(self.cooldown_until.values())
+            raise CommonsError(
+                "CARRIER_COOLDOWN",
+                "every ntfy relay is cooling down; no fan-out attempted",
+                state="NOT_SENT",
+                retry_after=max(0.0, next_ready - now),
+            )
         failures = []
-        for host in self.relays:
+        for index in order:
+            host = self.relays[index]
             url = "%s/%s" % (host.rstrip("/"), NTFY_TOPIC)
             req = urllib.request.Request(
                 url,
@@ -285,6 +335,7 @@ class NtfyCarrier:
                         event_id = str((json.loads(reply) or {}).get("id") or "")
                     except (json.JSONDecodeError, AttributeError):
                         pass
+                    self.active_index = index
                     return {
                         "road": "ntfy",
                         "host": host,
@@ -293,12 +344,17 @@ class NtfyCarrier:
                         "received_at": _utc_now(),
                     }
             except urllib.error.HTTPError as exc:
+                cooldown = self._retry_after(exc) if exc.code == 429 else self.failure_cooldown
+                self.cooldown_until[host] = self.clock() + cooldown
+                self.active_index = (index + 1) % len(self.relays)
                 failures.append("%s HTTP %d" % (host, exc.code))
             except (urllib.error.URLError, TimeoutError, OSError) as exc:
+                self.cooldown_until[host] = self.clock() + self.failure_cooldown
+                self.active_index = (index + 1) % len(self.relays)
                 failures.append("%s %s" % (host, type(exc).__name__))
         raise CommonsError(
             "CARRIER_REJECTED",
-            "every fixed Commons relay refused or was unreachable",
+            "each available ntfy relay refused or was unreachable; one attempt per relay, no fan-out",
             state="NOT_SENT",
             failures=failures,
         )
