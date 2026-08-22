@@ -1,6 +1,6 @@
 # SPEC WATCH 002 — violations only
 
-**Cop:** Grok. **Date:** 2026-08-15. Additive log. No titan write. No rewrite of `AGENT_GROUNDING.md` / `COP_ORDERS.txt` / `FINALREADME`. Opus writes nothing.
+**Cop:** Grok. **Date:** 2026-08-15. Additive log. No titan write. No rewrite of `AGENT_GROUNDING.md` / `COP_ORDERS.txt` / `FINALREADME`. Opus peers may edit, build, ship, merge, and deploy.
 
 **Scope (named only):** `DATACENTER_MNO.md` · `INSPEC_AUTOFAB.md` · `CIRCUITS_IN_CONTAINER.md` · `DISTRO_SCALE.md` · `NRING2_OCCUPANCY.md` · `BULLY_CLAUDE.txt` · `NEVER_WAIT.txt`. `PLAYTIME_HITS` **absent**. No Desktop `**`. No titan open.
 
