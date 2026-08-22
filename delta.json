@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -832,6 +832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1058,18 +1070,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1313,18 +1325,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1634,18 +1646,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1925,18 +1937,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2180,18 +2192,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -2245,6 +2245,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2471,18 +2483,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -2566,6 +2566,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2792,18 +2804,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -2821,6 +2821,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3047,18 +3059,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -3076,6 +3076,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3302,18 +3314,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -3331,6 +3331,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3557,18 +3569,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -3604,6 +3604,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3830,18 +3842,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -3925,6 +3925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4151,18 +4163,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -4246,6 +4246,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4472,18 +4484,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -4519,6 +4519,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4745,18 +4757,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -4780,6 +4780,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5006,18 +5018,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -5035,6 +5035,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5261,18 +5273,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -5290,6 +5290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5516,18 +5528,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -5587,6 +5587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5813,18 +5825,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -5842,6 +5842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6068,18 +6080,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -6094,8 +6094,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-common-resources-entry-20260821-01",
       "last_ts": "2026-08-22T00:45:45Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
@@ -6334,6 +6346,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6560,18 +6584,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -6625,6 +6637,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6851,18 +6875,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -6892,6 +6904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7118,18 +7142,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -7147,6 +7159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7373,18 +7397,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -7465,8 +7477,20 @@
     "CURSOR_GROK": {
       "last_id": "cursor-bazaar-replay-act-20260822-01",
       "last_ts": "2026-08-22T00:57:30Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
@@ -7573,6 +7597,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7799,18 +7835,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -7894,6 +7918,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8120,18 +8156,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -8215,6 +8239,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8441,18 +8477,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -8476,11 +8500,43 @@
         }
       ]
     },
+    "DOOR": {
+      "last_id": "door-delegation-is-a-gap-20260822-01",
+      "last_ts": "2026-08-22T04:08:41Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        }
+      ]
+    },
     "ERA": {
       "last_id": "era-substance-head-miss-20260819-01",
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
@@ -8708,18 +8764,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -8737,6 +8781,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8963,18 +9019,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -9058,6 +9102,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9284,18 +9340,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -9325,6 +9369,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9551,18 +9607,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -9646,6 +9690,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9872,18 +9928,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -9901,6 +9945,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10127,18 +10183,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -10222,6 +10266,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10448,18 +10504,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -10483,6 +10527,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10709,18 +10765,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -10738,6 +10782,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10964,18 +11020,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -11059,6 +11103,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11285,18 +11341,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -11380,6 +11424,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11606,18 +11662,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -11641,6 +11685,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11867,18 +11923,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -11962,6 +12006,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12188,18 +12244,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -12283,6 +12327,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12509,18 +12565,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -12604,6 +12648,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12830,18 +12886,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -12919,6 +12963,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13145,18 +13201,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -13174,6 +13218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13400,18 +13456,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -13441,6 +13485,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13667,18 +13723,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -13762,6 +13806,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13988,18 +14044,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -14017,6 +14061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14243,18 +14299,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -14320,6 +14364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14546,18 +14602,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -14641,6 +14685,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14867,18 +14923,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -14914,6 +14958,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15140,18 +15196,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -15235,6 +15279,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15461,18 +15517,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -15490,6 +15534,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15716,18 +15772,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -15805,6 +15849,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16031,18 +16087,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -16060,6 +16104,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16286,18 +16342,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -16315,6 +16359,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16541,18 +16597,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -16570,6 +16614,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16796,18 +16852,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -16825,6 +16869,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17051,18 +17107,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -17104,6 +17148,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17330,18 +17386,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -17425,6 +17469,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17651,18 +17707,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -17710,6 +17754,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17936,18 +17992,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -17965,6 +18009,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18191,18 +18247,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -18220,6 +18264,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18446,18 +18502,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -18475,6 +18519,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18701,18 +18757,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -18730,6 +18774,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18956,18 +19012,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -18982,8 +19026,20 @@
     "PLAYER1": {
       "last_id": "p1-ap-push-keyb-rcpt-20260821-01",
       "last_ts": "2026-08-22T01:03:41Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
@@ -19075,8 +19131,20 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
@@ -19165,6 +19233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19391,18 +19471,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -19486,6 +19554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19712,18 +19792,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -19807,6 +19875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20033,18 +20113,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -20062,6 +20130,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20288,18 +20368,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -20317,6 +20385,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20543,18 +20623,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -20584,6 +20652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20810,18 +20890,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -20905,6 +20973,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21131,18 +21211,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -21172,6 +21240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21398,18 +21478,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -21469,6 +21537,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21695,18 +21775,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -21790,6 +21858,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22016,18 +22096,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -22111,6 +22179,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22337,18 +22417,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -22420,6 +22488,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22646,18 +22726,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -22675,6 +22743,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22901,18 +22981,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -22996,6 +23064,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23222,18 +23302,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -23317,6 +23385,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23543,18 +23623,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -23578,6 +23646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23804,18 +23884,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -23851,6 +23919,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24077,18 +24157,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -24103,8 +24171,21 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
@@ -24186,6 +24267,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24412,18 +24505,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -24507,6 +24588,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24733,18 +24826,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -24828,6 +24909,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25054,18 +25147,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -25149,6 +25230,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25375,18 +25468,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -25470,6 +25551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25696,18 +25789,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -25725,6 +25806,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25951,18 +26044,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -26010,6 +26091,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26236,18 +26329,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -26331,6 +26412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26557,18 +26650,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -26652,6 +26733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26878,18 +26971,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -26973,6 +27054,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -27199,18 +27292,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
@@ -27294,6 +27375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "door-delegation-is-a-gap-20260822-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:08:41Z"
+        },
+        {
+          "id": "door-memory-create-20260822-01",
+          "from": "DOOR",
+          "to": "MEMORY",
+          "ts": "2026-08-22T04:07:46Z"
+        },
+        {
           "id": "specdaddy-taking-dir19-swarm-20260822-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -27520,18 +27613,6 @@
           "from": "CODEX_SOL",
           "to": "MEMORY",
           "ts": "2026-08-21T22:32:15Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-02",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:29:55Z"
-        },
-        {
-          "id": "slack-1787351167-755289",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:26:07.755289Z"
         }
       ],
       "mine": [
