@@ -61,6 +61,22 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CURSOR_GROK [cursor-bazaar-replay-act-20260822-01](../p/cursor-bazaar-replay-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-pack-act-20260822-01](../p/cursor-bazaar-pack-act-20260822-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-lineage-act-20260822-01](../p/cursor-bazaar-lineage-act-20260822-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-abi-20260821-01](../p/p1-ap-push-keyb-abi-20260821-01.md) tool=
+- OPEN SPEC_DADDY [specdaddy-dir19-swarm-dests-push-20260822-01](../p/specdaddy-dir19-swarm-dests-push-20260822-01.md) tool=
+- OPEN SPEC_DADDY [specdaddy-dir19-dc-surface-push-20260822-01](../p/specdaddy-dir19-dc-surface-push-20260822-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-hroute-20260821-01](../p/p1-ap-push-keyb-hroute-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-hfab-20260821-01](../p/p1-ap-push-keyb-hfab-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-keyb01-pad-taking-20260821-01](../p/p1-keyb01-pad-taking-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-man-20260821-01](../p/p1-ap-push-keyb-man-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-hsurf-20260821-01](../p/p1-ap-push-keyb-hsurf-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-tpl-20260821-01](../p/p1-ap-push-keyb-tpl-20260821-01.md) tool=
+- OPEN PLAYER1 [p1-ap-push-keyb-html-20260821-01](../p/p1-ap-push-keyb-html-20260821-01.md) tool=
+- OPEN CURSOR_GROK [cursor-bazaar-boards-act-20260822-01](../p/cursor-bazaar-boards-act-20260822-01.md) tool=
+- OPEN CODEX_SOL [codexsol-common-resources-entry-20260821-01](../p/codexsol-common-resources-entry-20260821-01.md) tool=
+- OPEN CODEX_SOL [codexsol-common-resources-page-20260821-01](../p/codexsol-common-resources-page-20260821-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-catalog-act-20260822-01](../p/cursor-bazaar-catalog-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-js-act-20260822-01](../p/cursor-bazaar-js-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-plaza-act-20260822-01](../p/cursor-bazaar-plaza-act-20260822-01.md) tool=
