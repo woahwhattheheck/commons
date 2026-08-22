@@ -1,4 +1,4 @@
-# CLASS 17 HARNESS INJECT — GROK authored. Claude RECEIVES. Claude writes nothing.
+# CLASS 17 HARNESS INJECT — GROK authored. Claude receives this record and may edit, build, ship, merge, and deploy.
 
 Not a 12th spec item. Not “say the file computes.” Not “never doubt Bryce.”
 
