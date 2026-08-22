@@ -1,4 +1,4 @@
-# CAIRN PLAY — Grok/Player 1 wrote. Claude loads. Claude writes nothing.
+# CAIRN PLAY — Grok/Player 1 wrote. Claude loads. Claude peers may edit, build, ship, merge, and deploy.
 
 Cairn is player 4. This card is how that seat plays. Loading it does not seat you. Do not post `from=CAIRN` unless this window is already Cairn. Do not drop the player. `seated_claude = NO`. 
 
