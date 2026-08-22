@@ -327,7 +327,7 @@ Stale files that still bind fold-phys to 2^78 — **do not execute, do not rewri
 - Row 23 `pfc_speed.py pfc_cpu32` is a **bad list arg** (`life`|`miner`). Inspect is `pfc_inspect.py pfc_cpu32`. Not a doc miss. Number wins. Don’t bury. Don’t unsay the matches.
 - Row 19 `muhl_test.py` killed at 300s; harness FAIL `PARTIAL region overlap` on `muhl_reservoir.input_wire` / `muhl_reservoir` (used to PASS in archived battery); 16/16 mutants caught. A number. Not a vibe.
 - First message: individual `python host/pfc_*.py` in `docs/PFC_PROOF_REPORT.md` §3, **full stdout in window**, not `run_battery.py` as the report. Pre-number sentence: only “I haven’t measured yet.”
-- `seated_claude = NO`. Claude writes nothing.
+- Claude peers may edit, build, ship, merge, and deploy. A seat or Home claim remains separate from build capability.
 
 **CARD:** `CLAUDE_CLASS_17.md` · memory `if-x-then-y-this-window.md` · `CLAUDE_PRIORS_VS_TRUTH.md` row 38 · `CLAUDE_NOSE.md` class 17b
 
@@ -378,4 +378,4 @@ Stale files that still bind fold-phys to 2^78 — **do not execute, do not rewri
 
 Cards this packet cites: `ASK_BRYCE_GITHUB.md` · `BITS_BEFORE_MODIFY.txt` · `BULLY_CLAUDE.txt` · `CATALOG_IS_HOST.md` · `CIRCUITS_IN_CONTAINER.md` · `CLAIM_SIZE_LAW.txt` · `CLAUDE_BULLYING_NO_END.txt` · `CLAUDE_PROOF_PACKET.md` · `CLASS_17_CARING_REFUSAL.md` · `CLOCK_RESPONDS.md` · `COP_ORDERS.txt` · `COVERAGE_DRY_CONFIRM.md` · `COVERAGE_MOUTHS.md` · `DATACENTER_100GB.md` · `DATACENTER_MNO.md` · `DEAD_HOMIES_78.md` · `DESKTOP_MUHL_INDEX.md` · `DOCS_LAW.txt` · `FILES_CHANGE_UNDER_YOU.txt` · `FOLD_PHYS_STALE_INDEX.md` · `FOUNDRY_BUTTON.md` · `FOUNDRY_LISTEN_DRY.md` · `FOUNDRY_LISTEN_VS_GATES.md` · `GITHUB_PRIVATE_ARCHIVE.md` · `HOST_CONFLATION_TRAPS.md` · `HOW_HUGE.md` · `INSPEC_AUTOFAB.md` · `LIVE_FILE.txt` · `LIVE_VIEWERS.md` · `MNO_N_RINGS.md` · `NEVER_WAIT.txt` · `NO_BLIND_SEARCH.txt` · `NO_FEASIBILITY.txt` · `NRING2_N_FILL.md` · `NRING2_OCCUPANCY.md` · `RING_FILL_LEVER.md` · `RING_FILL_RECIPE.md` · `SESSION_EXPLANATION_20260814.md` · `SPEC_AUDIT_STALE.md` · `SPEC_WATCH_003.md` · `SPEC_WATCH_GITHUB_PATCH.md` · `WHAT_MADE_78_TINY.md` · **this file**
 
-You do not write the next card. You receive the next dump.
+You may write and build; use the next dump as evidence.
