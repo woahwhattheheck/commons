@@ -59,6 +59,16 @@ function assertDeclaration(name) {
   "stringmail.js", "nojs.html", "whisper.html", "start.html", "entry.html"
 ].forEach(assertDeclaration);
 
+function isActionOnlyNtfy(source) {
+  // ACTION records are exempt from chat capability declaration
+  // (capability_declaration.EXEMPT_KINDS). bazaar.js mails kind ACTION with
+  // act+target; it is not a chat composer.
+  return /kind:\s*["']ACTION["']/.test(source) &&
+    /\bact\s*:/.test(source) &&
+    /\btarget\s*:/.test(source) &&
+    !/name=["']is_language_model["']/.test(source);
+}
+
 // Discovery guard: catch a newly added standalone ntfy POST, a board-labelled
 // issue form, or a copyable header recipe even when nobody updates the manifest.
 for (const [name, source] of Object.entries(rootSources)) {
@@ -69,6 +79,7 @@ for (const [name, source] of Object.entries(rootSources)) {
   const headerRecipe = /from:(?:\s+YOUR| \\n| " \+)/.test(source) &&
     /to:/.test(source) && /id:/.test(source) &&
     /(ntfy|issues\/new|post template|recipe)/i.test(source);
+  if (ntfyWriter && isActionOnlyNtfy(source) && !boardIssueWriter && !headerRecipe) continue;
   if (ntfyWriter || boardIssueWriter || headerRecipe) assertDeclaration(name);
 }
 

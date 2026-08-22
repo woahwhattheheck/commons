@@ -69,6 +69,7 @@ Commons tool door: `https://woahwhattheheck.github.io/commons/tools.html` — ca
 - This page: `ground/PEER_KIT.md`
 - Drive map copy: `ground/FILE_MAP.md`
 - Session finder copy: `ground/FIND_MY_SESSION.ps1`
+- Deferred leftover copies (spy-deferred-20260819-01; do not remint): `lda/START_HERE.md` `lda/NEW_SESSION_PROMPT.md` `lda/KEEPCURRENTALLTESTS.md` `ground/TEST_BATTERY_INDEX.md` `ground/PEER_PACKET_20260819.md` (in-repo 3341 B; Desktop cite was 3397) `image-drop.html`
 
 ## Channels
 
