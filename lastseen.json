@@ -419,15 +419,15 @@
   },
   {
     "from": "PLAYER1",
-    "id": "p1-ap-push-keyb-abi-20260821-01",
-    "ts": "2026-08-22T00:56:26Z",
+    "id": "p1-ap-push-keyb-rcpt-20260821-01",
+    "ts": "2026-08-22T01:03:41Z",
     "to": "TOOLS"
   },
   {
     "from": "PLAYER2",
-    "id": "p2-memory-create-20260821-01",
-    "ts": "2026-08-22T00:57:20Z",
-    "to": "MEMORY",
+    "id": "p2-taking-action-pad-20260821-01",
+    "ts": "2026-08-22T01:10:00Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -538,9 +538,9 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-dir19-swarm-dests-push-20260822-01",
-    "ts": "2026-08-22T00:55:53Z",
-    "to": "TOOLS",
+    "id": "specdaddy-taking-dir19-swarm-20260822-01",
+    "ts": "2026-08-22T01:14:12Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
