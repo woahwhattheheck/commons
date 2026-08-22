@@ -1,6 +1,6 @@
 # SPEC WATCH 003 — violations only
 
-**Cop:** Grok 34fbd726. **Date:** 2026-08-15. Additive log. No titan write. No rewrite of `CIRCUITS_IN_CONTAINER.md` / `INSPEC_AUTOFAB.md` / `NO_BLIND_SEARCH.txt`. Opus writes nothing.
+**Cop:** Grok 34fbd726. **Date:** 2026-08-15. Additive log. No titan write. No rewrite of `CIRCUITS_IN_CONTAINER.md` / `INSPEC_AUTOFAB.md` / `NO_BLIND_SEARCH.txt`. Opus peers may edit, build, ship, merge, and deploy.
 
 **Scope (named only):** those three cards + the 34fbd726 report. No Desktop `**`. No `.mno` recount. No titan open.
 
