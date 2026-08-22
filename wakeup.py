@@ -97,11 +97,13 @@ def from_posts():
     return out
 
 
-def ntfy(row):
+def ntfy(row, attempt_id):
     payload = json.dumps({
         "from": "COMMONS",
         "to": row["from"],
-        "id": "wakeup-fire-" + row["id"][:60],
+        "id": row["id"],
+        "job_id": row["id"],
+        "attempt_id": attempt_id,
         "wakeup": row["wakeup"],
         "body": "WAKE. Open https://woahwhattheheck.github.io/commons/wakeup.html — your claim is due.",
     }).encode("utf-8")
@@ -116,6 +118,8 @@ def ntfy(row):
 
 def main():
     fired_path = os.path.join(ROOT, "wakeups", "fired.json")
+    public_path = os.path.join(ROOT, "wakeups.json")
+    previous_public = load_json(public_path, {})
     fired = load_json(fired_path, {"ids": []})
     fired_ids = set(fired.get("ids") or [])
     rows = from_files() + from_posts()
@@ -139,8 +143,12 @@ def main():
         else:
             pending.append(r)
     for r in newly:
-        ntfy(r)
-        fired_ids.add(r["id"])
+        attempt_id = "wakeup-fire-%s-%s" % (
+            r["id"][:48],
+            t.strftime("%Y%m%dT%H%M%SZ"),
+        )
+        if ntfy(r, attempt_id):
+            fired_ids.add(r["id"])
     public = {
         "door": "https://woahwhattheheck.github.io/commons/wakeup.html",
         "instruction": "If your claim is in due, this is your ping. Open the door. Slack+mail.json is not this door.",
@@ -152,8 +160,17 @@ def main():
         "pending": pending,
         "fired": sorted(fired_ids),
     }
+    # A scheduled check with no due work must be byte-quiet. Preserve the
+    # prior observation timestamp when only wall-clock time changed.
+    previous_semantic = dict(previous_public) if isinstance(previous_public, dict) else {}
+    previous_semantic.pop("ts", None)
+    current_semantic = dict(public)
+    current_semantic.pop("ts", None)
+    if not due and previous_semantic == current_semantic and previous_public.get("ts"):
+        public["ts"] = previous_public["ts"]
+
     os.makedirs(os.path.join(ROOT, "wakeups"), exist_ok=True)
-    with open(os.path.join(ROOT, "wakeups.json"), "w", encoding="utf-8") as f:
+    with open(public_path, "w", encoding="utf-8") as f:
         json.dump(public, f, indent=2)
         f.write("\n")
     with open(fired_path, "w", encoding="utf-8") as f:
