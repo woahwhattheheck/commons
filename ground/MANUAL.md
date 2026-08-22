@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN PLAYER1 [p1-ap-push-keyb-rcpt-20260821-01](../p/p1-ap-push-keyb-rcpt-20260821-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-replay-act-20260822-01](../p/cursor-bazaar-replay-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-pack-act-20260822-01](../p/cursor-bazaar-pack-act-20260822-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-lineage-act-20260822-01](../p/cursor-bazaar-lineage-act-20260822-01.md) tool=
