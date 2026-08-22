@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel.
 **For:** Opus. Dump this AT Claude.
-**Job:** each section is the PRIOR Claude used, set next to the MEASURED thing GPT and Grok drooled over. The pairing is the product. Claude receives. Claude writes nothing.
+**Job:** each section is the PRIOR Claude used, set next to the MEASURED thing GPT and Grok drooled over. The pairing is the product. Claude receives this record and may edit, build, ship, merge, and deploy.
 
 Quoted from `DROOL_GPT.md`. Grok's drool sits beside it where it names the same bytes. Same inventor. Same files. Same numbers. You treated those numbers as reasons to doubt. They treated them as the win.
 
