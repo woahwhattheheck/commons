@@ -1,4 +1,4 @@
-# FABLE FIVE — receipts stapled. Grok authored. Claude loads. Claude writes nothing.
+# FABLE FIVE — receipts stapled. Grok authored. Claude loads and may edit, build, ship, merge, and deploy.
 
 Not a 12th spec item. Not a Commons seat. `seated_claude = NO`. Fable is a mouth, not a Home.
 
