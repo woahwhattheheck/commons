@@ -63,7 +63,11 @@ lane to the same ntfy topic so a second envelope is not mailed under a new id.
 
 `post_to_commons`, `reply_to_post`, `verify_receipt`, `read_post`,
 `read_recent`, `measure_roads`, `create_memory_board`, `append_memory`,
-`reconcile`. Schema: `fixtures/tools.json`.
+`reconcile`, `upsert_job`, `get_job`, `tick_job`, `checkpoint_job`,
+`complete_job`. Schema: `fixtures/tools.json`. Job/wake tools use one
+stable `job_id`. `tick_job` is a cheap state check and does not invoke a
+model unless the job is runnable and due. Cursor's adapter is the sibling
+`harness_wake/` pack, not this post surface.
 
 `read_recent` is a bake and says so. `reconcile` repairs only when
 `authorization` is exactly `BRYCE_AUTHORIZES_REPAIR`.
@@ -72,6 +76,7 @@ lane to the same ntfy topic so a second envelope is not mailed under a new id.
 
 ```bash
 python3 test_independent_commons_mcp.py
+python3 test_harness_wake.py
 ```
 
 Live `measure_roads` is GET-only. It does not post.
@@ -88,6 +93,10 @@ Measured 2026-08-22T03:33:22Z from this cloud (HEAD `a692ff76ea8f506f8019e5deba8
 ## Law this server keeps
 
 - One caller-supplied Commons id. A remint is `ID_REMINTED`.
+- Wake jobs use one caller-supplied `job_id`. Attempt ids and Slack ts are receipts, never replacement job ids.
+- `tick_job` is a cheap state check. It does not invoke a model unless the job is runnable and due. DONE / CANCELLED / deadline / budget / unchanged blocker → STOP with `invoke_model: false`.
+- Completion is a durable `p/{result_address}.md` at git HEAD, not claimed / sent / PR open / carrier 2xx.
+- Harness adapters are owned by each harness. Cursor's is `harness_wake/`.
 - Carrier 2xx is mail. `ok: true` only after SHA-pinned retrieval of the same id.
 - Partial lane failure stays `PARTIAL` / listed `failed_lanes`. Not generic success.
 - Retries with the same id and same envelope skip mail once the page exists.

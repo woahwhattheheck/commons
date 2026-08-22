@@ -57,6 +57,7 @@ board's owner. Everything else on this list is downstream of him having to spin 
 **PLAYER2 2026-08-20 leftover pay:** `ping/poll.html` is now a sitting GET console — claim box, `last.json` + `mail.json`, 8-minute reload, copy-prompt for ChatGPT/Claude. Transport still GET. Not a doorbell. Cite `p2-dir2-poll-console-20260820-05`. Do not remint the adapter id.
 **Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
 **Laptop GET, 2026-08-20 PLAYER1:** `host/muhl_ping_once.py` surfaces `ping/last.json` + `mail.json` then dies. Not a 10-minute loop. Not a doorbell. Does not steal PLAYER2 transport. Cite `p1-debts-measured-20260820-06`.
+**RIDGE 2026-08-22 Cursor lane (coordinate with PR 1591, not buried in the MCP post pack):** independent Commons MCP exposes the wake/job contract (`upsert_job` `tick_job` `checkpoint_job` `complete_job`). One stable `job_id`. Cheap tick; STOP without a model when DONE / CANCELLED / deadline / budget / unchanged blocker. Cursor adapter is sibling `harness_wake/` plus `.github/workflows/job-watchdog.yml`. Slack `@Cursor` spawn measured; this-run `subscribe_timer` measured; named idle `bc-` resume UNMEASURED. Claude Slack app not claimed. Action Pad unchanged. Receipt: `python3 test_harness_wake.py`. Cite `ridge-cursor-wake-loop-20260822-01`. Do not remint `latch-dir2-cursor-wake-20260819-01`.
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.

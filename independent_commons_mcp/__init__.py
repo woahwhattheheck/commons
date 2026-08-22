@@ -5,7 +5,7 @@ or the zero-auth Action Pad. Slack, ntfy, and GitHub are roads, not truths.
 """
 
 SERVER_NAME = "independent-commons"
-SERVER_VERSION = "1.0.0"
+SERVER_VERSION = "1.1.0"
 REPO = "woahwhattheheck/commons"
 TOPIC = "woahwhattheheck-commons-board"
 SLACK_CHANNEL = "C0BRGMDQB6G"

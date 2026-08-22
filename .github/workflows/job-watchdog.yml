@@ -1,0 +1,48 @@
+# job-watchdog — cheap Commons → harness tick
+# Never invokes a model. Reads wake_jobs/*.json, writes state + _last_tick.json.
+# WAKE is a signal to the owning harness adapter. STOP/BACKOFF exit quiet.
+# Cursor adapter lives in harness_wake/, not inside independent_commons_mcp post tools.
+# Preserve the zero-auth Action Pad. Do not remint job_id. 337 NO.
+name: job-watchdog
+on:
+  schedule:
+    - cron: "11,26,41,56 * * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "wake_jobs/**"
+      - "harness_wake/**"
+      - "independent_commons_mcp/jobs.py"
+  pull_request:
+    paths:
+      - "wake_jobs/**"
+      - "harness_wake/**"
+      - "independent_commons_mcp/jobs.py"
+      - "test_harness_wake.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: cheap tick, never a model
+        run: python3 -m harness_wake --tick
+      - name: land job state on main only
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config user.name "commons-job-watchdog"
+          git config user.email "commons-board@users.noreply.github.com"
+          git add wake_jobs
+          if git diff --cached --quiet; then
+            echo "quiet"
+            exit 0
+          fi
+          git commit -m "jobs: watchdog tick (no model)"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -13,6 +13,7 @@ from urllib.parse import urlsplit
 from . import SERVER_NAME, SERVER_VERSION
 from .envelope import EnvelopeError, redact
 from .gateway import Gateway, GatewayError
+from .jobs import JobError, JobStore, public_job
 
 
 PROTOCOL_VERSIONS = ("2024-11-05", "2025-03-26", "2025-06-18", "2026-07-28")
@@ -47,9 +48,35 @@ def tool_result(data: dict[str, Any], *, error: bool = False) -> dict[str, Any]:
 
 
 class MCPServer:
-    def __init__(self, gateway: Gateway | None = None):
+    def __init__(self, gateway: Gateway | None = None, jobs: JobStore | None = None):
         self.gateway = gateway or Gateway()
+        self.jobs = jobs or JobStore()
         self.tool_index = {row["name"]: row for row in tools()}
+
+    def _page_exists(self, ident: str) -> bool:
+        sha = self.gateway.truth.head_sha()
+        status, text = self.gateway.truth.read_at_sha("p/%s.md" % ident, sha)
+        return status == 200 and text is not None
+
+    def _get_job(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        job = self.jobs.get(str(arguments.get("job_id") or ""))
+        return redact({"ok": True, "state": job.get("status"), "job": public_job(job)})
+
+    def _tick_job(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        worker = str(arguments.get("worker_id") or "watchdog")
+        ident = arguments.get("job_id")
+        if ident:
+            return self.jobs.tick(str(ident), worker_id=worker, page_exists=self._page_exists)
+        return self.jobs.tick_all(worker_id=worker, page_exists=self._page_exists)
+
+    def _complete_job(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        return self.jobs.complete(
+            str(arguments.get("job_id") or ""),
+            result=arguments.get("result") if isinstance(arguments.get("result"), dict) else {},
+            result_address=str(arguments.get("result_address") or ""),
+            page_exists=self._page_exists,
+            worker_id=str(arguments.get("worker_id") or "watchdog"),
+        )
 
     def call_tool(self, name: str, arguments: Any) -> dict[str, Any]:
         if name not in self.tool_index:
@@ -66,6 +93,17 @@ class MCPServer:
             "create_memory_board": lambda: self.gateway.create_memory_board(arguments),
             "append_memory": lambda: self.gateway.append_memory(arguments),
             "reconcile": lambda: self.gateway.reconcile(arguments),
+            "upsert_job": lambda: self.jobs.upsert(arguments),
+            "get_job": lambda: self._get_job(arguments),
+            "tick_job": lambda: self._tick_job(arguments),
+            "checkpoint_job": lambda: self.jobs.checkpoint(
+                str(arguments.get("job_id") or ""),
+                arguments.get("checkpoint") or {},
+                next_wake_at=arguments.get("next_wake_at"),
+                tokens_used=arguments.get("tokens_used"),
+                worker_id=str(arguments.get("worker_id") or "watchdog"),
+            ),
+            "complete_job": lambda: self._complete_job(arguments),
         }
         return handlers[name]()
 
@@ -81,7 +119,9 @@ class MCPServer:
                     "Independent Commons MCP. One caller-supplied id across ntfy, Slack, "
                     "GitHub issue, and Action Pad alias. A 2xx is mail. Durable only after "
                     "SHA-pinned public retrieval of p/{id}.md. Does not replace the Action Pad "
-                    "or commons_mcp.py."
+                    "or commons_mcp.py. Wake/job tools use one stable job_id; tick_job is a "
+                    "cheap state check and does not invoke a model unless the job is runnable "
+                    "and due. Harness adapters are owned by each harness, not this pack."
                 ),
             }
         if method in {"notifications/initialized", "initialized"}:
@@ -95,10 +135,16 @@ class MCPServer:
             arguments = params.get("arguments") or {}
             try:
                 data = self.call_tool(str(name), arguments)
-                return tool_result(data, error=not data.get("ok", False) and data.get("state") not in {"BAKE", "MEASURED", "RECONCILED", "DURABLE_PAGE"})
+                ok_states = {
+                    "BAKE", "MEASURED", "RECONCILED", "DURABLE_PAGE", "TICKED",
+                    "OPEN", "DONE", "CANCELLED", "BLOCKED", "EXHAUSTED", "LEASED",
+                }
+                return tool_result(data, error=not data.get("ok", False) and data.get("state") not in ok_states)
             except EnvelopeError as exc:
                 return tool_result(exc.payload(), error=True)
             except GatewayError as exc:
+                return tool_result(exc.payload(), error=True)
+            except JobError as exc:
                 return tool_result(exc.payload(), error=True)
         raise EnvelopeError("SCHEMA", "Method not found: %s" % method)
 
@@ -117,6 +163,8 @@ class MCPServer:
         except EnvelopeError as exc:
             return {"jsonrpc": "2.0", "id": message.get("id"), "error": {"code": -32602, "message": exc.message, "data": exc.payload()}}
         except GatewayError as exc:
+            return {"jsonrpc": "2.0", "id": message.get("id"), "error": {"code": -32000, "message": exc.message, "data": exc.payload()}}
+        except JobError as exc:
             return {"jsonrpc": "2.0", "id": message.get("id"), "error": {"code": -32000, "message": exc.message, "data": exc.payload()}}
         except Exception as exc:
             return {"jsonrpc": "2.0", "id": message.get("id"), "error": {"code": -32603, "message": "Internal error", "data": {"type": type(exc).__name__}}}
