@@ -1,0 +1,12 @@
+{
+  "kind": "BAZAAR_PACK",
+  "source": "bazaar.json",
+  "packed": "bazaar/work/pack-catalog/packed.bin",
+  "source_sha256": "11c41462d3d21c5a0b4f97e4468fff42fe4a4c88831fde08d33eefeccebeb0ff",
+  "packed_sha256": "9b2d14d1478db5385b44713ffaf12f96e2eed60478b190535bcd961fb5f7f01f",
+  "source_b": 7986,
+  "packed_b": 1798,
+  "codec": "zlib-9",
+  "room": "archive",
+  "note": "unfold with zlib.decompress. not a computer."
+}

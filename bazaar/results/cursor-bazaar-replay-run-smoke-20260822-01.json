@@ -1,0 +1,19 @@
+{
+  "kind": "BAZAAR_REPLAY",
+  "id": "cursor-bazaar-replay-run-smoke-20260822-01",
+  "parent": "actions/results/codexsol-zero-auth-run-smoke-20260821-01.json",
+  "prior": {
+    "id": "codexsol-zero-auth-run-smoke-20260821-01",
+    "verb": "RUN",
+    "target": "repo",
+    "scope": "github",
+    "ok": true,
+    "output": "ACTION_PAD_ZERO_AUTH_RUN_OK\n",
+    "changed": [],
+    "canonical_records": {},
+    "action_outputs": {},
+    "action_deletions": [],
+    "executed_at": "2026-08-21T21:37:11.787088Z"
+  },
+  "note": "anti-entropy copy of a useful prior result. not a rematch."
+}
