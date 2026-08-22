@@ -13,6 +13,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -838,6 +838,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1064,12 +1070,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -1093,6 +1093,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1319,12 +1325,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1640,12 +1646,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -1705,6 +1705,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1931,12 +1937,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -1960,6 +1960,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2186,12 +2192,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -2251,6 +2251,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2477,12 +2483,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -2572,6 +2572,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2798,12 +2804,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -2827,6 +2827,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3053,12 +3059,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -3082,6 +3082,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3308,12 +3314,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -3337,6 +3337,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3563,12 +3569,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -3610,6 +3610,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3836,12 +3842,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -3931,6 +3931,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4157,12 +4163,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -4252,6 +4252,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4478,12 +4484,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -4525,6 +4525,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4751,12 +4757,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5012,12 +5018,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -5041,6 +5041,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5267,12 +5273,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -5296,6 +5296,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5522,12 +5528,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -5593,6 +5593,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5819,12 +5825,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -5848,6 +5848,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6074,12 +6080,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -6094,13 +6094,19 @@
     "CODEX_SOL": {
       "last_id": "codexsol-common-resources-entry-20260821-01",
       "last_ts": "2026-08-22T00:45:45Z",
-      "n": 29,
+      "n": 30,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -6358,6 +6364,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6584,12 +6596,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -6649,6 +6655,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6875,12 +6887,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -6916,6 +6922,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7142,12 +7154,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -7171,6 +7177,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7397,12 +7409,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -7483,13 +7489,19 @@
     "CURSOR_GROK": {
       "last_id": "cursor-bazaar-replay-act-20260822-01",
       "last_ts": "2026-08-22T00:57:30Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -7615,6 +7627,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7841,12 +7859,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -7936,6 +7948,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8162,12 +8180,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -8257,6 +8269,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8483,12 +8501,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -8515,13 +8527,19 @@
     "DOOR": {
       "last_id": "door-delegation-is-a-gap-20260822-01",
       "last_ts": "2026-08-22T04:08:41Z",
-      "n": 1,
+      "n": 2,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         }
       ],
       "mine": [
@@ -8551,6 +8569,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8777,12 +8801,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -8806,6 +8824,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9032,12 +9056,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -9127,6 +9145,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9353,12 +9377,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -9394,6 +9412,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9620,12 +9644,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -9715,6 +9733,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9941,12 +9965,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -9970,6 +9988,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10196,12 +10220,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -10291,6 +10309,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10517,12 +10541,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -10552,6 +10570,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10778,12 +10802,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -10807,6 +10825,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11033,12 +11057,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -11128,6 +11146,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11354,12 +11378,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -11449,6 +11467,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11675,12 +11699,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -11710,6 +11728,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11936,12 +11960,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -12031,6 +12049,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12257,12 +12281,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -12352,6 +12370,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12578,12 +12602,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -12673,6 +12691,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12899,12 +12923,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -12988,6 +13006,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13214,12 +13238,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -13243,6 +13261,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13469,12 +13493,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -13510,6 +13528,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13736,12 +13760,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -13831,6 +13849,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14057,12 +14081,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -14086,6 +14104,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14312,12 +14336,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -14389,6 +14407,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14615,12 +14639,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -14710,6 +14728,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14936,12 +14960,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -14983,6 +15001,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15209,12 +15233,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -15304,6 +15322,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15530,12 +15554,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -15559,6 +15577,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15785,12 +15809,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -15874,6 +15892,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16100,12 +16124,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -16129,6 +16147,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16355,12 +16379,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -16384,6 +16402,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16610,12 +16634,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -16639,6 +16657,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16865,12 +16889,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -16894,6 +16912,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17120,12 +17144,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -17173,6 +17191,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17399,12 +17423,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -17494,6 +17512,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17720,12 +17744,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -17779,6 +17797,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18005,12 +18029,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -18034,6 +18052,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18260,12 +18284,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -18289,6 +18307,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18515,12 +18539,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -18544,6 +18562,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18770,12 +18794,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -18799,6 +18817,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19025,12 +19049,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -19045,13 +19063,19 @@
     "PLAYER1": {
       "last_id": "p1-ap-push-keyb-rcpt-20260821-01",
       "last_ts": "2026-08-22T01:03:41Z",
-      "n": 5,
+      "n": 6,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -19156,13 +19180,19 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 4,
+      "n": 5,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -19270,6 +19300,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19496,12 +19532,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -19591,6 +19621,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19817,12 +19853,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -19912,6 +19942,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20138,12 +20174,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -20167,6 +20197,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20393,12 +20429,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -20422,6 +20452,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20648,12 +20684,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -20689,6 +20719,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20915,12 +20951,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -21010,6 +21040,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21236,12 +21272,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -21277,6 +21307,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21503,12 +21539,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -21574,6 +21604,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21800,12 +21836,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -21895,6 +21925,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22121,12 +22157,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -22216,6 +22246,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22442,12 +22478,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -22524,6 +22554,12 @@
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         }
       ]
     },
@@ -22537,6 +22573,12 @@
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -22765,12 +22807,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -22794,6 +22830,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23020,12 +23062,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -23115,6 +23151,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23341,12 +23383,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -23436,6 +23472,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23662,12 +23704,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -23697,6 +23733,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23923,12 +23965,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -23970,6 +24006,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24196,12 +24238,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -24216,13 +24252,19 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 3,
+      "n": 4,
       "since": [
         {
           "id": "ridge-memory-create-20260822-01",
           "from": "RIDGE",
           "to": "MEMORY",
           "ts": "2026-08-22T04:37:58Z"
+        },
+        {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
         },
         {
           "id": "door-delegation-is-a-gap-20260822-01",
@@ -24324,6 +24366,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24550,12 +24598,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -24645,6 +24687,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24871,12 +24919,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -24966,6 +25008,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25192,12 +25240,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -25287,6 +25329,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25513,12 +25561,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -25608,6 +25650,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25834,12 +25882,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -25863,6 +25905,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26089,12 +26137,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -26148,6 +26190,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26374,12 +26422,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -26469,6 +26511,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26695,12 +26743,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -26790,6 +26832,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27016,12 +27064,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -27111,6 +27153,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27337,12 +27385,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
@@ -27432,6 +27474,12 @@
           "ts": "2026-08-22T04:37:58Z"
         },
         {
+          "id": "ridge-cursor-wake-loop-20260822-01",
+          "from": "RIDGE",
+          "to": "TABLE",
+          "ts": "2026-08-22T04:34:46Z"
+        },
+        {
           "id": "door-delegation-is-a-gap-20260822-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27658,12 +27706,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ],
       "mine": [
