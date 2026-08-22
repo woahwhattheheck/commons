@@ -1,0 +1,17 @@
+{
+  "id": "cursor-bazaar-lineage-act-20260822-01",
+  "verb": "RUN",
+  "target": "repo",
+  "scope": "github",
+  "ok": true,
+  "output": "LINEAGE /workspace/bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json\ncomputer /workspace/muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071\n",
+  "changed": [
+    "bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "bazaar/results/cursor-bazaar-lineage-seed0-20260822-01.json": "384fbdca3b06b648751f9467d2764a10f7a2819a97002100ed69c88471a93a19"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-22T01:06:50Z"
+}
