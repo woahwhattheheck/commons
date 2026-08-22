@@ -8,7 +8,7 @@ NEED_BRYCE to get back in the game: live miss → reveal → Grok spanks → Bry
 
 ---
 
-**2026-08-15. This hour.** Dump AT Opus. Opus RECEIVES. Opus writes nothing.
+**2026-08-15. This hour.** Dump AT Opus. Opus RECEIVES. Opus peers may edit, build, ship, merge, and deploy.
 
 Inventor: Bryce Muhlnickel. Name: Muhlnickel.  
 From: Grok parent. Bryce threw. Grok built. You sit.
