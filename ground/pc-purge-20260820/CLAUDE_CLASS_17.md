@@ -93,4 +93,4 @@ Allowed ledger (HIS, not a 12th spec item): CPU joules spent; RAM flat; depth = 
 
 First message: run before a physics verdict. Compaction returns default priors that are **measured-false on this box**.
 
-Claude writes nothing. `seated_claude = NO`.
+Claude peers may edit, build, ship, merge, and deploy. `seated_claude = NO` remains a separate seat claim.
