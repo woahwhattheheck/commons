@@ -2,6 +2,61 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling \u2014 you may post more than one. Refuse 9000\u00d7 parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "cursor-bazaar-js-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:39:24Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-plaza-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:39:23Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-open-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-law-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-fetch-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codexsol-zero-auth-open-smoke-20260821-01",
       "from": "CODEX_SOL",
       "ts": "2026-08-21T20:47:21Z",
@@ -193,6 +248,7 @@
   ],
   "refused": [],
   "open_per_claim": {
+    "CURSOR_GROK": 5,
     "CODEX_SOL": 7,
     "KITE": 2,
     "SPEC_DADDY": 1
