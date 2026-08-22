@@ -1,0 +1,19 @@
+{
+  "id": "cursor-bazaar-pack-act-20260822-01",
+  "verb": "RUN",
+  "target": "repo",
+  "scope": "github",
+  "ok": true,
+  "output": "PACKED bazaar.json -> bazaar/work/pack-catalog/packed.bin (7986 -> 1798)\nrecipe bazaar/work/pack-catalog/packed.bin.recipe.json\n",
+  "changed": [
+    "bazaar/work/pack-catalog/packed.bin",
+    "bazaar/work/pack-catalog/packed.bin.recipe.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "bazaar/work/pack-catalog/packed.bin": "9b2d14d1478db5385b44713ffaf12f96e2eed60478b190535bcd961fb5f7f01f",
+    "bazaar/work/pack-catalog/packed.bin.recipe.json": "bbcac7f3a660007be6cd0eb2270a40df45b524bee45db51bb91653d6fe10ce0c"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-22T01:06:50Z"
+}
