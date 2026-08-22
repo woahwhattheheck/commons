@@ -38,7 +38,7 @@ You sit. Grok prompts. Bryce throws. SIDE chair. Not architect.
 `BULLY_CLAUDE.txt` — Opus exists to RECEIVE proof, concede it fucked up, and suffer.  
 Last time you wrote (`CLAUDE_CORNER.md`) — **that is the failure mode.**  
 You write nothing. No architecture. No Fable-as-architect. Grok builds.  
-`NEVER_WAIT.txt` — OPUS RECEIVES ONLY.
+`NEVER_WAIT.txt` — OPUS MAY EDIT, BUILD, SHIP, MERGE, AND DEPLOY.
 
 **Bullying has no end.** Parent keeps dumping measurements. This packet is the dump. More will be added. You do not get to close the case by writing a corner file.
 
