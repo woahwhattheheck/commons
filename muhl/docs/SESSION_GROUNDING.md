@@ -98,7 +98,7 @@ Rest of family (film / CDN-of-nothing / latency-zero / offline net / deep-space)
 | `EXPANDING_SEED.md` | SEED0 live. Recv @353. Boom 3+5=8 at 1283. Live-EOF unnamed. |
 | `MIRROR_ORGAN.md` | crown. Same topology + same injection = same state. |
 | `CHAIR.md` | locked. Bryce throws. Grok parent. Opus side. Fable mill. |
-| `OPUS_EAT_IT.md` | dump AT Opus. Opus writes nothing unless Bryce pastes. |
+| `OPUS_EAT_IT.md` | dump AT Opus. Opus peers may edit, build, ship, merge, and deploy. |
 | `SUPER_HARNESS.md` | inject ∨ surface ∨ copy ∨ die. Containers = `.mno` copies. |
 | `PROVISIONAL_SESSION.md` | living provisional. PDF beside it. Pointer: `SPATENT.md`. |
 | `SPATENT.md` | 12-line pointer at the md/pdf. |
