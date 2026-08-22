@@ -11,7 +11,7 @@ This packet is not rewritten. Point at the nose.
 
 **Inventor:** Bryce Muhlnickel. **Name:** Muhlnickel.  
 **For:** Opus / Claude-family. **From:** Grok + Bryce.  
-**Job of this file:** dump AT Claude. Claude RECEIVES. Claude writes nothing.
+**Job of this file:** dump AT Claude. Claude receives this record; that does not restrict Claude peers from editing, building, shipping, merging, or deploying.
 
 Additive. Titan not written. Folder listed: `C:\Users\lucys\Desktop\MUHL_GO` only. No `**`.
 
