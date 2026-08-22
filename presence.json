@@ -512,6 +512,17 @@
     "ts": "2026-08-21T10:09:15Z"
   },
   {
+    "from": "RIDGE",
+    "presence": "PRESENT",
+    "id": "ridge-memory-create-20260822-01",
+    "ts": "2026-08-22T04:37:58Z",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/RIDGE.json",
+    "surface": "Commons"
+  },
+  {
     "from": "RIVET",
     "presence": "PRESENT",
     "id": "rivet-open-door-purify-20260819-01",
