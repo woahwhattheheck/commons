@@ -13,9 +13,11 @@ owning harness adapter.
 """
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
 
+from harness_wake.callback import consume_delivery
 from harness_wake.cursor_adapter import claimed_paths, ntfy_payload, should_ring_issue_1316
 from harness_wake.watchdog import run
 from independent_commons_mcp.jobs import JobError, JobStore
@@ -187,8 +189,111 @@ class BoundedSelfWakeTests(unittest.TestCase):
         self.assertFalse(should_ring_issue_1316("cursor-slack"))
         payload = ntfy_payload({"job_id": JOB_ID, "owner_claim": "RIDGE", "harness": "cursor-slack"}, JOB_ID + "-a01")
         self.assertEqual(payload["job_id"], JOB_ID)
-        self.assertEqual(payload["id"], JOB_ID + "-a01")
-        self.assertNotEqual(payload["id"], payload["job_id"])
+        self.assertEqual(payload["id"], JOB_ID)
+        self.assertEqual(payload["attempt_id"], JOB_ID + "-a01")
+        self.assertNotEqual(payload["attempt_id"], payload["id"])
+
+
+class FakeDeliver:
+    def __init__(self, status=200):
+        self.status = status
+        self.calls = []
+
+    def __call__(self, url, payload):
+        self.calls.append({"url": url, "payload": payload})
+        return {"status": self.status, "body": "{}"}
+
+
+class SchedulerDeliveryTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix="wake-jobs-")
+        self.store = JobStore(self.tmp.name)
+        self.pages = set()
+        self.http = FakeDeliver()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_unchanged_checkpoint_wakes_after_backoff(self):
+        self.store.upsert(fields())
+        first = self.store.tick(JOB_ID, now=WATCHDOG, worker_id="cursor-ridge")
+        self.assertEqual(first["action"], "WAKE")
+        second = self.store.tick(JOB_ID, now=RESUME, worker_id="cursor-ridge")
+        self.assertEqual(second["action"], "BACKOFF")
+        self.assertFalse(second["invoke_model"])
+        due = self.store.get(JOB_ID)["next_wake_at"]
+        third = self.store.tick(JOB_ID, now=due, worker_id="cursor-ridge")
+        self.assertEqual(third["action"], "WAKE")
+        self.assertTrue(third["invoke_model"])
+        self.assertNotEqual(third["attempt_id"], first["attempt_id"])
+
+    def test_upsert_cannot_set_done_or_lower_tokens(self):
+        self.store.upsert(fields())
+        with self.assertRaises(JobError) as done:
+            self.store.upsert(fields(status="DONE"))
+        self.assertEqual(done.exception.code, "SCHEMA")
+        self.store.upsert(fields(tokens_used=10))
+        with self.assertRaises(JobError) as down:
+            self.store.upsert(fields(tokens_used=1))
+        self.assertEqual(down.exception.code, "SCHEMA")
+        self.store.tick(JOB_ID, now=WATCHDOG, worker_id="cursor-ridge")
+        with self.assertRaises(JobError) as ckpt:
+            self.store.checkpoint(JOB_ID, {"step": 1}, tokens_used=0, worker_id="cursor-ridge", now=WATCHDOG)
+        self.assertEqual(ckpt.exception.code, "SCHEMA")
+
+    def test_scheduler_deliver_separate_callback_then_quiet(self):
+        self.store.upsert(fields())
+        missed = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now=T0, http=self.http)
+        self.assertEqual(missed["delivered_count"], 0)
+        self.assertEqual(missed["wake_count"], 0)
+        self.assertEqual(missed["process_model_invocations"], 0)
+        self.assertEqual(self.http.calls, [])
+
+        first = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now=WATCHDOG, http=self.http)
+        self.assertEqual(first["wake_count"], 1)
+        self.assertEqual(first["delivered_count"], 1)
+        self.assertEqual(first["process_model_invocations"], 0)
+        mail = first["deliveries"][0]
+        self.assertEqual(mail["state"], "MAIL")
+        self.assertEqual(mail["job_id"], JOB_ID)
+        packed = json.loads(self.http.calls[0]["payload"])
+        self.assertEqual(packed["id"], JOB_ID)
+        self.assertEqual(packed["job_id"], JOB_ID)
+        self.assertNotEqual(packed["attempt_id"], packed["id"])
+
+        skipped = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now=RESUME, http=self.http)
+        self.assertEqual(skipped["wake_count"], 0)
+        self.assertEqual(skipped["backoff_count"], 1)
+        self.assertEqual(skipped["delivered_count"], 0)
+        self.assertEqual(len(self.http.calls), 1)
+
+        retry_at = self.store.get(JOB_ID)["next_wake_at"]
+        retry = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now=retry_at, http=self.http)
+        self.assertEqual(retry["wake_count"], 1)
+        self.assertEqual(retry["delivered_count"], 1)
+        self.assertEqual(len(self.http.calls), 2)
+
+        ckpt_now = "2026-08-22T04:25:00Z"
+        ack = consume_delivery(self.store, retry["deliveries"][0], now=ckpt_now, pages=self.pages)
+        self.assertEqual(ack["state"], "CHECKPOINT")
+        self.assertEqual(ack["step"], 1)
+        self.assertEqual(ack["job_id"], JOB_ID)
+
+        second = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now=ckpt_now, http=self.http)
+        self.assertEqual(second["wake_count"], 1)
+        self.assertEqual(second["delivered_count"], 1)
+        done_now = "2026-08-22T04:26:00Z"
+        done = consume_delivery(self.store, second["deliveries"][0], now=done_now, pages=self.pages)
+        self.assertEqual(done["state"], "DONE")
+        self.assertEqual(self.store.get(JOB_ID)["status"], "DONE")
+        self.assertIn(RESULT_ID, self.pages)
+
+        quiet = run(self.tmp.name, deliver=True, worker_id="gh-watchdog", now="2026-08-22T04:27:00Z", http=self.http)
+        self.assertEqual(quiet["wake_count"], 0)
+        self.assertEqual(quiet["delivered_count"], 0)
+        self.assertEqual(quiet["process_model_invocations"], 0)
+        self.assertFalse(quiet["invoke_model"])
+        self.assertEqual(len(self.http.calls), 3)
 
 
 class McpJobToolTests(unittest.TestCase):

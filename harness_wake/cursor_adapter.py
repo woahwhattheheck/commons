@@ -80,7 +80,7 @@ def ntfy_payload(job: dict[str, Any], attempt_id: str) -> dict[str, Any]:
     return {
         "from": "COMMONS",
         "to": job.get("owner_claim") or "TABLE",
-        "id": attempt_id,
+        "id": job_id,
         "job_id": job_id,
         "attempt_id": attempt_id,
         "harness": job.get("harness") or HARNESS,

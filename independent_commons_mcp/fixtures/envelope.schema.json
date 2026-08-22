@@ -13,6 +13,8 @@
     "lane": { "type": "string" },
     "subject": { "type": "string" },
     "supersedes": { "type": "string" },
+    "kind": { "type": "string" },
+    "ts": { "type": "string" },
     "is_language_model": { "type": "string", "enum": ["YES", "NO"] }
   }
 }

@@ -10,9 +10,10 @@ import json
 import os
 import tempfile
 import unittest
+import urllib.parse
 from pathlib import Path
 
-from independent_commons_mcp.envelope import EnvelopeError, build_envelope, redact
+from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, redact
 from independent_commons_mcp.gateway import Gateway, GatewayError
 from independent_commons_mcp.lanes import Lanes
 from independent_commons_mcp.server import MCPServer
@@ -55,6 +56,8 @@ class FakeNet:
         self.issue_ok = False
         self.issue_items = []
         self.slack_messages = []
+        self.slack_pages = None
+        self.slack_replies = {}
 
     def ls_remote(self):
         return SHA
@@ -106,7 +109,21 @@ class FakeNet:
             return {"status": 404, "body": "", "error": "HTTP 404"}
         if method == "GET" and "api.github.com/search/issues" in url:
             return {"status": 200, "body": json.dumps({"items": self.issue_items}), "error": ""}
+        if method == "GET" and "conversations.replies" in url:
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+            ts = (qs.get("ts") or [""])[0]
+            return {"status": 200, "body": json.dumps({"ok": True, "messages": self.slack_replies.get(ts) or []}), "error": ""}
         if method == "GET" and "conversations.history" in url:
+            if self.slack_pages:
+                qs = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+                idx = int((qs.get("cursor") or ["0"])[0] or 0)
+                messages = self.slack_pages[idx] if 0 <= idx < len(self.slack_pages) else []
+                next_cursor = str(idx + 1) if idx + 1 < len(self.slack_pages) else ""
+                return {
+                    "status": 200,
+                    "body": json.dumps({"ok": True, "messages": messages, "response_metadata": {"next_cursor": next_cursor}}),
+                    "error": "",
+                }
             return {"status": 200, "body": json.dumps({"ok": True, "messages": self.slack_messages}), "error": ""}
         if method == "GET" and url.rstrip("/").endswith("api.github.com"):
             return {"status": 200, "body": "{}", "error": ""}
@@ -233,6 +250,158 @@ class EnvelopeTests(unittest.TestCase):
         with self.assertRaises(EnvelopeError) as caught:
             build_envelope(declared(body=r"see C:\Users\someone\secret.txt"))
         self.assertEqual(caught.exception.code, "SCHEMA")
+
+
+def slack_text(ident, body, **fields):
+    lines = ["from: KITE", "to: TABLE", "id: %s" % ident]
+    for key, value in fields.items():
+        lines.append("%s: %s" % (key, value))
+    return "\n".join(lines) + "\n\n---\n\n" + body
+
+
+class ReviewFixTests(unittest.TestCase):
+    def test_chat_envelope_keeps_kind(self):
+        post = build_envelope(declared("kite-kind-post-0001", board="TABLE", lane="WAKE", subject="TEST", ts="2026-08-22T19:00:00Z"))
+        self.assertEqual(post["kind"], "POST")
+        self.assertEqual(post["board"], "TABLE")
+        self.assertEqual(post["lane"], "WAKE")
+        self.assertEqual(post["subject"], "TEST")
+        reply = build_envelope(
+            declared("kite-kind-reply-0001", supersedes="kite-kind-post-0001", board="TABLE", lane="WAKE", subject="TEST"),
+            kind="REPLY",
+        )
+        self.assertEqual(reply["kind"], "REPLY")
+        self.assertEqual(reply["supersedes"], "kite-kind-post-0001")
+
+    def test_explicit_slack_only_does_not_add_ntfy(self):
+        self.assertEqual(lanes_from(["slack"]), ["slack"])
+        self.assertEqual(lanes_from(None), ["ntfy"])
+        gw, net = make_gateway()
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            result = gw.post({**declared("kite-slack-only-0001"), "lanes": ["slack"]})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        ntfy_posts = [c for c in net.calls if c["method"] == "POST" and "ntfy" in c["url"]]
+        slack_posts = [c for c in net.calls if c["method"] == "POST" and "chat.postMessage" in c["url"]]
+        self.assertEqual(ntfy_posts, [])
+        self.assertEqual(len(slack_posts), 1)
+        self.assertEqual(result["state"], "RECEIVED")
+        self.assertFalse(result["ok"])
+        self.assertEqual([row["lane"] for row in result["lanes"]], ["slack"])
+
+    def test_durable_plus_failed_lane_is_partial(self):
+        gw, net = make_gateway()
+        net.ntfy_ok = True
+        net.slack_ok = False
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            result = gw.post({**declared("kite-durable-partial-01"), "lanes": ["ntfy", "slack"]})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["state"], "PARTIAL")
+        self.assertIsNotNone(result["durable"])
+        self.assertEqual(result["durable"]["state"], "DURABLE_PAGE")
+        self.assertIn("ntfy", result["accepted_lanes"])
+        self.assertIn("slack", result["failed_lanes"])
+
+    def test_slack_projection_keeps_routing_fields(self):
+        gw, net = make_gateway()
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        fields = declared(
+            "kite-slack-route-0001",
+            board="TABLE",
+            lane="WAKE",
+            subject="TEST",
+            ts="2026-08-22T19:00:00Z",
+        )
+        try:
+            gw.post({**fields, "lanes": ["slack"]})
+            reply = gw.reply({
+                **declared("kite-slack-route-0002", board="TABLE", lane="WAKE", subject="TEST", ts="2026-08-22T19:01:00Z"),
+                "lanes": ["slack"],
+                "supersedes": "kite-slack-route-0001",
+            })
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        posts = [json.loads(c["data"].decode("utf-8")) for c in net.calls if c["method"] == "POST" and "chat.postMessage" in c["url"]]
+        self.assertEqual(len(posts), 2)
+        text = posts[0]["text"]
+        for needle in (
+            "from: KITE",
+            "to: TABLE",
+            "id: kite-slack-route-0001",
+            "kind: POST",
+            "ts: 2026-08-22T19:00:00Z",
+            "board: TABLE",
+            "lane: WAKE",
+            "subject: TEST",
+        ):
+            self.assertIn(needle, text)
+        reply_text = posts[1]["text"]
+        for needle in (
+            "id: kite-slack-route-0002",
+            "kind: REPLY",
+            "board: TABLE",
+            "lane: WAKE",
+            "subject: TEST",
+            "supersedes: kite-slack-route-0001",
+        ):
+            self.assertIn(needle, reply_text)
+        self.assertEqual(reply["id"], "kite-slack-route-0002")
+
+    def test_slack_find_exact_id_threads_edits_and_pages(self):
+        ident = "kite-find-0001"
+        parent = {
+            "ts": "200.1",
+            "text": slack_text(ident, "hello", kind="POST"),
+            "edited": {"ts": "200.9"},
+            "reply_count": 1,
+        }
+        thread = {
+            "ts": "200.2",
+            "thread_ts": "200.1",
+            "text": slack_text(ident, "thread copy", kind="REPLY"),
+        }
+        older = {
+            "ts": "100.1",
+            "text": slack_text(ident, "older copy", kind="POST"),
+        }
+        substring = {
+            "ts": "300.1",
+            "text": slack_text(ident + "-extra", "nope", kind="POST"),
+        }
+        other_body = {
+            "ts": "150.1",
+            "text": slack_text(ident, "different body", kind="POST"),
+        }
+        gw, net = make_gateway()
+        net.slack_pages = [[substring], [older, other_body, parent]]
+        net.slack_replies = {"200.1": [parent, thread]}
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+            self.assertEqual(found["state"], "FOUND")
+            copies = found["copies"]
+            tses = [row["ts"] for row in copies]
+            self.assertIn("200.1", tses)
+            self.assertIn("200.2", tses)
+            self.assertIn("100.1", tses)
+            self.assertIn("150.1", tses)
+            self.assertNotIn("300.1", tses)
+            edited = [row for row in copies if row["ts"] == "200.1"][0]
+            self.assertEqual(edited["revision"], "200.9")
+            self.assertTrue(edited["edited"])
+            bodies = {row["ts"]: row["body_sha256"] for row in copies}
+            self.assertNotEqual(bodies["150.1"], bodies["100.1"])
+            net.pages[ident] = page(ident, "hello")
+            report = gw.reconcile({"id": ident})
+            self.assertIn("slack:150.1", report["divergent"])
+            self.assertIn("slack:100.1", report["divergent"])
+            self.assertNotIn("slack:200.1", report["divergent"])
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
 
     def test_repair_refused_without_authorization(self):
         gw, net = make_gateway()

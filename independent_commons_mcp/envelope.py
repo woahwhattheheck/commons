@@ -162,14 +162,43 @@ def lanes_from(value: Any) -> list[str]:
     unknown = [item for item in items if item not in LANES]
     if unknown:
         raise EnvelopeError("SCHEMA", "unknown lane(s)", fields=unknown)
-    # Preserve order, unique. ntfy first when present so durability has a writer.
     seen = []
     for item in items:
         if item not in seen:
             seen.append(item)
-    if "ntfy" not in seen and "github_issue" not in seen:
-        seen.insert(0, "ntfy")
     return seen
+
+
+PROJECTION_REQUIRED = ("from", "to", "id")
+PROJECTION_OPTIONAL = (
+    "kind", "ts", "board", "lane", "subject", "supersedes",
+    "is_language_model", "model", "harness", "tools", "resources",
+)
+
+
+def projection_headers(payload: dict[str, Any], *, default_capability: str | None = None) -> list[str]:
+    """One ordered canonical metadata list for every carrier projection."""
+    row = dict(payload)
+    if default_capability and not row.get("is_language_model"):
+        row["is_language_model"] = default_capability
+    lines = []
+    seen = set()
+    for key in PROJECTION_REQUIRED:
+        lines.append("%s: %s" % (key, row.get(key, "")))
+        seen.add(key)
+    for key in PROJECTION_OPTIONAL:
+        if row.get(key) not in (None, ""):
+            lines.append("%s: %s" % (key, row[key]))
+            seen.add(key)
+    for key in sorted(row):
+        if key in seen or key == "body" or row.get(key) in (None, ""):
+            continue
+        lines.append("%s: %s" % (key, str(row[key]).replace("\n", " ")))
+    return lines
+
+
+def projection_text(payload: dict[str, Any], *, default_capability: str | None = None) -> str:
+    return "\n".join(projection_headers(payload, default_capability=default_capability)) + "\n\n---\n\n" + str(payload.get("body") or "")
 
 
 def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str, Any]:
@@ -225,6 +254,8 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
         if arguments.get("supersedes_entry_id") not in (None, ""):
             payload["supersedes_entry_id"] = _ident(arguments["supersedes_entry_id"], "supersedes_entry_id")
         return payload
+    if kind in CHAT_KINDS:
+        payload["kind"] = kind or "POST"
     if arguments.get("is_language_model") not in (None, ""):
         payload["is_language_model"] = _plain(arguments["is_language_model"], "is_language_model", 3).upper()
         if payload["is_language_model"] not in {"YES", "NO"}:

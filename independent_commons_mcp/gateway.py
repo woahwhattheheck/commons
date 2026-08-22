@@ -152,7 +152,10 @@ class Gateway:
         accepted = [row for row in lane_rows if row.get("state") in {"ACCEPTED", "ALIASED"}]
         failed = [row for row in lane_rows if row.get("state") == "ERROR"]
         skipped = [row for row in lane_rows if row.get("state") in {"UNCONFIGURED", "SKIPPED"}]
-        if durable:
+        if durable and failed:
+            state = "PARTIAL"
+            ok = False
+        elif durable:
             state = "DURABLE_PAGE"
             ok = True
         elif accepted and failed:
@@ -365,6 +368,13 @@ class Gateway:
             full = outbox.get("full") or {}
             if full.get("body") and compare_page(text, full):
                 divergent.append("outbox_body")
+        if status == 200 and text:
+            _, git_body = parse_frontmatter(text)
+            git_sha = sha256_text(git_body.strip("\n"))
+            for copy in slack.get("copies") or []:
+                copy_sha = str(copy.get("body_sha256") or "")
+                if copy_sha and copy_sha != git_sha:
+                    divergent.append("slack:%s" % copy.get("ts"))
         report = redact({
             "ok": copies["git_head"] == "PRESENT",
             "state": "RECONCILED" if copies["git_head"] == "PRESENT" else "MISSING_ON_HEAD",

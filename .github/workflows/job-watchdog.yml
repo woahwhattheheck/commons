@@ -29,7 +29,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: cheap tick, never a model
-        run: python3 -m harness_wake --tick
+        run: |
+          set -e
+          if [ "${{ github.ref }}" = "refs/heads/main" ] && [ "${{ github.event_name }}" != "pull_request" ]; then
+            python3 -m harness_wake --tick --deliver
+          else
+            python3 -m harness_wake --tick
+          fi
       - name: land job state on main only
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:

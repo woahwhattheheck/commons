@@ -33,5 +33,9 @@ python3 -m harness_wake --tick
 python3 test_harness_wake.py
 ```
 
-`--deliver` mails ntfy on WAKE. ntfy 200 is mail. The watchdog process always
-reports `process_model_invocations: 0`.
+`--deliver` mails ntfy on WAKE after the cheap pre-check. Main-branch
+schedule runs `--tick --deliver`. Pull-request ticks stay `--tick` only.
+ntfy 200 is mail. The watchdog process always reports
+`process_model_invocations: 0`. A separately running harness consumes the
+delivery via `harness_wake.callback.consume_delivery`; `tick()` never calls
+it.

@@ -7,7 +7,7 @@ import urllib.parse
 from typing import Any, Callable
 
 from . import ACTION_PAD, GITHUB_API, PAGES, REPO, SLACK_CHANNEL, TOPIC
-from .envelope import canonical_json, redact, utc_now
+from .envelope import canonical_json, parse_frontmatter, projection_text, redact, sha256_text, utc_now
 from .truth import default_http
 
 
@@ -23,6 +23,32 @@ def _lane(name: str, state: str, **extra: Any) -> dict[str, Any]:
     row = {"lane": name, "state": state, "id": extra.pop("id", ""), **extra}
     row.setdefault("received_at", utc_now())
     return redact(row)
+
+
+def _exact_id_header(text: str, ident: str) -> bool:
+    for line in text.replace("\r\n", "\n").split("\n"):
+        stripped = line.strip()
+        if not stripped.lower().startswith("id:"):
+            continue
+        if stripped.split(":", 1)[1].strip() == ident:
+            return True
+    return False
+
+
+def _copy_from_slack_message(ident: str, message: dict[str, Any]) -> list[dict[str, Any]]:
+    text = str(message.get("text") or "")
+    if not _exact_id_header(text, ident):
+        return []
+    _meta, body = parse_frontmatter(text)
+    edited = message.get("edited") if isinstance(message.get("edited"), dict) else {}
+    return [{
+        "id": ident,
+        "ts": message.get("ts"),
+        "thread_ts": message.get("thread_ts") or message.get("ts"),
+        "revision": str(edited.get("ts") or "1"),
+        "edited": bool(edited),
+        "body_sha256": sha256_text(body.strip("\n")),
+    }]
 
 
 class Lanes:
@@ -65,15 +91,7 @@ class Lanes:
         token = os.environ.get("COMMONS_GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
         if not token:
             return _lane("github_issue", "UNCONFIGURED", id=payload["id"], error="no server-side GitHub token")
-        skip = {"body"}
-        headers = []
-        for key in ("from", "to", "id", "ts"):
-            if payload.get(key):
-                headers.append("%s: %s" % (key, payload[key]))
-        for key in sorted(payload):
-            if key not in skip and key not in {"from", "to", "id", "ts"} and payload.get(key) not in (None, ""):
-                headers.append("%s: %s" % (key, str(payload[key]).replace("\n", " ")))
-        body = "\n".join(headers) + "\n\n---\n\n" + str(payload.get("body") or "")
+        body = projection_text(payload)
         data = json.dumps({"title": payload["id"], "body": body, "labels": ["board"]}).encode("utf-8")
         row = self.http(
             "POST",
@@ -113,16 +131,7 @@ class Lanes:
 
     def slack_submit(self, payload: dict[str, Any], *, thread_ts: str = "") -> dict[str, Any]:
         ident = payload["id"]
-        text = (
-            "from: %(from)s\nto: %(to)s\nid: %(id)s\n" % payload
-            + ("supersedes: %s\n" % payload["supersedes"] if payload.get("supersedes") else "")
-            + "is_language_model: %s\n" % (payload.get("is_language_model") or "NO")
-        )
-        if payload.get("is_language_model") == "YES":
-            for key in ("model", "harness", "tools", "resources"):
-                if payload.get(key):
-                    text += "%s: %s\n" % (key, payload[key])
-        text += "\n---\n\n" + str(payload.get("body") or "")
+        text = projection_text(payload, default_capability="NO")
         token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
         webhook = os.environ.get("COMMONS_SLACK_WEBHOOK_URL") or os.environ.get("SLACK_WEBHOOK_URL") or ""
         channel = os.environ.get("COMMONS_SLACK_CHANNEL", SLACK_CHANNEL)
@@ -199,36 +208,61 @@ class Lanes:
         channel = os.environ.get("COMMONS_SLACK_CHANNEL", SLACK_CHANNEL)
         if channel != SLACK_CHANNEL:
             return _lane("slack_in", "ERROR", id=ident, error="channel is not the allowlisted #commons")
-        needle = "id: " + ident
-        row = self.http(
-            "GET",
-            "https://slack.com/api/conversations.history?channel=%s&limit=100" % channel,
-            headers={"Authorization": "Bearer " + token},
-            timeout=15.0,
-        )
-        try:
-            parsed = json.loads(row.get("body") or "{}")
-        except json.JSONDecodeError:
-            parsed = {}
-        if not parsed.get("ok"):
-            return _lane("slack_in", "ERROR", id=ident, error="conversations.history not ok")
-        hits = []
-        for message in parsed.get("messages") or []:
-            text = str(message.get("text") or "")
-            if needle in text:
-                hits.append({
-                    "ts": message.get("ts"),
-                    "thread_ts": message.get("thread_ts") or message.get("ts"),
-                    "revision": 1,
-                })
+        hits: list[dict[str, Any]] = []
+        cursor = ""
+        pages = 0
+        while pages < 10:
+            pages += 1
+            url = "https://slack.com/api/conversations.history?channel=%s&limit=200" % channel
+            if cursor:
+                url += "&cursor=" + urllib.parse.quote(cursor)
+            row = self.http(
+                "GET",
+                url,
+                headers={"Authorization": "Bearer " + token},
+                timeout=15.0,
+            )
+            try:
+                parsed = json.loads(row.get("body") or "{}")
+            except json.JSONDecodeError:
+                parsed = {}
+            if not parsed.get("ok"):
+                return _lane("slack_in", "ERROR", id=ident, error="conversations.history not ok")
+            for message in parsed.get("messages") or []:
+                hits.extend(self._slack_copies(ident, message, token, channel))
+            cursor = ((parsed.get("response_metadata") or {}).get("next_cursor") or "").strip()
+            if not cursor:
+                break
+        hits.sort(key=lambda row: str(row.get("ts") or ""), reverse=True)
         return _lane(
             "slack_in",
             "FOUND" if hits else "MISSING",
             id=ident,
             channel=channel,
             copies=hits,
-            note="read-only allowlisted #commons; does not write p/",
+            note="read-only allowlisted #commons; exact id header; threads, edits, pagination; does not write p/",
         )
+
+    def _slack_copies(self, ident: str, message: dict[str, Any], token: str, channel: str) -> list[dict[str, Any]]:
+        out = _copy_from_slack_message(ident, message)
+        ts = str(message.get("ts") or "")
+        if int(message.get("reply_count") or 0) <= 0 or not ts:
+            return out
+        reply_row = self.http(
+            "GET",
+            "https://slack.com/api/conversations.replies?channel=%s&ts=%s&limit=200" % (channel, urllib.parse.quote(ts)),
+            headers={"Authorization": "Bearer " + token},
+            timeout=15.0,
+        )
+        try:
+            replies = json.loads(reply_row.get("body") or "{}")
+        except json.JSONDecodeError:
+            replies = {}
+        if not replies.get("ok"):
+            return out
+        for reply in (replies.get("messages") or [])[1:]:
+            out.extend(_copy_from_slack_message(ident, reply))
+        return out
 
     def github_find(self, ident: str) -> dict[str, Any]:
         query = 'repo:%s type:issue in:title "%s"' % (REPO, ident)

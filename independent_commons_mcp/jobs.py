@@ -134,9 +134,22 @@ class JobStore:
         if pred is None:
             pred = (existing or {}).get("completion_predicate") or {"type": "status_done"}
         _predicate(pred)
-        status = str(fields.get("status") or (existing or {}).get("status") or "OPEN")
-        if status not in {"OPEN", "LEASED", "BLOCKED", "DONE", "CANCELLED", "EXHAUSTED"}:
-            raise JobError("SCHEMA", "unknown status", state="SCHEMA", job_id=ident)
+        if existing and existing.get("status") in TERMINAL:
+            raise JobError("TERMINAL", "job is %s; terminal transitions are complete/cancel/exhaust only" % existing["status"], state=existing["status"], job_id=ident)
+        requested = fields.get("status")
+        if requested in {"DONE", "CANCELLED", "EXHAUSTED", "LEASED"}:
+            raise JobError("SCHEMA", "upsert cannot set %s; use complete/cancel/tick" % requested, state="SCHEMA", job_id=ident)
+        status = str((existing or {}).get("status") or "OPEN")
+        if requested in {"OPEN", "BLOCKED"}:
+            status = str(requested)
+        if status not in {"OPEN", "LEASED", "BLOCKED"}:
+            status = "OPEN"
+        old_tokens = int((existing or {}).get("tokens_used") or 0)
+        tokens_used = old_tokens
+        if "tokens_used" in fields:
+            tokens_used = _int(fields.get("tokens_used"), 0, "tokens_used")
+            if tokens_used < old_tokens:
+                raise JobError("SCHEMA", "tokens_used is monotonic", state="SCHEMA", job_id=ident)
         job.update({
             "job_id": ident,
             "owner_claim": owner,
@@ -151,20 +164,22 @@ class JobStore:
             "max_attempts": _int(fields.get("max_attempts"), (existing or {}).get("max_attempts") or DEFAULT_MAX_ATTEMPTS, "max_attempts"),
             "attempt_count": (existing or {}).get("attempt_count") or 0,
             "budget_tokens": _int(fields.get("budget_tokens"), (existing or {}).get("budget_tokens") or DEFAULT_BUDGET, "budget_tokens"),
-            "tokens_used": (existing or {}).get("tokens_used") or 0,
+            "tokens_used": tokens_used,
             "completion_predicate": pred,
             "result_address": _optional_id(fields.get("result_address"), (existing or {}).get("result_address") or ""),
             "status": status,
             "event_receipts": list((existing or {}).get("event_receipts") or []),
             "lease": (existing or {}).get("lease"),
             "blocker": fields["blocker"] if "blocker" in fields else (existing or {}).get("blocker"),
+            "no_progress_count": (existing or {}).get("no_progress_count") or 0,
+            "in_backoff": (existing or {}).get("in_backoff") or False,
             "updated_at": utc_now(),
         })
         if not existing:
             job["created_at"] = utc_now()
             job["woke_once"] = False
-        if "tokens_used" in fields:
-            job["tokens_used"] = _int(fields.get("tokens_used"), 0, "tokens_used")
+            job["no_progress_count"] = 0
+            job["in_backoff"] = False
         self._save(job)
         return redact({"ok": True, "state": job["status"], "job": public_job(job)})
 
@@ -236,25 +251,33 @@ class JobStore:
 
         fp = fingerprint(job.get("checkpoint"))
         if job.get("woke_once") and job.get("last_wake_checkpoint_fp") == fp:
-            backoff = min(
-                int(job.get("backoff_seconds") or DEFAULT_BACKOFF) * 2,
-                int(job.get("max_backoff_seconds") or DEFAULT_MAX_BACKOFF),
-            )
-            job["backoff_seconds"] = backoff
-            job["next_wake_at"] = iso(now_dt + timedelta(seconds=backoff))
-            job["status"] = "OPEN"
-            job["lease"] = None
-            self._save(job)
-            return redact({
-                "ok": True,
-                "state": "TICKED",
-                "job_id": job["job_id"],
-                "action": "BACKOFF",
-                "invoke_model": False,
-                "reason": "UNCHANGED_CHECKPOINT",
-                "now": now_text,
-                "job": public_job(job),
-            })
+            if job.get("in_backoff"):
+                job["in_backoff"] = False
+            else:
+                no_progress = int(job.get("no_progress_count") or 0) + 1
+                job["no_progress_count"] = no_progress
+                if no_progress >= int(job.get("max_attempts") or DEFAULT_MAX_ATTEMPTS):
+                    return self._exhaust(job, "NO_PROGRESS", now_text)
+                backoff = min(
+                    int(job.get("backoff_seconds") or DEFAULT_BACKOFF) * 2,
+                    int(job.get("max_backoff_seconds") or DEFAULT_MAX_BACKOFF),
+                )
+                job["backoff_seconds"] = backoff
+                job["next_wake_at"] = iso(now_dt + timedelta(seconds=backoff))
+                job["in_backoff"] = True
+                job["status"] = "OPEN"
+                job["lease"] = None
+                self._save(job)
+                return redact({
+                    "ok": True,
+                    "state": "TICKED",
+                    "job_id": job["job_id"],
+                    "action": "BACKOFF",
+                    "invoke_model": False,
+                    "reason": "UNCHANGED_CHECKPOINT",
+                    "now": now_text,
+                    "job": public_job(job),
+                })
 
         lease_id = "lease-" + uuid.uuid4().hex[:12]
         attempt_n = int(job.get("attempt_count") or 0) + 1
@@ -269,6 +292,7 @@ class JobStore:
             "until": iso(now_dt + timedelta(seconds=int(job.get("lease_seconds") or DEFAULT_LEASE))),
         }
         job["status"] = "LEASED"
+        job["in_backoff"] = False
         job.setdefault("event_receipts", []).append({
             "attempt_id": attempt_id,
             "ts": now_text,
@@ -334,16 +358,25 @@ class JobStore:
             raise JobError("TERMINAL", "job is %s" % job["status"], state=job["status"], job_id=job_id)
         lease = job.get("lease") or {}
         holder = str(lease.get("holder") or "")
-        if holder and holder != worker_id:
+        now_text = now or utc_now()
+        now_dt = parse_ts(now_text)
+        until = parse_ts(lease.get("until") or "") if lease else None
+        lease_active = bool(holder and until and now_dt and now_dt < until)
+        if lease_active and holder != worker_id:
             raise JobError("LEASE_HELD", "lease belongs to %s" % holder, state="LEASE_HELD", job_id=job_id)
         job["checkpoint"] = checkpoint if isinstance(checkpoint, dict) else {"value": checkpoint}
         job["status"] = "OPEN"
         job["lease"] = None
+        job["no_progress_count"] = 0
+        job["in_backoff"] = False
         if next_wake_at:
             job["next_wake_at"] = _ts(next_wake_at, "next_wake_at")
         if tokens_used is not None:
-            job["tokens_used"] = _int(tokens_used, 0, "tokens_used")
-        now_text = now or utc_now()
+            new_tokens = _int(tokens_used, 0, "tokens_used")
+            old_tokens = int(job.get("tokens_used") or 0)
+            if new_tokens < old_tokens:
+                raise JobError("SCHEMA", "tokens_used is monotonic", state="SCHEMA", job_id=job_id)
+            job["tokens_used"] = new_tokens
         job.setdefault("event_receipts", []).append({
             "attempt_id": "ckpt-%s" % fingerprint(job["checkpoint"]),
             "ts": now_text,
@@ -426,6 +459,15 @@ class JobStore:
         self._save(job)
         return redact({"ok": True, "state": "CANCELLED", "job": public_job(job)})
 
+    def append_receipt(self, job_id: str, receipt: dict[str, Any]) -> dict[str, Any]:
+        job = self.get(job_id)
+        row = dict(receipt)
+        row.setdefault("ts", utc_now())
+        job.setdefault("event_receipts", []).append(row)
+        job["updated_at"] = row["ts"]
+        self._save(job)
+        return redact({"ok": True, "state": job.get("status"), "job": public_job(job)})
+
     def record_blocker(self, job_id: str, kind: str, detail: str) -> dict[str, Any]:
         if kind not in BLOCKER_KINDS:
             raise JobError("SCHEMA", "blocker kind must be external_authority or unavailable_state", state="SCHEMA", job_id=job_id)
@@ -492,7 +534,7 @@ def public_job(job: dict[str, Any]) -> dict[str, Any]:
         "max_attempts", "attempt_count", "budget_tokens", "tokens_used",
         "completion_predicate", "result_address", "status", "blocker",
         "lease", "created_at", "updated_at", "completed_at", "exhausted_reason",
-        "event_receipts",
+        "event_receipts", "no_progress_count", "in_backoff",
     )
     return {key: job.get(key) for key in keep}
 
