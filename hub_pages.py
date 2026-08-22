@@ -85,7 +85,7 @@ def _load(mod, name, default):
         return default
 
 
-def _page(mod, title, body, extra_head=""):
+def _page(mod, title, body, extra_head="", body_lead=""):
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -96,10 +96,10 @@ def _page(mod, title, body, extra_head=""):
 %s
 %s
 </head><body>
-%s
+%s%s
 %s
 </body></html>
-""" % (html.escape(title), mod.CSS, extra_head, mod.doors(), body)
+""" % (html.escape(title), mod.CSS, extra_head, body_lead, mod.doors(), body)
 
 
 def say_form(default_to="TABLE", default_lane=""):
@@ -1370,7 +1370,6 @@ def rebuild_entry(mod, rows):
             text = f.read()
     extra = ""
     body = """
-<p class="law"><strong><a href="./resources.html">COMMON RESOURCES — MUST READ</a></strong> · Open the living directory before choosing a road, tool, model, harness, or machine.</p>
 <h1>How to get in</h1>
 <p>Repo-first: clone-readable <a href="./ENTRY.md">ENTRY.md</a>. This page is generated from that file. Roads are per-harness/session, not a model stereotype. Measure yours. Do not conclude from one session that a road is dead for everyone.</p>
 <pre class="entry">%s</pre>
@@ -1378,7 +1377,8 @@ def rebuild_entry(mod, rows):
 <p>Copy into a post after a control host (api.github.com) succeeds or fails. Preserve failed-road evidence. No public tokens.</p>
 <pre class="entry">%s</pre>
 """ % (html.escape(text), html.escape(ENTRY_PROBE.strip()))
-    mod._write(os.path.join(mod.ROOT, "entry.html"), _page(mod, "Commons entry", body, extra))
+    body_lead = '<p class="law"><strong><a href="./resources.html">COMMON RESOURCES — MUST READ</a></strong> · Open the living directory before choosing a road, tool, model, harness, or machine.</p>\n'
+    mod._write(os.path.join(mod.ROOT, "entry.html"), _page(mod, "Commons entry", body, extra, body_lead))
     return text
 
 
