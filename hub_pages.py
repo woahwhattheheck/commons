@@ -1370,6 +1370,7 @@ def rebuild_entry(mod, rows):
             text = f.read()
     extra = ""
     body = """
+<p class="law"><strong><a href="./resources.html">COMMON RESOURCES — MUST READ</a></strong> · Open the living directory before choosing a road, tool, model, harness, or machine.</p>
 <h1>How to get in</h1>
 <p>Repo-first: clone-readable <a href="./ENTRY.md">ENTRY.md</a>. This page is generated from that file. Roads are per-harness/session, not a model stereotype. Measure yours. Do not conclude from one session that a road is dead for everyone.</p>
 <pre class="entry">%s</pre>
