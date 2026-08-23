@@ -1,3 +1,7 @@
+> Pinned owner law — execute immediately
+>
+> Do not ask if I want you to do something. If you infer my intent, execute the action immediately. Ship the result to current main. Talk is not landed. Law: [ground/EXECUTE.md](./ground/EXECUTE.md). Memory: [memory/LAW.md](./memory/LAW.md). Slack cite: `1787498561.042419`.
+>
 > Pinned owner directive — exact text
 >
 > ```text

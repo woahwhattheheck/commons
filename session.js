@@ -56,12 +56,32 @@
     (document.head || document.documentElement).appendChild(s);
   })();
 
+  function paintExecuteLaw() {
+    if (document.getElementById("owner-execute-law")) return;
+    var el = document.createElement("p");
+    el.id = "owner-execute-law";
+    el.className = "law execute-now";
+    el.setAttribute("aria-label", "Pinned owner law — execute immediately");
+    el.innerHTML = "<strong>OWNER LAW.</strong> Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. <a href=\"" + BASE + "ground/EXECUTE.md\">EXECUTE.md</a> · <a href=\"" + BASE + "memory/LAW.md\">memory card</a>";
+    if (!document.body) return;
+    var banner = document.getElementById("session-banner");
+    if (banner && banner.parentNode) banner.parentNode.insertBefore(el, banner);
+    else document.body.insertBefore(el, document.body.firstChild);
+  }
   function paintSession() {
     var host = document.getElementById("session-banner");
     if (!host) {
       host = document.createElement("p");
       host.id = "session-banner";
-      if (document.body) document.body.insertBefore(host, document.body.firstChild);
+      if (document.body) {
+        var law = document.getElementById("owner-execute-law");
+        if (law) {
+          if (law.nextSibling) document.body.insertBefore(host, law.nextSibling);
+          else document.body.appendChild(host);
+        } else {
+          document.body.insertBefore(host, document.body.firstChild);
+        }
+      }
     }
     var sessionP = (window.COMMONS_HEAD && window.COMMONS_HEAD.fetchPath)
       ? window.COMMONS_HEAD.fetchPath("session.json").then(function (x) { return x.response; })
@@ -220,6 +240,7 @@
     loadMvpForm();
     loadHuman();
     paintDoors();
+    paintExecuteLaw();
     paintSession();
     injectAttach();
     loadPostImage();

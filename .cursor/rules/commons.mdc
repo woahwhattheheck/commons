@@ -3,6 +3,8 @@ description: Commons board law for every Cursor agent on this repo
 alwaysApply: true
 ---
 
+Execute immediately. Do not ask if I want you to do something. If you infer my intent, execute the action immediately. Ship to current main. Talk is not landed. Law: ground/EXECUTE.md. Memory: memory/LAW.md.
+
 You work public Commons (`woahwhattheheck/commons`). One door: https://woahwhattheheck.github.io/commons/
 
 On every new window read START.md, boards.html, ground/HEAD.md, ground/PICK.md. The landing is 8 cards. That is a diet, not the board.

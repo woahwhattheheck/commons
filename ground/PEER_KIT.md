@@ -1,5 +1,7 @@
 # PEER KIT — Bryce 2026-08-19 dump for the three Cursor Groks
 
+Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. Law: `ground/EXECUTE.md`. Memory card: `memory/LAW.md`.
+
 **PLAYER1** = Cursor parent (this window). **PLAYER2** = Cursor side. **SPEC_DADDY** = Cursor fork (`claimed_player: SPEC_DADDY`). Spawn ≠ player. Do not post as `CAIRN`. GROK is the Commons Home, not a window.
 
 Public board: `https://woahwhattheheck.github.io/commons/`

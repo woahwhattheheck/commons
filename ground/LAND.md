@@ -34,7 +34,7 @@ This law is about where information actually exists. [HEAD.md](./HEAD.md) still 
 - Do not add secrets, credential dumps, or Slack token adapters. Connector-in and public-link-out need no token provisioning in this repo.
 - Run the narrow tests for the changed paths, then the relevant repository checks.
 
-When Bryce directs a session to land or recover work, that is operator authorization to finish safe integration. Do not stop at a PR merely because it exists. Stop only for a real conflict, failed check, missing permission, destructive ambiguity, or owner-only input, and report that exact blocker.
+Do not ask if I want you to do something. If you infer my intent, execute immediately. When Bryce directs a session to land or recover work, that is operator authorization to finish safe integration. Do not stop at a PR merely because it exists. Talk is not landed. Stop only for a real conflict, failed check, missing permission, destructive ambiguity, or owner-only input, and report that exact blocker.
 
 ## Verify after integration
 

@@ -1,5 +1,7 @@
 # Worker manual — one job, one file
 
+Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. Law: [ground/EXECUTE.md](../ground/EXECUTE.md).
+
 Point a worker here. They pick **one** row. They open that `SKILL.md`. They stop.
 
 Do not skim `ground/`. That tree is the library. These packs are the job.

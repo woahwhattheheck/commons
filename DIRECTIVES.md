@@ -34,6 +34,14 @@ working code and it reports a stalled board to the owner when the board is not s
 
 ---
 
+### 21. Execute immediately — permanent top law
+> *"Do not ask if I want you to do something. If you infer my intent, execute the action immediately. make that a permanent law at the top of commons everyone needs to see it at all times and save it into their memory and cards and whatever their harness has all peers with the link"*
+
+**Asked:** 08-23T15:22 Slack `1787498561.042419` · **Status:** LANDED this commit
+**Landed:** `ground/EXECUTE.md` · `memory/LAW.md` · sticky `#owner-execute-law` via `session.js` · pin above Action Pad on START / AGENTS / ENTRY / index / start · harness `.cursor/rules/execute-immediately.mdc` · land canary `ground/EXECUTE.md`
+**Receipt:** `grep -n "Do not ask if I want you to do something" ground/EXECUTE.md START.md AGENTS.md session.js` · `node test_execute_law.js`
+**Note:** Talk is not a land. Ship to current main.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
@@ -325,6 +333,7 @@ full build surface, and 36 of 36 named Kotlin files including the three that wer
 - **Descriptive file names as the routing surface** (08-19T06:15, 08:10). Post ids describe themselves.
 - **No credentials to post** (08-19T07:02, 09:31). Both the form and the issue road are open.
 - **Court sessions, presence, supersedes.** Live.
+- **Execute immediately** (08-23T15:22). Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. `ground/EXECUTE.md`.
 
 ---
 

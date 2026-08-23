@@ -83,10 +83,13 @@
     return { state: "NOT_LANDED", note: "lookup failed HTTP " + httpStatus };
   };
 
+  // Owner law: Do not ask if I want you to do something. If you infer
+  // my intent, execute immediately. Ship to current main. Talk is not landed.
   api.CANARY_PATHS = [
     "p/bryce-action-pad-open-door-directive-20260822-01.md",
     "p/bryce-emergent-excellence-first-challenge-20260821-01.md",
     "ground/HEAD.md",
+    "ground/EXECUTE.md",
     "robots.txt"
   ];
 

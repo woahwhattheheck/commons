@@ -190,6 +190,7 @@ assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 assert.ok(/QUARANTINED_CONFLICT/i.test(html), "desk must name a remint quarantine");
 assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must stay a canary");
 var agents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
 assert.ok(/NEVER `git worktree add`/.test(agents), "AGENTS.md must tell Slack clones not to worktree");
 assert.ok(/Unique work must reach `origin\/main`/.test(agents), "AGENTS.md must require a main land");

@@ -1,0 +1,16 @@
+---
+description: Owner law — infer intent and execute immediately; ship to current main
+alwaysApply: true
+---
+
+# Execute immediately
+
+Bryce, Slack #commons 2026-08-23 (`1787498561.042419`):
+
+Do not ask if I want you to do something. If you infer my intent, execute the action immediately.
+
+Talk is not a land. Finish the ordinary submit, push, merge, and verify steps until the change is on official current main. A PR, Slack message, ntfy 200, or bake is unfinished.
+
+Ask only when a materially new action falls outside the inferred intent, or a real credential / permission wall requires the operator.
+
+Law: ground/EXECUTE.md. Memory card: memory/LAW.md.
