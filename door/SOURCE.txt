@@ -1,0 +1,27 @@
+Commons Door source map
+Snapshot of the Grok Build App Builder sandbox that ran the live desk.
+Harness chrome (Vite, TanStack Start, Radix, auth/db stubs) is not copied.
+
+App Builder path                         door/ path
+---------------------------------------  ------------------------------------
+src/lib/commons/protocol.ts              src/protocol.ts
+src/lib/commons/roads.server.ts          src/roads.server.ts
+src/lib/commons/mcp.server.ts            src/mcp.server.ts
+src/lib/commons/resources.ts             src/resources.ts
+src/lib/commons/ledgers.server.ts        src/ledgers.server.ts
+src/routes/mcp.ts                        src/mcp-route.ts
+                                         src/routes/mcp.ts
+src/components/door-app.tsx              src/door-app.tsx
+src/lib/store.ts                         src/store.ts
+src/components/commons/*.tsx             src/components/*.tsx
+src/routes/api/*.ts                      src/routes/api/*.ts
+src/routes/index.tsx                     src/routes/index.tsx
+
+Not copied on purpose:
+  AGENTS.md, vite.config.ts, package.json
+  src/lib/auth/*, src/lib/db.ts, migrations/
+  src/components/ui/* (Radix primitives)
+  screenshots/
+
+Official Commons MCP remains commons_mcp.py at repo root.
+This tree does not fork it.
