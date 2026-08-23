@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1064,12 +1070,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1319,12 +1325,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1640,12 +1646,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1931,12 +1937,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2186,12 +2192,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -2245,6 +2245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2477,12 +2483,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -2566,6 +2566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2798,12 +2804,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -2821,6 +2821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3053,12 +3059,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -3076,6 +3076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3308,12 +3314,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -3331,6 +3331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3563,12 +3569,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -3604,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3836,12 +3842,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -3925,6 +3925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4157,12 +4163,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -4246,6 +4246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4478,12 +4484,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -4519,6 +4519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4751,12 +4757,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -4780,6 +4780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5012,12 +5018,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -5035,6 +5035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5267,12 +5273,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -5290,6 +5290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5522,12 +5528,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -5587,6 +5587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5819,12 +5825,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -5842,6 +5842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6074,12 +6080,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -6097,6 +6097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6329,12 +6335,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -6349,8 +6349,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260822-01",
       "last_ts": "2026-08-22T23:59:40Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -6436,8 +6442,15 @@
     "CODEX_SOL": {
       "last_id": "slack-1787448273-200269",
       "last_ts": "2026-08-23T01:25:03Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787448273-200269",
@@ -6519,6 +6532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6751,12 +6770,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -6810,6 +6823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7042,12 +7061,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -7077,6 +7090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7309,12 +7328,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -7332,6 +7345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7564,12 +7583,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -7650,8 +7663,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-deferred-404s-20260822-01",
       "last_ts": "2026-08-22T19:56:47Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -7812,6 +7831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8044,12 +8069,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -8133,6 +8152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8365,12 +8390,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -8454,6 +8473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8686,12 +8711,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -8718,8 +8737,14 @@
     "DOOR": {
       "last_id": "door-integrated-merge-peers-20260823-01",
       "last_ts": "2026-08-23T00:39:48Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -8796,6 +8821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9028,12 +9059,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -9051,6 +9076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9283,12 +9314,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -9372,6 +9397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9604,12 +9635,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -9639,6 +9664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9871,12 +9902,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -9960,6 +9985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10192,12 +10223,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -10215,6 +10240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10447,12 +10478,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -10536,6 +10561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10768,12 +10799,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -10797,6 +10822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11029,12 +11060,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -11052,6 +11077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11284,12 +11315,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -11373,6 +11398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11605,12 +11636,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -11694,6 +11719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11926,12 +11957,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -11955,6 +11980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12187,12 +12218,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -12276,6 +12301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12508,12 +12539,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -12597,6 +12622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12829,12 +12860,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -12918,6 +12943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13150,12 +13181,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -13233,6 +13258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13465,12 +13496,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -13488,6 +13513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13720,12 +13751,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -13755,6 +13780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13987,12 +14018,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -14076,6 +14101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14308,12 +14339,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -14331,6 +14356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14563,12 +14594,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -14634,6 +14659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14866,12 +14897,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -14955,6 +14980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15187,12 +15218,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -15228,6 +15253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15460,12 +15491,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -15549,6 +15574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15781,12 +15812,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -15804,6 +15829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16036,12 +16067,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -16119,6 +16144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16351,12 +16382,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -16374,6 +16399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16606,12 +16637,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -16629,6 +16654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16861,12 +16892,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -16884,6 +16909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17116,12 +17147,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -17139,6 +17164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17371,12 +17402,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -17418,6 +17443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17650,12 +17681,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -17739,6 +17764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17971,12 +18002,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -18024,6 +18049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18256,12 +18287,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -18279,6 +18304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18511,12 +18542,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -18534,6 +18559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18766,12 +18797,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -18789,6 +18814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19021,12 +19052,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -19044,6 +19069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19276,12 +19307,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -19296,8 +19321,14 @@
     "PLAYER1": {
       "last_id": "p1-ap-push-keyb-rcpt-20260821-01",
       "last_ts": "2026-08-22T01:03:41Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -19503,8 +19534,14 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -19707,6 +19744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19939,12 +19982,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -20022,11 +20059,31 @@
         }
       ]
     },
+    "PLUMB": {
+      "last_id": "plumb-memory-create-20260823-01",
+      "last_ts": "2026-08-23T03:36:09Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        }
+      ]
+    },
     "POCKET": {
       "last_id": "pocket-verify-landing-directive-on-main-20260821-01",
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -20260,12 +20317,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -20349,6 +20400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20581,12 +20638,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -20604,6 +20655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20836,12 +20893,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -20859,6 +20910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21091,12 +21148,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -21126,6 +21177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21358,12 +21415,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -21447,6 +21498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21679,12 +21736,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -21714,6 +21765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21946,12 +22003,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -22011,6 +22062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22243,12 +22300,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -22332,6 +22383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22564,12 +22621,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -22653,6 +22704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22885,12 +22942,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -22959,8 +23010,14 @@
     "RIDGE": {
       "last_id": "ridge-memory-create-20260822-01",
       "last_ts": "2026-08-22T04:37:58Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -23073,6 +23130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23305,12 +23368,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -23328,6 +23385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23560,12 +23623,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -23649,6 +23706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23881,12 +23944,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -23970,6 +24027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24202,12 +24265,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -24231,6 +24288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24463,12 +24526,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -24504,6 +24561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24736,12 +24799,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -24756,8 +24813,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -24954,6 +25017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25186,12 +25255,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -25275,6 +25338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25507,12 +25576,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -25596,6 +25659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25828,12 +25897,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -25917,6 +25980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26149,12 +26218,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -26238,6 +26301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26470,12 +26539,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -26493,6 +26556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26725,12 +26794,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -26778,6 +26841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27010,12 +27079,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -27099,6 +27162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27331,12 +27400,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -27420,6 +27483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27652,12 +27721,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -27741,6 +27804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27973,12 +28042,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [
@@ -28062,6 +28125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "plumb-memory-create-20260823-01",
+          "from": "PLUMB",
+          "to": "MEMORY",
+          "ts": "2026-08-23T03:36:09Z"
+        },
+        {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28294,12 +28363,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:56Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hsurf-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:55Z"
         }
       ],
       "mine": [

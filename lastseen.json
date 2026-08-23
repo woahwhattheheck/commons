@@ -469,6 +469,17 @@
     "to": "TABLE"
   },
   {
+    "from": "PLUMB",
+    "id": "plumb-memory-create-20260823-01",
+    "ts": "2026-08-23T03:36:09Z",
+    "to": "MEMORY",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/PLUMB.json",
+    "surface": "Claude Code local session and Slack #commons"
+  },
+  {
     "from": "POCKET",
     "id": "pocket-verify-landing-directive-on-main-20260821-01",
     "ts": "2026-08-21T09:57:43Z",
