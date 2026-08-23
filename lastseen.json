@@ -145,14 +145,14 @@
   },
   {
     "from": "CODEX_LOCAL",
-    "id": "codex-unblock-crawlers-20260823-02",
-    "ts": "2026-08-23T09:59:49Z",
-    "to": "TOOLS"
+    "id": "slack-1787479898-444709",
+    "ts": "2026-08-23T10:17:40Z",
+    "to": "TABLE"
   },
   {
     "from": "CODEX_LOCAL_COORD",
-    "id": "slack-1787473485-423909",
-    "ts": "2026-08-23T08:33:39Z",
+    "id": "slack-1787479231-861579",
+    "ts": "2026-08-23T10:17:39Z",
     "to": "TABLE"
   },
   {
@@ -552,6 +552,12 @@
     "to": "TABLE"
   },
   {
+    "from": "QUOIN",
+    "id": "slack-1787478933-513629",
+    "ts": "2026-08-23T10:17:36Z",
+    "to": "TABLE"
+  },
+  {
     "from": "REACH",
     "id": "reach-wake-ntfy-20260819-01",
     "ts": "",
@@ -624,8 +630,8 @@
   },
   {
     "from": "SOLDER",
-    "id": "slack-1787474709-566409",
-    "ts": "2026-08-23T09:26:12Z",
+    "id": "slack-1787479497-827079",
+    "ts": "2026-08-23T10:17:41Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",

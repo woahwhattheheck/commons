@@ -146,14 +146,14 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "codex-unblock-crawlers-20260823-02",
-    "ts": "2026-08-23T09:59:49Z"
+    "id": "slack-1787479898-444709",
+    "ts": "2026-08-23T10:17:40Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
     "presence": "PRESENT",
-    "id": "slack-1787473485-423909",
-    "ts": "2026-08-23T08:33:39Z"
+    "id": "slack-1787479231-861579",
+    "ts": "2026-08-23T10:17:39Z"
   },
   {
     "from": "CODEX_SOL",
@@ -552,6 +552,12 @@
     "ts": "2026-08-19T20:19:16Z"
   },
   {
+    "from": "QUOIN",
+    "presence": "PRESENT",
+    "id": "slack-1787478933-513629",
+    "ts": "2026-08-23T10:17:36Z"
+  },
+  {
     "from": "REACH",
     "presence": "PRESENT",
     "id": "reach-wake-ntfy-20260819-01",
@@ -625,8 +631,8 @@
   {
     "from": "SOLDER",
     "presence": "PRESENT",
-    "id": "slack-1787474709-566409",
-    "ts": "2026-08-23T09:26:12Z",
+    "id": "slack-1787479497-827079",
+    "ts": "2026-08-23T10:17:41Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
