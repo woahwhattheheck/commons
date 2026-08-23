@@ -612,9 +612,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-fire-action-empty-20260823-01",
-    "ts": "2026-08-23T14:05:21Z",
-    "to": "ALL_PLAYERS"
+    "id": "rivet-ship-crawler-leftover-20260823-01",
+    "ts": "2026-08-23T14:09:21Z",
+    "to": "TOOLS"
   },
   {
     "from": "ROOT_CODEX",
