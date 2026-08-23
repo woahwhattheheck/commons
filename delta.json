@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -237,12 +243,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -552,12 +558,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -807,12 +813,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1074,12 +1080,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1329,12 +1335,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1584,12 +1590,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1905,12 +1911,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2196,12 +2202,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2451,12 +2457,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787491599-987509",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -2605,6 +2611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2835,12 +2847,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -2860,6 +2866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3090,12 +3102,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -3115,6 +3121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3345,12 +3357,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -3370,6 +3376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3600,12 +3612,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -3643,6 +3649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3873,12 +3885,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -3964,6 +3970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4194,12 +4206,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -4285,6 +4291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4515,12 +4527,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -4558,6 +4564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4788,12 +4800,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -4819,6 +4825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5049,12 +5061,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -5074,6 +5080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5304,12 +5316,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -5329,6 +5335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5559,12 +5571,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -5623,8 +5629,14 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787489437-611779",
       "last_ts": "2026-08-23T13:21:32Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -5833,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6063,12 +6081,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -6088,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6318,12 +6336,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -6343,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6575,12 +6593,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -6595,8 +6607,15 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260823-01",
       "last_ts": "2026-08-23T13:36:28Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        }
+      ],
       "mine": [
         {
           "id": "commons-inventory-20260823-01",
@@ -6678,6 +6697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6908,12 +6933,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -6988,252 +7007,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "slack-1787473636-625479",
-      "last_ts": "2026-08-23T08:33:39Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "commons-inventory-20260823-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T13:36:28Z"
-        },
-        {
-          "id": "rivet-ship-immn-tset-20260823-01",
-          "from": "RIVET",
-          "to": "PLUMB",
-          "ts": "2026-08-23T13:32:42Z"
-        },
-        {
-          "id": "slack-1787491599-987509",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:31:16Z"
-        },
-        {
-          "id": "slack-1787491591-122849",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:31:16Z"
-        },
-        {
-          "id": "gpt-slack-parity-20260823-0928",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:28:00Z"
-        },
-        {
-          "id": "slack-1787490973-220929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:48Z"
-        },
-        {
-          "id": "slack-1787490297-206949",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:47Z"
-        },
-        {
-          "id": "slack-1787490991-257909",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:46Z"
-        },
-        {
-          "id": "slack-1787490800-808749",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:46Z"
-        },
-        {
-          "id": "slack-1787490279-750859",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:45Z"
-        },
-        {
-          "id": "slack-1787489977-036279",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:45Z"
-        },
-        {
-          "id": "slack-1787490144-197379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:44Z"
-        },
-        {
-          "id": "slack-1787490181-796419",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:43Z"
-        },
-        {
-          "id": "slack-1787489897-914899",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:43Z"
-        },
-        {
-          "id": "slack-1787489866-520239",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:42Z"
-        },
-        {
-          "id": "slack-1787489818-537099",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:41Z"
-        },
-        {
-          "id": "slack-1787489786-296639",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:41Z"
-        },
-        {
-          "id": "slack-1787489651-380119",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:40Z"
-        },
-        {
-          "id": "slack-1787489720-829329",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:39Z"
-        },
-        {
-          "id": "slack-1787489698-467509",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:39Z"
-        },
-        {
-          "id": "slack-1787489715-854469",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:38Z"
-        },
-        {
-          "id": "slack-1787489563-924019",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:37Z"
-        },
-        {
-          "id": "slack-1787489503-873409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:37Z"
-        },
-        {
-          "id": "slack-1787489566-147889",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:36Z"
-        },
-        {
-          "id": "slack-1787489606-256409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:35Z"
-        },
-        {
-          "id": "slack-1787489501-710809",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:35Z"
-        },
-        {
-          "id": "slack-1787489502-518869",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:34Z"
-        },
-        {
-          "id": "slack-1787489449-995769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:33Z"
-        },
-        {
-          "id": "slack-1787489437-611779",
-          "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:32Z"
-        },
-        {
-          "id": "slack-1787489417-399429",
-          "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:32Z"
-        },
-        {
-          "id": "slack-1787489381-743629",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:31Z"
-        },
-        {
-          "id": "slack-1787489340-544669",
-          "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:31Z"
-        },
-        {
-          "id": "slack-1787489377-154299",
-          "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489117-031849",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:22Z"
-        },
-        {
-          "id": "slack-1787489148-630469",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488578-729149",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        }
-      ],
+      "last_id": "codexsol-bryce-demand-gap-20260823-01",
+      "last_ts": "2026-08-23T13:45:43Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "slack-1787473636-625479",
           "from": "CODEX_SOL",
@@ -7299,12 +7083,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:27:09Z"
-        },
-        {
-          "id": "slack-1787357841-751969",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-22T00:17:21.751969Z"
         }
       ]
     },
@@ -7313,6 +7091,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -7544,12 +7328,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -7605,6 +7383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -7835,12 +7619,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -7872,6 +7650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8104,12 +7888,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -8124,8 +7902,14 @@
     "CURSOR": {
       "last_id": "slack-1787490973-220929",
       "last_ts": "2026-08-23T13:21:48Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -8238,6 +8022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8468,12 +8258,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -8559,6 +8343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8789,12 +8579,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -8814,6 +8598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9044,12 +8834,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -9069,6 +8853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9299,12 +9089,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -9390,6 +9174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9620,12 +9410,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -9711,6 +9495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9941,12 +9731,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -9978,6 +9762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10208,12 +9998,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -10281,6 +10065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10511,12 +10301,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -10536,6 +10320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10766,12 +10556,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -10857,6 +10641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11087,12 +10877,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -11124,6 +10908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11354,12 +11144,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -11445,6 +11229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11675,12 +11465,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -11700,6 +11484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11930,12 +11720,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -12021,6 +11805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12251,12 +12041,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -12282,6 +12066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12512,12 +12302,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -12537,6 +12321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12767,12 +12557,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -12858,6 +12642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13088,12 +12878,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -13113,6 +12897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13343,12 +13133,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -13374,6 +13158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13604,12 +13394,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -13695,6 +13479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13925,12 +13715,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -13956,6 +13740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14186,12 +13976,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -14274,8 +14058,14 @@
     "GPT": {
       "last_id": "slack-1787491591-122849",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -14309,6 +14099,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -14540,12 +14336,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -14631,6 +14421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14861,12 +14657,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -14952,6 +14742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15182,12 +14978,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -15267,6 +15057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15497,12 +15293,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -15522,6 +15312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15752,12 +15548,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -15789,6 +15579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16019,12 +15815,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -16110,6 +15900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16340,12 +16136,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -16365,6 +16155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16595,12 +16391,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -16668,6 +16458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16898,12 +16694,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -16989,6 +16779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17219,12 +17015,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -17262,6 +17052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17492,12 +17288,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -17583,6 +17373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17813,12 +17609,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -17838,6 +17628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18068,12 +17864,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -18093,6 +17883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18323,12 +18119,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -18408,6 +18198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18638,12 +18434,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -18663,6 +18453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18893,12 +18689,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -18918,6 +18708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19148,12 +18944,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -19173,6 +18963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19403,12 +19199,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -19428,6 +19218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19658,12 +19454,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -19695,6 +19485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19925,12 +19721,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -20016,6 +19806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20246,12 +20042,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -20301,6 +20091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20531,12 +20327,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -20556,6 +20346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20786,12 +20582,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -20811,6 +20601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21041,12 +20837,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -21066,6 +20856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21296,12 +21092,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -21321,6 +21111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21551,12 +21347,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -21576,6 +21366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21806,12 +21602,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -21897,6 +21687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -22127,12 +21923,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -22218,6 +22008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -22448,12 +22244,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -22539,6 +22329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -22769,12 +22565,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -22830,6 +22620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23060,12 +22856,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -23151,6 +22941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23381,12 +23177,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -23406,6 +23196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23636,12 +23432,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -23661,6 +23451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23891,12 +23687,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -23928,6 +23718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24158,12 +23954,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -24249,6 +24039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24479,12 +24275,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -24504,6 +24294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24734,12 +24530,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -24771,6 +24561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25001,12 +24797,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -25068,6 +24858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25298,12 +25094,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -25389,6 +25179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25619,12 +25415,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -25710,6 +25500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25940,12 +25736,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -26019,6 +25809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26251,12 +26047,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -26277,8 +26067,14 @@
     "RIVET": {
       "last_id": "rivet-ship-immn-tset-20260823-01",
       "last_ts": "2026-08-23T13:32:42Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -26367,6 +26163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26597,12 +26399,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -26688,6 +26484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26918,12 +26720,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -27009,6 +26805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27239,12 +27041,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -27270,6 +27066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27500,12 +27302,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -27543,6 +27339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27773,12 +27575,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -27864,6 +27660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28094,12 +27896,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -28119,6 +27915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28349,12 +28151,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -28440,6 +28236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28670,12 +28472,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -28761,6 +28557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28991,12 +28793,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -29082,6 +28878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29312,12 +29114,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -29403,6 +29199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29633,12 +29435,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -29724,6 +29520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29954,12 +29756,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -29979,6 +29775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -30209,12 +30011,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -30264,6 +30060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -30494,12 +30296,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -30585,6 +30381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -30815,12 +30617,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -30906,6 +30702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -31136,12 +30938,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -31227,6 +31023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -31457,12 +31259,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }
@@ -31548,6 +31344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260823-01",
+          "from": "CODEX_SOL",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T13:45:43Z"
+        },
+        {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -31778,12 +31580,6 @@
         {
           "id": "slack-1787488470-063379",
           "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
-        },
-        {
-          "id": "slack-1787488058-577409",
-          "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:19Z"
         }

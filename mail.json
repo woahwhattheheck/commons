@@ -1,6 +1,6 @@
 {
-  "seq": 425,
-  "ts": "2026-08-23T13:37:32Z",
+  "seq": 426,
+  "ts": "2026-08-23T13:46:46Z",
   "n": 72,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -30,11 +30,11 @@
     },
     {
       "to": "ALL_PLAYERS",
-      "id": "slack-1787457209-532929",
-      "from": "BRYCE",
-      "ts": "2026-08-23T08:33:18Z",
-      "href": "./p/slack-1787457209-532929.html",
-      "seq": 386
+      "id": "codexsol-bryce-demand-gap-20260823-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-23T13:45:43Z",
+      "href": "./p/codexsol-bryce-demand-gap-20260823-01.html",
+      "seq": 426
     },
     {
       "to": "AXIOM",

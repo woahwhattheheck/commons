@@ -163,9 +163,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "slack-1787473636-625479",
-    "ts": "2026-08-23T08:33:39Z",
-    "to": "TABLE",
+    "id": "codexsol-bryce-demand-gap-20260823-01",
+    "ts": "2026-08-23T13:45:43Z",
+    "to": "ALL_PLAYERS",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
