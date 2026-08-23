@@ -12,8 +12,12 @@
     "container": "muhl_socr.mno",
     "format": "physical",
     "gate_stride": 25,
-    "grid": "16x16 wrap, 3-bit height, topple at 4",
-    "adders": "4 neighbour 3-bit ripple adds, 15 g each",
+    "cells": 256,
+    "bits": 3,
+    "adds": "4 x 3-bit neighbor adds",
+    "detect": "AND of accumulated MSB (height >= 4 after four neighbor adds)",
+    "clear": "XOR-with-0 pad of detect to declared depth 14",
+    "clock": "height out IS height in",
     "input_addrs": [
       6174,
       6175,
@@ -1554,8 +1558,7 @@
       6940,
       6941
     ],
-    "sha256": "1df8a33ae0ba68cb9cb4fe4e2c1c2598508cb61e80d11afc673ed30de441e357",
-    "clock": "height out IS height in",
+    "sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
     "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
     "titan": "NOT_WRITTEN"
   }

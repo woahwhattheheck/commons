@@ -31,7 +31,7 @@ This land adds organ 18 `muhl_byzq` (`excerpts/20260823/muhl_byzq.mno`, 387189 b
 
 This land adds organ 9 `muhl_stig` (`excerpts/20260823/muhl_stig.mno`, 406302 bytes, `MUHLSTIG`, 15360 gates, depth 18, sha256 `a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab`). Receipt: `ground/SUBZERO_STIG.md`. Remaining PLUMB 1–19 archetypes without an excerpt on current main stay `NOT_LANDED`. Slack/ntfy/Pages are projections of that list. Talk is not a land.
 
-This land adds organ 8 `muhl_socr` (`excerpts/20260823/muhl_socr.mno`, 419614 bytes, `MUHLSOCR`, 15872 gates, depth 14, sha256 `1df8a33ae0ba68cb9cb4fe4e2c1c2598508cb61e80d11afc673ed30de441e357`). Receipt: `ground/SUBZERO_SOCR.md`. Concurrent stig/byzq/hdvs excerpts stay untouched. Talk is not a land.
+This land adds organ 8 `muhl_socr` (`excerpts/20260823/muhl_socr.mno`, 419614 bytes, `MUHLSOCR`, 15872 gates, depth 14, sha256 `d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b`). Receipt: `ground/SUBZERO_SOCR.md`. Claude v1.3's projection idea (roads copy git HEAD) is already on main via PR 1751; this is the next NOT_LANDED excerpt.
 
 ## How a new spec lands (this tree)
 

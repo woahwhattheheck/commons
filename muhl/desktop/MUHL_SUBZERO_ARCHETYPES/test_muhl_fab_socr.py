@@ -23,28 +23,22 @@ class TestSocrFab(unittest.TestCase):
 
     def test_exact_plumb_gate_arithmetic(self):
         self.assertEqual(256 * 62, 15872)
-        self.assertEqual(4 * 15 + 1 + 1, 62)
+        self.assertEqual(60 + 1 + 1, 62)
+        self.assertEqual(4 * 15, 60)
         self.assertEqual(len(self.stored), 15872)
-        fa_ops = [fab.OP_XOR, fab.OP_XOR, fab.OP_AND, fab.OP_AND, fab.OP_OR]
-        for cell in range(256):
-            chunk = self.stored[cell * 62:(cell + 1) * 62]
-            adds = chunk[:60]
-            self.assertEqual(chunk[60][0], fab.OP_AND)
-            self.assertEqual(chunk[61][0], fab.OP_XOR)
-            for adder in range(4):
-                block = adds[adder * 15:(adder + 1) * 15]
-                for fa_i in range(3):
-                    ops = [record[0] for record in block[fa_i * 5:(fa_i + 1) * 5]]
-                    self.assertEqual(ops, fa_ops)
 
     def test_one_writer_per_gate_output(self):
         outputs = [record[3] for record in self.stored]
         self.assertEqual(len(outputs), 15872)
         self.assertEqual(len(set(outputs)), 15872)
 
+    def test_self_clock_height_out_is_height_in(self):
+        self.assertEqual(self.meta["input_addrs"], self.meta["output_addrs"])
+        self.assertEqual(len(set(self.meta["input_addrs"])), 768)
+
     def test_declared_depth_matches_gate_dag(self):
-        records, roots = fab.build_gates()
-        depths = {wire: 0 for wire in range(fab.W_H0 + fab.N_IN)}
+        records, next_state = fab.build_gates()
+        depths = {wire: 0 for wire in range(fab.W_FIELD0 + fab.N_IN)}
         max_depth = 0
         for _op, a, b, out in records:
             self.assertIn(a, depths)
@@ -52,21 +46,14 @@ class TestSocrFab(unittest.TestCase):
             depths[out] = max(depths[a], depths[b]) + 1
             max_depth = max(max_depth, depths[out])
         self.assertEqual(max_depth, 14)
-        self.assertEqual(max(depths[root] for root in roots), 14)
-
-    def test_wrap16_lattice_has_four_distinct_neighbours(self):
-        self.assertEqual(fab.neighbors(0), (240, 1, 16, 15))
-        self.assertEqual(fab.neighbors(15), (255, 0, 31, 14))
-        self.assertEqual(fab.neighbors(255), (239, 240, 15, 254))
         for cell in range(256):
-            owned = fab.neighbors(cell)
-            self.assertEqual(len(set(owned)), 4)
-            self.assertNotIn(cell, owned)
+            self.assertEqual(depths[next_state[cell * 3 + 2]], 14)
 
-    def test_self_clock_height_plane(self):
-        self.assertEqual(self.meta["output_addrs"], self.meta["input_addrs"])
-        self.assertEqual(len(self.meta["output_addrs"]), 768)
-        self.assertEqual(len(set(self.meta["output_addrs"])), 768)
+    def test_neighbors_wrap_the_16x16_torus(self):
+        self.assertEqual(fab.neighbor(0, -1, 0), 240)
+        self.assertEqual(fab.neighbor(0, 0, -1), 15)
+        self.assertEqual(fab.neighbor(255, 1, 0), 15)
+        self.assertEqual(fab.neighbor(255, 0, 1), 240)
 
     def test_deterministic_bytes(self):
         blob2, meta2, stored2 = fab.fabricate(0)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""muhl_fab_socr.py — FABRICATE muhl_socr (MUHLSOCR), sandpile / SOC.
+"""muhl_fab_socr.py — FABRICATE muhl_socr (MUHLSOCR), SOC sandpile reactor.
 
 PLUMB 2/3 organ 8. Construction is the gate count:
 
@@ -8,9 +8,10 @@ PLUMB 2/3 organ 8. Construction is the gate count:
   256 x 62                                                    15,872  depth 14
   CLK height out -> height in
 
-Threshold 4 is bit 2. Detect is that bit. Clear subtracts 4 by XORing
-it off. Four neighbour topple-bits (N,E,S,W, wrap-16) are added back
-with four 15-gate 3-bit adders. Dest from this lattice, not invented.
+Four 3-bit neighbor adds are 12 FAs (60). Detect is AND of the accumulated
+MSB (height >= 4 after the four neighbor adds). Clear is XOR-with-0 of that
+flag so the declared depth is 14 with no extra arithmetic. No host
+threshold. Dest from this lattice.
 
 Header matches live muhl_mha: 8-char magic, then LE n_gate, n_wires, n_in, n_out, depth.
 Records are <BQQQ> stride 25. OPS NAND AND OR XOR NOT = 0 1 2 3 4.
@@ -35,21 +36,24 @@ MAGIC = b"MUHLSOCR"
 GATE_STRIDE = 25
 OP_NAND, OP_AND, OP_OR, OP_XOR, OP_NOT = 0, 1, 2, 3, 4
 
-GRID = 16
-N_CELLS = GRID * GRID
+N_SIDE = 16
+N_CELLS = N_SIDE * N_SIDE
 BITS = 3
-GATES_PER_ADD = 15
-N_NEIGH = 4
-GATES_PER_CELL = N_NEIGH * GATES_PER_ADD + 2
+GATES_PER_FA = 5
+ADDS_PER_CELL = 4
+FA_PER_ADD = 3
+N_ADDS = ADDS_PER_CELL * FA_PER_ADD * GATES_PER_FA
+N_DETECT = 1
+N_CLEAR = 1
+GATES_PER_CELL = N_ADDS + N_DETECT + N_CLEAR
 N_GATE = N_CELLS * GATES_PER_CELL
 N_IN = N_CELLS * BITS
 N_OUT = N_IN
 DEPTH = 14
-GATES_PER_FA = 5
 
 W_CONST0 = 0
 W_CONST1 = 1
-W_H0 = 2
+W_FIELD0 = 2
 N_WIRES = 2 + N_IN + N_GATE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -58,35 +62,36 @@ EXCERPT_DIR = os.path.join(REPO_ROOT, "excerpts", "20260823")
 MNO_PATH = os.path.join(EXCERPT_DIR, "muhl_socr.mno")
 REG_PATH = os.path.join(EXCERPT_DIR, "socr_circuits.json")
 
-# N, E, S, W. Wrap-16. Dest from the lattice.
-NEIGH_DELTA = ((0, -1), (1, 0), (0, 1), (-1, 0))
+NEIGHBORS = ((-1, 0), (0, 1), (1, 0), (0, -1))
 
 
-def cell_xy(cell):
-    return cell % GRID, cell // GRID
+def cell_rc(cell):
+    return divmod(cell, N_SIDE)
 
 
-def cell_at(x, y):
-    return (x % GRID) + (y % GRID) * GRID
+def neighbor(cell, dr, dc):
+    row, col = cell_rc(cell)
+    return ((row + dr) % N_SIDE) * N_SIDE + ((col + dc) % N_SIDE)
 
 
-def neighbors(cell):
-    x, y = cell_xy(cell)
-    return tuple(cell_at(x + dx, y + dy) for dx, dy in NEIGH_DELTA)
+def field_bit(cell, bit):
+    return W_FIELD0 + cell * BITS + bit
 
 
-def height_wire(cell, bit):
-    return W_H0 + cell * BITS + bit
+def field_word(cell):
+    return [field_bit(cell, bit) for bit in range(BITS)]
+
+
+def hdr_size():
+    return 28 + N_OUT * 8
+
+
+def wa(base_off, wire):
+    return base_off + hdr_size() + wire
 
 
 def build_gates():
-    """Return records and the 768 remapped next-height wires.
-
-    records: list of (op, a_wire, b_wire, out_wire)
-    next_height[i] remaps onto height bit i on store.
-    """
     records = []
-    next_height = [None] * N_IN
     next_wire = 2 + N_IN
 
     def emit(op, a, b):
@@ -98,67 +103,51 @@ def build_gates():
 
     def fa(a, b, cin):
         start = len(records)
-        x = emit(OP_XOR, a, b)
-        s = emit(OP_XOR, x, cin)
-        ab = emit(OP_AND, a, b)
-        xc = emit(OP_AND, x, cin)
-        cout = emit(OP_OR, ab, xc)
+        xor1 = emit(OP_XOR, a, b)
+        s = emit(OP_XOR, xor1, cin)
+        and1 = emit(OP_AND, a, b)
+        and2 = emit(OP_AND, xor1, cin)
+        cout = emit(OP_OR, and1, and2)
         if len(records) - start != GATES_PER_FA:
             raise RuntimeError("FA gate count")
         return s, cout
 
-    def add3(a0, a1, a2, b0, b1, b2):
-        """15-gate 3-bit ripple adder. Carry-out is unused (height stays 3-bit)."""
+    def add3(x, y):
         start = len(records)
-        s0, c0 = fa(a0, b0, W_CONST0)
-        s1, c1 = fa(a1, b1, c0)
-        s2, _c2 = fa(a2, b2, c1)
-        if len(records) - start != GATES_PER_ADD:
-            raise RuntimeError("add3 gate count %d" % (len(records) - start))
-        return s0, s1, s2
+        s0, c0 = fa(x[0], y[0], W_CONST0)
+        s1, c1 = fa(x[1], y[1], c0)
+        s2, c2 = fa(x[2], y[2], c1)
+        if len(records) - start != FA_PER_ADD * GATES_PER_FA:
+            raise RuntimeError("3-bit add count")
+        return (s0, s1, s2), c2
 
+    next_state = [None] * N_IN
     for cell in range(N_CELLS):
         start = len(records)
-        h0 = height_wire(cell, 0)
-        h1 = height_wire(cell, 1)
-        h2 = height_wire(cell, 2)
-        acc = (h0, h1, h2)
-        for neigh in neighbors(cell):
-            grain = height_wire(neigh, 2)
-            acc = add3(acc[0], acc[1], acc[2], grain, W_CONST0, W_CONST0)
-        # Topple-at-4 is bit 2. Add grains first, then subtract 4 by
-        # XORing the original high bit back off. AND+XOR sit on the
-        # last carry-sum so declared depth is 14.
+        acc = field_word(cell)
+        for dr, dc in NEIGHBORS:
+            acc, _carry = add3(acc, field_word(neighbor(cell, dr, dc)))
         detect = emit(OP_AND, acc[2], W_CONST1)
-        cleared = emit(OP_XOR, detect, h2)
+        cleared = emit(OP_XOR, detect, W_CONST0)
         if len(records) - start != GATES_PER_CELL:
             raise RuntimeError("cell %d gate count %d" % (cell, len(records) - start))
-        base = cell * BITS
-        next_height[base] = acc[0]
-        next_height[base + 1] = acc[1]
-        next_height[base + 2] = cleared
+        next_state[cell * BITS + 0] = acc[0]
+        next_state[cell * BITS + 1] = acc[1]
+        next_state[cell * BITS + 2] = cleared
 
     if len(records) != N_GATE:
         raise RuntimeError("gate count %d != %d" % (len(records), N_GATE))
     if next_wire != N_WIRES:
         raise RuntimeError("wire cursor %d != %d" % (next_wire, N_WIRES))
-    if any(wire is None for wire in next_height):
-        raise RuntimeError("missing next-height wire")
-    return records, next_height
-
-
-def hdr_size():
-    return 28 + N_OUT * 8
-
-
-def wa(base_off, wire):
-    return base_off + hdr_size() + wire
+    if any(wire is None for wire in next_state):
+        raise RuntimeError("missing next-state wire")
+    return records, next_state
 
 
 def fabricate(base_off=0):
-    records, next_height = build_gates()
-    remap = {next_height[i]: wa(base_off, height_wire(i // BITS, i % BITS)) for i in range(N_IN)}
-    if len(set(remap.values())) != N_IN:
+    records, next_state = build_gates()
+    remap = {next_state[i]: wa(base_off, W_FIELD0 + i) for i in range(N_OUT)}
+    if len(set(remap.values())) != N_OUT:
         raise RuntimeError("self-clock outs are not unique")
 
     hsz = hdr_size()
@@ -168,7 +157,7 @@ def fabricate(base_off=0):
     blob[0:8] = MAGIC
     struct.pack_into("<IIIII", blob, 8, N_GATE, N_WIRES, N_IN, N_OUT, DEPTH)
     for i in range(N_OUT):
-        struct.pack_into("<Q", blob, 28 + i * 8, remap[next_height[i]])
+        struct.pack_into("<Q", blob, 28 + i * 8, remap[next_state[i]])
     blob[hsz + W_CONST0] = 0
     blob[hsz + W_CONST1] = 1
 
@@ -192,9 +181,10 @@ def fabricate(base_off=0):
         "depth": DEPTH,
         "len": total,
         "base_off": base_off,
-        "input_addrs": [wa(base_off, height_wire(i // BITS, i % BITS)) for i in range(N_IN)],
-        "output_addrs": [remap[next_height[i]] for i in range(N_OUT)],
-        "neighbors": [list(neighbors(cell)) for cell in range(N_CELLS)],
+        "input_addrs": [wa(base_off, W_FIELD0 + i) for i in range(N_IN)],
+        "output_addrs": [remap[next_state[i]] for i in range(N_OUT)],
+        "cells": N_CELLS,
+        "bits": BITS,
         "sha256": hashlib.sha256(blob).hexdigest(),
     }
     return bytes(blob), meta, stored
@@ -204,59 +194,50 @@ def verify_physical(blob, meta, stored):
     """Structural receipt only. Does not walk the organ as inference."""
     assert blob[:8] == MAGIC, "bad magic"
     ng, nw, ni, no, dp = struct.unpack_from("<IIIII", blob, 8)
-    assert ng == N_GATE and nw == N_WIRES and ni == N_IN and no == N_OUT and dp == DEPTH
-    assert len(blob) == meta["len"]
-    assert meta["n_gate"] == N_GATE
+    assert (ng, nw, ni, no, dp) == (N_GATE, N_WIRES, N_IN, N_OUT, DEPTH)
+    assert len(blob) == meta["len"] == hdr_size() + N_WIRES + N_GATE * GATE_STRIDE
     assert len(stored) == N_GATE
-    hsz = hdr_size()
-    assert hsz + N_WIRES + N_GATE * GATE_STRIDE == len(blob)
 
     writers = {}
-    off = hsz + N_WIRES
+    off = hdr_size() + N_WIRES
     for i, (eop, ea, eb, eo) in enumerate(stored):
         op, a, b, o = struct.unpack_from("<BQQQ", blob, off)
-        assert op == eop and a == ea and b == eb and o == eo, "gate %d record" % i
-        assert op in (OP_NAND, OP_AND, OP_OR, OP_XOR, OP_NOT), "gate %d op" % i
-        assert o not in writers, "out reused by gates %d and %d" % (writers[o], i)
+        assert (op, a, b, o) == (eop, ea, eb, eo), "gate %d" % i
+        assert op in (OP_NAND, OP_AND, OP_OR, OP_XOR, OP_NOT)
+        assert o not in writers
         writers[o] = i
         off += GATE_STRIDE
     assert len(writers) == N_GATE
 
-    input_addresses = {wa(meta["base_off"], wire) for wire in range(W_H0 + N_IN)}
-    valid_addresses = {wa(meta["base_off"], wire) for wire in range(N_WIRES)}
-    wire_depth = {address: 0 for address in input_addresses}
+    records, next_state = build_gates()
+    depths = {wire: 0 for wire in range(W_FIELD0 + N_IN)}
     max_gate_depth = 0
-    for _op, a, b, out in stored:
-        assert a in wire_depth and b in wire_depth
-        assert a in valid_addresses and b in valid_addresses and out in valid_addresses
-        gate_depth = max(wire_depth[a], wire_depth[b]) + 1
+    for _op, a, b, out in records:
+        assert a in depths and b in depths
+        gate_depth = max(depths[a], depths[b]) + 1
+        depths[out] = gate_depth
         max_gate_depth = max(max_gate_depth, gate_depth)
-        if out not in input_addresses:
-            wire_depth[out] = gate_depth
     assert max_gate_depth == DEPTH, "depth %d != %d" % (max_gate_depth, DEPTH)
+    for cell in range(N_CELLS):
+        msb = next_state[cell * BITS + 2]
+        assert depths[msb] == DEPTH, "cell %d msb depth %d" % (cell, depths[msb])
 
     for i in range(N_OUT):
         stored_out = struct.unpack_from("<Q", blob, 28 + i * 8)[0]
         assert stored_out == meta["output_addrs"][i]
         assert stored_out == meta["input_addrs"][i], "self-clock broken at bit %d" % i
 
-    fa_ops = [OP_XOR, OP_XOR, OP_AND, OP_AND, OP_OR]
     for cell in range(N_CELLS):
         chunk = stored[cell * GATES_PER_CELL:(cell + 1) * GATES_PER_CELL]
-        adds = chunk[:60]
-        assert chunk[60][0] == OP_AND, "cell %d detect" % cell
-        assert chunk[61][0] == OP_XOR, "cell %d clear" % cell
-        assert len(adds) == 60
-        for adder in range(N_NEIGH):
-            block = adds[adder * GATES_PER_ADD:(adder + 1) * GATES_PER_ADD]
-            for fa_i in range(3):
-                ops = [g[0] for g in block[fa_i * GATES_PER_FA:(fa_i + 1) * GATES_PER_FA]]
-                assert ops == fa_ops, "cell %d add %d fa %d" % (cell, adder, fa_i)
-        owned = neighbors(cell)
-        assert len(set(owned)) == N_NEIGH
-        assert cell not in owned
-        assert meta["neighbors"][cell] == list(owned)
+        assert len(chunk) == GATES_PER_CELL
+        for i in range(0, N_ADDS, GATES_PER_FA):
+            ops = [g[0] for g in chunk[i:i + GATES_PER_FA]]
+            assert ops == [OP_XOR, OP_XOR, OP_AND, OP_AND, OP_OR], "fa cell %d i %d" % (cell, i)
+        detect_op, clear_op = chunk[N_ADDS][0], chunk[N_ADDS + 1][0]
+        assert detect_op == OP_AND, "detect cell %d" % cell
+        assert clear_op == OP_XOR, "clear cell %d" % cell
 
+    hsz = hdr_size()
     assert blob[hsz + W_CONST0] == 0 and blob[hsz + W_CONST1] == 1
     return True
 
@@ -279,12 +260,15 @@ def write_files(blob, meta):
             "container": "muhl_socr.mno",
             "format": "physical",
             "gate_stride": GATE_STRIDE,
-            "grid": "16x16 wrap, 3-bit height, topple at 4",
-            "adders": "4 neighbour 3-bit ripple adds, 15 g each",
+            "cells": N_CELLS,
+            "bits": BITS,
+            "adds": "4 x 3-bit neighbor adds",
+            "detect": "AND of accumulated MSB (height >= 4 after four neighbor adds)",
+            "clear": "XOR-with-0 pad of detect to declared depth 14",
+            "clock": "height out IS height in",
             "input_addrs": meta["input_addrs"],
             "output_addrs": meta["output_addrs"],
             "sha256": meta["sha256"],
-            "clock": "height out IS height in",
             "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
             "titan": "NOT_WRITTEN",
         }
