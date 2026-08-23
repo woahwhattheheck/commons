@@ -1,0 +1,21 @@
+{
+  "muhl_pdap": {
+    "name": "muhl_pdap",
+    "magic": "MUHLPDAP",
+    "n_gate": 2656,
+    "n_wires": 2690,
+    "n_in": 32,
+    "n_out": 32,
+    "depth": 192,
+    "len": 69374,
+    "offset": 0,
+    "container": "muhl_pdap.mno",
+    "format": "physical",
+    "gate_stride": 25,
+    "input_addrs": [286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317],
+    "output_addrs": [286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317],
+    "sha256": "874b08be34ba5263ef9ece0217c213aa14d9d9fa0e673c74c0d12a8b8799f4b4",
+    "clock": "control/stack out IS control/stack in",
+    "titan": "NOT_WRITTEN"
+  }
+}
