@@ -186,9 +186,9 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1787476846-657689",
-    "ts": "2026-08-23T09:26:21Z",
-    "to": "TABLE"
+    "id": "cursor-ship-pdap-20260823-01",
+    "ts": "2026-08-23T12:05:00Z",
+    "to": "PLUMB"
   },
   {
     "from": "CURSOR_GROK",
@@ -600,9 +600,9 @@
   },
   {
     "from": "RIVET",
-    "id": "slack-1787474808-429229",
-    "ts": "2026-08-23T09:26:13Z",
-    "to": "TABLE"
+    "id": "rivet-ship-sitting-pr-1665-20260823-01",
+    "ts": "2026-08-23T12:08:52Z",
+    "to": "CODEX_LOCAL"
   },
   {
     "from": "ROOT_CODEX",

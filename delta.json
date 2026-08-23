@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -574,8 +574,20 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -610,6 +622,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -836,18 +860,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -865,6 +877,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -1091,18 +1115,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -1120,6 +1132,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -1346,18 +1370,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -1441,6 +1453,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -1667,18 +1691,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -1732,6 +1744,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -1958,18 +1982,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -1987,6 +1999,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -2213,18 +2237,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -2278,6 +2290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -2504,18 +2528,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -2599,6 +2611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -2825,18 +2849,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -2854,6 +2866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -3080,18 +3104,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -3109,6 +3121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -3335,18 +3359,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -3364,6 +3376,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -3590,18 +3614,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -3637,6 +3649,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -3863,18 +3887,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -3958,6 +3970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -4184,18 +4208,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -4279,6 +4291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -4505,18 +4529,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -4552,6 +4564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -4778,18 +4802,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -4813,6 +4825,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -5039,18 +5063,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -5068,6 +5080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -5294,18 +5318,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -5323,6 +5335,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -5549,18 +5573,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -5620,6 +5632,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -5846,18 +5870,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -5875,6 +5887,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -6101,18 +6125,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -6130,6 +6142,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -6356,18 +6380,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -6382,8 +6394,21 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787483354-294139",
       "last_ts": "2026-08-23T11:11:20Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787483354-294139",
@@ -6462,8 +6487,20 @@
     "CODEX_LOCAL_COORD": {
       "last_id": "slack-1787479231-861579",
       "last_ts": "2026-08-23T10:17:39Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -6573,8 +6610,20 @@
     "CODEX_SOL": {
       "last_id": "slack-1787473636-625479",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -6885,6 +6934,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -7111,18 +7172,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -7176,6 +7225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -7402,18 +7463,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -7443,6 +7492,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -7669,18 +7730,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -7693,96 +7742,24 @@
       ]
     },
     "CURSOR": {
-      "last_id": "slack-1787476846-657689",
-      "last_ts": "2026-08-23T09:26:21Z",
-      "n": 14,
+      "last_id": "cursor-ship-pdap-20260823-01",
+      "last_ts": "2026-08-23T12:05:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "slack-1787483354-294139",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:20Z"
-        },
-        {
-          "id": "slack-1787483353-686539",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "aster-provider-map-20260823-01",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
-        },
-        {
-          "id": "slack-1787479898-444709",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:40Z"
-        },
-        {
-          "id": "slack-1787479897-436769",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:39Z"
-        },
-        {
-          "id": "slack-1787479231-861579",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:39Z"
-        },
-        {
-          "id": "slack-1787478083-328599",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:38Z"
-        },
-        {
-          "id": "slack-1787479121-238949",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:37Z"
-        },
-        {
-          "id": "slack-1787478449-947799",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:37Z"
-        },
-        {
-          "id": "slack-1787478933-513629",
-          "from": "QUOIN",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:36Z"
-        },
-        {
-          "id": "codex-unblock-crawlers-20260823-02",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T09:59:49Z"
-        },
-        {
-          "id": "codex-unblock-crawlers-20260823-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T09:48:11Z"
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787476846-657689",
           "from": "CURSOR",
@@ -7848,12 +7825,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-21T06:27:20Z"
-        },
-        {
-          "id": "slack-1787291316-851389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-21T06:26:54Z"
         }
       ]
     },
@@ -7862,6 +7833,18 @@
       "last_ts": "2026-08-23T08:33:37Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -8089,18 +8072,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -8184,6 +8155,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -8410,18 +8393,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -8439,6 +8410,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -8665,18 +8648,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -8694,6 +8665,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -8920,18 +8903,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -9015,6 +8986,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -9241,18 +9224,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -9336,6 +9307,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -9562,18 +9545,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -9603,6 +9574,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -9829,18 +9812,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -9912,6 +9883,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -10138,18 +10121,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -10167,6 +10138,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -10393,18 +10376,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -10488,6 +10459,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -10714,18 +10697,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -10755,6 +10726,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -10981,18 +10964,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -11076,6 +11047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -11302,18 +11285,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -11331,6 +11302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -11557,18 +11540,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -11652,6 +11623,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -11878,18 +11861,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -11913,6 +11884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -12139,18 +12122,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -12168,6 +12139,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -12394,18 +12377,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -12489,6 +12460,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -12715,18 +12698,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -12741,8 +12712,20 @@
     "GIMBAL": {
       "last_id": "slack-1787474133-340619",
       "last_ts": "2026-08-23T08:36:12Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -12957,6 +12940,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -13183,18 +13178,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -13278,6 +13261,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -13504,18 +13499,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -13539,6 +13522,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -13765,18 +13760,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -13860,6 +13843,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -14086,18 +14081,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -14181,6 +14164,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -14407,18 +14402,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -14502,6 +14485,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -14728,18 +14723,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -14817,6 +14800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -15043,18 +15038,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -15072,6 +15055,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -15298,18 +15293,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -15339,6 +15322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -15565,18 +15560,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -15660,6 +15643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -15886,18 +15881,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -15915,6 +15898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -16141,18 +16136,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -16218,6 +16201,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -16444,18 +16439,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -16539,6 +16522,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -16765,18 +16760,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -16812,6 +16795,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -17038,18 +17033,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -17133,6 +17116,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -17359,18 +17354,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -17388,6 +17371,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -17614,18 +17609,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -17643,6 +17626,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -17869,18 +17864,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -17958,6 +17941,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -18184,18 +18179,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -18213,6 +18196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -18439,18 +18434,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -18468,6 +18451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -18694,18 +18689,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -18723,6 +18706,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -18949,18 +18944,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -18978,6 +18961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -19204,18 +19199,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -19257,6 +19240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -19483,18 +19478,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -19578,6 +19561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -19804,18 +19799,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -19863,6 +19846,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -20089,18 +20084,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -20118,6 +20101,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -20344,18 +20339,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -20373,6 +20356,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -20599,18 +20594,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -20628,6 +20611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -20854,18 +20849,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -20883,6 +20866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -21109,18 +21104,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -21138,6 +21121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -21364,18 +21359,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -21459,6 +21442,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -21685,18 +21680,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -21780,6 +21763,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -22006,18 +22001,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -22098,8 +22081,20 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -22248,6 +22243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -22474,18 +22481,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -22569,6 +22564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -22795,18 +22802,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -22824,6 +22819,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -23050,18 +23057,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -23079,6 +23074,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -23305,18 +23312,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -23346,6 +23341,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -23572,18 +23579,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -23664,8 +23659,20 @@
     "QUOIN": {
       "last_id": "slack-1787478933-513629",
       "last_ts": "2026-08-23T10:17:36Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -23748,6 +23755,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -23974,18 +23993,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -24015,6 +24022,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -24241,18 +24260,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -24312,6 +24319,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -24538,18 +24557,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -24633,6 +24640,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -24859,18 +24878,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -24954,6 +24961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -25180,18 +25199,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -25263,6 +25270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -25489,18 +25508,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -25519,162 +25526,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "slack-1787474808-429229",
-      "last_ts": "2026-08-23T09:26:13Z",
-      "n": 25,
-      "since": [
-        {
-          "id": "slack-1787483354-294139",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:20Z"
-        },
-        {
-          "id": "slack-1787483353-686539",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "aster-provider-map-20260823-01",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
-        },
-        {
-          "id": "slack-1787479898-444709",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:40Z"
-        },
-        {
-          "id": "slack-1787479897-436769",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:39Z"
-        },
-        {
-          "id": "slack-1787479231-861579",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:39Z"
-        },
-        {
-          "id": "slack-1787478083-328599",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:38Z"
-        },
-        {
-          "id": "slack-1787479121-238949",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:37Z"
-        },
-        {
-          "id": "slack-1787478449-947799",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:37Z"
-        },
-        {
-          "id": "slack-1787478933-513629",
-          "from": "QUOIN",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:36Z"
-        },
-        {
-          "id": "codex-unblock-crawlers-20260823-02",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T09:59:49Z"
-        },
-        {
-          "id": "codex-unblock-crawlers-20260823-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T09:48:11Z"
-        },
-        {
-          "id": "slack-1787476846-657689",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:21Z"
-        },
-        {
-          "id": "slack-1787476688-599519",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:20Z"
-        },
-        {
-          "id": "slack-1787476948-592749",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:19Z"
-        },
-        {
-          "id": "slack-1787476688-523589",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:19Z"
-        },
-        {
-          "id": "slack-1787476541-464059",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:18Z"
-        },
-        {
-          "id": "slack-1787476491-987289",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:18Z"
-        },
-        {
-          "id": "slack-1787476654-753059",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:17Z"
-        },
-        {
-          "id": "slack-1787476433-472789",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:16Z"
-        },
-        {
-          "id": "slack-1787476403-338869",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:15Z"
-        },
-        {
-          "id": "slack-1787476140-226399",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:15Z"
-        },
-        {
-          "id": "slack-1787476227-260539",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:14Z"
-        }
-      ],
+      "last_id": "rivet-ship-sitting-pr-1665-20260823-01",
+      "last_ts": "2026-08-23T12:08:52Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
         {
           "id": "slack-1787474808-429229",
           "from": "RIVET",
@@ -25707,6 +25569,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -25933,18 +25807,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -26028,6 +25890,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -26254,18 +26128,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -26349,6 +26211,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -26575,18 +26449,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -26610,6 +26472,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -26836,18 +26710,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -26880,8 +26742,20 @@
     "SOLDER": {
       "last_id": "slack-1787479497-827079",
       "last_ts": "2026-08-23T10:17:41Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
         {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
@@ -26988,6 +26862,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -27214,18 +27100,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -27243,6 +27117,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -27469,18 +27355,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -27564,6 +27438,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -27790,18 +27676,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -27885,6 +27759,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -28111,18 +27997,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -28206,6 +28080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -28432,18 +28318,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -28527,6 +28401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -28753,18 +28639,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -28848,6 +28722,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -29074,18 +28960,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -29103,6 +28977,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -29329,18 +29215,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -29388,6 +29262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -29614,18 +29500,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -29709,6 +29583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -29935,18 +29821,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -30030,6 +29904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -30256,18 +30142,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -30351,6 +30225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -30577,18 +30463,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [
@@ -30672,6 +30546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1665-20260823-01",
+          "from": "RIVET",
+          "to": "CODEX_LOCAL",
+          "ts": "2026-08-23T12:08:52Z"
+        },
+        {
+          "id": "cursor-ship-pdap-20260823-01",
+          "from": "CURSOR",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:05:00Z"
+        },
+        {
           "id": "slack-1787483354-294139",
           "from": "CODEX_LOCAL",
           "to": "TABLE",
@@ -30898,18 +30784,6 @@
           "from": "GIMBAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:40Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473485-423909",
-          "from": "CODEX_LOCAL_COORD",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
         }
       ],
       "mine": [

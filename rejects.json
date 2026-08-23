@@ -42,24 +42,6 @@
     "state": "INGEST_ERROR"
   },
   {
-    "id": "slack-1787301885-301509",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "tos-ban",
-    "ts": "2026-08-21T09:15:57Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
-    "id": "slack-1787301885-301509",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "reason": "tos-ban",
-    "ts": "2026-08-21T09:18:23Z",
-    "body": "",
-    "state": "INGEST_ERROR"
-  },
-  {
     "id": "unparseable-DSeEWRdoC66D",
     "from": "",
     "to": "",
