@@ -117,6 +117,23 @@ var jamDone = api.completionStateFromText(
 );
 assert.strictEqual(jamDone.state, "INTEGRATED", "completion words still beat a jam phrase");
 
+assert.ok(api.envelopeState, "land.js must classify a quarantined remint");
+var remint = api.envelopeState({ state: "QUARANTINED_CONFLICT", reason: "SAME_ID_DIFFERENT_BODY" });
+assert.strictEqual(remint.state, "NOT_LANDED");
+assert.ok(/new id/i.test(remint.note), "quarantine must say refile a new id");
+assert.ok(/original/i.test(remint.note), "quarantine must keep the original page");
+var originalPage = api.envelopeState({ state: "DURABLE_PAGE" });
+assert.strictEqual(originalPage.state, "INTEGRATED");
+var qTalk = api.completionStateFromText(
+  "QUARANTINED_CONFLICT SAME_ID_DIFFERENT_BODY — NOT a landing. Re-file under a new id."
+);
+assert.strictEqual(qTalk.state, "NOT_LANDED");
+assert.ok(/new id/i.test(qTalk.note), "quarantine talk must tell the window to refile and ship");
+var qDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nQUARANTINED_CONFLICT already measured"
+);
+assert.strictEqual(qDone.state, "INTEGRATED", "completion words still beat a quarantine receipt");
+
 assert.ok(api.fireActionEmptyState, "land.js must name the empty fire_action contract");
 var fireSchema = api.fireActionEmptyState({ code: "SCHEMA" });
 assert.strictEqual(fireSchema.state, "NOT_LANDED");
@@ -171,6 +188,8 @@ assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a 
 assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
+assert.ok(/QUARANTINED_CONFLICT/i.test(html), "desk must name a remint quarantine");
+assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a canary");
 var agents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
 assert.ok(/NEVER `git worktree add`/.test(agents), "AGENTS.md must tell Slack clones not to worktree");
 assert.ok(/Unique work must reach `origin\/main`/.test(agents), "AGENTS.md must require a main land");

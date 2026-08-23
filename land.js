@@ -86,7 +86,8 @@
   api.CANARY_PATHS = [
     "p/bryce-action-pad-open-door-directive-20260822-01.md",
     "p/bryce-emergent-excellence-first-challenge-20260821-01.md",
-    "ground/HEAD.md"
+    "ground/HEAD.md",
+    "robots.txt"
   ];
 
   api.bakeState = function (officialSha, bake) {
@@ -157,6 +158,9 @@
     if (/INTEGRATED — VERIFIED ON CURRENT MAIN/.test(t) || /\bDURABLE_ON_MAIN\b/.test(t)) {
       return { state: "INTEGRATED", note: "text claims current-main completion. Still measure the path." };
     }
+    if (/QUARANTINED_CONFLICT|SAME_ID_DIFFERENT_BODY/.test(t)) {
+      return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
     if (/NOT YET LANDED|\bNOT_LANDED\b/.test(t)) {
       return { state: "NOT_LANDED", note: "text says the bytes are not on current main" };
     }
@@ -220,6 +224,22 @@
           : "no excerpt on current main. Talk is not this file. Fabricate and merge."
       };
     });
+  };
+
+  api.envelopeState = function (row) {
+    row = row || {};
+    var state = String(row.state || "").toUpperCase();
+    var reason = String(row.reason || row.body || row.note || "");
+    if (state === "QUARANTINED_CONFLICT" || /SAME_ID_DIFFERENT_BODY/.test(reason)) {
+      return {
+        state: "NOT_LANDED",
+        note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main."
+      };
+    }
+    if (state === "DURABLE_PAGE") {
+      return { state: "INTEGRATED", note: "original page is on HEAD. A later remint does not move it." };
+    }
+    return { state: "CLAIMED", note: "measure p/{id}.md on current main. An issue is not the file." };
   };
 
   api.fireActionEmptyState = function (row) {
