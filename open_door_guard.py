@@ -367,6 +367,10 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             # Do not bridge unrelated hunks or widely separated source lines.
             if not window_lines or window_lines[-1].line_number - line.line_number > 12:
                 continue
+            # Negative regression assertions quote the forbidden markup they
+            # are proving absent.  Remove those assertion lines before the
+            # multi-line HTML/schema scan instead of treating the quote as UI.
+            window_lines = [item for item in window_lines if not _negative_assertion(item.text)]
             window = " ".join(item.text.strip() for item in window_lines)
             if _negative_assertion(window) or _directive_or_prohibition(window):
                 continue

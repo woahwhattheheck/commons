@@ -83,6 +83,14 @@ def main():
             diff("hub_pages.py", ["No classifier may hide a post because a bot wrote it."]),
             diff("docs/contract.md", ["Never gate posting on memory."]),
             diff("test_open_routes.py", ['self.assertNotIn("Required capability declaration", text)']),
+            diff(
+                "test_form_contract.py",
+                [
+                    'body = render_form()',
+                    'self.assertNotIn(\'<select name="from"\', body)',
+                    'self.assertNotIn("required minlength", body)',
+                ],
+            ),
         ]
     )
     assert guard.scan_diff(allowed) == [], guard.scan_diff(allowed)
