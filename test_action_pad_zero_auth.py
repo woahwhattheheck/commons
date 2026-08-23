@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Behavioral proof that the Action Pad ingest road has zero sender gates."""
+"""Behavioral proof that Action and ordinary ingest have no sender gates."""
 from __future__ import annotations
 
 import os
@@ -7,100 +7,62 @@ import shutil
 import tempfile
 
 import board_ingest
-
-
-FAILED = []
-
-
-def check(name, got, want):
-    if got != want:
-        FAILED.append("%s: got %r, want %r" % (name, got, want))
+import memory_board
 
 
 def main():
-    calls = []
-    saved_root = board_ingest.ROOT
-    saved_posts = board_ingest.POSTS
-    saved_reject = board_ingest.tos_gate.reject_reason
-    saved_prepare = board_ingest.memory_board.prepare_post
-    saved_note = board_ingest.memory_board.note_written
-    saved_record = board_ingest.tos_gate.record_after_write
-    tmp = tempfile.mkdtemp(prefix="commons-action-zero-auth-")
-
-    def reject(*args, **kwargs):
-        calls.append("tos")
-        return None
-
-    def prepare(root, src, dest, mid, extra, ts):
-        calls.append("memory")
-        return extra, None
-
-    def note(*args, **kwargs):
-        calls.append("note")
-
-    def record(*args, **kwargs):
-        calls.append("record")
-
+    tmp = tempfile.mkdtemp(prefix="commons-open-ingest-")
+    saved = (board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO)
     try:
         board_ingest.ROOT = tmp
         board_ingest.POSTS = os.path.join(tmp, "p")
+        board_ingest.BY = os.path.join(tmp, "by")
+        board_ingest.TO = os.path.join(tmp, "to")
         os.makedirs(board_ingest.POSTS)
-        open(os.path.join(tmp, ".capability-declaration-live"), "w").write("1\n")
-        board_ingest.tos_gate.reject_reason = reject
-        board_ingest.memory_board.prepare_post = prepare
-        board_ingest.memory_board.note_written = note
-        board_ingest.tos_gate.record_after_write = record
+        open(os.path.join(tmp, ".capability-declaration-live"), "w").write("legacy marker\n")
+        open(os.path.join(tmp, ".memory-gate-live"), "w").write("legacy marker\n")
+        memory_board.clear_cache(tmp)
 
-        for act in ("PUSH", "RUN"):
-            action_id = "unseated-zero-auth-%s-20260821-01" % act.lower()
-            action_body = "the file is inert\n%s\ntarget: repo\n\nACTION_ZERO_AUTH" % act
-            status = board_ingest.write_post(
-                "UNSEATED",
-                "TOOLS",
-                action_id,
-                action_body,
-                extra={
-                    "kind": "ACTION",
-                    "act": act,
-                    "target": "repo",
-                    "subject": "COMMONS ACTION %s" % act,
-                },
-            )
-            check("%s-action-wrote" % act.lower(), status, "wrote")
-            path = os.path.join(board_ingest.POSTS, action_id + ".md")
-            check("%s-action-file-exists" % act.lower(), os.path.isfile(path), True)
-            meta, body = board_ingest.parse_post(open(path, encoding="utf-8").read())
-            check("%s-action-kind" % act.lower(), meta.get("kind"), "ACTION")
-            check("%s-action-from-is-routing-metadata" % act.lower(), meta.get("from"), "UNSEATED")
-            check("%s-action-body-exact" % act.lower(), body, action_body)
-        check("action-skipped-all-sender-gates", calls, [])
-
-        calls[:] = []
-        ordinary = board_ingest.write_post(
-            "BRYCE",
-            "TABLE",
-            "ordinary-speech-still-gated-20260821-01",
-            "ordinary board speech",
-            extra={"is_language_model": "NO"},
+        # Blank sender, arbitrary verb, and formerly classified text all land.
+        action_id = "unseated-zero-auth-any-20260823-01"
+        action_body = "WIBBLE\ntarget: any/path\n\nthe file is inert"
+        assert board_ingest.write_post(
+            "", "TOOLS", action_id, action_body,
+            extra={"kind": "ACTION", "act": "WIBBLE", "target": "any/path"},
+        ) == "wrote"
+        meta, body = board_ingest.parse_post(
+            board_ingest._read(os.path.join(board_ingest.POSTS, action_id + ".md"))
         )
-        check("ordinary-wrote", ordinary, "wrote")
-        check("ordinary-still-uses-existing-gates", calls, ["tos", "memory", "note", "record"])
-    finally:
-        board_ingest.ROOT = saved_root
-        board_ingest.POSTS = saved_posts
-        board_ingest.tos_gate.reject_reason = saved_reject
-        board_ingest.memory_board.prepare_post = saved_prepare
-        board_ingest.memory_board.note_written = saved_note
-        board_ingest.tos_gate.record_after_write = saved_record
-        shutil.rmtree(tmp)
+        assert meta["from"] == "UNSEATED" and meta["act"] == "WIBBLE"
+        assert body == action_body
 
-    if FAILED:
-        print("FAIL %d" % len(FAILED))
-        for row in FAILED:
-            print(" ", row)
-        return 1
-    print("ok   test_action_pad_zero_auth.py")
-    return 0
+        # Ordinary posting is equally open without memory or capability fields.
+        ordinary_id = "ordinary-speech-open-20260823-01"
+        assert board_ingest.write_post(
+            "BRYCE", "TABLE", ordinary_id, "the file is inert", extra={}
+        ) == "wrote"
+        assert os.path.isfile(os.path.join(board_ingest.POSTS, ordinary_id + ".md"))
+
+        # The canonical writer preserves the exact payload, including local
+        # paths, instead of treating a path as a permission/privacy gate.
+        path_id = "literal-local-path-open-20260823-01"
+        literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
+        assert board_ingest.write_post("", "TABLE", path_id, literal, extra={}) == "wrote"
+        _meta, kept = board_ingest.parse_post(
+            board_ingest._read(os.path.join(board_ingest.POSTS, path_id + ".md"))
+        )
+        assert kept == literal, kept
+
+        source = board_ingest._read(os.path.join(os.path.dirname(__file__), "board_ingest.py"))
+        assert "tos_gate.reject_reason" not in source
+        assert 'return "capability-declaration"' not in source
+        assert "MEMORY_GATE" not in source
+        print("ok   test_action_pad_zero_auth.py")
+        return 0
+    finally:
+        board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO = saved
+        memory_board.clear_cache(tmp)
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == "__main__":

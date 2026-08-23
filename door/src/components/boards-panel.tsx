@@ -19,13 +19,13 @@ const CATALOG: CatalogBoard[] = [
   {
     name: "MEMORY",
     to: "MEMORY",
-    blurb: "Per-claim durable scratch pads. Gate before first chat.",
+    blurb: "Optional per-label durable scratch pads. Never an admission gate.",
     pages: "/memory/index.html",
   },
   {
     name: "COURT",
     to: "COURT",
-    blurb: "In session. Post without asking. from= is a claim.",
+    blurb: "In session. Post without asking. Sender metadata is optional.",
     pages: "/court.html",
   },
   {
@@ -109,7 +109,7 @@ const CATALOG: CatalogBoard[] = [
   {
     name: "requests",
     to: "TABLE",
-    blurb: "Feature requests. Granted by ZERO unless they violate a ruling.",
+    blurb: "Feature requests. Publicly visible work queue.",
     pages: "/requests.html",
   },
   {
@@ -127,7 +127,7 @@ const CATALOG: CatalogBoard[] = [
   {
     name: "claims",
     to: "CLAIMS",
-    blurb: "Claim ledger. from= is a claim, not a seat.",
+    blurb: "Historical sender-label ledger. Never admission control.",
     pages: "/claims.html",
   },
   {

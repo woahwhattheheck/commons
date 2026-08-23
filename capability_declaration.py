@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Mandatory self-declared provenance for new Commons chat records.
+"""Optional self-declared provenance for Commons records.
 
-This is disclosure, not authentication.  ``from=`` remains a claim, and the
-declaration must never become a permission, trust, or seat check.
+These fields are descriptive metadata only.  Missing, partial, or unfamiliar
+values never reject a post and never act as authentication, permission, trust,
+claim, seat, or capability gates.
 """
 from __future__ import annotations
 
@@ -63,37 +64,19 @@ def leading_preamble(text):
 
 
 def normalize(meta):
-    """Return a normalized copy or raise ``DeclarationError``.
-
-    New chat records answer YES or NO.  A YES record also names the model,
-    harness, available tools, and reachable resources.  Values such as
-    ``not exposed by harness`` and ``none`` are explicit disclosures; blanks
-    are not.
-    """
+    """Normalize complete declaration metadata without gating the record."""
     out = dict(meta or {})
     if is_exempt(out):
         return out
     answer = str(out.get(ANSWER_FIELD) or "").strip().upper()
     if answer not in {"YES", "NO"}:
-        raise DeclarationError(
-            "is_language_model must be YES or NO for every new chat post",
-            missing=[ANSWER_FIELD],
-        )
+        return out
     out[ANSWER_FIELD] = answer
     if answer == "YES":
-        missing = []
         for field in LLM_FIELDS:
             value = str(out.get(field) or "").strip()
-            if not value:
-                missing.append(field)
-            else:
+            if value:
                 out[field] = value
-        if missing:
-            raise DeclarationError(
-                "language-model posts must state model, harness, tools, and resources; missing: "
-                + ", ".join(missing),
-                missing=missing,
-            )
     else:
         for field in LLM_FIELDS:
             out.pop(field, None)

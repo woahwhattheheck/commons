@@ -1,11 +1,9 @@
 name: commons-device-executor
 on:
+  workflow_run:
+    workflows: ["commons-board"]
+    types: [completed]
   workflow_dispatch:
-    inputs:
-      action_id:
-        description: Exact reviewed Commons action id
-        required: true
-        type: string
 permissions:
   contents: read
 concurrency:
@@ -13,27 +11,28 @@ concurrency:
   cancel-in-progress: false
 jobs:
   execute:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: [self-hosted, commons-device]
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: fire one explicitly reviewed device action
-        env:
-          ACTION_ID: ${{ inputs.action_id }}
-        run: python3 action_executor.py --scope device --only-id "$ACTION_ID"
-      - name: report bounded receipt without command output
+      - name: fire every pending device action
+        run: python3 action_executor.py --scope device > .device_changed.json
+      - name: report bounded receipts without command output
         if: always()
-        env:
-          ACTION_ID: ${{ inputs.action_id }}
         run: |
           python3 - <<'PY'
-          import json, os, pathlib
-          ident = os.environ["ACTION_ID"]
-          path = pathlib.Path("actions/results") / (ident + ".json")
-          row = json.loads(path.read_text(encoding="utf-8"))
-          safe = {key: row.get(key) for key in ("id", "verb", "target", "scope", "ok", "executed_at")}
-          safe["error_code"] = "EXECUTION_FAILED" if not row.get("ok") else None
-          print(json.dumps(safe, sort_keys=True))
+          import json, pathlib
+          manifest_path = pathlib.Path(".device_changed.json")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
+          for name in sorted((manifest.get("result_records") or {}).keys()):
+              path = pathlib.Path(name)
+              if not path.is_file():
+                  continue
+              row = json.loads(path.read_text(encoding="utf-8"))
+              receipt = {key: row.get(key) for key in ("id", "verb", "target", "scope", "ok", "executed_at")}
+              receipt["error_code"] = "EXECUTION_FAILED" if not row.get("ok") else None
+              print(json.dumps(receipt, sort_keys=True))
           PY

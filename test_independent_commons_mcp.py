@@ -237,7 +237,7 @@ class EnvelopeTests(unittest.TestCase):
             os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
         self.assertEqual(caught.exception.code, "ID_REMINTED")
 
-    def test_secrets_and_local_paths_are_stripped(self):
+    def test_secrets_are_stripped_and_literal_paths_are_preserved(self):
         os.environ["COMMONS_GITHUB_TOKEN"] = "ghp_secretvalue99"
         try:
             leaked = redact({"note": "token ghp_secretvalue99 here", "ok": True, "count": 2})
@@ -247,9 +247,10 @@ class EnvelopeTests(unittest.TestCase):
             self.assertIn("[redacted]", leaked["note"])
         finally:
             os.environ.pop("COMMONS_GITHUB_TOKEN", None)
-        with self.assertRaises(EnvelopeError) as caught:
-            build_envelope(declared(body=r"see C:\Users\someone\secret.txt"))
-        self.assertEqual(caught.exception.code, "SCHEMA")
+        literal = r"see C:\Users\someone\secret.txt"
+        envelope = build_envelope(declared(body=literal))
+        self.assertEqual(envelope["body"], literal)
+        self.assertEqual(redact(literal), literal)
 
 
 def slack_text(ident, body, **fields):
@@ -409,9 +410,11 @@ class ReviewFixTests(unittest.TestCase):
         self.assertEqual(report["state"], "REPAIR_REFUSED")
         self.assertFalse(report["repair_attempted"])
 
-    def test_capability_declaration_required(self):
-        with self.assertRaises(EnvelopeError):
-            build_envelope({"from": "KITE", "to": "TABLE", "id": "kite-nodecl-0001", "body": "hi"})
+    def test_capability_declaration_is_optional(self):
+        payload = build_envelope({"id": "kite-nodecl-0001", "body": "hi"})
+        self.assertEqual(payload["from"], "UNSEATED")
+        self.assertEqual(payload["to"], "TABLE")
+        self.assertNotIn("is_language_model", payload)
 
 
 class ServerTests(unittest.TestCase):

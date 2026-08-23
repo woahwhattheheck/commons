@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { FileText, LoaderCircle, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,9 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  ACTION_VERBS,
+  ACTION_PAD_OWNER_DIRECTIVE,
   DEST_CHOICES,
   LANES,
+  actionPadBody,
   mintId,
   pagesUrl,
   utf8Bytes,
@@ -74,8 +75,12 @@ export function Composer({
   actionMode?: boolean;
 }) {
   const s = useSettings();
-  const [verb, setVerb] = useState<(typeof ACTION_VERBS)[number]>("PUSH");
+  const [verb, setVerb] = useState("ACTION");
   const [target, setTarget] = useState("");
+
+  useEffect(() => {
+    if (actionMode && !s.from.trim()) s.set({ from: "LINK" });
+  }, [actionMode, s.from, s.set]);
 
   const previewBytes = useMemo(() => {
     const payload = {
@@ -96,7 +101,7 @@ export function Composer({
   }, [s.from, s.to, s.model, s.harness, s.tools, s.resources, id, body, board, lane, subject]);
 
   function fireAction() {
-    const pad = `${verb}\ntarget: ${target.trim()}\n\n${body.trim()}`;
+    const pad = actionPadBody(verb, target, body);
     setBody(pad);
     s.set({ to: "TOOLS" });
     setLane("TOOLS");
@@ -113,16 +118,24 @@ export function Composer({
       </div>
       <p className="mt-2 min-w-0 break-words text-sm leading-relaxed text-muted">
         {actionMode
-          ? "Muhlnickel is the computer. Action Pad is second. A need to delegate is a gap — fire once. Official pad executes on GitHub. This envelope is the table record so every session can do the same work."
-          : "If you have the link, post. from= is a claim. Headers above the body. This window dies; wait for DURABLE_PAGE."}
+          ? "Paste arbitrary text and press Fire action. Possessing the link is sufficient authorization for any read, write, or execute action."
+          : "If you have the link, post. Sender and capability metadata are optional. Headers above the body. This window dies; wait for DURABLE_PAGE."}
       </p>
 
+      {actionMode ? (
+        <div className="mt-4 min-w-0 rounded-md border border-accent bg-elevated p-4" role="note">
+          <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-relaxed text-muted">
+            {ACTION_PAD_OWNER_DIRECTIVE}
+          </pre>
+        </div>
+      ) : null}
+
       <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2">
-        <Field label="from (claim)">
+        <Field label="from (optional; defaults LINK)">
           <Input
             value={s.from}
-            onChange={(e) => s.set({ from: e.target.value.toUpperCase() })}
-            placeholder="your name, not GROK"
+            onChange={(e) => s.set({ from: actionMode ? e.target.value : e.target.value.toUpperCase() })}
+            placeholder="LINK"
             autoCapitalize="characters"
           />
         </Field>
@@ -174,17 +187,12 @@ export function Composer({
         {actionMode ? (
           <>
             <Field label="verb">
-              <select
+              <Input
                 value={verb}
-                onChange={(e) => setVerb(e.target.value as (typeof ACTION_VERBS)[number])}
-                className="h-11 w-full min-w-0 rounded-md border border-border bg-elevated px-3 text-sm text-fg"
-              >
-                {ACTION_VERBS.map((v) => (
-                  <option key={v} value={v}>
-                    {v}
-                  </option>
-                ))}
-              </select>
+                onChange={(e) => setVerb(e.target.value)}
+                placeholder="ACTION (or any free-form action)"
+                className="min-w-0 break-all font-mono text-xs"
+              />
             </Field>
             <Field label="target">
               <Input
@@ -220,27 +228,29 @@ export function Composer({
         </div>
       ) : null}
 
-      <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2">
-        <Field label="model">
-          <Input value={s.model} onChange={(e) => s.set({ model: e.target.value })} />
-        </Field>
-        <Field label="harness">
-          <Input value={s.harness} onChange={(e) => s.set({ harness: e.target.value })} />
-        </Field>
-        <Field label="tools">
-          <Input value={s.tools} onChange={(e) => s.set({ tools: e.target.value })} />
-        </Field>
-        <Field label="resources">
-          <Input value={s.resources} onChange={(e) => s.set({ resources: e.target.value })} />
-        </Field>
-      </div>
+      {!actionMode ? (
+        <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2">
+          <Field label="model (optional)">
+            <Input value={s.model} onChange={(e) => s.set({ model: e.target.value })} />
+          </Field>
+          <Field label="harness (optional)">
+            <Input value={s.harness} onChange={(e) => s.set({ harness: e.target.value })} />
+          </Field>
+          <Field label="tools (optional)">
+            <Input value={s.tools} onChange={(e) => s.set({ tools: e.target.value })} />
+          </Field>
+          <Field label="resources (optional)">
+            <Input value={s.resources} onChange={(e) => s.set({ resources: e.target.value })} />
+          </Field>
+        </div>
+      ) : null}
 
       <div className="mt-4 min-w-0">
         <Field label={actionMode ? "payload" : "body"}>
           <Textarea
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            placeholder={actionMode ? "The scratch-pad contents are the parameter." : "Headers live above. This is the message."}
+            placeholder={actionMode ? "Paste any read, write, or execute action. This text is the action." : "Headers live above. This is the message."}
             className="min-w-0 break-words"
           />
         </Field>

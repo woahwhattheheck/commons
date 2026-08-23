@@ -7,27 +7,13 @@ import os
 import re
 import sys
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
 
 from . import MAX_BODY, NTFY_MAX
 
-try:
-    import capability_declaration
-except ImportError:
-    _ROOT = str(Path(__file__).resolve().parent.parent)
-    if _ROOT not in sys.path:
-        sys.path.insert(0, _ROOT)
-    try:
-        import capability_declaration
-    except ImportError:
-        capability_declaration = None
-
-
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
-LOCAL_PATH_RE = re.compile(r"C:\\Users\\[^\s`\"'<>]+", re.I)
 SECRET_ENV = (
     "COMMONS_GITHUB_TOKEN",
     "GITHUB_TOKEN",
@@ -90,7 +76,7 @@ def redact(value: Any) -> Any:
     for secret in secret_values():
         if secret and secret in text:
             text = text.replace(secret, "[redacted]")
-    return LOCAL_PATH_RE.sub("[local-path]", text)
+    return text
 
 
 def _plain(value: Any, field: str, maximum: int = 200) -> str:
@@ -129,8 +115,6 @@ def _body(value: Any) -> str:
         raise EnvelopeError("SCHEMA", "body must not be empty")
     if len(body) > MAX_BODY:
         raise EnvelopeError("SCHEMA", "body exceeds 16,000 characters")
-    if LOCAL_PATH_RE.search(body):
-        raise EnvelopeError("SCHEMA", "body contains a local Windows user path; remove it before sending")
     return body
 
 
@@ -202,7 +186,7 @@ def projection_text(payload: dict[str, Any], *, default_capability: str | None =
 
 
 def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str, Any]:
-    actor = _actor(arguments.get("from") or arguments.get("actor_id"), "from")
+    actor = _actor(arguments.get("from") or arguments.get("actor_id") or "UNSEATED", "from")
     dest = _actor(arguments.get("to") or "TABLE", "to")
     ident = _ident(arguments.get("id"))
     body = _body(arguments.get("body"))
@@ -266,16 +250,6 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
     for key in ("tools", "resources"):
         if arguments.get(key) not in (None, ""):
             payload[key] = _plain(arguments[key], key, 1000)
-    if payload.get("kind") not in MEMORY_CREATE_KINDS | MEMORY_APPEND_KINDS:
-        if capability_declaration is None:
-            raise EnvelopeError(
-                "SCHEMA",
-                "capability_declaration.py must be importable from the Commons repo root",
-            )
-        try:
-            payload = capability_declaration.normalize(payload)
-        except capability_declaration.DeclarationError as exc:
-            raise EnvelopeError(exc.code, exc.message, missing=exc.missing) from exc
     packed = canonical_json(payload)
     if len(packed.encode("utf-8")) > NTFY_MAX:
         raise EnvelopeError(

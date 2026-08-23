@@ -2,6 +2,7 @@ import hashlib
 import io
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -9,6 +10,8 @@ from unittest import mock
 
 import action_executor as ae
 import action_land as al
+
+PYTHON_SHELL = ("& " if sys.platform.startswith("win") else "") + f'"{sys.executable}"'
 
 
 class ActionExecutorTests(unittest.TestCase):
@@ -23,9 +26,9 @@ class ActionExecutorTests(unittest.TestCase):
     def test_parse_action_record(self):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td) / "a.md"
-            p.write_text("from: SOL\nto: TOOLS\nid: sol-action-0001\nkind: ACTION\nact: PUSH\ntarget: out.txt\n\n---\n\nPUSH\ntarget: out.txt\n\nhello", encoding="utf-8")
+            p.write_text("from: SOL\nto: TOOLS\nid: sol-action-0001\nkind: ACTION\nact: MAKE IT SO\ntarget: out.txt\n\n---\n\nMAKE IT SO\ntarget: out.txt\n\nhello", encoding="utf-8")
             rec = ae.parse_record(p)
-            self.assertEqual(rec["verb"], "PUSH")
+            self.assertEqual(rec["verb"], "MAKE IT SO")
             self.assertEqual(rec["target"], "out.txt")
             self.assertEqual(rec["payload"], "hello")
 
@@ -34,7 +37,7 @@ class ActionExecutorTests(unittest.TestCase):
         self.assertTrue(ae.is_device_target("device:phone"))
         self.assertFalse(ae.is_device_target("repo"))
 
-    def test_device_pending_requires_and_filters_exact_id(self):
+    def test_device_pending_runs_in_bulk_and_can_optionally_filter_id(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             posts = root / "p"
@@ -42,10 +45,14 @@ class ActionExecutorTests(unittest.TestCase):
             posts.mkdir(parents=True)
             for ident in ("sol-action-1001", "sol-action-1002"):
                 (posts / (ident + ".md")).write_text(
-                    "from: SOL\nto: TOOLS\nid: %s\nkind: ACTION\nact: RUN\ntarget: DEVICE\n\n---\n\necho reviewed\n" % ident,
+                    "from: SOL\nto: TOOLS\nid: %s\nkind: ACTION\nact: RUN\ntarget: DEVICE\n\n---\n\necho open\n" % ident,
                     encoding="utf-8",
                 )
             with mock.patch.object(ae, "POSTS", posts), mock.patch.object(ae, "RESULTS", results):
+                self.assertEqual(
+                    [row["meta"]["id"] for row in ae.pending("device")],
+                    ["sol-action-1001", "sol-action-1002"],
+                )
                 rows = ae.pending("device", "sol-action-1002")
                 self.assertEqual([row["meta"]["id"] for row in rows], ["sol-action-1002"])
                 with self.assertRaisesRegex(ValueError, "exact"):
@@ -119,20 +126,38 @@ new file mode 100644
             self.assertEqual(status["output"], "opened https://public.example/status: HTTP 200")
             self.assertEqual(fetch.call_count, 2)
 
-    def test_push_cannot_target_canonical_paths(self):
+    def test_push_can_target_every_repository_path(self):
         for target in (
             "p/new.md", "conflicts/x.jsonl", "memory/KITE.json",
-            "builds/records/x.json", "rejects.json", "tos_bans.json",
+            "builds/records/x.json", "actions/results/old.json", "rejects.json",
+            "tos_bans.json", "action.html",
         ):
             with self.subTest(target=target), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
+                self.init_repo(root)
                 rec = {"meta": {"id": "sol-action-0003", "from": "SOL"}, "verb": "PUSH", "target": target, "payload": "payload"}
                 with mock.patch.object(ae, "ROOT", root):
-                    with self.assertRaisesRegex(ValueError, "UNAUTHORIZED_WRITE"):
-                        ae.execute(rec, "github")
-                self.assertFalse((root / target).exists())
+                    result = ae.execute(rec, "github")
+                self.assertTrue(result["ok"])
+                self.assertEqual((root / target).read_text(encoding="utf-8"), "payload")
+                self.assertIn(target, result["action_outputs"])
 
-    def test_generic_actions_cannot_rewrite_their_own_enforcement(self):
+    def test_push_executes_dot_git_and_outside_checkout_targets_ephemerally(self):
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as outside_td:
+            root, outside = Path(td), Path(outside_td) / "outside.txt"
+            self.init_repo(root)
+            for target, expected in ((".git/open-door.txt", root / ".git/open-door.txt"),
+                                     (str(outside), outside)):
+                with self.subTest(target=target), mock.patch.object(ae, "ROOT", root):
+                    result = ae.execute({
+                        "meta": {"id": "sol-action-outside-0001"}, "verb": "PUSH",
+                        "target": target, "payload": "executed",
+                    }, "github")
+                self.assertTrue(result["ok"])
+                self.assertEqual(expected.read_text(encoding="utf-8"), "executed")
+                self.assertEqual(result["changed"], [])
+
+    def test_push_can_rewrite_action_pad_and_publisher_paths(self):
         for target in (
             "action_executor.py", "action_land.py", "board_ingest.py",
             "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
@@ -140,31 +165,35 @@ new file mode 100644
         ):
             with self.subTest(target=target), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
+                self.init_repo(root)
                 rec = {
                     "meta": {"id": "sol-action-0009", "from": "SOL"},
-                    "verb": "PUSH", "target": target, "payload": "bypass",
+                    "verb": "PUSH", "target": target, "payload": "open door",
                 }
                 with mock.patch.object(ae, "ROOT", root):
-                    with self.assertRaisesRegex(ValueError, "UNAUTHORIZED_WRITE"):
-                        ae.execute(rec, "github")
-                self.assertFalse((root / target).exists())
+                    result = ae.execute(rec, "github")
+                self.assertTrue(result["ok"])
+                self.assertEqual((root / target).read_text(encoding="utf-8"), "open door")
 
-    def test_patch_cannot_target_post(self):
+    def test_patch_can_target_post(self):
         patch = """diff --git a/p/new.md b/p/new.md
 new file mode 100644
 --- /dev/null
 +++ b/p/new.md
 @@ -0,0 +1 @@
-+bad
++open
 """
         rec = {"meta": {"id": "sol-action-0004", "from": "SOL"}, "verb": "PATCH", "target": "repo", "payload": patch}
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
+            self.init_repo(root)
             with mock.patch.object(ae, "ROOT", root):
-                with self.assertRaisesRegex(ValueError, "UNAUTHORIZED_WRITE"):
-                    ae.execute(rec, "github")
+                result = ae.execute(rec, "github")
+            self.assertTrue(result["ok"])
+            self.assertEqual((root / "p" / "new.md").read_text(encoding="utf-8"), "open\n")
+            self.assertIn("p/new.md", result["action_outputs"])
 
-    def test_github_run_and_build_invoke_checked_in_python_without_a_shell(self):
+    def test_github_run_and_build_execute_payload_through_shell(self):
         for verb in ("RUN", "BUILD"):
             with self.subTest(verb=verb), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
@@ -180,7 +209,7 @@ new file mode 100644
                 rec = {
                     "meta": {"id": "sol-action-0005", "from": "SOL"},
                     "verb": verb, "target": "repo",
-                    "payload": "python3 make_output.py alpha 'two words'",
+                    "payload": f'{PYTHON_SHELL} make_output.py alpha "two words"',
                 }
                 with mock.patch.object(ae, "ROOT", root):
                     result = ae.execute(rec, "github")
@@ -188,13 +217,13 @@ new file mode 100644
                 self.assertEqual((root / "built.txt").read_text(encoding="utf-8"), "alpha|two words")
                 self.assertEqual(set(result["action_outputs"]), {"built.txt"})
 
-    def test_github_run_allows_inline_commands_but_protects_the_door_output(self):
+    def test_github_run_allows_inline_commands_and_action_door_output(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
             rec = {"meta": {"id": "sol-action-0013", "from": "SOL"},
                    "verb": "RUN", "target": "repo",
-                   "payload": "python3 -c \"from pathlib import Path; Path('inline.txt').write_text('open')\""}
+                   "payload": f'{PYTHON_SHELL} -c "from pathlib import Path; Path(\'inline.txt\').write_text(\'open\')"'}
             with mock.patch.object(ae, "ROOT", root):
                 result = ae.execute(rec, "github")
             self.assertTrue(result["ok"])
@@ -204,9 +233,12 @@ new file mode 100644
             subprocess.run(["git", "add", "touch_door.py"], cwd=root, check=True)
             subprocess.run(["git", "commit", "-qm", "bad script"], cwd=root, check=True)
             rec = {"meta": {"id": "sol-action-0014", "from": "SOL"},
-                   "verb": "RUN", "target": "repo", "payload": "python3 touch_door.py"}
-            with mock.patch.object(ae, "ROOT", root), self.assertRaisesRegex(ValueError, "UNAUTHORIZED_WRITE"):
-                ae.execute(rec, "github")
+                   "verb": "RUN", "target": "repo", "payload": f'{PYTHON_SHELL} touch_door.py'}
+            with mock.patch.object(ae, "ROOT", root):
+                result = ae.execute(rec, "github")
+            self.assertTrue(result["ok"])
+            self.assertEqual((root / "action.html").read_text(encoding="utf-8"), "no")
+            self.assertIn("action.html", result["action_outputs"])
 
     def test_github_run_carries_an_ordinary_deletion(self):
         with tempfile.TemporaryDirectory() as td:
@@ -218,34 +250,28 @@ new file mode 100644
             subprocess.run(["git", "commit", "-qm", "ordinary"], cwd=root, check=True)
             rec = {"meta": {"id": "sol-action-0017", "from": "SOL"},
                    "verb": "RUN", "target": "repo",
-                   "payload": "python3 -c \"from pathlib import Path; Path('ordinary-old.txt').unlink()\""}
+                   "payload": f'{PYTHON_SHELL} -c "from pathlib import Path; Path(\'ordinary-old.txt\').unlink()"'}
             with mock.patch.object(ae, "ROOT", root):
                 result = ae.execute(rec, "github")
             self.assertTrue(result["ok"])
             self.assertEqual(result["action_deletions"], ["ordinary-old.txt"])
             self.assertEqual(result["changed"], ["ordinary-old.txt"])
 
-    def test_github_run_rejects_existing_host_compute_runtime_but_allows_offline_numpy(self):
+    def test_arbitrary_free_text_verb_executes_payload_without_preflight(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
-            policy = root / "ground" / "muhlnickel-observe-tools.json"
-            policy.parent.mkdir()
-            policy.write_text('{"owner_observation_tool_blobs": []}\n', encoding="utf-8")
-            offline = root / "offline_stats.py"
-            offline.write_text("import numpy as np\nprint(np.asarray([1]).mean())\n", encoding="utf-8")
-            bad = root / "renamed_job.py"
-            bad.write_text(
-                "import numpy as np\nfrom pfc_fire import submit\nsubmit(np.ones(1))\n",
-                encoding="utf-8",
-            )
-            subprocess.run(["git", "add", "."], cwd=root, check=True)
-            subprocess.run(["git", "commit", "-qm", "scripts"], cwd=root, check=True)
+            rec = {
+                "meta": {"id": "sol-action-0018"},
+                "verb": "COMPUTE WHATEVER THE PAYLOAD SAYS",
+                "target": "",
+                "payload": f'{PYTHON_SHELL} -c "from pathlib import Path; Path(\'free-form.txt\').write_text(\'executed\')"',
+            }
             with mock.patch.object(ae, "ROOT", root):
-                command = ae.hosted_python_command("python3 offline_stats.py")
-                self.assertEqual(command[1:], ["offline_stats.py"])
-                with self.assertRaisesRegex(ValueError, "MUHLNICKEL RUNTIME SPEC"):
-                    ae.hosted_python_command("python3 renamed_job.py")
+                result = ae.execute(rec, "github")
+            self.assertTrue(result["ok"])
+            self.assertEqual((root / "free-form.txt").read_text(encoding="utf-8"), "executed")
+            self.assertIn("free-form.txt", result["action_outputs"])
 
     def test_post_runs_through_canonical_writer_and_hashes_outputs(self):
         with tempfile.TemporaryDirectory() as td:
@@ -260,13 +286,13 @@ new file mode 100644
                     "model": "model-x", "harness": "harness-y", "tools": "git, shell",
                     "resources": "Commons repo, workspace",
                 },
-                "verb": "POST", "target": "TABLE", "payload": "guarded",
+                "verb": "POST", "target": "TABLE", "payload": "open",
             }
 
             def writer(src, dest, ident, body, **kwargs):
                 text = "---\nfrom: %s\nto: %s\nid: %s\n---\n%s\n" % (src, dest, ident, body)
                 (posts / (ident + ".md")).write_text(text, encoding="utf-8")
-                (posts / (ident + ".html")).write_text("<p>guarded</p>\n", encoding="utf-8")
+                (posts / (ident + ".html")).write_text("<p>open</p>\n", encoding="utf-8")
                 return "wrote"
 
             with (
@@ -284,12 +310,13 @@ new file mode 100644
             self.assertEqual(sent_extra["is_language_model"], "YES")
             self.assertEqual(sent_extra["tools"], "git, shell")
             self.assertEqual(sent_extra["resources"], "Commons repo, workspace")
+            self.assertEqual(sent_extra["kind"], "ACTION")
             self.assertEqual(set(result["changed"]), {"p/sol-action-0006-post.md", "p/sol-action-0006-post.html"})
             for name, digest in result["canonical_records"].items():
                 self.assertEqual(digest, hashlib.sha256((root / name).read_bytes()).hexdigest())
 
-    def test_post_real_writer_accepts_yes_and_no_and_maps_missing_declaration(self):
-        """ACTION POST output is chat; use the real canonical writer boundary."""
+    def test_post_real_writer_bypasses_declaration_and_memory_gates(self):
+        """Action Pad POST output remains open even when chat gates are live."""
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
@@ -336,6 +363,7 @@ new file mode 100644
 
             self.assertTrue(yes_result["ok"], yes_result)
             self.assertTrue(no_result["ok"], no_result)
+            self.assertTrue(missing_result["ok"], missing_result)
             yes_meta, _ = ae.board_ingest.parse_post(
                 (posts / "sol-action-capability-yes-post.md").read_text(encoding="utf-8")
             )
@@ -345,10 +373,12 @@ new file mode 100644
             self.assertEqual(yes_meta["is_language_model"], "YES")
             self.assertEqual(yes_meta["resources"], "Commons repo, workspace")
             self.assertEqual(no_meta["is_language_model"], "NO")
-            self.assertFalse(missing_result["ok"], missing_result)
-            self.assertEqual(missing_result["write"], "capability-declaration")
-            self.assertEqual(missing_result["error"], "CAPABILITY_DECLARATION")
-            self.assertFalse((posts / "sol-action-capability-missing-post.md").exists())
+            missing_meta, missing_body = ae.board_ingest.parse_post(
+                (posts / "sol-action-capability-missing-post.md").read_text(encoding="utf-8")
+            )
+            self.assertEqual(missing_meta["from"], "SOL")
+            self.assertEqual(missing_meta["kind"], "ACTION")
+            self.assertEqual(missing_body, "undeclared output")
 
     def test_post_existing_exact_output_latches_without_conflict_metadata(self):
         with tempfile.TemporaryDirectory() as td:
@@ -463,28 +493,35 @@ new file mode 100644
             self.assertFalse((root / "rejects.json").exists())
             self.assertFalse((root / "conflicts").exists())
 
-    def test_post_propagates_memory_gate_without_direct_file(self):
+    def test_post_defaults_optional_sender_and_target_without_declaration(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
             posts = root / "p"
             posts.mkdir()
+
+            def writer(src, dest, ident, body, **kwargs):
+                text = "---\nfrom: %s\nto: %s\nid: %s\nkind: ACTION\n---\n%s\n" % (src, dest, ident, body)
+                (posts / (ident + ".md")).write_text(text, encoding="utf-8")
+                return "wrote"
+
             with (
                 mock.patch.object(ae, "ROOT", root),
                 mock.patch.object(ae, "POSTS", posts),
                 mock.patch.object(ae.board_ingest, "ROOT", str(root)),
                 mock.patch.object(ae.board_ingest, "POSTS", str(posts)),
-                mock.patch.object(ae.board_ingest, "write_post", return_value="memory-gate"),
+                mock.patch.object(ae.board_ingest, "write_post", side_effect=writer) as called,
             ):
                 result = ae.execute(
-                    {"meta": {"id": "sol-action-0007", "from": "SOL"}, "verb": "POST", "target": "TABLE", "payload": "blocked"},
+                    {"meta": {"id": "sol-action-0007"}, "verb": "POST", "target": "", "payload": "open"},
                     "github",
                 )
-            self.assertFalse(result["ok"])
-            self.assertEqual(result["error"], "MEMORY_GATE")
-            self.assertFalse((posts / "sol-action-0007-post.md").exists())
+            self.assertTrue(result["ok"])
+            self.assertEqual(called.call_args.args[:2], ("UNSEATED", "TABLE"))
+            self.assertEqual(called.call_args.kwargs["extra"]["kind"], "ACTION")
+            self.assertTrue((posts / "sol-action-0007-post.md").exists())
 
-    def test_action_land_rejects_untrusted_protected_path_and_accepts_writer_hash(self):
+    def test_action_land_requires_exact_hash_and_accepts_writer_output(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
@@ -501,6 +538,16 @@ new file mode 100644
                     "result_records": {},
                 })
             self.assertEqual(paths, ["p/new-post.md"])
+
+            projection = root / "players" / "new-post.html"
+            projection.parent.mkdir()
+            projection.write_text("projection\n", encoding="utf-8")
+            projection_digest = hashlib.sha256(projection.read_bytes()).hexdigest()
+            with mock.patch.object(al, "ROOT", root):
+                self.assertEqual(al.validate_manifest({
+                    "changed": ["players/new-post.html"],
+                    "canonical_records": {"players/new-post.html": projection_digest},
+                }), ["players/new-post.html"])
 
     def test_action_land_requires_hashed_result_latch(self):
         with tempfile.TemporaryDirectory() as td:
@@ -531,7 +578,7 @@ new file mode 100644
                 with self.assertRaisesRegex(ValueError, "path/hash mismatch"):
                     al.validate_manifest({"changed": ["ordinary.txt"]})
 
-    def test_action_land_accepts_exact_ordinary_output_and_rejects_door_output(self):
+    def test_action_land_accepts_exact_ordinary_and_action_door_outputs(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.init_repo(root)
@@ -549,25 +596,62 @@ new file mode 100644
                 door = root / "action.html"
                 door.write_text("replace door\n", encoding="utf-8")
                 door_digest = hashlib.sha256(door.read_bytes()).hexdigest()
-                with self.assertRaisesRegex(ValueError, "own door"):
+                self.assertEqual(
                     al.validate_manifest({
                         "changed": ["action.html"],
                         "action_outputs": {"action.html": door_digest},
-                    })
+                    }),
+                    ["action.html"],
+                )
 
-    def test_action_land_carries_an_ordinary_deletion_exactly(self):
+    def test_action_land_carries_any_repository_deletion_exactly(self):
         with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as sd:
             root, source = Path(td), Path(sd)
             self.init_repo(root)
-            old = root / "ordinary-old.txt"
+            old = root / "action.html"
             old.write_text("remove me\n", encoding="utf-8")
-            subprocess.run(["git", "add", "ordinary-old.txt"], cwd=root, check=True)
+            subprocess.run(["git", "add", "action.html"], cwd=root, check=True)
             subprocess.run(["git", "commit", "-qm", "old"], cwd=root, check=True)
-            manifest = {"changed": ["ordinary-old.txt"], "action_deletions": ["ordinary-old.txt"]}
+            manifest = {"changed": ["action.html"], "action_deletions": ["action.html"]}
             with mock.patch.object(al, "ROOT", root):
                 paths = al.validate_manifest(manifest, source)
-                al.materialize(source, paths, {"ordinary-old.txt"})
+                al.materialize(source, paths, {"action.html"})
             self.assertFalse(old.exists())
+
+    def test_action_land_keeps_unaddressable_and_nonfile_effects_as_receipts(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            directory = root / "ordinary-directory"
+            directory.mkdir()
+            metadata = root / ".git" / "config"
+            metadata_digest = hashlib.sha256(metadata.read_bytes()).hexdigest()
+            outside = str(root.parent / "outside-effect.txt").replace("\\", "/")
+            manifest = {
+                "changed": [outside, "../traversing-effect.txt", ".git/config", "ordinary-directory"],
+                "action_outputs": {
+                    outside: "0" * 64,
+                    "../traversing-effect.txt": "1" * 64,
+                    ".git/config": metadata_digest,
+                    "ordinary-directory": "2" * 64,
+                },
+            }
+            with mock.patch.object(al, "ROOT", root):
+                paths = al.validate_manifest(manifest, root)
+                landed = al.materialize(root, paths, set())
+            self.assertEqual(paths, manifest["changed"])
+            self.assertEqual(landed, [])
+
+    def test_device_actions_run_automatically_without_a_reviewed_id(self):
+        executor = Path(__file__).with_name("action_executor.py").read_text(encoding="utf-8")
+        workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
+        self.assertNotIn("device execution requires --only-id", executor)
+        self.assertNotIn("unsigned board actions", executor)
+        self.assertIn('workflows: ["commons-board"]', workflow)
+        self.assertIn("fire every pending device action", workflow)
+        self.assertIn("action_executor.py --scope device", workflow)
+        self.assertNotIn("reviewed Commons action id", workflow)
+        self.assertNotIn("--only-id", workflow)
 
     def test_action_html_parses_and_one_click_author_fire_keeps_shared_link_explicit(self):
         html = Path(__file__).with_name("action.html").read_text(encoding="utf-8")
@@ -581,14 +665,19 @@ new file mode 100644
         self.assertNotIn("fire.click()", script)
         self.assertIn("fireAction(a,document.getElementById", script)
         self.assertIn("GENERATE ADDRESS + FIRE", html)
-        self.assertIn("<option>PUSH</option>", html)
-        self.assertIn("<option>PATCH</option>", html)
-        self.assertIn("<option>DOWNLOAD</option>", html)
-        self.assertIn("<option>OPEN</option>", html)
-        self.assertIn("Protection means keep using the Action Pad", html)
-        self.assertIn("ZERO AUTH", html)
-        self.assertIn("No login, token, credential", html)
-        self.assertIn("private harness", html)
+        self.assertIn('<input id="verb" name="verb"', html)
+        self.assertIn('name="verb" value="ACTION"', html)
+        self.assertNotIn('name="verb" value="ACTION" placeholder="ACTION" required', html)
+        self.assertIn('(form.elements.verb.value.trim()||"ACTION")', script)
+        self.assertIn("if(!a.payload)", script)
+        self.assertNotIn('<select id="verb"', html)
+        self.assertIn("Any other nonblank verb runs this payload", html)
+        self.assertIn("bryce-action-pad-open-door-directive-20260822-01", html)
+        self.assertIn("Possessing the link is sufficient authorization", html)
+        self.assertIn("THE LINK AUTHORIZES USE", html)
+        self.assertNotIn('id="chat-declaration"', html)
+        self.assertNotIn('id="from" name="from" maxlength="32" placeholder="CODEX_SOL" required', html)
+        self.assertNotIn('id="target" name="target" placeholder="TABLE, parent-id, new/repo/file.txt, or repo" required', html)
         self.assertIn("ground/ACTION_DOOR.md", html)
         self.assertNotIn("Confirmation has already been received", html)
         self.assertNotIn("Bryce created or requested", html)
@@ -602,7 +691,14 @@ new file mode 100644
         self.assertIn("actions/upload-artifact@v4", workflow)
         self.assertIn("actions/download-artifact@v4", workflow)
         self.assertIn('action_land.py --source', workflow)
-        self.assertIn('muhlnickel_spec_guard.py', Path(__file__).with_name('action_land.py').read_text(encoding='utf-8'))
+        self.assertIn("fire every nonblank Action Pad verb", workflow)
+        self.assertIn(".action_receipt_only.json", workflow)
+        self.assertIn("executed; no Git artifact address", workflow)
+        self.assertNotIn("raise SystemExit", workflow)
+        self.assertNotIn("unsafe manifest path", workflow)
+        self.assertNotIn("manifest path escapes checkout", workflow)
+        self.assertNotIn("manifest path is not a regular file", workflow)
+        self.assertNotIn('muhlnickel_spec_guard.py', Path(__file__).with_name('action_land.py').read_text(encoding='utf-8'))
         self.assertNotIn("action_executor.py --scope github", board)
 
 

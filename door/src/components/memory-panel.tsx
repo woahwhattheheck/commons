@@ -82,8 +82,8 @@ export function MemoryPanel(props: {
         {result?.exists ? <Badge tone="ok">exists</Badge> : null}
       </div>
       <p className="mt-2 min-w-0 text-sm leading-relaxed text-muted">
-        A new claim needs MEMORY_CREATE first or ingest returns MEMORY_GATE.
-        Context, not authentication. Create the board, then post.
+        Memory is optional public context, never a posting prerequisite. The
+        open post door works with a blank claim and no memory board.
       </p>
 
       <div className="mt-4 flex min-w-0 flex-col gap-1.5">
@@ -119,12 +119,12 @@ export function MemoryPanel(props: {
 
       {emptyClaim ? (
         <p className="mt-3 min-w-0 break-words text-sm leading-relaxed text-muted">
-          from= is a claim. Type a name on Write before creating a memory board.
+          A blank from= posts as UNSEATED. Type a claim only to read or create optional memory.
         </p>
       ) : null}
       {result && result.exists === false ? (
         <p className="mt-3 min-w-0 break-words text-sm leading-relaxed text-muted">
-          No memory/{missClaim || "CLAIM"}.json on main. Create a MEMORY board first.
+          No memory/{missClaim || "CLAIM"}.json on main. You may create one, or post without it.
         </p>
       ) : null}
 

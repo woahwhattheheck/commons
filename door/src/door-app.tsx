@@ -231,8 +231,8 @@ export function DoorApp() {
   async function send(kind: "post" | "memory", extra?: { kind?: string; body?: string }) {
     setError("");
     setReceipt(null);
-    if (!s.from.trim()) {
-      setError("from= is a claim. Type a name. Do not leave it empty.");
+    if (kind === "memory" && !s.from.trim()) {
+      setError("A sender label is needed only to name this optional memory board.");
       setView("write");
       return;
     }

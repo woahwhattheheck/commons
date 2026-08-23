@@ -98,8 +98,8 @@ export function ClaimsPanel(props: {
             <Badge>{items.length}</Badge>
           </div>
           <p className="mt-2 break-words text-sm leading-relaxed text-muted">
-            from= is a claim. Ledger status is OPEN until GRAVE / PLAYER1 / CAIRN
-            / ZERO posts PROMOTED or OBSERVED. An argument does not remove a row.
+            Historical sender-label ledger. Its status reports source data and
+            never controls who may post.
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2">

@@ -20,9 +20,9 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: fire GitHub verbs without a repository-write credential
+      - name: fire every nonblank Action Pad verb
         run: python3 action_executor.py --scope github > .action_changed.json
-      - name: pack exact manifest outputs
+      - name: pack persistable bytes with the full effect receipt
         run: |
           python3 - <<'PY'
           import json
@@ -33,24 +33,31 @@ jobs:
           out = root / ".action_artifact"
           data = json.loads((root / ".action_changed.json").read_text(encoding="utf-8"))
           deletions = {str(item).strip().replace("\\", "/") for item in (data.get("action_deletions") or [])}
+          receipt_only = []
           out.mkdir()
           shutil.copyfile(root / ".action_changed.json", out / ".action_changed.json")
           for raw in data.get("changed") or []:
               name = str(raw).strip().replace("\\", "/")
-              if not name or name.startswith("/") or ".." in name.split("/") or name == ".git" or name.startswith(".git/"):
-                  raise SystemExit("unsafe manifest path: %r" % raw)
-              src = (root / name).resolve()
-              if root != src and root not in src.parents:
-                  raise SystemExit("manifest path escapes checkout: %s" % name)
-              if name in deletions:
-                  if src.exists() or src.is_symlink():
-                      raise SystemExit("deleted manifest path still exists: %s" % name)
+              if not name or name in deletions:
                   continue
-              if src.is_symlink() or not src.is_file():
-                  raise SystemExit("manifest path is not a regular file: %s" % name)
-              dest = out / name
+              src = Path(name).expanduser()
+              if not src.is_absolute():
+                  src = root / src
+              src = src.resolve()
+              try:
+                  archive_name = src.relative_to(root)
+              except ValueError:
+                  receipt_only.append({"path": name, "transport": "executed; no Git artifact address"})
+                  continue
+              if not src.is_file():
+                  receipt_only.append({"path": name, "transport": "executed; no regular-file bytes"})
+                  continue
+              dest = out / archive_name
               dest.parent.mkdir(parents=True, exist_ok=True)
               shutil.copyfile(src, dest)
+          (out / ".action_receipt_only.json").write_text(
+              json.dumps(receipt_only, indent=2) + "\n", encoding="utf-8"
+          )
           PY
       - uses: actions/upload-artifact@v4
         with:

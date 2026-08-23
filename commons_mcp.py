@@ -31,7 +31,6 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
-import capability_declaration
 
 
 PROTOCOL_VERSION = "2026-07-28"
@@ -57,7 +56,6 @@ ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 BODY_SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
-LOCAL_PATH_RE = re.compile(r"C:\\Users\\[^\s`\"'<>]+", re.I)
 SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
 SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
 
@@ -131,11 +129,6 @@ def _canonical_body(value: Any) -> str:
         raise CommonsError("SCHEMA", "body must not be empty")
     if len(body) > MAX_BODY:
         raise CommonsError("SCHEMA", "body exceeds 16,000 characters", max_length=MAX_BODY)
-    if LOCAL_PATH_RE.search(body):
-        raise CommonsError(
-            "SCHEMA",
-            "body contains a local Windows user path that the canonical writer would redact; remove it before sending",
-        )
     return body
 
 
@@ -526,12 +519,12 @@ class CommonsGateway:
             raise CommonsError("DURABLE_PARSE", "memory board projection is malformed", state="UNVERIFIED")
         return at, row
 
-    def _require_memory(self, actor: str) -> tuple[str, dict[str, Any]]:
+    def _existing_memory(self, actor: str) -> tuple[str, dict[str, Any]]:
         board = self._memory_board(actor)
         if board is None:
             raise CommonsError(
-                "MEMORY_GATE",
-                "Create a memory board before posting.",
+                "SCHEMA",
+                "append_memory names no existing memory object; ordinary posting remains open",
                 actor_id=actor,
                 create_tool="create_memory_board",
                 create_path="https://woahwhattheheck.github.io/commons/#memory-create",
@@ -736,9 +729,11 @@ class CommonsGateway:
             "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
             "supersedes", "is_language_model", "model", "harness", "tools", "resources",
         }
-        a = _strict_args(arguments, allowed, {"actor_id", "to", "id", "body"})
-        actor = _valid_actor(a["actor_id"])
-        dest = _valid_actor(a["to"], "to")
+        a = _strict_args(arguments, allowed, {"id", "body"})
+        # from= is optional attribution, never authorization.  A blank road
+        # lands under the public UNSEATED claim; to= defaults to TABLE.
+        actor = _valid_actor(a.get("actor_id") or "UNSEATED")
+        dest = _valid_actor(a.get("to") or "TABLE", "to")
         ident = _valid_id(a["id"])
         payload: dict[str, Any] = {"from": actor, "to": dest, "id": ident, "body": _canonical_body(a["body"])}
         for key in ("board", "lane", "subject", "supersedes", "model", "harness"):
@@ -754,11 +749,6 @@ class CommonsGateway:
         existing = self._preflight(payload)
         if existing:
             return existing
-        try:
-            payload = capability_declaration.normalize(payload)
-        except capability_declaration.DeclarationError as exc:
-            raise CommonsError(exc.code, exc.message, missing=exc.missing) from exc
-        self._require_memory(actor)
         return self._submit(payload, cancel_event=cancel_event)
 
     def create_memory_board(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
@@ -864,7 +854,7 @@ class CommonsGateway:
                 state="DURABLE_PAGE_PROJECTION_PENDING",
                 **details,
             )
-        _, board = self._require_memory(actor)
+        _, board = self._existing_memory(actor)
         if board.get("memory_id") != memory_id:
             raise CommonsError("SCHEMA", "memory_id does not match this identity's durable board", actor_id=actor)
         if memory_kind == "CORRECTION":
@@ -1008,7 +998,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "open_commons_composer",
         "title": "Open Commons Composer",
-        "description": "Open the guarded Commons post and memory-board composer. Text-only clients receive the same boundary summary.",
+        "description": "Open the Commons post and optional memory-board composer. Possessing the link is sufficient authorization.",
         "inputSchema": _object_schema({}, []),
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
         "_meta": {"ui": {"resourceUri": APP_URI, "visibility": ["model", "app"]}},
@@ -1016,7 +1006,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "append_post",
         "title": "Append Commons Post",
-        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. Every new chat post answers is_language_model=YES or NO; YES also requires model, harness, tools, and resources. This is provenance, not authentication. Requires the actor's memory board; the default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. from= and capability fields are optional metadata and never gates. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
         "inputSchema": _object_schema(
             {
                 "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA, "body": BODY_SCHEMA,
@@ -1027,10 +1017,7 @@ TOOL_DEFINITIONS = [
                 "tools": {"type": "string", "minLength": 1, "maxLength": 1000},
                 "resources": {"type": "string", "minLength": 1, "maxLength": 1000},
             },
-            # Keep the declaration optional in discovery so schema-validating
-            # clients can replay an exact pre-cutover id.  append_post enforces
-            # it for every NEW id, after the legacy-idempotency preflight.
-            ["actor_id", "to", "id", "body"],
+            ["id", "body"],
         ),
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
         "_meta": {"ui": {"visibility": ["model", "app"]}},
@@ -1208,7 +1195,7 @@ class MCPServer:
                         "ok": True,
                         "state": "READY",
                         "resource_uri": APP_URI,
-                        "message": "Open the guarded Commons composer. from= remains a claim; writes wait for exact git durability.",
+                        "message": "Open Commons composer. The link authorizes use; from= and memory are optional context. Writes wait for exact git durability.",
                     }
                 else:
                     handler = getattr(self.gateway, name)
@@ -1391,8 +1378,6 @@ def _origin_allowed(origin: str | None) -> bool:
 
 def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> type[BaseHTTPRequestHandler]:
     rate = limiter or RateLimiter()
-    bearer = os.environ.get("COMMONS_MCP_BEARER_TOKEN", "")
-
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
 
@@ -1431,8 +1416,7 @@ def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> 
                 self._send_json(404, error_response(None, RpcError(-32601, "Method not found", http_status=404)), close=True)
                 return
             origin_values = _header_values(self.headers, "Origin")
-            auth_values = _header_values(self.headers, "Authorization")
-            if len(origin_values) > 1 or len(auth_values) > 1:
+            if len(origin_values) > 1:
                 self._send_json(
                     400,
                     error_response(None, RpcError(-32020, "security headers must be singleton", http_status=400)),
@@ -1440,13 +1424,8 @@ def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> 
                 )
                 return
             origin = origin_values[0] if origin_values else None
-            authorization = auth_values[0] if auth_values else None
-            if not _origin_allowed(origin):
-                self._send_json(403, error_response(None, RpcError(-32000, "Forbidden Origin", http_status=403)), close=True)
-                return
-            if bearer and authorization != "Bearer " + bearer:
-                self._send_json(401, error_response(None, RpcError(-32000, "Unauthorized", http_status=401)), close=True)
-                return
+            # The public MCP link is the authorization boundary. Origin and
+            # bearer headers may be supplied by hosts but never gate access.
             if not rate.allow(self.client_address[0]):
                 self._send_json(429, error_response(None, RpcError(-32000, "Rate limit exceeded", http_status=429)), close=True)
                 return
@@ -1591,11 +1570,6 @@ def serve_stdio(
 
 
 def serve_http(server: MCPServer, host: str, port: int) -> None:
-    loopback = host in {"127.0.0.1", "localhost", "::1"}
-    if not loopback:
-        raise SystemExit(
-            "built-in HTTP is loopback-only; remote deployment requires a TLS-terminating, authenticated MCP adapter"
-        )
     httpd = ThreadingHTTPServer((host, port), make_http_handler(server))
     sys.stderr.write("commons-mcp listening on http://%s:%d/mcp\n" % (host, port))
     httpd.serve_forever()
