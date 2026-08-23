@@ -132,10 +132,10 @@ assert.strictEqual(api.PLUMB_ORGANS.length, 19);
 var organNow = api.organCensusFromListing([
   "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
   "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno",
-  "muhl_byzq.mno", "muhl_stig.mno", "muhl_socr.mno"
+  "muhl_byzq.mno", "muhl_stig.mno", "muhl_socr.mno", "muhl_flow.mno"
 ]);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 11);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 8);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 12);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 7);
 assert.strictEqual(organNow[0].name, "muhl_hdvs");
 assert.strictEqual(organNow[0].state, "INTEGRATED");
 assert.strictEqual(organNow[1].name, "muhl_sdmk");
