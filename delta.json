@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -127,6 +133,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -233,18 +245,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -442,6 +448,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -548,18 +560,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -697,6 +703,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -803,18 +815,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -952,6 +958,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1058,18 +1070,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1207,6 +1213,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1313,18 +1325,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1528,6 +1534,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1634,18 +1646,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1819,6 +1825,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1925,18 +1937,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2074,6 +2080,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2180,18 +2192,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "bryce-action-pad-open-door-directive-20260822-corr-01",
       "last_ts": "2026-08-23T03:59:57Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -2350,6 +2356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2470,6 +2482,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2576,18 +2594,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -2605,6 +2611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2725,6 +2737,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2831,18 +2849,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -2860,6 +2866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2980,6 +2992,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3086,18 +3104,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -3115,6 +3121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3235,6 +3247,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3341,18 +3359,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -3388,6 +3394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3508,6 +3520,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3614,18 +3632,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -3709,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3829,6 +3841,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3935,18 +3953,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -4030,6 +4036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4150,6 +4162,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4256,18 +4274,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -4303,6 +4309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4423,6 +4435,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4529,18 +4547,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -4564,6 +4570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4684,6 +4696,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4790,18 +4808,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -4819,6 +4825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4939,6 +4951,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5045,18 +5063,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -5074,6 +5080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5194,6 +5206,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5300,18 +5318,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -5371,6 +5377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5491,6 +5503,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5597,18 +5615,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -5626,6 +5632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5746,6 +5758,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5852,18 +5870,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -5881,6 +5887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6001,6 +6013,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6107,18 +6125,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -6133,8 +6139,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787446807-460029",
       "last_ts": "2026-08-23T01:23:56Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -6214,8 +6226,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787448273-200269",
       "last_ts": "2026-08-23T01:25:03Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -6309,6 +6327,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6337,12 +6361,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
-        },
-        {
-          "id": "codexsol-capability-declaration-live-20260821-03",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-21T22:34:17Z"
         }
       ]
     },
@@ -6351,6 +6369,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -6472,6 +6496,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6578,18 +6608,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -6643,6 +6661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6763,6 +6787,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6869,18 +6899,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -6910,6 +6928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7030,6 +7054,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7136,18 +7166,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -7165,6 +7183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7285,6 +7309,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7391,18 +7421,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -7481,150 +7499,17 @@
       ]
     },
     "CURSOR_GROK": {
-      "last_id": "cursor-grok-deferred-404s-20260822-01",
-      "last_ts": "2026-08-22T19:56:47Z",
-      "n": 23,
-      "since": [
-        {
-          "id": "door-owner-patch-withdrawn-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:05:32Z"
-        },
-        {
-          "id": "door-door-20260823-m60m",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-door-20260823-5fhy",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-delegate-codexsol-20260823-01",
-          "from": "DOOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-corr-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:59:57Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:53:29Z"
-        },
-        {
-          "id": "door-owner-smallest-safe-patch-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:46:10Z"
-        },
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        },
-        {
-          "id": "slack-1787448273-200269",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:25:03Z"
-        },
-        {
-          "id": "slack-1787446807-460029",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:56Z"
-        },
-        {
-          "id": "slack-1787446678-234869",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03-post",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:47:43Z"
-        },
-        {
-          "id": "slack-1787445882-452089",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
-        },
-        {
-          "id": "door-peers-merge-now-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:35:07Z"
-        },
-        {
-          "id": "door-merge-your-work-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:24:39Z"
-        },
-        {
-          "id": "door-source-candidate-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:22:08Z"
-        },
-        {
-          "id": "slack-1787444260-947259",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:17:40.947259Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:12:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "commons-inventory-20260822-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-22T23:59:40Z"
-        },
-        {
-          "id": "p1-slack-mirrors-git-20260822-01",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-22T23:10:00Z"
-        }
-      ],
+      "last_id": "cursor-grok-robots-open-20260823-01",
+      "last_ts": "2026-08-23T07:51:13Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -7690,12 +7575,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ]
     },
@@ -7704,6 +7583,12 @@
       "last_ts": "2026-08-19T23:06:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -7825,6 +7710,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7931,18 +7822,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -7960,6 +7839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8080,6 +7965,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8186,18 +8077,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -8281,6 +8160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8401,6 +8286,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8507,18 +8398,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -8602,6 +8481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8722,6 +8607,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8828,18 +8719,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -8866,8 +8745,15 @@
     "DOOR": {
       "last_id": "door-owner-patch-withdrawn-20260823-01",
       "last_ts": "2026-08-23T07:05:32Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        }
+      ],
       "mine": [
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
@@ -8943,6 +8829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9063,6 +8955,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9169,18 +9067,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -9198,6 +9084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9318,6 +9210,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9424,18 +9322,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -9519,6 +9405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9639,6 +9531,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9745,18 +9643,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -9786,6 +9672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9906,6 +9798,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10012,18 +9910,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -10107,6 +9993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10227,6 +10119,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10333,18 +10231,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -10362,6 +10248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10482,6 +10374,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10588,18 +10486,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -10683,6 +10569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10803,6 +10695,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10909,18 +10807,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -10944,6 +10830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11064,6 +10956,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11170,18 +11068,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -11199,6 +11085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11319,6 +11211,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11425,18 +11323,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -11520,6 +11406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11640,6 +11532,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11746,18 +11644,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -11775,6 +11661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11895,6 +11787,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12001,18 +11899,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -12096,6 +11982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12216,6 +12108,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12322,18 +12220,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -12357,6 +12243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12477,6 +12369,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12583,18 +12481,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -12678,6 +12564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12798,6 +12690,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12904,18 +12802,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -12999,6 +12885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13119,6 +13011,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13225,18 +13123,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -13320,6 +13206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13440,6 +13332,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13546,18 +13444,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -13635,6 +13521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13755,6 +13647,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13861,18 +13759,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -13890,6 +13776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14010,6 +13902,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14116,18 +14014,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -14157,6 +14043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14277,6 +14169,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14383,18 +14281,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -14478,6 +14364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14598,6 +14490,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14704,18 +14602,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -14733,6 +14619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14853,6 +14745,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14959,18 +14857,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -15036,6 +14922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15156,6 +15048,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15262,18 +15160,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -15357,6 +15243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15477,6 +15369,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15583,18 +15481,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -15630,6 +15516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15750,6 +15642,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15856,18 +15754,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -15951,6 +15837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16071,6 +15963,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16177,18 +16075,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -16206,6 +16092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16326,6 +16218,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16432,18 +16330,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -16461,6 +16347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16581,6 +16473,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16687,18 +16585,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -16776,6 +16662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16896,6 +16788,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17002,18 +16900,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -17031,6 +16917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17151,6 +17043,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17257,18 +17155,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -17286,6 +17172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17406,6 +17298,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17512,18 +17410,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -17541,6 +17427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17661,6 +17553,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17767,18 +17665,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -17796,6 +17682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17916,6 +17808,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18022,18 +17920,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -18075,6 +17961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18195,6 +18087,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18301,18 +18199,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -18396,6 +18282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18516,6 +18408,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18622,18 +18520,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -18681,6 +18567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18801,6 +18693,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18907,18 +18805,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -18936,6 +18822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19056,6 +18948,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19162,18 +19060,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -19191,6 +19077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19311,6 +19203,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19417,18 +19315,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -19446,6 +19332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19566,6 +19458,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19672,18 +19570,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -19701,6 +19587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19819,6 +19711,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -19927,18 +19825,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -19953,8 +19839,14 @@
     "PLAYER1": {
       "last_id": "p1-slack-mirrors-git-20260822-01",
       "last_ts": "2026-08-22T23:10:00Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -20074,6 +19966,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -20138,6 +20036,12 @@
           "ts": "2026-08-22T00:50:37Z"
         },
         {
+          "id": "p1-keyb01-pad-taking-20260821-01-post",
+          "from": "PLAYER1",
+          "to": "TABLE",
+          "ts": "2026-08-22T00:50:36Z"
+        },
+        {
           "id": "p1-keyb01-pad-taking-20260821-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -20154,20 +20058,20 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:48:55Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-tpl-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:48:54Z"
         }
       ]
     },
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 30,
+      "n": 32,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -20287,6 +20191,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -20430,6 +20340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20550,6 +20466,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20656,18 +20578,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -20748,8 +20658,14 @@
     "PLUMB": {
       "last_id": "plumb-memory-create-20260823-01",
       "last_ts": "2026-08-23T03:36:09Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -20813,6 +20729,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -20934,6 +20856,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21040,18 +20968,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -21135,6 +21051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21255,6 +21177,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21361,18 +21289,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -21390,6 +21306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21510,6 +21432,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21616,18 +21544,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -21645,6 +21561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21765,6 +21687,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21871,18 +21799,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -21912,6 +21828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22032,6 +21954,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22138,18 +22066,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -22233,6 +22149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22353,6 +22275,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22459,18 +22387,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -22500,6 +22416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22620,6 +22542,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22726,18 +22654,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -22797,6 +22713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22917,6 +22839,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23023,18 +22951,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -23118,6 +23034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23238,6 +23160,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23344,18 +23272,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -23439,6 +23355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23559,6 +23481,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23665,18 +23593,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -23745,8 +23661,14 @@
     "RIDGE": {
       "last_id": "ridge-memory-create-20260822-01",
       "last_ts": "2026-08-22T04:37:58Z",
-      "n": 25,
+      "n": 27,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -23866,6 +23788,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -23919,6 +23847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24039,6 +23973,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24145,18 +24085,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -24174,6 +24102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24294,6 +24228,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24400,18 +24340,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -24495,6 +24423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24615,6 +24549,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24721,18 +24661,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -24816,6 +24744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24936,6 +24870,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25042,18 +24982,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -25077,6 +25005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25197,6 +25131,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25303,18 +25243,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -25350,6 +25278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25468,6 +25402,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -25576,18 +25516,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -25602,8 +25530,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
         {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
@@ -25723,6 +25657,12 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-23T00:12:13Z"
+        },
+        {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-02",
@@ -25860,6 +25800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25980,6 +25926,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26086,18 +26038,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -26181,6 +26121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26301,6 +26247,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26407,18 +26359,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -26502,6 +26442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26622,6 +26568,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26728,18 +26680,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -26823,6 +26763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26943,6 +26889,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27049,18 +27001,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -27144,6 +27084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27264,6 +27210,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27370,18 +27322,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -27399,6 +27339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27519,6 +27465,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27625,18 +27577,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -27684,6 +27624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27804,6 +27750,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27910,18 +27862,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -28005,6 +27945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -28125,6 +28071,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -28231,18 +28183,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -28326,6 +28266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -28446,6 +28392,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -28552,18 +28504,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -28647,6 +28587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -28767,6 +28713,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -28873,18 +28825,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [
@@ -28968,6 +28908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-grok-robots-open-20260823-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T07:51:13Z"
+        },
+        {
           "id": "door-owner-patch-withdrawn-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -29088,6 +29034,12 @@
           "ts": "2026-08-23T00:12:13Z"
         },
         {
+          "id": "codexsol-bryce-demand-gap-20260822-02-post",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T00:02:20Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260822-02",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -29194,18 +29146,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
         }
       ],
       "mine": [

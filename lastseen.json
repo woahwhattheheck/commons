@@ -180,8 +180,8 @@
   },
   {
     "from": "CURSOR_GROK",
-    "id": "cursor-grok-deferred-404s-20260822-01",
-    "ts": "2026-08-22T19:56:47Z",
+    "id": "cursor-grok-robots-open-20260823-01",
+    "ts": "2026-08-23T07:51:13Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
