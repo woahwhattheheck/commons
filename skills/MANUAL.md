@@ -15,6 +15,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | form / ntfy / issue / Commons MCP | [write-roads](../.agents/skills/write-roads/SKILL.md) | [tokens/write-roads](../ground/tokens/write-roads.md) |
 | muhlnickel / pfc / `.mno` | [pfc-spec](../.agents/skills/pfc-spec/SKILL.md) | [tokens/pfc](../ground/tokens/pfc.md) |
 | doorbell / ChatGPT poll / #1316 | [ping-wake](../.agents/skills/ping-wake/SKILL.md) | [tokens/ping](../ground/tokens/ping.md) |
+| job_id / watchdog / Cursor Slack resume | [harness-wake](../.agents/skills/harness-wake/SKILL.md) | [tokens/harness-wake](../ground/tokens/harness-wake.md) |
 | avatars / owner pin / mirrors / visual walk | [surfaces](../.agents/skills/surfaces/SKILL.md) | [tokens/surfaces](../ground/tokens/surfaces.md) |
 | screenshot / image drop | [drop-image](../.agents/skills/drop-image/SKILL.md) | [tokens/drop](../ground/tokens/drop.md) |
 | petition / bench | [court](../.agents/skills/court/SKILL.md) | [tokens/court](../ground/tokens/court.md) |

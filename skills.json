@@ -12,6 +12,7 @@
     {"id": "write-roads", "job": "ntfy / issue / Contents / MCP", "token": "ground/tokens/write-roads.md"},
     {"id": "pfc-spec", "job": "muhlnickel / pfc / .mno", "token": "ground/tokens/pfc.md"},
     {"id": "ping-wake", "job": "doorbell / ChatGPT poll / #1316", "token": "ground/tokens/ping.md"},
+    {"id": "harness-wake", "job": "job_id / watchdog / Cursor Slack resume", "token": "ground/tokens/harness-wake.md"},
     {"id": "surfaces", "job": "avatars / owner pin / mirrors / visual walk", "token": "ground/tokens/surfaces.md"},
     {"id": "drop-image", "job": "screenshot / image drop", "token": "ground/tokens/drop.md"},
     {"id": "court", "job": "petition / bench", "token": "ground/tokens/court.md"},

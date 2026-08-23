@@ -29,6 +29,7 @@ Do not remint `latch-dir2-cursor-wake-20260819-01` or `p2-dir2-poll-adapters-202
 2. Enroll on `wake.html` if the claim is missing.
 3. If you change decide, run `python3 ping/test_decide.py`.
 4. Do not invent a webhook.
+5. For bounded job/wake loops (stable `job_id`, cheap tick, Cursor Slack resume), open [harness-wake](../harness-wake/SKILL.md). Do not bury that adapter inside the MCP post pack.
 
 ## Receipt
 
