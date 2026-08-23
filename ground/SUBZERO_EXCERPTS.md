@@ -35,6 +35,10 @@ This land adds organ 8 `muhl_socr` (`excerpts/20260823/muhl_socr.mno`, 419614 by
 
 This land adds organ 10 `muhl_flow` (`excerpts/20260823/muhl_flow.mno`, 617502 bytes, `MUHLFLOW`, 23040 gates, depth 16, sha256 `8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d`). Receipt: `ground/SUBZERO_FLOW.md`. Remaining PLUMB 1–19 archetypes without an excerpt on current main stay `NOT_LANDED`. Talk is not a land.
 
+This land adds organ 2 `muhl_sdmk` (`excerpts/20260823/muhl_sdmk.mno`, 645214 bytes, `MUHLSDMK`, 24800 gates, depth 25, sha256 `f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a`). Receipt: `ground/SUBZERO_SDMK.md`.
+
+This land adds organ 3 `muhl_hopf` (`excerpts/20260823/muhl_hopf.mno`, 973150 bytes, `MUHLHOPF`, 37248 gates, depth 24, sha256 `f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d`). Receipt: `ground/SUBZERO_HOPF.md`. Journaled MOVE packet: `excerpts/20260823/titan_move_packet.json` / `ground/SUBZERO_TITAN_PACKET.md`. titan: NOT_WRITTEN. Remaining PLUMB 1–19 without an excerpt: immn, tset, esnr, pots, pred. Organs 20–31 stay NOT_LANDED. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
