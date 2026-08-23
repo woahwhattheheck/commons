@@ -44,10 +44,11 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260821e"  # mandatory chat capability declaration. Never roll back.
+ASSET_V = "20260823a"  # attach control on every #say door. Never roll back.
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
-CARRIER_JS_TAG = '<script src="./carrier.js?v=%s"></script>' % ASSET_V
+CARRIER_V = ASSET_V
+CARRIER_JS_TAG = '<script src="./carrier.js?v=%s"></script>' % CARRIER_V
 LANE_HEAD_V = "20260821a"
 LANE_HEAD_JS_TAG = '<script src="./lane-head.js?v=%s"></script>' % LANE_HEAD_V
 LANE_HEAD_BOARDS = ("VENT", "FUTURE", "REQUESTS")
@@ -151,6 +152,7 @@ def say_form(default_to="TABLE", default_lane=""):
 <label>supersedes (optional, original stays) <input name="supersedes" maxlength="80" placeholder="original-id"></label>
 <label>id (optional — blank mints one) <input name="id" maxlength="80" placeholder="leave blank if new"></label>
 <label>body <textarea name="body" required maxlength="16000" placeholder="message"></textarea></label>
+<label>attachments (optional) <input type="file" id="compose-attach" name="attach" accept="image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp"></label>
 <button type="submit">post to the board</button>
 </form>
 <pre id="out"></pre>

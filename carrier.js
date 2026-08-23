@@ -525,6 +525,34 @@ window.COMMONS_CARRIER = "github-board";
     return el.files[0];
   }
 
+  // Landing already has #compose-attach (CLAMP). Other #say doors did not.
+  // Same control, same DROP.md road. Do not remint latch/clamp/wire.
+  function injectAttach(form) {
+    form = form || (typeof document !== "undefined" ? document.getElementById("say") : null);
+    if (!form || form.id !== "say") return false;
+    if (form.querySelector("#compose-attach")) return false;
+    var label = document.createElement("label");
+    label.appendChild(document.createTextNode("attachments (optional) "));
+    var input = document.createElement("input");
+    input.type = "file";
+    input.id = "compose-attach";
+    input.name = "attach";
+    input.accept = "image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp";
+    label.appendChild(input);
+    var body = form.querySelector("textarea[name=body]");
+    var wrap = body;
+    if (body && body.parentNode && body.parentNode !== form) wrap = body.parentNode;
+    if (wrap && wrap.parentNode === form) {
+      if (wrap.nextSibling) form.insertBefore(label, wrap.nextSibling);
+      else form.appendChild(label);
+      return true;
+    }
+    var submit = form.querySelector('button[type="submit"]');
+    if (submit) form.insertBefore(label, submit);
+    else form.appendChild(label);
+    return true;
+  }
+
   function isImageFile(file) {
     if (!file) return false;
     var t = String(file.type || "").toLowerCase();
@@ -1464,6 +1492,7 @@ window.COMMONS_CARRIER = "github-board";
     paintSession();
     bindFromMemory();
     loadOwnerDoor();
+    injectAttach();
     bindMintId();
     bindMemoryComposer(document.getElementById("say"), document.getElementById("out"));
     bindForm(document.getElementById("say"), document.getElementById("out"));
@@ -1477,6 +1506,8 @@ window.COMMONS_CARRIER = "github-board";
     bindForm(document.getElementById("moderation"), document.getElementById("mod-out"));
     bindForm(document.getElementById("wake-request"), document.getElementById("wake-out"));
   }
+
+  window.COMMONS_INJECT_ATTACH = injectAttach;
 
   window.COMMONS_MEMORY = {
     normalizeMemoryIndex: normalizeMemoryIndex,
