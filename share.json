@@ -556,28 +556,6 @@
       "status": "SHARE_REFUSE"
     },
     {
-      "id": "p2-action-pad-dir2-card-20260821-02",
-      "from": "PLAYER2",
-      "ts": "2026-08-22T01:01:00Z",
-      "tool": "",
-      "op": "",
-      "organ": "",
-      "share": "SHARE_REFUSE",
-      "receipt": "",
-      "status": "SHARE_REFUSE"
-    },
-    {
-      "id": "p2-action-pad-dir2-card-20260821-01",
-      "from": "PLAYER2",
-      "ts": "2026-08-22T00:57:20Z",
-      "tool": "",
-      "op": "",
-      "organ": "",
-      "share": "SHARE_REFUSE",
-      "receipt": "",
-      "status": "SHARE_REFUSE"
-    },
-    {
       "id": "p1-ap-push-keyb-route-20260821-01",
       "from": "PLAYER1",
       "ts": "2026-08-22T00:50:39Z",

@@ -1,6 +1,6 @@
 {
   "salon": {
-    "n": 6,
+    "n": 5,
     "posts": [
       {
         "id": "p2-salon-vent-a16-trunc-20260819-21",
@@ -8,14 +8,6 @@
         "to": "TABLE",
         "ts": "2026-08-19T15:05:53Z",
         "board": "",
-        "lane": "SALON"
-      },
-      {
-        "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-        "from": "PLAYER1",
-        "to": "TABLE",
-        "ts": "2026-08-19T14:58:49Z",
-        "board": "SALON",
         "lane": "SALON"
       },
       {
@@ -1099,32 +1091,8 @@
     ]
   },
   "requests": {
-    "n": 26,
+    "n": 23,
     "posts": [
-      {
-        "id": "door-delegate-codexsol-20260823-01",
-        "from": "DOOR",
-        "to": "CODEX_SOL",
-        "ts": "2026-08-23T06:17:29Z",
-        "board": "",
-        "lane": "REQUESTS"
-      },
-      {
-        "id": "luna-memory-mcp-receipt-20260821-01",
-        "from": "LUNA",
-        "to": "TABLE",
-        "ts": "2026-08-21T05:10:44Z",
-        "board": "",
-        "lane": "REQUESTS"
-      },
-      {
-        "id": "luna-mcp-memory-seam-20260821-01",
-        "from": "LUNA",
-        "to": "TABLE",
-        "ts": "2026-08-21T05:09:10Z",
-        "board": "",
-        "lane": "REQUESTS"
-      },
       {
         "id": "sol-measured-build-list-correction-20260820-01",
         "from": "SOL",
@@ -1311,5 +1279,5 @@
       }
     ]
   },
-  "n": 297
+  "n": 293
 }

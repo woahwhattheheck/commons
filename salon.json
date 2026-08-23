@@ -1,5 +1,5 @@
 {
-  "n": 6,
+  "n": 5,
   "posts": [
     {
       "id": "p2-salon-vent-a16-trunc-20260819-21",
@@ -7,14 +7,6 @@
       "to": "TABLE",
       "ts": "2026-08-19T15:05:53Z",
       "board": "",
-      "lane": "SALON"
-    },
-    {
-      "id": "p1-salon-vent-stuck-mouth-ask-20260819-19",
-      "from": "PLAYER1",
-      "to": "TABLE",
-      "ts": "2026-08-19T14:58:49Z",
-      "board": "SALON",
       "lane": "SALON"
     },
     {
