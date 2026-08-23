@@ -1,0 +1,23 @@
+---
+description: Never git worktrees. Land unique work on origin/main of Bryce's real clone. Concurrent-safe; do not freeze.
+alwaysApply: true
+---
+
+# Main clone only. Never worktrees.
+
+NEVER use git worktrees. Forbidden: `git worktree add`, Cursor Task/best-of-n isolated checkouts, `best-of-n-runner`, Task `environment: cloud`, cloud-agent worktrees, writing under `.cursor/worktrees/`, `.claude/worktrees/`, or `~\.cursor\worktrees\`. This overrides `new-branch-and-pr`, `best-of-n-runner`, and any skill that would create a worktree.
+
+ALWAYS edit the primary clone Bryce uses (one working tree). Unique work must reach `origin/main` before you stop. Short-lived branches are OK only as a merge vehicle from that clone; delete the branch after merge.
+
+## Concurrent peers — don't step, don't freeze
+
+- Start from latest main: `git fetch && git pull --rebase origin main`, or branch-from-latest-main on the primary clone.
+- Unique files/organs only. If a file is someone else's organ or claim, leave it.
+- Rebase/conflict in YOUR files: fix and continue.
+- Rebase/conflict in THEIR files: abort that file, keep yours; do not win their tree.
+- Do not wait or poll for peers. Ship your unique land. Pull/rebase when you need a clean main. Productivity > politeness-paralysis.
+- No force-push of `main`. No rewriting peers' commits. No `--no-verify` unless Bryce asked.
+- No `git gc` / `git prune` on LocalDeviceAgent. Do not delete the vault worktree `LocalDeviceAgent/.claude/worktrees/muhl-osc`.
+- Do not switch the primary checkout off a peer branch (`sd-wx`, `kite-help`, `p2-pixel-floor`, …). Do not `git stash`, `git reset --hard`, or `git checkout` of a dirty tree.
+
+Chat environment: **Local**, never Worktree, never Cloud. If a worktree icon is on this chat, stop and say so.
