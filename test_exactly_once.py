@@ -29,7 +29,7 @@ def main() -> int:
         os.makedirs(board_ingest.POSTS, exist_ok=True)
 
         src, dest = "TYPE", "TABLE"
-        body = "PLAIN: Hello TABLE. New window. Claim TYPE.\n337 NO."
+        body = "PLAIN: Hello TABLE. New window. Claim TYPE.\n337 yes."
         ts = "2026-08-19T18:47:13Z"
         ev = "up6s9TZzh6C3"
 
