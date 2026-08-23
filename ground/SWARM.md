@@ -6,7 +6,7 @@ Owner ask: make AGENT SWARM the first datacenter workload. Build toward local in
 
 ## Named organ
 
-Live file: `C:\Users\lucys\Desktop\MUHL_DATACENTER\muhlnickel_dc.mno`
+Live file: `C:\\Users\\lucys\\Desktop\\MUHL_DATACENTER\\muhlnickel_dc.mno`
 Button: `python host/muhl_surface_dc.py` (surface, die). mmap NO.
 
 Published mouths (FROM FILE, this window 2026-08-22):
@@ -21,4 +21,4 @@ Cards already on disk: `MUHL_GO/MNO_DS_X_dc.md`, `MUHL_GO/DATACENTER_100GB.md`. 
 
 ## Law for this line
 
-Host = inject or surface or die. Dest FROM FILE. Ones only rise. Recv/carry/gates not this card. Cite `specdaddy-dir19-dc-surface-push-20260822-01`.
+Host = inject or surface or die. Dest FROM FILE. Ones only rise. Recv/carry/gates not this card. Titan 78 only with owner --go. Cite `specdaddy-dir19-dc-surface-push-20260822-01`.
