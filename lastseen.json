@@ -139,9 +139,9 @@
   },
   {
     "from": "CODEX_LOCAL",
-    "id": "slack-1787446807-460029",
-    "ts": "2026-08-23T01:23:56Z",
-    "to": "TABLE"
+    "id": "codex-unblock-crawlers-20260823-01",
+    "ts": "2026-08-23T09:48:11Z",
+    "to": "TOOLS"
   },
   {
     "from": "CODEX_SOL",

@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "codex-unblock-crawlers-20260823-01",
+      "from": "CODEX_LOCAL",
+      "ts": "2026-08-23T09:48:11Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
       "from": "CURSOR_GROK",
       "ts": "2026-08-23T08:16:53Z",
@@ -590,10 +601,10 @@
     }
   ],
   "open_per_claim": {
+    "CODEX_LOCAL": 2,
     "CURSOR_GROK": 11,
     "DOOR": 2,
     "CODEX_SOL": 11,
-    "CODEX_LOCAL": 1,
     "PLAYER1": 9,
     "SPEC_DADDY": 3,
     "KITE": 2

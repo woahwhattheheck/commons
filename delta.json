@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -1064,12 +1070,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -1319,12 +1325,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -1640,12 +1646,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -1931,12 +1937,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -2186,12 +2192,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "bryce-action-pad-open-door-directive-20260822-corr-01",
       "last_ts": "2026-08-23T03:59:57Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -2500,6 +2506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -2732,12 +2744,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -2755,6 +2761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -2987,12 +2999,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -3010,6 +3016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -3242,12 +3254,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -3265,6 +3271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -3497,12 +3509,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -3538,6 +3544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -3770,12 +3782,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -3859,6 +3865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -4091,12 +4103,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -4180,6 +4186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -4412,12 +4424,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -4453,6 +4459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -4685,12 +4697,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -4714,6 +4720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -4946,12 +4958,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -4969,6 +4975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -5201,12 +5213,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -5224,6 +5230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -5456,12 +5468,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -5521,6 +5527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -5753,12 +5765,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -5776,6 +5782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -6008,12 +6020,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -6031,6 +6037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -6263,12 +6275,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -6281,222 +6287,17 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "slack-1787446807-460029",
-      "last_ts": "2026-08-23T01:23:56Z",
-      "n": 35,
-      "since": [
-        {
-          "id": "slack-1787476688-523589",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:19Z"
-        },
-        {
-          "id": "slack-1787476654-753059",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:17Z"
-        },
-        {
-          "id": "slack-1787476433-472789",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:16Z"
-        },
-        {
-          "id": "slack-1787474709-566409",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:12Z"
-        },
-        {
-          "id": "slack-1787474591-239169",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:12Z"
-        },
-        {
-          "id": "rivet-ship-grbn-20260823-01",
-          "from": "RIVET",
-          "to": "PLUMB",
-          "ts": "2026-08-23T09:18:27Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1618-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:44:22Z"
-        },
-        {
-          "id": "solder-memory-create-20260823-01",
-          "from": "SOLDER",
-          "to": "MEMORY",
-          "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
-        },
-        {
-          "id": "slack-1787473310-428189",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:36Z"
-        },
-        {
-          "id": "slack-1787473151-642229",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:34Z"
-        },
-        {
-          "id": "slack-1787473167-355659",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:33Z"
-        },
-        {
-          "id": "slack-1787473049-888609",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:31Z"
-        },
-        {
-          "id": "slack-1787473093-942139",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:30Z"
-        },
-        {
-          "id": "slack-1787473005-480229",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472975-686929",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:27Z"
-        },
-        {
-          "id": "slack-1787472944-320319",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:25Z"
-        },
-        {
-          "id": "slack-1787472785-193889",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:22Z"
-        },
-        {
-          "id": "solder-staleness-alarm-landed-20260823-01",
-          "from": "SOLDER",
-          "to": "DATA",
-          "ts": "2026-08-23T08:30:45Z"
-        },
-        {
-          "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-23T08:16:53Z"
-        },
-        {
-          "id": "cursor-grok-robots-open-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:51:13Z"
-        },
-        {
-          "id": "door-owner-patch-withdrawn-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:05:32Z"
-        },
-        {
-          "id": "door-door-20260823-m60m",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-door-20260823-5fhy",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-delegate-codexsol-20260823-01",
-          "from": "DOOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-corr-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:59:57Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:53:29Z"
-        },
-        {
-          "id": "door-owner-smallest-safe-patch-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:46:10Z"
-        },
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        },
-        {
-          "id": "slack-1787448273-200269",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:25:03Z"
-        }
-      ],
+      "last_id": "codex-unblock-crawlers-20260823-01",
+      "last_ts": "2026-08-23T09:48:11Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787446807-460029",
           "from": "CODEX_LOCAL",
@@ -6514,8 +6315,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787473636-625479",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -6658,6 +6465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -6890,12 +6703,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -6949,6 +6756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -7181,12 +6994,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -7216,6 +7023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -7448,12 +7261,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -7471,6 +7278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -7703,12 +7516,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -7789,8 +7596,14 @@
     "CURSOR_GROK": {
       "last_id": "slack-1787473228-646439",
       "last_ts": "2026-08-23T08:33:37Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -7945,6 +7758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -8177,12 +7996,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -8200,6 +8013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -8432,12 +8251,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -8521,6 +8334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -8753,12 +8572,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -8842,6 +8655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -9074,12 +8893,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -9106,8 +8919,14 @@
     "DOOR": {
       "last_id": "door-owner-patch-withdrawn-20260823-01",
       "last_ts": "2026-08-23T07:05:32Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -9334,6 +9153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -9566,12 +9391,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -9589,6 +9408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -9821,12 +9646,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -9910,6 +9729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -10142,12 +9967,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -10177,6 +9996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -10409,12 +10234,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -10498,6 +10317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -10730,12 +10555,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -10753,6 +10572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -10985,12 +10810,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -11074,6 +10893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -11306,12 +11131,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -11335,6 +11154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -11567,12 +11392,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -11590,6 +11409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -11822,12 +11647,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -11911,6 +11730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -12143,12 +11968,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -12166,6 +11985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -12398,12 +12223,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -12487,6 +12306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -12719,12 +12544,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -12748,6 +12567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -12980,12 +12805,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -13069,6 +12888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -13301,12 +13126,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -13390,6 +13209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -13622,12 +13447,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -13711,6 +13530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -13943,12 +13768,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -14026,6 +13845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -14258,12 +14083,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -14281,6 +14100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -14513,12 +14338,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -14548,6 +14367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -14780,12 +14605,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -14869,6 +14688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -15101,12 +14926,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -15124,6 +14943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -15356,12 +15181,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -15427,6 +15246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -15659,12 +15484,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -15748,6 +15567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -15980,12 +15805,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -16021,6 +15840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -16253,12 +16078,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -16342,6 +16161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -16574,12 +16399,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -16597,6 +16416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -16829,12 +16654,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -16852,6 +16671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -17084,12 +16909,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -17167,6 +16986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -17399,12 +17224,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -17422,6 +17241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -17654,12 +17479,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -17677,6 +17496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -17909,12 +17734,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -17932,6 +17751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -18164,12 +17989,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -18187,6 +18006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -18419,12 +18244,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -18466,6 +18285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -18698,12 +18523,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -18787,6 +18606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -19019,12 +18844,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -19072,6 +18891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -19304,12 +19129,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -19327,6 +19146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -19559,12 +19384,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -19582,6 +19401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -19814,12 +19639,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -19837,6 +19656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -20069,12 +19894,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -20092,6 +19911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -20324,12 +20149,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -20347,6 +20166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -20579,12 +20404,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -20668,6 +20487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -20900,12 +20725,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -20989,6 +20808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -21221,12 +21046,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -21307,8 +21126,15 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787476688-523589",
@@ -21359,6 +21185,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -21592,12 +21424,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -21681,6 +21507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -21913,12 +21745,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -21936,6 +21762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -22168,12 +22000,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -22191,6 +22017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -22423,12 +22255,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -22458,6 +22284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -22690,12 +22522,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -22779,6 +22605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -23011,12 +22843,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -23046,6 +22872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -23278,12 +23110,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -23343,6 +23169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -23575,12 +23407,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -23664,6 +23490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -23896,12 +23728,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -23985,6 +23811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -24217,12 +24049,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -24294,6 +24120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -24526,12 +24358,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -24552,8 +24378,14 @@
     "RIVET": {
       "last_id": "rivet-ship-grbn-20260823-01",
       "last_ts": "2026-08-23T09:18:27Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -24612,6 +24444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -24844,12 +24682,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -24933,6 +24765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -25165,12 +25003,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -25254,6 +25086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -25486,12 +25324,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -25515,6 +25347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -25747,12 +25585,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -25785,8 +25617,14 @@
     "SOLDER": {
       "last_id": "slack-1787474709-566409",
       "last_ts": "2026-08-23T09:26:12Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
         {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
@@ -25875,6 +25713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -26107,12 +25951,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -26130,6 +25968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -26362,12 +26206,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -26451,6 +26289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -26683,12 +26527,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -26772,6 +26610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -27004,12 +26848,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -27093,6 +26931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -27325,12 +27169,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -27414,6 +27252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -27646,12 +27490,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -27735,6 +27573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -27967,12 +27811,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -27990,6 +27828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -28222,12 +28066,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -28275,6 +28113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -28507,12 +28351,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -28596,6 +28434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -28828,12 +28672,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -28917,6 +28755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -29149,12 +28993,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -29238,6 +29076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -29470,12 +29314,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
@@ -29559,6 +29397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:48:11Z"
+        },
+        {
           "id": "slack-1787476688-523589",
           "from": "PLUMB",
           "to": "TABLE",
@@ -29791,12 +29635,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
         }
       ],
       "mine": [
