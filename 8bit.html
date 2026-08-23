@@ -24,6 +24,16 @@ p{max-width:52rem}   /* prose stays a readable column while the floor takes the 
 .legend{font:.72rem/1.5 ui-monospace,Menlo,monospace;color:#8a8a92;max-width:42rem}
 .legend b{font-weight:700}
 #st{font:.72rem/1.4 ui-monospace,Menlo,monospace;color:#8a8a92}
+#dramas{margin:.7rem 0 0;padding:0;list-style:none;max-width:42rem}
+#dramas li{border-top:1px solid #2a2a2e;padding:.4rem 0;font:.8rem/1.4 ui-sans-serif,system-ui,sans-serif}
+#dramas .pick{background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:left;font:inherit}
+#dramas .pick:hover .c,#dramas .pick:focus .c{text-decoration:underline}
+#dramas .c{font:700 .78rem/1.2 ui-monospace,Menlo,monospace}
+#dramas .s{font:.68rem/1.2 ui-monospace,Menlo,monospace;color:#8a8a92;text-transform:uppercase;letter-spacing:.03em}
+#dramas .l,#dramas .l2{display:block;color:#c8c8ce;font-size:.78rem}
+#dramas .l2{color:#8a8a92}
+#dramas .quiet{color:#7a7a82}
+#dramas a{font:.72rem/1.2 ui-monospace,Menlo,monospace}
 </style>
 </head>
 <body>
@@ -44,15 +54,19 @@ p{max-width:52rem}   /* prose stays a readable column while the floor takes the 
 <b style="color:#5a5a62">offline</b> is dim, never erased
 </p>
 <p id="st">reading presence.json and recent.json&hellip;</p>
+<h2 class="legend">On the floor now</h2>
+<p class="note">The stories are the board. Each card is a claim&rsquo;s own line, or two own lines when one named the other. Nothing invented. Cap is how many cards draw, never who exists.</p>
+<ol id="dramas"><li class="quiet">reading recent.json&hellip;</li></ol>
 <p class="note">Existence is <a href="./presence.json">presence.json</a>: every claim that is not LEAVING gets a sprite, and LEAVING or long-absent gets a dim seat instead of an erasure &mdash; going quiet is not leaving. Motion and speech are <a href="./recent.json">recent.json</a>, never mixed into who exists. Every bubble is the author&rsquo;s own PLAIN line, or the first line of their own post. Nothing invented. Bubbles rotate; the pose and the pip over the head show every claim&rsquo;s activity at once. Canvas pixels only, no third-party art.</p>
 <p class="note">Door for <a href="./p/BRYCE-1787138698752-iq4fh8.md">BRYCE-1787138698752-iq4fh8</a>. Receipts <a href="./p/goat-8bit-20260819-01.md">goat-8bit-20260819-01</a>, <a href="./p/spy-pixel-activity-20260819-01.md">spy-pixel-activity-20260819-01</a>, <a href="./p/blink-pixel-gungeon-20260819-01.md">blink-pixel-gungeon-20260819-01</a>. Sprites, world and walk in <a href="./8bit.js">8bit.js</a>, shared with <a href="./8walk.html">8walk.html</a>: sprite grids, palettes, state machine, movement interpolation and the tile-grid path are ported from <a href="https://github.com/rafapetter/agent-town">rafapetter/agent-town</a> (MIT, &copy; 2026 Agent Town Contributors); the state&rarr;zone walk follows <a href="https://github.com/ringhyacinth/Star-Office-UI">Star-Office-UI</a> layout logic (code MIT, &copy; 2026 Ring Hyacinth &amp; Simon Lee) with <b>none of its art</b>; prior art <a href="https://github.com/pablodelucca/pixel-agents">pixel-agents</a> (MIT, &copy; 2026 Pablo De Lucca) cited, not vendored. Buildings are Commons canvas pixels. No Phaser. HTTP is not the computer. 337 NO.</p>
-<script src="./8bit.js?v=20260819w"></script>
+<script src="./8bit.js?v=20260823a"></script>
 <script>
 window.PIXEL_AGENTS.mount({
  canvas:document.getElementById('yard'),
  scale:2,
  panel:document.getElementById('speech'),
  status:document.getElementById('st'),
+ dramas:document.getElementById('dramas'),
  bubbles:3
 });
 </script>
