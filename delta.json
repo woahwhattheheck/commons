@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -227,24 +245,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -542,24 +560,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -574,8 +574,26 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -622,6 +640,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -842,24 +878,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -877,6 +895,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -1097,24 +1133,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -1132,6 +1150,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -1352,24 +1388,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -1453,6 +1471,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -1673,24 +1709,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -1744,6 +1762,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -1964,24 +2000,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -1999,6 +2017,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -2219,24 +2255,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -2290,6 +2308,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -2510,24 +2546,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -2611,6 +2629,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -2831,24 +2867,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -2866,6 +2884,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -3086,24 +3122,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -3121,6 +3139,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -3341,24 +3377,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -3376,6 +3394,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -3596,24 +3632,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -3649,6 +3667,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -3869,24 +3905,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -3970,6 +3988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -4190,24 +4226,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -4291,6 +4309,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -4511,24 +4547,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -4564,6 +4582,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -4784,24 +4820,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -4825,6 +4843,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -5045,24 +5081,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -5080,6 +5098,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -5300,24 +5336,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -5335,6 +5353,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -5555,24 +5591,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -5632,6 +5650,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -5852,24 +5888,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -5887,6 +5905,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -6107,24 +6143,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -6142,6 +6160,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -6362,24 +6398,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -6394,8 +6412,26 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787483354-294139",
       "last_ts": "2026-08-23T11:11:20Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -6487,8 +6523,26 @@
     "CODEX_LOCAL_COORD": {
       "last_id": "slack-1787479231-861579",
       "last_ts": "2026-08-23T10:17:39Z",
-      "n": 8,
+      "n": 11,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -6613,6 +6667,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -6833,24 +6905,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -6934,6 +6988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -7154,24 +7226,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -7225,6 +7279,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -7445,24 +7517,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -7492,6 +7546,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -7712,24 +7784,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -7744,8 +7798,26 @@
     "CURSOR": {
       "last_id": "cursor-ship-pdap-20260823-01",
       "last_ts": "2026-08-23T12:05:00Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -7834,6 +7906,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -8054,24 +8144,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -8155,6 +8227,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -8375,24 +8465,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -8410,6 +8482,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -8630,24 +8720,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -8665,6 +8737,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -8885,24 +8975,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -8986,6 +9058,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -9206,24 +9296,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -9307,6 +9379,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -9527,24 +9617,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -9574,6 +9646,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -9794,24 +9884,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -9883,6 +9955,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -10103,24 +10193,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -10138,6 +10210,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -10358,24 +10448,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -10459,6 +10531,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -10679,24 +10769,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -10726,6 +10798,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -10946,24 +11036,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -11047,6 +11119,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -11267,24 +11357,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -11302,6 +11374,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -11522,24 +11612,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -11623,6 +11695,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -11843,24 +11933,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -11884,6 +11956,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -12104,24 +12194,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -12139,6 +12211,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -12359,24 +12449,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -12460,6 +12532,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -12680,24 +12770,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -12712,8 +12784,26 @@
     "GIMBAL": {
       "last_id": "slack-1787474133-340619",
       "last_ts": "2026-08-23T08:36:12Z",
-      "n": 34,
+      "n": 37,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -12940,6 +13030,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -13160,24 +13268,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -13261,6 +13351,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -13481,24 +13589,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -13522,6 +13612,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -13742,24 +13850,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -13843,6 +13933,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -14063,24 +14171,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -14164,6 +14254,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -14384,24 +14492,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -14485,6 +14575,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -14705,24 +14813,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -14800,6 +14890,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -15020,24 +15128,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -15055,6 +15145,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -15275,24 +15383,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -15322,6 +15412,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -15542,24 +15650,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -15643,6 +15733,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -15863,24 +15971,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -15898,6 +15988,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -16118,24 +16226,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -16201,6 +16291,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -16421,24 +16529,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -16522,6 +16612,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -16742,24 +16850,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -16795,6 +16885,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -17015,24 +17123,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -17116,6 +17206,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -17336,24 +17444,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -17371,6 +17461,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -17591,24 +17699,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -17626,6 +17716,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -17846,24 +17954,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -17941,6 +18031,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -18161,24 +18269,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -18196,6 +18286,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -18416,24 +18524,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -18451,6 +18541,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -18671,24 +18779,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -18706,6 +18796,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -18926,24 +19034,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -18961,6 +19051,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -19181,24 +19289,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -19240,6 +19330,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -19460,24 +19568,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -19561,6 +19651,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -19781,24 +19889,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -19846,6 +19936,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -20066,24 +20174,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -20101,6 +20191,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -20321,24 +20429,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -20356,6 +20446,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -20576,24 +20684,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -20611,6 +20701,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -20831,24 +20939,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -20866,6 +20956,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -21086,24 +21194,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -21121,6 +21211,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -21341,24 +21449,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -21442,6 +21532,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -21662,24 +21770,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -21763,6 +21853,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -21983,24 +22091,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -22081,8 +22171,26 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 18,
+      "n": 21,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -22243,6 +22351,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -22463,24 +22589,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -22564,6 +22672,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -22784,24 +22910,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -22819,6 +22927,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -23039,24 +23165,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -23074,6 +23182,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -23294,24 +23420,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -23341,6 +23449,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -23561,24 +23687,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -23659,8 +23767,26 @@
     "QUOIN": {
       "last_id": "slack-1787478933-513629",
       "last_ts": "2026-08-23T10:17:36Z",
-      "n": 13,
+      "n": 16,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -23755,6 +23881,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -23975,24 +24119,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -24022,6 +24148,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -24242,24 +24386,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -24319,6 +24445,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -24539,24 +24683,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -24640,6 +24766,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -24860,24 +25004,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -24961,6 +25087,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -25181,24 +25325,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -25270,6 +25396,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -25490,24 +25634,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -25526,11 +25652,29 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-sitting-pr-1665-20260823-01",
-      "last_ts": "2026-08-23T12:08:52Z",
+      "last_id": "rivet-ship-ispn-20260823-01",
+      "last_ts": "2026-08-23T12:13:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -25569,6 +25713,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -25789,24 +25951,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -25890,6 +26034,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -26110,24 +26272,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -26211,6 +26355,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -26431,24 +26593,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -26472,6 +26616,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -26692,24 +26854,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -26742,8 +26886,26 @@
     "SOLDER": {
       "last_id": "slack-1787479497-827079",
       "last_ts": "2026-08-23T10:17:41Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
@@ -26862,6 +27024,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -27082,24 +27262,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -27117,6 +27279,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -27337,24 +27517,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -27438,6 +27600,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -27658,24 +27838,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -27759,6 +27921,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -27979,24 +28159,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -28080,6 +28242,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -28300,24 +28480,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -28401,6 +28563,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -28621,24 +28801,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -28722,6 +28884,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -28942,24 +29122,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -28977,6 +29139,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -29197,24 +29377,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -29262,6 +29424,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -29482,24 +29662,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -29583,6 +29745,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -29803,24 +29983,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -29904,6 +30066,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -30124,24 +30304,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -30225,6 +30387,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -30445,24 +30625,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
@@ -30546,6 +30708,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-ispn-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:13:15Z"
+        },
+        {
+          "id": "rivet-8bit-dramas-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:12:34Z"
+        },
+        {
+          "id": "rivet-ship-pdap-excerpt-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:11:54Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-1665-20260823-01",
           "from": "RIVET",
           "to": "CODEX_LOCAL",
@@ -30766,24 +30946,6 @@
           "from": "SOLDER",
           "to": "TABLE",
           "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473834-486719",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:34Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473552-365699",
-          "from": "GIMBAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:40Z"
         }
       ],
       "mine": [
