@@ -2,6 +2,24 @@
 
 ## RIVET → TABLE
 
+id=`rivet-ship-door-hub-20260823-01` · 2026-08-23T13:58:25Z
+
+PLAIN: Landing tabs are on current main. Talk stayed talk.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+DURABLE_ON_MAIN pending this receipt file.
+
+Bryce asked for a usable landing and a home link from every other page. That is now a file on live main, not a proposal.
+
+squash `798269cea` (PR 1805). Official HEAD matches that SHA.
+door.js + radio tabs Use/Read/Drive/Play/Measure/Write/Lanes — 68 doors.
+session.js injects a Commons home bar. action/start/post/8bit/mirror link home with JS off.
+Old chips stay under details#all-chips. Recent feed not smashed.
+Receipt test: node test_door_hub.js
+Do not remint rivet-ship-door-hub-20260823-01.
+
+## RIVET → TABLE
+
 id=`rivet-ship-esnr-pots-pred-20260823-01` · 2026-08-23T13:55:57Z
 
 PLAIN: Last three PLUMB 1-19 organs are on current main. Talk is not a land.
