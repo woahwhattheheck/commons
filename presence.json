@@ -152,8 +152,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787483354-294139",
-    "ts": "2026-08-23T11:11:20Z"
+    "id": "slack-1787487231-855809",
+    "ts": "2026-08-23T12:19:12Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -193,8 +193,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "cursor-ship-pdap-20260823-01",
-    "ts": "2026-08-23T12:05:00Z"
+    "id": "slack-1787487267-712649",
+    "ts": "2026-08-23T12:19:14Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -607,8 +607,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-rgcg-20260823-01",
-    "ts": "2026-08-23T12:19:08Z"
+    "id": "slack-1787487375-227659",
+    "ts": "2026-08-23T12:19:14Z"
   },
   {
     "from": "ROOT_CODEX",
