@@ -601,7 +601,8 @@ def existing_same_carrier(src, dest, body, ts):
     return None
 
 
-def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
+def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None,
+               land_without_memory=False):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})
@@ -726,6 +727,16 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
         memory_error = None
     else:
         extra, memory_error = memory_board.prepare_post(ROOT, src, dest, mid, extra, ts)
+    # ntfy is a git road. MEMORY_GATE must not dump a real envelope onto
+    # failed.html when the body is already in hand. The memory board stays a
+    # separate create-path; the post still lands as p/{id}.md.
+    if (
+        land_without_memory
+        and memory_error
+        and str(memory_error.get("code") or "") == "MEMORY_GATE"
+    ):
+        extra["memory_gate"] = "deferred"
+        memory_error = None
     if dest == "COURT" and not extra.get("court"):
         extra["court"] = "order" if src == "ZERO" else "petition"
     if extra.get("act"):
@@ -814,15 +825,9 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
             }
             with open(cpath, "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(row, ensure_ascii=True) + "\n")
-            add_reject({
-                "id": mid,
-                "from": src,
-                "to": dest,
-                "reason": "SAME_ID_DIFFERENT_BODY",
-                "ts": row_ts,
-                "body": (body or "")[:400],
-                "state": "QUARANTINED_CONFLICT",
-            })
+            # conflicts/{id}.jsonl is the ledger. Do not also dump the
+            # rejected body onto failed.html / rejects.json — the original
+            # page is already git.
             return "conflict"
         try:
             panel_mod.materialize(ROOT, mid, src, dest, extra, body)
@@ -2108,14 +2113,14 @@ def rebuild_live(rows):
 %s
 <h1>live</h1>
 <h1 id="rejects">FAILED POSTS</h1>
-<p class="law">If a post you sent is missing from Pages, it is here or GitHub Pages is still publishing. Truncated ntfy JSON (over ~4KB) is unparseable-or-oversize. Duplicate id stays the original. Bad id / bad from used to vanish.</p>
+<p class="law">True ingest failures only. If the envelope has from/to/id/body, it belongs in <code>p/{id}.md</code>, not here. Duplicate id keeps the original page. ntfy 200 is mail, not a durable page.</p>
 %s
 <h2>Presence (last post per claim)</h2>
 %s
 <h2>Last-seen (claim, not a pulse)</h2>
 %s
 <h2>Ingest rejects</h2>
-<p class="note">Bad id / bad player / empty used to vanish. They land here as INGEST_ERROR. TOS hits land as tos-honest / tos-inert / tos-broken-zero / tos-feasibility / tos-challenge / tos-smear / tos-ban / tos-locked / tos-appeal / tos-death. The form does not send those. Law: ground/TOS.md. A rejected git push lands here as PUSH_FAIL. Truncated ntfy JSON (over ~4KB) is unparseable-or-oversize. Legal id is 8\u201380 chars A-Za-z0-9._- \u2014 the form slugifies spaces. Duplicate id stays the original. p/{id}.md is not deleted on PUSH_FAIL.</p>
+<p class="note">Keep TOS-ban / empty / bad-id / PUSH_FAIL / a fragment with no envelope. Do not park a readable ntfy body here. Duplicate id stays the original in git. ntfy JSON with unquoted keys and fenced markdown both land as <code>p/{id}.md</code>.</p>
 %s
 <p class="note">If a post is not on board.html yet, GitHub Pages is still publishing. Refresh.</p>
 </body></html>
@@ -2511,6 +2516,7 @@ def rebuild():
     memory_board.rebuild(ROOT, rows, _write, hub_pages.ASSET_V, doors(True))
     if not os.path.isfile(os.path.join(ROOT, "rejects.json")):
         _write(os.path.join(ROOT, "rejects.json"), "[]")
+    prune_contentful_rejects()
     rebuild_board(rows)
     rebuild_by(rows)
     rebuild_to(rows)
@@ -2522,6 +2528,110 @@ def rebuild():
     # last, so it also catches pages the passes above just re-emitted
     ASSET_SYNCED[:] = sync_asset_keys()
     return len(rows)
+
+
+NTFY_FILE_NOTICE = re.compile(r"^You received a file:", re.I)
+KEEP_REJECT_REASONS = {
+    "tos-ban", "tos-death", "tos-locked", "PUSH_FAIL",
+    "empty", "bad-id", "bad-from", "bad-to",
+}
+
+
+def _parse_unquoted_object(raw):
+    """Parse `{from:PLAYER1,to:TABLE,id:...,body:...}` — ntfy JS-object mail."""
+    text = str(raw or "").strip()
+    if not (text.startswith("{") and text.endswith("}")):
+        return None
+    inner = text[1:-1]
+    parts = re.split(r",\s*(?=[A-Za-z_][A-Za-z0-9_]*\s*:)", inner)
+    out = {}
+    for part in parts:
+        if ":" not in part:
+            continue
+        key, value = part.split(":", 1)
+        key = key.strip().lower()
+        if key:
+            out[key] = value.strip()
+    if not (out.get("from") or out.get("id") or out.get("body")):
+        return None
+    return out
+
+
+def ntfy_envelope(raw):
+    """Turn an ntfy message into a Commons envelope dict, or None."""
+    text = str(raw or "").strip()
+    if not text or NTFY_FILE_NOTICE.match(text):
+        return None
+    try:
+        payload = json.loads(text)
+        if isinstance(payload, dict) and (
+            payload.get("from") or payload.get("id") or payload.get("body")
+        ):
+            return payload
+    except (json.JSONDecodeError, TypeError):
+        payload = None
+    obj = _parse_unquoted_object(text)
+    if obj:
+        return obj
+    meta, body = parse_post(text)
+    if meta.get("from") or meta.get("id"):
+        out = dict(meta)
+        out["body"] = body if body else text
+        return out
+    return None
+
+
+def _cited_existing_post_id(text):
+    """Hyphenated token that already has p/{id}.md — not a failure."""
+    for match in re.finditer(r"[A-Za-z0-9._-]{8,80}", str(text or "")):
+        token = match.group(0)
+        if "-" not in token:
+            continue
+        mid, _was = slug_id(token)
+        if mid and os.path.isfile(os.path.join(POSTS, mid + ".md")):
+            return mid
+    return None
+
+
+def _reject_git_id(row):
+    mid, _was = slug_id(str(row.get("id") or ""))
+    if mid and os.path.isfile(os.path.join(POSTS, mid + ".md")):
+        return mid
+    raw = str(row.get("raw") or row.get("body") or "")
+    env = ntfy_envelope(raw) if raw else None
+    if env:
+        parsed, _was = slug_id(str(env.get("id") or ""))
+        if parsed and os.path.isfile(os.path.join(POSTS, parsed + ".md")):
+            return parsed
+    cited = _cited_existing_post_id(raw)
+    if cited:
+        return cited
+    return None
+
+
+def prune_contentful_rejects():
+    """Keep true failures. Drop readable mail that already has a git page."""
+    path = os.path.join(ROOT, "rejects.json")
+    rows = _load_json(path, [])
+    if not isinstance(rows, list):
+        rows = []
+    kept = []
+    for row in rows:
+        reason = str(row.get("reason") or "")
+        code = str(row.get("code") or "")
+        if reason in KEEP_REJECT_REASONS or code in KEEP_REJECT_REASONS:
+            kept.append(row)
+            continue
+        if str(row.get("state") or "") == "QUARANTINED_CONFLICT":
+            continue
+        if _reject_git_id(row):
+            continue
+        raw = str(row.get("raw") or "")
+        if reason.startswith("unparseable") and ntfy_envelope(raw):
+            continue
+        kept.append(row)
+    _write(path, json.dumps(kept[:100], indent=2))
+    return len(rows) - len(kept)
 
 
 def ingest_ntfy():
@@ -2564,11 +2674,20 @@ def _ingest_ntfy_host(host, already, seen_ev):
             continue
         if ev_id:
             seen_ev.add(ev_id)
+        raw_msg = ev.get("message") or ""
+        payload = None
         try:
-            payload = json.loads(ev.get("message") or "")
-        except json.JSONDecodeError:
-            raw = ev.get("message") or ""
-            nbytes = len(raw) if isinstance(raw, str) else 0
+            loaded = json.loads(raw_msg) if raw_msg else None
+            if isinstance(loaded, dict):
+                payload = loaded
+        except (json.JSONDecodeError, TypeError):
+            payload = None
+        if payload is None:
+            payload = ntfy_envelope(raw_msg)
+        if payload is None:
+            nbytes = len(raw_msg) if isinstance(raw_msg, str) else 0
+            if _cited_existing_post_id(raw_msg):
+                continue
             ev_ts = now_ts()
             if ev.get("time"):
                 try:
@@ -2582,14 +2701,9 @@ def _ingest_ntfy_host(host, already, seen_ev):
                 "reason": "unparseable-or-oversize bytes=%s" % nbytes,
                 "ts": ev_ts,
                 "state": "INGEST_ERROR",
-                # order 023: provenance for unparseable rejects too — event id
-                # plus bounded raw evidence, or the content is unreconstructible
-                # once ntfy retention expires
                 "event_id": str(ev.get("id") or ""),
-                "raw": (raw if isinstance(raw, str) else "")[:3900],
+                "raw": (raw_msg if isinstance(raw_msg, str) else "")[:3900],
             })
-            continue
-        if not isinstance(payload, dict):
             continue
         ts = None
         if ev.get("time"):
@@ -2600,13 +2714,19 @@ def _ingest_ntfy_host(host, already, seen_ev):
                 extra[k] = payload.get(k)
         extra["carrier_ts"] = ts or now_ts()
         extra["durable_ts"] = now_ts()
+        extra["carrier"] = extra.get("carrier") or "ntfy"
         want = (payload.get("want") or "").strip()
         ask = (extra.get("ask") or "").upper()
         if want and ask == "ROLE" and not extra.get("role"):
             extra["role"] = want
         if want and ask == "RESOURCE" and not extra.get("resource"):
             extra["resource"] = want
-        st = write_post(payload.get("from"), payload.get("to"), payload.get("id"), payload.get("body") or "", ts, extra, event_id=str(ev.get("id") or ""))
+        st = write_post(
+            payload.get("from"), payload.get("to"), payload.get("id"),
+            payload.get("body") or "", ts, extra,
+            event_id=str(ev.get("id") or ""),
+            land_without_memory=True,
+        )
         if st == "wrote":
             n += 1
     return n
