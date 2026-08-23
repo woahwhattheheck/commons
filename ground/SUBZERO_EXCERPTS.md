@@ -25,6 +25,8 @@ Organ 13 `muhl_petr` is already on main (`excerpts/20260823/muhl_petr.mno`, 9468
 
 This land adds organ 16 `muhl_synd` (`excerpts/20260823/muhl_synd.mno`, 717854 bytes, `MUHLSYND`, 27520 gates, depth 45, sha256 `302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d`). Receipt: `ground/SUBZERO_SYND.md`.
 
+This land adds organ 1 `muhl_hdvs` (`excerpts/20260823/muhl_hdvs.mno`, 328734 bytes, `MUHLHDVS`, 12288 gates, depth 34, sha256 `1f392a877594a9a81d28cca02e3f204355aba1e02c4c11b5cb94370ded7309bd`). Receipt: `ground/SUBZERO_HDVS.md`. Remaining PLUMB 1–19 archetypes without an excerpt on current main stay `NOT_LANDED`. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.

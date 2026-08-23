@@ -116,6 +116,20 @@ assert.strictEqual(excerptOk.state, "INTEGRATED");
 var shaMiss = api.excerptState({ sidecar: true, container: true, shaMatch: false });
 assert.strictEqual(shaMiss.state, "NOT_LANDED");
 
+assert.ok(api.organCensusFromListing, "land.js must census PLUMB organs from the excerpt listing");
+assert.strictEqual(api.PLUMB_ORGANS.length, 19);
+var organNow = api.organCensusFromListing([
+  "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
+  "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno"
+]);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 8);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 11);
+assert.strictEqual(organNow[0].name, "muhl_hdvs");
+assert.strictEqual(organNow[0].state, "INTEGRATED");
+assert.strictEqual(organNow[1].name, "muhl_sdmk");
+assert.strictEqual(organNow[1].state, "NOT_LANDED");
+assert.ok(/Talk is not this file/i.test(organNow[1].note), "missing excerpt must tell the window to ship");
+
 var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
@@ -124,5 +138,7 @@ assert.ok(html.indexOf("Finish the merge") >= 0, "desk must tell a window not to
 assert.ok(html.indexOf("Talk is not a land") >= 0, "desk must classify talk without a main SHA");
 assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classifier");
 assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
+assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
+assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
 
 console.log("ok   test_land_desk.js");

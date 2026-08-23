@@ -103,6 +103,49 @@
     return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
   };
 
+  api.PLUMB_ORGANS = [
+    { n: 1, name: "muhl_hdvs", file: "muhl_hdvs.mno", gates: 12288 },
+    { n: 2, name: "muhl_sdmk", file: "muhl_sdmk.mno", gates: 24800 },
+    { n: 3, name: "muhl_hopf", file: "muhl_hopf.mno", gates: 37248 },
+    { n: 4, name: "muhl_immn", file: "muhl_immn.mno", gates: 29951 },
+    { n: 5, name: "muhl_tset", file: "muhl_tset.mno", gates: 23856 },
+    { n: 6, name: "muhl_esnr", file: "muhl_esnr.mno", gates: 43044 },
+    { n: 7, name: "muhl_grbn", file: "muhl_grbn.mno", gates: 8704 },
+    { n: 8, name: "muhl_socr", file: "muhl_socr.mno", gates: 15872 },
+    { n: 9, name: "muhl_stig", file: "muhl_stig.mno", gates: 15360 },
+    { n: 10, name: "muhl_flow", file: "muhl_flow.mno", gates: 23040 },
+    { n: 11, name: "muhl_ispn", file: "muhl_ispn.mno", gates: 8784 },
+    { n: 12, name: "muhl_pots", file: "muhl_pots.mno", gates: 34304 },
+    { n: 13, name: "muhl_petr", file: "muhl_petr.mno", gates: 3552 },
+    { n: 14, name: "muhl_pred", file: "muhl_pred.mno", gates: 17664 },
+    { n: 15, name: "muhl_rgcg", file: "muhl_rgcg.mno", gates: 7820 },
+    { n: 16, name: "muhl_synd", file: "muhl_synd.mno", gates: 27520 },
+    { n: 17, name: "muhl_pdap", file: "muhl_pdap.mno", gates: 2656 },
+    { n: 18, name: "muhl_byzq", file: "muhl_byzq.mno", gates: 14880 },
+    { n: 19, name: "muhl_lvin", file: "muhl_lvin.mno", gates: 2368 }
+  ];
+
+  api.organCensusFromListing = function (names) {
+    var have = {};
+    (names || []).forEach(function (name) {
+      have[String(name || "")] = true;
+    });
+    return api.PLUMB_ORGANS.map(function (row) {
+      var landed = have[row.file] === true;
+      return {
+        n: row.n,
+        name: row.name,
+        file: row.file,
+        path: "excerpts/20260823/" + row.file,
+        gates: row.gates,
+        state: landed ? "INTEGRATED" : "NOT_LANDED",
+        note: landed
+          ? "excerpt on the measured main SHA"
+          : "no excerpt on current main. Talk is not this file. Fabricate and merge."
+      };
+    });
+  };
+
   api.excerptState = function (row) {
     row = row || {};
     var sidecar = row.sidecar === true;
@@ -134,6 +177,8 @@
   var shaCode = document.getElementById("main-sha");
   var plaque = document.getElementById("challenge-plaque");
   var prHost = document.getElementById("pr-list");
+  var organHost = document.getElementById("organ-list");
+  var organSum = document.getElementById("organ-sum");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
 
@@ -272,6 +317,38 @@
     });
   }
 
+  function loadOrgans(sha) {
+    if (!organHost) return Promise.resolve();
+    organHost.innerHTML = "<li>measuring excerpts/20260823 at the official SHA…</li>";
+    var url = API + "/contents/excerpts/20260823?ref=" + encodeURIComponent(sha);
+    return fetch(url, { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" }).then(function (r) {
+      if (r.status === 404) return [];
+      if (!r.ok) {
+        var err = new Error("HTTP " + r.status);
+        err.status = r.status;
+        throw err;
+      }
+      return r.json();
+    }).then(function (rows) {
+      var names = (rows || []).map(function (row) { return row && row.name; });
+      var census = api.organCensusFromListing(names);
+      var landed = census.filter(function (row) { return row.state === "INTEGRATED"; }).length;
+      var open = census.length - landed;
+      if (organSum) {
+        organSum.textContent = landed + " INTEGRATED · " + open + " NOT_LANDED of " + census.length +
+          " PLUMB 1–19 archetypes. Take a NOT_LANDED row. A PR is not this list.";
+      }
+      organHost.innerHTML = census.map(function (row) {
+        return "<li><span class=\"st st-" + esc(row.state) + "\">" + esc(row.state) + "</span> " +
+          row.n + " <code>" + esc(row.name) + "</code> " + esc(String(row.gates)) + " g" +
+          "<span class=\"pr-note\"><code>" + esc(row.path) + "</code> · " + esc(row.note) + "</span></li>";
+      }).join("");
+    }).catch(function (e) {
+      if (organSum) organSum.textContent = "excerpt directory lookup failed. Measure the path on current main.";
+      organHost.innerHTML = "<li>GitHub contents lookup failed (" + esc(e.message) + "). Use the curl below. Unauthenticated api.github.com is 60 requests/hour.</li>";
+    });
+  }
+
   function paintTalk(result) {
     if (!talkOut) return;
     talkOut.setAttribute("data-tone", api.toneFor(result.state));
@@ -369,6 +446,7 @@
     if (!sha) return;
     loadKnownChallenge(sha);
     loadPulls(sha);
+    loadOrgans(sha);
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {
