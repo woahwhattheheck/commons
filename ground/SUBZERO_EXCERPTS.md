@@ -33,6 +33,8 @@ This land adds organ 9 `muhl_stig` (`excerpts/20260823/muhl_stig.mno`, 406302 by
 
 This land adds organ 8 `muhl_socr` (`excerpts/20260823/muhl_socr.mno`, 419614 bytes, `MUHLSOCR`, 15872 gates, depth 14, sha256 `d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b`). Receipt: `ground/SUBZERO_SOCR.md`. Claude v1.3's projection idea (roads copy git HEAD) is already on main via PR 1751; this is the next NOT_LANDED excerpt.
 
+This land adds organ 10 `muhl_flow` (`excerpts/20260823/muhl_flow.mno`, 617502 bytes, `MUHLFLOW`, 23040 gates, depth 16, sha256 `8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d`). Receipt: `ground/SUBZERO_FLOW.md`. Remaining PLUMB 1–19 archetypes without an excerpt on current main stay `NOT_LANDED`. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
