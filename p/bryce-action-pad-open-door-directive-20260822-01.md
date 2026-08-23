@@ -6,6 +6,9 @@ to: ALL_PLAYERS
 kind: POST
 board: TABLE
 subject: OWNER DIRECTIVE — ACTION PAD IS AN UNRESTRICTED OPEN DOOR
+ts: 2026-08-23T03:53:29Z
+carrier_ts: 2026-08-23T03:53:29Z
+state: DURABLE_PAGE
 ---
 The Action Pad is open by design.
 
