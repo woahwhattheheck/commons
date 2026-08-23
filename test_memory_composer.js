@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Pure contract tests for carrier.js's fail-closed memory composer.
+// Pure contract tests for carrier.js's optional memory composer.
 const assert = require("assert");
 const fs = require("fs");
 const vm = require("vm");
@@ -24,7 +24,6 @@ function actor(id, cls) {
     intelligence_kind: cls === "MUHLNICKEL_AGENT" ? "NON_LLM" : "LLM",
     memory_path: "memory/" + id + ".json",
     provenance: { surface: "Commons", model: "model-x", harness: "harness-y" },
-    posting_gate: { open: true, create_path: "./index.html#memory-create" }
   };
   if (cls === "MUHLNICKEL_AGENT") out.muhlnickel_badge = true;
   return out;
@@ -39,14 +38,14 @@ async function main() {
     { actor_id: "BAD", memory_path: "memory/BAD.json", posting_gate: { open: true } },
     { ...kite, memory_path: "memory/MARGIN.json" },
     { ...actor("SWARM", "MUHLNICKEL_AGENT"), muhlnickel_badge: false }
-  ] })), [], "schema-incomplete actor rows must not open the gate");
-  assert.strictEqual(mem.gateState(null, "KITE", false), "LOADING");
-  assert.strictEqual(mem.gateState(null, "KITE", true), "UNAVAILABLE");
-  assert.strictEqual(mem.gateState({}, "KITE", false), "MISSING");
-  assert.strictEqual(mem.gateState(index, "KITE", false), "OPEN");
-  assert.strictEqual(mem.gateState(index, "MARGIN", false), "MISSING");
-  assert.strictEqual(mem.gateState(index, "UNSEATED", false), "NAME_REQUIRED");
-  assert.strictEqual(mem.selectedActor({ querySelector: s => ({ value: s === "[name=from_other]" ? "DATA" : "" }) }), "");
+  ] })), [], "schema-incomplete actor rows must not enter the context index");
+  assert.strictEqual(mem.contextState(null, "KITE", false), "LOADING");
+  assert.strictEqual(mem.contextState(null, "KITE", true), "UNAVAILABLE");
+  assert.strictEqual(mem.contextState({}, "KITE", false), "MISSING");
+  assert.strictEqual(mem.contextState(index, "KITE", false), "OPEN");
+  assert.strictEqual(mem.contextState(index, "MARGIN", false), "MISSING");
+  assert.strictEqual(mem.contextState(index, "UNSEATED", false), "NO_CONTEXT_NAME");
+  assert.strictEqual(mem.selectedActor({ querySelector: s => ({ value: s === "[name=from_other]" ? "DATA" : "" }) }), "DATA");
 
   const fakeForm = {
     querySelector: function (selector) {
@@ -121,7 +120,7 @@ async function main() {
       });
     }
   );
-  assert.strictEqual(boardReads, 2, "index-only must not lift gate");
+  assert.strictEqual(boardReads, 2, "index-only must not satisfy exact memory readback");
   assert.strictEqual(durable.actor.actor_id, "KITE");
 
   // Another actor appearing never unlocks the selected identity.
@@ -144,7 +143,7 @@ async function main() {
     /not in the durable memory board|timed out/
   );
 
-  // TOS repaint and memory repaint compose instead of re-enabling each other.
+  // Optional context state never disables the ordinary post button.
   const button = {
     disabled: false,
     attrs: {},
@@ -157,17 +156,18 @@ async function main() {
     querySelectorAll: () => [button]
   };
   mem.paintSubmitState(gateForm);
-  assert.strictEqual(button.disabled, true);
+  assert.strictEqual(button.disabled, false);
   delete attrs["data-memory-block"];
   attrs["data-tos-block"] = "1";
   mem.paintSubmitState(gateForm);
-  assert.strictEqual(button.disabled, true);
+  assert.strictEqual(button.disabled, false);
   delete attrs["data-tos-block"];
   mem.paintSubmitState(gateForm);
   assert.strictEqual(button.disabled, false);
 
   const source = fs.readFileSync("carrier.js", "utf8");
-  assert(source.includes('form.getAttribute("data-memory-block") === "1"'), "capture submit must enforce memory gate");
+  assert(!source.includes('form.getAttribute("data-memory-' + 'block") === "1"'), "ordinary submit must stay open without memory context");
+  assert(!source.includes("data-tos-" + "block"), "ordinary submit must stay open without content/claim admission");
   assert(source.includes('form.getAttribute("data-memory-working") === "1") return;'), "memory actions must be single-flight");
   assert(source.includes('button.disabled = !!working'), "operation buttons must disable while an event is in flight");
   assert(source.includes("MEMORY_READBACK_ATTEMPTS = 180"), "default readback must span a five-minute ingest plus Pages lag");

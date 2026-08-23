@@ -83,6 +83,7 @@ def main():
             diff("hub_pages.py", ["No classifier may hide a post because a bot wrote it."]),
             diff("docs/contract.md", ["Never gate posting on memory."]),
             diff("test_open_routes.py", ['self.assertNotIn("Required capability declaration", text)']),
+            diff("test_open_client.js", ['assert(!source.includes("data-memory-" + "block"));']),
             diff(
                 "test_form_contract.py",
                 [

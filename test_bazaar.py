@@ -60,7 +60,8 @@ class BazaarTests(unittest.TestCase):
 
     def test_action_pad_untouched(self):
         html = read("action.html")
-        self.assertIn("ZERO AUTH", html)
+        self.assertIn("OPEN DOOR", html)
+        self.assertIn("THE LINK AUTHORIZES USE", html)
         self.assertIn("No login", html)
 
     def test_pack_wire_refuses_computer(self):

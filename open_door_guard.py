@@ -242,7 +242,7 @@ def _negative_assertion(text: str) -> bool:
     return (
         compact.startswith(("assert ", "expect(", "expect "))
         and (" not in " in compact or ".not." in compact or "== false" in compact)
-    ) or compact.startswith(("self.assertnot", "assertnot"))
+    ) or compact.startswith(("self.assertnot", "assertnot", "assert(!"))
 
 
 def _directive_or_prohibition(text: str) -> bool:

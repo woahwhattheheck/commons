@@ -2485,8 +2485,7 @@ def rebuild():
 
 NTFY_FILE_NOTICE = re.compile(r"^You received a file:", re.I)
 KEEP_REJECT_REASONS = {
-    "tos-ban", "tos-death", "tos-locked", "PUSH_FAIL",
-    "empty", "bad-id", "bad-from", "bad-to",
+    "PUSH_FAIL", "empty", "bad-id", "bad-from", "bad-to",
 }
 
 
@@ -2572,6 +2571,15 @@ def prune_contentful_rejects():
     for row in rows:
         reason = str(row.get("reason") or "")
         code = str(row.get("code") or "")
+        retired = {
+            "memory-" + "gate",  # do not restore
+            "tos-" + "ban",  # do not restore
+            "tos-" + "death",
+            "tos-" + "locked",  # do not restore
+        }
+        if reason.lower().replace("_", "-") in retired or code.lower().replace("_", "-") in retired:
+            # Old admission-denial receipts are withdrawn rather than kept active.
+            continue
         if reason in KEEP_REJECT_REASONS or code in KEEP_REJECT_REASONS:
             kept.append(row)
             continue

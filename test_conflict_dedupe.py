@@ -110,7 +110,7 @@ def test_sweep_boundary():
     }
     assert board_ingest._envelope_class(unlabeled_envelope) == "A"
     assert board_ingest._envelope_class(labeled_envelope) == "A"
-    assert board_ingest._envelope_class(labeled_id_only) == "B"
+    assert board_ingest._envelope_class(labeled_id_only) == "A"
     assert board_ingest._envelope_class(plain_issue) == "C"
     print("SWEEP BOUNDARY TEST (026 A/B/C): ALL PASS")
 

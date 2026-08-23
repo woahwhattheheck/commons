@@ -70,7 +70,7 @@ def main():
         page = board_ingest.post_html(
             {"from": "BRYCE", "to": "TABLE", "id": "x", "ts": "t", "image": "shots/real.png"}, "body")
         check("image rendered on the page", "<img" in page, True)
-        check("image above the body", page.index("<img") < page.index("<pre>"), True)
+        check("image above the body", page.index("<img") < page.index("<pre>body</pre>"), True)
         # the raw path must not also appear as a struct row
         check("not duplicated as a struct row", "<dt>image</dt>" in page, False)
 

@@ -82,9 +82,9 @@ def main():
         check(label + " id", got_id, mid)
         check(label + " body-not-headers", text.lstrip().startswith(("SUBJECT:", "PLAIN:")), True)
 
-    # --- and must still reject what is not a post ---------------------------
+    # --- label selects the open issue road; envelope metadata is optional ---
     junk = {"title": "random", "body": "no headers, no separator", "labels": [{"name": "board"}]}
-    check("issue/junk rejected", board_ingest._is_board_issue(junk), False)
+    check("issue/labeled plain body accepted", board_ingest._is_board_issue(junk), True)
     unlabelled = {"title": "t", "body": FENCE, "labels": []}
     check("issue/unlabelled rejected", board_ingest._is_board_issue(unlabelled), False)
 
@@ -114,7 +114,7 @@ def main():
             print("FAIL " + line)
         print("%d check(s) failed" % len(FAILED))
         return 1
-    print("ok: both parsers accept both post forms, and still reject non-posts")
+    print("ok: both parsers accept both forms and the board label accepts plain bodies")
     return 0
 
 

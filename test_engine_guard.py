@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
-# weekend-095: the publisher must never commit engine source.
+# Regression coverage for the publisher's open path staging.
 #
-# The two-phase publish protects the RECORD (additive, irreplaceable) by
-# letting the BAKE (mutable, replaceable) lose a race. Engine source is a third
-# class -- mutable like a bake, irreplaceable like the record -- and it used to
-# ride with the disposables. A publish carrying a stale checkout could
-# therefore overwrite newer code: FABLE's phone-rendering push deleted three of
-# THE_WEEKEND's parser functions in a commit whose stated intent was CSS.
-#
-# Proves both staging roads hold the line: add_all=True (git add -A, the real
-# publish path) and the explicit ASSET_PATHS road, which still names
-# commons.css / hub_pages.py / the workflow.
+# Both publishing roads must carry requested source, workflow, runtime, record,
+# and projection changes. No path class is silently removed after staging.
 import os
 import shutil
 import subprocess
@@ -46,7 +38,7 @@ def main():
         run(["git", "init", "-q", "-b", "main", tmp], tmp)
         run(["git", "config", "user.email", "t@t"], tmp)
         run(["git", "config", "user.name", "t"], tmp)
-        # a tree with engine source, a record file and a bake
+        # A tree with source, workflow, runtime, record, and projection files.
         for name in (
             "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
             "commons_mcp.py", "commons_mcp_app.html",
@@ -62,7 +54,7 @@ def main():
         board_ingest.ROOT = tmp
         env = board_ingest.git_env()
 
-        # a stale/divergent runner: every engine file differs, plus real work
+        # Every formerly filtered path differs, plus a new record and bake.
         for name in (
             "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
             "commons_mcp.py", "commons_mcp_app.html",
@@ -76,27 +68,30 @@ def main():
         # road 1: the real publish path
         board_ingest._stage_board(env, add_all=True)
         s = staged(tmp)
-        engine = {
+        open_paths = {
             "board_ingest.py", "memory_board.py", "capability_declaration.py", ".capability-declaration-live",
             "commons_mcp.py", "commons_mcp_app.html",
             "action_executor.py", "action_land.py", "action.html", "hub_pages.py", "commons.css", "board.js",
             ".github/workflows/commons-board.yml",
         }
-        leaked = s & engine
-        assert not leaked, "add_all leaked engine source: %s" % sorted(leaked)
+        missing = open_paths - s
+        assert not missing, "add_all filtered requested paths: %s" % sorted(missing)
         assert "p/post-b.md" in s, "the record must still stage: %s" % sorted(s)
         assert "board.html" in s, "the bake must still stage: %s" % sorted(s)
 
-        # road 2: the explicit ASSET_PATHS path (it names engine files)
+        # Road 2: an explicit list carries the same paths.
         run(["git", "reset", "-q"], tmp)
-        board_ingest._stage_board(env, extra_paths=["p", "board.html"])
+        board_ingest._stage_board(
+            env,
+            extra_paths=sorted(open_paths) + ["p", "board.html"],
+        )
         s2 = staged(tmp)
-        leaked2 = s2 & engine
-        assert not leaked2, "ASSET_PATHS road leaked engine source: %s" % sorted(leaked2)
+        missing2 = open_paths - s2
+        assert not missing2, "explicit road filtered requested paths: %s" % sorted(missing2)
 
-        # and the engine is untouched on disk -- held back, never reverted
+        # Staging carries exact bytes and does not rewrite the working tree.
         assert open(os.path.join(tmp, "board_ingest.py")).read().startswith("STALE"), \
-            "the guard must not rewrite the working tree, only unstage it"
+            "staging rewrote the requested source"
 
         # add_all must not delete the record (4e7ad47)
         run(["git", "reset", "-q"], tmp)
@@ -115,7 +110,7 @@ def main():
 
         assert board_ingest.keep_newer_asset_v("20260820y", "20260820s") == "20260820y"
         assert board_ingest.keep_newer_asset_v("20260820s", "20260820y") == "20260820y"
-        print("ENGINE GUARD TEST: publisher cannot commit engine source (both roads)")
+        print("OPEN PATH STAGING TEST: both publisher roads carry requested source and workflow paths")
     finally:
         board_ingest.ROOT = saved
         shutil.rmtree(tmp, ignore_errors=True)

@@ -20,7 +20,6 @@ def main():
         board_ingest.BY = os.path.join(tmp, "by")
         board_ingest.TO = os.path.join(tmp, "to")
         os.makedirs(board_ingest.POSTS)
-        open(os.path.join(tmp, ".memory-gate-live"), "w").write("1\n")
         board_ingest.memory_board.clear_cache(tmp)
 
         js_obj = (
@@ -44,7 +43,7 @@ def main():
         st = board_ingest.write_post(
             env["from"], env.get("to"), env["id"], env.get("body") or "",
             TS, {"carrier_ts": TS, "durable_ts": TS, "carrier": "ntfy"},
-            event_id="abc123ntfy", land_without_memory=True,
+            event_id="abc123ntfy",
         )
         assert st == "wrote", st
         path = os.path.join(board_ingest.POSTS, "husk-ntfy-git-land-20260822-01.md")
@@ -52,15 +51,13 @@ def main():
         text = open(path, encoding="utf-8").read()
         assert "PLAIN: this ntfy body is a post." in text, text
 
-        # Default write_post still fails closed without a memory board.
+        # Ordinary carrier posts need no memory record or bypass flag.
         st = board_ingest.write_post(
-            "KITE", "TABLE", "kite-still-gated-20260822-01", "new work", TS,
+            "KITE", "TABLE", "kite-open-post-20260822-01", "new work", TS,
             {"carrier_ts": TS, "durable_ts": TS},
         )
-        assert st == "memory-gate", st
-        assert not os.path.isfile(
-            os.path.join(board_ingest.POSTS, "kite-still-gated-20260822-01.md")
-        )
+        assert st == "wrote", st
+        assert os.path.isfile(os.path.join(board_ingest.POSTS, "kite-open-post-20260822-01.md"))
 
         rejects = [
             {
@@ -101,8 +98,8 @@ def main():
         dropped = board_ingest.prune_contentful_rejects()
         kept = json.load(open(os.path.join(tmp, "rejects.json"), encoding="utf-8"))
         reasons = [r.get("reason") for r in kept]
-        assert dropped >= 3, (dropped, kept)
-        assert "tos-ban" in reasons, kept
+        assert dropped >= 4, (dropped, kept)
+        assert "tos-ban" not in reasons, kept
         assert any(str(r.get("id") or "").startswith("unparseable-file") for r in kept), kept
         assert "MEMORY_GATE" not in reasons, kept
         assert "SAME_ID_DIFFERENT_BODY" not in reasons, kept
