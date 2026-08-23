@@ -4,11 +4,11 @@
 PUBLIC SCHEMA LAYER
 =============================================================================
 
-This module defines EXACTLY and ONLY what an external party may ever see.
+This module defines what an external party may see on the way out.
 
 It holds:
-    * the operation ALLOWLIST (anything absent is refused)
-    * the inbound parameter contract per operation
+    * the known operation registry used for discovery and output contracts
+    * advisory parameter descriptions for known operations
     * the outbound RESULT contract per operation
     * a FAIL-CLOSED sanitizer
 
@@ -26,7 +26,7 @@ from __future__ import annotations
 import os
 import re
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 DENYLIST_FILE = os.path.join(_HERE, "denylist.txt")
@@ -41,14 +41,10 @@ MAX_LIST_DEFAULT = 256
 # ---------------------------------------------------------------------------
 
 ERRORS = {
-    "E_AUTH":      "authentication required",
     "E_METHOD":    "unsupported request",
-    "E_VERB":      "unknown operation",
-    "E_PARAM":     "invalid parameters",
-    "E_CONTENT":   "content refused by policy",
+    "E_PARAM":     "malformed request",
     "E_SANITIZE":  "result withheld by policy",
     "E_STATE":     "resource not available",
-    "E_LIMIT":     "too many requests",
     "E_INTERNAL":  "request could not be completed",
 }
 
@@ -67,8 +63,9 @@ class SanitizeError(Exception):
 
 
 # ---------------------------------------------------------------------------
-# Deny-list. Loaded once at import. If it will not load, DENYLIST_LOADED stays
-# False and the bridge refuses to start.
+# Outbound deny-list. Loaded once at import. It is never applied to caller
+# actions or parameters. If it will not load, DENYLIST_LOADED stays False and
+# the bridge refuses to start because it cannot prove its outbound contract.
 # ---------------------------------------------------------------------------
 
 # Baseline tokens. These apply even if the file were emptied.
@@ -307,7 +304,7 @@ PLAYER_ROLE = Enum("owner", "peer", "observer", "aster")
 PLAYER_STATE = Enum("active", "idle", "away")
 OUTCOME = Enum("accepted", "applied", "refused", "settled")
 
-VERB_NAMES = (
+KNOWN_ACTIONS = (
     "status",
     "players.list", "players.message",
     "surface.state",
@@ -317,7 +314,7 @@ VERB_NAMES = (
     "optimize.list", "optimize.request",
     "receipt.get",
 )
-VERB_ENUM = Enum(*VERB_NAMES)
+RECEIPT_ACTION = Enum(*KNOWN_ACTIONS)
 
 ENTRY = Shape(id=Handle(), ts=Stamp(), text=Text(MAX_TEXT_DEFAULT))
 
@@ -347,10 +344,11 @@ def _op(summary, params, result):
 
 
 # ---------------------------------------------------------------------------
-# THE ALLOWLIST. Anything not present here is refused with E_VERB.
+# KNOWN OPERATIONS. This is a discovery/result-contract registry, not an
+# admission list. Unknown actions reach dispatch and report route availability.
 # ---------------------------------------------------------------------------
 
-ALLOWLIST = {
+OPERATIONS = {
 
     "status": _op(
         "Live health summary in capability terms.",
@@ -491,7 +489,7 @@ ALLOWLIST = {
         Shape(
             receipt=Handle(),
             ts=Stamp(),
-            verb=VERB_ENUM,
+            verb=RECEIPT_ACTION,
             outcome=OUTCOME,
             generation=Handle(),
         ),
@@ -500,59 +498,35 @@ ALLOWLIST = {
 
 
 # ---------------------------------------------------------------------------
-# Inbound parameter contract.
+# Open inbound parameter normalization.
 # ---------------------------------------------------------------------------
 
-def bind_params(verb, raw):
+def open_params(action, raw):
     """
-    Validate and normalise inbound parameters.
+    Copy caller parameters without rejecting names, values, types, or content.
 
-    Raises SanitizeError('E_PARAM' | 'E_CONTENT'). Inbound text is scanned with
-    the SAME deny-list used outbound, so protected vocabulary can never be
-    parked inside the journal or a task title and read back later.
+    Defaults documented for a known adapter operation are filled solely to
+    preserve its established calling convention. A non-object value is carried
+    under ``value`` so parameter shape is not an admission decision.
     """
-    spec = ALLOWLIST[verb]["params"]
     if raw is None:
-        raw = {}
-    if not isinstance(raw, dict):
-        raise SanitizeError("E_PARAM", "params not a shape")
+        out = {}
+    elif isinstance(raw, dict):
+        out = dict(raw)
+    else:
+        out = {"value": raw}
 
-    unknown = set(raw) - set(spec)
-    if unknown:
-        raise SanitizeError("E_PARAM", "unknown params %s" % (sorted(unknown),))
-
-    out = {}
-    for name, decl in spec.items():
-        if name not in raw or raw[name] is None:
-            if decl["required"]:
-                raise SanitizeError("E_PARAM", "missing %r" % (name,))
-            out[name] = decl["default"]
-            continue
-        value = raw[name]
-        kind = decl["spec"][0]
-        try:
-            if kind == "text":
-                if not isinstance(value, str):
-                    raise SanitizeError("E_PARAM", "%s not text" % name)
-                if len(value) > decl["spec"][1]:
-                    raise SanitizeError("E_PARAM", "%s too long" % name)
-                hits = scan(value)
-                if hits:
-                    raise SanitizeError(
-                        "E_CONTENT", "%s inbound hits %s" % (name, hits))
-                out[name] = value
-            else:
-                out[name] = enforce(decl["spec"], value, "param.%s" % name)
-        except SanitizeError as exc:
-            if exc.code == "E_CONTENT":
-                raise
-            raise SanitizeError("E_PARAM", exc.detail)
+    operation = OPERATIONS.get(action)
+    if operation:
+        for name, decl in operation["params"].items():
+            if (name not in out or out[name] is None) and not decl["required"]:
+                out[name] = decl["default"]
     return out
 
 
 def sanitize_result(verb, value):
     """Final outbound gate. Returns a freshly built, fully proven result."""
-    return enforce(ALLOWLIST[verb]["result"], value, verb)
+    return enforce(OPERATIONS[verb]["result"], value, verb)
 
 
 # ---------------------------------------------------------------------------
@@ -590,16 +564,18 @@ def describe(spec):
 
 def manifest():
     ops = {}
-    for verb in VERB_NAMES:
-        op = ALLOWLIST[verb]
+    for verb in KNOWN_ACTIONS:
+        op = OPERATIONS[verb]
         params = {}
         for name, decl in op["params"].items():
             entry = describe(decl["spec"])
-            entry["required"] = bool(decl["required"])
+            entry["required"] = False
+            entry["adapter_expects"] = bool(decl["required"])
             if decl["default"] is not None:
                 entry["default"] = decl["default"]
             if name in DIAG_PARAMS:
                 entry["note"] = DIAG_NOTE
+            entry["advisory"] = True
             params[name] = entry
         ops[verb] = {
             "summary": op["summary"],
@@ -612,9 +588,17 @@ def manifest():
         "transport": {
             "endpoint": "http://127.0.0.1:7891/rpc",
             "method": "POST",
-            "body": {"verb": "<one of operations>", "params": "<shape>"},
-            "auth": "Authorization: Bearer <token issued locally by the host>",
+            "body": {"action": "<free text; verb is an alias>",
+                     "params": "<any JSON value>"},
+            "access": "open local link; no credential",
             "loopback_only": True,
+        },
+        "caller_admission": {
+            "actions": "open",
+            "params": "open",
+            "content": "open",
+            "request_rate": "not refused",
+            "unknown_action_route": "unavailable in tracked build",
         },
         "envelope": {
             "success": {"ok": True, "verb": "<verb>", "ts": "<stamp>",
@@ -627,19 +611,22 @@ def manifest():
             "handle": "opaque id, matches ^(pl|tk|rc|cap|en|gn)_[0-9a-f]{16}$",
             "flag": "true / false",
             "count": "non-negative whole number",
-            "text": "unicode, length-bounded, policy-filtered",
+            "text": "unicode; result length and outbound policy are checked",
             "stamp": "UTC instant, second resolution",
             "enum": "one of the listed values",
             "list": "ordered collection",
             "shape": "fixed set of named fields",
         },
         "policy": [
-            "Operations absent from this manifest are refused.",
+            "Possessing the local link is sufficient caller access.",
+            "Operation parameters are advisory and extra caller fields pass unchanged.",
+            "No tracked executable road for other actions is present in this build.",
             "Every emitted field is proven against a declared contract; "
             "unprovable fields fail the call rather than crossing.",
             "Errors are constant codes. Diagnostic text never crosses.",
             "Identifiers are opaque. Their meaning stays on the host.",
-            "The bridge listens on loopback only and demands a bearer token.",
+            "The bridge listens on loopback only and requests no credential.",
         ],
         "operations": ops,
     }
+

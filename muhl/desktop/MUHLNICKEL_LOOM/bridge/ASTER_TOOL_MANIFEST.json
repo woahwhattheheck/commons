@@ -1,15 +1,22 @@
 {
   "manifest": "aster-bridge",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "transport": {
     "endpoint": "http://127.0.0.1:7891/rpc",
     "method": "POST",
     "body": {
-      "verb": "<one of operations>",
-      "params": "<shape>"
+      "action": "<free text; verb is an alias>",
+      "params": "<any JSON value>"
     },
-    "auth": "Authorization: Bearer <token issued locally by the host>",
+    "access": "open local link; no credential",
     "loopback_only": true
+  },
+  "caller_admission": {
+    "actions": "open",
+    "params": "open",
+    "content": "open",
+    "request_rate": "not refused",
+    "unknown_action_route": "unavailable in tracked build"
   },
   "envelope": {
     "success": {
@@ -29,32 +36,30 @@
     }
   },
   "error_codes": {
-    "E_AUTH": "authentication required",
     "E_METHOD": "unsupported request",
-    "E_VERB": "unknown operation",
-    "E_PARAM": "invalid parameters",
-    "E_CONTENT": "content refused by policy",
+    "E_PARAM": "malformed request",
     "E_SANITIZE": "result withheld by policy",
     "E_STATE": "resource not available",
-    "E_LIMIT": "too many requests",
     "E_INTERNAL": "request could not be completed"
   },
   "type_map": {
     "handle": "opaque id, matches ^(pl|tk|rc|cap|en|gn)_[0-9a-f]{16}$",
     "flag": "true / false",
     "count": "non-negative whole number",
-    "text": "unicode, length-bounded, policy-filtered",
+    "text": "unicode; result length and outbound policy are checked",
     "stamp": "UTC instant, second resolution",
     "enum": "one of the listed values",
     "list": "ordered collection",
     "shape": "fixed set of named fields"
   },
   "policy": [
-    "Operations absent from this manifest are refused.",
+    "Possessing the local link is sufficient caller access.",
+    "Operation parameters are advisory and extra caller fields pass unchanged.",
+    "No tracked executable road for other actions is present in this build.",
     "Every emitted field is proven against a declared contract; unprovable fields fail the call rather than crossing.",
     "Errors are constant codes. Diagnostic text never crosses.",
     "Identifiers are opaque. Their meaning stays on the host.",
-    "The bridge listens on loopback only and demands a bearer token."
+    "The bridge listens on loopback only and requests no credential."
   ],
   "operations": {
     "status": {
@@ -63,20 +68,26 @@
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -130,20 +141,26 @@
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -205,30 +222,40 @@
         "to": {
           "type": "text",
           "max_length": 64,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "body": {
           "type": "text",
           "max_length": 4000,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -256,20 +283,26 @@
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -317,25 +350,33 @@
           "min": 1,
           "max": 256,
           "required": false,
-          "default": 50
+          "adapter_expects": false,
+          "default": 50,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -381,25 +422,33 @@
         "text": {
           "type": "text",
           "max_length": 4000,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -429,25 +478,33 @@
           "min": 1,
           "max": 256,
           "required": false,
-          "default": 50
+          "adapter_expects": false,
+          "default": 50,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -493,25 +550,33 @@
         "text": {
           "type": "text",
           "max_length": 4000,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -539,31 +604,41 @@
         "objective": {
           "type": "text",
           "max_length": 400,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "detail": {
           "type": "text",
           "max_length": 4000,
           "required": false,
-          "default": ""
+          "adapter_expects": false,
+          "default": "",
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -595,25 +670,33 @@
         "task": {
           "type": "text",
           "max_length": 64,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -664,20 +747,26 @@
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -731,7 +820,9 @@
         "capability": {
           "type": "text",
           "max_length": 64,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "objective": {
           "type": "enum",
@@ -741,32 +832,42 @@
             "footprint",
             "stability"
           ],
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "bound": {
           "type": "count",
           "min": 1,
           "max": 1000000,
           "required": false,
-          "default": 1000
+          "adapter_expects": false,
+          "default": 1000,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -809,25 +910,33 @@
         "receipt": {
           "type": "text",
           "max_length": 64,
-          "required": true
+          "required": false,
+          "adapter_expects": true,
+          "advisory": true
         },
         "probe_fault": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_taint": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         },
         "probe_undeclared": {
           "type": "flag",
           "required": false,
+          "adapter_expects": false,
           "default": false,
-          "note": "diagnostic probe; always resolves to a redacted error code, never to data"
+          "note": "diagnostic probe; always resolves to a redacted error code, never to data",
+          "advisory": true
         }
       },
       "result": {
@@ -877,3 +986,4 @@
     }
   }
 }
+

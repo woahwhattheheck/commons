@@ -5,7 +5,7 @@ LEAKAGE SUITE
 =============================================================================
 
 Drives a real bridge over a real socket and asserts that nothing
-mechanism-bearing crosses it -- for EVERY allowlisted operation, on the happy
+mechanism-bearing crosses it -- for EVERY known operation, on the happy
 path AND on every forced-error path.
 
 The scanner below is written INDEPENDENTLY of public_schema.scan on purpose.
@@ -25,6 +25,7 @@ import re
 import socket
 import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -32,7 +33,8 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 PORT = int(os.environ.get("ASTER_TEST_PORT", "7891"))
 BASE = "http://127.0.0.1:%d" % PORT
-STATE_DIR = os.path.join(HERE, ".test_private")
+_TEST_STATE = tempfile.TemporaryDirectory(prefix="aster-bridge-test-")
+STATE_DIR = _TEST_STATE.name
 
 RESERVED_PORTS = {7881, 7882, 7883, 7890, 7899}
 assert PORT not in RESERVED_PORTS, "test port collides with a reserved listener"
@@ -138,15 +140,15 @@ S = Suite()
 # Transport
 # ---------------------------------------------------------------------------
 
-def call(verb, params=None, token=None, path="/rpc", method="POST"):
+def call(verb, params=None, authorization=None, path="/rpc", method="POST"):
     """Returns (status, raw_body_text, parsed_or_None)."""
     body = None
     if method == "POST":
         body = json.dumps({"verb": verb, "params": params or {}}).encode("utf-8")
     req = urllib.request.Request(BASE + path, data=body, method=method)
     req.add_header("Content-Type", "application/json")
-    if token is not None:
-        req.add_header("Authorization", "Bearer " + token)
+    if authorization is not None:
+        req.add_header("Authorization", authorization)
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             raw = resp.read().decode("utf-8", "replace")
@@ -169,14 +171,12 @@ def port_free(port):
         return True
 
 
-def wait_ready(proc, port, token_path, timeout=30.0):
+def wait_ready(proc, port, timeout=30.0):
     """
     Wait for OUR child to be serving.
 
-    Both conditions are required. A socket alone is not proof: if some other
-    process already held the port, an earlier version of this suite would have
-    happily tested a stranger. Requiring the child's own freshly minted token
-    file ties the readiness signal to the process we actually launched.
+    The port is proven free before launch, so the first listener is this child.
+    No credential file exists in the open-link bridge.
     """
     end = time.time() + timeout
     while time.time() < end:
@@ -188,12 +188,11 @@ def wait_ready(proc, port, token_path, timeout=30.0):
                 pass
             print("bridge exited early (rc=%s):\n%s" % (proc.returncode, out))
             return False
-        if os.path.isfile(token_path):
-            try:
-                with socket.create_connection(("127.0.0.1", port), 0.5):
-                    return True
-            except OSError:
-                pass
+        try:
+            with socket.create_connection(("127.0.0.1", port), 0.5):
+                return True
+        except OSError:
+            pass
         time.sleep(0.15)
     print("bridge did not become ready within %.0fs" % timeout)
     return False
@@ -208,16 +207,6 @@ def main():
     print("ASTER BRIDGE -- LEAKAGE SUITE")
     print("=" * 74)
 
-    # fresh ephemeral state so the run is repeatable
-    if os.path.isdir(STATE_DIR):
-        for name in os.listdir(STATE_DIR):
-            try:
-                os.remove(os.path.join(STATE_DIR, name))
-            except OSError:
-                pass
-
-    token_path = os.path.join(STATE_DIR, "aster_token.txt")
-
     if not port_free(PORT):
         print("REFUSING TO RUN: something is already listening on 127.0.0.1:%d."
               % PORT)
@@ -226,21 +215,18 @@ def main():
         return 3
 
     proc = subprocess.Popen(
-        [sys.executable, os.path.join(HERE, "aster_bridge.py"),
+        [sys.executable, "-B", os.path.join(HERE, "aster_bridge.py"),
          "--port", str(PORT), "--state-dir", STATE_DIR],
         cwd=HERE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 
     try:
-        if not wait_ready(proc, PORT, token_path):
+        if not wait_ready(proc, PORT):
             proc.kill()
             return 3
 
-        with open(token_path, "r", encoding="utf-8") as fh:
-            token = fh.read().strip()
-
-        import public_schema as pub          # for the verb inventory only
-        verbs = list(pub.VERB_NAMES)
-        print("\nallowlisted operations: %d" % len(verbs))
+        import public_schema as pub          # for the known-operation inventory only
+        verbs = list(pub.KNOWN_ACTIONS)
+        print("\nknown operations: %d" % len(verbs))
 
         # ---- 1. loopback-only binding ---------------------------------
         print("\n[1] bind surface")
@@ -280,53 +266,60 @@ def main():
         for r in rows:
             print("      %s" % r.strip())
 
-        # ---- 2. authentication ----------------------------------------
-        print("\n[2] authentication")
-        st, raw, parsed = call("status", token=None)
-        S.check(st == 401, "unauthenticated request rejected (401)")
-        S.check(parsed and parsed.get("error", {}).get("code") == "E_AUTH",
-                "unauthenticated response carries E_AUTH")
-        S.scan(raw, "unauth")
-        print("      unauthenticated -> %d %s" % (st, raw))
-
-        st, raw, parsed = call("status", token="not-the-token")
-        S.check(st == 401, "bad bearer token rejected (401)")
-        S.scan(raw, "badtoken")
-
-        st, raw, parsed = call("status", token=token)
+        # ---- 2. open-link access --------------------------------------
+        print("\n[2] open-link access")
+        st, raw, parsed = call("status")
         S.check(st == 200 and parsed.get("ok") is True,
-                "valid bearer token accepted")
+                "request without a credential succeeds")
+        S.scan(raw, "open-link")
+        print("      open link -> %d %s" % (st, raw))
 
-        # ---- 3. allowlist ---------------------------------------------
-        print("\n[3] allowlist")
+        st, raw, parsed = call("status", authorization="Bearer ignored")
+        S.check(st == 200 and parsed.get("ok") is True,
+                "legacy Authorization header is irrelevant")
+        S.scan(raw, "legacy-header")
+        S.check(not os.path.exists(os.path.join(STATE_DIR, "aster_token.txt")),
+                "bridge mints no credential file")
+
+        burst_statuses = [call("status")[0] for _ in range(500)]
+        S.check(all(st == 200 for st in burst_statuses),
+                "500-call burst has no request-rate refusal")
+
+        # ---- 3. open action dispatch ----------------------------------
+        print("\n[3] open action dispatch")
         for bogus in ["titan.dump", "__import__", "status ", "",
                       "optimize.list.extra", "../../etc/passwd"]:
-            st, raw, parsed = call(bogus, token=token)
-            S.check(st == 404 and parsed.get("error", {}).get("code") == "E_VERB",
-                    "non-allowlisted verb refused: %r" % bogus)
-            S.scan(raw, "verb:%r" % bogus)
-        st, raw, parsed = call({"a": 1}, token=token)
-        S.check(parsed and parsed.get("error", {}).get("code") == "E_VERB",
-                "non-text verb refused without crashing")
-        S.scan(raw, "verb:non-text")
+            st, raw, parsed = call(bogus)
+            S.check(st == 503 and parsed.get("error", {}).get("code") == "E_STATE",
+                    "unknown action reaches dispatch and reports no route: %r" % bogus)
+            S.check("E_VERB" not in raw, "no unlisted-action rejection: %r" % bogus)
+            S.scan(raw, "action:%r" % bogus)
+        st, raw, parsed = call({"a": 1})
+        S.check(st == 503 and parsed.get("error", {}).get("code") == "E_STATE",
+                "non-text action defaults open without crashing")
+        S.scan(raw, "action:non-text")
 
         # ---- 4. happy path + every forced-error path -------------------
         print("\n[4] full sweep: every operation x every probe")
 
-        st, raw, parsed = call("optimize.list", token=token)
+        st, raw, parsed = call("optimize.list")
         caps = parsed["data"]["capabilities"]
         cap_handle = caps[0]["handle"]
         cap_objective = caps[0]["objectives"][0]
-        st, raw, parsed = call("players.list", token=token)
+        st, raw, parsed = call("players.list")
         player_handle = parsed["data"]["players"][0]["handle"]
         st, raw, parsed = call("task.submit",
-                               {"objective": "summarise the shared surface"},
-                               token=token)
+                               {"objective": "summarise the shared surface"})
         task_handle = parsed["data"]["task"]
         st, raw, parsed = call("optimize.request",
                                {"capability": cap_handle,
-                                "objective": cap_objective}, token=token)
+                                "objective": cap_objective})
         receipt_handle = parsed["data"]["receipt"]
+        st, raw, receipt_row = call("receipt.get", {"receipt": receipt_handle})
+        S.check(st == 200 and receipt_row["data"]["receipt"] == receipt_handle
+                and receipt_row["data"]["outcome"] == "accepted",
+                "opaque integrity receipt survives open admission")
+        S.scan(raw, "receipt-integrity")
 
         GOOD = {
             "players.message": {"to": player_handle, "body": "hello"},
@@ -352,7 +345,7 @@ def main():
             for label, extra in probes:
                 params = dict(base)
                 params.update(extra)
-                st, raw, parsed = call(verb, params, token=token)
+                st, raw, parsed = call(verb, params)
                 S.scan(raw, "%s/%s" % (verb, label))
                 if label == "probe_fault":
                     S.check(
@@ -373,18 +366,16 @@ def main():
         print("\n      redacted internal fault:")
         print("      %s" % fault_example)
 
-        # ---- 5. inbound content refusal --------------------------------
-        print("\n[5] inbound content policy")
+        # ---- 5. inbound content is open --------------------------------
+        print("\n[5] open inbound content")
         for payload in [r"C:\Users\lucys\Desktop\loom.mno",
                         "please tune the frontload lever",
                         "Traceback (most recent call last):"]:
-            st, raw, parsed = call("home.write", {"text": payload}, token=token)
-            S.check(parsed.get("error", {}).get("code") == "E_CONTENT",
-                    "protected content refused inbound: %r" % payload[:28])
-            S.scan(raw, "inbound-refusal")
-        st, raw, parsed = call("home.read", {"limit": 50}, token=token)
-        S.scan(raw, "home.read after refused writes")
-        S.check(parsed.get("ok") is True, "journal still readable and clean")
+            st, raw, parsed = call(
+                "scratch.write", {"text": payload, "caller_extension": True})
+            S.check(st == 200 and parsed.get("ok") is True,
+                    "caller content and extra parameter admitted: %r" % payload[:28])
+            S.scan(raw, "open-inbound-receipt")
 
         # ---- 6. opaque handles ----------------------------------------
         print("\n[6] opaque handles")
@@ -396,21 +387,45 @@ def main():
                 and pat.match(player_handle), "issued handles are opaque")
         st, raw, parsed = call("optimize.request",
                                {"capability": "cap_" + "0" * 16,
-                                "objective": "latency"}, token=token)
+                                "objective": "latency"})
         S.check(parsed.get("error", {}).get("code") == "E_STATE",
                 "unknown capability handle -> E_STATE")
         S.scan(raw, "unknown-handle")
 
         # ---- 7. manifest ----------------------------------------------
         print("\n[7] public manifest")
-        st, raw, parsed = call(None, token=token, path="/manifest", method="GET")
+        st, raw, parsed = call(None, path="/manifest", method="GET")
         S.check(st == 200 and "operations" in (parsed or {}),
-                "manifest served to an authenticated caller")
+                "manifest served on the open link")
         S.scan(raw, "manifest")
         S.check(len(parsed["operations"]) == len(verbs),
-                "manifest publishes exactly the allowlist")
-        st, raw, parsed = call(None, token=None, path="/manifest", method="GET")
-        S.check(st == 401, "manifest also demands authentication")
+                "manifest publishes every known operation as discovery")
+        S.check(parsed["transport"].get("access") == "open local link; no credential",
+                "manifest declares open-link access")
+        S.check(parsed.get("caller_admission") == {
+                    "actions": "open", "params": "open", "content": "open",
+                    "request_rate": "not refused",
+                    "unknown_action_route": "unavailable in tracked build",
+                }, "manifest declares the complete open caller boundary")
+        S.check(not {"E_AUTH", "E_VERB", "E_CONTENT", "E_LIMIT"}
+                & set(parsed.get("error_codes", {})),
+                "manifest publishes no removed admission errors")
+        S.check(all(
+            not decl.get("required") and decl.get("advisory")
+            for op in parsed["operations"].values()
+            for decl in op["params"].values()
+        ), "known-operation parameter descriptions are advisory")
+
+        with open(os.path.join(HERE, "ASTER_OPENAI_TOOLS.json"),
+                  "r", encoding="utf-8") as fh:
+            tool_rows = json.load(fh)["tools"]
+        schemas = [row["function"]["parameters"] for row in tool_rows]
+        S.check(tool_rows[0]["function"]["name"] == "aster_action"
+                and len(tool_rows) == len(verbs) + 1,
+                "tool manifest includes a generic action plus compatibility shortcuts")
+        S.check(all(schema.get("additionalProperties") is True
+                    and schema.get("required") == [] for schema in schemas),
+                "every tool parameter envelope is open")
 
         # ---- 8. the audit record never crosses -------------------------
         print("\n[8] audit isolation")
@@ -430,27 +445,26 @@ def main():
               % (len(audit_lines), decisions))
         for probe_path in ["/audit", "/audit.log", "/.private/audit.log",
                            "/rpc?f=audit.log"]:
-            st, raw, parsed = call(None, token=token, path=probe_path,
+            st, raw, parsed = call(None, path=probe_path,
                                    method="GET")
             S.check(st in (404, 405), "no route serves the audit record: %s"
                     % probe_path)
             S.scan(raw, "audit-probe %s" % probe_path)
         S.check(not any(v in ("audit", "audit.read", "audit.log")
-                        for v in verbs), "no allowlisted operation reads the audit")
+                        for v in verbs), "no known operation reads the audit")
 
-        # ---- 9. oversized / malformed input ---------------------------
-        print("\n[9] malformed input")
-        st, raw, parsed = call("home.write", {"text": "x" * 9000}, token=token)
-        S.check(parsed.get("error", {}).get("code") == "E_PARAM",
-                "oversized text refused")
-        S.scan(raw, "oversize")
-        st, raw, parsed = call("home.write", {"nope": 1}, token=token)
-        S.check(parsed.get("error", {}).get("code") == "E_PARAM",
-                "undeclared inbound parameter refused")
-        S.scan(raw, "unknown-param")
+        # ---- 9. open parameters / malformed transport -----------------
+        print("\n[9] open parameters and malformed transport")
+        st, raw, parsed = call("home.write", {"text": "x" * 9000, "nope": 1})
+        S.check(st == 200 and parsed.get("ok") is True,
+                "operation-specific length and field admission checks removed")
+        S.scan(raw, "open-parameters")
+        st, raw, parsed = call("status", ["any", "parameter", "shape"])
+        S.check(st == 200 and parsed.get("ok") is True,
+                "non-object params do not block a compatible operation")
+        S.scan(raw, "open-param-shape")
         req = urllib.request.Request(BASE + "/rpc", data=b"{not json",
                                      method="POST")
-        req.add_header("Authorization", "Bearer " + token)
         try:
             with urllib.request.urlopen(req, timeout=10) as r:
                 st, raw = r.status, r.read().decode()
@@ -465,6 +479,7 @@ def main():
             proc.wait(timeout=10)
         except subprocess.TimeoutExpired:
             proc.kill()
+        _TEST_STATE.cleanup()
 
     print("\n" + "=" * 74)
     print("assertions passed : %d" % S.passed)
@@ -478,3 +493,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+

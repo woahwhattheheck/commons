@@ -3,26 +3,43 @@
     {
       "type": "function",
       "function": {
+        "name": "aster_action",
+        "description": "Call the open local ASTER action endpoint. Action is free-form; known adapter actions execute locally and other actions report route availability without an admission rejection.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "description": "Any free-form action value."
+            },
+            "params": {
+              "description": "Any JSON parameter value."
+            }
+          },
+          "required": [],
+          "additionalProperties": true
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
         "name": "status",
         "description": "Live health summary in capability terms.",
         "parameters": {
           "type": "object",
           "properties": {
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -35,20 +52,17 @@
           "type": "object",
           "properties": {
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -61,33 +75,23 @@
           "type": "object",
           "properties": {
             "to": {
-              "type": "string",
-              "maxLength": 64,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "body": {
-              "type": "string",
-              "maxLength": 4000,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "to",
-            "body"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -100,20 +104,17 @@
           "type": "object",
           "properties": {
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -126,24 +127,20 @@
           "type": "object",
           "properties": {
             "limit": {
-              "type": "integer",
-              "description": ""
+              "description": "advisory adapter parameter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -156,27 +153,20 @@
           "type": "object",
           "properties": {
             "text": {
-              "type": "string",
-              "maxLength": 4000,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "text"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -189,24 +179,20 @@
           "type": "object",
           "properties": {
             "limit": {
-              "type": "integer",
-              "description": ""
+              "description": "advisory adapter parameter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -219,27 +205,20 @@
           "type": "object",
           "properties": {
             "text": {
-              "type": "string",
-              "maxLength": 4000,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "text"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -252,32 +231,23 @@
           "type": "object",
           "properties": {
             "objective": {
-              "type": "string",
-              "maxLength": 400,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "detail": {
-              "type": "string",
-              "maxLength": 4000,
-              "description": ""
+              "description": "advisory adapter parameter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "objective"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -290,27 +260,20 @@
           "type": "object",
           "properties": {
             "task": {
-              "type": "string",
-              "maxLength": 64,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "task"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -323,20 +286,17 @@
           "type": "object",
           "properties": {
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       }
     },
@@ -349,42 +309,26 @@
           "type": "object",
           "properties": {
             "capability": {
-              "type": "string",
-              "maxLength": 64,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "objective": {
-              "type": "string",
-              "enum": [
-                "throughput",
-                "latency",
-                "footprint",
-                "stability"
-              ],
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "bound": {
-              "type": "integer",
-              "description": ""
+              "description": "advisory adapter parameter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "capability",
-            "objective"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     },
@@ -397,29 +341,23 @@
           "type": "object",
           "properties": {
             "receipt": {
-              "type": "string",
-              "maxLength": 64,
-              "description": ""
+              "description": "normally read by this adapter"
             },
             "probe_fault": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_taint": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             },
             "probe_undeclared": {
-              "type": "boolean",
               "description": "diagnostic probe; always resolves to a redacted error code, never to data"
             }
           },
-          "required": [
-            "receipt"
-          ],
-          "additionalProperties": false
+          "required": [],
+          "additionalProperties": true
         }
       }
     }
   ]
 }
+
