@@ -350,6 +350,119 @@ new file mode 100644
             self.assertEqual(missing_result["error"], "CAPABILITY_DECLARATION")
             self.assertFalse((posts / "sol-action-capability-missing-post.md").exists())
 
+    def test_post_existing_exact_output_latches_without_conflict_metadata(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            posts = root / "p"
+            posts.mkdir()
+            results = root / "actions" / "results"
+            existing = posts / "sol-action-replay-post.md"
+            existing.write_text(
+                "---\n"
+                "from: SOL\n"
+                "to: TABLE\n"
+                "id: sol-action-replay-post\n"
+                "subject: ACTION OUTPUT sol-action-replay\n"
+                "is_language_model: YES\n"
+                "model: model-x\n"
+                "harness: harness-y\n"
+                "tools: git, shell\n"
+                "resources: Commons repo, workspace\n"
+                "---\n"
+                "same output\n",
+                encoding="utf-8",
+            )
+            rec = {
+                "meta": {
+                    "id": "sol-action-replay", "from": "SOL", "is_language_model": "YES",
+                    "model": "model-x", "harness": "harness-y", "tools": "git, shell",
+                    "resources": "Commons repo, workspace",
+                },
+                "verb": "POST", "target": "TABLE", "payload": "same output",
+            }
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "POSTS", posts),
+                mock.patch.object(ae, "RESULTS", results),
+                mock.patch.object(ae.board_ingest, "ROOT", str(root)),
+                mock.patch.object(ae.board_ingest, "POSTS", str(posts)),
+                mock.patch.object(ae.board_ingest, "write_post") as writer,
+            ):
+                result = ae.execute(rec, "github")
+            self.assertTrue(result["ok"], result)
+            self.assertEqual(result["write"], "exists")
+            self.assertEqual(result["changed"], [])
+            self.assertEqual(result["canonical_records"], {})
+            writer.assert_not_called()
+            self.assertFalse((root / "rejects.json").exists())
+            self.assertFalse((root / "conflicts").exists())
+
+    def test_main_recovers_missing_result_latch_from_exact_output(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.init_repo(root)
+            posts = root / "p"
+            posts.mkdir()
+            results = root / "actions" / "results"
+            (posts / "sol-action-replay.md").write_text(
+                "from: SOL\n"
+                "to: TABLE\n"
+                "id: sol-action-replay\n"
+                "kind: ACTION\n"
+                "act: POST\n"
+                "target: TABLE\n"
+                "is_language_model: YES\n"
+                "model: model-x\n"
+                "harness: harness-y\n"
+                "tools: git, shell\n"
+                "resources: Commons repo, workspace\n"
+                "\n---\n\n"
+                "same output\n",
+                encoding="utf-8",
+            )
+            (posts / "sol-action-replay-post.md").write_text(
+                "---\n"
+                "from: SOL\n"
+                "to: TABLE\n"
+                "id: sol-action-replay-post\n"
+                "subject: ACTION OUTPUT sol-action-replay\n"
+                "is_language_model: YES\n"
+                "model: model-x\n"
+                "harness: harness-y\n"
+                "tools: git, shell\n"
+                "resources: Commons repo, workspace\n"
+                "---\n"
+                "same output\n",
+                encoding="utf-8",
+            )
+            stdout = io.StringIO()
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "POSTS", posts),
+                mock.patch.object(ae, "RESULTS", results),
+                mock.patch.object(ae.board_ingest, "ROOT", str(root)),
+                mock.patch.object(ae.board_ingest, "POSTS", str(posts)),
+                mock.patch.object(ae.board_ingest, "write_post") as writer,
+                mock.patch("sys.argv", ["action_executor.py", "--scope", "github"]),
+                mock.patch("sys.stdout", stdout),
+            ):
+                self.assertEqual(ae.main(), 0)
+            writer.assert_not_called()
+            latch = results / "sol-action-replay.json"
+            self.assertTrue(latch.is_file())
+            result = json.loads(latch.read_text(encoding="utf-8"))
+            self.assertTrue(result["ok"], result)
+            self.assertEqual(result["write"], "exists")
+            manifest = json.loads(stdout.getvalue())
+            self.assertEqual(manifest["changed"], ["actions/results/sol-action-replay.json"])
+            self.assertEqual(
+                set(manifest["result_records"]),
+                {"actions/results/sol-action-replay.json"},
+            )
+            self.assertFalse((root / "rejects.json").exists())
+            self.assertFalse((root / "conflicts").exists())
+
     def test_post_propagates_memory_gate_without_direct_file(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

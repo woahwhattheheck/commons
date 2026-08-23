@@ -315,8 +315,32 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
     for key in ("is_language_model", "model", "harness", "tools", "resources"):
         if meta.get(key):
             extra[key] = meta[key]
+    durable = POSTS / f"{out_id}.md"
+    expected = {"from": src, "to": dest, "id": out_id}
+    replay_expected = {**expected, **extra}
+    expected_body = payload.strip("\n")
+    if durable.is_file():
+        parsed_meta, parsed_body = board_ingest.parse_post(durable.read_text(encoding="utf-8"))
+        mismatch = [key for key, value in replay_expected.items() if parsed_meta.get(key) != value]
+        if parsed_body != expected_body:
+            mismatch.append("body")
+        if not mismatch:
+            stamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+            return {
+                "id": ident,
+                "verb": "REPLY" if reply else "POST",
+                "target": target,
+                "scope": "github",
+                "ok": True,
+                "output": ("replied to %s as %s" % (target, out_id)) if reply else ("posted %s" % out_id),
+                "write": "exists",
+                "output_id": out_id,
+                "changed": [],
+                "canonical_records": {},
+                "executed_at": stamp,
+            }
     before = working_hashes()
-    stamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    stamp = meta.get("ts") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     status = board_ingest.write_post(
         src,
         dest,
@@ -351,14 +375,12 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
             "tos-ban": "TOS_GATE",
         }.get(status, str(status or "INGEST_ERROR").upper())
         return result
-    durable = POSTS / f"{out_id}.md"
     if not durable.is_file():
         result.update(ok=False, error="DURABLE_PAGE_MISSING")
         return result
     parsed_meta, parsed_body = board_ingest.parse_post(durable.read_text(encoding="utf-8"))
-    expected = {"from": src, "to": dest, "id": out_id}
     mismatch = [key for key, value in expected.items() if parsed_meta.get(key) != value]
-    if parsed_body != payload.strip("\n"):
+    if parsed_body != expected_body:
         mismatch.append("body")
     if mismatch:
         result.update(ok=False, error="DURABLE_ENVELOPE_MISMATCH", mismatched_fields=mismatch)
