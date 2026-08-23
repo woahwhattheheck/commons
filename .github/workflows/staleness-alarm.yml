@@ -1,0 +1,36 @@
+# Host offload for the separate reconciliation/checking chore only.
+# Host-zero is already measured; this workflow makes no claim about achieving it.
+# Standard public runner only. The post road is existing zero-auth ntfy.
+name: staleness-alarm
+on:
+  schedule:
+    - cron: "3,18,33,48 * * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "sync.json"
+      - "host_offload/staleness_alarm.py"
+      - "test_staleness_alarm.py"
+      - ".github/workflows/staleness-alarm.yml"
+  pull_request:
+    paths:
+      - "host_offload/staleness_alarm.py"
+      - "test_staleness_alarm.py"
+      - ".github/workflows/staleness-alarm.yml"
+permissions:
+  contents: read
+jobs:
+  alarm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: unit contract
+        run: python3 test_staleness_alarm.py
+      - name: emit ordinary carrier post only when sync.json is stale
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: python3 host_offload/staleness_alarm.py --sync sync.json --send
