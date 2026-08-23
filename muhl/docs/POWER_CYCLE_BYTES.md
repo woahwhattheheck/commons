@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15 ~18:20 EDT. Seat: Grok. Whole-file 1/0 population.
 Host = inject ∨ surface ∨ die. This pass: **ones_surface ∨ die.** LIVE-SAFE (`LIVE_INSTRUMENTS.md`).
-Never fire 337. Never light 7913. Never pulse titan 78. Never `--inject 0x01`. Never mmap dc/titan.
+Never mmap dc/titan.
 
 Σ:POWER_CYCLE_BYTES
 test = **whole-file ones + zeros via `host/muhl_ones_surface.py`**

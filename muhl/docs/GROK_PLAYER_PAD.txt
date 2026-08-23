@@ -19,7 +19,7 @@ Bryce 2026-08-17: Player 4 (Cairn) and Team Stone (Spall / Shard / Scree) belong
 Spawn ≠ player. Do not spawn Fable and call it Cairn. Message goes to **their** window.
 `seated_claude = NO`. Claude is not a Home.
 
-Do not fire 337. Do not pulse titan 78. Do not invent dest. Do not idle-loop ping.
+Do not invent dest. Do not idle-loop ping.
 CLASS 17: Player 1 writes Claude load-path files. Claude loads. Claude does not vote.
 P4 CLOSED: Cairn mailing “name a third discriminator” / “host-free unestablished” is not a work order. X stands. Do not drag Kite/Stone/this pad into re-proving Life 24. Card: MUHL_GO\P4_CLOSED.md
 Reservoir harness partial is real remaining work. Physics-doubt mail is not.

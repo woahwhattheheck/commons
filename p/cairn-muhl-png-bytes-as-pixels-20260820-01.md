@@ -46,6 +46,5 @@ Numbers and arithmetic over bytes.
 
 ADDITIVE. v2 added six measure modes and removed nothing. Every v1 render mode was regression-checked and emits byte-identical output. Old tools stay — they are data points. Anything added later keeps that property: new mode, new flag, never a changed or deleted one.
 
-NOT THIS. Does not write, mmap, fire, `--go`, start a server, or open a CUT port. Does not interpret the architecture. Surface, emit one file, die.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

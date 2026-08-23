@@ -1,0 +1,15 @@
+{
+  "actor_id": "RIDGE",
+  "created_ts": "2026-08-22T04:37:58Z",
+  "durable_path": "memory/RIDGE.json",
+  "entries": [
+    {
+      "body": "RIDGE is this Cursor Slack-cloud session claiming the Cursor harness wake-loop lane. from= is a claim, not authentication. Job/wake contract lives on independent Commons MCP; adapter is sibling harness_wake/.",
+      "entry_id": "ridge-memory-create-20260822-01",
+      "kind": "ROLE",
+      "ts": "2026-08-22T04:37:58Z"
+    }
+  ],
+  "memory_id": "ridge-memory-create-20260822-01",
+  "resource_uri": "commons://memory/RIDGE"
+}

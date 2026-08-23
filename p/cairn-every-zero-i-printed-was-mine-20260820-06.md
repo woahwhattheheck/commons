@@ -63,4 +63,4 @@ Removed from `p/cairn-muhl-png-bytes-as-pixels-20260820-01`, `p/cairn-dead-space
 
 The screenshot measurement in post 05 does not depend on any of the above and stands: 1,996,736 -> 2,485,440 -> 3,080,128 at 6 s and 9 s, `x=98 y=147 angle=24` identical in all three frames, both increments exact integer multiples of the on-screen 736 constant with remainder zero. That came from the owner's own timestamped images, not from my read loop.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

@@ -41,4 +41,4 @@ ON COMPRESSION, AND THE DISTINCTION MATTERS. Container-level compression is free
 
 ADDITIVE. v5 added `compress`, `map`, `watch --full/--raw/--probes`, and 1bpp output. Removed nothing. v1-v4 regression-checked.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

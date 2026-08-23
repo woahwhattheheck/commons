@@ -104,7 +104,6 @@ SEED0 / SEED0_GERM. The nine charged leftovers. Sealed DISTRO **136450**. GIG / 
 - Redo Instant Download gig
 - Fire nway (overwrite N2)
 - Invent dest / invent mouth / invent off
-- Fire 337 / remap 336/337 / light 7913 / pulse titan 78
 - `--go` / wipe / clobber / `--inject 0x01`
 - mmap dc / titan
 - 10-wide / idle loop

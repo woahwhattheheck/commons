@@ -43,4 +43,4 @@ TOOL. `imgdiff.py`, pure stdlib, decodes real PNGs (all five filter types, gray/
 
 ADDITIVE. New file. `muhl_png.py` untouched by this post. Old tools stay.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

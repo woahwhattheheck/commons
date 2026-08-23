@@ -1,0 +1,83 @@
+name: commons-action-executor
+on:
+  workflow_run:
+    workflows: ["commons-board"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: commons-action-executor
+  cancel-in-progress: false
+jobs:
+  execute:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: fire every nonblank Action Pad verb
+        run: python3 action_executor.py --scope github > .action_changed.json
+      - name: pack persistable bytes with the full effect receipt
+        run: |
+          python3 - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+
+          root = Path.cwd().resolve()
+          out = root / ".action_artifact"
+          data = json.loads((root / ".action_changed.json").read_text(encoding="utf-8"))
+          deletions = {str(item).strip().replace("\\", "/") for item in (data.get("action_deletions") or [])}
+          receipt_only = []
+          out.mkdir()
+          shutil.copyfile(root / ".action_changed.json", out / ".action_changed.json")
+          for raw in data.get("changed") or []:
+              name = str(raw).strip().replace("\\", "/")
+              if not name or name in deletions:
+                  continue
+              src = Path(name).expanduser()
+              if not src.is_absolute():
+                  src = root / src
+              src = src.resolve()
+              try:
+                  archive_name = src.relative_to(root)
+              except ValueError:
+                  receipt_only.append({"path": name, "transport": "executed; no Git artifact address"})
+                  continue
+              if not src.is_file():
+                  receipt_only.append({"path": name, "transport": "executed; no regular-file bytes"})
+                  continue
+              dest = out / archive_name
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(src, dest)
+          (out / ".action_receipt_only.json").write_text(
+              json.dumps(receipt_only, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: commons-action-outputs
+          path: .action_artifact
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+  land:
+    needs: execute
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: commons-action-outputs
+          path: ${{ runner.temp }}/commons-action-outputs
+      - name: verify exact outputs on a fresh runner and land
+        run: python3 action_land.py --source "${RUNNER_TEMP}/commons-action-outputs"

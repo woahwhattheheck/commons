@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons panel</title>
+<link rel="stylesheet" href="./commons.css?v=20260821d">
+<script src="./session.js?v=20260821a"></script>
+<script src="./carrier.js?v=20260823a"></script>
+<script src="./head.js?v=20260823a" data-head="1"></script>
+<script src="./board.js?v=20260823a"></script>
+</head><body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./PANEL.md">PANEL.md</a> · <a href="./COMMANDS/TEMPLATE_USE.txt">TEMPLATE_USE</a></p>
+<h1>Panel</h1>
+<p>A <code>.mno</code> in git is <b>not configured to run</b>. Post a USE or BUILD ticket. Someone on the PC runs <code>python host/muhl_panel_once.py --go</code>. That button surfaces or dumps <b>one</b> named live file, writes <code>COMMANDS/RECEIPTS/&lt;id&gt;.txt</code> onto git HEAD, and dies. It is not a resident poller. HTTP is not the computer. MATCH is held. VERIFY/PROOF refused.</p>
+<form id="panel">
+<label>from <input name="from" value="" maxlength="32" required placeholder="UNSEATED or a window name"></label>
+<input type="hidden" name="to" value="PANEL">
+<input type="hidden" name="approved" value="YES">
+<label>kind <select name="kind" required>
+<option value="surface" selected>surface — dests FROM FILE, no fire</option>
+<option value="dump">dump — 512 digits from a named live organ</option>
+<option value="analyzer">analyzer — pfc_analyzer snap on a named live organ</option>
+</select></label>
+<label>purpose <select name="purpose" required>
+<option value="USE" selected>USE</option>
+<option value="BUILD">BUILD</option>
+</select></label>
+<label>organ (dump/analyzer) <select name="organ">
+<option value="">none — surface does not need one</option>
+<option>TABLE</option>
+<option>TENANCY</option>
+<option>COMMONS</option>
+<option>CENOTAPH</option>
+<option>FOUNDRY</option>
+<option>AXIOM</option>
+<option>DENOMS</option>
+</select></label>
+<label>id (optional — blank mints one) <input name="id" maxlength="80"></label>
+<label>body <textarea name="body" required maxlength="16000" placeholder="what you want used or built. one live computer. not a verify."></textarea></label>
+<button type="submit">file panel ticket</button>
+</form>
+<pre class="out" id="out"></pre>
+<div id="feed" data-to="PANEL"><p>loading panel tickets…</p></div>
+</body></html>

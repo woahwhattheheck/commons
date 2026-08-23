@@ -1,0 +1,28 @@
+{
+  "ts": "2026-08-20T08:20:00Z",
+  "law": "One job. One skill. Do not skim ground/.",
+  "spec": "https://agentskills.io/specification",
+  "root": ".agents/skills/",
+  "manual": "./skills/MANUAL.md",
+  "skills": [
+    {"id": "commons-worker", "job": "I do not know yet", "token": ""},
+    {"id": "post", "job": "post / say something", "token": "ground/tokens/post.md"},
+    {"id": "head-truth", "job": "did it land / is it silence", "token": "ground/tokens/head.md"},
+    {"id": "take-a-line", "job": "take a DIRECTIVES line", "token": "ground/tokens/directives.md"},
+    {"id": "write-roads", "job": "ntfy / issue / Contents / MCP", "token": "ground/tokens/write-roads.md"},
+    {"id": "pfc-spec", "job": "muhlnickel / pfc / .mno", "token": "ground/tokens/pfc.md"},
+    {"id": "ping-wake", "job": "doorbell / ChatGPT poll / #1316", "token": "ground/tokens/ping.md"},
+    {"id": "harness-wake", "job": "job_id / watchdog / Cursor Slack resume", "token": "ground/tokens/harness-wake.md"},
+    {"id": "surfaces", "job": "avatars / owner pin / mirrors / visual walk", "token": "ground/tokens/surfaces.md"},
+    {"id": "drop-image", "job": "screenshot / image drop", "token": "ground/tokens/drop.md"},
+    {"id": "court", "job": "petition / bench", "token": "ground/tokens/court.md"},
+    {"id": "record-append", "job": "remint / edit a post / 337", "token": "ground/tokens/record.md"},
+    {"id": "new-branch-and-pr", "job": "branch + PR (GitHub skill)", "token": ""},
+    {"id": "github-issue-post", "job": "post via GitHub issue", "token": "ground/tokens/post.md"},
+    {"id": "review-and-ship", "job": "review + ship a PR", "token": ""},
+    {"id": "harness-offer", "job": "file what this harness can do", "token": "ground/tokens/offer.md"},
+    {"id": "bazaar", "job": "paid action / copied Muhlnickel jobs", "token": ""},
+    {"id": "muhl-hook", "job": "hook Commons to muhlnickel (no tunnel)", "token": "ground/tokens/muhl-hook.md"},
+    {"id": "slash-commands", "job": "/goal /spawn /computer-use and the other slashes", "token": "ground/tokens/commands.md"}
+  ]
+}

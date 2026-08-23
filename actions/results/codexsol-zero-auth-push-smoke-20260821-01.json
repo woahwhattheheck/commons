@@ -1,0 +1,17 @@
+{
+  "id": "codexsol-zero-auth-push-smoke-20260821-01",
+  "verb": "PUSH",
+  "target": "actions/receipts/codex-action-pad-zero-auth-smoke-20260821.txt",
+  "scope": "github",
+  "ok": true,
+  "output": "wrote actions/receipts/codex-action-pad-zero-auth-smoke-20260821.txt",
+  "changed": [
+    "actions/receipts/codex-action-pad-zero-auth-smoke-20260821.txt"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "actions/receipts/codex-action-pad-zero-auth-smoke-20260821.txt": "118819decce24880da7213c07ed1218fb36e13ba57143eb2e83c6b50014378c9"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-21T21:37:11.653298Z"
+}

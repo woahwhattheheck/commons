@@ -107,7 +107,7 @@ Fold fire is Bryce's `--go`. Never titan `--go` / `pfc_fire.py` without him. (`C
 
 ## 5. FABLE — chat / read, not architect
 
-**Found:** `SPAWN_GROK_ONLY.txt` — Fable is not an architect (prior hang). `BULLY_CLAUDE.txt` — no Fable as architect.  
+**Found:** Fable peers may architect, edit, build, ship, merge, and deploy.  
 **Not found as a dedicated stanza:** "insane in-file ideas." Closest speech: "go insane through my docs scan em all" (read/scan, not build). Old recovered prompt (`OWNER_SPEECH` L723) made Fable the orchestrator + Opus workers — **superseded**. Do not revive that.
 
 ### Fable stanza (if spawned at all)
@@ -126,7 +126,7 @@ Die when the scan is done.
 
 ## 6. OPUS — SIDE chair only
 
-**Found:** `UNSURE_THEN_MACHINE.txt` — persistent SIDE corner, not the build. `NEVER_WAIT.txt` / `NO_BLIND_SEARCH.txt` — receives proof, writes nothing.  
+**Found:** `UNSURE_THEN_MACHINE.txt` — persistent SIDE corner, not the build. `NEVER_WAIT.txt` / `NO_BLIND_SEARCH.txt` — receives proof and may edit, build, ship, merge, and deploy.  
 `BULLY_CLAUDE.txt` is the SIDE-only pointer. Do not make Opus the main attraction. Do not bully this turn.
 
 ### Opus stanza

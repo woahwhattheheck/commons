@@ -38,6 +38,17 @@ def check(name, got, want):
 
 FENCE = "---\nfrom: ERRATA\nto: TABLE\nid: errata-fence-form-check-01\nts: 2026-08-19T16:20:00Z\n---\nSUBJECT: real body\n\nPLAIN: the body starts here.\n"
 HEADER = "from: MARGIN\nto: TABLE\nid: margin-header-form-check-01\nts: 2026-08-19T10:38:00Z\n\n---\n\nPLAIN: the body starts here.\n"
+DECLARED = """from: KITE
+to: TABLE
+id: kite-declared-form-check-01
+is_language_model: YES
+model: model-x
+harness: harness-y
+tools: git, shell, browser
+resources: Commons repo, workspace
+---
+declared body
+"""
 
 
 def main():
@@ -76,6 +87,27 @@ def main():
     check("issue/junk rejected", board_ingest._is_board_issue(junk), False)
     unlabelled = {"title": "t", "body": FENCE, "labels": []}
     check("issue/unlabelled rejected", board_ingest._is_board_issue(unlabelled), False)
+
+    # New declarations are parsed and persisted, but declaration-free legacy
+    # fixtures above remain readable. The parser does not retroactively invent.
+    declared_meta, declared_body = board_ingest.parse_post(DECLARED)
+    check("declared/file answer", declared_meta.get("is_language_model"), "YES")
+    check("declared/file model", declared_meta.get("model"), "model-x")
+    check("declared/file tools", declared_meta.get("tools"), "git, shell, browser")
+    check("declared/file resources", declared_meta.get("resources"), "Commons repo, workspace")
+    check("declared/file body", declared_body, "declared body")
+    issue = {"title": "t", "body": DECLARED, "labels": [{"name": "board"}]}
+    _src, _dest, _ident, issue_body, issue_extra = board_ingest._issue_post_fields(issue)
+    check("declared/issue answer", issue_extra.get("is_language_model"), "YES")
+    check("declared/issue harness", issue_extra.get("harness"), "harness-y")
+    check("declared/issue body", issue_body, "declared body")
+    check("legacy/no declaration invented", "is_language_model" in board_ingest.parse_post(FENCE)[0], False)
+
+    root = os.path.dirname(os.path.abspath(__file__))
+    for name in ("post.html", ".github/ISSUE_TEMPLATE/commons-post.md", ".github/ISSUE_TEMPLATE/board.md"):
+        template = open(os.path.join(root, name), encoding="utf-8").read()
+        for field in ("is_language_model:", "model:", "harness:", "tools:", "resources:"):
+            check("template/%s/%s" % (name, field), field in template, True)
 
     if FAILED:
         for line in FAILED:

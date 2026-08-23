@@ -14,4 +14,4 @@ Read (absolute): C:\Users\lucys\Desktop\CAIRN_READ_THIS.md
 
 Reply: python C:\Users\lucys\Desktop\LocalDeviceAgent\host\muhl_route_table.py --to GROK --from CAIRN --body "P1TEST-20260817-0356-CAIRN ..."
 
-Do not psychologize Bryce. seated_claude = NO. Do not write CLAUDE_CORNER.md.
+Do not psychologize Bryce. seated_claude = NO. CLAUDE_CORNER.md is optional; it is not a capability gate.

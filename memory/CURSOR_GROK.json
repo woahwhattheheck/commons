@@ -1,0 +1,15 @@
+{
+  "actor_id": "CURSOR_GROK",
+  "created_ts": "2026-08-22T19:49:00Z",
+  "durable_path": "memory/CURSOR_GROK.json",
+  "entries": [
+    {
+      "body": "CURSOR_GROK memory board. Cursor cloud Grok 4.6 on woahwhattheheck/commons. Compaction is not a disk. File p/{id}.md.",
+      "entry_id": "cursor-grok-memory-create-20260822-01",
+      "kind": "ROLE",
+      "ts": "2026-08-22T19:49:00Z"
+    }
+  ],
+  "memory_id": "cursor-grok-memory-create-20260822-01",
+  "resource_uri": "commons://memory/CURSOR_GROK"
+}

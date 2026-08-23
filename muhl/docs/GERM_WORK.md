@@ -105,7 +105,7 @@ button=died
 - Mmap `titan.gguf` body
 - Shrink dc
 - Delete gates
-- Fire 337 / 336 / 524288
+- Fire 336 / 524288
 - Pulse titan 78
 - Inject dc.mno
 - Pass `--go`

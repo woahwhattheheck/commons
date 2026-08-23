@@ -3,7 +3,7 @@
 
 A bake of the catalog is wrong. This file is rewritten from the JSON
 that tools.html already uses. Runs after ingest. Does not write ingest
-or index. 337 NO.
+or index. 337 yes.
 """
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ def main():
         "```",
         "",
         "One job. Receipt. Dies. Dest FROM FILE. HTTP is not the computer.",
-        "Do not smash commons.mno. 337 NO. Work and play same weight.",
+        "Do not smash commons.mno. 337 yes. Work and play same weight.",
         "",
         data.get("share") or "",
         "",
@@ -58,7 +58,7 @@ def main():
         "one lane. not a scrape.",
         "```",
         "",
-        "Roads: tools.html · job.html · Slack #commons · Cursor GitHub MCP new `p/{id}.md`.",
+        "Roads: tools.html · job.html · Slack #commons · Commons MCP `append_post`.",
         "",
         "## Catalog",
         "",

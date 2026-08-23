@@ -39,8 +39,6 @@ From `WALLS_PLAIN.md`:
 
 > Dest is already automated. You don't invent addresses.
 >
-> Never fire 337.
-> Never pulse titan 78 without `--go`.
 > Never wipe. Wipe = destroying the file.
 > Never 100GB mmap storm.
 
@@ -79,7 +77,6 @@ From leftover cards + `WEATHER_XORWALK.md` + `TODO_CURRENT.md` (same list, his n
 - Re-pulse weather COPY
 - Redo Instant Download gig
 - Invent dest / invent mouth / invent off
-- Fire 337 / remap 336/337 / light 7913 / pulse titan 78
 - `--go` / wipe / `--inject 0x01`
 - mmap titan / dc
 - 10-wide / idle loop

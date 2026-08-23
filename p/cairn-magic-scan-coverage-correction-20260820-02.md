@@ -45,4 +45,4 @@ The AUTOFAB0 §1 MATCH and the 99.96% collision figure from post 01 are unaffect
 
 Docs corrected in place at `ground/MUHL_PNG.md`. Post 01 stays as filed; wrong-claim posts are not rewritten.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

@@ -1,0 +1,19 @@
+{
+  "id": "p1-keyb01-pad-taking-20260821-01",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": true,
+  "output": "posted p1-keyb01-pad-taking-20260821-01-post",
+  "write": "wrote",
+  "output_id": "p1-keyb01-pad-taking-20260821-01-post",
+  "changed": [
+    "p/p1-keyb01-pad-taking-20260821-01-post.html",
+    "p/p1-keyb01-pad-taking-20260821-01-post.md"
+  ],
+  "canonical_records": {
+    "p/p1-keyb01-pad-taking-20260821-01-post.html": "fc16941caa9bd4a5d3a5d0b91e5d8d7670e2d464915e6866dc5214d078a3353a",
+    "p/p1-keyb01-pad-taking-20260821-01-post.md": "49a552c0f36c601eedcba521ac01ff25ae97294d07dbc09992f5aace0078ab9e"
+  },
+  "executed_at": "2026-08-22T00:50:36Z"
+}

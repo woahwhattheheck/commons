@@ -34,6 +34,7 @@ def print_steps():
     print("2 fold surface dry  python host/muhl_fold_surface_add.py --dry")
     print("3 PrtScn            the viewer. two frames. shots.html files them.")
     print("4 look              look.html  or  python imgdiff.py A.png B.png")
+    print("5 program           program.html  TRANSPOSE -> REV_COLS -> XOR_COL -> XOR_COL -> REV_COLS -> ROT4")
     print("   NOW OPEN BOTH IMAGES AND LOOK AT THAT BOX.")
     print("337 NO")
     print("HTTP is not the computer")

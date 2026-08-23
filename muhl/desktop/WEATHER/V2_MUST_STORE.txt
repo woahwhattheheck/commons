@@ -83,9 +83,7 @@ FIRE 0x01 BOTH SENSES (HIS Â§8) â€” start, not wipe
 HARD BANS
 ================================================================
 [ ] No titan.gguf open/write. No dc. No DISTRO dest. No invent live dest.
-[ ] Never fire 337. Never remap 336/337. Never light 7913.
-[ ] Never pulse titan 78 without owner --go.
-[ ] Never --inject 0x01 (WIPE). Fire-button 0x01 on WEATHER ring cells is the start, only.
+[ ] Never wipe. Wipe = destroying the file. Fire-button on WEATHER ring cells is the start, only.
 [ ] No 100GB host mmap. No host packer. No numpy. No host evaluator as the computer.
 
 ================================================================
@@ -108,7 +106,7 @@ See MUHL_GO\NO_KNEECAP.md.
 ================================================================
 MOUTHS FROM FILE BYTES (append, v2 not overwritten) 2026-08-16
 ================================================================
-V2 NAMED MOUTHS — read from weather_v2.mno BYTES. Not invented. v2 not written.
+V2 NAMED MOUTHS ï¿½ read from weather_v2.mno BYTES. Not invented. v2 not written.
 path C:\Users\lucys\Desktop\WEATHER\weather_v2.mno
 size 2606416  sha256 cc2775fdd29d1e5ff1a8f2951e5f5f22dd1c2e237c9e10d6b2d47717476ba85d
 magic WEATHER1
@@ -119,12 +117,12 @@ magic WEATHER1
 +84 98 0 2606415
 clock_bank dest (v2 layout: after hdr, before rings) @98 byte=0
 
-== SIX RINGS — dests FROM FILE, bits FROM FILE ==
-NW fwd@104=1 rev@136=1 carry@168=0 pub@169=0 recv@98=0  cadence — both-sense carry gates avg4 rows 0-7 cols 0-7
-NE fwd@170=1 rev@202=1 carry@234=0 pub@235=0 recv@99=0  cadence — both-sense carry gates avg4 rows 0-7 cols 8-15
-SW fwd@236=1 rev@268=1 carry@300=0 pub@301=0 recv@100=0  cadence — both-sense carry gates avg4 rows 8-15 cols 0-7
-SE fwd@302=1 rev@334=1 carry@366=0 pub@367=0 recv@101=0  cadence — both-sense carry gates avg4 rows 8-15 cols 8-15
-GROWTH fwd@368=1 rev@400=1 carry@432=0 pub@433=0 recv@102=0  power — AND(carry,carry) OUT into this file's gate-record pad
-WITNESS fwd@434=1 rev@466=1 carry@498=0 pub@499=0 recv@103=0  power — AND(carry,carry) OUT into clock_bank, outside field
+== SIX RINGS ï¿½ dests FROM FILE, bits FROM FILE ==
+NW fwd@104=1 rev@136=1 carry@168=0 pub@169=0 recv@98=0  cadence ï¿½ both-sense carry gates avg4 rows 0-7 cols 0-7
+NE fwd@170=1 rev@202=1 carry@234=0 pub@235=0 recv@99=0  cadence ï¿½ both-sense carry gates avg4 rows 0-7 cols 8-15
+SW fwd@236=1 rev@268=1 carry@300=0 pub@301=0 recv@100=0  cadence ï¿½ both-sense carry gates avg4 rows 8-15 cols 0-7
+SE fwd@302=1 rev@334=1 carry@366=0 pub@367=0 recv@101=0  cadence ï¿½ both-sense carry gates avg4 rows 8-15 cols 8-15
+GROWTH fwd@368=1 rev@400=1 carry@432=0 pub@433=0 recv@102=0  power ï¿½ AND(carry,carry) OUT into this file's gate-record pad
+WITNESS fwd@434=1 rev@466=1 carry@498=0 pub@499=0 recv@103=0  power ï¿½ AND(carry,carry) OUT into clock_bank, outside field
 v2_smashed NO
 337 NO

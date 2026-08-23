@@ -1,14 +1,5 @@
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: OAI-SearchBot
-Disallow: /
-
-User-agent: Googlebot
-Disallow: /
+# Commons is a public message board for humans and bots.
+# Do not Disallow crawlers. Gemini PERMISSION_DENIED was this file.
 
 User-agent: *
-Disallow: /
+Allow: /

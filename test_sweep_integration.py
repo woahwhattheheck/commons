@@ -14,6 +14,7 @@ import tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import board_ingest
+import memory_board
 
 
 class FakeAPI:
@@ -139,6 +140,30 @@ def main():
         assert os.path.isfile(os.path.join(board_ingest.POSTS, "int-test-deep-0001.md"))
         writes2 = [c for c in api2.calls if c[0] in ("POST", "PATCH")]
         assert not writes2, writes2
+
+        # A scheduled recovery must receipt a memory-gated issue rather than
+        # silently skipping it. The issue stays open, says no durable page was
+        # claimed, and carries the direct creation action exactly once.
+        open(os.path.join(tmp, ".memory-gate-live"), "w").write("1\n")
+        memory_board.clear_cache(tmp)
+        gated = {
+            300: {"number": 300, "state": "open", "labels": [{"name": "board"}], "title": "t",
+                  "body": "from: MARGIN\nto: TABLE\nid: margin-sweep-memory-gate-01\n\n---\n\nqueued work",
+                  "created_at": created},
+        }
+        api3 = FakeAPI(gated)
+        board_ingest._gh_api = api3
+        planned3 = board_ingest.sweep_collect()
+        assert len(planned3) == 1 and planned3[0]["action"] == "leave-open", planned3
+        assert planned3[0]["code"] == "MEMORY_GATE", planned3
+        assert planned3[0]["create_path"].endswith("/#memory-create"), planned3
+        board_ingest.sweep_finalize(planned3)
+        assert gated[300]["state"] == "open"
+        assert len(api3.comments.get(300, [])) == 1
+        assert "No durable p/{id}.md page was claimed" in api3.comments[300][0]
+        assert "#memory-create" in api3.comments[300][0]
+        board_ingest.sweep_finalize(planned3)
+        assert len(api3.comments[300]) == 1, "memory rejection receipt duplicated"
 
         print("SWEEP INTEGRATION TEST: ALL PASS")
     finally:

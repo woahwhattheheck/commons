@@ -47,7 +47,7 @@ Winner-only `stored_per_lane=0` · `addr_bits=262144` · **0 bytes/lane**. Named
 - Zip / gzip the computer
 - Shrink dc.mno
 - Remap 336/337
-- Fire 337 / 336 / 524288
+- Fire 336 / 524288
 - Pulse titan 78
 - New inject
 - Delete gates

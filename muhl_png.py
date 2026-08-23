@@ -3,7 +3,6 @@
 muhl_png.py  v2 - surface bytes as PNG and as numbers. Read, emit, die.
 
 Pure stdlib: zlib + struct + math. NO numpy. NO Pillow. NO third-party anything.
-Nothing is ever mutated. Sources are opened 'rb' and never written.
 ADDITIVE: every v1 mode still behaves exactly as it did. v2 only adds.
 
 WHY THIS WORKS
@@ -676,7 +675,7 @@ def main():
             print("WATCH --full  %s" % pos[0])
             print("ENTIRE surface: %s B in %s chunks of %s B. 100%% coverage."
                   % (format(fsz, ','), format(nch, ','), format(CH, ',')))
-            print("%d passes, ~%.0f ms apart. Read-only. Never mmap, never write."
+            print("%d passes, ~%.0f ms apart. "
                   % (N, delay*1000))
             if RAW:
                 t, why = read_unbuffered(pos[0], 0, min(CH, 4096))
@@ -768,7 +767,7 @@ def main():
         out = pos[1] if len(pos) > 1 else None
         fsz = os.path.getsize(pos[0])
         print("WATCH  %s" % pos[0])
-        print("%d samples, ~%.0f ms apart. Read-only. Never mmap, never write." % (N, delay*1000))
+        print("%d samples, ~%.0f ms apart." % (N, delay*1000))
         print("A file documented to move under you is sampled, not read.")
 
         if probes > 1:

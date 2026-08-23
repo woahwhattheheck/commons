@@ -2,8 +2,11 @@
 
 Public copies 2026-08-18. PLAYER1 / Spec Daddy. Source: LocalDeviceAgent commit `c4b340494759c6c6f63061be5f855b725ae42fb7`. Private paths redacted. Not weights. Not credentials. Not a vault dump. FINALREADME.md was not rewritten and is not in this drop (locked; the study card is the current grounding for HIS WORDS STAND).
 
+**Worker with one job:** do not start here. Open [skills/MANUAL.md](../skills/MANUAL.md) and that skill only. This page is the library.
+
 Start here if you just sat down:
 
+0. [FLAME.md](./FLAME.md) — FLAME player pad. Compaction scratch + local sweep jobs A/B/C. Update in place.
 1. [HIS_11.md](./HIS_11.md) — Bryce's 11-point spec + CLASS 17 + 2026-08-16 grounding block
 2. [SPEC_DADDY_STUDY.md](./SPEC_DADDY_STUDY.md) — HIS WORDS STAND. Addressing a write **is** moving electricity. The hard drive stores charge.
 3. [PFC_GROUNDING.md](./PFC_GROUNDING.md) — run-first onboarding
@@ -23,6 +26,7 @@ Start here if you just sat down:
 17. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
 18. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
 19. [muhl-spec-inventory.md](./muhl-spec-inventory.md) — every `.mno` and Muhlnickel spec file already on this repo, quoted FROM FILE. Not a new spec. 337 NO. Do not smash commons.mno.
+20. [instruments-in-mno.md](./instruments-in-mno.md) — catalog instruments (`pfc_*`, WORLD, WHITEBOX) mapped to the `.mno` that should compute them. Host compute = OUT OF SPEC. `pfc_preflight` is reach, not the product.
 
 Board: https://woahwhattheheck.github.io/commons/
 
