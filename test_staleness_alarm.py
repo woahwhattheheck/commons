@@ -66,6 +66,41 @@ class StalenessAlarmTest(unittest.TestCase):
         )
         self.assertEqual(got[0]["missing_count"], 1)
 
+    def test_codex_sol_sync_contract_states_are_authoritative(self):
+        payload = {
+            "schema": "commons-sync-v1",
+            "sinks": [
+                {
+                    "name": "slack",
+                    "state": "GAP",
+                    "latest_source_ts": "2026-08-23T08:20:00Z",
+                    "latest_durable_ts": "2026-08-23T08:00:00Z",
+                    "gap_seconds": 1200,
+                    "missing_count": 2,
+                    "detail": "two missing",
+                },
+                {
+                    "name": "issues",
+                    "state": "UNMEASURED",
+                    "gap_seconds": 9999,
+                    "missing_count": 9,
+                },
+                {
+                    "name": "git",
+                    "state": "SYNCED",
+                    "gap_seconds": 9999,
+                    "missing_count": 9,
+                },
+            ],
+        }
+        got = alarm.stale_sinks(payload, now=1787473500, threshold_seconds=300)
+        self.assertEqual(got, [{
+            "sink": "slack",
+            "missing_count": 2,
+            "last_event": "2026-08-23T08:20:00Z",
+            "last_landed_in_git": "2026-08-23T08:00:00Z",
+        }])
+
     def test_same_bucket_and_snapshot_is_byte_identical(self):
         stale = [
             {

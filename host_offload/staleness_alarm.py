@@ -121,7 +121,14 @@ def stale_sinks(
         missing = _count(_first(row, ("missing_count", "count_missing", "missing")))
         event_raw = _first(
             row,
-            ("last_event", "last_event_ts", "latest_event_ts", "event_ts", "source_ts"),
+            (
+                "last_event",
+                "last_event_ts",
+                "latest_event_ts",
+                "latest_source_ts",
+                "event_ts",
+                "source_ts",
+            ),
         )
         landed_raw = _first(
             row,
@@ -132,6 +139,7 @@ def stale_sinks(
                 "last_git_ts",
                 "landed_ts",
                 "durable_ts",
+                "latest_durable_ts",
             ),
         )
         event_epoch = _epoch(event_raw)
@@ -147,9 +155,15 @@ def stale_sinks(
             [value for value in (reported_gap, missing_age if missing else None) if value is not None]
             or [0.0]
         )
-        explicit = row.get("stale") is True or str(row.get("status") or "").upper() == "STALE"
+        state = str(row.get("state") or row.get("status") or "").upper()
+        explicit = row.get("stale") is True or state in ("STALE", "GAP")
         timing_absent = reported_gap is None and event_epoch is None
-        is_stale = explicit or (missing > 0 and (timing_absent or effective_gap >= threshold_seconds))
+        # CODEX_SOL's owning sync contract makes state authoritative when it is
+        # present: STALE/GAP alert; SYNCED/UNMEASURED stay quiet. Older or
+        # hand-authored projections without state fall back to the row fields.
+        is_stale = explicit if state else (
+            missing > 0 and (timing_absent or effective_gap >= threshold_seconds)
+        )
         if not is_stale:
             continue
         stale.append(
