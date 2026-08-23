@@ -83,6 +83,26 @@
     return { state: "NOT_LANDED", note: "lookup failed HTTP " + httpStatus };
   };
 
+  api.completionStateFromText = function (text) {
+    var t = String(text || "");
+    if (/INTEGRATED — VERIFIED ON CURRENT MAIN/.test(t) || /\bDURABLE_ON_MAIN\b/.test(t)) {
+      return { state: "INTEGRATED", note: "text claims current-main completion. Still measure the path." };
+    }
+    if (/NOT YET LANDED|\bNOT_LANDED\b/.test(t)) {
+      return { state: "NOT_LANDED", note: "text says the bytes are not on current main" };
+    }
+    if (/\bPR_OPEN\b/.test(t)) {
+      return { state: "PR_OPEN", note: "unfinished ship. A PR is not INTEGRATED." };
+    }
+    if (/\bCANDIDATE\b/.test(t) || /\bPUSHED_BRANCH\b/.test(t)) {
+      return { state: "CANDIDATE", note: "candidate is not main" };
+    }
+    if (/\bCARRIER_ONLY\b/.test(t) || /\bntfy 200\b/.test(t)) {
+      return { state: "CARRIER_ONLY", note: "mail is not a land" };
+    }
+    return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
+  };
+
   api.toneFor = function (state) {
     if (state === "INTEGRATED" || state === "DURABLE_ON_MAIN") return "ok";
     if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE") return "wait";
@@ -98,6 +118,7 @@
   var plaque = document.getElementById("challenge-plaque");
   var prHost = document.getElementById("pr-list");
   var pathOut = document.getElementById("path-result");
+  var talkOut = document.getElementById("talk-result");
 
   function setNote(text) {
     if (measureNote) measureNote.textContent = text;
@@ -234,6 +255,12 @@
     });
   }
 
+  function paintTalk(result) {
+    if (!talkOut) return;
+    talkOut.setAttribute("data-tone", api.toneFor(result.state));
+    talkOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function verifyPath(path) {
     path = String(path || "").replace(/^\/+/, "").trim();
     if (!path || !mainSha) {
@@ -309,6 +336,14 @@
       ev.preventDefault();
       var input = pathForm.querySelector('[name="path"]');
       verifyPath(input && input.value);
+    });
+  }
+  var talkForm = document.getElementById("talk-form");
+  if (talkForm) {
+    talkForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var input = talkForm.querySelector('[name="body"]');
+      paintTalk(api.completionStateFromText(input && input.value));
     });
   }
 

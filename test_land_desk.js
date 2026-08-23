@@ -95,10 +95,23 @@ assert.ok(/token/i.test(blocked.note), "PR 1555 must keep the do-not-merge note"
 assert.strictEqual(api.pathState(200).state, "INTEGRATED");
 assert.strictEqual(api.pathState(404).state, "NOT_LANDED");
 
+assert.ok(api.completionStateFromText, "land.js must classify talk vs land");
+var doneText = api.completionStateFromText("INTEGRATED — VERIFIED ON CURRENT MAIN\nDURABLE_ON_MAIN — p/x.md VERIFIED");
+assert.strictEqual(doneText.state, "INTEGRATED");
+var sitting = api.completionStateFromText("READY / NOT YET LANDED — organ 13");
+assert.strictEqual(sitting.state, "NOT_LANDED");
+var prTalk = api.completionStateFromText("status PR_OPEN ahead 3");
+assert.strictEqual(prTalk.state, "PR_OPEN");
+var praise = api.completionStateFromText("remarkable blueprint, thought-provoking, I'll keep studying");
+assert.strictEqual(praise.state, "CLAIMED");
+assert.ok(/not a land/i.test(praise.note), "talk without completion words is not a land");
+
 var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
 assert.ok(html.indexOf("kind: CHALLENGE_CLOSE") >= 0, "close recipe must be visible without JS");
 assert.ok(html.indexOf("Finish the merge") >= 0, "desk must tell a window not to stop at PR_OPEN");
+assert.ok(html.indexOf("Talk is not a land") >= 0, "desk must classify talk without a main SHA");
+assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classifier");
 
 console.log("ok   test_land_desk.js");
