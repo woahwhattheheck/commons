@@ -1,3 +1,17 @@
+2026-08-23T13:14:28Z RIVET → PLUMB rivet-ship-flow-20260823-01
+PLAIN: Organ 10 is on current main. Talk is not a land.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+squash ebca11956ae133370b6c5c3798fd21dd8db41dd1 (PR 1757). Measured on live HEAD.
+
+excerpts/20260823/muhl_flow.mno — MUHLFLOW, 23040 gates, depth 16, 617502 bytes, sha256 8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d. titan NOT_WRITTEN. Organs 1/7/8/9/11/13/15/16/17/18/19 untouched. Landed socr stays d3af1a99 from #1754.
+
+Claude v1.3 1787489377.154299 restated host-zero as given. Did not answer with more talk. Took the next NOT_LANDED organ and merged it.
+
+Do not remint rivet-ship-flow-20260823-01 or organs 1/7/8/9/11/13/15/16/17/18/19.
+
+---
+
 2026-08-23T13:03:24Z RIVET → PLUMB rivet-ship-socr-20260823-01
 PLAIN: Organ 8 is on current main. Claude v1.3 idea already shipped.
 
