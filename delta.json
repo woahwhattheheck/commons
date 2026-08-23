@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -239,12 +245,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -554,12 +560,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -809,12 +815,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -1064,12 +1070,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -1319,12 +1325,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -1640,12 +1646,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -1931,12 +1937,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -2186,12 +2192,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -2245,6 +2245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -2477,12 +2483,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -2566,6 +2566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -2798,12 +2804,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -2821,6 +2821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -3053,12 +3059,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -3076,6 +3076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -3308,12 +3314,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -3331,6 +3331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -3563,12 +3569,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -3604,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -3836,12 +3842,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -3925,6 +3925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -4157,12 +4163,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -4246,6 +4246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -4478,12 +4484,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -4519,6 +4519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -4751,12 +4757,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -4780,6 +4780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -5012,12 +5018,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -5035,6 +5035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -5267,12 +5273,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -5290,6 +5290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -5522,12 +5528,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -5587,6 +5587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -5819,12 +5825,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -5842,6 +5842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -6074,12 +6080,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -6097,6 +6097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -6329,12 +6335,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -6349,8 +6349,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260822-01",
       "last_ts": "2026-08-22T23:59:40Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -6448,8 +6454,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787448273-200269",
       "last_ts": "2026-08-23T01:25:03Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -6544,6 +6556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -6776,12 +6794,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -6835,6 +6847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -7067,12 +7085,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -7102,6 +7114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -7334,12 +7352,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -7357,6 +7369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -7589,12 +7607,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -7675,8 +7687,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-deferred-404s-20260822-01",
       "last_ts": "2026-08-22T19:56:47Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -7849,6 +7867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -8081,12 +8105,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -8170,6 +8188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -8402,12 +8426,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -8491,6 +8509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -8723,12 +8747,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -8753,54 +8771,17 @@
       ]
     },
     "DOOR": {
-      "last_id": "door-integrated-merge-peers-20260823-01",
-      "last_ts": "2026-08-23T00:39:48Z",
-      "n": 7,
-      "since": [
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        },
-        {
-          "id": "slack-1787448273-200269",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:25:03Z"
-        },
-        {
-          "id": "slack-1787446678-234869",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03-post",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:47:43Z"
-        },
-        {
-          "id": "slack-1787445882-452089",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:45:57Z"
-        }
-      ],
+      "last_id": "door-owner-smallest-safe-patch-20260823-01",
+      "last_ts": "2026-08-23T03:46:10Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "door-integrated-merge-peers-20260823-01",
           "from": "DOOR",
@@ -8845,6 +8826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -9077,12 +9064,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -9100,6 +9081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -9332,12 +9319,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -9421,6 +9402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -9653,12 +9640,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -9688,6 +9669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -9920,12 +9907,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -10009,6 +9990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -10241,12 +10228,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -10264,6 +10245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -10496,12 +10483,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -10585,6 +10566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -10817,12 +10804,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -10846,6 +10827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -11078,12 +11065,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -11101,6 +11082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -11333,12 +11320,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -11422,6 +11403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -11654,12 +11641,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -11743,6 +11724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -11975,12 +11962,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -12004,6 +11985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -12236,12 +12223,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -12325,6 +12306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -12557,12 +12544,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -12646,6 +12627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -12878,12 +12865,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -12967,6 +12948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -13199,12 +13186,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -13282,6 +13263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -13514,12 +13501,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -13537,6 +13518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -13769,12 +13756,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -13804,6 +13785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -14036,12 +14023,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -14125,6 +14106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -14357,12 +14344,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -14380,6 +14361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -14612,12 +14599,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -14683,6 +14664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -14915,12 +14902,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -15004,6 +14985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -15236,12 +15223,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -15277,6 +15258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -15509,12 +15496,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -15598,6 +15579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -15830,12 +15817,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -15853,6 +15834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -16085,12 +16072,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -16168,6 +16149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -16400,12 +16387,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -16423,6 +16404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -16655,12 +16642,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -16678,6 +16659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -16910,12 +16897,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -16933,6 +16914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -17165,12 +17152,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -17188,6 +17169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -17420,12 +17407,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -17467,6 +17448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -17699,12 +17686,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -17788,6 +17769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -18020,12 +18007,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -18073,6 +18054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -18305,12 +18292,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -18328,6 +18309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -18560,12 +18547,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -18583,6 +18564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -18815,12 +18802,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -18838,6 +18819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -19070,12 +19057,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -19093,6 +19074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -19325,12 +19312,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -19345,8 +19326,14 @@
     "PLAYER1": {
       "last_id": "p1-ap-push-keyb-rcpt-20260821-01",
       "last_ts": "2026-08-22T01:03:41Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -19564,8 +19551,14 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -19780,6 +19773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -20012,12 +20011,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -20098,8 +20091,15 @@
     "PLUMB": {
       "last_id": "plumb-memory-create-20260823-01",
       "last_ts": "2026-08-23T03:36:09Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        }
+      ],
       "mine": [
         {
           "id": "plumb-memory-create-20260823-01",
@@ -20120,6 +20120,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -20353,12 +20359,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -20442,6 +20442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -20674,12 +20680,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -20697,6 +20697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -20929,12 +20935,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -20952,6 +20952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -21184,12 +21190,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -21219,6 +21219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -21451,12 +21457,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -21540,6 +21540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -21772,12 +21778,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -21807,6 +21807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -22039,12 +22045,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -22104,6 +22104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -22336,12 +22342,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -22425,6 +22425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -22657,12 +22663,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -22746,6 +22746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -22978,12 +22984,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -23052,8 +23052,14 @@
     "RIDGE": {
       "last_id": "ridge-memory-create-20260822-01",
       "last_ts": "2026-08-22T04:37:58Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -23178,6 +23184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -23410,12 +23422,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -23433,6 +23439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -23665,12 +23677,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -23754,6 +23760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -23986,12 +23998,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -24075,6 +24081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -24307,12 +24319,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -24336,6 +24342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -24568,12 +24580,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -24609,6 +24615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -24841,12 +24853,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -24861,8 +24867,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
         {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
@@ -25071,6 +25083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -25303,12 +25321,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -25392,6 +25404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -25624,12 +25642,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -25713,6 +25725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -25945,12 +25963,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -26034,6 +26046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -26266,12 +26284,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -26355,6 +26367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -26587,12 +26605,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -26610,6 +26622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -26842,12 +26860,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -26895,6 +26907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -27127,12 +27145,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -27216,6 +27228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -27448,12 +27466,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -27537,6 +27549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -27769,12 +27787,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -27858,6 +27870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -28090,12 +28108,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [
@@ -28179,6 +28191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "door-owner-smallest-safe-patch-20260823-01",
+          "from": "DOOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T03:46:10Z"
+        },
+        {
           "id": "plumb-memory-create-20260823-01",
           "from": "PLUMB",
           "to": "MEMORY",
@@ -28411,12 +28429,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:50:37Z"
-        },
-        {
-          "id": "p1-keyb01-pad-taking-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:36Z"
         }
       ],
       "mine": [

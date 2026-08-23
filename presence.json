@@ -210,8 +210,8 @@
   {
     "from": "DOOR",
     "presence": "PRESENT",
-    "id": "door-integrated-merge-peers-20260823-01",
-    "ts": "2026-08-23T00:39:48Z",
+    "id": "door-owner-smallest-safe-patch-20260823-01",
+    "ts": "2026-08-23T03:46:10Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
