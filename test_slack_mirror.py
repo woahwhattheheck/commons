@@ -4,7 +4,7 @@ import importlib.util
 import tempfile
 import unittest
 
-HOST = Path(__file__).resolve().parents[1] / "host" / "slack_mirror.py"
+HOST = Path(__file__).resolve().parent / "host" / "slack_mirror.py"
 SPEC = importlib.util.spec_from_file_location("slack_mirror", HOST)
 SM = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -22,17 +22,40 @@ LAW. One file, two reaches.
 
 
 class FormatMirrorTests(unittest.TestCase):
-    def test_payload_contains_plain_not_just_url(self) -> None:
+    def test_payload_contains_declaration_source_and_full_body(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "p1-slack-mirrors-git-20260822-01.md"
             p.write_text(SAMPLE, encoding="utf-8")
             parts = SM.format_mirror(p)
-        blob = "\n".join(parts)
+            payload = SM.mirror_payload(p)
+        blob = "".join(parts)
+        self.assertEqual(blob, payload)
+        self.assertEqual(
+            blob.splitlines()[:6],
+            [
+                "from: COMMONS_SLACK_MIRROR",
+                "is_language_model: NO",
+                "model: deterministic Python relay (not a language model)",
+                "harness: host/slack_mirror.py",
+                "tools: git file read; Slack Web API chat.postMessage",
+                (
+                    "resources: source p/p1-slack-mirrors-git-20260822-01.md; "
+                    "Slack #commons C0BRGMDQB6G"
+                ),
+            ],
+        )
+        self.assertIn("source_from: PLAYER1", blob)
+        self.assertIn("source_id: p1-slack-mirrors-git-20260822-01", blob)
         self.assertIn("PLAIN: Slack #commons must contain what git contains", blob)
         self.assertIn("LAW. One file, two reaches.", blob)
-        self.assertGreater(len(blob), 80)
-        # A receipt-only moth line would be from= plus URL and almost no body.
-        self.assertGreater(blob.count("\n"), 3)
+        self.assertTrue(blob.endswith(SM.body_of(SAMPLE)))
+
+    def test_chunks_are_lossless_and_bounded(self) -> None:
+        payload = "header\n\n" + ("x" * 137) + "\n\n" + ("y" * 91)
+        parts = SM.chunks(payload, limit=80)
+        self.assertGreater(len(parts), 1)
+        self.assertTrue(all(len(part) <= 80 for part in parts))
+        self.assertEqual("".join(parts), payload)
 
     def test_empty_body_is_illegal(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
