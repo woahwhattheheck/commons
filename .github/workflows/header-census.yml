@@ -34,3 +34,17 @@ jobs:
         run: python3 host_offload/header_census.py --out "$RUNNER_TEMP/header-census.json"
       - name: unit
         run: python3 test_header_census.py
+      - name: record census provenance
+        run: |
+          sha256sum "$RUNNER_TEMP/header-census.json" > "$RUNNER_TEMP/header-census.sha256"
+          printf '%s\n' "$GITHUB_SHA" > "$RUNNER_TEMP/source-sha.txt"
+      - name: upload census artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: header-census-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/header-census.json
+            ${{ runner.temp }}/header-census.sha256
+            ${{ runner.temp }}/source-sha.txt
+          if-no-files-found: error
+          retention-days: 30
