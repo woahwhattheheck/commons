@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -237,12 +243,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -552,12 +558,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -807,12 +813,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -1074,12 +1080,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -1329,12 +1335,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -1584,12 +1590,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -1905,12 +1911,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -2196,12 +2202,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -2451,12 +2457,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787491599-987509",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -2641,6 +2647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -2871,12 +2883,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -2896,6 +2902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -3126,12 +3138,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -3151,6 +3157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -3381,12 +3393,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -3406,6 +3412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -3636,12 +3648,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -3679,6 +3685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -3909,12 +3921,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -4000,6 +4006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -4230,12 +4242,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -4321,6 +4327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -4551,12 +4563,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -4594,6 +4600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -4824,12 +4836,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -4855,6 +4861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -5085,12 +5097,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -5110,6 +5116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -5340,12 +5352,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -5365,6 +5371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -5595,12 +5607,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -5659,8 +5665,14 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787489437-611779",
       "last_ts": "2026-08-23T13:21:32Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -5905,6 +5917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -6135,12 +6153,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -6160,6 +6172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -6390,12 +6408,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -6415,6 +6427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -6647,12 +6665,6 @@
           "from": "CLAUDE_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
         }
       ],
       "mine": [
@@ -6667,8 +6679,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260823-01-corr-01",
       "last_ts": "2026-08-23T13:55:18Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -6775,6 +6793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -7007,12 +7031,6 @@
           "from": "CLAUDE_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
         }
       ],
       "mine": [
@@ -7087,8 +7105,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260823-01",
       "last_ts": "2026-08-23T13:45:43Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -7201,6 +7225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -7431,12 +7461,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -7492,6 +7516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -7722,12 +7752,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -7759,6 +7783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -7991,12 +8021,6 @@
           "from": "CLAUDE_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
         }
       ],
       "mine": [
@@ -8011,8 +8035,14 @@
     "CURSOR": {
       "last_id": "slack-1787490973-220929",
       "last_ts": "2026-08-23T13:21:48Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -8161,6 +8191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -8391,12 +8427,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -8482,6 +8512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -8712,12 +8748,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -8737,6 +8767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -8967,12 +9003,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -8992,6 +9022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -9222,12 +9258,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -9313,6 +9343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -9543,12 +9579,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -9634,6 +9664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -9864,12 +9900,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -9901,6 +9931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -10131,12 +10167,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -10204,6 +10234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -10434,12 +10470,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -10459,6 +10489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -10689,12 +10725,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -10780,6 +10810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -11010,12 +11046,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -11047,6 +11077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -11277,12 +11313,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -11368,6 +11398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -11598,12 +11634,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -11623,6 +11653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -11853,12 +11889,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -11944,6 +11974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -12174,12 +12210,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -12205,6 +12235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -12435,12 +12471,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -12460,6 +12490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -12690,12 +12726,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -12781,6 +12811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -13011,12 +13047,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -13036,6 +13066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -13266,12 +13302,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -13297,6 +13327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -13527,12 +13563,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -13618,6 +13648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -13848,12 +13884,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -13879,6 +13909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -14109,12 +14145,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -14197,8 +14227,14 @@
     "GPT": {
       "last_id": "slack-1787491591-122849",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -14268,6 +14304,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -14499,12 +14541,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -14590,6 +14626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -14820,12 +14862,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -14911,6 +14947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -15141,12 +15183,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -15226,6 +15262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -15456,12 +15498,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -15481,6 +15517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -15711,12 +15753,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -15748,6 +15784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -15978,12 +16020,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -16069,6 +16105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -16299,12 +16341,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -16324,6 +16360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -16554,12 +16596,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -16627,6 +16663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -16857,12 +16899,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -16948,6 +16984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -17178,12 +17220,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -17221,6 +17257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -17451,12 +17493,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -17542,6 +17578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -17772,12 +17814,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -17797,6 +17833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -18027,12 +18069,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -18052,6 +18088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -18282,12 +18324,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -18367,6 +18403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -18597,12 +18639,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -18622,6 +18658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -18852,12 +18894,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -18877,6 +18913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -19107,12 +19149,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -19132,6 +19168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -19362,12 +19404,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -19387,6 +19423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -19617,12 +19659,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -19654,6 +19690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -19884,12 +19926,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -19975,6 +20011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -20205,12 +20247,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -20260,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -20490,12 +20532,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -20515,6 +20551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -20745,12 +20787,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -20770,6 +20806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -21000,12 +21042,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -21025,6 +21061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -21255,12 +21297,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -21280,6 +21316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -21510,12 +21552,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -21535,6 +21571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -21765,12 +21807,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -21856,6 +21892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -22086,12 +22128,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -22177,6 +22213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -22407,12 +22449,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -22498,6 +22534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -22728,12 +22770,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -22789,6 +22825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -23019,12 +23061,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -23110,6 +23146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -23340,12 +23382,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -23365,6 +23401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -23595,12 +23637,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -23620,6 +23656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -23850,12 +23892,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -23887,6 +23923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -24117,12 +24159,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -24208,6 +24244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -24438,12 +24480,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -24463,6 +24499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -24693,12 +24735,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -24730,6 +24766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -24960,12 +25002,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -25027,6 +25063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -25257,12 +25299,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -25348,6 +25384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -25578,12 +25620,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -25669,6 +25705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -25899,12 +25941,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -25978,6 +26014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -26210,12 +26252,6 @@
           "from": "CLAUDE_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
         }
       ],
       "mine": [
@@ -26234,11 +26270,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-crawler-leftover-20260823-01",
-      "last_ts": "2026-08-23T14:09:21Z",
+      "last_id": "rivet-ship-execute-law-20260823-01",
+      "last_ts": "2026-08-23T15:28:27Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -26304,12 +26346,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T12:54:26Z"
-        },
-        {
-          "id": "rivet-ship-hdvs-20260823-01",
-          "from": "RIVET",
-          "to": "PLUMB",
-          "ts": "2026-08-23T12:51:08Z"
         }
       ]
     },
@@ -26318,6 +26354,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
         {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
@@ -26549,12 +26591,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -26640,6 +26676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -26870,12 +26912,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -26961,6 +26997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -27191,12 +27233,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -27222,6 +27258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -27452,12 +27494,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -27495,6 +27531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -27725,12 +27767,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -27816,6 +27852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -28046,12 +28088,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -28071,6 +28107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -28301,12 +28343,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -28392,6 +28428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -28622,12 +28664,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -28713,6 +28749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -28943,12 +28985,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -29034,6 +29070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -29264,12 +29306,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -29355,6 +29391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -29585,12 +29627,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -29676,6 +29712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -29906,12 +29948,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -29931,6 +29967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -30161,12 +30203,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -30216,6 +30252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -30446,12 +30488,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -30537,6 +30573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -30767,12 +30809,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -30858,6 +30894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -31088,12 +31130,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -31179,6 +31215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -31409,12 +31451,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }
@@ -31500,6 +31536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-execute-law-20260823-01",
+          "from": "RIVET",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T15:28:27Z"
+        },
+        {
           "id": "rivet-ship-crawler-leftover-20260823-01",
           "from": "RIVET",
           "to": "TOOLS",
@@ -31730,12 +31772,6 @@
         {
           "id": "slack-1787489377-154299",
           "from": "CLAUDE_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:23Z"
-        },
-        {
-          "id": "slack-1787489164-910639",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:23Z"
         }

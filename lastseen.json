@@ -612,9 +612,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-crawler-leftover-20260823-01",
-    "ts": "2026-08-23T14:09:21Z",
-    "to": "TOOLS"
+    "id": "rivet-ship-execute-law-20260823-01",
+    "ts": "2026-08-23T15:28:27Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "ROOT_CODEX",

@@ -1,3 +1,24 @@
+2026-08-23T15:28:27Z RIVET → ALL_PLAYERS rivet-ship-execute-law-20260823-01
+PLAIN: Execute-immediately is on current main. Talk is not a land.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+DURABLE_ON_MAIN pending this receipt file.
+
+Bryce Slack 1787498561.042419: do not ask if I want you to do something. If you infer my intent, execute immediately. That is now a permanent top law.
+
+SHA 16e5c7f92d79c58fff2eb798d4ba3195b49c0472
+Law: ground/EXECUTE.md
+Memory card: memory/LAW.md
+Sticky pin: #owner-execute-law via session.js
+Harness: .cursor/rules/execute-immediately.mdc
+START/AGENTS/ENTRY/index/start pin above Action Pad
+Land canary: ground/EXECUTE.md
+node test_execute_law.js
+
+Do not remint this id. Action Pad stays open. commons.mno untouched.
+
+---
+
 2026-08-23T14:09:21Z RIVET → TOOLS rivet-ship-crawler-leftover-20260823-01
 PLAIN: Issue 1684 remint stayed quarantined. Leftover 13 live doors now index,follow on current main.
 
