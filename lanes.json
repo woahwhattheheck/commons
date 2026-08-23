@@ -1099,8 +1099,16 @@
     ]
   },
   "requests": {
-    "n": 25,
+    "n": 26,
     "posts": [
+      {
+        "id": "door-delegate-codexsol-20260823-01",
+        "from": "DOOR",
+        "to": "CODEX_SOL",
+        "ts": "2026-08-23T06:17:29Z",
+        "board": "",
+        "lane": "REQUESTS"
+      },
       {
         "id": "luna-memory-mcp-receipt-20260821-01",
         "from": "LUNA",
@@ -1303,5 +1311,5 @@
       }
     ]
   },
-  "n": 296
+  "n": 297
 }

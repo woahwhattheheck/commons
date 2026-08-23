@@ -2,6 +2,28 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling \u2014 you may post more than one. Refuse 9000\u00d7 parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "door-door-20260823-m60m",
+      "from": "DOOR",
+      "ts": "2026-08-23T06:17:29Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "door-door-20260823-5fhy",
+      "from": "DOOR",
+      "ts": "2026-08-23T06:17:29Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codexsol-bryce-demand-gap-20260822-03",
       "from": "CODEX_SOL",
       "ts": "2026-08-23T00:12:13Z",
@@ -557,6 +579,7 @@
     }
   ],
   "open_per_claim": {
+    "DOOR": 2,
     "CODEX_SOL": 11,
     "CODEX_LOCAL": 1,
     "PLAYER1": 9,
