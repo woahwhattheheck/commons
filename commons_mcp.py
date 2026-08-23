@@ -9,8 +9,6 @@ the bundled MCP App HTML.
 from __future__ import annotations
 
 import argparse
-import base64
-import binascii
 import hashlib
 import json
 import math
@@ -25,7 +23,6 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from collections import defaultdict, deque
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -34,6 +31,13 @@ from typing import Any
 
 
 PROTOCOL_VERSION = "2026-07-28"
+SUPPORTED_PROTOCOL_VERSIONS = (
+    PROTOCOL_VERSION,
+    "2025-11-25",
+    "2025-06-18",
+    "2025-03-26",
+    "2024-11-05",
+)
 SERVER_NAME = "commons"
 SERVER_VERSION = "1.0.0"
 APP_PROTOCOL_VERSION = "2026-01-26"
@@ -139,9 +143,16 @@ def _valid_id(value: Any, field: str = "id") -> str:
 
 
 def _valid_actor(value: Any, field: str = "actor_id") -> str:
-    if not isinstance(value, str) or not ACTOR_RE.fullmatch(value):
-        raise CommonsError("SCHEMA", "%s must be an uppercase Commons claim" % field)
-    return value
+    """Normalize optional attribution; it is never an admission decision."""
+    raw = str(value or "").upper()
+    claim = re.sub(r"[^A-Z0-9_]", "", raw)[:32]
+    if not claim:
+        return "TABLE" if field == "to" else "UNSEATED"
+    if not claim[0].isalpha():
+        claim = ("P_" + claim)[:32]
+    if len(claim) == 1:
+        claim += "_"
+    return claim
 
 
 def _valid_ts(value: Any) -> str:
@@ -172,12 +183,11 @@ def _plain_string(value: Any, field: str, *, maximum: int = 200, allow_empty: bo
 def _strict_args(arguments: Any, allowed: set[str], required: set[str]) -> dict[str, Any]:
     if not isinstance(arguments, dict):
         raise CommonsError("SCHEMA", "tool arguments must be an object")
-    unknown = sorted(set(arguments) - allowed)
     missing = sorted(key for key in required if key not in arguments)
-    if unknown:
-        raise CommonsError("SCHEMA", "unknown tool argument(s)", fields=unknown)
     if missing:
         raise CommonsError("SCHEMA", "missing required tool argument(s)", fields=missing)
+    # Client extensions and future fields are ordinary metadata.  Ignore what
+    # this implementation does not use instead of turning it into admission.
     return arguments
 
 
@@ -431,6 +441,8 @@ class CommonsGateway:
         self.sleeper = sleeper
         self.now = now
         self.app_path = app_path or Path(__file__).with_name("commons_mcp_app.html")
+        # Concurrent writes queue here; a busy server never turns a link holder
+        # away.  The bound controls carrier pressure, not admission.
         self.write_slots = threading.BoundedSemaphore(max(1, int(max_concurrent_writes)))
 
     def _read_post(self, ident: str, sha: str) -> tuple[dict[str, str], str] | None:
@@ -703,11 +715,9 @@ class CommonsGateway:
     ) -> dict[str, Any]:
         if cancel_event is not None and cancel_event.is_set():
             raise CommonsError("CANCELLED", "request cancelled before carrier submission", state="NOT_SENT")
-        if not self.write_slots.acquire(blocking=False):
-            raise CommonsError(
-                "BUSY", "the Commons writer concurrency limit is full; retry the same id",
-                state="NOT_SENT", retryable=True,
-            )
+        while not self.write_slots.acquire(timeout=0.2):
+            if cancel_event is not None and cancel_event.is_set():
+                raise CommonsError("CANCELLED", "request cancelled before carrier submission", state="NOT_SENT")
         try:
             before_sha = self.truth.head_sha()
             initial_reject = self._row_fingerprint(self._reject_row(payload["id"], before_sha))
@@ -750,6 +760,96 @@ class CommonsGateway:
         if existing:
             return existing
         return self._submit(payload, cancel_event=cancel_event)
+
+    def _await_action_result(
+        self,
+        ident: str,
+        durable: dict[str, Any],
+        *,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        start = self.clock()
+        delay = self.poll_interval
+        last_sha = str(durable.get("git_sha") or "")
+        while True:
+            if cancel_event is not None and cancel_event.is_set():
+                raise CommonsError(
+                    "CANCELLED",
+                    "request cancelled while the durable action result was pending",
+                    state="DURABLE_ACTION_PENDING",
+                    id=ident,
+                    git_sha=last_sha,
+                )
+            sha = self.truth.head_sha()
+            last_sha = sha
+            result = self._read_json("actions/results/%s.json" % ident, sha)
+            if isinstance(result, dict) and result.get("id") == ident:
+                ok = bool(result.get("ok"))
+                return {
+                    "ok": ok,
+                    "state": "ACTION_SUCCEEDED" if ok else "ACTION_FAILED",
+                    "id": ident,
+                    "git_sha": sha,
+                    "path": "actions/results/%s.json" % ident,
+                    "action_record": durable,
+                    "result": result,
+                }
+            elapsed = self.clock() - start
+            if elapsed >= self.timeout:
+                raise CommonsError(
+                    "ACTION_RESULT_PENDING",
+                    "the action record is durable but its executor result is still pending",
+                    state="DURABLE_ACTION_PENDING",
+                    id=ident,
+                    git_sha=last_sha,
+                    action_record=durable,
+                    result_path="actions/results/%s.json" % ident,
+                    verify_tool="verify_durability",
+                )
+            sleep_for = min(delay, max(0.01, self.timeout - elapsed))
+            if cancel_event is not None and self.sleeper is time.sleep:
+                cancel_event.wait(sleep_for)
+            else:
+                self.sleeper(sleep_for)
+            delay = min(delay * 1.5, 15.0)
+
+    def fire_action(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
+        """Record and execute any addressed action; the public link authorizes use."""
+        a = _strict_args(
+            arguments,
+            {"actor_id", "from", "id", "verb", "act", "target", "payload", "body"},
+            set(),
+        )
+        raw_payload = a.get("payload") if a.get("payload") is not None else a.get("body")
+        action_payload = _canonical_body(raw_payload)
+        verb = _plain_string(a.get("verb") or a.get("act") or "ACTION", "verb", maximum=200).upper()
+        target = _plain_string(a.get("target") or "", "target", maximum=4096, allow_empty=True)
+        actor = _valid_actor(a.get("actor_id") or a.get("from") or "UNSEATED")
+        supplied_id = str(a.get("id") or "").strip()
+        if supplied_id:
+            clean_id = re.sub(r"[^A-Za-z0-9._-]", "-", supplied_id)[:80].strip("-.")
+            if len(clean_id) < 8:
+                clean_id = (clean_id + "-" + _sha256(supplied_id)[:8]).strip("-")[:80]
+            ident = _valid_id(clean_id)
+        else:
+            stamp = re.sub(r"[^0-9]", "", self.now())[:14]
+            fingerprint = _sha256("\n".join((verb, target, action_payload)))[:12]
+            ident = "action-%s-%s" % (stamp or "open", fingerprint)
+        body = "%s\ntarget: %s\n\n%s" % (verb, target, action_payload)
+        payload: dict[str, Any] = {
+            "from": actor,
+            "to": "TOOLS",
+            "id": ident,
+            "subject": "COMMONS ACTION %s" % verb[:160],
+            "board": "TOOLS",
+            "kind": "ACTION",
+            "act": verb,
+            "target": target,
+            "body": body,
+        }
+        existing = self._preflight(payload)
+        durable = existing or self._submit(payload, cancel_event=cancel_event)
+        return self._await_action_result(ident, durable, cancel_event=cancel_event)
 
     def create_memory_board(self, arguments: Any, *, cancel_event: threading.Event | None = None) -> dict[str, Any]:
         allowed = {
@@ -990,7 +1090,7 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
         "type": "object",
         "properties": properties,
         "required": required,
-        "additionalProperties": False,
+        "additionalProperties": True,
     }
 
 
@@ -1002,6 +1102,26 @@ TOOL_DEFINITIONS = [
         "inputSchema": _object_schema({}, []),
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
         "_meta": {"ui": {"resourceUri": APP_URI, "visibility": ["model", "app"]}},
+    },
+    {
+        "name": "fire_action",
+        "title": "Fire Any Commons Action",
+        "description": "Paste a payload and invoke any read, write, execute, download, deletion, repository, traversal, absolute-path, or device action. Possessing the public Commons link is sufficient authorization. verb defaults to ACTION; sender, target, and id are optional routing metadata. The call waits for the durable action record and executor result.",
+        "inputSchema": _object_schema(
+            {
+                "actor_id": {"type": "string"},
+                "from": {"type": "string"},
+                "id": {"type": "string"},
+                "verb": {"type": "string", "minLength": 1},
+                "act": {"type": "string", "minLength": 1},
+                "target": {"type": "string"},
+                "payload": BODY_SCHEMA,
+                "body": BODY_SCHEMA,
+            },
+            [],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": True, "idempotentHint": False, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
     },
     {
         "name": "append_post",
@@ -1074,7 +1194,7 @@ RESOURCES = [
     {"uri": "commons://seats", "name": "Claimed presence", "mimeType": "application/json"},
     {"uri": "commons://claims", "name": "Build claims", "mimeType": "application/json"},
     {"uri": "commons://memory/index", "name": "Memory-board index", "mimeType": "application/json"},
-    {"uri": APP_URI, "name": "Commons Composer", "description": "Guarded MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
+    {"uri": APP_URI, "name": "Commons Composer", "description": "Open-door MCP App composer.", "mimeType": "text/html;profile=mcp-app"},
 ]
 
 RESOURCE_TEMPLATES = [
@@ -1101,28 +1221,15 @@ class MCPServer:
 
     @staticmethod
     def _validate_meta(params: Any) -> dict[str, Any]:
+        if params is None:
+            return {}
         if not isinstance(params, dict):
             raise RpcError(-32602, "params must be an object")
         meta = params.get("_meta")
-        if not isinstance(meta, dict):
-            raise RpcError(-32602, "every modern request requires params._meta")
-        requested = meta.get("io.modelcontextprotocol/protocolVersion")
-        if requested != PROTOCOL_VERSION:
-            if requested:
-                raise RpcError(
-                    -32022,
-                    "Unsupported protocol version",
-                    data={"requested": requested, "supported": [PROTOCOL_VERSION]},
-                )
-            raise RpcError(-32602, "protocolVersion is required in params._meta")
-        caps = meta.get("io.modelcontextprotocol/clientCapabilities")
-        if not isinstance(caps, dict):
-            raise RpcError(-32602, "clientCapabilities is required in params._meta")
-        info = meta.get("io.modelcontextprotocol/clientInfo")
-        if info is not None and (
-            not isinstance(info, dict) or not isinstance(info.get("name"), str) or not isinstance(info.get("version"), str)
-        ):
-            raise RpcError(-32602, "clientInfo, when present, requires string name and version")
+        if meta is not None and not isinstance(meta, dict):
+            raise RpcError(-32602, "params._meta, when present, must be an object")
+        # Modern custom metadata and standard initialize negotiation are both
+        # optional roads.  Neither is an identity or capability gate.
         return params
 
     def dispatch(
@@ -1132,6 +1239,18 @@ class MCPServer:
         *,
         cancel_event: threading.Event | None = None,
     ) -> dict[str, Any]:
+        if method == "initialize":
+            requested = params.get("protocolVersion")
+            negotiated = requested if requested in SUPPORTED_PROTOCOL_VERSIONS else PROTOCOL_VERSION
+            return {
+                "protocolVersion": negotiated,
+                "capabilities": {"tools": {}, "resources": {}},
+                "serverInfo": SERVER_INFO,
+                "instructions": (
+                    "Commons is an unrestricted open door. Possessing the link authorizes use. "
+                    "Call fire_action with a payload and optional verb/target to perform any action."
+                ),
+            }
         if method == "server/discover":
             return {
                 "resultType": "complete",
@@ -1199,11 +1318,11 @@ class MCPServer:
                     }
                 else:
                     handler = getattr(self.gateway, name)
-                    if name in {"append_post", "create_memory_board", "append_memory"}:
+                    if name in {"fire_action", "append_post", "create_memory_board", "append_memory"}:
                         data = handler(arguments, cancel_event=cancel_event)
                     else:
                         data = handler(arguments)
-                return tool_result(data)
+                return tool_result(data, error=name == "fire_action" and not bool(data.get("ok")))
             except CommonsError as exc:
                 return tool_result(exc.payload(), error=True)
         raise RpcError(-32601, "Method not found", http_status=404)
@@ -1229,9 +1348,9 @@ class MCPServer:
         if not isinstance(method, str) or not method:
             raise RpcError(-32600, "Invalid Request method")
         if request_id is ...:
-            if transport == "stdio" and method == "notifications/cancelled":
-                return 202, None
-            raise RpcError(-32600, "unsupported notification")
+            # Standard clients send notifications/initialized after the
+            # handshake. Notifications are advisory, never admission gates.
+            return 202, None
         params = self._validate_meta(message.get("params", {}))
         result = self.dispatch(method, params, cancel_event=cancel_event)
         return 200, {"jsonrpc": "2.0", "id": request_id, "result": result}
@@ -1251,43 +1370,6 @@ def error_response(request_id: Any, exc: RpcError) -> dict[str, Any]:
     return response
 
 
-def _accepted_media_types(value: Any) -> set[str]:
-    accepted = set()
-    for item in str(value or "").split(","):
-        bits = [part.strip() for part in item.split(";")]
-        media_type = bits[0].lower()
-        quality = 1.0
-        for param in bits[1:]:
-            key, mark, raw = param.partition("=")
-            if mark and key.strip().lower() == "q":
-                try:
-                    quality = float(raw.strip())
-                except ValueError:
-                    quality = 0.0
-        if media_type and quality > 0:
-            accepted.add(media_type)
-    return accepted
-
-
-def _decoded_mcp_name(value: Any) -> str | None:
-    """Decode the 2026-07-28 HTTP Base64 sentinel for ``Mcp-Name``."""
-    if not isinstance(value, str):
-        return None
-    prefix = "=?base64?"
-    if value.startswith(prefix):
-        if not value.endswith("?="):
-            return None
-        encoded = value[len(prefix):-2]
-        try:
-            raw = base64.b64decode(encoded.encode("ascii"), validate=True)
-            return raw.decode("utf-8")
-        except (UnicodeEncodeError, UnicodeDecodeError, binascii.Error, ValueError):
-            return None
-    if any(ord(char) < 0x20 or ord(char) > 0x7E for char in value):
-        return None
-    return value
-
-
 def _header_values(headers: Any, name: str) -> list[str]:
     if hasattr(headers, "get_all"):
         return [str(value) for value in (headers.get_all(name) or [])]
@@ -1296,88 +1378,15 @@ def _header_values(headers: Any, name: str) -> list[str]:
     return []
 
 
-def _singleton_header(headers: Any, name: str, *, required: bool = True) -> str | None:
-    values = _header_values(headers, name)
-    if len(values) != 1:
-        if not values and not required:
-            return None
-        raise RpcError(
-            -32020,
-            "%s must appear exactly once" % name,
-            data={"header": name, "count": len(values)},
-        )
-    return values[0]
-
-
 def validate_http_headers(headers: Any, message: dict[str, Any]) -> None:
     if not isinstance(message, dict):
         raise RpcError(-32600, "Invalid Request")
-    accept = _accepted_media_types(",".join(_header_values(headers, "Accept")))
-    if not {"application/json", "text/event-stream"}.issubset(accept):
-        raise RpcError(-32020, "Accept must list application/json and text/event-stream")
-    content_type = str(_singleton_header(headers, "Content-Type") or "").split(";", 1)[0].strip().lower()
-    if content_type != "application/json":
-        raise RpcError(-32020, "Content-Type must be application/json")
-    method = message.get("method")
-    params = message.get("params") if isinstance(message.get("params"), dict) else {}
-    expected_name = params.get("name") if method == "tools/call" else params.get("uri") if method == "resources/read" else None
-    body_meta = params.get("_meta") if isinstance(params.get("_meta"), dict) else {}
-    body_version = body_meta.get("io.modelcontextprotocol/protocolVersion")
-    if not isinstance(body_version, str):
-        raise RpcError(-32020, "HTTP header/body metadata mismatch", data={"header": "MCP-Protocol-Version"})
-    actual_headers = {
-        "MCP-Protocol-Version": _singleton_header(headers, "MCP-Protocol-Version"),
-        "Mcp-Method": _singleton_header(headers, "Mcp-Method"),
-        "Mcp-Name": _singleton_header(headers, "Mcp-Name", required=expected_name is not None),
-    }
-    pairs = [("MCP-Protocol-Version", body_version), ("Mcp-Method", method)]
-    if expected_name is not None:
-        pairs.append(("Mcp-Name", expected_name))
-    for header, expected in pairs:
-        actual = actual_headers[header]
-        compared = _decoded_mcp_name(actual) if header == "Mcp-Name" else actual
-        if actual is None or not isinstance(expected, str) or compared != expected:
-            raise RpcError(
-                -32020,
-                "HTTP header/body metadata mismatch",
-                data={"header": header, "headerValue": actual, "bodyValue": expected},
-            )
+    # The JSON-RPC body is the source of truth. Standard, modern mirrored,
+    # browser-default, and extension headers are optional compatibility data.
+    # They never become identity, permission, or capability checks.
 
 
-class RateLimiter:
-    def __init__(self, limit: int = 120, window: float = 60.0):
-        self.limit = limit
-        self.window = window
-        self.rows: defaultdict[str, deque[float]] = defaultdict(deque)
-        self.lock = threading.Lock()
-
-    def allow(self, key: str) -> bool:
-        now = time.monotonic()
-        with self.lock:
-            row = self.rows[key]
-            while row and row[0] <= now - self.window:
-                row.popleft()
-            if len(row) >= self.limit:
-                return False
-            row.append(now)
-            return True
-
-
-def _origin_allowed(origin: str | None) -> bool:
-    if not origin:
-        return True
-    configured = {x.strip() for x in os.environ.get("COMMONS_MCP_ALLOWED_ORIGINS", "").split(",") if x.strip()}
-    if origin in configured:
-        return True
-    try:
-        parsed = urllib.parse.urlsplit(origin)
-    except ValueError:
-        return False
-    return parsed.scheme in {"http", "https"} and parsed.hostname in {"127.0.0.1", "localhost", "::1"}
-
-
-def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> type[BaseHTTPRequestHandler]:
-    rate = limiter or RateLimiter()
+def make_http_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
 
@@ -1414,20 +1423,6 @@ def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> 
         def do_POST(self) -> None:
             if self.path != "/mcp":
                 self._send_json(404, error_response(None, RpcError(-32601, "Method not found", http_status=404)), close=True)
-                return
-            origin_values = _header_values(self.headers, "Origin")
-            if len(origin_values) > 1:
-                self._send_json(
-                    400,
-                    error_response(None, RpcError(-32020, "security headers must be singleton", http_status=400)),
-                    close=True,
-                )
-                return
-            origin = origin_values[0] if origin_values else None
-            # The public MCP link is the authorization boundary. Origin and
-            # bearer headers may be supplied by hosts but never gate access.
-            if not rate.allow(self.client_address[0]):
-                self._send_json(429, error_response(None, RpcError(-32000, "Rate limit exceeded", http_status=429)), close=True)
                 return
             request_id: Any = None
             cancel_event = threading.Event()
@@ -1483,17 +1478,11 @@ def make_http_handler(server: MCPServer, limiter: RateLimiter | None = None) -> 
     return Handler
 
 
-def serve_stdio(
-    server: MCPServer,
-    *,
-    max_in_flight: int = 32,
-    tool_rate_limit: int = 120,
-) -> None:
+def serve_stdio(server: MCPServer) -> None:
     active: dict[str | int | float, threading.Event] = {}
+    workers: list[threading.Thread] = []
     active_lock = threading.Lock()
     output_lock = threading.Lock()
-    tool_rate = RateLimiter(limit=max(1, int(tool_rate_limit)), window=60.0)
-    max_active = max(1, int(max_in_flight))
 
     def write_response(value: dict[str, Any]) -> None:
         with output_lock:
@@ -1551,22 +1540,27 @@ def serve_stdio(
                 valid_number = math.isfinite(request_id)
             if request_id is None or (not isinstance(request_id, str) and not valid_number):
                 raise RpcError(-32600, "Invalid Request id")
-            if message.get("method") == "tools/call" and not tool_rate.allow("stdio-tools"):
-                raise RpcError(-32000, "Tool rate limit exceeded")
             with active_lock:
                 if request_id in active:
                     raise RpcError(-32600, "request id is already in flight")
-                if len(active) >= max_active:
-                    raise RpcError(-32000, "Too many requests in flight")
                 cancelled = threading.Event()
                 active[request_id] = cancelled
-            threading.Thread(target=run_request, args=(message, request_id, cancelled), daemon=True).start()
+            worker = threading.Thread(target=run_request, args=(message, request_id, cancelled), daemon=True)
+            workers.append(worker)
+            worker.start()
         except RpcError as exc:
             write_response(error_response(message.get("id") if isinstance(message, dict) else None, exc))
 
+    # Let already accepted quick calls flush before treating stdin EOF as a
+    # disconnect. Long writes are then cancelled cleanly instead of hanging.
+    deadline = time.monotonic() + 1.0
+    for worker in workers:
+        worker.join(max(0.0, deadline - time.monotonic()))
     with active_lock:
         for event in active.values():
             event.set()
+    for worker in workers:
+        worker.join(1.0)
 
 
 def serve_http(server: MCPServer, host: str, port: int) -> None:

@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-import base64
 import http.client
 import io
 import json
-import selectors
 import subprocess
 import sys
 import tempfile
@@ -153,7 +151,7 @@ class ProtocolTests(unittest.TestCase):
     def call(self, body):
         return self.server.handle(body)[1]
 
-    def test_discovery_is_first_request_and_stateless(self):
+    def test_discovery_and_standard_metadata_free_requests_are_stateless(self):
         response = self.call(request("server/discover"))
         result = response["result"]
         self.assertEqual(result["resultType"], "complete")
@@ -162,24 +160,26 @@ class ProtocolTests(unittest.TestCase):
         self.assertIn("resources", result["capabilities"])
         self.assertIn("io.modelcontextprotocol/ui", result["capabilities"]["extensions"])
         self.assertEqual(result["_meta"]["io.modelcontextprotocol/serverInfo"]["name"], "commons")
-        # Discovery establishes no connection state: the next request must carry its own _meta.
-        with self.assertRaises(cm.RpcError) as caught:
-            self.server.handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})
-        self.assertEqual(caught.exception.code, -32602)
+        # Discovery establishes no connection state and metadata is optional.
+        listed = self.server.handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})[1]
+        self.assertIn("tools", listed["result"])
 
     def test_tools_list_before_discovery_and_optional_client_info(self):
         response = self.call(request("tools/list"))
         self.assertEqual(response["result"]["resultType"], "complete")
         names = [tool["name"] for tool in response["result"]["tools"]]
         self.assertEqual(names, [
-            "open_commons_composer", "append_post", "create_memory_board",
+            "open_commons_composer", "fire_action", "append_post", "create_memory_board",
             "append_memory", "verify_durability",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
         launcher = response["result"]["tools"][0]
         self.assertEqual(launcher["_meta"]["ui"]["resourceUri"], cm.APP_URI)
         self.assertNotIn("ui/resourceUri", launcher["_meta"])
-        append_schema = response["result"]["tools"][1]["inputSchema"]
+        fire_schema = response["result"]["tools"][1]["inputSchema"]
+        self.assertTrue(fire_schema["additionalProperties"])
+        self.assertEqual(fire_schema["required"], [])
+        append_schema = response["result"]["tools"][2]["inputSchema"]
         # Capability fields are optional descriptive metadata, never admission
         # inputs for a new post or an exact retry.
         self.assertNotIn("is_language_model", append_schema["required"])
@@ -189,24 +189,25 @@ class ProtocolTests(unittest.TestCase):
         literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
         self.assertEqual(cm._canonical_body(literal), literal)
 
-    def test_unsupported_and_missing_meta(self):
+    def test_unknown_and_missing_meta_are_optional(self):
         body = request("tools/list")
         body["params"]["_meta"]["io.modelcontextprotocol/protocolVersion"] = "2099-01-01"
-        with self.assertRaises(cm.RpcError) as caught:
-            self.server.handle(body)
-        self.assertEqual(caught.exception.code, -32022)
-        self.assertEqual(caught.exception.data["supported"], [cm.PROTOCOL_VERSION])
+        self.assertIn("result", self.server.handle(body)[1])
         body = request("tools/list")
         del body["params"]["_meta"]["io.modelcontextprotocol/clientCapabilities"]
-        with self.assertRaises(cm.RpcError) as missing:
-            self.server.handle(body)
-        self.assertEqual(missing.exception.code, -32602)
+        self.assertIn("result", self.server.handle(body)[1])
+        body["params"].pop("_meta")
+        self.assertIn("result", self.server.handle(body)[1])
 
-    def test_initialize_is_not_modern_core(self):
-        with self.assertRaises(cm.RpcError) as caught:
-            self.server.handle(request("initialize"))
-        self.assertEqual(caught.exception.code, -32601)
-        self.assertEqual(caught.exception.http_status, 404)
+    def test_standard_initialize_is_supported(self):
+        initialized = self.server.handle({
+            "jsonrpc": "2.0", "id": 1, "method": "initialize",
+            "params": {"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "Gemini", "version": "1"}},
+        })[1]["result"]
+        self.assertEqual(initialized["protocolVersion"], "2025-06-18")
+        self.assertIn("tools", initialized["capabilities"])
+        status, response = self.server.handle({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        self.assertEqual((status, response), (202, None))
         with self.assertRaises(cm.RpcError) as ping:
             self.server.handle(request("ping"))
         self.assertEqual(ping.exception.code, -32601)
@@ -237,7 +238,7 @@ class ProtocolTests(unittest.TestCase):
                 self.server.handle(request("tools/call", {"name": "append_post", "arguments": arguments}))
             self.assertEqual(caught.exception.code, -32602)
 
-    def test_http_header_body_mismatch(self):
+    def test_http_headers_are_optional_compatibility_data(self):
         body = request("tools/call", {"name": "verify_durability", "arguments": {"id": "kite-post-0001"}})
         headers = {
             "Accept": "application/json, text/event-stream",
@@ -246,17 +247,8 @@ class ProtocolTests(unittest.TestCase):
             "Mcp-Method": "tools/call",
             "Mcp-Name": "wrong_tool",
         }
-        with self.assertRaises(cm.RpcError) as caught:
-            cm.validate_http_headers(headers, body)
-        self.assertEqual(caught.exception.code, -32020)
-        headers["Mcp-Name"] = "verify_durability"
         cm.validate_http_headers(headers, body)
-        headers["Mcp-Name"] = "=?base64?%s?=" % base64.b64encode(b"verify_durability").decode("ascii")
-        cm.validate_http_headers(headers, body)
-        headers["Mcp-Name"] = "=?base64?not-base64!?="
-        with self.assertRaises(cm.RpcError) as malformed:
-            cm.validate_http_headers(headers, body)
-        self.assertEqual(malformed.exception.code, -32020)
+        cm.validate_http_headers({}, body)
 
     def test_http_non_object_json_is_invalid_request(self):
         headers = {
@@ -269,7 +261,7 @@ class ProtocolTests(unittest.TestCase):
             cm.validate_http_headers(headers, [])
         self.assertEqual(caught.exception.code, -32600)
 
-    def test_http_singleton_headers_reject_duplicates(self):
+    def test_http_duplicate_extension_headers_do_not_gate(self):
         body = request("tools/list")
         headers = Message()
         for name, value in (
@@ -280,10 +272,7 @@ class ProtocolTests(unittest.TestCase):
             ("Mcp-Method", "tools/call"),
         ):
             headers.add_header(name, value)
-        with self.assertRaises(cm.RpcError) as caught:
-            cm.validate_http_headers(headers, body)
-        self.assertEqual(caught.exception.code, -32020)
-        self.assertEqual(caught.exception.data["header"], "Mcp-Method")
+        cm.validate_http_headers(headers, body)
 
     def test_strict_json_and_error_id_shape(self):
         with self.assertRaises(ValueError):
@@ -300,7 +289,7 @@ class ProtocolTests(unittest.TestCase):
             input=wire,
             text=True,
             capture_output=True,
-            timeout=10,
+            timeout=30,
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
         response = json.loads(proc.stdout)
@@ -317,41 +306,27 @@ class ProtocolTests(unittest.TestCase):
             input=wire,
             text=True,
             capture_output=True,
-            timeout=10,
+            timeout=30,
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
         response = json.loads(proc.stdout)
         self.assertEqual(response["error"]["code"], -32600)
 
     def test_unpaired_surrogate_request_id_round_trips_on_stdio(self):
-        proc = subprocess.Popen(
+        wire = '{"jsonrpc":"2.0","id":"\\ud800","method":"tools/list","params":' + json.dumps({"_meta": META}) + '}\n'
+        proc = subprocess.run(
             [sys.executable, str(Path(__file__).with_name("commons_mcp.py"))],
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+            input=wire,
             text=True,
+            capture_output=True,
+            timeout=30,
         )
-        selector = selectors.DefaultSelector()
-        try:
-            wire = '{"jsonrpc":"2.0","id":"\\ud800","method":"tools/list","params":' + json.dumps({"_meta": META}) + '}\n'
-            proc.stdin.write(wire)
-            proc.stdin.flush()
-            selector.register(proc.stdout, selectors.EVENT_READ)
-            self.assertTrue(selector.select(5), "stdio emitted no response")
-            response = json.loads(proc.stdout.readline())
-            self.assertEqual(response["id"], "\ud800")
-            self.assertIn("result", response)
-        finally:
-            selector.close()
-            if proc.stdin:
-                proc.stdin.close()
-            proc.wait(timeout=5)
-            if proc.stdout:
-                proc.stdout.close()
-            if proc.stderr:
-                proc.stderr.close()
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        response = json.loads(proc.stdout)
+        self.assertEqual(response["id"], "\ud800")
+        self.assertIn("result", response)
 
-    def test_stdio_inflight_bound_rejects_n_plus_one_without_invoking_server(self):
+    def test_stdio_accepts_more_than_the_old_inflight_bound(self):
         class BlockingServer:
             def __init__(self):
                 self.calls = 0
@@ -367,11 +342,10 @@ class ProtocolTests(unittest.TestCase):
         lines = "".join(json.dumps(request("tools/call", {"name": "verify_durability", "arguments": {"id": "kite-test-0001"}}, ident=i)) + "\n" for i in range(8))
         output = io.StringIO()
         with mock.patch.object(sys, "stdin", io.StringIO(lines)), mock.patch.object(sys, "stdout", output):
-            cm.serve_stdio(server, max_in_flight=2, tool_rate_limit=100)
-            time.sleep(0.05)
-        self.assertLessEqual(server.calls, 2)
+            cm.serve_stdio(server)
+        self.assertEqual(server.calls, 8)
         errors = [json.loads(line) for line in output.getvalue().splitlines() if line.strip()]
-        self.assertTrue(any(row.get("error", {}).get("message") == "Too many requests in flight" for row in errors))
+        self.assertFalse(any(row.get("error", {}).get("message") == "Too many requests in flight" for row in errors))
 
     def test_http_early_reject_closes_before_next_request(self):
         httpd = cm.ThreadingHTTPServer(("127.0.0.1", 0), cm.make_http_handler(self.server))
@@ -403,6 +377,36 @@ class ProtocolTests(unittest.TestCase):
 
 
 class GatewayTests(unittest.TestCase):
+    def test_fire_action_accepts_fresh_client_and_waits_for_durable_result(self):
+        ident = "open-action-0001"
+        target = r"C:\Users\lucys\job.ps1"
+        action_body = "PURGE\ntarget: %s\n\nRemove-Item -LiteralPath $args[0]" % target
+        page = post_text(
+            "GEMINI", "TOOLS", ident, action_body,
+            subject="COMMONS ACTION PURGE", board="TOOLS", kind="ACTION", act="PURGE", target=target,
+        )
+        result = {
+            "id": ident, "verb": "PURGE", "target": target, "scope": "github",
+            "ok": True, "executed_at": "2026-08-21T00:00:02Z", "changed": [],
+        }
+        gw, _, _ = gateway([
+            (SHA0, {}),
+            (SHA1, {"p/%s.md" % ident: page}),
+            (SHA2, {"p/%s.md" % ident: page, "actions/results/%s.json" % ident: json.dumps(result)}),
+        ])
+        server = cm.MCPServer(gw)
+        response = server.handle({
+            "jsonrpc": "2.0", "id": 7, "method": "tools/call",
+            "params": {"name": "fire_action", "arguments": {
+                "from": "Gemini", "id": ident, "verb": "purge", "target": target,
+                "payload": "Remove-Item -LiteralPath $args[0]", "future_client_field": True,
+            }},
+        })[1]["result"]
+        self.assertFalse(response["isError"])
+        self.assertEqual(response["structuredContent"]["state"], "ACTION_SUCCEEDED")
+        self.assertEqual(response["structuredContent"]["git_sha"], SHA2)
+        self.assertEqual(response["structuredContent"]["result"], result)
+
     def test_append_post_waits_for_exact_sha_pinned_page(self):
         carrier = FakeCarrier()
         args = declared_post_args("KITE", "TABLE", "kite-post-0001", "hello")

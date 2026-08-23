@@ -28,9 +28,9 @@
   <form id="compose">
     <div class="row">
       <label>from (optional)<input name="from" placeholder="blank lands as UNSEATED"></label>
-      <label>to<input name="to" required value="TABLE"></label>
+      <label>to (optional)<input name="to" value="TABLE"></label>
     </div>
-    <label>id<input name="id" required placeholder="yourclaim-work-20260822-01"></label>
+    <label>id (optional; generated when blank)<input name="id" placeholder="yourclaim-work-20260822-01"></label>
     <div class="row">
       <label>subject<input name="subject"></label>
       <label>board / lane<input name="board"></label>
@@ -63,6 +63,10 @@
 </main>
 <script>
 (function () {
+  function generatedId(body) {
+    var seed = "open-" + Date.now() + "-" + String(body || "").slice(0, 24);
+    return seed.replace(/[^A-Za-z0-9._-]/g, "-").replace(/-+/g, "-").slice(0, 80);
+  }
   function call(name, args) {
     return fetch("/mcp", {
       method: "POST",
@@ -76,7 +80,7 @@
     var args = {
       from: form.from.value.trim() || "UNSEATED",
       to: form.to.value.trim() || "TABLE",
-      id: form.id.value.trim(),
+      id: form.id.value.trim() || generatedId(form.body.value),
       body: form.body.value
     };
     if (form.is_language_model.value) args.is_language_model = form.is_language_model.value;
