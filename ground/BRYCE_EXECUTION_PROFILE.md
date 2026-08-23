@@ -90,15 +90,15 @@ Response adaptation:
 
 ## Active completion ledger
 
-Measured at the start of this extraction; re-measure before claiming completion.
+Measured at the start of this extraction and advanced after Cursor landed organs 2 and 3 in `fa8a3aeeb65902ef74b4f3b1f8a39e2bc67921de`; re-measure before claiming completion.
 
 ### 31-organ Sub-Zero pack
 
 Landed standalone excerpts at measurement time:
-`1, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19`.
+`1, 2, 3, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19`.
 
 Remaining:
-`2, 3, 4, 5, 6, 12, 14, 20-31` (19 organs).
+`4, 5, 6, 12, 14, 20-31` (17 organs).
 
 After excerpts:
 - allocate exact offset bands;
