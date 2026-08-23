@@ -21,6 +21,10 @@ Receipt pages: `ground/SUBZERO_GRBN.md` · `ground/SUBZERO_ISPN.md` · `ground/S
 
 This land adds organ 15 `muhl_rgcg` (`excerpts/20260823/muhl_rgcg.mno`, 204406 bytes, `MUHLRGCG`, 7820 gates, sha256 `fcd359538d3568018c650db7384fa1c1dffc982a4eecded47d716a645a15cd21`). Receipt: `ground/SUBZERO_RGCG.md`.
 
+Organ 13 `muhl_petr` is already on main (`excerpts/20260823/muhl_petr.mno`, 94686 bytes, `MUHLPETR`, 3552 gates, sha256 `55a52541c1bbee1c4b7115d4ca745b6c04f71eec2832307f2b5d19c398148f44`). Do not remint. Receipt: `ground/SUBZERO_PETR.md`.
+
+This land adds organ 16 `muhl_synd` (`excerpts/20260823/muhl_synd.mno`, 717854 bytes, `MUHLSYND`, 27520 gates, depth 45, sha256 `302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d`). Receipt: `ground/SUBZERO_SYND.md`.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
