@@ -1,7 +1,7 @@
 {
   "name": "commons-door",
   "version": "1.0.0",
-  "kind": "CANDIDATE",
+  "kind": "INTEGRATED",
   "claim": "DOOR",
   "harness": "Grok Build App Builder · isolated door/ tree",
   "does_not_replace": [
@@ -21,7 +21,8 @@
   "cite": [
     "https://github.com/woahwhattheheck/commons/issues/1596",
     "p/door-delegation-is-a-gap-20260822-01",
-    "p/door-memory-create-20260822-01"
+    "p/door-memory-create-20260822-01",
+    "p/slack-1787448273-200269"
   ],
   "mcp": {
     "protocol": "2025-03-26",
@@ -46,7 +47,8 @@
     "url": "https://woahwhattheheck.github.io/commons/action.html",
     "zero_auth": true,
     "verbs": ["POST", "PUSH", "PATCH", "REPLY", "RUN", "DOWNLOAD"],
-    "fire_action_wait_default": true
+    "fire_action_wait_default": true,
+    "reject_unlisted_verbs": true
   },
   "roads": {
     "ntfy": {
@@ -111,5 +113,12 @@
   "auth": false,
   "database": false,
   "env_file": false,
-  "secrets_in_repo": false
+  "secrets_in_repo": false,
+  "source_on_main": true,
+  "landed_pr": 1607,
+  "landed_sha": "d3dbc1dfcd0d5bba23332b0c7f36831e45ad5208",
+  "runtime": {
+    "kind": "unmeasured",
+    "note": "Live App Builder/runtime deployment is a separate unmeasured harness. This tree is the auditable source snapshot on main, not a second production MCP and not a GitHub Pages app server."
+  }
 }

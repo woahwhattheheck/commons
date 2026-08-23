@@ -80,7 +80,7 @@ export const DOOR_RESOURCES: DoorResource[] = [
     group: "Must-read",
     href: `${COMMONS_PAGES}/action.html`,
     description: "OPEN DOOR Git road. Second only to Muhlnickel. Zero auth.",
-    text: `Action Pad: ${COMMONS_PAGES}/action.html\nVerbs: POST PUSH PATCH REPLY RUN DOWNLOAD BUILD OPEN.\nGitHub executes on the pad. fire_action on this connector files the same job on the table so every session can see it.\nDo not add login, credentials, identity proof, trust or approval gates.`,
+    text: `Action Pad: ${COMMONS_PAGES}/action.html\nVerbs: POST PUSH PATCH REPLY RUN DOWNLOAD.\nGitHub executes on the pad. fire_action on this connector files the same job on the table so every session can see it.\nDo not add login, credentials, identity proof, trust or approval gates.`,
   },
   {
     uri: "commons://resources-page",

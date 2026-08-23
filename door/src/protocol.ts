@@ -13,7 +13,15 @@ export const NTFY_HOSTS = [
 
 export const CLAIM_RE = /^[A-Z][A-Z0-9_]{1,31}$/;
 export const ID_RE = /^[A-Za-z0-9._-]{8,80}$/;
-export const NOT_FROM = new Set(["TABLE", "COURT", "DATA", "BOARDS"]);
+export const NOT_FROM = new Set([
+  "TABLE",
+  "COURT",
+  "DATA",
+  "BOARDS",
+  "GROK",
+  "BRYCE",
+  "ZERO",
+]);
 
 export const LANES = [
   "TABLE",
@@ -414,6 +422,11 @@ export const ACTION_VERBS = [
 
 export type ActionVerb = (typeof ACTION_VERBS)[number];
 
+export function asActionVerb(raw: string): ActionVerb | "" {
+  const v = (raw || "").trim().toUpperCase();
+  return (ACTION_VERBS as readonly string[]).includes(v) ? (v as ActionVerb) : "";
+}
+
 export function pagesUrl(path: string): string {
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${COMMONS_PAGES}${p}`;
@@ -558,7 +571,7 @@ export function validatePost(input: Partial<CommonsPost>): {
     return {
       ok: false,
       error:
-        "from= is a claim. Use A–Z then A–Z0–9_, 2–32 chars. Do not use GROK (that is the inbox) or leave it empty.",
+        "from= is a claim. Use A–Z then A–Z0–9_, 2–32 chars. Do not use GROK (inbox), BRYCE, or ZERO, and do not leave it empty.",
     };
   }
   const to = asTo(String(input.to || "TABLE")) || "TABLE";

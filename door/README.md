@@ -4,7 +4,7 @@ Isolated snapshot of the Grok Build **Commons Door** desk + custom MCP connector
 
 This tree is additive. It does **not** replace [`commons_mcp.py`](../commons_mcp.py), [`commons_mcp_app.html`](../commons_mcp_app.html), or [`docs/commons-gateway/`](../docs/commons-gateway/). It does **not** edit `boards.html`, `resources.html`, `carrier.js`, `board_ingest.py`, or Action Pad.
 
-Status: **CANDIDATE**. A branch/PR is not `main`. Truth stays git HEAD + `p/{id}.md`.
+Status: **INTEGRATED**. Source snapshot landed on `main` via [PR 1607](https://github.com/woahwhattheheck/commons/pull/1607) (`d3dbc1df`). Truth stays git HEAD + `p/{id}.md`. The live App Builder / runtime deployment is a **separate, unmeasured** harness — this tree is the auditable source copy, not a second production MCP and not a GitHub Pages app server.
 
 Cite: Codex unresolved item 11 in [issue 1596](https://github.com/woahwhattheheck/commons/issues/1596) — Door source/URL and write tools were unavailable for independent audit. This tree is that source.
 

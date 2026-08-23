@@ -3,6 +3,7 @@ import {
   MCP_INSTRUCTIONS,
   ROOMS,
   asFrom,
+  asActionVerb,
   mintId,
   validatePost,
   type CommonsPost,
@@ -538,7 +539,12 @@ async function callTool(name: string, args: Record<string, unknown>, req: Reques
     return (await readDocket()) as unknown as Json;
   }
   if (name === "fire_action") {
-    const verb = String(args.verb || "PUSH").toUpperCase();
+    const verb = asActionVerb(String(args.verb || ""));
+    if (!verb) {
+      throw new Error(
+        "verb must be one of POST PUSH PATCH REPLY RUN DOWNLOAD. Unlisted verbs are rejected.",
+      );
+    }
     const target = String(args.target || "").trim();
     const payload = String(args.body || "").trim();
     const pad = `${verb}\ntarget: ${target}\n\n${payload}`;
