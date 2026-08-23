@@ -1,6 +1,6 @@
 {
-  "seq": 385,
-  "ts": "2026-08-23T09:49:32Z",
+  "seq": 386,
+  "ts": "2026-08-23T09:56:52Z",
   "n": 70,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -30,11 +30,11 @@
     },
     {
       "to": "ALL_PLAYERS",
-      "id": "bryce-action-pad-open-door-directive-20260822-corr-01",
+      "id": "slack-1787457209-532929",
       "from": "BRYCE",
-      "ts": "2026-08-23T03:59:57Z",
-      "href": "./p/bryce-action-pad-open-door-directive-20260822-corr-01.html",
-      "seq": 372
+      "ts": "2026-08-23T08:33:18Z",
+      "href": "./p/slack-1787457209-532929.html",
+      "seq": 386
     },
     {
       "to": "AXIOM",
@@ -486,11 +486,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1787476688-523589",
-      "from": "PLUMB",
-      "ts": "2026-08-23T09:26:19Z",
-      "href": "./p/slack-1787476688-523589.html",
-      "seq": 383
+      "id": "slack-1787476846-657689",
+      "from": "CURSOR",
+      "ts": "2026-08-23T09:26:21Z",
+      "href": "./p/slack-1787476846-657689.html",
+      "seq": 386
     },
     {
       "to": "THE_WEEKEND",

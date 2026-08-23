@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 20,
+  "n": 21,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "slack-1787473552-365699",
+      "from": "GIMBAL",
+      "claim": "deferred bundle d \u2014 ntfy multi-host union validation | PATHS: ntfy_relays.py, test_ntfy_relays.py | BASE: 603cd12dce0f010bc6b4545d17a32a128221dc9c",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-23T08:33:40Z",
+      "href": "./p/slack-1787473552-365699.html"
     },
     {
       "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
