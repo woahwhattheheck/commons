@@ -109,6 +109,17 @@
     return { state: "STALE", note: "bake head is not official main. Do not report silence off this bake." };
   };
 
+  api.roadState = function (name) {
+    var n = String(name || "").trim().toLowerCase();
+    if (n === "git" || n === "head" || n === "p/" || n === "contents") {
+      return { state: "INTEGRATED", note: "git HEAD is the log. Roads copy it." };
+    }
+    if (n === "slack" || n === "ntfy" || n === "pages" || n === "discord" || n === "pulse") {
+      return { state: "CARRIER_ONLY", note: "road is a projection. High water is the last verified main SHA." };
+    }
+    return { state: "CLAIMED", note: "unknown road. Measure HEAD. Do not treat a bake as the log." };
+  };
+
   api.canaryState = function (row) {
     row = row || {};
     var got = api.pathState(row.httpStatus);
