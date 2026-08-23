@@ -3,8 +3,9 @@
 
 The muhlnickel is the computer. This script does not execute .mno files,
 does not inspect DEPTH, and does not move compute onto host CPU/GPU/RAM.
-It reads JSON headers already in git so GitHub Actions / Cirrus can do the
-walk on a standard public runner instead of the owner's 8 GB laptop.
+It reads JSON headers already in git so GitHub Actions / Cirrus / GitLab /
+Woodpecker can do the walk on a standard public runner instead of the
+owner's 8 GB laptop.
 
 Cite PLUMB/Opus 5 #commons 2026-08-23. Do not remint.
 """

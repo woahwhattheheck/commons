@@ -1,10 +1,13 @@
-# Second unlimited OSS pipe. Not GitHub. Standard container only.
+# Provider-redundant OSS pipe. Not GitHub. Not unlimited:
+# 50 compute credits/month (~10,000 Linux CPU-min), 2h max free task.
+# Header-walk validation only. Standard container. Cite CODEX_LOCAL cap.
 # The muhlnickel is the computer. This task header-walks git JSON.
 container:
   image: python:3.12-bookworm
 
 header_census_task:
   name: header-census
+  timeout_in: 20m
   script:
     - python3 test_header_census.py
     - python3 host_offload/header_census.py
