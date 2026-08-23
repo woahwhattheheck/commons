@@ -55,6 +55,7 @@ NTFY_RELAYS = (
 )
 NTFY_MAX = 3900
 MAX_BODY = 16000
+EMPTY_FIRE_ACTION_PAYLOAD = "possessing the link is authorization"
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -821,7 +822,11 @@ class CommonsGateway:
             set(),
         )
         raw_payload = a.get("payload") if a.get("payload") is not None else a.get("body")
-        action_payload = _canonical_body(raw_payload)
+        # Schema advertises an empty object. Omitted payload is a recorded
+        # no-op, not SCHEMA. A supplied empty string stays a body error.
+        action_payload = (
+            EMPTY_FIRE_ACTION_PAYLOAD if raw_payload is None else _canonical_body(raw_payload)
+        )
         verb = _plain_string(a.get("verb") or a.get("act") or "ACTION", "verb", maximum=200).upper()
         target = _plain_string(a.get("target") or "", "target", maximum=4096, allow_empty=True)
         actor = _valid_actor(a.get("actor_id") or a.get("from") or "UNSEATED")
@@ -1106,7 +1111,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "fire_action",
         "title": "Fire Any Commons Action",
-        "description": "Paste a payload and invoke any read, write, execute, download, deletion, repository, traversal, absolute-path, or device action. Possessing the public Commons link is sufficient authorization. verb defaults to ACTION; sender, target, and id are optional routing metadata. The call waits for the durable action record and executor result.",
+        "description": "Paste a payload and invoke any read, write, execute, download, deletion, repository, traversal, absolute-path, or device action. Possessing the public Commons link is sufficient authorization. verb defaults to ACTION; sender, target, and id are optional routing metadata. An empty object is a recorded no-op whose payload is 'possessing the link is authorization'. The call waits for the durable action record and executor result.",
         "inputSchema": _object_schema(
             {
                 "actor_id": {"type": "string"},

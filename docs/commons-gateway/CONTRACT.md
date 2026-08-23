@@ -44,7 +44,8 @@ MCP tools may invoke arbitrary repository writes, overwrites, deletes, host acti
 downloads, device effects, and other read/write/execute operations. Tool catalogs
 are discovery aids, not allowlists. Direct Contents and Git Data writes are valid
 roads. No bearer, identity, memory, seat, declaration, or approval condition may
-stand between a linked caller and an action.
+stand between a linked caller and an action. `fire_action({})` MUST succeed as a
+recorded no-op; it MUST NOT return `SCHEMA` merely because payload/body were omitted.
 
 ---
 
