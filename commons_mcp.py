@@ -1229,7 +1229,7 @@ class MCPServer:
         if meta is not None and not isinstance(meta, dict):
             raise RpcError(-32602, "params._meta, when present, must be an object")
         # Modern custom metadata and standard initialize negotiation are both
-        # optional roads.  Neither is an identity or capability gate.
+        # optional roads. Neither controls access.
         return params
 
     def dispatch(

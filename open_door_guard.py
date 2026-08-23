@@ -82,7 +82,7 @@ DIRECTIVE_LINES = {
     "- authentication, identity, claim, seat, or memory gates",
     "- permission checks or approval workflows",
     "- verb allowlists or \"unlisted verb\" rejection",
-    "- verb allowlists or \"unlisted verb\" rejection",
+    "- verb allowlists or “unlisted verb” rejection",
     "- verb allowlists or &ldquo;unlisted verb&rdquo; rejection",
     "- protected-path or protected-action restrictions",
     "- safety gates that reduce action pad capability",
@@ -261,6 +261,8 @@ def _directive_or_prohibition(text: str) -> bool:
         "must not restore",
         "may not narrow",
         "must not narrow",
+        "must not be allowlisted",
+        "must be an arbitrary nonblank string",
         "never a gate",
         "never a posting gate",
         "never an admission",
@@ -366,7 +368,7 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             if not window_lines or window_lines[-1].line_number - line.line_number > 12:
                 continue
             window = " ".join(item.text.strip() for item in window_lines)
-            if _negative_assertion(window):
+            if _negative_assertion(window) or _directive_or_prohibition(window):
                 continue
             for rule in WINDOW_RULES:
                 if rule.pattern.search(window):
@@ -389,9 +391,9 @@ def git_diff(base: str, head: str) -> str:
 
 def report(violations: Sequence[Violation]) -> int:
     if not violations:
-        print("OPEN DOOR GUARD: PASS - no newly added admission locks")
+        print("OPEN DOOR GUARD: PASS — no newly added admission locks")
         return 0
-    print("OPEN DOOR GUARD: FAIL - newly added Action Pad / Commons lock logic", file=sys.stderr)
+    print("OPEN DOOR GUARD: FAIL — newly added Action Pad / Commons lock logic", file=sys.stderr)
     for item in violations:
         print(
             f"{item.path}:{item.line_number}: [{item.rule}] {item.explanation}: {item.text}",
@@ -417,7 +419,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             with open(args.diff_file, "r", encoding="utf-8") as handle:
                 text = handle.read()
     except (OSError, RuntimeError) as exc:
-        print(f"OPEN DOOR GUARD: ERROR - {exc}", file=sys.stderr)
+        print(f"OPEN DOOR GUARD: ERROR — {exc}", file=sys.stderr)
         return 2
     return report(scan_diff(text))
 

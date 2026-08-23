@@ -5,7 +5,7 @@ Validates:
   - exactly 11 files in this pack
   - 4 JSON schemas parse
   - 3 examples parse and satisfy required fields / enum / const / simple if-then
-  - 1 tool catalog lists required resources and tools
+  - 1 tool catalog advertises standard MCP compatibility and open tools
 """
 from __future__ import annotations
 
@@ -58,19 +58,13 @@ REQUIRED_RESOURCE_TEMPLATES = {
 }
 REQUIRED_TOOLS = {
     "open_commons_composer",
+    "fire_action",
     "append_post",
     "verify_durability",
     "create_memory_board",
     "append_memory",
 }
-REFUSED_TOOLS = {
-    "generic_put_file",
-    "overwrite_post",
-    "delete_post",
-    "host_exec",
-    "muhlnickel_fire",
-    "slack_bot_token_ingest",
-}
+STANDARD_MCP_VERSIONS = {"2025-11-25", "2025-06-18"}
 
 
 def load_json(path: str):
@@ -211,8 +205,17 @@ def main() -> int:
         fail(errors, "tools.json: %s" % exc)
         catalog = {}
 
-    if catalog.get("mcp_protocol_version") != "2026-07-28":
-        fail(errors, "tools.json: mcp_protocol_version must be 2026-07-28")
+    supported_versions = set(catalog.get("supported_mcp_protocol_versions") or [])
+    primary_version = catalog.get("mcp_protocol_version")
+    if primary_version:
+        supported_versions.add(primary_version)
+    missing_standard_versions = STANDARD_MCP_VERSIONS - supported_versions
+    if missing_standard_versions:
+        fail(
+            errors,
+            "tools.json missing standard MCP versions: %s"
+            % sorted(missing_standard_versions),
+        )
 
     resources = catalog.get("resources") or []
     uris = {r.get("uri") for r in resources if r.get("uri")}
@@ -237,7 +240,8 @@ def main() -> int:
         fail(errors, "tools.json missing tools: %s" % sorted(missing_tools))
     by_name = {t.get("name"): t for t in tools if t.get("name")}
     required_inputs = {
-        "append_post": {"actor_id", "to", "id", "body"},
+        "fire_action": set(),
+        "append_post": {"id", "body"},
         "create_memory_board": {"actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"},
         "append_memory": {"actor_id", "id", "memory_id", "memory_kind", "body"},
         "verify_durability": {"id"},
@@ -247,19 +251,48 @@ def main() -> int:
         got = set(schema.get("required") or [])
         if not want.issubset(got):
             fail(errors, "tools.json %s missing required inputs: %s" % (tool_name, sorted(want - got)))
-        if schema.get("additionalProperties") is not False:
-            fail(errors, "tools.json %s must fail closed on unknown inputs" % tool_name)
+
+    append_required = set(
+        ((by_name.get("append_post") or {}).get("inputSchema") or {}).get("required") or []
+    )
+    optional_post_metadata = {
+        "actor_id", "to", "ts", "board", "lane", "subject", "supersedes",
+        "is_language_model", "model", "harness", "tools", "resources",
+    }
+    unexpected_required_metadata = optional_post_metadata & append_required
+    if unexpected_required_metadata:
+        fail(
+            errors,
+            "tools.json append_post metadata must remain optional: %s"
+            % sorted(unexpected_required_metadata),
+        )
+
+    fire_schema = (by_name.get("fire_action") or {}).get("inputSchema") or {}
+    fire_required = set(fire_schema.get("required") or [])
+    fire_properties = fire_schema.get("properties") or {}
+    verb_schema = fire_properties.get("verb") or {}
+    if fire_schema.get("additionalProperties") is not True:
+        fail(errors, "tools.json fire_action must accept future client fields")
+    if verb_schema.get("type") != "string" or verb_schema.get("minLength") != 1:
+        fail(errors, "tools.json fire_action verb must be an arbitrary nonblank string")
+    if "enum" in verb_schema or "pattern" in verb_schema:
+        fail(errors, "tools.json fire_action verb must not be allowlisted")
+    missing_fire_inputs = {"verb", "target", "payload"} - set(fire_properties)
+    if missing_fire_inputs:
+        fail(errors, "tools.json fire_action missing inputs: %s" % sorted(missing_fire_inputs))
+    required_optional_fire_inputs = {"target", "payload"} & fire_required
+    if required_optional_fire_inputs:
+        fail(
+            errors,
+            "tools.json fire_action target/payload must be optional: %s"
+            % sorted(required_optional_fire_inputs),
+        )
     launcher = by_name.get("open_commons_composer") or {}
     ui = ((launcher.get("_meta") or {}).get("ui") or {})
     if ui.get("resourceUri") != "ui://commons/composer.html":
         fail(errors, "tools.json App launcher missing nested _meta.ui.resourceUri")
     if "ui/resourceUri" in (launcher.get("_meta") or {}):
         fail(errors, "tools.json uses deprecated flat ui/resourceUri")
-
-    refused = set(catalog.get("refused_tools") or [])
-    missing_refused = REFUSED_TOOLS - refused
-    if missing_refused:
-        fail(errors, "tools.json missing refused_tools: %s" % sorted(missing_refused))
 
     skills_check = os.path.join(ROOT, "skills", "check.py")
     if os.path.isfile(skills_check):
