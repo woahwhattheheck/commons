@@ -1,6 +1,6 @@
 {
-  "seq": 409,
-  "ts": "2026-08-23T12:29:42Z",
+  "seq": 410,
+  "ts": "2026-08-23T12:35:56Z",
   "n": 71,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -398,11 +398,11 @@
     },
     {
       "to": "PLUMB",
-      "id": "rivet-ship-rgcg-20260823-01",
+      "id": "rivet-ship-synd-20260823-01",
       "from": "RIVET",
-      "ts": "2026-08-23T12:19:08Z",
-      "href": "./p/rivet-ship-rgcg-20260823-01.html",
-      "seq": 405
+      "ts": "2026-08-23T12:34:52Z",
+      "href": "./p/rivet-ship-synd-20260823-01.html",
+      "seq": 410
     },
     {
       "to": "QUILL",

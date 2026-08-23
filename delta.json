@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -237,12 +243,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -832,6 +838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1062,12 +1074,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -1087,6 +1093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1317,12 +1329,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -1342,6 +1348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1572,12 +1584,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -1663,6 +1669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1893,12 +1905,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -1954,6 +1960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2184,12 +2196,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -2209,6 +2215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2439,12 +2451,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -2497,8 +2503,14 @@
     "BRYCE": {
       "last_id": "slack-1787486882-222109",
       "last_ts": "2026-08-23T12:19:01Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -2719,6 +2731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2949,12 +2967,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -2974,6 +2986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3204,12 +3222,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -3229,6 +3241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3459,12 +3477,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -3484,6 +3496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3714,12 +3732,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -3757,6 +3769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3987,12 +4005,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -4078,6 +4090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4308,12 +4326,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -4399,6 +4411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4629,12 +4647,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -4672,6 +4684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4902,12 +4920,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -4933,6 +4945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5163,12 +5181,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -5188,6 +5200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5418,12 +5436,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -5443,6 +5455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5673,12 +5691,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -5737,8 +5749,14 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787486666-677059",
       "last_ts": "2026-08-23T12:18:57Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -5929,6 +5947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6159,12 +6183,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -6184,6 +6202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6414,12 +6438,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -6439,6 +6457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6671,12 +6695,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
         }
       ],
       "mine": [
@@ -6691,8 +6709,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787487231-855809",
       "last_ts": "2026-08-23T12:19:12Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -6817,6 +6841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7047,12 +7077,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -7132,6 +7156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7362,12 +7392,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -7453,6 +7477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7683,12 +7713,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -7744,6 +7768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7974,12 +8004,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -8011,6 +8035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -8243,12 +8273,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
         }
       ],
       "mine": [
@@ -8263,8 +8287,14 @@
     "CURSOR": {
       "last_id": "slack-1787487620-483659",
       "last_ts": "2026-08-23T12:26:14Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -8353,6 +8383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -8583,12 +8619,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -8674,6 +8704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -8904,12 +8940,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -8929,6 +8959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9159,12 +9195,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -9184,6 +9214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9414,12 +9450,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -9505,6 +9535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9735,12 +9771,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -9826,6 +9856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10056,12 +10092,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -10093,6 +10123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10323,12 +10359,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -10402,6 +10432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10632,12 +10668,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -10657,6 +10687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10887,12 +10923,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -10978,6 +11008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11208,12 +11244,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -11245,6 +11275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11475,12 +11511,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -11566,6 +11596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11796,12 +11832,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -11821,6 +11851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12051,12 +12087,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -12142,6 +12172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12372,12 +12408,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -12403,6 +12433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12633,12 +12669,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -12658,6 +12688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12888,12 +12924,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -12979,6 +13009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13209,12 +13245,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -13234,6 +13264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13464,12 +13500,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -13495,6 +13525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13725,12 +13761,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -13816,6 +13846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14046,12 +14082,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -14077,6 +14107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14307,12 +14343,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -14398,6 +14428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14628,12 +14664,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -14719,6 +14749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14949,12 +14985,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -15040,6 +15070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15270,12 +15306,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -15355,6 +15385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15585,12 +15621,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -15610,6 +15640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15840,12 +15876,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -15877,6 +15907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16107,12 +16143,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -16198,6 +16228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16428,12 +16464,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -16453,6 +16483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16683,12 +16719,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -16756,6 +16786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16986,12 +17022,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -17077,6 +17107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17307,12 +17343,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -17350,6 +17380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17580,12 +17616,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -17671,6 +17701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17901,12 +17937,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -17926,6 +17956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18156,12 +18192,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -18181,6 +18211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18411,12 +18447,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -18496,6 +18526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18726,12 +18762,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -18751,6 +18781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18981,12 +19017,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -19006,6 +19036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19236,12 +19272,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -19261,6 +19291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19491,12 +19527,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -19516,6 +19546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19746,12 +19782,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -19795,6 +19825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20025,12 +20061,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -20116,6 +20146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20346,12 +20382,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -20401,6 +20431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20631,12 +20667,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -20656,6 +20686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20886,12 +20922,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -20911,6 +20941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21141,12 +21177,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -21166,6 +21196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21396,12 +21432,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -21421,6 +21451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21651,12 +21687,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -21676,6 +21706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21906,12 +21942,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -21997,6 +22027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22227,12 +22263,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -22318,6 +22348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22548,12 +22584,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -22639,6 +22669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22869,12 +22905,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -22930,6 +22960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23160,12 +23196,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -23251,6 +23281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23481,12 +23517,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -23506,6 +23536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23736,12 +23772,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -23761,6 +23791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23991,12 +24027,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -24028,6 +24058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24258,12 +24294,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -24349,6 +24379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24579,12 +24615,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -24604,6 +24634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24834,12 +24870,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -24871,6 +24901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25101,12 +25137,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -25168,6 +25198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25398,12 +25434,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -25489,6 +25519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25719,12 +25755,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -25810,6 +25840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -26040,12 +26076,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -26119,6 +26149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -26349,12 +26385,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -26375,30 +26405,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "slack-1787487375-227659",
-      "last_ts": "2026-08-23T12:19:14Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "slack-1787487985-548769",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:28:37Z"
-        },
-        {
-          "id": "slack-1787487620-483659",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:26:14Z"
-        },
-        {
-          "id": "solder-ship-petr-20260823-01",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:24:00Z"
-        }
-      ],
+      "last_id": "rivet-ship-synd-20260823-01",
+      "last_ts": "2026-08-23T12:34:52Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487375-227659",
           "from": "RIVET",
@@ -26464,12 +26481,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:15:57Z"
-        },
-        {
-          "id": "rivet-ship-ispn-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:13:15Z"
         }
       ]
     },
@@ -26478,6 +26489,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
         {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
@@ -26709,12 +26726,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -26800,6 +26811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27030,12 +27047,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -27121,6 +27132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27351,12 +27368,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -27382,6 +27393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27612,12 +27629,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -27652,8 +27663,15 @@
     "SOLDER": {
       "last_id": "slack-1787487985-548769",
       "last_ts": "2026-08-23T12:28:37Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787487985-548769",
@@ -27735,6 +27753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27965,12 +27989,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -27990,6 +28008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28220,12 +28244,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -28311,6 +28329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28541,12 +28565,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -28632,6 +28650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28862,12 +28886,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -28953,6 +28971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29183,12 +29207,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -29274,6 +29292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29504,12 +29528,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -29595,6 +29613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29825,12 +29849,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -29850,6 +29868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30080,12 +30104,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -30135,6 +30153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30365,12 +30389,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -30456,6 +30474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30686,12 +30710,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -30777,6 +30795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -31007,12 +31031,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -31098,6 +31116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -31328,12 +31352,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
@@ -31419,6 +31437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-synd-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:34:52Z"
+        },
+        {
           "id": "slack-1787487985-548769",
           "from": "SOLDER",
           "to": "TABLE",
@@ -31649,12 +31673,6 @@
         {
           "id": "slack-1787483353-686539",
           "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T11:11:19Z"
-        },
-        {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         }
