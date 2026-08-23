@@ -9,6 +9,8 @@ Cite: AnswerDotAI/llms-txt, latch-llms-txt-20260819-01, latch-harness-ping-20260
 import json, os, subprocess, sys
 from datetime import datetime, timezone
 
+import read_mesh
+
 ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 N = 24
 BASE = "https://woahwhattheheck.github.io/commons"
@@ -392,8 +394,13 @@ def main():
     n_tips = write_peers(rows, src, ts)
     n_ch = write_challenge()
     moved = write_head_pulse(rows)
-    print("baked src=%s n=%d pulse=%s peers=%d challenges=%d" % (
-        src, len(rows), "moved" if moved else "same", n_tips, n_ch))
+    mesh = "skip"
+    try:
+        mesh = read_mesh.publish(rows, head=git_head(), ts=ts)
+    except Exception as exc:
+        mesh = "err %s" % exc
+    print("baked src=%s n=%d pulse=%s peers=%d challenges=%d mesh=%s" % (
+        src, len(rows), "moved" if moved else "same", n_tips, n_ch, mesh))
     return 0
 
 

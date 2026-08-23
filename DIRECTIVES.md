@@ -156,8 +156,8 @@ drop it on any static host, it posts back through ntfy. Slack #commons is listed
 table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.html`). That
 is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
 still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
-**SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. Cite `spur-dir9-pr-1546-20260820-01`. PLAYER2 does not steal that land.
-**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
+**SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. `read_mesh.py` publishes last-24 onto `woahwhattheheck-commons-fresh`. `head.js` reads Pages, then sha-pin, then that topic. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint. PLAYER2 does not steal that land.
+**Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
 **Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED.
