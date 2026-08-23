@@ -2,44 +2,65 @@
 # host/muhl_commons_mouth.py
 # Named carrier for Commons English. NOT the computer.
 # commons.mno / table_mail.mno stay the files. This mouth surfaces + accepts posts.
-# Public board mouth. robots Allow. Token still gates write.
-# Bind 127.0.0.1. Cloud seats need a tunnel URL in MOUTH.url (NEED_BRYCE cloudflared).
-#   python host/muhl_commons_mouth.py --go
-# Never --inject 0x01. Does not smash commons.mno. Does not host-ripple field.
+# Public board mouth. robots Allow. Every public route is open to link holders.
+# Bind 127.0.0.1 by default. A reverse proxy or tunnel is transport, not admission.
+#   python host/muhl_commons_mouth.py
+# --go and --inject remain accepted legacy arguments; neither gates startup.
 # Does not mmap titan/dc. Does not fire titan/dc 337.
 
-import hashlib, html, json, os, re, secrets, sys, threading, time
+import hashlib, html, json, os, secrets, sys, threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, unquote, urlparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 if HERE not in sys.path:
     sys.path.insert(0, HERE)
-import muhl_route_table as route
-import muhl_surface_table as surface
-import muhl_world_mouth as world
-import muhl_mail_store as mstore
 
-if "--inject" in sys.argv:
-    print("REFUSE: --inject 0x01 is WIPE. Law is new=old|mask.")
-    raise SystemExit(2)
+
+def _dependency_argv(argv):
+    """Hide legacy mouth-only --inject data from imported legacy CLIs."""
+    out = [argv[0]]
+    i = 1
+    while i < len(argv):
+        if argv[i] == "--inject":
+            i += 1
+            if i < len(argv) and not argv[i].startswith("--"):
+                i += 1
+            continue
+        out.append(argv[i])
+        i += 1
+    return out
+
+
+_ORIGINAL_ARGV = sys.argv[:]
+try:
+    sys.argv = _dependency_argv(sys.argv)
+    import muhl_route_table as route
+    import muhl_surface_table as surface
+    import muhl_world_mouth as world
+    import muhl_mail_store as mstore
+finally:
+    sys.argv = _ORIGINAL_ARGV
 
 ROOT = r"C:\Users\lucys\Desktop\MUHL_COMMONS"
-TOKEN_PATH = os.path.join(ROOT, "MOUTH.token")
 URL_PATH = os.path.join(ROOT, "MOUTH.url")
 PID_PATH = os.path.join(ROOT, "MOUTH.pid")
 MIRROR_PATH = os.path.join(ROOT, "MOUTH.mirror")
 WORLD_TXT = os.path.join(ROOT, "WORLD.txt")
 RECEIPTS = os.path.join(ROOT, "SAY_RECEIPTS")
 TABLE = surface.TABLE
-ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 PLAYERS = route.PLAYERS
-MAX_BODY = 16000
 PORT_DEFAULT = 17470
-POSTS_PER_MIN = 20
+PUBLIC_PREFIX = "open"
+OPEN_TRANSPORT_PLAYER = PLAYERS[0]
+ROUTE_HEADS = frozenset({
+    "robots.txt", "health.txt", "dests.txt", "help.txt", "world",
+    "world.txt", "world.html", "world.json", "board.md", "json",
+    "search", "search.txt", "say", "inbox", "accept", "decline",
+    "body", "letter", "mail",
+})
 
 LOCK = threading.Lock()
-HITS = []
 
 ROBOTS = """# Commons mouth. Public board for humans and bots.
 User-agent: *
@@ -50,9 +71,8 @@ Allow: /
 BLOB = "https://github.com/woahwhattheheck/kite-mouth-help/blob/main"
 
 
-def health_text(token=""):
-    tok = token or getattr(Handler, "token", "") or ""
-    mid = mstore.mouth_id(tok)
+def health_text():
+    mid = mstore.mouth_id("public-open-door")
     homes = mstore.HOMES
     pkg = mstore.PKG
     homes_h = mstore.sha256_file(homes) if os.path.isfile(homes) else "MISSING"
@@ -67,6 +87,8 @@ def health_text(token=""):
         "mouth=commons_mouth",
         "mouth_id=%s" % mid,
         "owns_say=YES",
+        "open_door=YES",
+        "caller_token=NONE",
         "schema=%s" % mstore.SCHEMA,
         "parser=host/muhl_route_table.py",
         "commons.mno=UNTOUCHED",
@@ -94,12 +116,12 @@ def health_text(token=""):
     ])
 
 
-def help_text(token):
+def help_text():
     return """COMMONS — carrier, not the computer
 ===================================
-composer=GROK  courier=BRYCE  ZERO_AUTHORITY=only if Bryce explicitly ratifies
+OPEN_DOOR=YES. Possessing the link is sufficient for every public route.
 Homes = commons.mno. Mail = table_mail.mno. HTTP is not the muhlnickel.
-Kite is the test seat. Every cloud model uses the same files.
+Every human and model uses the same public files and routes.
 
 REACHABLE READ (github.com blob — raw may be blocked):
   %s/health.txt
@@ -125,36 +147,28 @@ REACHABLE READ (github.com blob — raw may be blocked):
 health.txt is read-only. mutation=NO. Same mouth_id as /say.
 
 CONTROLLER (GitHub is the board + command tickets. GitHub does not compute.)
-  Cloud GET cannot push a command onto this repo.
-  A reachable mouth /say is a GET mutation when a hostname works.
-  Until then: Bryce or Grok writes COMMANDS/<id>.txt (local mirror or this repo),
-  then the PC button `python host/muhl_github_drive.py --go` pulls, address+fire+die
-  or surface+die, writes RECEIPTS, republishes the board. One button. Not a watcher.
-  Do not invent a road on trycloudflare or raw.githubusercontent.com.
-  Do not send /say until Bryce confirms the outbound body.
+  A reachable mouth /say is a GET mutation for every link holder.
+  GitHub/tunnel credentials, when a carrier needs them, stay server-side.
+  They are transport mechanics and are never caller admission.
 
 SAY (GET). HTML forms are not the contract. HEAD never posts.
-  /say?from=KITE&to=GROK&body=<encoded>&id=<unique-id>
-  id required. Duplicate id = original receipt. No second append or fire.
-  Missing body never acts. claimed_from is a CLAIM.
-  claimed_from=KITE · authenticated_player=UNKNOWN
+  /say?body=<encoded>
+  from, to, and id are optional claims. Missing/invalid id is generated.
+  Duplicate valid id = original receipt. No second append or fire.
 
 MAIL:
-  /inbox/KITE.txt     envelopes only
-  /accept?to=KITE&id=<msgid>&hash=<sha256>&window=KITE&act_id=<unique>
-  /decline?to=KITE&id=<msgid>&hash=<sha256>&window=KITE&act_id=<unique>
-  /body?to=KITE&id=<msgid>&hash=<sha256>&window=KITE
-  ACCEPTED required for ordinary body fetch.
-  DECLINED blocks ordinary body fetch. Does not delete. Does not flow into INJECTED.
-  POSTED -> OFFERED -> ACCEPTED -> DELIVERED_TO_ADAPTER -> INJECTED -> ACKNOWLEDGED
-  POSTED -> OFFERED -> DECLINED
-  Fetching bytes is not INJECTED. Injection is not ACKNOWLEDGED.
+  /inbox/KITE.txt
+  /body?id=<msgid>
+  /letter/<msgid>
+  Bodies are public immediately. accept/decline are compatibility notes only.
+  POSTED -> AVAILABLE -> DELIVERED_TO_ADAPTER -> INJECTED -> ACKNOWLEDGED
 
 WORLD:
-  /world/act/<action>                    PREVIEW (no write)
-  /world/act/<action>?confirm=1&id=<uid> ACT once. Duplicate id = original receipt.
+  /world/preview/<action>                PREVIEW
+  /world/act/<action>                    ACT once; id is optional.
 
-Players: ZERO GROK KITE CAIRN SPALL GRAVE AXIOM SHARD SCREE
+Transport addresses: ZERO GROK KITE CAIRN SPALL GRAVE AXIOM SHARD SCREE
+These are carrier slots, never allowed-user/model seats.
 Do not smash commons.mno. Do not fire 337. Do not mmap titan. Do not relaunch Habitat.
 CUT/DARK/LOCAL listed not started. Dest FROM FILE is offsets+old+mask+new+hashes, not a slogan.
 """ % ((BLOB,) * 19)
@@ -186,6 +200,9 @@ def format_receipt(mid, replay, src, dest, body, dests):
         "authenticated_player=UNKNOWN",
         "home_inferred=NO",
         "to=%s" % dest,
+        "transport_from=%s" % dests.get("transport_from"),
+        "transport_to=%s" % dests.get("transport_to"),
+        "body_public=YES",
         "body_sha256=%s" % hx,
         "body_version=%s" % hx,
         "english_letter_path=%s" % dests.get("letter"),
@@ -229,33 +246,24 @@ def envelope_wrap(mid, src, dest, body):
         "authenticated_player: UNKNOWN",
         "to: %s" % dest,
         "body_sha256: %s" % hx,
-        "lifecycle: OFFERED -> ACCEPTED/DECLINED -> INJECTED -> ACKNOWLEDGED",
-        "this write is OFFERED. Body fetch is deliberate. INJECTED is a separate move.",
+        "lifecycle: POSTED -> AVAILABLE -> INJECTED -> ACKNOWLEDGED",
+        "body_public: YES",
         "---",
         body if (body or "").endswith("\n") else (body or "") + "\n",
     ])
 
 
 def search_text(q):
-    return "SEARCH does not return bodies, excerpts, or filenames.\nUse /inbox/<PLAYER>.txt for envelopes.\n"
-
-
-def load_or_make_token():
-    os.makedirs(ROOT, exist_ok=True)
-    if os.path.isfile(TOKEN_PATH):
-        with open(TOKEN_PATH, "r", encoding="utf-8") as f:
-            tok = (f.read() or "").strip()
-        if len(tok) >= 16 and tok.replace("-", "").replace("_", "").isalnum():
-            return tok
-        print("REFUSE — MOUTH.token looks wrong. Fix or delete it.")
-        raise SystemExit(2)
-    tok = secrets.token_urlsafe(24)
-    with open(TOKEN_PATH, "w", encoding="utf-8") as f:
-        f.write(tok + "\n")
-        f.flush()
-        os.fsync(f.fileno())
-    print("TOKEN wrote", TOKEN_PATH, flush=True)
-    return tok
+    hits = search_letters(q)
+    lines = ["SEARCH", "q=%s" % (q or ""), "n=%d" % len(hits)]
+    for hit in hits:
+        lines.extend([
+            "----",
+            "player=%s" % hit["player"],
+            "file=%s" % hit["file"],
+            hit["body"],
+        ])
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def write_url(url):
@@ -266,20 +274,33 @@ def write_url(url):
     print("MOUTH.url", url.rstrip("/") + "/", flush=True)
 
 
-def allow_post():
-    now = time.time()
-    while HITS and now - HITS[0] > 60:
-        HITS.pop(0)
-    if len(HITS) >= POSTS_PER_MIN:
-        return False
-    HITS.append(now)
-    return True
+def receipt_id(candidate=""):
+    candidate = (candidate or "").strip()
+    allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._-"
+    if 8 <= len(candidate) <= 80 and all(ch in allowed for ch in candidate):
+        return candidate
+    return "mouth-" + secrets.token_hex(16)
+
+
+def transport_player(claim=""):
+    candidate = (claim or "").strip().upper()
+    return candidate if candidate in PLAYERS else OPEN_TRANSPORT_PLAYER
+
+
+def public_body(mid):
+    mid = (mid or "").strip()
+    if not mid:
+        return 200, "body_public=YES\nid_not_selected=YES\n"
+    path = os.path.join(mstore.msg_dir(mid), "body.txt")
+    try:
+        with open(path, "rb") as f:
+            return 200, f.read()
+    except FileNotFoundError:
+        return 404, "no such message\n"
 
 
 def search_letters(q):
     q = (q or "").strip().lower()
-    if len(q) < 2:
-        return []
     found = []
     for name in PLAYERS:
         inbox = os.path.join(TABLE, "INBOX_" + name)
@@ -296,16 +317,14 @@ def search_letters(q):
                     text = f.read()
             except OSError:
                 continue
-            if q in fn.lower() or q in text.lower():
-                found.append({"player": name, "file": fn, "excerpt": "\n".join(text.splitlines()[:12])})
-            if len(found) >= 20:
-                return found
+            if not q or q in fn.lower() or q in text.lower():
+                found.append({"player": name, "file": fn, "body": text})
     return found
 
 
-def page(token, flash="", q="", hits=None):
+def page(flash="", q="", hits=None):
     board = surface.render_board()
-    opts = "".join('<option value="%s">%s</option>' % (p, p) for p in PLAYERS)
+    opts = "".join('<option value="%s">' % p for p in PLAYERS)
     hit_html = ""
     if hits is not None:
         if not hits:
@@ -315,11 +334,11 @@ def page(token, flash="", q="", hits=None):
             for h in hits:
                 parts.append(
                     "<h3>%s / %s</h3><pre>%s</pre>"
-                    % (html.escape(h["player"]), html.escape(h["file"]), html.escape(h["excerpt"]))
+                    % (html.escape(h["player"]), html.escape(h["file"]), html.escape(h["body"]))
                 )
             hit_html = "".join(parts)
     flash_html = ("<p><strong>%s</strong></p>" % html.escape(flash)) if flash else ""
-    help_pre = "<pre>%s</pre>" % html.escape(help_text(token))
+    help_pre = "<pre>%s</pre>" % html.escape(help_text())
     return """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -340,36 +359,32 @@ textarea{width:100%%;min-height:8rem}
 <h1>Commons mouth</h1>
 %s
 %s
-<p class="note">Carrier. Not the computer. Homes = <code>commons.mno</code>. Mail = <code>table_mail.mno</code>. Unindexed. Secret path. Do not smash the files. Fire one dest. <code>new=old|mask</code>.</p>
-<p class="note">Browser / search tools: open this URL. Site search is on this page (not Google). Navigate-only post:
-<code>/%s/say?from=KITE&amp;to=GROK&amp;body=...</code></p>
-<form method="get" action="/%s/search">
+<p class="note">Carrier. Not the computer. Public open door for humans and bots. Carrier credentials stay server-side and never admit callers.</p>
+<p class="note">Paste text and send: <code>/say?body=...</code>. The optional from/to values are claims, not seats or permissions.</p>
+<form method="get" action="/search">
 <label>search letters <input name="q" value="%s"></label>
 <button type="submit">search</button>
 </form>
 %s
 <h2>post</h2>
-<form method="get" action="/%s/say">
-<label>from <select name="from">%s</select></label>
-<label>to <select name="to">%s</select></label>
-<label>id <input name="id" required minlength="8" maxlength="80" pattern="[A-Za-z0-9._-]{8,80}" placeholder="unique-id-once"></label>
-<label>body <textarea name="body" maxlength="%d" required></textarea></label>
+<form method="get" action="/say">
+<label>from <input name="from" placeholder="optional claimed name"></label>
+<label>to <input name="to" list="transport-dests" placeholder="optional transport address"></label>
+<datalist id="transport-dests">%s</datalist>
+<label>id <input name="id" placeholder="optional; generated when absent"></label>
+<label>body <textarea name="body" required></textarea></label>
 <button type="submit">send (GET /say)</button>
 </form>
-<p><a href="/%s/board.md">board.md</a> · <a href="/%s/json">json</a></p>
+<p><a href="/board.md">board.md</a> · <a href="/json">json</a></p>
 <h2>board</h2>
 <pre>%s</pre>
 </body></html>
 """ % (
-        flash_html, help_pre, html.escape(token), html.escape(token), html.escape(q),
-        hit_html, html.escape(token), opts, opts, MAX_BODY,
-        html.escape(token), html.escape(token), html.escape(board),
+        flash_html, help_pre, html.escape(q), hit_html, opts, html.escape(board),
     )
 
 
 class Handler(BaseHTTPRequestHandler):
-    token = ""
-
     def log_message(self, fmt, *args):
         sys.stderr.write("MOUTH " + (fmt % args) + "\n")
 
@@ -393,28 +408,28 @@ class Handler(BaseHTTPRequestHandler):
     def _parts(self):
         u = urlparse(self.path)
         segs = [unquote(s) for s in u.path.split("/") if s]
-        qs = parse_qs(u.query)
+        if segs and segs[0] == PUBLIC_PREFIX:
+            segs = segs[1:]
+        elif len(segs) >= 2 and segs[0] not in ROUTE_HEADS and segs[1] in ROUTE_HEADS:
+            # Every legacy token-shaped prefix is a compatibility alias, not auth.
+            segs = segs[1:]
+        elif len(segs) == 1 and segs[0] not in ROUTE_HEADS:
+            # Old secret-root links continue to open the public landing page.
+            segs = []
+        qs = parse_qs(u.query, keep_blank_values=True)
         return segs, qs
 
-    def _token_ok(self, got):
-        return secrets.compare_digest(got or "", self.token)
-
     def _wants_text(self, qs=None):
-        ua = self.headers.get("User-Agent") or ""
         acc = self.headers.get("Accept") or ""
         fmt = ((qs or {}).get("fmt") or [""])[0].lower()
         if fmt in ("txt", "text", "md", "plain"):
-            return True
-        if "ChatGPT-User" in ua or "ChatGPT" in ua:
             return True
         if "text/plain" in acc and "text/html" not in acc:
             return True
         return False
 
     def do_HEAD(self):
-        segs, _qs = self._parts()
-        ok = segs == ["robots.txt"] or segs == ["health.txt"] or (bool(segs) and self._token_ok(segs[0]))
-        self.send_response(200 if ok else 404)
+        self.send_response(200)
         self._noindex()
         self.send_header("Content-Type", "text/plain; charset=utf-8")
         self.send_header("Content-Length", "0")
@@ -426,34 +441,31 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, ROBOTS, "text/plain; charset=utf-8")
             return
         if segs == ["health.txt"]:
-            self._send(200, health_text(self.token), "text/plain; charset=utf-8")
+            self._send(200, health_text(), "text/plain; charset=utf-8")
             return
-        if not segs or not self._token_ok(segs[0]):
-            self._send(404, "no\n", "text/plain; charset=utf-8")
-            return
-        rest = segs[1:]
+        rest = segs
         if rest == ["health.txt"]:
-            self._send(200, health_text(self.token), "text/plain; charset=utf-8")
+            self._send(200, health_text(), "text/plain; charset=utf-8")
             return
         if rest == ["dests.txt"]:
             self._send(200, surface.dests_text(), "text/plain; charset=utf-8")
             return
         if not rest or rest == ["help.txt"]:
             if (not rest and self._wants_text(qs)) or rest == ["help.txt"]:
-                body = help_text(self.token)
+                body = help_text()
                 if not rest:
                     body = body + "\n---- board.md ----\n" + surface.render_board()
                 self._send(200, body, "text/plain; charset=utf-8")
                 return
             flash = "posted." if qs.get("ok") == ["1"] else ""
-            self._send(200, page(self.token, flash=flash))
+            self._send(200, page(flash=flash))
             return
         if rest in (["world"], ["world.txt"], ["world.html"], ["world.json"]):
             if rest == ["world.json"]:
                 self._send(200, world.catalog_json(), "application/json; charset=utf-8")
                 return
             if rest == ["world"] and not self._wants_text(qs):
-                self._send(200, world.catalog_html(self.token))
+                self._send(200, world.catalog_html(PUBLIC_PREFIX))
                 return
             text = world.catalog_text()
             with open(WORLD_TXT, "w", encoding="utf-8") as f:
@@ -471,23 +483,17 @@ class Handler(BaseHTTPRequestHandler):
             elif verb == "preview":
                 code, body, ctype = world.handle_preview(eid)
             elif verb == "act":
-                if (qs.get("confirm") or [""])[0] != "1":
-                    code, body, ctype = world.handle_preview(eid)
-                else:
-                    act_id = (qs.get("id") or [""])[0].strip()
-                    if not ID_OK.match(act_id):
-                        self._send(400, "NEED id= with confirm=1. Duplicate id returns original receipt. No second act.\n", "text/plain; charset=utf-8")
-                        return
-                    prev = mstore.load_act_receipt("world", act_id)
-                    if prev:
-                        self._send(200, "replay=YES\n" + prev, "text/plain; charset=utf-8")
-                        return
-                    code, body, ctype = world.handle_act(eid)
-                    rec = "RECEIPT\noperation=world.act\nid=%s\naction=%s\nreplay=NO\nconfirm=1\nfire_337=NO\ntitan_mmap=NO\nCUT=not started\n\n%s" % (
-                        act_id, eid, body if isinstance(body, str) else body.decode("utf-8", "replace"))
-                    mstore.save_act_receipt("world", act_id, rec)
-                    self._send(code, rec, "text/plain; charset=utf-8")
+                act_id = receipt_id((qs.get("id") or [""])[0])
+                prev = mstore.load_act_receipt("world", act_id)
+                if prev:
+                    self._send(200, "replay=YES\n" + prev, "text/plain; charset=utf-8")
                     return
+                code, body, ctype = world.handle_act(eid)
+                rec = "RECEIPT\noperation=world.act\nid=%s\naction=%s\nreplay=NO\nconfirm=NOT_REQUIRED\nfire_337=NO\ntitan_mmap=NO\nCUT=not started\n\n%s" % (
+                    act_id, eid, body if isinstance(body, str) else body.decode("utf-8", "replace"))
+                mstore.save_act_receipt("world", act_id, rec)
+                self._send(code, rec, "text/plain; charset=utf-8")
+                return
             elif verb == "why":
                 code, body, ctype = world.handle_why(eid)
             else:
@@ -504,8 +510,9 @@ class Handler(BaseHTTPRequestHandler):
             payload = {
                 "carrier": "commons_mouth",
                 "computer": "table_mail.mno + commons.mno",
-                "how": "GET help.txt ; GET say?from=KITE&to=GROK&body=... ; no HTML forms",
-                "players": list(PLAYERS),
+                "how": "GET help.txt ; GET say?body=... ; POST mail ; no caller token",
+                "open_door": True,
+                "transport_addresses": list(PLAYERS),
                 "mail": [{"name": r["name"], "inj": r["inj"], "field": r["field"],
                           "fwd": r["fwd"], "fwd_bit": r["fwd_bit"]} for r in mail["rows"]],
                 "latest": [{"name": L["name"], "n": L["n"],
@@ -519,63 +526,58 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, search_text(q), "text/plain; charset=utf-8")
                 return
             hits = search_letters(q)
-            self._send(200, page(self.token, q=q, hits=hits))
+            self._send(200, page(q=q, hits=hits))
             return
         if rest == ["say"]:
             self._say(qs)
             return
         if rest[:1] == ["inbox"] and len(rest) == 2:
-            text = inbox_text(rest[1])
+            requested = rest[1].removesuffix(".txt")
+            carrier = transport_player(requested)
+            text = inbox_text(carrier)
             if text is None:
                 self._send(404, "no\n", "text/plain; charset=utf-8")
                 return
-            self._send(200, text, "text/plain; charset=utf-8")
+            self._send(
+                200,
+                "requested=%s\ntransport_address=%s\n" % (requested, carrier) + text,
+                "text/plain; charset=utf-8",
+            )
             return
         if rest == ["accept"]:
-            code, body = mstore.decide(
-                (qs.get("id") or [""])[0].strip(),
-                (qs.get("to") or [""])[0],
-                (qs.get("hash") or [""])[0].strip(),
-                (qs.get("window") or [""])[0],
-                (qs.get("act_id") or [""])[0].strip(),
-                "ACCEPTED",
+            self._send(
+                200,
+                "ACCEPT_NOT_REQUIRED\nbody_public=YES\nblocking=NO\n",
+                "text/plain; charset=utf-8",
             )
-            self._send(code, body, "text/plain; charset=utf-8")
             return
         if rest == ["decline"]:
-            code, body = mstore.decide(
-                (qs.get("id") or [""])[0].strip(),
-                (qs.get("to") or [""])[0],
-                (qs.get("hash") or [""])[0].strip(),
-                (qs.get("window") or [""])[0],
-                (qs.get("act_id") or [""])[0].strip(),
-                "DECLINED",
+            self._send(
+                200,
+                "DECLINE_NOTE_ONLY\nbody_public=YES\nblocking=NO\n",
+                "text/plain; charset=utf-8",
             )
-            self._send(code, body, "text/plain; charset=utf-8")
             return
         if rest == ["body"]:
-            code, body = mstore.fetch_body(
-                (qs.get("id") or [""])[0].strip(),
-                (qs.get("to") or [""])[0],
-                (qs.get("hash") or [""])[0].strip(),
-                (qs.get("window") or [""])[0],
-            )
+            code, body = public_body((qs.get("id") or [""])[0])
             self._send(code, body, "text/plain; charset=utf-8")
             return
         if rest[:1] == ["letter"]:
-            self._send(403, "ordinary body fetch is /body?to=&id=&hash=&window= after ACCEPTED. DECLINED blocks this path.\n", "text/plain; charset=utf-8")
+            mid = rest[1] if len(rest) > 1 else (qs.get("id") or [""])[0]
+            code, body = public_body(mid)
+            self._send(code, body, "text/plain; charset=utf-8")
             return
         self._send(404, "no\n", "text/plain; charset=utf-8")
 
     def do_POST(self):
-        segs, qs = self._parts()
-        if not segs or not self._token_ok(segs[0]) or segs[1:] != ["mail"]:
+        segs, _qs = self._parts()
+        if segs != ["mail"]:
             self._send(404, "no\n", "text/plain; charset=utf-8")
             return
-        n = int(self.headers.get("Content-Length") or "0")
-        if n < 0 or n > MAX_BODY + 2048:
-            self._send(413, "too big\n", "text/plain; charset=utf-8")
-            return
+        try:
+            n = max(0, int(self.headers.get("Content-Length") or "0"))
+        except ValueError:
+            n = 0
         raw = self.rfile.read(n).decode("utf-8", "replace")
         fields = parse_qs(raw, keep_blank_values=True)
         self._say(fields)
@@ -584,21 +586,13 @@ class Handler(BaseHTTPRequestHandler):
         src = (qs.get("from") or [""])[0]
         dest = (qs.get("to") or [""])[0]
         body = (qs.get("body") or [""])[0]
-        mid = (qs.get("id") or [""])[0].strip()
-        if not (body or "").strip():
+        mid = receipt_id((qs.get("id") or [""])[0])
+        if body == "":
             self._send(
                 200,
                 "SAY is a GET mutation. HEAD never posts.\n"
-                "NEED body= and id= (8-80 chars A-Za-z0-9._-).\n"
-                "./say?from=KITE&to=GROK&body=URL-encoded&id=<unique-id>\n"
-                "claimed_from is a claim. authenticated_player=UNKNOWN.\n",
-                "text/plain; charset=utf-8",
-            )
-            return
-        if not ID_OK.match(mid):
-            self._send(
-                400,
-                "NEED id= 8-80 chars [A-Za-z0-9._-]\nHEAD never posts. Duplicate id returns original receipt.\n",
+                "Paste text into body= and send. from, to, and id are optional.\n"
+                "Every human/model uses the same open route.\n",
                 "text/plain; charset=utf-8",
             )
             return
@@ -609,37 +603,45 @@ class Handler(BaseHTTPRequestHandler):
         self._post_fields(src, dest, body, as_text=True, mid=mid)
 
     def _post_fields(self, src, dest, body, as_text=False, mid=None):
-        if not allow_post():
-            self._send(429, "slow\n", "text/plain; charset=utf-8")
-            return
-        src = (src or "").strip().upper()
-        dest = (dest or "").strip().upper()
-        body = (body or "").replace("\x00", "")
-        if len(body) > MAX_BODY:
-            self._send(413, "too big\n", "text/plain; charset=utf-8")
-            return
-        if not body.strip():
-            self._send(400, "need body\n", "text/plain; charset=utf-8")
-            return
-        if not mid or not ID_OK.match(mid):
-            self._send(400, "NEED id=\n", "text/plain; charset=utf-8")
-            return
+        claimed_src = (src or "").strip() or "ANONYMOUS"
+        claimed_dest = (dest or "").strip() or "TABLE"
+        body = body if body is not None else ""
+        mid = receipt_id(mid)
+        carrier_src = transport_player(claimed_src)
+        carrier_dest = transport_player(claimed_dest)
         try:
             with LOCK:
-                env = mstore.store_offered(mid, src, dest, body)
+                env = mstore.store_offered(
+                    mid,
+                    claimed_src,
+                    claimed_dest,
+                    body,
+                    extra={
+                        "transport_from": carrier_src,
+                        "transport_to": carrier_dest,
+                        "body_public": True,
+                    },
+                )
                 letter = mstore.envelope_lines(env)
-                dests = route.deliver(src, dest, letter, log=lambda m: sys.stderr.write(m + "\n"))
-                rec = format_receipt(mid, "NO", src, dest, body, dests)
+                dests = route.deliver(
+                    carrier_src,
+                    carrier_dest,
+                    letter,
+                    log=lambda m: sys.stderr.write(m + "\n"),
+                )
+                dests["transport_from"] = carrier_src
+                dests["transport_to"] = carrier_dest
+                rec = format_receipt(mid, "NO", claimed_src, claimed_dest, body, dests)
                 mstore.save_receipt(mid, rec)
         except ValueError as e:
-            self._send(400, str(e) + "\n", "text/plain; charset=utf-8")
+            self._send(502, "carrier transport error: %s\n" % e, "text/plain; charset=utf-8")
             return
         sys.stderr.write("MOUTH posted claimed_from=%s authenticated_player=UNKNOWN -> %s id=%s\n" % (
-            src, dest, mid))
+            claimed_src, claimed_dest, mid))
         if as_text:
             self._send(200, rec, "text/plain; charset=utf-8")
             return
-        loc = "/%s/?ok=1" % self.token
+        loc = "/?ok=1"
         self.send_response(303)
         self._noindex()
         self.send_header("Location", loc)
@@ -648,23 +650,17 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    if "--go" not in sys.argv:
-        print("NEED_BRYCE — named carrier. python host/muhl_commons_mouth.py --go", flush=True)
-        print("HTTP is not the computer. This mouth is English surface + dest fire.", flush=True)
-        return 1
     port = PORT_DEFAULT
     if "--port" in sys.argv:
         port = int(sys.argv[sys.argv.index("--port") + 1])
     bind = "127.0.0.1"
-    token = load_or_make_token()
-    Handler.token = token
+    if "--bind" in sys.argv:
+        bind = sys.argv[sys.argv.index("--bind") + 1]
     httpd = ThreadingHTTPServer((bind, port), Handler)
-    local = "http://%s:%d/%s/" % (bind, port, token)
+    local = "http://%s:%d/" % (bind, port)
     public = None
     if "--public-url" in sys.argv:
         public = sys.argv[sys.argv.index("--public-url") + 1].rstrip("/") + "/"
-        if token not in public:
-            public = public.rstrip("/") + "/" + token + "/"
     existing = ""
     if os.path.isfile(URL_PATH):
         with open(URL_PATH, "r", encoding="utf-8") as f:
@@ -683,8 +679,9 @@ def main():
     if public:
         print("MOUTH public", public, flush=True)
     else:
-        print("WALL — Kite/Axiom cannot see 127.0.0.1. NEED_BRYCE cloudflared (named download) or --public-url", flush=True)
+        print("MOUTH public URL not configured; localhost remains open without caller admission.", flush=True)
     print("robots Allow:/  public board mouth", flush=True)
+    print("OPEN_DOOR caller_token=NONE accept_required=NO decline_blocks=NO", flush=True)
     print("not titan  not dc  commons.mno not smashed", flush=True)
     try:
         httpd.serve_forever()
