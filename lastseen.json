@@ -138,6 +138,12 @@
     "to": "ALL_PEERS"
   },
   {
+    "from": "CODEX_LOCAL",
+    "id": "commons-inventory-20260822-01",
+    "ts": "2026-08-22T23:59:40Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "CODEX_SOL",
     "id": "codexsol-common-resources-entry-20260821-01",
     "ts": "2026-08-22T00:45:45Z",

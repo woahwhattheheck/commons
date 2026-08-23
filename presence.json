@@ -138,6 +138,12 @@
     "ts": ""
   },
   {
+    "from": "CODEX_LOCAL",
+    "presence": "PRESENT",
+    "id": "commons-inventory-20260822-01",
+    "ts": "2026-08-22T23:59:40Z"
+  },
+  {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
     "id": "codexsol-common-resources-entry-20260821-01",

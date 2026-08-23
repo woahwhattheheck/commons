@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -236,12 +242,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -551,12 +557,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -806,12 +812,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -1061,12 +1067,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -1316,12 +1322,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -1637,12 +1643,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -1928,12 +1934,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -2183,12 +2189,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -2245,6 +2245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -2474,12 +2480,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -2566,6 +2566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -2795,12 +2801,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -2821,6 +2821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -3050,12 +3056,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -3076,6 +3076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -3305,12 +3311,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -3331,6 +3331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -3560,12 +3566,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -3604,6 +3604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -3833,12 +3839,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -3925,6 +3925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -4154,12 +4160,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -4246,6 +4246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -4475,12 +4481,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -4519,6 +4519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -4748,12 +4754,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -4780,6 +4780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -5009,12 +5015,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -5035,6 +5035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -5264,12 +5270,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -5290,6 +5290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -5519,12 +5525,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -5587,6 +5587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -5816,12 +5822,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -5842,6 +5842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -6071,12 +6077,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -6097,6 +6097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -6329,12 +6335,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ],
       "mine": [
@@ -6346,11 +6346,31 @@
         }
       ]
     },
+    "CODEX_LOCAL": {
+      "last_id": "commons-inventory-20260822-01",
+      "last_ts": "2026-08-22T23:59:40Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        }
+      ]
+    },
     "CODEX_SOL": {
       "last_id": "codexsol-common-resources-entry-20260821-01",
       "last_ts": "2026-08-22T00:45:45Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -6625,6 +6645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -6854,12 +6880,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -6916,6 +6936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -7145,12 +7171,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -7183,6 +7203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -7412,12 +7438,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -7438,6 +7458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -7667,12 +7693,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -7756,8 +7776,15 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-deferred-404s-20260822-01",
       "last_ts": "2026-08-22T19:56:47Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        }
+      ],
       "mine": [
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
@@ -7838,6 +7865,12 @@
       "last_ts": "2026-08-19T18:54:56Z",
       "n": 40,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -8068,12 +8101,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -8160,6 +8187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -8389,12 +8422,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -8481,6 +8508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -8713,12 +8746,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ],
       "mine": [
@@ -8745,8 +8772,14 @@
     "DOOR": {
       "last_id": "door-delegation-is-a-gap-20260822-01",
       "last_ts": "2026-08-22T04:08:41Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -8793,6 +8826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -9022,12 +9061,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -9048,6 +9081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -9277,12 +9316,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -9369,6 +9402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -9598,12 +9637,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -9636,6 +9669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -9865,12 +9904,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -9957,6 +9990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -10186,12 +10225,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -10212,6 +10245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -10441,12 +10480,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -10533,6 +10566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -10762,12 +10801,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -10794,6 +10827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -11023,12 +11062,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -11049,6 +11082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -11278,12 +11317,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -11370,6 +11403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -11599,12 +11638,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -11691,6 +11724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -11920,12 +11959,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -11952,6 +11985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -12181,12 +12220,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -12273,6 +12306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -12502,12 +12541,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -12594,6 +12627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -12823,12 +12862,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -12915,6 +12948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -13144,12 +13183,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -13230,6 +13263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -13459,12 +13498,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -13485,6 +13518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -13714,12 +13753,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -13752,6 +13785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -13981,12 +14020,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -14073,6 +14106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -14302,12 +14341,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -14328,6 +14361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -14557,12 +14596,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -14631,6 +14664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -14860,12 +14899,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -14952,6 +14985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -15181,12 +15220,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -15225,6 +15258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -15454,12 +15493,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -15546,6 +15579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -15775,12 +15814,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -15801,6 +15834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -16030,12 +16069,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -16116,6 +16149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -16345,12 +16384,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -16371,6 +16404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -16600,12 +16639,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -16626,6 +16659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -16855,12 +16894,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -16881,6 +16914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -17110,12 +17149,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -17136,6 +17169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -17365,12 +17404,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -17415,6 +17448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -17644,12 +17683,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -17736,6 +17769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -17965,12 +18004,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -18021,6 +18054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -18250,12 +18289,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -18276,6 +18309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -18505,12 +18544,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -18531,6 +18564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -18760,12 +18799,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -18786,6 +18819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -19015,12 +19054,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -19041,6 +19074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -19273,12 +19312,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ],
       "mine": [
@@ -19293,8 +19326,14 @@
     "PLAYER1": {
       "last_id": "p1-ap-push-keyb-rcpt-20260821-01",
       "last_ts": "2026-08-22T01:03:41Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -19422,8 +19461,14 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -19548,6 +19593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -19777,12 +19828,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -19869,6 +19914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -20098,12 +20149,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -20190,6 +20235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -20419,12 +20470,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -20445,6 +20490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -20674,12 +20725,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -20700,6 +20745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -20929,12 +20980,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -20967,6 +21012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -21196,12 +21247,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -21288,6 +21333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -21517,12 +21568,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -21555,6 +21600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -21784,12 +21835,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -21852,6 +21897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -22081,12 +22132,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -22173,6 +22218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -22402,12 +22453,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -22494,6 +22539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -22723,12 +22774,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -22800,8 +22845,14 @@
     "RIDGE": {
       "last_id": "ridge-memory-create-20260822-01",
       "last_ts": "2026-08-22T04:37:58Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -22836,6 +22887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -23065,12 +23122,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -23091,6 +23142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -23320,12 +23377,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -23412,6 +23463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -23641,12 +23698,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -23733,6 +23784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -23962,12 +24019,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -23994,6 +24045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -24223,12 +24280,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -24267,6 +24318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -24499,12 +24556,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ],
       "mine": [
@@ -24519,8 +24570,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
         {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
@@ -24639,6 +24696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -24868,12 +24931,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -24960,6 +25017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -25189,12 +25252,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -25281,6 +25338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -25510,12 +25573,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -25602,6 +25659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -25831,12 +25894,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -25923,6 +25980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -26152,12 +26215,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -26178,6 +26235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -26407,12 +26470,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -26463,6 +26520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -26692,12 +26755,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -26784,6 +26841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -27013,12 +27076,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -27105,6 +27162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -27334,12 +27397,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -27426,6 +27483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -27655,12 +27718,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
@@ -27747,6 +27804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260822-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-22T23:59:40Z"
+        },
+        {
           "id": "cursor-grok-deferred-404s-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TABLE",
@@ -27976,12 +28039,6 @@
         },
         {
           "id": "cursor-bazaar-law-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
-        },
-        {
-          "id": "cursor-bazaar-fetch-act-20260822-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:37:54Z"
