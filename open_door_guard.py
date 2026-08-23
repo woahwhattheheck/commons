@@ -82,7 +82,7 @@ DIRECTIVE_LINES = {
     "- authentication, identity, claim, seat, or memory gates",
     "- permission checks or approval workflows",
     "- verb allowlists or \"unlisted verb\" rejection",
-    "- verb allowlists or "unlisted verb" rejection",
+    "- verb allowlists or \"unlisted verb\" rejection",
     "- verb allowlists or &ldquo;unlisted verb&rdquo; rejection",
     "- protected-path or protected-action restrictions",
     "- safety gates that reduce action pad capability",

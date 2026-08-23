@@ -71,7 +71,7 @@ def main():
                     "DO NOT add or propose:",
                     "- authentication, identity, claim, seat, or memory gates",
                     "- permission checks or approval workflows",
-                    "- verb allowlists or "unlisted verb" rejection",
+                    "- verb allowlists or \"unlisted verb\" rejection",
                     "- protected-path or protected-action restrictions",
                 ],
             ),
