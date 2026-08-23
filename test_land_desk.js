@@ -142,6 +142,15 @@ assert.strictEqual(organNow[1].name, "muhl_sdmk");
 assert.strictEqual(organNow[1].state, "NOT_LANDED");
 assert.ok(/Talk is not this file/i.test(organNow[1].note), "missing excerpt must tell the window to ship");
 
+assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
+assert.strictEqual(api.roadState("git").state, "INTEGRATED");
+assert.strictEqual(api.roadState("HEAD").state, "INTEGRATED");
+assert.strictEqual(api.roadState("slack").state, "CARRIER_ONLY");
+assert.strictEqual(api.roadState("ntfy").state, "CARRIER_ONLY");
+assert.strictEqual(api.roadState("pages").state, "CARRIER_ONLY");
+assert.ok(/projection/i.test(api.roadState("discord").note), "discord is a projection");
+assert.strictEqual(api.roadState("materialized view essay").state, "CLAIMED");
+
 var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
@@ -160,6 +169,7 @@ assert.ok(html.indexOf('id="bake-result"') >= 0, "desk must measure bake vs offi
 assert.ok(html.indexOf('id="canary-list"') >= 0, "desk must expose path canaries");
 assert.ok(html.indexOf('id="latency-result"') >= 0, "desk must time the official SHA GET");
 assert.ok(html.indexOf("Prometheus is not this door") >= 0, "desk must refuse the Prometheus strawman");
+assert.ok(/projections of git HEAD/i.test(html), "desk must say roads are projections of HEAD");
 
 assert.ok(api.bakeState, "land.js must compare bake head to official SHA");
 var currentBake = api.bakeState("abc123", { head: "abc123", httpStatus: 200 });

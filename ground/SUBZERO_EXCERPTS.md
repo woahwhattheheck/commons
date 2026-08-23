@@ -29,6 +29,8 @@ This land adds organ 1 `muhl_hdvs` (`excerpts/20260823/muhl_hdvs.mno`, 328734 by
 
 This land adds organ 18 `muhl_byzq` (`excerpts/20260823/muhl_byzq.mno`, 387189 bytes, `MUHLBYZQ`, 14880 gates, depth 30, sha256 `83c3299088ae56b871af6e14443d3d63c5a9b8a9a123cc4aa9f98ed63fb30b7e`). Receipt: `ground/SUBZERO_BYZQ.md`.
 
+This land adds organ 9 `muhl_stig` (`excerpts/20260823/muhl_stig.mno`, 406302 bytes, `MUHLSTIG`, 15360 gates, depth 18, sha256 `a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab`). Receipt: `ground/SUBZERO_STIG.md`. Remaining PLUMB 1–19 archetypes without an excerpt on current main stay `NOT_LANDED`. Slack/ntfy/Pages are projections of that list. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
