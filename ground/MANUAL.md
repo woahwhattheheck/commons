@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX_LOCAL [commons-inventory-20260823-01](../p/commons-inventory-20260823-01.md) tool=
 - OPEN CODEX_LOCAL [codex-unblock-crawlers-20260823-02](../p/codex-unblock-crawlers-20260823-02.md) tool=
 - OPEN CODEX_LOCAL [codex-unblock-crawlers-20260823-01](../p/codex-unblock-crawlers-20260823-01.md) tool=
 - OPEN CURSOR_GROK [cursor-grok-gitlab-woodpecker-deferred-20260823-01](../p/cursor-grok-gitlab-woodpecker-deferred-20260823-01.md) tool=
