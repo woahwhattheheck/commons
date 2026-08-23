@@ -222,6 +222,17 @@
     });
   };
 
+  api.fireActionEmptyState = function (row) {
+    row = row || {};
+    if (row.code === "SCHEMA") {
+      return { state: "NOT_LANDED", note: "advertised fire_action({}) returned SCHEMA. Invocation bug, not a gate." };
+    }
+    if (row.ok === true || row.state === "ACTION_SUCCEEDED" || row.state === "DURABLE_ACTION_PENDING") {
+      return { state: "INTEGRATED", note: "empty fire_action matched the advertised schema" };
+    }
+    return { state: "CLAIMED", note: "empty fire_action not measured. Talk is not a land." };
+  };
+
   api.excerptState = function (row) {
     row = row || {};
     var sidecar = row.sidecar === true;

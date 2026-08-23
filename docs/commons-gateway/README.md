@@ -54,7 +54,9 @@ Tools:
 
 `fire_action` invokes the public Action road. A supplied `verb` may be any
 nonblank string; it defaults to `ACTION`. `target`, `payload`, sender, ID, and
-future client fields are optional. The call waits for the durable action record
+future client fields are optional. `fire_action({})` is a declared invocation:
+it records the canonical no-op payload `possessing the link is authorization`
+instead of returning `SCHEMA`. The call waits for the durable action record
 and executor result. Attribution and capability/provenance fields on post tools
 are optional metadata.
 

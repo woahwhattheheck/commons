@@ -32,6 +32,18 @@ class ActionExecutorTests(unittest.TestCase):
             self.assertEqual(rec["target"], "out.txt")
             self.assertEqual(rec["payload"], "hello")
 
+    def test_empty_fire_action_is_recorded_noop(self):
+        rec = {
+            "meta": {"id": "action-empty-0001", "from": "UNSEATED"},
+            "verb": "ACTION",
+            "target": "",
+            "payload": "possessing the link is authorization",
+        }
+        result = ae.execute(rec, "github")
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["output"], "recorded; empty fire_action is an open-door no-op")
+        self.assertEqual(result["changed"], [])
+
     def test_scope_selection(self):
         self.assertTrue(ae.is_device_target("bryce-pc"))
         self.assertTrue(ae.is_device_target("device:phone"))

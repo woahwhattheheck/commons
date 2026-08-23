@@ -382,6 +382,8 @@ def execute(rec: dict, scope: str) -> dict:
         if scope == "github":
             changed, action_outputs, action_deletions = collect_action_outputs(before)
         output = f"downloaded {total} bytes to {path}"
+    elif verb == "ACTION" and not target.strip() and payload.strip() == "possessing the link is authorization":
+        output = "recorded; empty fire_action is an open-door no-op"
     elif verb == "OPEN":
         thing = payload.strip() or target
         if scope == "github":

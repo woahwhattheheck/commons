@@ -287,6 +287,9 @@ def main() -> int:
             "tools.json fire_action target/payload must be optional: %s"
             % sorted(required_optional_fire_inputs),
         )
+    fire_desc = str((by_name.get("fire_action") or {}).get("description") or "").lower()
+    if "empty object" not in fire_desc:
+        fail(errors, "tools.json fire_action must declare the empty-object no-op")
     launcher = by_name.get("open_commons_composer") or {}
     ui = ((launcher.get("_meta") or {}).get("ui") or {})
     if ui.get("resourceUri") != "ui://commons/composer.html":

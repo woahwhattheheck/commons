@@ -407,6 +407,40 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(response["structuredContent"]["git_sha"], SHA2)
         self.assertEqual(response["structuredContent"]["result"], result)
 
+    def test_fire_action_empty_object_is_declared_noop_not_schema(self):
+        verb = "ACTION"
+        target = ""
+        action_payload = cm.EMPTY_FIRE_ACTION_PAYLOAD
+        stamp = "20260821000001"
+        fingerprint = cm._sha256("\n".join((verb, target, action_payload)))[:12]
+        ident = "action-%s-%s" % (stamp, fingerprint)
+        action_body = "%s\ntarget: %s\n\n%s" % (verb, target, action_payload)
+        page = post_text(
+            "UNSEATED", "TOOLS", ident, action_body,
+            subject="COMMONS ACTION ACTION", board="TOOLS", kind="ACTION", act="ACTION", target=target,
+        )
+        result = {
+            "id": ident, "verb": "ACTION", "target": target, "scope": "github",
+            "ok": True, "output": "recorded; empty fire_action is an open-door no-op",
+            "executed_at": "2026-08-21T00:00:02Z", "changed": [],
+        }
+        gw, _, _ = gateway([
+            (SHA0, {}),
+            (SHA1, {"p/%s.md" % ident: page}),
+            (SHA2, {"p/%s.md" % ident: page, "actions/results/%s.json" % ident: json.dumps(result)}),
+        ])
+        server = cm.MCPServer(gw)
+        response = server.handle({
+            "jsonrpc": "2.0", "id": 8, "method": "tools/call",
+            "params": {"name": "fire_action", "arguments": {}},
+        })[1]["result"]
+        self.assertFalse(response["isError"])
+        self.assertNotEqual(response["structuredContent"].get("code"), "SCHEMA")
+        self.assertEqual(response["structuredContent"]["state"], "ACTION_SUCCEEDED")
+        self.assertEqual(response["structuredContent"]["id"], ident)
+        self.assertEqual(response["structuredContent"]["git_sha"], SHA2)
+        self.assertEqual(response["structuredContent"]["result"], result)
+
     def test_append_post_waits_for_exact_sha_pinned_page(self):
         carrier = FakeCarrier()
         args = declared_post_args("KITE", "TABLE", "kite-post-0001", "hello")

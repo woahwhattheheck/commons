@@ -117,6 +117,15 @@ var jamDone = api.completionStateFromText(
 );
 assert.strictEqual(jamDone.state, "INTEGRATED", "completion words still beat a jam phrase");
 
+assert.ok(api.fireActionEmptyState, "land.js must name the empty fire_action contract");
+var fireSchema = api.fireActionEmptyState({ code: "SCHEMA" });
+assert.strictEqual(fireSchema.state, "NOT_LANDED");
+assert.ok(/invocation bug/i.test(fireSchema.note), "SCHEMA on {} is the leftover bug");
+var fireOk = api.fireActionEmptyState({ ok: true, state: "ACTION_SUCCEEDED" });
+assert.strictEqual(fireOk.state, "INTEGRATED");
+var fireTalk = api.fireActionEmptyState({});
+assert.strictEqual(fireTalk.state, "CLAIMED");
+
 var talkOnly = api.excerptState({ sidecar: true, container: false });
 assert.strictEqual(talkOnly.state, "NOT_LANDED");
 assert.ok(/fabricator is not the file/i.test(talkOnly.note));
