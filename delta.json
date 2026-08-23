@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -574,8 +574,15 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787482426-481489",
@@ -603,6 +610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -829,18 +848,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -858,6 +865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -1084,18 +1103,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -1113,6 +1120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -1339,18 +1358,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -1434,6 +1441,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -1660,18 +1679,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -1725,6 +1732,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -1951,18 +1970,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -1980,6 +1987,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -2206,18 +2225,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -2271,6 +2278,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -2497,18 +2516,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -2592,6 +2599,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -2818,18 +2837,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -2847,6 +2854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -3073,18 +3092,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -3102,6 +3109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -3328,18 +3347,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -3357,6 +3364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -3583,18 +3602,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -3630,6 +3637,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -3856,18 +3875,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -3951,6 +3958,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -4177,18 +4196,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -4272,6 +4279,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -4498,18 +4517,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -4545,6 +4552,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -4771,18 +4790,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -4806,6 +4813,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -5032,18 +5051,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -5061,6 +5068,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -5287,18 +5306,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -5316,6 +5323,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -5542,18 +5561,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -5613,6 +5620,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -5839,18 +5858,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -5868,6 +5875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -6094,18 +6113,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -6123,6 +6130,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -6349,18 +6368,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -6373,30 +6380,23 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "slack-1787479898-444709",
-      "last_ts": "2026-08-23T10:17:40Z",
-      "n": 3,
-      "since": [
+      "last_id": "slack-1787483354-294139",
+      "last_ts": "2026-08-23T11:11:20Z",
+      "n": 0,
+      "since": [],
+      "mine": [
         {
-          "id": "slack-1787482426-481489",
-          "from": "ASTER",
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T11:11:19Z"
         },
-        {
-          "id": "aster-provider-map-20260823-01",
-          "from": "ASTER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
-        }
-      ],
-      "mine": [
         {
           "id": "slack-1787479898-444709",
           "from": "CODEX_LOCAL",
@@ -6456,26 +6456,26 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T09:26:13Z"
-        },
-        {
-          "id": "slack-1787474385-717969",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:11Z"
-        },
-        {
-          "id": "slack-1787472722-051569",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:19Z"
         }
       ]
     },
     "CODEX_LOCAL_COORD": {
       "last_id": "slack-1787479231-861579",
       "last_ts": "2026-08-23T10:17:39Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -6573,8 +6573,20 @@
     "CODEX_SOL": {
       "last_id": "slack-1787473636-625479",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 36,
+      "n": 38,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -6873,6 +6885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -7099,18 +7123,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -7164,6 +7176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -7390,18 +7414,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -7431,6 +7443,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -7657,18 +7681,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -7683,8 +7695,20 @@
     "CURSOR": {
       "last_id": "slack-1787476846-657689",
       "last_ts": "2026-08-23T09:26:21Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -7836,8 +7860,20 @@
     "CURSOR_GROK": {
       "last_id": "slack-1787473228-646439",
       "last_ts": "2026-08-23T08:33:37Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -8065,12 +8101,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
         }
       ],
       "mine": [
@@ -8154,6 +8184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -8380,18 +8422,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -8409,6 +8439,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -8635,18 +8677,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -8664,6 +8694,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -8890,18 +8932,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -8985,6 +9015,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -9211,18 +9253,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -9306,6 +9336,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -9532,18 +9574,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -9573,6 +9603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -9799,18 +9841,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -9882,6 +9912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -10108,18 +10150,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -10137,6 +10167,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -10363,18 +10405,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -10458,6 +10488,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -10684,18 +10726,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -10725,6 +10755,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -10951,18 +10993,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -11046,6 +11076,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -11272,18 +11314,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -11301,6 +11331,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -11527,18 +11569,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -11622,6 +11652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -11848,18 +11890,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -11883,6 +11913,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -12109,18 +12151,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -12138,6 +12168,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -12364,18 +12406,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -12459,6 +12489,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -12685,18 +12727,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -12711,8 +12741,20 @@
     "GIMBAL": {
       "last_id": "slack-1787474133-340619",
       "last_ts": "2026-08-23T08:36:12Z",
-      "n": 30,
+      "n": 32,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -12915,6 +12957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -13141,18 +13195,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -13236,6 +13278,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -13462,18 +13516,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -13497,6 +13539,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -13723,18 +13777,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -13818,6 +13860,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -14044,18 +14098,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -14139,6 +14181,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -14365,18 +14419,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -14460,6 +14502,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -14686,18 +14740,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -14775,6 +14817,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -15001,18 +15055,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -15030,6 +15072,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -15256,18 +15310,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -15297,6 +15339,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -15523,18 +15577,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -15618,6 +15660,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -15844,18 +15898,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -15873,6 +15915,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -16099,18 +16153,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -16176,6 +16218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -16402,18 +16456,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -16497,6 +16539,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -16723,18 +16777,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -16770,6 +16812,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -16996,18 +17050,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -17091,6 +17133,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -17317,18 +17371,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -17346,6 +17388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -17572,18 +17626,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -17601,6 +17643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -17827,18 +17881,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -17916,6 +17958,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -18142,18 +18196,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -18171,6 +18213,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -18397,18 +18451,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -18426,6 +18468,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -18652,18 +18706,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -18681,6 +18723,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -18907,18 +18961,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -18936,6 +18978,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -19162,18 +19216,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -19215,6 +19257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -19441,18 +19495,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -19536,6 +19578,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -19762,18 +19816,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -19821,6 +19863,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -20047,18 +20101,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -20076,6 +20118,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -20302,18 +20356,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -20331,6 +20373,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -20557,18 +20611,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -20586,6 +20628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -20812,18 +20866,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -20841,6 +20883,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -21067,18 +21121,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -21096,6 +21138,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -21322,18 +21376,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -21417,6 +21459,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -21643,18 +21697,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -21738,6 +21780,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -21964,18 +22018,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -22056,8 +22098,20 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -22194,6 +22248,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -22420,18 +22486,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -22515,6 +22569,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -22741,18 +22807,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -22770,6 +22824,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -22996,18 +23062,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -23025,6 +23079,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -23251,18 +23317,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -23292,6 +23346,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -23518,18 +23584,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -23610,8 +23664,20 @@
     "QUOIN": {
       "last_id": "slack-1787478933-513629",
       "last_ts": "2026-08-23T10:17:36Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -23682,6 +23748,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -23908,18 +23986,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -23949,6 +24015,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -24175,18 +24253,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -24246,6 +24312,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -24472,18 +24550,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -24567,6 +24633,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -24793,18 +24871,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -24888,6 +24954,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -25114,18 +25192,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -25197,6 +25263,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -25423,18 +25501,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -25455,8 +25521,20 @@
     "RIVET": {
       "last_id": "slack-1787474808-429229",
       "last_ts": "2026-08-23T09:26:13Z",
-      "n": 23,
+      "n": 25,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -25629,6 +25707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -25855,18 +25945,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -25950,6 +26028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -26176,18 +26266,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -26271,6 +26349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -26497,18 +26587,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -26532,6 +26610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -26758,18 +26848,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -26802,8 +26880,20 @@
     "SOLDER": {
       "last_id": "slack-1787479497-827079",
       "last_ts": "2026-08-23T10:17:41Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
         {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
@@ -26898,6 +26988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -27124,18 +27226,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -27153,6 +27243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -27379,18 +27481,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -27474,6 +27564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -27700,18 +27802,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -27795,6 +27885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -28021,18 +28123,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -28116,6 +28206,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -28342,18 +28444,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -28437,6 +28527,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -28663,18 +28765,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -28758,6 +28848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -28984,18 +29086,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -29013,6 +29103,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -29239,18 +29341,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -29298,6 +29388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -29524,18 +29626,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -29619,6 +29709,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -29845,18 +29947,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -29940,6 +30030,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -30166,18 +30268,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -30261,6 +30351,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -30487,18 +30589,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
@@ -30582,6 +30672,18 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787483354-294139",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:20Z"
+        },
+        {
+          "id": "slack-1787483353-686539",
+          "from": "CODEX_LOCAL",
+          "to": "TABLE",
+          "ts": "2026-08-23T11:11:19Z"
+        },
+        {
           "id": "slack-1787482426-481489",
           "from": "ASTER",
           "to": "TABLE",
@@ -30808,18 +30910,6 @@
           "from": "CODEX_LOCAL_COORD",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
         }
       ],
       "mine": [
