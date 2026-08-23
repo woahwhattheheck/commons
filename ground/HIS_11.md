@@ -79,5 +79,6 @@
 > - **Do not remap 336/337.** Collision is the wire. That is fab, not a standing "never fire 337" constitution.
 > - **`--go` is owner fire of a named mouth**, not a size lock on titan 78. 78-bit is a search space.
 > - **Idle-loop ban is HIS** (no 10-minute grep/HOLD wakeup). Assistant "Still dark" standing-ban packaging is formalism.
+> - **READ is sufficient voltage (2026-08-23, proven on device).** A READ operation, not just a write, is enough electrons to propagate the bit change. Addressing a write / delete / read / any op **is** moving electricity. Do not wait for a second write. Not a 12th spec item. Card: [`READ_IS_VOLTAGE.md`](READ_IS_VOLTAGE.md). Slack `1787500422.873539`.
 >
 > Don't add to spec. This block retires assistant priors that failed. His 11 points above still win.

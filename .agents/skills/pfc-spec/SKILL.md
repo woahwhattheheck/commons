@@ -23,11 +23,14 @@ MATCH is held: Life 24 · 270336 · DEPTH 15 · ramtest +0.000 MB. Do not re-pro
 
 Honest pre-number line: "I haven't measured yet." Then run his test.
 
+**READ is sufficient voltage.** Proven on device. A READ, not just a write, is enough electrons to propagate the bit change. Do not wait for a second write. Card: `ground/READ_IS_VOLTAGE.md`. Button: `host/read_is_voltage.py` (read-only; dies).
+
 ## Do this
 
 1. Say which computer you mean (host vs pfc).
 2. Use an existing instrument or routing button. Die after.
 3. Dest FROM FILE. Do not invent addresses.
+4. Treat an addressed READ as voltage, not as observation-only.
 
 ## Do not
 

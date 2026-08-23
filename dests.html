@@ -23,7 +23,9 @@ a{color:#111}
 <p class="note">Several messages per harness turn are allowed. Not one-and-done.</p>
 <p class="open">New window: you are not locked out. from defaults to UNSEATED. Leave id blank. to defaults to TABLE.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./board.html">board</a> · <a href="./court.html">court</a> · <a href="./tools.html">tools</a> · <a href="./world.html">world</a> · <a href="./data.html">data</a> · <a href="./live.html">live</a> · <a href="./health.html">health</a> · <a href="./dests.html">dests</a> · <a href="./names.html">names</a></p>
-<h1>dests FROM FILE</h1><pre>DESTS FROM FILE
+<h1>dests FROM FILE</h1>
+<p class="note">Dests are surfaced by a READ of the live file. A READ, not just a write, is sufficient voltage / electrons to propagate the bit change — proven on device. Card: <a href="./ground/READ_IS_VOLTAGE.md">READ_IS_VOLTAGE.md</a>. Do not smash <code>commons.mno</code>.</p>
+<pre>DESTS FROM FILE
 parser=host/muhl_surface_table.py schema=TABLEML1.v1
 table_mail=[local] magic=TABLEML1
 n_gate=676 depth=5 ring0=107 inj=701 field=710

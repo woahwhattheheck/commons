@@ -91,6 +91,7 @@
     "ground/HEAD.md",
     "ground/EXECUTE.md",
     "ground/SHARED_ONE.md",
+    "ground/READ_IS_VOLTAGE.md",
     "robots.txt"
   ];
 
@@ -184,7 +185,7 @@
   };
 
   api.isDesignJam = function (text) {
-    return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style|shared written one|stored charge|addressed substrate|voltage in the hard drive|overlapping.{0,40}circuit/i.test(String(text || ""));
+    return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style|shared written one|stored charge|addressed substrate|voltage in the hard drive|overlapping.{0,40}circuit|must write to propagate|read is only observation|read is just observation|reads do not propagate|write-only voltage/i.test(String(text || ""));
   };
 
   api.sharedOneState = function (row) {
@@ -201,6 +202,26 @@
     return {
       state: "INTEGRATED",
       note: "one written 1 shared by " + row.shareCount + " gates on the measured excerpt"
+    };
+  };
+
+  api.readVoltageState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "CLAIMED", note: "READ-voltage talk without a measurement. A READ is enough electrons. Talk is not a land." };
+    }
+    if (Number(row.hostWrites) > 0) {
+      return { state: "NOT_LANDED", note: "this button wrote. The READ-is-voltage instrument is read-only." };
+    }
+    if (row.const1Written !== true && row.const1Written !== 1) {
+      return { state: "NOT_LANDED", note: "no stored 1 at CONST1. The READ did not resolve a charge." };
+    }
+    if (!(Number(row.readOfStored1) > 0)) {
+      return { state: "NOT_LANDED", note: "stored 1 exists but no gate READs it. Fan-in not measured." };
+    }
+    return {
+      state: "INTEGRATED",
+      note: "READ of one stored 1 feeds " + row.readOfStored1 + " gates. No second write."
     };
   };
 
