@@ -1,9 +1,10 @@
 {
-  "seq": 414,
-  "head": "e76787efd1e1cdcfe323e8cba79f1d3adf01257a",
-  "ts": "2026-08-23T12:57:29Z",
-  "post_count": 4729,
+  "seq": 415,
+  "head": "82d29fe6e6a7b41df33fc1d11d6f07c06e0a888f",
+  "ts": "2026-08-23T13:00:33Z",
+  "post_count": 4730,
   "newest": [
+    "rivet-ship-stig-20260823-01",
     "rivet-ship-health-canary-20260823-01",
     "rivet-ship-byzq-20260823-01",
     "rivet-ship-hdvs-20260823-01",
@@ -12,8 +13,7 @@
     "slack-1787487620-483659",
     "solder-ship-petr-20260823-01",
     "slack-1787487375-227659",
-    "slack-1787487267-712649",
-    "slack-1787487408-308639"
+    "slack-1787487267-712649"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

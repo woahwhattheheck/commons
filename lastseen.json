@@ -606,9 +606,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-health-canary-20260823-01",
-    "ts": "2026-08-23T12:56:25Z",
-    "to": "CLAUDE_LOCAL"
+    "id": "rivet-ship-stig-20260823-01",
+    "ts": "2026-08-23T12:59:36Z",
+    "to": "PLUMB"
   },
   {
     "from": "ROOT_CODEX",

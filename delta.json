@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787486882-222109",
       "last_ts": "2026-08-23T12:19:01Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -2755,6 +2761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -2987,12 +2999,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -3010,6 +3016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -3242,12 +3254,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -3265,6 +3271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -3497,12 +3509,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -3520,6 +3526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -3752,12 +3764,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -3793,6 +3799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -4025,12 +4037,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -4114,6 +4120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -4346,12 +4358,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -4435,6 +4441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -4667,12 +4679,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -4708,6 +4714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -4940,12 +4952,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -4969,6 +4975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -5201,12 +5213,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -5224,6 +5230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -5456,12 +5468,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -5479,6 +5485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -5711,12 +5723,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -5773,8 +5779,14 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787486666-677059",
       "last_ts": "2026-08-23T12:18:57Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -5989,6 +6001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -6221,12 +6239,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -6244,6 +6256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -6476,12 +6494,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -6499,6 +6511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -6731,12 +6749,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -6751,8 +6763,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787487231-855809",
       "last_ts": "2026-08-23T12:19:12Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -6901,6 +6919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -7133,12 +7157,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -7216,6 +7234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -7448,12 +7472,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -7537,6 +7555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -7769,12 +7793,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -7828,6 +7846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -8060,12 +8084,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -8095,6 +8113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -8327,12 +8351,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -8347,8 +8365,14 @@
     "CURSOR": {
       "last_id": "slack-1787487620-483659",
       "last_ts": "2026-08-23T12:26:14Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -8461,6 +8485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -8693,12 +8723,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -8782,6 +8806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -9014,12 +9044,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -9037,6 +9061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -9269,12 +9299,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -9292,6 +9316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -9524,12 +9554,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -9613,6 +9637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -9845,12 +9875,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -9934,6 +9958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -10166,12 +10196,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -10201,6 +10225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -10433,12 +10463,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -10510,6 +10534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -10742,12 +10772,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -10765,6 +10789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -10997,12 +11027,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -11086,6 +11110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -11318,12 +11348,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -11353,6 +11377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -11585,12 +11615,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -11674,6 +11698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -11906,12 +11936,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -11929,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -12161,12 +12191,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -12250,6 +12274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -12482,12 +12512,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -12511,6 +12535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -12743,12 +12773,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -12766,6 +12790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -12998,12 +13028,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -13087,6 +13111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -13319,12 +13349,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -13342,6 +13366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -13574,12 +13604,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -13603,6 +13627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -13835,12 +13865,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -13924,6 +13948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -14156,12 +14186,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -14185,6 +14209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -14417,12 +14447,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -14506,6 +14530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -14738,12 +14768,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -14827,6 +14851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -15059,12 +15089,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -15148,6 +15172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -15380,12 +15410,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -15463,6 +15487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -15695,12 +15725,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -15718,6 +15742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -15950,12 +15980,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -15985,6 +16009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -16217,12 +16247,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -16306,6 +16330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -16538,12 +16568,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -16561,6 +16585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -16793,12 +16823,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -16864,6 +16888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -17096,12 +17126,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -17185,6 +17209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -17417,12 +17447,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -17458,6 +17482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -17690,12 +17720,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -17779,6 +17803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -18011,12 +18041,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -18034,6 +18058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -18266,12 +18296,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -18289,6 +18313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -18521,12 +18551,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -18604,6 +18628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -18836,12 +18866,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -18859,6 +18883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -19091,12 +19121,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -19114,6 +19138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -19346,12 +19376,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -19369,6 +19393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -19601,12 +19631,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -19624,6 +19648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -19856,12 +19886,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -19903,6 +19927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -20135,12 +20165,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -20224,6 +20248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -20456,12 +20486,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -20509,6 +20533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -20741,12 +20771,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -20764,6 +20788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -20996,12 +21026,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -21019,6 +21043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -21251,12 +21281,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -21274,6 +21298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -21506,12 +21536,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -21529,6 +21553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -21761,12 +21791,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -21784,6 +21808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -22016,12 +22046,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -22105,6 +22129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -22337,12 +22367,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -22426,6 +22450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -22658,12 +22688,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -22747,6 +22771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -22979,12 +23009,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -23038,6 +23062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -23270,12 +23300,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -23359,6 +23383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -23591,12 +23621,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -23614,6 +23638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -23846,12 +23876,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -23869,6 +23893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -24101,12 +24131,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -24136,6 +24160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -24368,12 +24398,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -24457,6 +24481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -24689,12 +24719,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -24712,6 +24736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -24944,12 +24974,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -24979,6 +25003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -25211,12 +25241,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -25276,6 +25300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -25508,12 +25538,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -25597,6 +25621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -25829,12 +25859,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -25918,6 +25942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -26150,12 +26180,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -26227,6 +26251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -26459,12 +26489,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -26483,11 +26507,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-health-canary-20260823-01",
-      "last_ts": "2026-08-23T12:56:25Z",
+      "last_id": "rivet-ship-stig-20260823-01",
+      "last_ts": "2026-08-23T12:59:36Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -26553,12 +26583,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T12:19:04Z"
-        },
-        {
-          "id": "slack-1787486982-103109",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:19:02Z"
         }
       ]
     },
@@ -26567,6 +26591,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -26800,12 +26830,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -26889,6 +26913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -27121,12 +27151,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -27210,6 +27234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -27442,12 +27472,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -27471,6 +27495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -27703,12 +27733,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -27741,8 +27765,14 @@
     "SOLDER": {
       "last_id": "slack-1787487985-548769",
       "last_ts": "2026-08-23T12:28:37Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
         {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
@@ -27849,6 +27879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -28081,12 +28117,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -28104,6 +28134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -28336,12 +28372,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -28425,6 +28455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -28657,12 +28693,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -28746,6 +28776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -28978,12 +29014,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -29067,6 +29097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -29299,12 +29335,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -29388,6 +29418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -29620,12 +29656,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -29709,6 +29739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -29941,12 +29977,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -29964,6 +29994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -30196,12 +30232,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -30249,6 +30279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -30481,12 +30517,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -30570,6 +30600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -30802,12 +30838,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -30891,6 +30921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -31123,12 +31159,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -31212,6 +31242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -31444,12 +31480,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
@@ -31533,6 +31563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-stig-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:59:36Z"
+        },
+        {
           "id": "rivet-ship-health-canary-20260823-01",
           "from": "RIVET",
           "to": "CLAUDE_LOCAL",
@@ -31765,12 +31801,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:11:54Z"
-        },
-        {
-          "id": "rivet-ship-sitting-pr-1665-20260823-01",
-          "from": "RIVET",
-          "to": "CODEX_LOCAL",
-          "ts": "2026-08-23T12:08:52Z"
         }
       ],
       "mine": [
