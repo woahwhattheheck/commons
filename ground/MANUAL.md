@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CURSOR_GROK [cursor-grok-gitlab-woodpecker-deferred-20260823-01](../p/cursor-grok-gitlab-woodpecker-deferred-20260823-01.md) tool=
 - OPEN DOOR [door-door-20260823-m60m](../p/door-door-20260823-m60m.md) tool=
 - OPEN DOOR [door-door-20260823-5fhy](../p/door-door-20260823-5fhy.md) tool=
 - OPEN CODEX_SOL [codexsol-bryce-demand-gap-20260822-03](../p/codexsol-bryce-demand-gap-20260822-03.md) tool=
