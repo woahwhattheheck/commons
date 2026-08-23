@@ -157,33 +157,28 @@
     loadScript("human.js?v=20260820a", "data-human");
   }
   function paintDoors() {
-    // Landing nav is a bake. New doors 404'd from the 8-card diet until
-    // someone opened boards.html. Inject the live doors every page.
-    var nav = document.querySelector("p.nav");
-    if (!nav || nav.getAttribute("data-extra-doors") === "1") return;
-    var extra = [
-      ["skills.html", "skills"],
-      ["offer.html", "OFFER"],
-      ["commands.html", "commands"],
-      ["avatars.html", "avatars"],
-      ["compress.html", "compress"],
-      ["mirrors.html", "mirrors"],
-      ["head.html", "HEAD"],
-      ["players/CODEX_SOL.html", "INVARIANT"],
-      ["pixel.html", "pixel agents"],
-      ["ping/poll.html", "poll GET"],
-      ["owner-net.html", "owner net"],
-    ];
-    extra.forEach(function (pair) {
-      var href = pair[0];
-      if (nav.querySelector('a[href*="' + href + '"]')) return;
-      nav.appendChild(document.createTextNode(" · "));
-      var a = document.createElement("a");
-      a.href = BASE + href;
-      a.textContent = pair[1];
-      nav.appendChild(a);
-    });
-    nav.setAttribute("data-extra-doors", "1");
+    // 20260823e: the extra-chip append made a wall. Door hub + home bar
+    // surface the same doors without a 484px phone strip. Keep the name.
+    loadDoors();
+  }
+  function loadDoors() {
+    function run() {
+      if (!window.COMMONS_DOORS) return;
+      window.COMMONS_DOORS.injectHomeBar();
+      window.COMMONS_DOORS.paintHub();
+    }
+    if (window.COMMONS_DOORS) { run(); return; }
+    var existing = document.querySelector("script[data-doors]");
+    if (existing) {
+      existing.addEventListener("load", run);
+      return;
+    }
+    var s = document.createElement("script");
+    s.src = BASE + "door.js?v=20260823e";
+    s.async = false;
+    s.setAttribute("data-doors", "1");
+    s.onload = run;
+    (document.head || document.documentElement).appendChild(s);
   }
   function injectAttach() {
     // Same control as index.html #compose-attach. carrier.js also injects.

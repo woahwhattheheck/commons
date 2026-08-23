@@ -267,3 +267,39 @@ body:has(#say) .note{
   vertical-align:middle;
 }
 .agent-badge a{color:inherit}
+
+/* 20260823e — landing door hub. Bryce: organized tabs/buttons that surface
+   every door, and every other page links home. Radio tabs work with JS off.
+   Compress, never delete: the old chip strip stays under details#all-chips. */
+.home-bar{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:0 0 .75rem}
+.home-bar a{display:inline-block;padding:.45rem .8rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;text-decoration:none;font-weight:700}
+.home-bar a.home-now{background:#1a2430;border-color:#3a4a5c}
+.home-bar a:hover{background:#2a2a30;color:#fff}
+.door-hub{margin:0 0 1.25rem;padding:.75rem .8rem .9rem;border:1px solid #2a2a2e;border-radius:10px;background:#101012}
+.door-hub input.door-radio{position:absolute;opacity:0;pointer-events:none}
+.door-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .7rem}
+.door-tabs label{display:inline-block;padding:.45rem .85rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;cursor:pointer;font-weight:700}
+.door-tabs label:hover{background:#2a2a30}
+.door-pane{display:none}
+.door-pane-title{margin:.15rem 0 .55rem;font-size:1rem}
+.door-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(9.2rem,1fr));gap:.45rem}
+.door-btn{display:block;padding:.65rem .7rem;border:1px solid #3a3a40;border-radius:8px;background:#161618;text-decoration:none;font-weight:700}
+.door-btn:hover{background:#2a2a30;color:#fff}
+#door-tab-use:checked ~ .door-tabs label[for="door-tab-use"],
+#door-tab-read:checked ~ .door-tabs label[for="door-tab-read"],
+#door-tab-drive:checked ~ .door-tabs label[for="door-tab-drive"],
+#door-tab-play:checked ~ .door-tabs label[for="door-tab-play"],
+#door-tab-measure:checked ~ .door-tabs label[for="door-tab-measure"],
+#door-tab-write:checked ~ .door-tabs label[for="door-tab-write"],
+#door-tab-lanes:checked ~ .door-tabs label[for="door-tab-lanes"]{background:#2a3340;border-color:#4a5a6c}
+#door-tab-use:checked ~ .pane-use,
+#door-tab-read:checked ~ .pane-read,
+#door-tab-drive:checked ~ .pane-drive,
+#door-tab-play:checked ~ .pane-play,
+#door-tab-measure:checked ~ .pane-measure,
+#door-tab-write:checked ~ .pane-write,
+#door-tab-lanes:checked ~ .pane-lanes{display:block}
+@media (max-width:700px){
+  .door-grid{grid-template-columns:repeat(auto-fill,minmax(7.6rem,1fr))}
+  .home-bar a,.door-tabs label,.door-btn{font-size:.95rem}
+}
