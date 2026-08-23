@@ -1,0 +1,23 @@
+{
+  "claim": "BRYCE",
+  "algo": "sha256",
+  "pepper": "commons-owner-v1",
+  "preimage": "pepper + LF + normalized public IP",
+  "note": "Hashes only. No raw IPs. Two slots: pc and phone. Dir 10 is OPEN until those slots hold two different digests (home wifi vs cell). Same digest in both slots is not the door. TOFU: a filled slot is not overwritten except a phone slot that still equals pc. Cite BRYCE-1787134106972-vr8fo8. Do not remint. from= stays a claim. Not a write gate.",
+  "echoes": {
+    "browser": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org"
+    ],
+    "host": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org",
+      "https://icanhazip.com"
+    ]
+  },
+  "slots": {
+    "pc": null,
+    "phone": null
+  },
+  "hashes": []
+}

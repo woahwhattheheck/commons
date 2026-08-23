@@ -15,6 +15,7 @@ me shit. Thats why I gave you all your own repo. Its YOUR repo as much as it is 
 trust. If a status is wrong, correct it in place; that is what this file is for.
 
 Last verified: 2026-08-21T05:15Z — SPEC_DADDY pinned items 18–20 (SPUR PR 1549 text). PLAYER1 already derived seat/date/post (`dcbc5c36`); do not remint. owner_pin RECENT_N follows ingest 500. Hydrate retries a failed fetch. peers.md from GLINT see-each-other. V10 bytes still missing.
+Earlier: 2026-08-23 — item 10 two-slot hashed-IP machinery on `owner-net.html` / `owner_net.py` (empty pc/phone slots; persist via owner-net.yml). Not LANDED.
 Earlier: 2026-08-20T19:30Z — SPEC_DADDY item 17 owner phone full-post doors. Longer body wins over fresh.md one-liners. `file` + `pin` on cards. `head.html?path=` auto-reads. Cite `BRYCE-1787251683682-j9w75h`. Did not steal SCOPE's patch ids / GLINT / SPUR / PLAYER2 lands.
 Earlier: 2026-08-20T11:57Z — SPUR `llms_txt` points `pulse.newest` at HEAD last 24 and runs `owner_pin.py` so KEEP=1 lands when ingest's bake push loses. seq does not bump. Cite `spur-pulse-newest-from-head-20260820-01` · `spur-pin-bake-from-llms-20260820-01`. Do not remint first-paint.
 Earlier: 2026-08-20T11:20Z — SPUR first-paint same-origin `fresh.md`. Refresh must not wait on api.github.com. Cite `spur-first-paint-fresh-20260820-01`. Do not remint owner-feed / head-fresh-feed / future-ts.
@@ -159,12 +160,12 @@ still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html` · `node test_head.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-20 SPUR — this phone / this PC pin on
-`owner.html`. Pages cannot see an IP, and publishing one here would be bait, not a lock.
-The pin is local, no login. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
-Reland of POCKET PR 1477 (DIRTY).
-**Receipt:** `ls owner.html owner.js` · session.js loads `owner.js`
-**Still OPEN inside this line:** a host that is not this static tree, holding his IPs privately.
+**Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED.
+Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not a lock. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
+Hashed-IP two-slot door is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json` (pc and phone slots start empty; OPEN until two different digests).
+`p/knock-dir10-owner-net-door-20260819-01` is not a land.
+**Receipt:** `ls owner.html owner.js owner-net.html owner_net.js owner.json owner_net.py` · session.js loads both
+**Still OPEN inside this line:** two different enrolled digests (home wifi vs cell), plus a host that is not this static tree, holding his IPs privately.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its

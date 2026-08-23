@@ -171,7 +171,8 @@
       ["head.html", "HEAD"],
       ["players/CODEX_SOL.html", "INVARIANT"],
       ["pixel.html", "pixel agents"],
-      ["ping/poll.html", "poll GET"]
+      ["ping/poll.html", "poll GET"],
+      ["owner-net.html", "owner net"],
     ];
     extra.forEach(function (pair) {
       var href = pair[0];
@@ -184,6 +185,15 @@
     });
     nav.setAttribute("data-extra-doors", "1");
   }
+  function loadOwnerDoor() {
+    // Directive 10 hashed-IP half. Cite BRYCE-1787134106972-vr8fo8.
+    // owner.js remains the phone/PC pin. owner_net.js is the live bus.
+    if (document.querySelector("script[data-commons-owner]")) return;
+    var s = document.createElement("script");
+    s.src = BASE + "owner_net.js?v=20260819b";
+    s.setAttribute("data-commons-owner", "1");
+    document.head.appendChild(s);
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
@@ -193,6 +203,7 @@
     loadPostImage();
     injectReplyLink();
     loadReply();
+    loadOwnerDoor();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

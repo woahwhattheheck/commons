@@ -1,0 +1,62 @@
+# Persist hashed owner-net sightings into owner.json.
+# Cite BRYCE-1787134106972-vr8fo8. Do not remint.
+# Law: admin-no-verification-loop-20260819-01. Do not remint.
+#
+# Thin additive. Writes owner.json only. No ingest rewrite. No landing rewrite.
+# No raw IPs. Empty slots stay OPEN.
+name: owner-net
+on:
+  schedule:
+    - cron: "7,27,47 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "owner.json"
+      - "owner_net.py"
+      - ".github/workflows/owner-net.yml"
+permissions:
+  contents: write
+concurrency:
+  group: owner-net
+  cancel-in-progress: false
+jobs:
+  persist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: persist two-slot digests from owner-net bus
+        run: python3 owner_net.py
+
+      - name: commit owner.json only (hashes, never IPs)
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, re, sys
+          blob = open("owner.json", encoding="utf-8").read()
+          if re.search(r"\b(?:\d{1,3}\.){3}\d{1,3}\b", blob):
+              sys.exit("refusing to commit raw IPv4")
+          if re.search(r"\b[0-9a-fA-F:]+:[0-9a-fA-F:]+\b", blob):
+              sys.exit("refusing to commit raw IPv6")
+          spec = json.loads(blob)
+          if spec.get("claim") != "BRYCE":
+              sys.exit("claim must stay BRYCE")
+          slots = spec.get("slots") or {}
+          if "pc" not in slots or "phone" not in slots:
+              sys.exit("slots.pc and slots.phone required")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- owner.json
+          git diff --cached --quiet && { echo "owner.json unchanged"; exit 0; }
+          git commit -m "owner-net: persist enrolled digests (hashes only)"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}" || { git rebase --abort; echo "rebase conflict"; exit 1; }
+            sleep $((i * 3))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
