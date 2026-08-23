@@ -83,6 +83,64 @@
     return { state: "NOT_LANDED", note: "lookup failed HTTP " + httpStatus };
   };
 
+  api.CANARY_PATHS = [
+    "p/bryce-action-pad-open-door-directive-20260822-01.md",
+    "p/bryce-emergent-excellence-first-challenge-20260821-01.md",
+    "ground/HEAD.md"
+  ];
+
+  api.bakeState = function (officialSha, bake) {
+    officialSha = String(officialSha || "").trim();
+    bake = bake || {};
+    var bakeHead = String(bake.head || bake.sha || "").trim();
+    var status = Number(bake.httpStatus || 0);
+    if (!officialSha) {
+      return { state: "UNMEASURED", note: "need official main SHA before a bake can be compared" };
+    }
+    if (status && status !== 200) {
+      return { state: "NOT_LANDED", note: "bake lookup failed HTTP " + status + ". A missing bake is not HEAD." };
+    }
+    if (!bakeHead) {
+      return { state: "UNMEASURED", note: "bake has no head field. Cannot compare to official main." };
+    }
+    if (bakeHead === officialSha) {
+      return { state: "CURRENT", note: "bake head equals official main. Still a bake — the file is the post." };
+    }
+    return { state: "STALE", note: "bake head is not official main. Do not report silence off this bake." };
+  };
+
+  api.canaryState = function (row) {
+    row = row || {};
+    var got = api.pathState(row.httpStatus);
+    var ms = Number(row.ms);
+    if (isFinite(ms) && ms >= 0) {
+      got.note = got.note + " · " + Math.round(ms) + " ms";
+    }
+    got.path = String(row.path || "");
+    got.ms = isFinite(ms) && ms >= 0 ? Math.round(ms) : null;
+    return got;
+  };
+
+  api.latencyState = function (ms, warnMs, failMs) {
+    warnMs = warnMs == null ? 2500 : Number(warnMs);
+    failMs = failMs == null ? 8000 : Number(failMs);
+    if (ms == null || ms === "") {
+      return { state: "UNMEASURED", note: "no timing" };
+    }
+    var n = Number(ms);
+    if (!isFinite(n) || n < 0) {
+      return { state: "UNMEASURED", note: "no timing" };
+    }
+    var rounded = Math.round(n);
+    if (n > failMs) {
+      return { state: "SLOW", note: rounded + " ms exceeds " + failMs + " ms" };
+    }
+    if (n > warnMs) {
+      return { state: "WAIT", note: rounded + " ms" };
+    }
+    return { state: "OK", note: rounded + " ms" };
+  };
+
   api.completionStateFromText = function (text) {
     var t = String(text || "");
     if (/INTEGRATED — VERIFIED ON CURRENT MAIN/.test(t) || /\bDURABLE_ON_MAIN\b/.test(t)) {
@@ -171,8 +229,8 @@
   };
 
   api.toneFor = function (state) {
-    if (state === "INTEGRATED" || state === "DURABLE_ON_MAIN") return "ok";
-    if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE") return "wait";
+    if (state === "INTEGRATED" || state === "DURABLE_ON_MAIN" || state === "CURRENT" || state === "OK") return "ok";
+    if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE" || state === "WAIT" || state === "UNMEASURED") return "wait";
     return "stop";
   };
 
@@ -188,6 +246,9 @@
   var organSum = document.getElementById("organ-sum");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
+  var bakeOut = document.getElementById("bake-result");
+  var canaryHost = document.getElementById("canary-list");
+  var latencyOut = document.getElementById("latency-result");
 
   function setNote(text) {
     if (measureNote) measureNote.textContent = text;
@@ -254,10 +315,12 @@
   }
 
   function loadMainSha() {
+    var t0 = Date.now();
     return getJSON(API + "/commits/main").then(function (data) {
       mainSha = data.sha || (data.commit && data.sha) || "";
       if (shaCode) shaCode.textContent = mainSha || "(github returned no sha)";
       setNote("Official main measured from api.github.com, not from Pages or fresh.md.");
+      paintLatency(api.latencyState(Date.now() - t0));
       return mainSha;
     });
   }
@@ -322,6 +385,68 @@
     }).catch(function (e) {
       prHost.innerHTML = "<li>GitHub pulls lookup failed (" + esc(e.message) + "). Use the curl below. Unauthenticated api.github.com is 60 requests/hour.</li>";
     });
+  }
+
+  function paintBake(result, ms, data) {
+    if (!bakeOut) return;
+    bakeOut.setAttribute("data-tone", api.toneFor(result.state));
+    var extra = "";
+    if (data && data.head) extra += " bake head <code>" + esc(data.head) + "</code>.";
+    if (data && data.ts) extra += " bake ts " + esc(data.ts) + ".";
+    if (data && data.seq != null) extra += " seq " + esc(String(data.seq)) + ".";
+    if (isFinite(ms)) extra += " " + Math.round(ms) + " ms.";
+    bakeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + extra + "</p>";
+  }
+
+  function paintLatency(result) {
+    if (!latencyOut) return;
+    latencyOut.setAttribute("data-tone", api.toneFor(result.state));
+    latencyOut.innerHTML = "<b>" + esc(result.state) + "</b><p>Official main SHA GET: " + esc(result.note) + ". Prometheus is not this door.</p>";
+  }
+
+  function paintCanaries(rows) {
+    if (!canaryHost) return;
+    if (!rows || !rows.length) {
+      canaryHost.innerHTML = "<li>no canary rows</li>";
+      return;
+    }
+    canaryHost.innerHTML = rows.map(function (row) {
+      return "<li><span class=\"st st-" + esc(row.state) + "\">" + esc(row.state) + "</span> " +
+        "<code>" + esc(row.path) + "</code>" +
+        "<span class=\"pr-note\">" + esc(row.note) + "</span></li>";
+    }).join("");
+  }
+
+  function loadPulseBake(sha) {
+    if (!bakeOut) return Promise.resolve();
+    var t0 = Date.now();
+    return fetch("./pulse.json?b=" + Date.now(), { cache: "no-store" }).then(function (r) {
+      var ms = Date.now() - t0;
+      if (!r.ok) {
+        paintBake(api.bakeState(sha, { httpStatus: r.status }), ms);
+        return;
+      }
+      return r.json().then(function (data) {
+        paintBake(api.bakeState(sha, { head: data && data.head, ts: data && data.ts, httpStatus: 200 }), ms, data);
+      });
+    }).catch(function (e) {
+      paintBake({ state: "UNMEASURED", note: "pulse.json fetch failed (" + e.message + ")" });
+    });
+  }
+
+  function loadCanaries(sha) {
+    if (!canaryHost) return Promise.resolve();
+    canaryHost.innerHTML = "<li>measuring known paths at the official SHA…</li>";
+    var paths = api.CANARY_PATHS;
+    return Promise.all(paths.map(function (p) {
+      var t0 = Date.now();
+      var url = RAW + sha + "/" + p;
+      return fetch(url, { cache: "no-store" }).then(function (r) {
+        return api.canaryState({ path: p, httpStatus: r.status, ms: Date.now() - t0 });
+      }).catch(function (e) {
+        return { state: "NOT_LANDED", path: p, note: e.message, ms: null };
+      });
+    })).then(paintCanaries);
   }
 
   function loadOrgans(sha) {
@@ -454,6 +579,8 @@
     loadKnownChallenge(sha);
     loadPulls(sha);
     loadOrgans(sha);
+    loadPulseBake(sha);
+    loadCanaries(sha);
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {

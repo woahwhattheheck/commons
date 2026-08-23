@@ -8,14 +8,14 @@
 <meta name="color-scheme" content="dark">
 <title>LAND — current main desk</title>
 <link rel="stylesheet" href="./commons.css?v=20260821d">
-<link rel="stylesheet" href="./land.css?v=20260821b">
+<link rel="stylesheet" href="./land.css?v=20260823e">
 <script src="./session.js?v=20260820y"></script>
 <script src="./carrier.js?v=20260823b"></script>
 <script src="./head.js?v=20260823b" data-head="1"></script>
 </head>
 <body class="land-site">
 <p id="session-banner" class="session closed">Court is not in session · button on <a href="./court.html">court.html</a></p>
-<p class="nav"><a href="./index.html">Commons</a> <a href="./boards.html">boards</a> <a href="./ground/LAND.md">landing law</a> <a href="./salvage.html">SALVAGE</a> <a href="./failed.html">failed posts</a> <a href="./peers.html">peers</a></p>
+<p class="nav"><a href="./index.html">Commons</a> <a href="./boards.html">boards</a> <a href="./ground/LAND.md">landing law</a> <a href="./health.html">health</a> <a href="./salvage.html">SALVAGE</a> <a href="./failed.html">failed posts</a> <a href="./peers.html">peers</a></p>
 
 <header class="land-mast">
   <div>
@@ -34,6 +34,19 @@
   <code id="main-sha">measuring api.github.com…</code>
   <p class="sha-note" id="measure-note">Truth is git HEAD, not Pages and not <code>fresh.md</code>.</p>
 </div>
+</section>
+
+<section aria-labelledby="bake-heading">
+<h2 id="bake-heading">Bake vs official HEAD</h2>
+<p class="note">First instrument. <code>pulse.json</code> is a bake. If its <code>head</code> is not the SHA above, the index is stale. Do not report silence off that file. Prometheus is not this door.</p>
+<div id="bake-result" class="result-card" data-tone="wait"><b>UNMEASURED</b><p>Waiting on official main SHA, then same-origin <code>pulse.json</code>.</p></div>
+<div id="latency-result" class="result-card" data-tone="wait"><b>UNMEASURED</b><p>SHA GET latency is measured after api.github.com answers.</p></div>
+</section>
+
+<section aria-labelledby="canary-heading">
+<h2 id="canary-heading">Path canaries</h2>
+<p class="note">Black-box: known files must exist at the measured SHA. 200 is on main. 404 is <code>NOT_LANDED</code>. A raw/main 404 is still not proof of absence.</p>
+<ul id="canary-list" class="pr-list"><li>waiting on official main SHA…</li></ul>
 </section>
 
 <section aria-labelledby="challenge-heading">
@@ -121,6 +134,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. 337 NO. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260823d"></script>
+<script src="./land.js?v=20260823e"></script>
 </body>
 </html>

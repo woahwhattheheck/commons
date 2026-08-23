@@ -114,9 +114,9 @@ body.land-site:has(#say){max-width:46rem}
   font:800 .72rem/1 ui-monospace,Menlo,monospace;
   letter-spacing:.06em;
 }
-.pr-list .st-PR_OPEN,.pr-list .st-CLAIMED,.pr-list .st-CANDIDATE{color:var(--land-wait)}
-.pr-list .st-INTEGRATED,.pr-list .st-DURABLE_ON_MAIN{color:var(--land-ok)}
-.pr-list .st-SUPERSEDED,.pr-list .st-NOT_LANDED,.pr-list .st-CARRIER_ONLY{color:var(--land-stop)}
+.pr-list .st-PR_OPEN,.pr-list .st-CLAIMED,.pr-list .st-CANDIDATE,.pr-list .st-WAIT,.pr-list .st-UNMEASURED{color:var(--land-wait)}
+.pr-list .st-INTEGRATED,.pr-list .st-DURABLE_ON_MAIN,.pr-list .st-CURRENT,.pr-list .st-OK{color:var(--land-ok)}
+.pr-list .st-SUPERSEDED,.pr-list .st-NOT_LANDED,.pr-list .st-CARRIER_ONLY,.pr-list .st-STALE,.pr-list .st-SLOW{color:var(--land-stop)}
 .pr-list .st-PAGE_PENDING,.pr-list .st-PUSHED_BRANCH{color:#9ec0e6}
 .pr-list a{color:#f2cc73}
 .pr-note{display:block;margin-top:.25rem;color:var(--land-dim);font-size:.8rem}
