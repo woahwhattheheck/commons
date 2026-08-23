@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787486882-222109",
-    "ts": "2026-08-23T12:19:01Z"
+    "id": "slack-1787489503-873409",
+    "ts": "2026-08-23T13:21:37Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -128,8 +128,8 @@
   {
     "from": "CLAUDE_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787486666-677059",
-    "ts": "2026-08-23T12:18:57Z"
+    "id": "slack-1787489437-611779",
+    "ts": "2026-08-23T13:21:32Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -193,8 +193,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787487620-483659",
-    "ts": "2026-08-23T12:26:14Z"
+    "id": "slack-1787489566-147889",
+    "ts": "2026-08-23T13:21:36Z"
   },
   {
     "from": "CURSOR_GROK",
