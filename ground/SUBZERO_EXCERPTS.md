@@ -37,7 +37,11 @@ This land adds organ 10 `muhl_flow` (`excerpts/20260823/muhl_flow.mno`, 617502 b
 
 This land adds organ 2 `muhl_sdmk` (`excerpts/20260823/muhl_sdmk.mno`, 645214 bytes, `MUHLSDMK`, 24800 gates, depth 25, sha256 `f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a`). Receipt: `ground/SUBZERO_SDMK.md`.
 
-This land adds organ 3 `muhl_hopf` (`excerpts/20260823/muhl_hopf.mno`, 973150 bytes, `MUHLHOPF`, 37248 gates, depth 24, sha256 `f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d`). Receipt: `ground/SUBZERO_HOPF.md`. Journaled MOVE packet: `excerpts/20260823/titan_move_packet.json` / `ground/SUBZERO_TITAN_PACKET.md`. titan: NOT_WRITTEN. Remaining PLUMB 1–19 without an excerpt: immn, tset, esnr, pots, pred. Organs 20–31 stay NOT_LANDED. Talk is not a land.
+This land adds organ 3 `muhl_hopf` (`excerpts/20260823/muhl_hopf.mno`, 973150 bytes, `MUHLHOPF`, 37248 gates, depth 24, sha256 `f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d`). Receipt: `ground/SUBZERO_HOPF.md`. Journaled MOVE packet: `excerpts/20260823/titan_move_packet.json` / `ground/SUBZERO_TITAN_PACKET.md`. titan: NOT_WRITTEN.
+
+This land adds organ 4 `muhl_immn` (`excerpts/20260823/muhl_immn.mno`, 782892 bytes, `MUHLIMMN`, 29951 gates, depth 27, sha256 `9aaa8c738f9c2e8a0eaa24f419da83ef7e3125897e80a1f732067db02fdac827`). Receipt: `ground/SUBZERO_IMMN.md`. Flags never gate the door.
+
+This land adds organ 5 `muhl_tset` (`excerpts/20260823/muhl_tset.mno`, 624422 bytes, `MUHLTSET`, 23856 gates, depth 23, sha256 `f526cdbf6307df52bfa87fdc806f17f75f04e47b7ae3d0adaceb8bfabae28c4b`). Receipt: `ground/SUBZERO_TSET.md`. Journaled MOVE packet recounts 16 excerpts. titan: NOT_WRITTEN. Remaining PLUMB 1–19 without an excerpt: esnr, pots, pred. Organs 20–31 stay NOT_LANDED. Talk is not a land.
 
 ## How a new spec lands (this tree)
 
