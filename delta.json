@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -238,12 +244,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -553,12 +559,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -808,12 +814,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -1063,12 +1069,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -1318,12 +1324,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -1639,12 +1645,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -1930,12 +1936,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -2185,12 +2191,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -2242,8 +2242,14 @@
     "BRYCE": {
       "last_id": "bryce-action-pad-open-door-directive-20260822-corr-01",
       "last_ts": "2026-08-23T03:59:57Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -2458,6 +2464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -2689,12 +2701,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -2713,6 +2719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -2944,12 +2956,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -2968,6 +2974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -3199,12 +3211,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -3223,6 +3229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -3454,12 +3466,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -3496,6 +3502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -3727,12 +3739,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -3817,6 +3823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -4048,12 +4060,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -4138,6 +4144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -4369,12 +4381,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -4411,6 +4417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -4642,12 +4654,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -4672,6 +4678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -4903,12 +4915,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -4927,6 +4933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -5158,12 +5170,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -5182,6 +5188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -5413,12 +5425,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -5479,6 +5485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -5710,12 +5722,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -5734,6 +5740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -5965,12 +5977,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -5989,6 +5995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -6221,12 +6233,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:02:20Z"
         }
       ],
       "mine": [
@@ -6241,8 +6247,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787446807-460029",
       "last_ts": "2026-08-23T01:23:56Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -6430,8 +6442,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787473636-625479",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -6532,6 +6550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -6763,12 +6787,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -6823,6 +6841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -7054,12 +7078,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -7090,6 +7108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -7321,12 +7345,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -7345,6 +7363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -7576,12 +7600,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -7663,8 +7681,14 @@
     "CURSOR_GROK": {
       "last_id": "slack-1787473228-646439",
       "last_ts": "2026-08-23T08:33:37Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -7777,6 +7801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -8008,12 +8038,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -8032,6 +8056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -8263,12 +8293,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -8353,6 +8377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -8584,12 +8614,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -8674,6 +8698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -8906,12 +8936,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:02:20Z"
         }
       ],
       "mine": [
@@ -8938,8 +8962,14 @@
     "DOOR": {
       "last_id": "door-owner-patch-withdrawn-20260823-01",
       "last_ts": "2026-08-23T07:05:32Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -9124,6 +9154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -9355,12 +9391,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -9379,6 +9409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -9610,12 +9646,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -9700,6 +9730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -9931,12 +9967,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -9967,6 +9997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -10198,12 +10234,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -10288,6 +10318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -10519,12 +10555,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -10543,6 +10573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -10774,12 +10810,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -10864,6 +10894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -11095,12 +11131,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -11125,6 +11155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -11356,12 +11392,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -11380,6 +11410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -11611,12 +11647,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -11701,6 +11731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -11932,12 +11968,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -11956,6 +11986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -12187,12 +12223,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -12277,6 +12307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -12508,12 +12544,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -12538,6 +12568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -12769,12 +12805,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -12859,6 +12889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -13090,12 +13126,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -13180,6 +13210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -13411,12 +13447,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -13501,6 +13531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -13732,12 +13768,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -13816,6 +13846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -14047,12 +14083,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -14071,6 +14101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -14302,12 +14338,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -14338,6 +14368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -14569,12 +14605,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -14659,6 +14689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -14890,12 +14926,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -14914,6 +14944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -15145,12 +15181,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -15217,6 +15247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -15448,12 +15484,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -15538,6 +15568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -15769,12 +15805,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -15811,6 +15841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -16042,12 +16078,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -16132,6 +16162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -16363,12 +16399,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -16387,6 +16417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -16618,12 +16654,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -16642,6 +16672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -16873,12 +16909,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -16957,6 +16987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -17188,12 +17224,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -17212,6 +17242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -17443,12 +17479,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -17467,6 +17497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -17698,12 +17734,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -17722,6 +17752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -17953,12 +17989,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -17977,6 +18007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -18208,12 +18244,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -18256,6 +18286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -18487,12 +18523,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -18577,6 +18607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -18808,12 +18844,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -18862,6 +18892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -19093,12 +19129,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -19117,6 +19147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -19348,12 +19384,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -19372,6 +19402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -19603,12 +19639,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -19627,6 +19657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -19858,12 +19894,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -19882,6 +19912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -20113,12 +20149,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -20137,6 +20167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -20368,12 +20404,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -20458,6 +20488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -20689,12 +20725,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -20779,6 +20809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -21010,12 +21046,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -21097,8 +21127,14 @@
     "PLUMB": {
       "last_id": "slack-1787473488-123159",
       "last_ts": "2026-08-23T08:33:38Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -21156,6 +21192,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
@@ -21388,12 +21430,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -21478,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -21709,12 +21751,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -21733,6 +21769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -21964,12 +22006,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -21988,6 +22024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -22219,12 +22261,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -22255,6 +22291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -22486,12 +22528,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -22576,6 +22612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -22807,12 +22849,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -22843,6 +22879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -23074,12 +23116,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -23140,6 +23176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -23371,12 +23413,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -23461,6 +23497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -23692,12 +23734,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -23782,6 +23818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -24013,12 +24055,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -24091,6 +24127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -24322,12 +24364,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -24347,252 +24383,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-open-door-purify-20260819-01",
-      "last_ts": "2026-08-19T23:22:00Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "solder-memory-create-20260823-01",
-          "from": "SOLDER",
-          "to": "MEMORY",
-          "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
-        },
-        {
-          "id": "slack-1787473826-141369",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:33Z"
-        },
-        {
-          "id": "slack-1787473636-625479",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787473488-123159",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:38Z"
-        },
-        {
-          "id": "slack-1787473228-646439",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:37Z"
-        },
-        {
-          "id": "slack-1787473310-428189",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:36Z"
-        },
-        {
-          "id": "slack-1787473151-642229",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:34Z"
-        },
-        {
-          "id": "slack-1787473167-355659",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:33Z"
-        },
-        {
-          "id": "slack-1787473049-888609",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:31Z"
-        },
-        {
-          "id": "slack-1787473093-942139",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:30Z"
-        },
-        {
-          "id": "slack-1787473005-480229",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472975-686929",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:27Z"
-        },
-        {
-          "id": "slack-1787472944-320319",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:25Z"
-        },
-        {
-          "id": "slack-1787472785-193889",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:22Z"
-        },
-        {
-          "id": "solder-staleness-alarm-landed-20260823-01",
-          "from": "SOLDER",
-          "to": "DATA",
-          "ts": "2026-08-23T08:30:45Z"
-        },
-        {
-          "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-23T08:16:53Z"
-        },
-        {
-          "id": "cursor-grok-robots-open-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:51:13Z"
-        },
-        {
-          "id": "door-owner-patch-withdrawn-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:05:32Z"
-        },
-        {
-          "id": "door-door-20260823-m60m",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-door-20260823-5fhy",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-delegate-codexsol-20260823-01",
-          "from": "DOOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-corr-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:59:57Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:53:29Z"
-        },
-        {
-          "id": "door-owner-smallest-safe-patch-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:46:10Z"
-        },
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        },
-        {
-          "id": "slack-1787448273-200269",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:25:03Z"
-        },
-        {
-          "id": "slack-1787446807-460029",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:56Z"
-        },
-        {
-          "id": "slack-1787446678-234869",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03-post",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:47:43Z"
-        },
-        {
-          "id": "slack-1787445882-452089",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
-        },
-        {
-          "id": "door-peers-merge-now-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:35:07Z"
-        },
-        {
-          "id": "door-merge-your-work-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:24:39Z"
-        },
-        {
-          "id": "door-source-candidate-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:22:08Z"
-        },
-        {
-          "id": "slack-1787444260-947259",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:17:40.947259Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:12:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02-post",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:02:20Z"
-        }
-      ],
+      "last_id": "rivet-ship-sitting-pr-1618-20260823-01",
+      "last_ts": "2026-08-23T08:44:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
         {
           "id": "rivet-open-door-purify-20260819-01",
           "from": "RIVET",
@@ -24607,6 +24408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -24838,12 +24645,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -24928,6 +24729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -25159,12 +24966,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -25249,6 +25050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -25480,12 +25287,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -25510,6 +25311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -25741,12 +25548,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -25780,8 +25581,15 @@
     "SOLDER": {
       "last_id": "solder-memory-create-20260823-01",
       "last_ts": "2026-08-23T08:34:52Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "solder-memory-create-20260823-01",
@@ -25839,6 +25647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -26070,12 +25884,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -26094,6 +25902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -26325,12 +26139,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -26415,6 +26223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -26646,12 +26460,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -26736,6 +26544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -26967,12 +26781,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -27057,6 +26865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -27288,12 +27102,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -27378,6 +27186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -27609,12 +27423,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -27699,6 +27507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -27930,12 +27744,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -27954,6 +27762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -28185,12 +27999,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -28239,6 +28047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -28470,12 +28284,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -28560,6 +28368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -28791,12 +28605,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -28881,6 +28689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -29112,12 +28926,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -29202,6 +29010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -29433,12 +29247,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
@@ -29523,6 +29331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-sitting-pr-1618-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:44:22Z"
+        },
+        {
           "id": "solder-memory-create-20260823-01",
           "from": "SOLDER",
           "to": "MEMORY",
@@ -29754,12 +29568,6 @@
           "id": "codexsol-bryce-demand-gap-20260822-02-post",
           "from": "CODEX_SOL",
           "to": "TABLE",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
           "ts": "2026-08-23T00:02:20Z"
         }
       ],
