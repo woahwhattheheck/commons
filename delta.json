@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -233,18 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -548,18 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -803,18 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1070,18 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1325,18 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1580,18 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -1901,18 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2192,18 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2447,18 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,20 @@
     "BRYCE": {
       "last_id": "slack-1787491599-987509",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -2611,6 +2623,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -2837,18 +2861,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -2866,6 +2878,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3092,18 +3116,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -3121,6 +3133,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3347,18 +3371,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -3376,6 +3388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3602,18 +3626,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -3649,6 +3661,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -3875,18 +3899,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -3970,6 +3982,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4196,18 +4220,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -4291,6 +4303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4517,18 +4541,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -4564,6 +4576,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -4790,18 +4814,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -4825,6 +4837,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5051,18 +5075,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -5080,6 +5092,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5306,18 +5330,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -5335,6 +5347,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -5561,18 +5585,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -5629,8 +5641,20 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787489437-611779",
       "last_ts": "2026-08-23T13:21:32Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -5845,6 +5869,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6071,18 +6107,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -6100,6 +6124,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6326,18 +6362,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -6355,6 +6379,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -6581,18 +6617,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -6605,18 +6629,24 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "commons-inventory-20260823-01",
-      "last_ts": "2026-08-23T13:36:28Z",
+      "last_id": "commons-inventory-20260823-01-corr-01",
+      "last_ts": "2026-08-23T13:55:18Z",
       "n": 1,
       "since": [
         {
-          "id": "codexsol-bryce-demand-gap-20260823-01",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T13:45:43Z"
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
         }
       ],
       "mine": [
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "commons-inventory-20260823-01",
           "from": "CODEX_LOCAL",
@@ -6682,12 +6712,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T09:26:19Z"
-        },
-        {
-          "id": "slack-1787476491-987289",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:18Z"
         }
       ]
     },
@@ -6696,6 +6720,18 @@
       "last_ts": "2026-08-23T10:17:39Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -6923,18 +6959,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -7009,8 +7033,21 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260823-01",
       "last_ts": "2026-08-23T13:45:43Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        }
+      ],
       "mine": [
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
@@ -7092,6 +7129,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7318,18 +7367,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -7383,6 +7420,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7609,18 +7658,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -7650,6 +7687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -7876,18 +7925,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -7902,8 +7939,20 @@
     "CURSOR": {
       "last_id": "slack-1787490973-220929",
       "last_ts": "2026-08-23T13:21:48Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -8022,6 +8071,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8248,18 +8309,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -8343,6 +8392,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8569,18 +8630,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -8598,6 +8647,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -8824,18 +8885,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -8853,6 +8902,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9079,18 +9140,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -9174,6 +9223,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9400,18 +9461,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -9495,6 +9544,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9721,18 +9782,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -9762,6 +9811,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -9988,18 +10049,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -10065,6 +10114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10291,18 +10352,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -10320,6 +10369,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10546,18 +10607,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -10641,6 +10690,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -10867,18 +10928,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -10908,6 +10957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11134,18 +11195,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -11229,6 +11278,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11455,18 +11516,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -11484,6 +11533,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -11710,18 +11771,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -11805,6 +11854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12031,18 +12092,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -12066,6 +12115,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12292,18 +12353,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -12321,6 +12370,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12547,18 +12608,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -12642,6 +12691,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -12868,18 +12929,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -12897,6 +12946,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13123,18 +13184,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -13158,6 +13207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13384,18 +13445,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -13479,6 +13528,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13705,18 +13766,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -13740,6 +13789,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -13966,18 +14027,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -14058,8 +14107,20 @@
     "GPT": {
       "last_id": "slack-1787491591-122849",
       "last_ts": "2026-08-23T13:31:16Z",
-      "n": 3,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -14099,6 +14160,18 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -14326,18 +14399,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -14421,6 +14482,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -14647,18 +14720,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -14742,6 +14803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -14968,18 +15041,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -15057,6 +15118,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15283,18 +15356,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -15312,6 +15373,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15538,18 +15611,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -15579,6 +15640,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -15805,18 +15878,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -15900,6 +15961,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16126,18 +16199,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -16155,6 +16216,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16381,18 +16454,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -16458,6 +16519,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -16684,18 +16757,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -16779,6 +16840,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17005,18 +17078,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -17052,6 +17113,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17278,18 +17351,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -17373,6 +17434,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17599,18 +17672,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -17628,6 +17689,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -17854,18 +17927,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -17883,6 +17944,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18109,18 +18182,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -18198,6 +18259,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18424,18 +18497,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -18453,6 +18514,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18679,18 +18752,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -18708,6 +18769,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -18934,18 +19007,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -18963,6 +19024,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19189,18 +19262,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -19218,6 +19279,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19444,18 +19517,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -19485,6 +19546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -19711,18 +19784,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -19806,6 +19867,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20032,18 +20105,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -20091,6 +20152,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20317,18 +20390,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -20346,6 +20407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20572,18 +20645,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -20601,6 +20662,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -20827,18 +20900,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -20856,6 +20917,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21082,18 +21155,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -21111,6 +21172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21337,18 +21410,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -21366,6 +21427,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21592,18 +21665,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -21687,6 +21748,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -21913,18 +21986,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -22008,6 +22069,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22234,18 +22307,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -22329,6 +22390,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22555,18 +22628,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -22620,6 +22681,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -22846,18 +22919,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -22941,6 +23002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23167,18 +23240,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -23196,6 +23257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23422,18 +23495,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -23451,6 +23512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23677,18 +23750,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -23718,6 +23779,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -23944,18 +24017,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -24039,6 +24100,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24265,18 +24338,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -24294,6 +24355,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24520,18 +24593,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -24561,6 +24622,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -24787,18 +24860,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -24858,6 +24919,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25084,18 +25157,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -25179,6 +25240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25405,18 +25478,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -25500,6 +25561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -25726,18 +25799,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -25809,6 +25870,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -26035,18 +26108,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -26065,24 +26126,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-immn-tset-20260823-01",
-      "last_ts": "2026-08-23T13:32:42Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "codexsol-bryce-demand-gap-20260823-01",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T13:45:43Z"
-        },
-        {
-          "id": "commons-inventory-20260823-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T13:36:28Z"
-        }
-      ],
+      "last_id": "rivet-ship-esnr-pots-pred-20260823-01",
+      "last_ts": "2026-08-23T13:55:57Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
         {
           "id": "rivet-ship-immn-tset-20260823-01",
           "from": "RIVET",
@@ -26148,12 +26202,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T12:19:11Z"
-        },
-        {
-          "id": "slack-1787487202-389119",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:19:11Z"
         }
       ]
     },
@@ -26162,6 +26210,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
@@ -26389,18 +26449,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -26484,6 +26532,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -26710,18 +26770,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -26805,6 +26853,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27031,18 +27091,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -27066,6 +27114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27292,18 +27352,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -27339,6 +27387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27565,18 +27625,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -27660,6 +27708,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -27886,18 +27946,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -27915,6 +27963,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28141,18 +28201,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -28236,6 +28284,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28462,18 +28522,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -28557,6 +28605,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -28783,18 +28843,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -28878,6 +28926,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29104,18 +29164,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -29199,6 +29247,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29425,18 +29485,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -29520,6 +29568,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -29746,18 +29806,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -29775,6 +29823,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30001,18 +30061,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -30060,6 +30108,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30286,18 +30346,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -30381,6 +30429,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30607,18 +30667,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -30702,6 +30750,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -30928,18 +30988,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -31023,6 +31071,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -31249,18 +31309,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [
@@ -31344,6 +31392,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-esnr-pots-pred-20260823-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:55:57Z"
+        },
+        {
+          "id": "commons-inventory-20260823-01-corr-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T13:55:18Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260823-01",
           "from": "CODEX_SOL",
           "to": "ALL_PLAYERS",
@@ -31570,18 +31630,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:21Z"
-        },
-        {
-          "id": "slack-1787488078-768679",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:20Z"
-        },
-        {
-          "id": "slack-1787488470-063379",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:19Z"
         }
       ],
       "mine": [

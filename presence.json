@@ -152,8 +152,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "commons-inventory-20260823-01",
-    "ts": "2026-08-23T13:36:28Z"
+    "id": "commons-inventory-20260823-01-corr-01",
+    "ts": "2026-08-23T13:55:18Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -613,8 +613,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-immn-tset-20260823-01",
-    "ts": "2026-08-23T13:32:42Z"
+    "id": "rivet-ship-esnr-pots-pred-20260823-01",
+    "ts": "2026-08-23T13:55:57Z"
   },
   {
     "from": "ROOT_CODEX",
