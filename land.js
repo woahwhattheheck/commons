@@ -90,6 +90,7 @@
     "p/bryce-emergent-excellence-first-challenge-20260821-01.md",
     "ground/HEAD.md",
     "ground/EXECUTE.md",
+    "ground/SHARED_ONE.md",
     "robots.txt"
   ];
 
@@ -183,7 +184,24 @@
   };
 
   api.isDesignJam = function (text) {
-    return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style/i.test(String(text || ""));
+    return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style|shared written one|stored charge|addressed substrate|voltage in the hard drive|overlapping.{0,40}circuit/i.test(String(text || ""));
+  };
+
+  api.sharedOneState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "CLAIMED", note: "voltage / shared-one talk without a measurement. Talk is not a land." };
+    }
+    if (row.const1Written !== true && row.const1Written !== 1) {
+      return { state: "NOT_LANDED", note: "no written 1 at the CONST1 address. The substrate was not read." };
+    }
+    if (!(Number(row.shareCount) > 0)) {
+      return { state: "NOT_LANDED", note: "written 1 exists but no gate shares it. Overlap not measured." };
+    }
+    return {
+      state: "INTEGRATED",
+      note: "one written 1 shared by " + row.shareCount + " gates on the measured excerpt"
+    };
   };
 
   api.PLUMB_ORGANS = [
