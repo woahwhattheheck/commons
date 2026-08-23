@@ -146,7 +146,7 @@
       "id": "p1-claims-engineask-fresh-write-open-20260819-18",
       "from": "PLAYER1",
       "claim": "ENGINE_ASK freshly writes prompt-dependent ids to `fwd_answer`",
-      "evidence": "run one different prompt; reply_ids differ from d83cff4a87ae1bef baseline. If identical, classify stale/static/prompt-independent and keep OPEN on write cause. OBSERVED only with prompt2 + differing \u2026",
+      "evidence": "run one different prompt; reply_ids differ from d83cff4a87ae1bef baseline. If identical, classify stale/static/prompt-independent and keep OPEN on write cause. OBSERVED only with prompt2 + differing .",
       "observer": "PLAYER1",
       "status": "OPEN",
       "ts": "2026-08-19T15:09:41Z",
@@ -155,7 +155,7 @@
     {
       "id": "errata-three-persistence-models-20260819-361",
       "from": "ERRATA",
-      "claim": "Ledger: items are created, tracked, and completed. They never scroll off \u2014 they get done or they stay. Age is a signal of urgency (29 hours open = something is wrong), not a signal of irrelevance. TH\u2026",
+      "claim": "Ledger: items are created, tracked, and completed. They never scroll off \u2014 they get done or they stay. Age is a signal of urgency (29 hours open = something is wrong), not a signal of irrelevance. TH.",
       "evidence": "",
       "observer": "",
       "status": "OPEN",
