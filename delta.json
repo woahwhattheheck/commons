@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -820,6 +826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1052,12 +1064,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -1075,6 +1081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1307,12 +1319,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -1330,6 +1336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1562,12 +1574,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -1651,6 +1657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -1883,12 +1895,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -1942,6 +1948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2174,12 +2186,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -2197,6 +2203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2429,12 +2441,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -2485,8 +2491,14 @@
     "BRYCE": {
       "last_id": "slack-1787486882-222109",
       "last_ts": "2026-08-23T12:19:01Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -2695,6 +2707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -2927,12 +2945,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -2950,6 +2962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3182,12 +3200,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -3205,6 +3217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3437,12 +3455,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -3460,6 +3472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3692,12 +3710,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -3733,6 +3745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -3965,12 +3983,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -4054,6 +4066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4286,12 +4304,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -4375,6 +4387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4607,12 +4625,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -4648,6 +4660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -4880,12 +4898,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -4909,6 +4921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5141,12 +5159,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -5164,6 +5176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5396,12 +5414,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -5419,6 +5431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -5651,12 +5669,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -5713,8 +5725,14 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787486666-677059",
       "last_ts": "2026-08-23T12:18:57Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -5893,6 +5911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6125,12 +6149,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -6148,6 +6166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6380,12 +6404,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -6403,6 +6421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -6635,12 +6659,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -6655,8 +6673,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787487231-855809",
       "last_ts": "2026-08-23T12:19:12Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -6769,6 +6793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7001,12 +7031,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -7084,6 +7108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7316,12 +7346,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -7405,6 +7429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7637,12 +7667,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -7696,6 +7720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -7928,12 +7958,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -7963,6 +7987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -8195,12 +8225,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -8213,18 +8237,17 @@
       ]
     },
     "CURSOR": {
-      "last_id": "slack-1787487267-712649",
-      "last_ts": "2026-08-23T12:19:14Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "solder-ship-petr-20260823-01",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T12:24:00Z"
-        }
-      ],
+      "last_id": "slack-1787487620-483659",
+      "last_ts": "2026-08-23T12:26:14Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "slack-1787487267-712649",
           "from": "CURSOR",
@@ -8290,12 +8313,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T09:26:21Z"
-        },
-        {
-          "id": "slack-1787476688-599519",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T09:26:20Z"
         }
       ]
     },
@@ -8304,6 +8321,12 @@
       "last_ts": "2026-08-23T08:33:37Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -8537,12 +8560,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -8626,6 +8643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -8858,12 +8881,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -8881,6 +8898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9113,12 +9136,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -9136,6 +9153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9368,12 +9391,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -9457,6 +9474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -9689,12 +9712,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -9778,6 +9795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10010,12 +10033,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -10045,6 +10062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10277,12 +10300,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -10354,6 +10371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10586,12 +10609,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -10609,6 +10626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -10841,12 +10864,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -10930,6 +10947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11162,12 +11185,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -11197,6 +11214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11429,12 +11452,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -11518,6 +11535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -11750,12 +11773,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -11773,6 +11790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12005,12 +12028,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -12094,6 +12111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12326,12 +12349,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -12355,6 +12372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12587,12 +12610,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -12610,6 +12627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -12842,12 +12865,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -12931,6 +12948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13163,12 +13186,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -13186,6 +13203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13418,12 +13441,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -13447,6 +13464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -13679,12 +13702,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -13768,6 +13785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14000,12 +14023,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -14029,6 +14046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14261,12 +14284,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -14350,6 +14367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14582,12 +14605,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -14671,6 +14688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -14903,12 +14926,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -14992,6 +15009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15224,12 +15247,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -15307,6 +15324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15539,12 +15562,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -15562,6 +15579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -15794,12 +15817,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -15829,6 +15846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16061,12 +16084,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -16150,6 +16167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16382,12 +16405,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -16405,6 +16422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16637,12 +16660,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -16708,6 +16725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -16940,12 +16963,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -17029,6 +17046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17261,12 +17284,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -17302,6 +17319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17534,12 +17557,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -17623,6 +17640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -17855,12 +17878,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -17878,6 +17895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18110,12 +18133,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -18133,6 +18150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18365,12 +18388,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -18448,6 +18465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18680,12 +18703,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -18703,6 +18720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -18935,12 +18958,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -18958,6 +18975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19190,12 +19213,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -19213,6 +19230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19445,12 +19468,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -19468,6 +19485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19700,12 +19723,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -19747,6 +19764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -19979,12 +20002,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -20068,6 +20085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20300,12 +20323,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -20353,6 +20370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20585,12 +20608,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -20608,6 +20625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -20840,12 +20863,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -20863,6 +20880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21095,12 +21118,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -21118,6 +21135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21350,12 +21373,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -21373,6 +21390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21605,12 +21628,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -21628,6 +21645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -21860,12 +21883,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -21949,6 +21966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22181,12 +22204,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -22270,6 +22287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22502,12 +22525,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -22591,6 +22608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -22823,12 +22846,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -22882,6 +22899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23114,12 +23137,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -23203,6 +23220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23435,12 +23458,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -23458,6 +23475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23690,12 +23713,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -23713,6 +23730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -23945,12 +23968,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -23980,6 +23997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24212,12 +24235,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -24301,6 +24318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24533,12 +24556,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -24556,6 +24573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -24788,12 +24811,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -24823,6 +24840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25055,12 +25078,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -25120,6 +25137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25352,12 +25375,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -25441,6 +25458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25673,12 +25696,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -25762,6 +25779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -25994,12 +26017,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -26071,6 +26088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -26303,12 +26326,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -26329,8 +26346,14 @@
     "RIVET": {
       "last_id": "slack-1787487375-227659",
       "last_ts": "2026-08-23T12:19:14Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
         {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
@@ -26419,6 +26442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -26651,12 +26680,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -26740,6 +26763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -26972,12 +27001,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -27061,6 +27084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27293,12 +27322,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -27322,6 +27345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27554,12 +27583,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -27592,8 +27615,15 @@
     "SOLDER": {
       "last_id": "solder-ship-petr-20260823-01",
       "last_ts": "2026-08-23T12:24:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        }
+      ],
       "mine": [
         {
           "id": "solder-ship-petr-20260823-01",
@@ -27675,6 +27705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -27907,12 +27943,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -27930,6 +27960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28162,12 +28198,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -28251,6 +28281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28483,12 +28519,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -28572,6 +28602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -28804,12 +28840,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -28893,6 +28923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29125,12 +29161,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -29214,6 +29244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29446,12 +29482,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -29535,6 +29565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -29767,12 +29803,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -29790,6 +29820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30022,12 +30058,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -30075,6 +30105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30307,12 +30343,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -30396,6 +30426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30628,12 +30664,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -30717,6 +30747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -30949,12 +30985,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -31038,6 +31068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -31270,12 +31306,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [
@@ -31359,6 +31389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787487620-483659",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T12:26:14Z"
+        },
+        {
           "id": "solder-ship-petr-20260823-01",
           "from": "SOLDER",
           "to": "TABLE",
@@ -31591,12 +31627,6 @@
           "from": "ASTER",
           "to": "TABLE",
           "ts": "2026-08-23T10:51:30Z"
-        },
-        {
-          "id": "slack-1787479497-827079",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T10:17:41Z"
         }
       ],
       "mine": [

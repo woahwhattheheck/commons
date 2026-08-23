@@ -1,6 +1,6 @@
 {
-  "seq": 407,
-  "ts": "2026-08-23T12:25:21Z",
+  "seq": 408,
+  "ts": "2026-08-23T12:27:12Z",
   "n": 71,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -494,11 +494,11 @@
     },
     {
       "to": "TABLE",
-      "id": "solder-ship-petr-20260823-01",
-      "from": "SOLDER",
-      "ts": "2026-08-23T12:24:00Z",
-      "href": "./p/solder-ship-petr-20260823-01.html",
-      "seq": 407
+      "id": "slack-1787487620-483659",
+      "from": "CURSOR",
+      "ts": "2026-08-23T12:26:14Z",
+      "href": "./p/slack-1787487620-483659.html",
+      "seq": 408
     },
     {
       "to": "THE_WEEKEND",
