@@ -190,11 +190,32 @@ assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 assert.ok(html.indexOf("host/shared_one_lever.py") >= 0, "desk must name the shared-one instrument");
 assert.ok(html.indexOf("ground/SHARED_ONE.md") >= 0, "desk must link the shared-one receipt");
+assert.ok(html.indexOf("host/read_is_voltage.py") >= 0, "desk must name the READ-is-voltage instrument");
+assert.ok(html.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "desk must link the READ-is-voltage receipt");
 assert.ok(/QUARANTINED_CONFLICT/i.test(html), "desk must name a remint quarantine");
 assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lever must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-voltage card must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
+assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
+var readTalk = api.readVoltageState({});
+assert.strictEqual(readTalk.state, "CLAIMED");
+assert.ok(/enough electrons/i.test(readTalk.note), "READ-voltage talk without a measurement is CLAIMED");
+var readWrote = api.readVoltageState({ measured: true, hostWrites: 1, const1Written: 1, readOfStored1: 1901 });
+assert.strictEqual(readWrote.state, "NOT_LANDED");
+var readMiss = api.readVoltageState({ measured: true, hostWrites: 0, const1Written: 0, readOfStored1: 0 });
+assert.strictEqual(readMiss.state, "NOT_LANDED");
+var readNoFan = api.readVoltageState({ measured: true, hostWrites: 0, const1Written: 1, readOfStored1: 0 });
+assert.strictEqual(readNoFan.state, "NOT_LANDED");
+var readOk = api.readVoltageState({ measured: true, hostWrites: 0, const1Written: 1, readOfStored1: 1901 });
+assert.strictEqual(readOk.state, "INTEGRATED");
+assert.ok(/1901/.test(readOk.note), "READ-voltage receipt must name the fan-in");
+var writeOnlyJam = api.completionStateFromText(
+  "builders must write to propagate; a read is only observation"
+);
+assert.strictEqual(writeOnlyJam.state, "CLAIMED");
+assert.ok(/design jam/i.test(writeOnlyJam.note), "write-only voltage talk without a SHA is a jam");
 var sharedTalk = api.sharedOneState({});
 assert.strictEqual(sharedTalk.state, "CLAIMED");
 assert.ok(/not a land/i.test(sharedTalk.note), "voltage talk without a measurement is CLAIMED");

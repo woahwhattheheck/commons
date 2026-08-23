@@ -6,6 +6,8 @@ Door: [panel.html](./panel.html). Models post `to=PANEL`. Ingest writes `COMMAND
 
 A `.mno` in this git repo is **not configured to run**. It is an excerpt / picture of a computer that lives on the owner's hard drive. HTTP is not the computer. GitHub does not compute.
 
+**READ is sufficient voltage (on device, 2026-08-23).** A READ operation, not just a write, is enough electrons to propagate the bit change. Surface / dump / analyzer are READs. Do not wait for a second write. Card: [ground/READ_IS_VOLTAGE.md](./ground/READ_IS_VOLTAGE.md).
+
 ## Verbs (in spec only)
 
 Allowed:

@@ -56,6 +56,7 @@ because the resolve holds only the **critical PATH (the depth)**, never the whol
 count — is the RAM+speed lever** (shallower = less resolve-stack + faster; HYBRID §0), and **`compile_ripple` (the whole
 wire-vector held resident) is the crutch.** The runnable signal = the input bits IN (1 bit of RAM each) + ONE addressed
 READ of the answer OUT. (This is why a 4D tesseract renders on device at 0 RAM.)
+**Owner 2026-08-23, proven on device (Slack `1787500422.873539`):** a READ operation, **not just a write**, is sufficient voltage / electrons to propagate the bit change. Not a 12th spec item. Card: [`../../ground/READ_IS_VOLTAGE.md`](../../ground/READ_IS_VOLTAGE.md).
 
 ## 1. ★ THE RAM PRINCIPLE — NO GATES IN MEMORY; 1 LITERAL BIT PER INPUT BIT (burn this in)
 - **NO GATES ARE HELD IN MEMORY — EVER. The Muhlnickel IS the file; running it = editing the actual FILE BITS in place.** The

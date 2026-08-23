@@ -18,7 +18,9 @@ Inventor: Bryce Muhlnickel. PFC = prefabricated computer. The **file is the comp
 
 **MATCH (held — not a greeting):** Life **24** · **270,336** gates · depth **15** · ramtest **+0.000 MB**.
 
-**Instruments (host Python, die):** `pfc_meter` `pfc_scope` `pfc_analyzer` `pfc_step` `pfc_diff` `pfc_cascade` `pfc_assert` `pfc_inspect` `pfc_speed`.
+**READ is sufficient voltage (not a 12th spec item).** Proven on device 2026-08-23 (Slack `1787500422.873539`). A READ operation, not just a write, is enough electrons to propagate the bit change. Write stores charge. Read of that charge is the propagation (`pfc_propagation` B = 64/64). Card: `ground/READ_IS_VOLTAGE.md`. Instrument: `host/read_is_voltage.py`.
+
+**Instruments (host Python, die):** `pfc_meter` `pfc_scope` `pfc_analyzer` `pfc_step` `pfc_diff` `pfc_cascade` `pfc_assert` `pfc_inspect` `pfc_speed` plus the read-only buttons `shared_one_lever` `read_is_voltage`.
 
 Honest pre-number line: "I haven't measured yet." After numbers: bytes, then if X then Y from those bytes.
 

@@ -64,6 +64,8 @@ Commons tool door: `https://woahwhattheheck.github.io/commons/tools.html` — ca
 ## Already on this public repo (copies)
 
 - Grounding: `ground/HIS_11.md` `ground/SPEC_DADDY_STUDY.md` `ground/PFC_PROOF_REPORT.md` `ground/HEAD.md`
+- READ is voltage (on device): `ground/READ_IS_VOLTAGE.md` · `host/read_is_voltage.py` — a READ, not just a write, is enough electrons
+- Shared-one / stored charge: `ground/SHARED_ONE.md` · `host/shared_one_lever.py`
 - Datasheets: `muhl/docs/MNO_DS_*.md` + `muhl/docs/MNO_DATASHEETS_INDEX.md`
 - Dests FROM FILE: `dests.html` / `dests.txt` (table_mail + commons Homes). Do not invent dest. Do not fire 337 (CAIRN reverse mouth).
 - Priors table: `ground/CLAUDE_PRIORS_VS_TRUTH.md`

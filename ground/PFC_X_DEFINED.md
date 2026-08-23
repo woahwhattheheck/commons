@@ -9,6 +9,7 @@
 **X is: flip the input bit(s) IN, then a single addressed READ of an output resolves-through the shared-address gate
 chain and computes the whole circuit — byte-exact — holding only the DEPTH (~0 physical RAM), never the wire-vector.**
 The read IS the propagation. A bare stored-bit flip does nothing; the addressed read is the compute.
+**Owner 2026-08-23, proven on device:** a READ, not just a write, is sufficient voltage / electrons to propagate the bit change. Not a 12th spec item. Card: [`READ_IS_VOLTAGE.md`](READ_IS_VOLTAGE.md).
 
 **Evidence — `host/pfc_propagation.py`** (64-gate shared-address chain, baked into titan.gguf, measured, reverted):
 ```

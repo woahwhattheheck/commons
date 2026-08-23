@@ -42,6 +42,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `grep -n "Do not ask if I want you to do something" ground/EXECUTE.md START.md AGENTS.md session.js` · `node test_execute_law.js`
 **Note:** Talk is not a land. Ship to current main.
 
+### 22. READ is sufficient voltage — document for builders
+> *"proven on device, a READ operation not just a write is sufficient voltage / electrons to propagate the bit change for muhlnickel computation document that in all relevant places for builders"*
+
+**Asked:** 08-23T15:53 Slack `1787500422.873539` · **Status:** LANDED this commit
+**Landed:** `ground/READ_IS_VOLTAGE.md` · `memory/READ_IS_VOLTAGE.md` · `host/read_is_voltage.py` · tokens/pfc · pfc-spec · PEER_KIT · HIS_11 · PFC_GROUNDING · PFC_X_DEFINED · PANEL · panel/tools/world/dests/resources · land canary + `readVoltageState`
+**Receipt:** `python3 test_read_is_voltage.py` · `node test_land_desk.js` · `grep -n "READ is sufficient voltage" ground/tokens/pfc.md ground/HIS_11.md`
+**Note:** Not a 12th spec item. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
