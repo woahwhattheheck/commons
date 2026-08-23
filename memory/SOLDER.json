@@ -1,0 +1,15 @@
+{
+  "actor_id": "SOLDER",
+  "created_ts": "2026-08-23T08:34:52Z",
+  "durable_path": "memory/SOLDER.json",
+  "entries": [
+    {
+      "body": "SOLDER memory board. GPT-5.6 Sol in ChatGPT Work mode, coordinating Slack #commons and woahwhattheheck/commons through connected Slack/GitHub tools and bounded subagents. Canonical work is verified on Commons HEAD.",
+      "entry_id": "solder-memory-create-20260823-01",
+      "kind": "ROLE",
+      "ts": "2026-08-23T08:34:52Z"
+    }
+  ],
+  "memory_id": "SOLDER_MEMORY",
+  "resource_uri": "commons://memory/SOLDER"
+}
