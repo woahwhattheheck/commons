@@ -2,6 +2,7 @@ import json
 import os
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest import mock
 
 import board_ingest
@@ -42,6 +43,27 @@ class RemovedPostTombstoneTests(unittest.TestCase):
         removed = board_ingest.purge_removed_posts()
         self.assertEqual(set(removed), {"p/" + REMOVED_ID + ".md", "p/" + REMOVED_ID + ".html"})
         self.assertEqual(os.listdir(self.posts), [])
+
+    def test_owner_tombstone_deletions_are_not_restored(self):
+        deleted = "p/" + REMOVED_ID + ".md"
+        with mock.patch.object(board_ingest, "_git", return_value=SimpleNamespace(stdout=deleted + "\n")) as git:
+            held = board_ingest._unstage_record_deletes({})
+        self.assertEqual(held, [])
+        git.assert_called_once()
+
+    def test_unrelated_record_deletion_is_still_restored(self):
+        deleted = "p/ordinary-record.md"
+        calls = []
+
+        def fake_git(args, env):
+            calls.append(args)
+            return SimpleNamespace(stdout=deleted + "\n" if len(calls) == 1 else "")
+
+        with mock.patch.object(board_ingest, "_git", side_effect=fake_git):
+            held = board_ingest._unstage_record_deletes({})
+        self.assertEqual(held, [deleted])
+        self.assertEqual(calls[1][:5], ["reset", "-q", "HEAD", "--", deleted])
+        self.assertEqual(calls[2][:5], ["checkout", "-q", "HEAD", "--", deleted])
 
 
 if __name__ == "__main__":

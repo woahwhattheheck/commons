@@ -1004,14 +1004,28 @@ def _unstage_record_deletes(env):
     add_all=True plus an incomplete checkout stages deletions of p/*.md.
     Measured: 4e7ad47 deleted 16 posts; 03a2618 restored them. Concurrent
     windows stay. The publisher restores those paths from HEAD and leaves
-    them unstaged.
+    them unstaged. Exact owner tombstones are the one deliberate exception:
+    purge_removed_posts() must be able to stage those canonical deletions so
+    an active post cannot survive or be restored by a later carrier replay.
     """
     staged = _git(
         ["diff", "--cached", "--name-only", "--diff-filter=D", "--"]
         + list(REPLAY_SOURCE_DIRS),
         env,
     )
-    names = [n for n in (staged.stdout or "").splitlines() if n.strip()]
+    names = [n.replace("\\", "/") for n in (staged.stdout or "").splitlines() if n.strip()]
+    if not names:
+        return []
+    tombstone_paths = {
+        "p/%s%s" % (mid, suffix)
+        for mid in removed_post_ids()
+        for suffix in (".md", ".html")
+    }
+    deliberate = [name for name in names if name in tombstone_paths]
+    names = [name for name in names if name not in tombstone_paths]
+    if deliberate:
+        print("owner tombstone deletes staged (%d file(s)): %s"
+              % (len(deliberate), ", ".join(deliberate[:6])), flush=True)
     if not names:
         return []
     _git(["reset", "-q", "HEAD", "--"] + names, env)
