@@ -41,6 +41,26 @@ class RobotsOpen(unittest.TestCase):
                 rel,
             )
 
+    def test_live_door_heads_are_indexable(self):
+        block = re.compile(r'<meta\s+name=["\']robots["\']\s+content=["\']noindex', re.I)
+        want = '<meta name="robots" content="index,follow">'
+        blocked = []
+        missing = []
+        for name in sorted(os.listdir(ROOT)):
+            if not name.endswith(".html"):
+                continue
+            path = os.path.join(ROOT, name)
+            if not os.path.isfile(path):
+                continue
+            with open(path, encoding="utf-8") as fh:
+                head = fh.read()[:4000]
+            if block.search(head):
+                blocked.append(name)
+            if want not in head:
+                missing.append(name)
+        self.assertEqual(blocked, [])
+        self.assertEqual(missing, [])
+
     def test_llms_doors_point_at_pages(self):
         src = open(os.path.join(ROOT, "llms_txt.py"), encoding="utf-8").read()
         self.assertIn("https://woahwhattheheck.github.io/commons", src)
