@@ -333,6 +333,12 @@
     "to": "TABLE"
   },
   {
+    "from": "GPT",
+    "id": "gpt-slack-parity-20260823-0928",
+    "ts": "2026-08-23T13:28:00Z",
+    "to": "TABLE"
+  },
+  {
     "from": "GRAVE",
     "id": "grave-player1-commons-clickable-references-fallback-20260818",
     "ts": "2026-08-18T13:17:16Z",
