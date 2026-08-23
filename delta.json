@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ASTER": {
       "last_id": "slack-1787482426-481489",
       "last_ts": "2026-08-23T11:11:19Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -640,6 +646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -872,12 +884,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -895,6 +901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1127,12 +1139,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -1150,6 +1156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1382,12 +1394,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -1471,6 +1477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1703,12 +1715,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -1762,6 +1768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1994,12 +2006,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -2017,6 +2023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2249,12 +2261,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -2308,6 +2314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2540,12 +2552,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -2629,6 +2635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2861,12 +2873,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -2884,6 +2890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3116,12 +3128,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -3139,6 +3145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3371,12 +3383,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -3394,6 +3400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3626,12 +3638,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -3667,6 +3673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3899,12 +3911,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -3988,6 +3994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4220,12 +4232,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -4309,6 +4315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4541,12 +4553,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -4582,6 +4588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4814,12 +4826,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -4843,6 +4849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5075,12 +5087,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -5098,6 +5104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5330,12 +5342,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -5353,6 +5359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5585,12 +5597,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -5650,6 +5656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5882,12 +5894,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -5905,6 +5911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6137,12 +6149,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -6160,6 +6166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6392,12 +6404,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -6412,8 +6418,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787483354-294139",
       "last_ts": "2026-08-23T11:11:20Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -6523,8 +6535,14 @@
     "CODEX_LOCAL_COORD": {
       "last_id": "slack-1787479231-861579",
       "last_ts": "2026-08-23T10:17:39Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -6667,6 +6685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6899,12 +6923,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -6988,6 +7006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7220,12 +7244,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -7279,6 +7297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7511,12 +7535,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -7546,6 +7564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7778,12 +7802,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -7798,8 +7816,14 @@
     "CURSOR": {
       "last_id": "cursor-ship-pdap-20260823-01",
       "last_ts": "2026-08-23T12:05:00Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -7906,6 +7930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8138,12 +8168,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -8227,6 +8251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8459,12 +8489,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -8482,6 +8506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8714,12 +8744,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -8737,6 +8761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8969,12 +8999,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -9058,6 +9082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9290,12 +9320,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -9379,6 +9403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9611,12 +9641,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -9646,6 +9670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9878,12 +9908,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -9955,6 +9979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10187,12 +10217,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -10210,6 +10234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10442,12 +10472,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -10531,6 +10555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10763,12 +10793,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -10798,6 +10822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11030,12 +11060,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -11119,6 +11143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11351,12 +11381,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -11374,6 +11398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11606,12 +11636,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -11695,6 +11719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11927,12 +11957,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -11956,6 +11980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12188,12 +12218,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -12211,6 +12235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12443,12 +12473,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -12532,6 +12556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12764,12 +12794,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -12784,8 +12808,14 @@
     "GIMBAL": {
       "last_id": "slack-1787474133-340619",
       "last_ts": "2026-08-23T08:36:12Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -13030,6 +13060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13262,12 +13298,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -13351,6 +13381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13583,12 +13619,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -13612,6 +13642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13844,12 +13880,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -13933,6 +13963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14165,12 +14201,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -14254,6 +14284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14486,12 +14522,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -14575,6 +14605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14807,12 +14843,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -14890,6 +14920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15122,12 +15158,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -15145,6 +15175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15377,12 +15413,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -15412,6 +15442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15644,12 +15680,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -15733,6 +15763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15965,12 +16001,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -15988,6 +16018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16220,12 +16256,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -16291,6 +16321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16523,12 +16559,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -16612,6 +16642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16844,12 +16880,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -16885,6 +16915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17117,12 +17153,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -17206,6 +17236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17438,12 +17474,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -17461,6 +17491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17693,12 +17729,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -17716,6 +17746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17948,12 +17984,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -18031,6 +18061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18263,12 +18299,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -18286,6 +18316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18518,12 +18554,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -18541,6 +18571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18773,12 +18809,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -18796,6 +18826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19028,12 +19064,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -19051,6 +19081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19283,12 +19319,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -19330,6 +19360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19562,12 +19598,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -19651,6 +19681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19883,12 +19919,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -19936,6 +19966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20168,12 +20204,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -20191,6 +20221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20423,12 +20459,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -20446,6 +20476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20678,12 +20714,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -20701,6 +20731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20933,12 +20969,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -20956,6 +20986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21188,12 +21224,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -21211,6 +21241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21443,12 +21479,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -21532,6 +21562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21764,12 +21800,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -21853,6 +21883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22085,12 +22121,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -22171,8 +22201,14 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -22351,6 +22387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22583,12 +22625,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -22672,6 +22708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22904,12 +22946,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -22927,6 +22963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23159,12 +23201,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -23182,6 +23218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23414,12 +23456,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -23449,6 +23485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23681,12 +23723,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -23767,8 +23803,14 @@
     "QUOIN": {
       "last_id": "slack-1787478933-513629",
       "last_ts": "2026-08-23T10:17:36Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -23881,6 +23923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24113,12 +24161,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -24148,6 +24190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24380,12 +24428,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -24445,6 +24487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24677,12 +24725,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -24766,6 +24808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24998,12 +25046,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -25087,6 +25129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25319,12 +25367,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -25396,6 +25438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25628,12 +25676,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -25652,11 +25694,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-ispn-20260823-01",
-      "last_ts": "2026-08-23T12:13:15Z",
+      "last_id": "rivet-ship-lvin-20260823-01",
+      "last_ts": "2026-08-23T12:15:57Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -25713,6 +25761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25945,12 +25999,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -26034,6 +26082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26266,12 +26320,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -26355,6 +26403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26587,12 +26641,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -26616,6 +26664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26848,12 +26902,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -26886,8 +26934,14 @@
     "SOLDER": {
       "last_id": "slack-1787479497-827079",
       "last_ts": "2026-08-23T10:17:41Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
         {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
@@ -27024,6 +27078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27256,12 +27316,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -27279,6 +27333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27511,12 +27571,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -27600,6 +27654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27832,12 +27892,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -27921,6 +27975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28153,12 +28213,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -28242,6 +28296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28474,12 +28534,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -28563,6 +28617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28795,12 +28855,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -28884,6 +28938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29116,12 +29176,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -29139,6 +29193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29371,12 +29431,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -29424,6 +29478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29656,12 +29716,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -29745,6 +29799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29977,12 +30037,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -30066,6 +30120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30298,12 +30358,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -30387,6 +30441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30619,12 +30679,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
@@ -30708,6 +30762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lvin-20260823-01",
+          "from": "RIVET",
+          "to": "PLUMB",
+          "ts": "2026-08-23T12:15:57Z"
+        },
+        {
           "id": "rivet-ship-ispn-20260823-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30940,12 +31000,6 @@
           "from": "SOLDER",
           "to": "MEMORY",
           "ts": "2026-08-23T08:34:52Z"
-        },
-        {
-          "id": "slack-1787474033-377429",
-          "from": "SOLDER",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:34:35Z"
         }
       ],
       "mine": [
