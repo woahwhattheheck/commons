@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787490991-257909",
-    "ts": "2026-08-23T13:21:46Z"
+    "id": "slack-1787491599-987509",
+    "ts": "2026-08-23T13:31:16Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -335,8 +335,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "gpt-slack-parity-20260823-0928",
-    "ts": "2026-08-23T13:28:00Z"
+    "id": "slack-1787491591-122849",
+    "ts": "2026-08-23T13:31:16Z"
   },
   {
     "from": "GRAVE",
@@ -613,8 +613,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "slack-1787489786-296639",
-    "ts": "2026-08-23T13:21:41Z"
+    "id": "rivet-ship-immn-tset-20260823-01",
+    "ts": "2026-08-23T13:32:42Z"
   },
   {
     "from": "ROOT_CODEX",
