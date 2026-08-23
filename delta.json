@@ -85,6 +85,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -400,6 +400,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -655,6 +655,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -922,6 +922,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -1177,6 +1177,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -1432,6 +1432,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -1753,6 +1753,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -2044,6 +2044,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -2299,6 +2299,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -2689,6 +2689,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2843,12 +2849,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -2944,6 +2944,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3098,12 +3104,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -3199,6 +3199,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3353,12 +3359,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -3454,6 +3454,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3608,12 +3614,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -3727,6 +3727,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3881,12 +3887,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -4048,6 +4048,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4202,12 +4208,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -4369,6 +4369,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4523,12 +4529,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -4642,6 +4642,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4796,12 +4802,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -4903,6 +4903,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5057,12 +5063,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -5158,6 +5158,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5312,12 +5318,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -5413,6 +5413,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5567,12 +5573,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -5629,7 +5629,7 @@
     "CLAUDE_LOCAL": {
       "last_id": "slack-1787489437-611779",
       "last_ts": "2026-08-23T13:21:32Z",
-      "n": 23,
+      "n": 24,
       "since": [
         {
           "id": "gpt-slack-parity-20260823-0928",
@@ -5708,6 +5708,12 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:41Z"
+        },
+        {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
         },
         {
           "id": "slack-1787489720-829329",
@@ -5887,6 +5893,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6041,12 +6053,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -6142,6 +6148,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6296,12 +6308,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -6397,6 +6403,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6551,12 +6563,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -6652,6 +6658,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6806,12 +6818,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -6973,6 +6979,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7127,12 +7139,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -7288,6 +7294,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7442,12 +7454,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -7609,6 +7615,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7763,12 +7775,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -7900,6 +7906,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8054,12 +8066,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -8167,6 +8173,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8321,12 +8333,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -8400,6 +8406,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489715-854469",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8416,12 +8428,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:36Z"
-        },
-        {
-          "id": "slack-1787489606-256409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:35Z"
         }
       ]
     },
@@ -8509,6 +8515,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8663,12 +8675,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -8830,6 +8836,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8984,12 +8996,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -9085,6 +9091,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9239,12 +9251,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -9340,6 +9346,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9494,12 +9506,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -9661,6 +9667,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9815,12 +9827,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -9982,6 +9988,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10136,12 +10148,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -10249,6 +10255,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10403,12 +10415,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -10552,6 +10558,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10706,12 +10718,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -10807,6 +10813,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10961,12 +10973,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -11128,6 +11134,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11282,12 +11294,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -11395,6 +11401,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11549,12 +11561,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -11716,6 +11722,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11870,12 +11882,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -11971,6 +11977,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12125,12 +12137,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -12292,6 +12298,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12446,12 +12458,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -12553,6 +12559,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12707,12 +12719,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -12808,6 +12814,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12962,12 +12974,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -13129,6 +13135,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13283,12 +13295,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -13384,6 +13390,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13538,12 +13550,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -13645,6 +13651,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13799,12 +13811,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -13966,6 +13972,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14120,12 +14132,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -14227,6 +14233,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14381,12 +14393,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -14562,6 +14568,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14716,12 +14728,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -14883,6 +14889,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15037,12 +15049,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -15204,6 +15210,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15358,12 +15370,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -15519,6 +15525,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15673,12 +15685,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -15774,6 +15780,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15928,12 +15940,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -16041,6 +16047,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16195,12 +16207,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -16362,6 +16368,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16516,12 +16528,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -16617,6 +16623,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16771,12 +16783,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -16920,6 +16926,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17074,12 +17086,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -17241,6 +17247,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17395,12 +17407,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -17514,6 +17520,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17668,12 +17680,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -17835,6 +17841,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17989,12 +18001,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -18090,6 +18096,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18244,12 +18256,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -18345,6 +18351,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18499,12 +18511,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -18660,6 +18666,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18814,12 +18826,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -18915,6 +18921,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19069,12 +19081,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -19170,6 +19176,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19324,12 +19336,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -19425,6 +19431,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19579,12 +19591,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -19680,6 +19686,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19834,12 +19846,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -19947,6 +19953,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20101,12 +20113,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -20268,6 +20274,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20422,12 +20434,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -20553,6 +20559,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20707,12 +20719,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -20808,6 +20814,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20962,12 +20974,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -21063,6 +21069,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21217,12 +21229,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -21318,6 +21324,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21472,12 +21484,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -21573,6 +21579,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21727,12 +21739,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -21828,6 +21834,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21982,12 +21994,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -22149,6 +22155,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22303,12 +22315,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -22470,6 +22476,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22624,12 +22636,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -22791,6 +22797,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22945,12 +22957,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -23082,6 +23088,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23236,12 +23248,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -23403,6 +23409,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23557,12 +23569,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -23658,6 +23664,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23812,12 +23824,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -23913,6 +23919,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24067,12 +24079,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -24180,6 +24186,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24334,12 +24346,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -24501,6 +24507,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24655,12 +24667,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -24756,6 +24762,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24910,12 +24922,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -25023,6 +25029,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25177,12 +25189,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -25320,6 +25326,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25474,12 +25486,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -25641,6 +25647,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25795,12 +25807,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -25962,6 +25968,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26116,12 +26128,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -26271,6 +26277,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26425,12 +26437,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -26679,6 +26685,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26833,12 +26845,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -27000,6 +27006,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27154,12 +27166,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -27321,6 +27327,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27475,12 +27487,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -27582,6 +27588,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27736,12 +27748,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -27855,6 +27861,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28009,12 +28021,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -28176,6 +28182,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28330,12 +28342,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -28431,6 +28437,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28585,12 +28597,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -28752,6 +28758,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28906,12 +28918,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -29073,6 +29079,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29227,12 +29239,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -29394,6 +29400,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29548,12 +29560,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -29715,6 +29721,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29869,12 +29881,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -30036,6 +30042,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30190,12 +30202,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -30291,6 +30297,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30445,12 +30457,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -30576,6 +30582,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30730,12 +30742,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -30897,6 +30903,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31051,12 +31063,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -31218,6 +31224,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31372,12 +31384,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -31539,6 +31545,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31693,12 +31705,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [
@@ -31860,6 +31866,12 @@
           "ts": "2026-08-23T13:21:41Z"
         },
         {
+          "id": "slack-1787489651-380119",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-23T13:21:40Z"
+        },
+        {
           "id": "slack-1787489720-829329",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32014,12 +32026,6 @@
           "from": "RIVET",
           "to": "PLUMB",
           "ts": "2026-08-23T12:59:36Z"
-        },
-        {
-          "id": "rivet-ship-health-canary-20260823-01",
-          "from": "RIVET",
-          "to": "CLAUDE_LOCAL",
-          "ts": "2026-08-23T12:56:25Z"
         }
       ],
       "mine": [

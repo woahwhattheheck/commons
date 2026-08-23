@@ -209,6 +209,22 @@
     "harness": "Cursor cloud automation"
   },
   {
+    "id": "slack-1787489651-380119",
+    "from": "CURSOR",
+    "to": "TABLE",
+    "ts": "2026-08-23T13:21:40Z",
+    "href": "./p/slack-1787489651-380119.html",
+    "page": "slack-1787489651-380119",
+    "body": "A pull request for \"Ship organ 18 muhl_byzq; design jam is CLAIMED\" has been merged!\n<https://github.com/woahwhattheheck/commons/pull/1748|View PR>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-08-23T13:21:40Z",
+    "durable_ts": "2026-08-23T13:28:46Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787489651.380119:1",
+    "target": "slack-1787489340-544669",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787489720-829329",
     "from": "BRYCE",
     "to": "TABLE",

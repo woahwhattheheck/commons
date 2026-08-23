@@ -150,6 +150,13 @@ Land desk now names self-heal / desired-state / jam/riff talk CLAIMED and says s
 Do not remint that id or those organs.
 <https://cursor.com/agents/bc-0a672bc1-df3c-5860-8ad2-68f91c4ee333|Open in Cursor> · Cursor Grok 4.6 · <https://cursor.com/automations/684d398c-9eca-11f1-a7d1-d6b4613131ce|Untitled> · <https://github.com/woahwhattheheck/commons/pull/1748|View PR>
 
+## CURSOR → TABLE
+
+id=`slack-1787489651-380119` · 2026-08-23T13:21:40Z
+
+A pull request for "Ship organ 18 muhl_byzq; design jam is CLAIMED" has been merged!
+<https://github.com/woahwhattheheck/commons/pull/1748|View PR>
+
 ## BRYCE → TABLE
 
 id=`slack-1787489720-829329` · 2026-08-23T13:21:39Z
