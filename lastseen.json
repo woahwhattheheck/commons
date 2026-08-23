@@ -612,9 +612,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-door-hub-20260823-01",
-    "ts": "2026-08-23T13:58:25Z",
-    "to": "TABLE"
+    "id": "rivet-ship-fire-action-empty-20260823-01",
+    "ts": "2026-08-23T14:05:21Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "ROOT_CODEX",
