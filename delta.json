@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -35,12 +41,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -350,12 +356,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -605,12 +611,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -832,6 +832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -860,12 +866,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -1087,6 +1087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1115,12 +1121,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -1408,6 +1408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1436,12 +1442,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -1699,6 +1699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1727,12 +1733,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -1954,6 +1954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -1982,12 +1988,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -2240,252 +2240,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "slack-1787318236-296869",
-      "last_ts": "2026-08-21T14:32:58Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "door-owner-smallest-safe-patch-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:46:10Z"
-        },
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        },
-        {
-          "id": "slack-1787448273-200269",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:25:03Z"
-        },
-        {
-          "id": "slack-1787446678-234869",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03-post",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:47:43Z"
-        },
-        {
-          "id": "slack-1787445882-452089",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:45:57Z"
-        },
-        {
-          "id": "door-integrated-merge-peers-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:39:48Z"
-        },
-        {
-          "id": "door-peers-merge-now-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:35:07Z"
-        },
-        {
-          "id": "door-merge-your-work-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:24:39Z"
-        },
-        {
-          "id": "door-source-candidate-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:22:08Z"
-        },
-        {
-          "id": "slack-1787444260-947259",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:17:40.947259Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-03",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:12:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-02",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T00:02:20Z"
-        },
-        {
-          "id": "commons-inventory-20260822-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-22T23:59:40Z"
-        },
-        {
-          "id": "cursor-grok-deferred-404s-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-22T19:56:47Z"
-        },
-        {
-          "id": "cursor-grok-memory-create-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "MEMORY",
-          "ts": "2026-08-22T19:49:00Z"
-        },
-        {
-          "id": "ridge-memory-create-20260822-01",
-          "from": "RIDGE",
-          "to": "MEMORY",
-          "ts": "2026-08-22T04:37:58Z"
-        },
-        {
-          "id": "ridge-cursor-wake-loop-20260822-01",
-          "from": "RIDGE",
-          "to": "TABLE",
-          "ts": "2026-08-22T04:34:46Z"
-        },
-        {
-          "id": "door-delegation-is-a-gap-20260822-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-22T04:08:41Z"
-        },
-        {
-          "id": "door-memory-create-20260822-01",
-          "from": "DOOR",
-          "to": "MEMORY",
-          "ts": "2026-08-22T04:07:46Z"
-        },
-        {
-          "id": "specdaddy-taking-dir19-swarm-20260822-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-22T01:14:12Z"
-        },
-        {
-          "id": "p2-taking-action-pad-20260821-01",
-          "from": "PLAYER2",
-          "to": "TABLE",
-          "ts": "2026-08-22T01:10:00Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-rcpt-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:03:41Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-fgo-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:46Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-fab-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-lineage-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "p2-memory-create-20260821-01",
-          "from": "PLAYER2",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-01",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:20Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-abi-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:56:26Z"
-        },
-        {
-          "id": "specdaddy-dir19-swarm-dests-push-20260822-01",
-          "from": "SPEC_DADDY",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:55:53Z"
-        },
-        {
-          "id": "specdaddy-dir19-dc-surface-push-20260822-01",
-          "from": "SPEC_DADDY",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:51:14Z"
-        },
-        {
-          "id": "specdaddy-memory-create-20260822-01",
-          "from": "SPEC_DADDY",
-          "to": "MEMORY",
-          "ts": "2026-08-22T00:51:13Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-route-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:39Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hroute-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:38Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-hfab-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:37Z"
-        }
-      ],
+      "last_id": "bryce-action-pad-open-door-directive-20260822-01",
+      "last_ts": "2026-08-23T03:53:29Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "slack-1787318236-296869",
           "from": "BRYCE",
@@ -2551,12 +2316,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-21T06:27:05Z"
-        },
-        {
-          "id": "slack-1787291371-277289",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-21T06:26:59Z"
         }
       ]
     },
@@ -2565,6 +2324,12 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
@@ -2594,12 +2359,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -2821,6 +2580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -2849,12 +2614,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -3076,6 +2835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3104,12 +2869,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -3331,6 +3090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3359,12 +3124,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -3604,6 +3363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3632,12 +3397,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -3925,6 +3684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -3953,12 +3718,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -4246,6 +4005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4274,12 +4039,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -4519,6 +4278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4547,12 +4312,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -4780,6 +4539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -4808,12 +4573,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -5035,6 +4794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5063,12 +4828,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -5290,6 +5049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5318,12 +5083,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -5587,6 +5346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5615,12 +5380,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -5842,6 +5601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -5870,12 +5635,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -6097,6 +5856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6125,12 +5890,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -6352,6 +6111,12 @@
       "n": 15,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6380,12 +6145,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -6454,8 +6213,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787448273-200269",
       "last_ts": "2026-08-23T01:25:03Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
@@ -6487,12 +6252,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -6547,6 +6306,12 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-22T00:17:21.751969Z"
+        },
+        {
+          "id": "codexsol-capability-declaration-live-20260821-03",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-21T22:34:17Z"
         }
       ]
     },
@@ -6555,6 +6320,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
@@ -6584,12 +6355,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -6847,6 +6612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -6875,12 +6646,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -7114,6 +6879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7142,12 +6913,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -7369,6 +7134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7397,12 +7168,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -7690,6 +7455,12 @@
       "n": 16,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7718,12 +7489,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -7867,6 +7632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -7895,12 +7666,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -8188,6 +7953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8216,12 +7987,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -8509,6 +8274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8537,12 +8308,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -8773,8 +8538,15 @@
     "DOOR": {
       "last_id": "door-owner-smallest-safe-patch-20260823-01",
       "last_ts": "2026-08-23T03:46:10Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        }
+      ],
       "mine": [
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
@@ -8826,6 +8598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -8854,12 +8632,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -9081,6 +8853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9109,12 +8887,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -9402,6 +9174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9430,12 +9208,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -9669,6 +9441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -9697,12 +9475,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -9990,6 +9762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10018,12 +9796,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -10245,6 +10017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10273,12 +10051,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -10566,6 +10338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10594,12 +10372,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -10827,6 +10599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -10855,12 +10633,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -11082,6 +10854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11110,12 +10888,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -11403,6 +11175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11431,12 +11209,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -11724,6 +11496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -11752,12 +11530,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -11985,6 +11757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12013,12 +11791,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -12306,6 +12078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12334,12 +12112,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -12627,6 +12399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12655,12 +12433,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -12948,6 +12720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -12976,12 +12754,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -13263,6 +13035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13291,12 +13069,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -13518,6 +13290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13546,12 +13324,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -13785,6 +13557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -13813,12 +13591,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -14106,6 +13878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14134,12 +13912,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -14361,6 +14133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14389,12 +14167,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -14664,6 +14436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -14692,12 +14470,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -14985,6 +14757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15013,12 +14791,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -15258,6 +15030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15286,12 +15064,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -15579,6 +15351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15607,12 +15385,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -15834,6 +15606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -15862,12 +15640,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -16149,6 +15921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16177,12 +15955,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -16404,6 +16176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16432,12 +16210,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -16659,6 +16431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16687,12 +16465,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -16914,6 +16686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -16942,12 +16720,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -17169,6 +16941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17197,12 +16975,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -17448,6 +17220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17476,12 +17254,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -17769,6 +17541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -17797,12 +17575,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -18054,6 +17826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18082,12 +17860,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -18309,6 +18081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18337,12 +18115,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -18564,6 +18336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18592,12 +18370,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -18819,6 +18591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -18847,12 +18625,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -19074,6 +18846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19102,12 +18880,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -19329,6 +19101,12 @@
       "n": 24,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19357,12 +19135,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -19554,6 +19326,12 @@
       "n": 23,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19582,12 +19360,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -19773,6 +19545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -19801,12 +19579,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -20091,8 +19863,14 @@
     "PLUMB": {
       "last_id": "plumb-memory-create-20260823-01",
       "last_ts": "2026-08-23T03:36:09Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
@@ -20120,6 +19898,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
         {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
@@ -20149,12 +19933,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -20442,6 +20220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20470,12 +20254,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -20697,6 +20475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20725,12 +20509,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -20952,6 +20730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -20980,12 +20764,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -21219,6 +20997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21247,12 +21031,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -21540,6 +21318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21568,12 +21352,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -21807,6 +21585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -21835,12 +21619,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -22104,6 +21882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22132,12 +21916,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -22425,6 +22203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22453,12 +22237,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -22746,6 +22524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -22774,12 +22558,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -23055,6 +22833,12 @@
       "n": 18,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23083,12 +22867,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -23184,6 +22962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23212,12 +22996,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -23439,6 +23217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23467,12 +23251,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -23760,6 +23538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -23788,12 +23572,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -24081,6 +23859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24109,12 +23893,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -24342,6 +24120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24370,12 +24154,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -24615,6 +24393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24643,12 +24427,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -24870,6 +24648,12 @@
       "n": 22,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -24898,12 +24682,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -25083,6 +24861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25111,12 +24895,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -25404,6 +25182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25432,12 +25216,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -25725,6 +25503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -25753,12 +25537,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -26046,6 +25824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26074,12 +25858,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -26367,6 +26145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26395,12 +26179,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -26622,6 +26400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26650,12 +26434,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -26907,6 +26685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -26935,12 +26719,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -27228,6 +27006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27256,12 +27040,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -27549,6 +27327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27577,12 +27361,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -27870,6 +27648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -27898,12 +27682,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
@@ -28191,6 +27969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "bryce-action-pad-open-door-directive-20260822-01",
+          "from": "BRYCE",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-23T03:53:29Z"
+        },
+        {
           "id": "door-owner-smallest-safe-patch-20260823-01",
           "from": "DOOR",
           "to": "TABLE",
@@ -28219,12 +28003,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T01:23:51Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260822-corr-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T00:57:40Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260822-03-post",
