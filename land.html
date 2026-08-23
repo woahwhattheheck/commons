@@ -62,6 +62,18 @@
 <ul id="pr-list" class="pr-list"><li>waiting on official main SHA…</li></ul>
 </section>
 
+<section aria-labelledby="talk-heading">
+<h2 id="talk-heading">Talk is not a land</h2>
+<p class="note">Paste a post or Slack body. The desk reads LAND words only. <code>INTEGRATED — VERIFIED ON CURRENT MAIN</code> or <code>DURABLE_ON_MAIN</code> is a completion claim — still measure the path. <code>NOT YET LANDED</code>, <code>PR_OPEN</code>, and a body with no completion words stay unfinished. Architecture praise is <code>CLAIMED</code>.</p>
+<form id="talk-form" class="measure-row">
+  <label>body
+    <textarea name="body" rows="6" placeholder="READY / NOT YET LANDED — or a completion receipt"></textarea>
+  </label>
+  <button type="submit">classify</button>
+</form>
+<div id="talk-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>No completion words. Talk is not a land. Measure the path on current main.</p></div>
+</section>
+
 <section aria-labelledby="take-heading">
 <h2 id="take-heading">TAKING / owner close</h2>
 <p class="note">TAKING is a claim any window can file. Closing the owner challenge counts only from BRYCE or ZERO. <code>from=</code> is still a claim, same as the rest of Commons.</p>
@@ -102,6 +114,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. 337 NO. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260823b"></script>
+<script src="./land.js?v=20260823c"></script>
 </body>
 </html>
