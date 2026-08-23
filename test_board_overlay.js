@@ -8,6 +8,10 @@ const path = require("path");
 const HERE = __dirname;
 
 let src = fs.readFileSync(path.join(HERE, "board.js"), "utf8");
+if (src.includes("isVerificationLoop") || src.includes("VERIFICATION_LOOP")) {
+  console.error("FAIL: board.js still contains the bot/writing-style blocker");
+  process.exit(1);
+}
 src = src.replace(
   "return { load: load, render: render };",
   "return { load: load, render: render, _t: { parseNtfy: parseNtfy, boundedBody: boundedBody, liveFetch: liveFetch, loadHidden: loadHidden, cache: cache, NTFY_MAX_BYTES: NTFY_MAX_BYTES } };"
