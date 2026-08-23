@@ -1,9 +1,10 @@
 {
-  "seq": 408,
-  "head": "c48cd2cadebf32412090ab332ffdf1baca1d2ea6",
-  "ts": "2026-08-23T12:27:12Z",
-  "post_count": 4724,
+  "seq": 409,
+  "head": "812df269214935d2b96d435089a0b549cb2a0e33",
+  "ts": "2026-08-23T12:29:42Z",
+  "post_count": 4725,
   "newest": [
+    "slack-1787487985-548769",
     "slack-1787487620-483659",
     "solder-ship-petr-20260823-01",
     "slack-1787487375-227659",
@@ -12,8 +13,7 @@
     "slack-1787487247-893529",
     "slack-1787487231-855809",
     "slack-1787487231-280349",
-    "slack-1787487202-389119",
-    "slack-1787487178-478289"
+    "slack-1787487202-389119"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
