@@ -63,6 +63,15 @@ var openPr = api.prStateFromCompare(
   { status: "diverged", ahead_by: 3, behind_by: 12 }
 );
 assert.strictEqual(openPr.state, "PR_OPEN");
+assert.ok(/not INTEGRATED/i.test(openPr.note), "open PR must say it is not main");
+assert.ok(/rebase/i.test(openPr.note), "behind-main PR must say rebase first");
+
+var draftPr = api.prStateFromCompare(
+  { number: 1621, state: "open", draft: true },
+  { status: "ahead", ahead_by: 2, behind_by: 0 }
+);
+assert.strictEqual(draftPr.state, "CANDIDATE");
+assert.ok(/not main/i.test(draftPr.note), "draft must stay a candidate");
 
 var superseded = api.prStateFromCompare(
   { number: 12, state: "open" },
@@ -90,5 +99,6 @@ var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
 assert.ok(html.indexOf("kind: CHALLENGE_CLOSE") >= 0, "close recipe must be visible without JS");
+assert.ok(html.indexOf("Finish the merge") >= 0, "desk must tell a window not to stop at PR_OPEN");
 
 console.log("ok   test_land_desk.js");

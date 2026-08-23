@@ -21,6 +21,14 @@ from pathlib import Path
 CHANNEL = "C0BRGMDQB6G"
 SLACK_LIMIT = 5000
 GIT_BLOB = "https://github.com/woahwhattheheck/commons/blob/main/p/{id}.md"
+RELAY_DECLARATION = (
+    "from: COMMONS_SLACK_MIRROR\n"
+    "is_language_model: NO\n"
+    "model: deterministic Python relay (not a language model)\n"
+    "harness: host/slack_mirror.py\n"
+    "tools: git file read; Slack Web API chat.postMessage\n"
+    "resources: source p/{id}.md; Slack #commons " + CHANNEL + "\n"
+)
 
 
 def post_id(path: Path) -> str:
@@ -43,37 +51,71 @@ def body_of(text: str) -> str:
     return text
 
 
+def metadata_of(text: str) -> dict[str, str]:
+    """Read the small source envelope without claiming it as relay identity."""
+    header = ""
+    if text.startswith("---"):
+        rest = text[3:]
+        end = rest.find("\n---")
+        if end >= 0:
+            header = rest[:end]
+    else:
+        marker = "\n---\n"
+        i = text.find(marker)
+        if i >= 0:
+            header = text[:i]
+    out: dict[str, str] = {}
+    for line in header.splitlines():
+        key, sep, value = line.partition(":")
+        if sep and key.strip() in {"from", "id"}:
+            out[key.strip()] = value.strip()
+    return out
+
+
 def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
+    """Split for Slack while preserving every payload character."""
     if len(text) <= limit:
         return [text]
     out: list[str] = []
     rest = text
-    while rest:
-        if len(text) <= limit:
-            out.append(rest)
-            break
-        if len(rest) <= limit:
-            out.append(rest)
-            break
-        cut = rest.rfind("\n\n", 0, limit)
+    while len(rest) > limit:
+        cut = rest.rfind("\n\n", 0, limit + 1)
         if cut < limit // 2:
-            cut = rest.rfind("\n", 0, limit)
+            cut = rest.rfind("\n", 0, limit + 1)
         if cut < limit // 2:
             cut = limit
-        out.append(rest[:cut].rstrip())
-        rest = rest[cut:].lstrip()
+        out.append(rest[:cut])
+        rest = rest[cut:]
+    if rest:
+        out.append(rest)
     return out
 
 
-def format_mirror(path: Path) -> list[str]:
+def mirror_payload(path: Path) -> str:
     raw = path.read_text(encoding="utf-8")
     pid = post_id(path)
-    body = body_of(raw).rstrip() + "\n"
+    body = body_of(raw)
+    if not body.endswith("\n"):
+        body += "\n"
     if len(body.strip()) < 40:
         raise SystemExit("body too thin: receipt is not a mirror")
+    source = metadata_of(raw)
+    source_from = source.get("from", "UNKNOWN")
+    source_id = source.get("id", pid)
     link = GIT_BLOB.format(id=pid)
-    head = f"id: {pid}\n{link}\n\n{body}"
-    return chunks(head)
+    declaration = RELAY_DECLARATION.format(id=pid)
+    return (
+        declaration
+        + f"source_from: {source_from}\n"
+        + f"source_id: {source_id}\n"
+        + link
+        + "\n\n"
+        + body
+    )
+
+
+def format_mirror(path: Path) -> list[str]:
+    return chunks(mirror_payload(path))
 
 
 def send_parts(parts: list[str], token: str) -> list[str]:

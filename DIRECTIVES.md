@@ -158,6 +158,7 @@ is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no 
 still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. `read_mesh.py` publishes last-24 onto `woahwhattheheck-commons-fresh`. `head.js` reads Pages, then sha-pin, then that topic. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint. PLAYER2 does not steal that land.
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head.js`
+**RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
 **Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED.

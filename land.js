@@ -56,12 +56,22 @@
       return { state: "INTEGRATED", note: note };
     }
     var ahead = Number(compare.ahead_by);
+    var behind = Number(compare.behind_by);
     var status = String(compare.status || "");
     if (status === "identical" || (isFinite(ahead) && ahead === 0 && status !== "")) {
       return { state: "SUPERSEDED", note: note || "head is not ahead of current main" };
     }
     if (pr.state && String(pr.state).toLowerCase() !== "open") {
       return { state: "NOT_LANDED", note: note || "PR is not open and was not merged" };
+    }
+    if (pr.draft === true) {
+      return { state: "CANDIDATE", note: note || "draft is a candidate. Not main." };
+    }
+    if (!note) {
+      note = "unfinished ship. Merge onto current main. A PR is not INTEGRATED.";
+      if (isFinite(behind) && behind > 0) {
+        note += " Behind current main — rebase first.";
+      }
     }
     return { state: "PR_OPEN", note: note };
   };
