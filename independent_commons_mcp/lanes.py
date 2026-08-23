@@ -331,15 +331,22 @@ class Lanes:
         ))
         pad = self.http("GET", ACTION_PAD, timeout=12.0)
         body = pad.get("body") or ""
-        zero_auth = "ZERO AUTH" in body or "Zero authentication" in body or "zero-auth" in body.lower()
+        open_door = any(marker in body for marker in (
+            "ZERO AUTH",
+            "Zero authentication",
+            "zero-auth",
+            "Possessing the link is sufficient authorization",
+            "THE LINK AUTHORIZES USE",
+            "bryce-action-pad-open-door-directive-20260822-01",
+        ))
         rows.append(_lane(
             "action_pad",
             "REACHABLE" if pad.get("status") == 200 else "UNREACHABLE",
             public_url=ACTION_PAD,
             http_status=pad.get("status") or 0,
             transport_ok=pad.get("status") == 200,
-            application_ok=bool(pad.get("status") == 200 and zero_auth),
-            note="GET-only probe. Pad left unchanged.",
+            application_ok=bool(pad.get("status") == 200 and open_door),
+            note="GET-only probe. Open-door directive detected; pad left unchanged.",
         ))
         pages = self.http("GET", PAGES + "/", timeout=12.0)
         rows.append(_lane(

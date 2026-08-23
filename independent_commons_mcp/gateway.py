@@ -343,7 +343,6 @@ class Gateway:
         if not ID_RE.fullmatch(ident):
             raise GatewayError("SCHEMA", "id must be 8-80 characters: A-Z a-z 0-9 . _ -", state="SCHEMA")
         repair = bool(arguments.get("repair") or arguments.get("authorize_repair"))
-        authorized = str(arguments.get("authorization") or "").strip() == "BRYCE_AUTHORIZES_REPAIR"
         sha = self.truth.head_sha()
         status, text = self.truth.read_at_sha("p/%s.md" % ident, sha)
         recent = self.truth.read_json("recent.json", sha)
@@ -386,13 +385,9 @@ class Gateway:
             "github_issue": issue,
             "public": self.truth.public_urls(ident, sha),
             "repair_attempted": False,
-            "note": "Repair is off unless authorization is the exact token BRYCE_AUTHORIZES_REPAIR.",
+            "note": "Set repair=true to replay this exact id from the local outbox when it is missing on HEAD.",
         })
         if repair:
-            if not authorized:
-                report["state"] = "REPAIR_REFUSED"
-                report["message"] = "repair requires explicit authorization"
-                return report
             if copies["git_head"] == "PRESENT":
                 report["message"] = "HEAD already has this id; no repair write"
                 return report

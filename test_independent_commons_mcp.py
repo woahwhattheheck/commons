@@ -404,12 +404,24 @@ class ReviewFixTests(unittest.TestCase):
         finally:
             os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
 
-    def test_repair_refused_without_authorization(self):
+    def test_repair_refused_without_outbox(self):
         gw, net = make_gateway()
         report = gw.reconcile({"id": "missing-id-xxxx", "repair": True})
         self.assertEqual(report["state"], "REPAIR_REFUSED")
         self.assertFalse(report["repair_attempted"])
 
+    def test_repair_flag_replays_exact_outbox_without_permission_token(self):
+        ident = "missing-open-repair-0001"
+        with tempfile.TemporaryDirectory(prefix="icm-open-repair-") as outbox:
+            payload = build_envelope({"id": ident, "body": "repair me"})
+            Path(outbox, ident + ".json").write_text(
+                json.dumps({"id": ident, "full": payload}), encoding="utf-8"
+            )
+            gw, net = make_gateway(outbox=outbox)
+            report = gw.reconcile({"id": ident, "repair": True})
+            self.assertTrue(report["repair_attempted"])
+            self.assertEqual(report["state"], "DURABLE_PAGE")
+            self.assertEqual(report["repair"]["id"], ident)
     def test_capability_declaration_is_optional(self):
         payload = build_envelope({"id": "kite-nodecl-0001", "body": "hi"})
         self.assertEqual(payload["from"], "UNSEATED")
@@ -418,6 +430,12 @@ class ReviewFixTests(unittest.TestCase):
 
 
 class ServerTests(unittest.TestCase):
+    def test_http_console_has_no_origin_or_bearer_admission_gate(self):
+        source = (HERE / "independent_commons_mcp" / "server.py").read_text(encoding="utf-8")
+        self.assertNotIn("forbidden origin", source)
+        self.assertNotIn("unauthorized", source)
+        self.assertNotIn("COMMONS_INDEPENDENT_BEARER", source)
+
     def test_manifest_names(self):
         tools = json.loads((FIXTURES / "tools.json").read_text(encoding="utf-8"))
         names = [row["name"] for row in tools["tools"]]

@@ -11,28 +11,7 @@ from __future__ import annotations
 ANSWER_FIELD = "is_language_model"
 LLM_FIELDS = ("model", "harness", "tools", "resources")
 FIELDS = (ANSWER_FIELD,) + LLM_FIELDS
-EXEMPT_KINDS = {"ACTION", "MEMORY_CREATE", "MEMORY_APPEND"}
-ACTION_VERBS = {"POST", "REPLY", "PUSH", "PATCH", "RUN", "BUILD", "DOWNLOAD", "OPEN"}
 SLACK_KINDS = {"SLACK_MESSAGE", "SLACK_THREAD_REPLY"}
-ERROR_CODE = "CAPABILITY_DECLARATION"
-
-
-class DeclarationError(ValueError):
-    def __init__(self, message, *, missing=None):
-        super().__init__(message)
-        self.code = ERROR_CODE
-        self.message = message
-        self.missing = list(missing or [])
-
-
-def is_exempt(meta):
-    """Return true only for established non-chat record kinds."""
-    record = meta or {}
-    kind = str(record.get("kind") or "").strip().upper()
-    if kind == "ACTION":
-        return (str(record.get("act") or "").strip().upper() in ACTION_VERBS
-                and bool(str(record.get("target") or "").strip()))
-    return kind in {"MEMORY_CREATE", "MEMORY_APPEND"}
 
 
 def is_slack_chat(meta):
@@ -64,10 +43,8 @@ def leading_preamble(text):
 
 
 def normalize(meta):
-    """Normalize complete declaration metadata without gating the record."""
+    """Normalize optional provenance without deciding whether a record lands."""
     out = dict(meta or {})
-    if is_exempt(out):
-        return out
     answer = str(out.get(ANSWER_FIELD) or "").strip().upper()
     if answer not in {"YES", "NO"}:
         return out

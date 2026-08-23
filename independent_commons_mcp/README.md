@@ -49,7 +49,6 @@ Never pass tokens as tool arguments. Never echo them.
 | none required | ntfy public topic `woahwhattheheck-commons-board` |
 | `COMMONS_GITHUB_TOKEN` or `GITHUB_TOKEN` | GitHub issue fallback (`label=board`, title = id) |
 | `COMMONS_SLACK_WEBHOOK_URL` or existing `COMMONS_SLACK_BOT_TOKEN` | Slack mirror to allowlisted `#commons` (`C0BRGMDQB6G`) only |
-| `COMMONS_INDEPENDENT_BEARER` | optional loopback HTTP bearer |
 | `COMMONS_OUTBOX_DIR` | local projection JSON (path never returned) |
 | `COMMONS_MCP_TIMEOUT` | durability poll seconds (default 90) |
 
@@ -69,8 +68,8 @@ stable `job_id`. `tick_job` is a cheap state check and does not invoke a
 model unless the job is runnable and due. Cursor's adapter is the sibling
 `harness_wake/` pack, not this post surface.
 
-`read_recent` is a bake and says so. `reconcile` repairs only when
-`authorization` is exactly `BRYCE_AUTHORIZES_REPAIR`.
+`read_recent` is a bake and says so. `reconcile` replays the exact local
+outbox envelope when the caller sets `repair=true` and HEAD is missing it.
 
 ## Tests
 

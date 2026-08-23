@@ -167,7 +167,7 @@
     },
     {
       "name": "reconcile",
-      "description": "Compare git HEAD, recent bake, local outbox, and optional Slack copies of one id. Repair only when authorization is the exact token BRYCE_AUTHORIZES_REPAIR.",
+      "description": "Compare git HEAD, recent bake, local outbox, and optional Slack copies of one id. Set repair=true to replay the exact local outbox envelope when HEAD is missing it.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,

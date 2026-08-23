@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Append-only per-identity memory boards for Commons.
+"""Optional append-only per-claim context boards for Commons.
 
 The durable record is still ``p/{id}.md``.  ``memory/`` is a deterministic
 projection of MEMORY_CREATE and MEMORY_APPEND records, never a second writer.
-from= remains a claim; a memory board is context and a posting prerequisite,
-not authentication.
+``from=`` remains routing metadata. A memory board is context, never
+authentication and never a prerequisite for ordinary posting.
 """
 from __future__ import annotations
 
@@ -25,7 +25,6 @@ APPEND = "MEMORY_APPEND"
 MEMORY_KINDS = {CREATE, APPEND}
 ACTOR_CLASSES = {"HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT", "UNSEATED"}
 CREATABLE_ACTOR_CLASSES = {"HUMAN", "CLOUD_MODEL", "MUHLNICKEL_AGENT"}
-NON_CREATABLE_ACTORS = {"UNSEATED", "SPAWN", "TABLE", "COURT", "DATA", "BOARDS"}
 INTELLIGENCE_KINDS = {"LLM", "NON_LLM", "HUMAN", "UNKNOWN"}
 ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT",
@@ -33,9 +32,10 @@ ENTRY_KINDS = {
 }
 CREATE_PATH = "https://woahwhattheheck.github.io/commons/#memory-create"
 
-# One scan per ingest process.  note_written() updates this cache immediately,
-# so a create followed by a normal post in the same batch lifts only that
-# actor's gate without waiting for the projection rebuild.
+# One scan per ingest process. note_written() updates this optional context
+# cache immediately so a create followed by a read sees the new board without
+# waiting for the projection rebuild. Ordinary posts never consult it for
+# admission.
 _BOARD_CACHE = {}
 _INDEX_CACHE = {}
 
@@ -166,7 +166,7 @@ def _valid_create(meta, body=None, require_body=True):
     created_ts = str(meta.get("ts") or "").strip()
     if str(meta.get("to") or "").strip().upper() != "MEMORY":
         return None
-    if not src or src in NON_CREATABLE_ACTORS or actor != src:
+    if not src or actor != src:
         return None
     if actor_class not in CREATABLE_ACTOR_CLASSES or intelligence not in INTELLIGENCE_KINDS:
         return None
@@ -260,35 +260,19 @@ def has_board(root, actor_id):
     return board_record(root, actor_id) is not None
 
 
-def gate_enabled(root):
-    """True only for a deployed Commons tree (or an explicit test fixture).
-
-    Legacy unit tests point board_ingest.ROOT at tiny data-only directories to
-    test unrelated mechanics.  They are not deployed Commons instances.  A
-    real checkout necessarily contains this engine file; the marker lets the
-    memory integration test exercise the same fail-closed path in isolation.
-    """
-    return (os.path.isfile(os.path.join(root, "memory_board.py")) or
-            os.path.isfile(os.path.join(root, ".memory-gate-live")))
-
-
 def prepare_post(root, src, dest, mid, extra, event_ts=""):
-    """Normalize a memory event and enforce the forward posting gate.
+    """Normalize explicit memory events without gating ordinary posts.
 
-    Returns ``(normalized_extra, error_or_none)``.  The caller runs the TOS
-    first; memory creation is not a path around the standing TOS.
+    Returns ``(normalized_extra, error_or_none)``. Schema errors apply only
+    when a caller explicitly asks to create or append a memory record.
     """
     out = dict(extra or {})
-    if not gate_enabled(root):
-        return out, None
     actor = canonical_actor(src)
     kind = str(out.get("kind") or "").strip().upper()
     existing = board_record(root, actor)
     canonical_ts = str(event_ts or "").strip()
 
     if kind == CREATE:
-        if actor in NON_CREATABLE_ACTORS:
-            return out, _schema_error(actor, "choose a named player; unseated/system lanes cannot own one memory board")
         target = canonical_actor(out.get("actor_id") or actor)
         actor_class = str(out.get("actor_class") or "").strip().upper()
         intelligence = str(out.get("intelligence_kind") or "").strip().upper()
@@ -330,17 +314,9 @@ def prepare_post(root, src, dest, mid, extra, event_ts=""):
         })
         return out, None
 
-    if not existing:
-        return out, {
-            "code": "MEMORY_GATE",
-            "message": ("Choose a named player before posting." if actor in ("UNSEATED", "SPAWN")
-                        else "Create a memory board before posting."),
-            "create_path": CREATE_PATH,
-            "create_tool": "create_memory_board",
-            "actor_id": actor or str(src or ""),
-        }
-
     if kind == APPEND:
+        if not existing:
+            return out, _schema_error(actor, "memory append requires an existing memory board")
         target = canonical_actor(out.get("actor_id") or actor)
         requested_memory = str(out.get("memory_id") or existing["memory_id"]).strip()
         memory_kind = _entry_kind(out.get("memory_kind"), "NOTE")
@@ -442,7 +418,6 @@ def derive(rows):
                 "intelligence_kind": rec["intelligence_kind"],
                 "memory_path": path,
                 "provenance": provenance,
-                "posting_gate": {"open": True, "create_path": CREATE_PATH},
             }
             if rec["actor_class"] == "MUHLNICKEL_AGENT":
                 actor_obj["muhlnickel_badge"] = True

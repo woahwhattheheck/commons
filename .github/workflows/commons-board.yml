@@ -106,12 +106,6 @@ jobs:
                 rejected.message || "Post rejected by the canonical writer.",
                 "id=" + (rejected.id || "(none)") + " · from=" + (rejected.from || "") + " · to=" + (rejected.to || "")
               ];
-              if (rejected.create_path) {
-                lines.push("Create path: [create memory board](" + rejected.create_path + ")");
-              }
-              if (Array.isArray(rejected.missing) && rejected.missing.length) {
-                lines.push("Missing declaration fields: `" + rejected.missing.join("`, `") + "`.");
-              }
               lines.push("No durable p/{id}.md page was claimed for this rejected envelope.");
               await github.rest.issues.createComment({
                 owner: context.repo.owner,

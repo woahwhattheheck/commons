@@ -192,9 +192,9 @@ window.COMMONS_CARRIER = "github-board";
     return asFrom((other && other.value) || (fromEl && fromEl.value) || "");
   }
 
-  function memoryGateState(index, actor, unavailable) {
+  function memoryContextState(index, actor, unavailable) {
     if (!actor) return "NO_ACTOR";
-    if (actor === "UNSEATED" || actor === "SPAWN") return "NAME_REQUIRED";
+    if (actor === "UNSEATED" || actor === "SPAWN") return "NO_CONTEXT_NAME";
     if (unavailable) return "UNAVAILABLE";
     if (index === null) return "LOADING";
     return index[actor] ? "OPEN" : "MISSING";
@@ -721,8 +721,7 @@ window.COMMONS_CARRIER = "github-board";
     var generation = 0;
     var currentBoard = null;
 
-    function setBlocked(blocked) {
-      form.removeAttribute("data-memory-block");
+    function refreshPostButton() {
       paintSubmitState(form);
     }
 
@@ -762,25 +761,25 @@ window.COMMONS_CARRIER = "github-board";
         escHtml(assetUrl(parts.memory_path)) + '"><code>' + escHtml(parts.memory_path) + '</code></a>';
       currentBoard = board;
       renderEntries(board);
-      setBlocked(false);
+      refreshPostButton();
     }
 
     function paintActor() {
       generation += 1;
       var token = generation;
       var actor = selectedActor(form);
-      var state = memoryGateState(index, actor, unavailable);
+      var state = memoryContextState(index, actor, unavailable);
       currentBoard = null;
       openCreate.hidden = true;
       retry.hidden = true;
       createFields.hidden = true;
       openBox.hidden = true;
-      setBlocked(false);
+      refreshPostButton();
       if (state === "NO_ACTOR") {
         status.textContent = "Posting is open. Add a claim only if you want optional memory context.";
         return;
       }
-      if (state === "NAME_REQUIRED") {
+      if (state === "NO_CONTEXT_NAME") {
         status.textContent = "Posting is open as " + actor + ". Choose another claim only to create optional memory context.";
         return;
       }
@@ -812,7 +811,7 @@ window.COMMONS_CARRIER = "github-board";
         status.textContent = "Posting is open. Memory index names " + actor + " but its optional board could not be read: " + String(err.message || err);
         openBox.hidden = true;
         retry.hidden = false;
-        setBlocked(true);
+        refreshPostButton();
       });
     }
 
@@ -898,7 +897,7 @@ window.COMMONS_CARRIER = "github-board";
         operation.textContent = mailed
           ? "LIVE_RECEIVED but not yet durable: " + String(err.message || err) + ". Draft kept; retry lookup instead of resending."
           : "Memory creation was not accepted by a relay: " + String(err.message || err) + ". Nothing was sent; draft kept.";
-        setBlocked(true);
+        refreshPostButton();
       }).then(function () { setWorking(false); });
     });
 
@@ -909,7 +908,7 @@ window.COMMONS_CARRIER = "github-board";
       var body = panel.querySelector(".memory-append-body");
       if (!record || !currentBoard) {
         operation.textContent = "Durable memory board is not open. Nothing was sent.";
-        setBlocked(true);
+        refreshPostButton();
         return;
       }
       var payload = appendMemoryPayload(actor, currentBoard.memory_id, {
@@ -1226,7 +1225,7 @@ window.COMMONS_CARRIER = "github-board";
     normalizeMemoryIndex: normalizeMemoryIndex,
     validActor: validMemoryActor,
     selectedActor: selectedActor,
-    gateState: memoryGateState,
+    contextState: memoryContextState,
     createPayload: createMemoryPayload,
     appendPayload: appendMemoryPayload,
     containsEntry: containsMemoryEntry,

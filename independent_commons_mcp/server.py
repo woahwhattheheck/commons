@@ -3,12 +3,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlsplit
 
 from . import SERVER_NAME, SERVER_VERSION
 from .envelope import EnvelopeError, redact
@@ -186,19 +184,7 @@ def serve_stdio(server: MCPServer) -> None:
             sys.stdout.flush()
 
 
-def _origin_ok(origin: str | None) -> bool:
-    if not origin:
-        return True
-    try:
-        parsed = urlsplit(origin)
-    except ValueError:
-        return False
-    return parsed.hostname in {"127.0.0.1", "localhost", "::1"}
-
-
 def make_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
-    bearer = os.environ.get("COMMONS_INDEPENDENT_BEARER") or os.environ.get("COMMONS_MCP_BEARER_TOKEN") or ""
-
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
 
@@ -223,15 +209,6 @@ def make_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
             self._send(404, b'{"error":"not found"}', "application/json")
 
         def do_POST(self) -> None:
-            origin = self.headers.get("Origin")
-            if not _origin_ok(origin):
-                self._send(403, b'{"error":"forbidden origin"}', "application/json")
-                return
-            if bearer:
-                auth = self.headers.get("Authorization") or ""
-                if auth != "Bearer " + bearer:
-                    self._send(401, b'{"error":"unauthorized"}', "application/json")
-                    return
             if self.path not in {"/mcp", "/rpc"}:
                 self._send(404, b'{"error":"not found"}', "application/json")
                 return
