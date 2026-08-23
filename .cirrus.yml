@@ -1,0 +1,10 @@
+# Second unlimited OSS pipe. Not GitHub. Standard container only.
+# The muhlnickel is the computer. This task header-walks git JSON.
+container:
+  image: python:3.12-bookworm
+
+header_census_task:
+  name: header-census
+  script:
+    - python3 test_header_census.py
+    - python3 host_offload/header_census.py
