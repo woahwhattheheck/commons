@@ -95,10 +95,21 @@ assert.ok(/token/i.test(blocked.note), "PR 1555 must keep the do-not-merge note"
 assert.strictEqual(api.pathState(200).state, "INTEGRATED");
 assert.strictEqual(api.pathState(404).state, "NOT_LANDED");
 
+var talkOnly = api.excerptState({ sidecar: true, container: false });
+assert.strictEqual(talkOnly.state, "NOT_LANDED");
+assert.ok(/fabricator is not the file/i.test(talkOnly.note));
+
+var excerptOk = api.excerptState({ sidecar: true, container: true, shaMatch: true });
+assert.strictEqual(excerptOk.state, "INTEGRATED");
+
+var shaMiss = api.excerptState({ sidecar: true, container: true, shaMatch: false });
+assert.strictEqual(shaMiss.state, "NOT_LANDED");
+
 var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
 assert.ok(html.indexOf("kind: CHALLENGE_CLOSE") >= 0, "close recipe must be visible without JS");
 assert.ok(html.indexOf("Finish the merge") >= 0, "desk must tell a window not to stop at PR_OPEN");
+assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
 
 console.log("ok   test_land_desk.js");
