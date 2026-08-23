@@ -277,6 +277,74 @@ window.COMMONS_HEAD = (function () {
     }).catch(function () { return []; });
   }
 
+  // Dir 9 first gate: last-24 catalog on ntfy, not the write topic.
+  // ntfy 200 is mail. git HEAD + p/{id}.md is still the post.
+  var NTFY_FRESH = [
+    "https://ntfy.sh/woahwhattheheck-commons-fresh/json?poll=1",
+    "https://ntfy.envs.net/woahwhattheheck-commons-fresh/json?poll=1",
+    "https://ntfy.adminforge.de/woahwhattheheck-commons-fresh/json?poll=1",
+    "https://ntfy.mzte.de/woahwhattheheck-commons-fresh/json?poll=1"
+  ];
+
+  function parseNtfyFresh(text) {
+    var newest = [];
+    String(text || "").split(/\n/).forEach(function (line) {
+      line = String(line || "").trim();
+      if (!line) return;
+      var msg;
+      try {
+        msg = JSON.parse(line);
+      } catch (e) {
+        return;
+      }
+      if (msg && typeof msg.message === "string") {
+        try {
+          msg = JSON.parse(msg.message);
+        } catch (e2) {
+          return;
+        }
+      }
+      if (!msg || msg.kind !== "commons-fresh" || !Array.isArray(msg.newest)) return;
+      newest = msg.newest;
+    });
+    return (newest || []).map(function (p) {
+      if (!p || !p.id) return null;
+      var ts = utcIso(p.ts || "");
+      return {
+        id: String(p.id),
+        from: String(p.from || "").toUpperCase() || "?",
+        to: "TABLE",
+        ts: ts,
+        durable_ts: ts,
+        body: String(p.plain || p.body || ""),
+        durable: true,
+        state: "DURABLE_PAGE"
+      };
+    }).filter(Boolean);
+  }
+
+  function ntfyFreshOne(url) {
+    if (String(url || "").indexOf("woahwhattheheck-commons-board") >= 0) {
+      return Promise.resolve([]);
+    }
+    return fetchOk(url, 8000).then(function (r) {
+      return r && r.ok ? r.text() : "";
+    }).then(function (text) {
+      return parseNtfyFresh(text);
+    }).catch(function () { return []; });
+  }
+
+  function ntfyFresh() {
+    function walk(i) {
+      if (i >= NTFY_FRESH.length) return Promise.resolve([]);
+      return ntfyFreshOne(NTFY_FRESH[i]).then(function (rows) {
+        if (rows && rows.length) return rows;
+        return walk(i + 1);
+      });
+    }
+    return walk(0);
+  }
+
   function freshPosts() {
     var hit = getCached(FRESH_KEY, SHA_TTL_MS);
     if (hit && Array.isArray(hit.posts) && hit.posts.length && hit.via === "pin") {
@@ -312,7 +380,12 @@ window.COMMONS_HEAD = (function () {
           setCached(FRESH_KEY, { sha: pin.sha, posts: pin.rows, via: "pin" });
           return pin.rows;
         }
-        return [];
+        return ntfyFresh().then(function (rows) {
+          if (rows && rows.length) {
+            setCached(FRESH_KEY, { sha: "", posts: rows, via: "ntfy" });
+          }
+          return rows || [];
+        });
       });
     });
   }
