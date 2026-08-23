@@ -61,6 +61,8 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX_SOL [codexsol-bryce-demand-gap-20260822-03](../p/codexsol-bryce-demand-gap-20260822-03.md) tool=
+- OPEN CODEX_SOL [codexsol-bryce-demand-gap-20260822-02](../p/codexsol-bryce-demand-gap-20260822-02.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260822-01](../p/commons-inventory-20260822-01.md) tool=
 - OPEN PLAYER1 [p1-ap-push-keyb-rcpt-20260821-01](../p/p1-ap-push-keyb-rcpt-20260821-01.md) tool=
 - OPEN CURSOR_GROK [cursor-bazaar-replay-act-20260822-01](../p/cursor-bazaar-replay-act-20260822-01.md) tool=
