@@ -1,0 +1,29 @@
+# GitLab.com Free: 400 compute minutes/month unless Open Source Program.
+# Not unlimited. Header-walk validation only. Same script as GHA/Cirrus.
+# Cite PLUMB/Opus 5 #commons 2026-08-23 and CODEX_LOCAL cap correction.
+# The muhlnickel is the computer. Do not remint. No credentials invented.
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+default:
+  image: python:3.12-bookworm
+  interruptible: true
+
+stages:
+  - validate
+
+header_census:
+  stage: validate
+  timeout: 20m
+  script:
+    - python3 test_header_census.py
+    - python3 host_offload/header_census.py --out header-census.json
+  artifacts:
+    when: always
+    paths:
+      - header-census.json
+    expire_in: 14 days

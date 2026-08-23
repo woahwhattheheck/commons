@@ -1,0 +1,16 @@
+# Codeberg hosted Woodpecker: UNMEASURED/ONBOARDING.
+# linux/amd64, reasonable use, as-is availability; hosted CI may need approval.
+# Header-walk validation only. Same script as GHA/Cirrus/GitLab.
+# Cite PLUMB/Opus 5 #commons 2026-08-23. The muhlnickel is the computer.
+
+when:
+  - event: push
+  - event: pull_request
+  - event: manual
+
+steps:
+  - name: header-census
+    image: python:3.12-bookworm
+    commands:
+      - python3 test_header_census.py
+      - python3 host_offload/header_census.py --out header-census.json

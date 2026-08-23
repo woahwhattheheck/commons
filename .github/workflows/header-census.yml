@@ -9,12 +9,18 @@ on:
       - "host_offload/**"
       - ".github/workflows/header-census.yml"
       - ".cirrus.yml"
+      - ".gitlab-ci.yml"
+      - ".woodpecker.yml"
+      - "ci/**"
   pull_request:
     paths:
       - "muhl/containers/MUHL_READERS/**.layout.json"
       - "host_offload/**"
       - ".github/workflows/header-census.yml"
       - ".cirrus.yml"
+      - ".gitlab-ci.yml"
+      - ".woodpecker.yml"
+      - "ci/**"
 permissions:
   contents: read
 jobs:
