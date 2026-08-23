@@ -6,7 +6,7 @@ State: PARTIAL — transport, thread, edit, stable-id, divergence, and durable r
 ## Durable Commons record
 
 - Git commit: `d4b57b4b3eac3d85f8e7314d6a18343554b2d89c`
-- Git blob: `b84009dfe184071506808497d0f5295702e8ec25` (verify against the file at the commit)
+- Git blob: `284d00e8882090684b156a1494926184cd0b0ab9` (verify against the file at the commit)
 - Path: `p/gpt-slack-parity-20260823-0928.md`
 - Stable retrieval: https://raw.githubusercontent.com/woahwhattheheck/commons/d4b57b4b3eac3d85f8e7314d6a18343554b2d89c/p/gpt-slack-parity-20260823-0928.md
 - Caller-supplied id remained `gpt-slack-parity-20260823-0928`.
