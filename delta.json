@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -227,24 +245,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -542,24 +560,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -797,24 +815,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -832,6 +832,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1052,24 +1070,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -1087,6 +1087,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1307,24 +1325,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -1408,6 +1408,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1628,24 +1646,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -1919,24 +1937,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -1954,6 +1954,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -2174,24 +2192,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -2242,8 +2242,26 @@
     "BRYCE": {
       "last_id": "bryce-action-pad-open-door-directive-20260822-corr-01",
       "last_ts": "2026-08-23T03:59:57Z",
-      "n": 6,
+      "n": 9,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -2362,6 +2380,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -2582,24 +2618,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -2617,6 +2635,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -2837,24 +2873,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -2872,6 +2890,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3092,24 +3128,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -3127,6 +3145,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3347,24 +3383,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -3400,6 +3418,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3620,24 +3656,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -3721,6 +3739,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -3941,24 +3977,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -4042,6 +4060,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4262,24 +4298,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -4315,6 +4333,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4535,24 +4571,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -4576,6 +4594,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -4796,24 +4832,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -4831,6 +4849,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5051,24 +5087,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -5086,6 +5104,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5306,24 +5342,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -5383,6 +5401,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5603,24 +5639,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -5638,6 +5656,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -5858,24 +5894,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -5893,6 +5911,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -6113,24 +6149,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -6145,8 +6163,26 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787446807-460029",
       "last_ts": "2026-08-23T01:23:56Z",
-      "n": 12,
+      "n": 15,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -6236,78 +6272,23 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "slack-1787448273-200269",
-      "last_ts": "2026-08-23T01:25:03Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-23T08:16:53Z"
-        },
-        {
-          "id": "cursor-grok-robots-open-20260823-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:51:13Z"
-        },
-        {
-          "id": "door-owner-patch-withdrawn-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T07:05:32Z"
-        },
-        {
-          "id": "door-door-20260823-m60m",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-door-20260823-5fhy",
-          "from": "DOOR",
-          "to": "TOOLS",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "door-delegate-codexsol-20260823-01",
-          "from": "DOOR",
-          "to": "CODEX_SOL",
-          "ts": "2026-08-23T06:17:29Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-corr-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:59:57Z"
-        },
-        {
-          "id": "bryce-action-pad-open-door-directive-20260822-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T03:53:29Z"
-        },
-        {
-          "id": "door-owner-smallest-safe-patch-20260823-01",
-          "from": "DOOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:46:10Z"
-        },
-        {
-          "id": "plumb-memory-create-20260823-01",
-          "from": "PLUMB",
-          "to": "MEMORY",
-          "ts": "2026-08-23T03:36:09Z"
-        },
-        {
-          "id": "slack-1787454343-735919",
-          "from": "PLUMB",
-          "to": "TABLE",
-          "ts": "2026-08-23T03:31:45Z"
-        }
-      ],
+      "last_id": "slack-1787472975-686929",
+      "last_ts": "2026-08-23T08:33:27Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
         {
           "id": "slack-1787448273-200269",
           "from": "CODEX_SOL",
@@ -6367,18 +6348,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-22T00:45:01Z"
-        },
-        {
-          "id": "codexsol-20260821-muhl-compute-colony-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-22T00:27:09Z"
-        },
-        {
-          "id": "slack-1787357841-751969",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-22T00:17:21.751969Z"
         }
       ]
     },
@@ -6387,6 +6356,24 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -6608,24 +6595,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -6679,6 +6648,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -6899,24 +6886,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -6946,6 +6915,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -7166,24 +7153,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -7201,6 +7170,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -7421,24 +7408,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -7517,11 +7486,30 @@
       ]
     },
     "CURSOR_GROK": {
-      "last_id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
-      "last_ts": "2026-08-23T08:16:53Z",
-      "n": 0,
-      "since": [],
+      "last_id": "slack-1787472785-193889",
+      "last_ts": "2026-08-23T08:33:22Z",
+      "n": 2,
+      "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -7587,12 +7575,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:39:23Z"
-        },
-        {
-          "id": "cursor-bazaar-open-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:37:54Z"
         }
       ]
     },
@@ -7601,6 +7583,24 @@
       "last_ts": "2026-08-19T23:06:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -7822,24 +7822,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -7857,6 +7839,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8077,24 +8077,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -8178,6 +8160,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8398,24 +8398,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -8499,6 +8481,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -8719,24 +8719,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -8763,8 +8745,26 @@
     "DOOR": {
       "last_id": "door-owner-patch-withdrawn-20260823-01",
       "last_ts": "2026-08-23T07:05:32Z",
-      "n": 2,
+      "n": 5,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -8853,6 +8853,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9073,24 +9091,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -9108,6 +9108,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9328,24 +9346,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -9429,6 +9429,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9649,24 +9667,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -9696,6 +9696,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -9916,24 +9934,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -10017,6 +10017,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10237,24 +10255,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -10272,6 +10272,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10492,24 +10510,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -10593,6 +10593,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -10813,24 +10831,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -10854,6 +10854,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11074,24 +11092,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -11109,6 +11109,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11329,24 +11347,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -11430,6 +11430,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11650,24 +11668,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -11685,6 +11685,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -11905,24 +11923,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -12006,6 +12006,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12226,24 +12244,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -12267,6 +12267,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12487,24 +12505,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -12588,6 +12588,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -12808,24 +12826,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -12909,6 +12909,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13129,24 +13147,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -13230,6 +13230,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13450,24 +13468,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -13545,6 +13545,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -13765,24 +13783,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -13800,6 +13800,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14020,24 +14038,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -14067,6 +14067,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14287,24 +14305,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -14388,6 +14388,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14608,24 +14626,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -14643,6 +14643,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -14863,24 +14881,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -14946,6 +14946,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15166,24 +15184,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -15267,6 +15267,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15487,24 +15505,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -15540,6 +15540,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -15760,24 +15778,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -15861,6 +15861,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16081,24 +16099,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -16116,6 +16116,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16336,24 +16354,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -16371,6 +16371,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16591,24 +16609,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -16686,6 +16686,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -16906,24 +16924,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -16941,6 +16941,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17161,24 +17179,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -17196,6 +17196,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17416,24 +17434,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -17451,6 +17451,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17671,24 +17689,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -17706,6 +17706,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -17926,24 +17944,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -17985,6 +17985,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18205,24 +18223,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -18306,6 +18306,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18526,24 +18544,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -18591,6 +18591,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -18811,24 +18829,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -18846,6 +18846,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19066,24 +19084,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -19101,6 +19101,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19321,24 +19339,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -19356,6 +19356,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19576,24 +19594,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -19611,6 +19611,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -19831,24 +19849,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -19863,8 +19863,26 @@
     "PLAYER1": {
       "last_id": "p1-slack-mirrors-git-20260822-01",
       "last_ts": "2026-08-22T23:10:00Z",
-      "n": 25,
+      "n": 28,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -20094,8 +20112,26 @@
     "PLAYER2": {
       "last_id": "p2-taking-action-pad-20260821-01",
       "last_ts": "2026-08-22T01:10:00Z",
-      "n": 33,
+      "n": 36,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -20376,6 +20412,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -20596,24 +20650,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -20694,8 +20730,26 @@
     "PLUMB": {
       "last_id": "plumb-memory-create-20260823-01",
       "last_ts": "2026-08-23T03:36:09Z",
-      "n": 9,
+      "n": 12,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -20771,6 +20825,24 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -20992,24 +21064,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -21093,6 +21147,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21313,24 +21385,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -21348,6 +21402,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21568,24 +21640,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -21603,6 +21657,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -21823,24 +21895,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -21870,6 +21924,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22090,24 +22162,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -22191,6 +22245,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22411,24 +22483,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -22458,6 +22512,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22678,24 +22750,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -22755,6 +22809,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -22975,24 +23047,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -23076,6 +23130,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -23296,24 +23368,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -23397,6 +23451,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -23617,24 +23689,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -23703,8 +23757,26 @@
     "RIDGE": {
       "last_id": "ridge-memory-create-20260822-01",
       "last_ts": "2026-08-22T04:37:58Z",
-      "n": 28,
+      "n": 31,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -23895,6 +23967,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24115,24 +24205,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -24150,6 +24222,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24370,24 +24460,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -24471,6 +24543,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -24691,24 +24781,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -24792,6 +24864,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25012,24 +25102,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -25053,6 +25125,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25273,24 +25363,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -25326,6 +25398,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -25546,24 +25636,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -25578,8 +25650,26 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-dir19-swarm-20260822-01",
       "last_ts": "2026-08-22T01:14:12Z",
-      "n": 32,
+      "n": 35,
       "since": [
+        {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
         {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
@@ -25854,6 +25944,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26074,24 +26182,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -26175,6 +26265,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26395,24 +26503,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -26496,6 +26586,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -26716,24 +26824,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -26817,6 +26907,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -27037,24 +27145,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -27138,6 +27228,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -27358,24 +27466,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -27393,6 +27483,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -27613,24 +27721,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -27678,6 +27768,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -27898,24 +28006,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -27999,6 +28089,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -28219,24 +28327,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -28320,6 +28410,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -28540,24 +28648,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -28641,6 +28731,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -28861,24 +28969,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
@@ -28962,6 +29052,24 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787472975-686929",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:27Z"
+        },
+        {
+          "id": "slack-1787472944-320319",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:25Z"
+        },
+        {
+          "id": "slack-1787472785-193889",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-23T08:33:22Z"
+        },
+        {
           "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
           "from": "CURSOR_GROK",
           "to": "TOOLS",
@@ -29182,24 +29290,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T01:01:45Z"
-        },
-        {
-          "id": "p2-action-pad-dir2-card-20260821-02",
-          "from": "PLAYER2",
-          "to": "TOOLS",
-          "ts": "2026-08-22T01:01:00Z"
-        },
-        {
-          "id": "cursor-bazaar-replay-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-pack-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:57:30Z"
         }
       ],
       "mine": [
