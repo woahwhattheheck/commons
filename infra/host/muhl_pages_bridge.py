@@ -47,7 +47,7 @@ def wrap(title, text, extra=""):
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>%s</title>
 <link rel="stylesheet" href="./commons.css?v=20260818d">
 <script src="./session.js?v=20260818a"></script>
@@ -74,7 +74,7 @@ def form_page():
     return """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Commons</title>
 <style>
 body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:48rem;margin:1.5rem auto;padding:0 1rem;color:#111}
@@ -163,7 +163,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", CORS)
         self.send_header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Accept")
-        self.send_header("X-Robots-Tag", "noindex, nofollow, noarchive")
+        self.send_header("X-Robots-Tag", "index, follow")
         self.send_header("Cache-Control", "no-store")
 
     def _send(self, code, body, ctype="text/html; charset=utf-8"):

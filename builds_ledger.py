@@ -118,7 +118,7 @@ def project(root, write):
 <html lang="en"><head>
 <meta charset="utf-8">
 %s
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>builds</title>
 %s
 </head><body>

@@ -513,7 +513,7 @@ def post_html(meta, body, title="post"):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>%s</title>
 %s
 </head><body>
@@ -1785,7 +1785,7 @@ def rebuild_board(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
@@ -1843,7 +1843,7 @@ def rebuild_by(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>%s chronological</title>
 %s
 </head><body>
@@ -1885,7 +1885,7 @@ def rebuild_to(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>inbox %s</title>
 %s
 %s
@@ -1912,7 +1912,7 @@ def rebuild_to(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Commons inbox</title>
 %s
 %s
@@ -1982,7 +1982,7 @@ def rebuild_court(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons court</title>
 %s
@@ -2106,7 +2106,7 @@ def rebuild_live(rows):
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>live</title>
 %s
 </head><body>
@@ -2133,7 +2133,7 @@ def rebuild_names():
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>window names</title>
 %s
 </head><body>

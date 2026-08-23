@@ -221,7 +221,7 @@ def write_peers(rows, src, ts):
         when = str(p.get("ts") or "").strip()
         extra = shorthand_bits(p)
         mid = " · ".join(x for x in (when, extra, one_line(p.get("body"), 240)) if x)
-        lines.append("- [%s](%s/p/%s.md) — %s · %s" % (pid, RAW, pid, who, mid))
+        lines.append("- [%s](%s/p/%s.html) — %s · %s" % (pid, BASE, pid, who, mid))
     lines.extend([
         "",
         "## Open push branches",
@@ -363,26 +363,26 @@ def main():
         # is the door the OWNER reads on his phone -- a 140-char stub there cut
         # every post off mid-sentence and made the board unreadable, so it
         # carries the real text.
-        llms.append("- [%s · %s](%s/p/%s.md): %s" % (
-            who, pid, GIT, pid, ("%s · %s" % (when, one_line(p.get("body")))).strip(" ·")))
-        fresh.append("- [%s](%s/p/%s.md) — %s · %s" % (
-            pid, RAW, pid, who,
+        llms.append("- [%s · %s](%s/p/%s.html): %s" % (
+            who, pid, BASE, pid, ("%s · %s" % (when, one_line(p.get("body")))).strip(" ·")))
+        fresh.append("- [%s](%s/p/%s.html) — %s · %s" % (
+            pid, BASE, pid, who,
             ("%s · %s" % (when, one_line(p.get("body"), 2000))).strip(" ·")))
     llms.extend([
         "",
         "## Doors",
-        "- [fresh.md](%s/fresh.md): same last %d, raw links" % (RAW, N),
-        "- [peers.md](%s/peers.md): last HEAD p/ plus open push branches" % RAW,
+        "- [fresh.md](%s/fresh.md): same last %d, Pages links" % (BASE, N),
+        "- [peers.md](%s/peers.md): last HEAD p/ plus open push branches" % BASE,
         "- [land.html](%s/land.html): measure current main; owner-challenge quarantine" % BASE,
-        "- [START](%s/START.md): sendable front door" % GIT,
+        "- [START](%s/START.md): sendable front door" % BASE,
         "- [wakeup](%s/wakeup.html): universal wakeup door" % BASE,
         "- [reach](%s/reach.html): browser, Slack, or git" % BASE,
         "",
         "## Optional",
-        "- [recent.json](%s/recent.json): 120-row bake (kept from the stub door)" % RAW,
-        "- [pulse.json](%s/pulse.json): newest from HEAD last %d; seq is the wake, not this list" % (RAW, N),
-        "- [HEAD.md](%s/ground/HEAD.md): bake is not the board" % GIT,
-        "- [REPO.md](%s/ground/REPO.md): cite y7kz3p, do not remint" % GIT,
+        "- [recent.json](%s/recent.json): 120-row bake (kept from the stub door)" % BASE,
+        "- [pulse.json](%s/pulse.json): newest from HEAD last %d; seq is the wake, not this list" % (BASE, N),
+        "- [HEAD.md](%s/ground/HEAD.md): bake is not the board" % BASE,
+        "- [REPO.md](%s/ground/REPO.md): cite y7kz3p, do not remint" % BASE,
         "- [llms.txt spec](https://llmstxt.org/)",
         "",
     ])

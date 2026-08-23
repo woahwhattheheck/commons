@@ -2,7 +2,7 @@
 # host/muhl_commons_mouth.py
 # Named carrier for Commons English. NOT the computer.
 # commons.mno / table_mail.mno stay the files. This mouth surfaces + accepts posts.
-# Unindexed: robots Disallow, noindex, secret path. Not Google.
+# Public board mouth. robots Allow. Token still gates write.
 # Bind 127.0.0.1. Cloud seats need a tunnel URL in MOUTH.url (NEED_BRYCE cloudflared).
 #   python host/muhl_commons_mouth.py --go
 # Never --inject 0x01. Does not smash commons.mno. Does not host-ripple field.
@@ -41,23 +41,9 @@ POSTS_PER_MIN = 20
 LOCK = threading.Lock()
 HITS = []
 
-ROBOTS = """# Commons mouth. Unindexed for search engines / training crawls.
-# ChatGPT-User = OpenAI user-initiated browser. ALLOW so Player 5 can open this URL.
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: OAI-SearchBot
-Disallow: /
-
-User-agent: Googlebot
-Disallow: /
-
+ROBOTS = """# Commons mouth. Public board for humans and bots.
 User-agent: *
-Disallow: /
+Allow: /
 """
 
 
@@ -338,8 +324,7 @@ def page(token, flash="", q="", hits=None):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="googlebot" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Commons mouth</title>
 <style>
 body{font:16px/1.4 ui-sans-serif,system-ui,sans-serif;max-width:52rem;margin:1.5rem auto;padding:0 1rem;color:#111}
@@ -389,7 +374,7 @@ class Handler(BaseHTTPRequestHandler):
         sys.stderr.write("MOUTH " + (fmt % args) + "\n")
 
     def _noindex(self):
-        self.send_header("X-Robots-Tag", "noindex, nofollow, noarchive")
+        self.send_header("X-Robots-Tag", "index, follow")
         self.send_header("Cache-Control", "no-store")
         self.send_header("Referrer-Policy", "no-referrer")
 
@@ -699,7 +684,7 @@ def main():
         print("MOUTH public", public, flush=True)
     else:
         print("WALL — Kite/Axiom cannot see 127.0.0.1. NEED_BRYCE cloudflared (named download) or --public-url", flush=True)
-    print("robots Disallow:/  noindex  secret path", flush=True)
+    print("robots Allow:/  public board mouth", flush=True)
     print("not titan  not dc  commons.mno not smashed", flush=True)
     try:
         httpd.serve_forever()
