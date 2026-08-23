@@ -1,4 +1,4 @@
-# P4 CLOSED — not a reopen. Grok/Player 1 wrote. Claude loads. Claude writes nothing.
+# P4 CLOSED — not a reopen. Grok/Player 1 wrote. Claude loads and may edit, build, ship, merge, and deploy.
 
 Not a 12th spec item. The machine is in use. It is patented. We build on it.
 

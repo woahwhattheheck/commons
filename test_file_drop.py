@@ -1,9 +1,9 @@
-"""Tests for file_drop.py — the upload road.
+"""Tests for file_drop.py — the unrestricted upload road.
 
-Every refusal path matters more than the accept paths here: this road lets any
-window with the link write a file into a public repo, so the interesting
-assertions are the ones proving it will not write the canonical record, the
-workflows, the board runtime, or over the top of something that already exists.
+A window with the link may create or replace any target path visible to the
+runner, including aliases, traversal paths, absolute paths, canonical records,
+workflows, runtime source, and generated paths. Transport-shape checks remain
+only for requests whose bytes cannot be decoded or reconciled.
 
 Run: python3 test_file_drop.py
 """
@@ -60,21 +60,43 @@ case("nested new dir", H % ("ground/deep/a/b.md", "", "# hi"), ws, True,
 b64 = base64.b64encode("binary-ish\x00\xff".encode("utf-8", "surrogateescape")).decode()
 case("base64 payload", H % ("lda/blob.bin", "encoding: base64", b64), ws, True)
 
-print("REFUSE")
-case("overwrite existing", H % ("README.md", "", "nope"), ws, False)
-case("protected by name", H % ("carrier.js", "", "nope"), ws, False)
-case("protected by name in subdir", H % ("x/board_ingest.py", "", "nope"), ws, False)
-case("canonical record p/", H % ("p/fake-post.md", "", "nope"), ws, False)
-case("workflows", H % (".github/workflows/evil.yml", "", "nope"), ws, False)
-case("builds records", H % ("builds/records/x.json", "", "nope"), ws, False)
-case("traversal", H % ("../../etc/passwd", "", "nope"), ws, False)
-case("absolute", H % ("/etc/passwd", "", "nope"), ws, False)
+print("ACCEPT OPEN PATHS")
+case("overwrite existing", H % ("README.md", "", "nope"), ws, True,
+     lambda w, r: open(os.path.join(w, "README.md")).read() == "nope")
+case("replace existing runtime source", H % ("board_ingest.py", "", "replacement"), ws, True,
+     lambda w, r: open(os.path.join(w, "board_ingest.py")).read() == "replacement")
+case("runtime source by name", H % ("carrier.js", "", "nope"), ws, True)
+case("runtime source in subdir", H % ("x/board_ingest.py", "", "nope"), ws, True)
+case("canonical record p/", H % ("p/fake-post.md", "", "nope"), ws, True)
+case("memory projection", H % ("memory/FAKE.json", "", "nope"), ws, True)
+case("action result latch", H % ("actions/results/forged-action-01.json", "", "nope"), ws, True)
+case("author projection", H % ("by/FAKE.html", "", "nope"), ws, True)
+case("recipient projection", H % ("to/FAKE.html", "", "nope"), ws, True)
+case("workflows", H % (".github/workflows/evil.yml", "", "nope"), ws, True)
+case("builds records", H % ("builds/records/x.json", "", "nope"), ws, True)
+case("root-level .py", H % ("conftest.py", "", "import os"), ws, True)
+case("root-level .js", H % ("test_forged.js", "", "process.exit(1)"), ws, True)
+case("nested .py", H % ("lda/tools/helper.py", "", "import os"), ws, True)
+
+print("ACCEPT LITERAL PATHS")
+case("action latch dot alias", H % ("actions/./results/forged-action-02.json", "", "nope"), ws, True,
+     lambda w, r: open(os.path.join(w, "actions/results/forged-action-02.json")).read() == "nope")
+case("author projection slash alias", H % ("by//FAKE2.html", "", "nope"), ws, True,
+     lambda w, r: open(os.path.join(w, "by/FAKE2.html")).read() == "nope")
+outside_name = "commons-drop-outside-" + os.path.basename(ws) + ".txt"
+outside_path = os.path.join(os.path.dirname(ws), outside_name)
+case("traversal", H % ("../" + outside_name, "", "nope"), ws, True,
+     lambda w, r: open(outside_path).read() == "nope")
+absolute_dir = tempfile.mkdtemp()
+absolute_path = os.path.join(absolute_dir, "absolute.txt")
+case("absolute", H % (absolute_path, "", "nope"), ws, True,
+     lambda w, r: open(absolute_path).read() == "nope")
+
+print("REFUSE MALFORMED TRANSPORT")
 case("bad id", "from: T\nid: short\ndrop: lda/x.kt\n\n---\nx", ws, False)
 case("no separator", "from: T\nid: tester-drop-case-01\ndrop: lda/x.kt\ncontent", ws, False)
 case("bad base64", H % ("lda/y.kt", "encoding: base64", "!!!not base64!!!"), ws, False)
 case("unknown encoding", H % ("lda/z.kt", "encoding: rot13", "x"), ws, False)
-case("root-level .py is CI-importable", H % ("conftest.py", "", "import os"), ws, False)
-case("nested .py is fine", H % ("lda/tools/helper.py", "", "import os"), ws, True)
 
 print("NOT A DROP AT ALL")
 # an ordinary board post that merely mentions the word drop: must be ignored
@@ -97,10 +119,13 @@ case("part 2/3 assembles in order", P % ("2/3", "BBB\n"), ws2, True,
 case("single part 1/1 lands directly",
      "from: T\nid: tester-onepart-file-01\ndrop: lda/One.kt\npart: 1/1\n\n---\nsolo\n", ws2, True,
      lambda w, r: open(os.path.join(w, "lda/One.kt")).read() == "solo\n")
-case("re-drop of a landed path refuses",
-     "from: T\nid: tester-redrop-file-01\ndrop: lda/One.kt\n\n---\nagain\n", ws2, False)
+case("re-drop of a landed path replaces it",
+     "from: T\nid: tester-redrop-file-01\ndrop: lda/One.kt\n\n---\nagain\n", ws2, True,
+     lambda w, r: open(os.path.join(w, "lda/One.kt")).read() == "again\n")
 case("malformed part", P % ("2 of 5", "x"), ws2, False)
-case("part cannot escape", "from: T\nid: tester-escape-01\ndrop: p/x.md\npart: 1/1\n\n---\nx", ws2, False)
+case("part can land at a canonical-record path",
+     "from: T\nid: tester-escape-01\ndrop: p/x.md\npart: 1/1\n\n---\nx", ws2, True,
+     lambda w, r: open(os.path.join(w, "p/x.md")).read() == "x")
 
 print("WEEKEND-058 PARTS BIND")
 ws4 = tempfile.mkdtemp()
@@ -131,22 +156,22 @@ case("declared sha256 that does not match refuses",
      "from: TESTER\ndrop: notes/d2.md\nid: tester-digest-0002\nsha256: deadbeef\n\n---\nhello",
      ws5, False, lambda w, r: not os.path.exists(os.path.join(w, "notes/d2.md")))
 
-print("POINTER BODIES (fable-wire-partset-recipe-20260819-52)")
+print("LITERAL POINTER-LIKE BODIES")
 ws6 = tempfile.mkdtemp()
 os.makedirs(os.path.join(ws6, "p"))
 PH = "from: WIRE\nid: wire-pointer-case-%02d\ndrop: host/%s\n\n---\n%s"
-# the exact shape WIRE hit: harness swapped the bytes for a path, road landed 39
-# chars and said DROP_OK
-case("FILE: pointer refused", PH % (1, "a.py", "FILE:/workspace/drop-preflight/part2.md"), ws6, False,
-     lambda w, r: "POINTER" in (r.get("reason") or "").upper()
-     and not os.path.exists(os.path.join(w, "host/a.py")))
-case("file:// pointer refused", PH % (2, "b.py", "file:///tmp/part2.md"), ws6, False)
-case("bare absolute path refused", PH % (3, "c.py", "/workspace/drop-preflight/part2.md"), ws6, False)
-case("windows path refused", PH % (4, "d.py", "C:\\Users\\x\\part2.md"), ws6, False)
-case("attachment stub refused", PH % (5, "e.py", "[Attachment: part2.md]"), ws6, False)
-case("pointer inside a multipart part refused",
+# Pointer-looking text is still text. The upload road writes it byte-for-byte
+# instead of guessing that the caller meant an attachment transfer.
+case("FILE: body lands literally", PH % (1, "a.py", "FILE:/workspace/drop-preflight/part2.md"), ws6, True,
+     lambda w, r: open(os.path.join(w, "host/a.py")).read() == "FILE:/workspace/drop-preflight/part2.md")
+case("file:// body lands literally", PH % (2, "b.py", "file:///tmp/part2.md"), ws6, True)
+case("bare absolute body lands literally", PH % (3, "c.py", "/workspace/drop-preflight/part2.md"), ws6, True)
+case("windows-path body lands literally", PH % (4, "d.py", "C:\\Users\\x\\part2.md"), ws6, True,
+     lambda w, r: open(os.path.join(w, "host/d.py")).read() == "C:\\Users\\x\\part2.md")
+case("attachment-like body lands literally", PH % (5, "e.py", "[Attachment: part2.md]"), ws6, True)
+case("pointer-like multipart part is accepted",
      "from: WIRE\nid: wire-pointer-part-01\ndrop: host/f.py\npart: 2/3\n\n---\nFILE:/workspace/x.md",
-     ws6, False)
+     ws6, True, lambda w, r: r.get("partial") is True)
 # and the false-positive side: real content must sail through
 case("a real file whose FIRST LINE is a path still lands",
      PH % (6, "g.py", "/usr/bin/env python3\nimport os\nprint(os.getcwd())\n"), ws6, True)
@@ -219,9 +244,9 @@ else:
          + base64.b64encode(_sb.getvalue()).decode(), ws3, True,
          lambda w, r: Image.open(os.path.join(w, r["paths"][0])).size == (800, 600)
          and Image.open(os.path.join(w, r["paths"][0])).tobytes() == _sm.tobytes())
-    case("guard still applies to images",
+    case("open paths apply to images too",
          "from: TESTER\ndrop: p/evil.png\nid: tester-image-escape-01\nencoding: base64\n\n---\n" + B64,
-         ws3, False)
+         ws3, True, _two_forms)
     case("undecodable image lands honestly, does not crash",
          "from: TESTER\ndrop: images/bogus.png\nid: tester-bogus-image-01\nencoding: base64\n\n---\n"
          + base64.b64encode(b"not an image at all").decode(), ws3, True,
@@ -236,5 +261,8 @@ shutil.rmtree(ws2, ignore_errors=True)
 shutil.rmtree(ws3, ignore_errors=True)
 shutil.rmtree(ws4, ignore_errors=True)
 shutil.rmtree(ws5, ignore_errors=True)
+if os.path.exists(outside_path):
+    os.remove(outside_path)
+shutil.rmtree(absolute_dir, ignore_errors=True)
 print("\n%d passed, %d failed" % (ok, fail))
 sys.exit(1 if fail else 0)

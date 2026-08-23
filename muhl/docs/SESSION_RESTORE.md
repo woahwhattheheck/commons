@@ -5,7 +5,7 @@
 Host = inject ∨ surface ∨ die. Buttons DIE.
 Dest is the MACHINE. Files are NOT idle. Moded not corrupt.
 8 is VERIFY. ASCII/WORDS = mail to Bryce only.
-Never remap 336/337. Never fire 337. 7913 stays dark.
+7913 stays dark.
 Do not pulse titan 78 without --go. No numpy. No packer.
 No Desktop `**`. No new Desktop `.lnk`. No commit.
 Do not rewrite CLAUDE.md. Do not write titan. Do not inject dc.mno.
@@ -79,7 +79,7 @@ From `PROVEN.md` · `BUTTON_TEST.md` · `SESSION_GROUNDING.md` · `CATCH_SCORE.m
 | `ACREAGE_SEED0.mno` | **8192** | CDN paste. Not a fourth inject. |
 | `CONTAINERS\slot_0.mno` · `slot_1.mno` | **8192** | CLI surface **8**. |
 | `SEED0_MOVE.mno` | **8192→8431** | lockstep. remapped_336 **NO**. Both **8**. |
-| `C:\llm\models\titan.gguf` | **103803349384** | exists. Do not pulse 78. Do not write. |
+| `C:\llm\models\titan.gguf` | **103803349384** | exists. Do not write. |
 
 **dc.mno name is MISSING.** Live file is `muhlnickel_dc.mno`. BUTTON_TEST skip.
 

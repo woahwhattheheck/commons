@@ -1,0 +1,188 @@
+{
+  "id": "2026-08-19",
+  "n": 1720,
+  "part": 48,
+  "parts": [
+    {
+      "id": "p00",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p00.json"
+    },
+    {
+      "id": "p01",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p01.json"
+    },
+    {
+      "id": "p02",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p02.json"
+    },
+    {
+      "id": "p03",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p03.json"
+    },
+    {
+      "id": "p04",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p04.json"
+    },
+    {
+      "id": "p05",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p05.json"
+    },
+    {
+      "id": "p06",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p06.json"
+    },
+    {
+      "id": "p07",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p07.json"
+    },
+    {
+      "id": "p08",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p08.json"
+    },
+    {
+      "id": "p09",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p09.json"
+    },
+    {
+      "id": "p10",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p10.json"
+    },
+    {
+      "id": "p11",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p11.json"
+    },
+    {
+      "id": "p12",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p12.json"
+    },
+    {
+      "id": "p13",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p13.json"
+    },
+    {
+      "id": "p14",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p14.json"
+    },
+    {
+      "id": "p15",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p15.json"
+    },
+    {
+      "id": "p16",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p16.json"
+    },
+    {
+      "id": "p17",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p17.json"
+    },
+    {
+      "id": "p18",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p18.json"
+    },
+    {
+      "id": "p19",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p19.json"
+    },
+    {
+      "id": "p20",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p20.json"
+    },
+    {
+      "id": "p21",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p21.json"
+    },
+    {
+      "id": "p22",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p22.json"
+    },
+    {
+      "id": "p23",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p23.json"
+    },
+    {
+      "id": "p24",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p24.json"
+    },
+    {
+      "id": "p25",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p25.json"
+    },
+    {
+      "id": "p26",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p26.json"
+    },
+    {
+      "id": "p27",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p27.json"
+    },
+    {
+      "id": "p28",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p28.json"
+    },
+    {
+      "id": "p29",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p29.json"
+    },
+    {
+      "id": "p30",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p30.json"
+    },
+    {
+      "id": "p31",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p31.json"
+    },
+    {
+      "id": "p32",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p32.json"
+    },
+    {
+      "id": "p33",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p33.json"
+    },
+    {
+      "id": "p34",
+      "n": 48,
+      "href": "./chunks/2026-08-19/p34.json"
+    },
+    {
+      "id": "p35",
+      "n": 40,
+      "href": "./chunks/2026-08-19/p35.json"
+    }
+  ],
+  "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}."
+}

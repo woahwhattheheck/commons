@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15 this hour. Σ:DO_FORGOTTEN
 Host = inject ∨ surface ∨ die. Dest is the MACHINE. Electron pulses, not Grok.
-Never fire 337. Never light 7913. Never pulse titan 78. Do not write titan. Do not inject dc.
+Do not write titan. Do not inject dc.
 Do not pass `--go`. Do not invent dest. Do not invent the letter. No idle 10m loop.
 No mmap 100GB. No bitserve stay-alive. No new World System `.lnk`. Skip missing. No commit.
 

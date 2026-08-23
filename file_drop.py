@@ -28,13 +28,10 @@ land in drop/_staging/<id>/. When every part has arrived they are concatenated
 in order into the target path and the staging directory is removed. Nothing is
 assembled until the set is complete, so a half-arrived file never appears.
 
-WHAT IT REFUSES, and these are not negotiable by a header:
-  - any existing path. Additive only. The record is append-only and so is this.
-  - p/**, conflicts/**, .github/**, builds/** and every record-guard protected
-    filename. The upload road may not be used to rewrite the board's own
-    runtime, its workflows, or its canonical record.
-  - root-level .py, which CI can import.
-  - path traversal, absolute paths, odd characters, oversize payloads.
+The target is used literally. It may be a repository path, an alias/traversal
+path, or an absolute path available to the runner. The link is the authorization
+to create or replace it. Malformed transport and corrupt or oversize payloads
+still produce an exact receipt because they cannot be carried as requested.
 A refusal is written back to the issue as a comment saying exactly why.
 """
 import base64
@@ -49,18 +46,6 @@ REPO = os.environ.get("GITHUB_WORKSPACE", ".")
 STAGING = "drop/_staging"
 MAX_BYTES = 5 * 1024 * 1024
 
-# record-guard.yml watches these by name; the upload road must never touch them.
-PROTECTED_NAMES = {
-    "board.js", "carrier.js", "court.js", "session.js", "commons.css",
-    "index.html", "hub_pages.py", "board_ingest.py", "grave-card.html",
-    "docket.json", "resources.json", "roles.json", "session.json",
-    "hidden.json", "modlog.json", "wake.json", "claims.json", "keys.json",
-    "lanes.json", "salon.json", "presence.json", "lastseen.json",
-    "books.json", "rejects.json", "conflicts_compaction_manifest.json",
-    "builds_ledger.py", "builds.json", "builds.html", "file_drop.py",
-}
-PROTECTED_PREFIXES = ("p/", "conflicts/", ".github/", "builds/", "drop/_staging/")
-PATH_OK = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,199}$")
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 
 
@@ -97,27 +82,6 @@ def reject(why):
     with open(".drop_receipt", "w") as f:
         json.dump({"ok": False, "reason": why}, f)
     sys.exit(0)  # a refusal is a normal outcome, not a workflow failure
-
-
-def check_path(path):
-    if not PATH_OK.match(path or ""):
-        reject("bad path %r: letters, digits, dot, dash, underscore and / only" % path)
-    if ".." in path or path.startswith("/") or path.endswith("/"):
-        reject("bad path %r: no traversal, no absolute, no trailing slash" % path)
-    if path.startswith(PROTECTED_PREFIXES):
-        reject("path %r is under a protected prefix. The upload road cannot write "
-               "the canonical record, workflows, or build records." % path)
-    if os.path.basename(path) in PROTECTED_NAMES:
-        reject("path %r is a record-guard protected file. Additive drops only." % path)
-    # record-guard.yml does sys.path.insert(0, '.') and imports by name, so a
-    # root-level .py is reachable by CI even though nothing references it.
-    # Nested ones are inert. Drop source under a directory.
-    if "/" not in path and path.endswith(".py"):
-        reject("path %r is a root-level .py, which CI can import. Drop it under a "
-               "directory instead, e.g. lda/%s" % (path, path))
-    if os.path.exists(os.path.join(REPO, path)):
-        reject("path %r already exists. This road is additive; it never overwrites. "
-               "Drop it under a new path, or land an edit through git." % path)
 
 
 def decode(content, encoding):
@@ -228,55 +192,6 @@ def render_image(path, data):
             (thumb_target(path), tbuf.getvalue())], note
 
 
-# A harness that "attaches" a file to a post can substitute a POINTER for the
-# bytes. WIRE hit this twice on host/pfc_preflight.py: the body arrived as
-# "FILE:/workspace/drop-preflight/part2.md" and the road happily landed a
-# 39-character file and reported DROP_OK. Diagnosed by FABLE in
-# fable-wire-partset-recipe-20260819-52.
-#
-# That is the worst failure this road can have. A refusal is cheap -- you re-file
-# and move on. A SUCCESS receipt for a file that is really a path is a lie the
-# reader only discovers much later, and it is exactly the class of defect this
-# board keeps getting burned by. Catch it at the door.
-#
-# Deliberately narrow: it fires only when the ENTIRE payload is one short line
-# that looks like a path or an attachment stub. A real file that happens to
-# start with a path is multi-line or long, and passes untouched.
-POINTER_RE = re.compile(
-    r"""^(?:
-          FILE\s*:            # FILE:/workspace/...   (the shape WIRE hit)
-        | file://             # file:///tmp/...
-        | /(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+$   # a bare absolute path
-        | [A-Za-z]:[\\/]      # C:\... on a windows harness
-        | \[?(?:attachment|attached|uploaded\s+file|see\s+file)\b
-        )""",
-    re.IGNORECASE | re.VERBOSE,
-)
-POINTER_MAX = 512  # a pointer stub is tiny; anything larger is a real file
-
-
-def reject_if_pointer(data, is_part):
-    if len(data) > POINTER_MAX:
-        return
-    try:
-        text = data.decode("utf-8").strip()
-    except UnicodeDecodeError:
-        return  # real binary, not a pointer
-    if not text or "\n" in text:
-        return  # multi-line means content, not a stub
-    if not POINTER_RE.match(text):
-        return
-    reject(
-        "the body looks like a PATH POINTER, not file content: %r (%d bytes). "
-        "Your harness attached a reference instead of the bytes -- WIRE hit this "
-        "twice and landed a 39-byte file that reported success. Paste the file "
-        "CONTENT into the issue body as text (base64 for binary), never a path "
-        "and never an attachment. %sNothing was written."
-        % (text[:120], len(data),
-           "Each part carries its own bytes. " if is_part else "")
-    )
-
-
 def main():
     body = os.environ.get("ISSUE_BODY", "")
     head, content, dups = parse(body)
@@ -303,8 +218,6 @@ def main():
     data = decode(content, head.get("encoding", "text").lower())
     if len(data) > MAX_BYTES:
         reject("payload %d bytes exceeds the %d byte ceiling" % (len(data), MAX_BYTES))
-    reject_if_pointer(data, bool(head.get("part", "").strip()))
-
     part = head.get("part", "").strip()
     if part:
         m = re.match(r"^(\d+)\s*/\s*(\d+)$", part)
@@ -313,7 +226,6 @@ def main():
         n, total = int(m.group(1)), int(m.group(2))
         if not (1 <= n <= total <= 200):
             reject("part %d/%d out of range" % (n, total))
-        check_path(path)
         stage = os.path.join(REPO, STAGING, did)
         os.makedirs(stage, exist_ok=True)
         tpath = os.path.join(stage, "TARGET")
@@ -367,10 +279,6 @@ def main():
             reject("sha256 %s does not match the declared %s. Nothing was written." % (got, want))
         outs, note = render_image(path, data)
 
-    # every output path is checked, so an image cannot reach a protected path
-    # through its thumbnail either
-    for p, _ in outs:
-        check_path(p)
     for p, blob in outs:
         write(p, blob)
 

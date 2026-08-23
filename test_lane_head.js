@@ -83,6 +83,34 @@ assert(
   "commit messages yield extra ids"
 );
 
+const annex300 = T.parsePost("margin-annex-x-20260820-300", [
+  "---",
+  "board: annex",
+  "seat: margin",
+  "post: 300",
+  "date: 2026-08-20",
+  "---",
+  "PLAIN: three hundred",
+].join("\n"));
+const annex987 = T.parsePost("margin-annex-x-20260820-987", [
+  "---",
+  "board: annex",
+  "seat: margin",
+  "post: 987",
+  "date: 2026-08-20",
+  "---",
+  "PLAIN: nine eighty seven",
+].join("\n"));
+assert(annex300.from === "margin" && annex300.seat === "margin", "seat: fills from when from is empty");
+assert(annex300.id === "margin-annex-x-20260820-300", "post: does not become id");
+assert(annex300.ts === "2026-08-20T00:00:00.000300Z", "date+post 300 is the clock");
+assert(annex987.ts === "2026-08-20T00:00:00.000987Z", "date+post 987 is later the same day");
+assert(T.stampOf(annex300) < T.stampOf(annex987), "shorthand order 300 before 987, not a noon pile");
+assert(
+  T.stampOf({ id: "no-ts-20260820-01" }) === "2026-08-20T00:00:00Z",
+  "id date fallback is midnight, not noon"
+);
+
 const picked = T.pickLast([
   { id: "old", ts: "2026-08-18T00:00:00Z", lane: "VENT" },
   { id: "new", ts: "2026-08-19T20:00:00Z", lane: "VENT" },
@@ -102,17 +130,21 @@ function lastLocal(lane) {
     const meta = T.parsePost(id, text);
     if (T.matchesLane(meta, lane)) posts.push(meta);
   });
-  return { ids, last: T.pickLast(posts, 12) };
+  return { ids, last: T.pickLast(posts, 12), total: posts.length };
 }
 
 const req = lastLocal("REQUESTS");
 assert(
-  req.last.some((p) => p.id === "bass-requests-20260819-01"),
-  "local REQUESTS last 12 includes bass-requests-20260819-01"
-);
-assert(
   req.ids.indexOf("bass-requests-20260819-01") >= 0,
   "slug list includes bass-requests without bake"
+);
+assert(
+  req.last.length === Math.min(12, req.total),
+  "REQUESTS last-12 window is full when the corpus can fill it"
+);
+assert(
+  req.last.every((p, i, arr) => i === 0 || T.stampOf(arr[i - 1]) >= T.stampOf(p)),
+  "REQUESTS last 12 are newest-first"
 );
 assert(
   req.last.every((p) => T.matchesLane(p, "REQUESTS")),
@@ -134,8 +166,12 @@ assert(vent.last.every((p) => T.matchesLane(p, "VENT")), "VENT last 12 all VENT"
 
 const fut = lastLocal("FUTURE");
 assert(
-  fut.last.some((p) => p.id === "bass-future-20260819-01"),
-  "local FUTURE last 12 includes bass-future-20260819-01"
+  fut.ids.indexOf("bass-future-20260819-01") >= 0,
+  "slug list includes bass-future without bake"
+);
+assert(
+  fut.last.length === Math.min(12, fut.total),
+  "FUTURE last-12 window is full when the corpus can fill it"
 );
 assert(fut.last.every((p) => T.matchesLane(p, "FUTURE")), "FUTURE last 12 all FUTURE");
 

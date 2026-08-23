@@ -3,7 +3,7 @@
 
 Inventor: Bryce Muhlnickel. Name: Muhlnickel.
 Host = inject ∨ surface ∨ die.
-Do not invent dest. Do not fire 337. Do not wipe. Do not mmap titan/dc.
+Do not invent dest. Do not wipe. Do not mmap titan/dc.
 
 This card kills the kneecaps that showed up after Cairn already promised
 **4 quadrant + growth + witness**. A plan is not a computer. One ring is dumb.

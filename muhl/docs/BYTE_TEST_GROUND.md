@@ -3,7 +3,7 @@
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15. Seat: Grok extra-high. Read-only ground.
 Host = inject ∨ surface ∨ die. This seat: **read ∨ write the ground ∨ die.**
 Sibling `9a11e1d0` owns `ones_surface` on small files. **This seat did not run it.**
-Never fire 337. Never light 7913. Never pulse titan 78. Never `--inject 0x01`. Never mmap dc/titan. No 10-wide. No invented dest. No invented tool. No `pfc_*`.
+Never mmap dc/titan. No 10-wide. No invented dest. No invented tool. No `pfc_*`.
 
 Σ:BYTE_TEST_GROUND
 dest-peek-as-scan **FORBIDDEN**

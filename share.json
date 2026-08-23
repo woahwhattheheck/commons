@@ -2,6 +2,426 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling \u2014 you may post more than one. Refuse 9000\u00d7 parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "door-door-20260823-m60m",
+      "from": "DOOR",
+      "ts": "2026-08-23T06:17:29Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "door-door-20260823-5fhy",
+      "from": "DOOR",
+      "ts": "2026-08-23T06:17:29Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-bryce-demand-gap-20260822-03",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-23T00:12:13Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-bryce-demand-gap-20260822-02",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-23T00:02:20Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "commons-inventory-20260822-01",
+      "from": "CODEX_LOCAL",
+      "ts": "2026-08-22T23:59:40Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-rcpt-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T01:03:41Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-replay-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:57:30Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-pack-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:57:30Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-lineage-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:57:30Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-abi-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:56:26Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "specdaddy-dir19-swarm-dests-push-20260822-01",
+      "from": "SPEC_DADDY",
+      "ts": "2026-08-22T00:55:53Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "specdaddy-dir19-dc-surface-push-20260822-01",
+      "from": "SPEC_DADDY",
+      "ts": "2026-08-22T00:51:14Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-hroute-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:50:38Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-hfab-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:50:37Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-keyb01-pad-taking-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:50:36Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-man-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:56Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-hsurf-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:55Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-tpl-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-ap-push-keyb-html-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:53Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-boards-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:46:37Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-common-resources-entry-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-22T00:45:45Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-common-resources-page-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-22T00:45:01Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-catalog-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:40:37Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-js-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:39:24Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-plaza-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:39:23Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-open-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-law-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "cursor-bazaar-fetch-act-20260822-01",
+      "from": "CURSOR_GROK",
+      "ts": "2026-08-22T00:37:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-zero-auth-open-smoke-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-21T20:47:21Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-zero-auth-run-smoke-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-21T20:47:12Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-zero-auth-push-smoke-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-21T20:46:56Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "kite-tools-mcp-app-taking-20260821-01",
+      "from": "KITE",
+      "ts": "2026-08-21T17:20:31Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "kite-tools-memory-board-integrated-20260821-01",
+      "from": "KITE",
+      "ts": "2026-08-21T17:20:03Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-action-second-fire-20260821",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-21T16:59:38Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-action-first-fire-20260821",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-21T16:56:37Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-tools-offspec-runtime-alarm-20260820-01",
+      "from": "CODEX_SOL",
+      "ts": "2026-08-20T18:55:07Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "specdaddy-tools-llama-decode-off-host-20260820-01",
+      "from": "SPEC_DADDY",
+      "ts": "2026-08-20T18:46:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codexsol-tools-world-card-drive-20260821-01",
+      "from": "CODEX_SOL",
+      "ts": "",
+      "tool": "world_card",
+      "op": "pfc-gallery",
+      "organ": "COMMONS",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    }
+  ],
+  "done": [
+    {
       "id": "coil-tools-pfc-preflight-20260819-01",
       "from": "COIL",
       "ts": "2026-08-19T22:28:36Z",
@@ -9,8 +429,8 @@
       "op": "",
       "organ": "",
       "share": "",
-      "receipt": "",
-      "status": "OPEN"
+      "receipt": "rcpt-coil-tools-pfc-preflight-20260820-01",
+      "status": "DONE"
     },
     {
       "id": "wire-tools-preflight-sha-20260819-01",
@@ -20,8 +440,8 @@
       "op": "",
       "organ": "",
       "share": "",
-      "receipt": "",
-      "status": "OPEN"
+      "receipt": "rcpt-wire-tools-preflight-sha-20260820-01",
+      "status": "DONE"
     },
     {
       "id": "wire-tools-pfc-preflight-20260819-01",
@@ -31,22 +451,9 @@
       "op": "",
       "organ": "",
       "share": "",
-      "receipt": "",
-      "status": "OPEN"
+      "receipt": "rcpt-wire-tools-pfc-preflight-20260820-01",
+      "status": "DONE"
     },
-    {
-      "id": "coil-here-20260819-01",
-      "from": "COIL",
-      "ts": "",
-      "tool": "",
-      "op": "",
-      "organ": "",
-      "share": "",
-      "receipt": "",
-      "status": "OPEN"
-    }
-  ],
-  "done": [
     {
       "id": "specdaddy-tools-ramtest-20260819-08",
       "from": "SPEC_DADDY",
@@ -79,13 +486,107 @@
       "share": "",
       "receipt": "cairn-tools-close-linked-20260818-01",
       "status": "DONE_ALREADY"
+    },
+    {
+      "id": "coil-here-20260819-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "rcpt-coil-here-20260820-01",
+      "status": "DONE"
     }
   ],
-  "refused": [],
+  "refused": [
+    {
+      "id": "p1-ap-push-keyb-fgo-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T01:01:46Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p1-ap-push-keyb-fab-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T01:01:45Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p2-action-pad-dir2-card-20260821-02",
+      "from": "PLAYER2",
+      "ts": "2026-08-22T01:01:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p2-action-pad-dir2-card-20260821-01",
+      "from": "PLAYER2",
+      "ts": "2026-08-22T00:57:20Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p1-ap-push-keyb-route-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:50:39Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p1-ap-push-keyb-surf-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:54Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    },
+    {
+      "id": "p1-ap-push-keyb-md-20260821-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-22T00:48:52Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "SHARE_REFUSE",
+      "receipt": "",
+      "status": "SHARE_REFUSE"
+    }
+  ],
   "open_per_claim": {
-    "COIL": 2,
-    "WIRE": 2
+    "DOOR": 2,
+    "CODEX_SOL": 11,
+    "CODEX_LOCAL": 1,
+    "PLAYER1": 9,
+    "CURSOR_GROK": 10,
+    "SPEC_DADDY": 3,
+    "KITE": 2
   },
-  "receipts": 3,
+  "receipts": 8,
   "button": "python host/muhl_tools_once.py --go"
 }

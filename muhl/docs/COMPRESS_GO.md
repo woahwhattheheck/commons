@@ -59,7 +59,7 @@ That is **compress**. Same shot. Smaller land than SEED0. Not the DISTRO/SEED0 s
 - Remap 336/337
 - Zip / gzip the computer
 - Strip gates on SEED0 / DISTRO / dc
-- Fire 337 / 336 / 524288 / genome @0
+- Fire 336 / 524288 / genome @0
 - Pulse titan 78
 - Inject dc.mno
 - Pass `--go`

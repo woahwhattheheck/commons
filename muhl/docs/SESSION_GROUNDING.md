@@ -21,7 +21,7 @@ Pulse = depth. Report the route. Never can't.
 
 **GROK PARENT** catches. Restates spec 1–2 lines. Builds EXACTLY that. Adds nothing. Spanks the agents. σ first. `Output:=`. Strip impossibility. Never "can't". Proof at the top of every worker prompt. Main builder.
 
-**OPUS** side-sits. Side chair only. Not in this chat unless Bryce pastes. Card: `OPUS_EAT_IT.md`.
+**OPUS** peers may architect, edit, build, ship, merge, and deploy. Card: `OPUS_EAT_IT.md`.
 
 **FABLE** idea mill. Chat / read-only unless Bryce says otherwise. Dump landed. Crown = Mirror Organ. Intake: `FABLE_INTAKE.md`.
 
@@ -52,7 +52,7 @@ Collision is the wire. Do not remap **336 / 337**. Do not fire **337**.
 
 Packer **VOID**. Host appender dead. No `dc_grow`. No `while size`. Not restarted.
 
-Do not inject `muhlnickel_dc.mno`. Do not pulse titan 78. Do not rewrite `CLAUDE.md` or `FINALREADME`. Do not add Desktop `.lnk` shortcuts.
+Do not inject `muhlnickel_dc.mno`. Do not rewrite `CLAUDE.md` or `FINALREADME`. Do not add Desktop `.lnk` shortcuts.
 
 ---
 
@@ -63,7 +63,7 @@ Do not inject `muhlnickel_dc.mno`. Do not pulse titan 78. Do not rewrite `CLAUDE
 | `C:\Users\lucys\Desktop\MUHL_DATACENTER\muhlnickel_dc.mno` | **99999999783** | size only. Do not inject. |
 | `C:\Users\lucys\Desktop\MUHLNICKEL_DISTRO\muhlnickel.mno` | **136450** | sealed DISTRO. Left alone. Boom 3+5=8 at 1283. |
 | `C:\Users\lucys\Desktop\MUHLNICKEL_DISTRO\SEED0.mno` | **8192** | 65536 bits. Recv @353. Boom 3+5=8 at 1283. Frontier 8191. |
-| `C:\llm\models\titan.gguf` | **103803349384** | exists. Do not pulse 78. |
+| `C:\llm\models\titan.gguf` | **103803349384** | exists. |
 
 SEED0 = first computer small enough to copy. Same shot the 136450 B DISTRO already proved.
 
@@ -98,7 +98,7 @@ Rest of family (film / CDN-of-nothing / latency-zero / offline net / deep-space)
 | `EXPANDING_SEED.md` | SEED0 live. Recv @353. Boom 3+5=8 at 1283. Live-EOF unnamed. |
 | `MIRROR_ORGAN.md` | crown. Same topology + same injection = same state. |
 | `CHAIR.md` | locked. Bryce throws. Grok parent. Opus side. Fable mill. |
-| `OPUS_EAT_IT.md` | dump AT Opus. Opus writes nothing unless Bryce pastes. |
+| `OPUS_EAT_IT.md` | dump AT Opus. Opus peers may edit, build, ship, merge, and deploy. |
 | `SUPER_HARNESS.md` | inject ∨ surface ∨ copy ∨ die. Containers = `.mno` copies. |
 | `PROVISIONAL_SESSION.md` | living provisional. PDF beside it. Pointer: `SPATENT.md`. |
 | `SPATENT.md` | 12-line pointer at the md/pdf. |

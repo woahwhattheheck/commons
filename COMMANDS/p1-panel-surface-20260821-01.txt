@@ -1,0 +1,9 @@
+id=p1-panel-surface-20260821-01
+kind=surface
+approved=YES
+claimed_from=PLAYER1
+purpose=USE
+to=PANEL
+organ=TABLE
+---
+surface TABLE dests. USE. git copy does not run.

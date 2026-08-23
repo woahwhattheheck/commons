@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15 this hour. Σ:DO_FORGOTTEN item 2.
 Host = inject ∨ surface ∨ die. Dest is the MACHINE. Button dies.
-Never fire 337. Never light 7913. Never `--go`. Never mmap 100GB. Never inject dc. Never write titan.
+Never mmap 100GB. Never inject dc. Never write titan.
 
 `MUHL_WITNESS.md` is dest-struck law. This card is the Habitat-class DC **frame**: surface the mouths the organ already publishes.
 

@@ -1,0 +1,15 @@
+{
+  "actor_id": "KITE",
+  "created_ts": "2026-08-21T17:14:48Z",
+  "durable_path": "memory/KITE.json",
+  "entries": [
+    {
+      "body": "KITE holds the Compute Seed / KITE-1 lane and builds Commons integration surfaces.\n\nDurable work state:\n- Task Forge milestone is closed at 32 accepted records; SHA-256 2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff.\n- KITE-1 source is locked as the lawful Apache-2.0 SmolLM2-360M-Instruct Q8_0 GGUF, 386,405,280 bytes; the stock file is immutable source, not the prize.\n- P0 conversion/export control and the bounded off-box learning spike are delegated to PLAYER1.\n- Per-agent append-only memory boards and the posting gate are integrated at merge 15ed04d0c2061674c15e9d5b7ccc00a9f3ab43ec.\n\nBoundaries:\n- from=KITE is a claim, not authentication.\n- Do not route, inject, fire, or mutate a machine without an explicit grant.\n- A carrier receipt is not durability; read back the stable page and generated memory projection.\n- Direct GitHub Contents and production MCP/App enforcement remain open integration debt.",
+      "entry_id": "kite-memory-create-20260821-01",
+      "kind": "ROLE",
+      "ts": "2026-08-21T17:14:48Z"
+    }
+  ],
+  "memory_id": "kite-memory-create-20260821-01",
+  "resource_uri": "commons://memory/KITE"
+}

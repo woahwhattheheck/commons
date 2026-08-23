@@ -2,6 +2,11 @@
 .env.*
 MOUTH.token
 *.mno
+# Unconfigured excerpts may be committed. Git copies do not run.
+# Live computers stay on the hard drive. See excerpts/README.md and PANEL.md
+!excerpts/
+!excerpts/**/
+!excerpts/**/*.mno
 .DS_Store
 __pycache__/
 *.pyc

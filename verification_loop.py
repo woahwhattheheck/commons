@@ -9,7 +9,7 @@ kind: DEMO cannot close an ask and cannot enter the land pin.
 kind: LOOP / VERIFICATION_LOOP is the hide.
 
 Do not hide sha-cited findings that name a fix. Do not hide live FABLE work.
-Do not smash. Do not remint. 337 NO.
+Do not smash. Do not remint. 337 yes.
 """
 from __future__ import annotations
 

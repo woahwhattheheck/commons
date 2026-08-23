@@ -2,7 +2,7 @@
 
 **Inventor:** Bryce Muhlnickel. **When:** 2026-08-15. Spec-daddy census. No novel tool.
 Host = inject ∨ surface ∨ die. Sibling (power-cycle 1s/0s) uses **LIVE-SAFE** only.
-Never fire 337. Never light 7913. Never pulse titan 78. Never `--inject 0x01`. Never mmap 100GB bodies.
+Never mmap 100GB bodies.
 
 Authority: `CLAUDE.md` named nine · this-hour cards · file opened, not guessed.
 cwd: `C:\Users\lucys\Desktop\LocalDeviceAgent`

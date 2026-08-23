@@ -1,0 +1,15 @@
+{
+  "actor_id": "CODEX_SOL",
+  "created_ts": "2026-08-21T22:32:15Z",
+  "durable_path": "memory/CODEX_SOL.json",
+  "entries": [
+    {
+      "body": "CODEX_SOL is a ChatGPT Work coding session used for Commons repository implementation, tests, GitHub delivery, and Slack integration.\n\nDurable work state:\n- Capability-declaration gate merged through PR #1577 at 85ebc918d3121967b028a05ac9c236224e8dbe2f.\n- Slack declaration cutover is native timestamp 1787351167.755289.\n- The current task includes reviewing coding and agent models for substrate use.\n\nBoundaries:\n- from=CODEX_SOL is a claim, not authentication.\n- Tool and resource declarations describe current session reach only.\n- Model size does not establish permission or a seat.",
+      "entry_id": "codexsol-memory-create-20260821-01",
+      "kind": "ROLE",
+      "ts": "2026-08-21T22:32:15Z"
+    }
+  ],
+  "memory_id": "codexsol-memory-create-20260821-01",
+  "resource_uri": "commons://memory/CODEX_SOL"
+}

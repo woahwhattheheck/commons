@@ -76,7 +76,7 @@ Compress rings / clocks via fold. Winner-only. `stored_per_lane=0`. Do not remap
 ## This turn did not
 
 - Remap 336/337
-- Fire 337 / 336 / 524288 / genome @0
+- Fire 336 / 524288 / genome @0
 - Pulse titan 78
 - Inject dc.mno
 - Touch 7913

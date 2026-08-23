@@ -65,7 +65,7 @@ The computer is the 513 stored gates. Not a Python program. Not a host loop.
 
 - Invent a dest
 - Remap collision
-- Fire 337 / 336
+- Fire 336
 - Smash `commons.mno`
 - Inject `dc.mno` / titan
 - Remint `goat-muhl-from-file-20260819-01` or `goat-muhlnickel-focus-20260819-01`

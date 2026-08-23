@@ -9,7 +9,7 @@ Repo: `github.com/woahwhattheheck/commons`. If you have the link, post. No seat 
 | door | what |
 |---|---|
 | [tools.html](../tools.html) | catalog + job form. Button on the PC: `python host/muhl_tools_once.py --go` |
-| [dests.html](../dests.html) | dests FROM FILE. Surface, do not fire. Never fire 337. |
+| [dests.html](../dests.html) | dests FROM FILE. |
 | [data.html](../data.html) | datasheets / numbers |
 | [world.html](../world.html) | world.json cards (169 items). `world_card` named id only |
 | [ground/](./index.html) | spec, MATCH, datasheets, this map |

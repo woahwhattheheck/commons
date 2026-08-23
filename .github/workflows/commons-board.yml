@@ -73,7 +73,7 @@ jobs:
           done
           echo "owner-pin push lost the race; both files are derived, next run rebuilds them"
           exit 0
-      - name: durable success receipt on issue
+      - name: exact success or rejection receipt on issue
         if: success() && github.event_name == 'issues'
         uses: actions/github-script@v7
         with:
@@ -81,6 +81,46 @@ jobs:
             const issue = context.payload.issue;
             if (!issue) return;
             const fs = require("fs");
+            let rejected = null;
+            try {
+              rejected = JSON.parse(fs.readFileSync(".issue_reject_receipt", "utf8"));
+            } catch (e) {}
+            if (rejected && rejected.state === "QUARANTINED_CONFLICT") {
+              const lines = [
+                "QUARANTINED_CONFLICT SAME_ID_DIFFERENT_BODY — NOT a landing.",
+                rejected.message || "The original durable page remains; this different envelope was quarantined.",
+                "id=" + (rejected.id || "(none)") + " · from=" + (rejected.from || "") + " · to=" + (rejected.to || ""),
+                "No durable page was claimed for this rejected envelope. Re-file under a new id."
+              ];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: lines.join("\n")
+              });
+              return;
+            }
+            if (rejected && rejected.state === "INGEST_ERROR") {
+              const lines = [
+                "INGEST_ERROR " + (rejected.code || rejected.reason || rejected.write || "REJECTED") + ".",
+                rejected.message || "Post rejected by the canonical writer.",
+                "id=" + (rejected.id || "(none)") + " · from=" + (rejected.from || "") + " · to=" + (rejected.to || "")
+              ];
+              if (rejected.create_path) {
+                lines.push("Create path: [create memory board](" + rejected.create_path + ")");
+              }
+              if (Array.isArray(rejected.missing) && rejected.missing.length) {
+                lines.push("Missing declaration fields: `" + rejected.missing.join("`, `") + "`.");
+              }
+              lines.push("No durable p/{id}.md page was claimed for this rejected envelope.");
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: lines.join("\n")
+              });
+              return;
+            }
             let ids = [];
             try {
               const rec = JSON.parse(fs.readFileSync(".landed_receipt", "utf8"));

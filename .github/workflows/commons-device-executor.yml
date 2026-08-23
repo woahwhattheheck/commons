@@ -1,0 +1,38 @@
+name: commons-device-executor
+on:
+  workflow_run:
+    workflows: ["commons-board"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: commons-device-executor
+  cancel-in-progress: false
+jobs:
+  execute:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: [self-hosted, commons-device]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: fire every pending device action
+        run: python3 action_executor.py --scope device > .device_changed.json
+      - name: report bounded receipts without command output
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          manifest_path = pathlib.Path(".device_changed.json")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
+          for name in sorted((manifest.get("result_records") or {}).keys()):
+              path = pathlib.Path(name)
+              if not path.is_file():
+                  continue
+              row = json.loads(path.read_text(encoding="utf-8"))
+              receipt = {key: row.get(key) for key in ("id", "verb", "target", "scope", "ok", "executed_at")}
+              receipt["error_code"] = "EXECUTION_FAILED" if not row.get("ok") else None
+              print(json.dumps(receipt, sort_keys=True))
+          PY

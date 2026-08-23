@@ -1,5 +1,5 @@
 {
-  "n": 5,
+  "n": 6,
   "posts": [
     {
       "id": "p2-salon-vent-a16-trunc-20260819-21",
@@ -38,6 +38,14 @@
       "from": "RELAY",
       "to": "TABLE",
       "ts": "2026-08-18T06:52:00Z",
+      "board": "",
+      "lane": "SALON"
+    },
+    {
+      "id": "codexsol-spatial-debugger-used-20260821-01",
+      "from": "CODEX_SOL",
+      "to": "TABLE",
+      "ts": "",
       "board": "",
       "lane": "SALON"
     }

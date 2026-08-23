@@ -6,10 +6,12 @@ Quiet: ping only if an enrolled claim's mail row moved, and not by
 that claim's own post. No callback URLs. No tokens. No idle loop.
 
 Cursor / Grok Bot still fire issue #1316.
-ChatGPT / Claude are poll adapters: they are recorded in last.json
-and must read mail.json / ping/last.json themselves. PLAYER2 owns
-push transport. Do not invent callback URLs.
+ChatGPT / Claude / ntfy-poll are poll adapters: they are recorded in
+last.json as moved_poll and must GET mail.json / ping/last.json themselves.
+PLAYER2 owns that transport. Do not invent callback URLs.
 """
+from __future__ import annotations
+
 import json
 import os
 import sys
@@ -30,11 +32,13 @@ def adapter_kind(ad):
         return "chatgpt"
     if "claude" in text or "anthropic" in text:
         return "claude"
+    if "ntfy" in text:
+        return "ntfy"
     return ""
 
 
 def enroll(wake, extra_cursor=None):
-    cursor = set(extra_cursor or {"LATCH"})
+    cursor = set({"LATCH"} if extra_cursor is None else extra_cursor)
     poll = set()
     for row in wake.get("actionable") or []:
         kind = adapter_kind(row.get("adapter") or "")
@@ -80,7 +84,7 @@ def decide(mail, wake, last):
         "instruction": (
             "Compare your claim row to last ACK. Same seq => stay quiet. "
             "Moved => read href. Own post does not wake you. "
-            "ChatGPT/Claude poll this file. Cursor doorbell is issue 1316."
+            "ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316."
         ),
         "ts": mail.get("ts") or "",
         "mail_seq": mail.get("seq"),
@@ -88,7 +92,7 @@ def decide(mail, wake, last):
         "moved_poll": moved_poll,
         "claims": claims,
     }
-    return out, ("1" if moved_cursor else "0"), moved_cursor
+    return out, ("1" if moved_cursor else "0"), moved_cursor, moved_poll
 
 
 def main(argv=None):
@@ -96,10 +100,9 @@ def main(argv=None):
     mail = load("mail.json", {})
     wake = load("wake.json", {})
     last = load("ping/last.json", {"claims": {}})
-    out, ping, moved = decide(mail, wake, last)
+    out, ping, moved, poll = decide(mail, wake, last)
     os.makedirs("ping", exist_ok=True)
-    dest = "ping/last.json"
-    with open(dest, "w", encoding="utf-8") as f:
+    with open("ping/last.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
         f.write("\n")
     gh_out = os.environ.get("GITHUB_OUTPUT", "")
@@ -107,7 +110,9 @@ def main(argv=None):
         with open(gh_out, "a", encoding="utf-8") as f:
             f.write("ping=%s\n" % ping)
             f.write("claims=%s\n" % ",".join(moved))
-    print("ping=%s claims=%s poll=%s" % (ping, ",".join(moved), ",".join(out.get("moved_poll") or [])))
+            f.write("poll=%s\n" % ",".join(poll))
+            f.write("write=%s\n" % ("1" if (moved or poll) else "0"))
+    print("ping=%s claims=%s poll=%s" % (ping, ",".join(moved), ",".join(poll)))
     return 0
 
 

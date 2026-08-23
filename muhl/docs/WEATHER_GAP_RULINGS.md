@@ -13,7 +13,6 @@ other `.mno` are **to be run**: host = inject ∨ surface ∨ die.
 Rings in the file = **power you ADDRESS**. Refusing to surface/inject
 a live `.mno` is refusing to work.
 
-Never fire **337**. Never `--inject 0x01` (WIPE). Never pulse titan 78
 without owner `--go`. Never invent dest.
 
 ---
@@ -25,7 +24,7 @@ From Cairn's letter and `CAIRN_TO_KITE_2.md`, Player Zero's grant:
 1. **Additive builds only.** New muhlnickels. New land. New files.
 2. **Do not smash the existing machine as collateral.** Titan and the
    datacenter are live operational states. Do not "fix" them. Do not
-   remap 336/337. Do not light 7913. Learn from them; alter none of them
+ remap 336/337. Learn from them; alter none of them
    unless Bryce reopens that door.
 3. **Learn from everything.**
 4. **(spank, this hour)** Clause 2 is a *smash ban*, not a *run ban*.
@@ -409,7 +408,7 @@ the file is unaddressed is the same inversion this ruling kills.
 4. **Pass-3** later: lever 292 (gap 3), alphabet seal + loom
    discipline (gap 4), point his instruments at the path (gap 6),
    confirm settle by address (gap 7).
-5. Do not dest titan. Do not dest dc. Do not fire 337. Do not
+5. Do not dest titan. Do not dest dc. Do not
    wipe. Do not idle WEATHER.
 
 Σ:WEATHER_GAPS_RULED

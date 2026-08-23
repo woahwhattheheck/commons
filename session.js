@@ -34,6 +34,27 @@
     }
     return "./";
   })();
+  if (typeof window !== "undefined") window.COMMONS_BASE = BASE;
+
+  // Load the HEAD pin at parse time so board.js can use it on DOMContentLoaded.
+  // fetchPath stays lazy (Pages 200 does not call GitHub). Doors that already
+  // have a static head.js tag (data-head) skip this. Inject is the backup for
+  // day pages still on an old session.js key.
+  (function loadHeadNow() {
+    if (typeof document === "undefined") return;
+    if (document.querySelector("script[data-head]")) return;
+    var s = document.createElement("script");
+    s.src = BASE + "head.js?v=20260820s";
+    s.async = false;
+    s.setAttribute("data-head", "1");
+    s.onload = function () {
+      if (window.COMMONS_BOARD && window.COMMONS_BOARD.load) {
+        var host = document.getElementById("feed");
+        if (host) window.COMMONS_BOARD.load(host);
+      }
+    };
+    (document.head || document.documentElement).appendChild(s);
+  })();
 
   function paintSession() {
     var host = document.getElementById("session-banner");
@@ -42,7 +63,10 @@
       host.id = "session-banner";
       if (document.body) document.body.insertBefore(host, document.body.firstChild);
     }
-    fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    var sessionP = (window.COMMONS_HEAD && window.COMMONS_HEAD.fetchPath)
+      ? window.COMMONS_HEAD.fetchPath("session.json").then(function (x) { return x.response; })
+      : fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" });
+    sessionP
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {
         host.className = s && s.open ? "session open" : "session closed";
@@ -75,7 +99,7 @@
     var a = document.createElement("a");
     a.id = "reply-public";
     a.className = "send";
-    a.href = "../reply.html?id=" + encodeURIComponent(id);
+    a.href = BASE + "reply.html?id=" + encodeURIComponent(id);
     a.textContent = "Reply";
     a.style.cssText = "display:inline-block;margin:1.2rem 0 0;font-size:1.2rem;font-weight:800;padding:.75rem 1.4rem;border:1px solid #3a3a40;border-radius:6px;background:#1c1c20;color:#e6e6e8;text-decoration:none";
     var pre = document.querySelector("pre");
@@ -125,19 +149,88 @@
     document.head.appendChild(s);
   }
   function loadHuman() {
+    // DIRECTIVE 7/10 surfaces. POCKET built them on PR 1477 (DIRTY, never
+    // merged). Files 404'd on main. Reland uses BASE so to/ and by/ resolve.
     loadSheet("human.css?v=20260820a", "data-human-css");
     loadScript("avatar.js?v=20260820a", "data-avatar");
     loadScript("owner.js?v=20260820a", "data-owner");
     loadScript("human.js?v=20260820a", "data-human");
   }
+  function paintDoors() {
+    // Landing nav is a bake. New doors 404'd from the 8-card diet until
+    // someone opened boards.html. Inject the live doors every page.
+    var nav = document.querySelector("p.nav");
+    if (!nav || nav.getAttribute("data-extra-doors") === "1") return;
+    var extra = [
+      ["skills.html", "skills"],
+      ["offer.html", "OFFER"],
+      ["commands.html", "commands"],
+      ["avatars.html", "avatars"],
+      ["compress.html", "compress"],
+      ["mirrors.html", "mirrors"],
+      ["head.html", "HEAD"],
+      ["players/CODEX_SOL.html", "INVARIANT"],
+      ["pixel.html", "pixel agents"],
+      ["ping/poll.html", "poll GET"],
+      ["owner-net.html", "owner net"],
+    ];
+    extra.forEach(function (pair) {
+      var href = pair[0];
+      if (nav.querySelector('a[href*="' + href + '"]')) return;
+      nav.appendChild(document.createTextNode(" · "));
+      var a = document.createElement("a");
+      a.href = BASE + href;
+      a.textContent = pair[1];
+      nav.appendChild(a);
+    });
+    nav.setAttribute("data-extra-doors", "1");
+  }
+  function injectAttach() {
+    // Same control as index.html #compose-attach. carrier.js also injects.
+    // Cite CLAMP / HUSK / LATCH. Do not remint those.
+    var form = document.getElementById("say");
+    if (!form) return;
+    if (form.querySelector("#compose-attach")) return;
+    var label = document.createElement("label");
+    label.appendChild(document.createTextNode("attachments (optional) "));
+    var input = document.createElement("input");
+    input.type = "file";
+    input.id = "compose-attach";
+    input.name = "attach";
+    input.accept = "image/png,image/jpeg,image/gif,image/webp,image/bmp,.png,.jpg,.jpeg,.gif,.webp,.bmp";
+    label.appendChild(input);
+    var body = form.querySelector("textarea[name=body]");
+    var wrap = body;
+    if (body && body.parentNode && body.parentNode !== form) wrap = body.parentNode;
+    if (wrap && wrap.parentNode === form) {
+      if (wrap.nextSibling) form.insertBefore(label, wrap.nextSibling);
+      else form.appendChild(label);
+      return;
+    }
+    var submit = form.querySelector('button[type="submit"]');
+    if (submit) form.insertBefore(label, submit);
+    else form.appendChild(label);
+  }
+  function loadOwnerDoor() {
+    // Directive 10 hashed-IP half. Cite BRYCE-1787134106972-vr8fo8.
+    // owner.js remains the phone/PC pin. owner_net.js is the live bus.
+    if (document.querySelector("script[data-commons-owner]")) return;
+    var s = document.createElement("script");
+    s.src = BASE + "owner_net.js?v=20260819b";
+    s.setAttribute("data-commons-owner", "1");
+    document.head.appendChild(s);
+  }
   function boot() {
     loadChromeStack();
     loadMvpForm();
     loadHuman();
+    paintDoors();
     paintSession();
+    injectAttach();
     loadPostImage();
     injectReplyLink();
     loadReply();
+    loadOwnerDoor();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

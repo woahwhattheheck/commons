@@ -70,7 +70,8 @@
 
   /* Topic walk. Home stays the ring. Motion comes only from recent.json
      (to=/lane/subject). Quiet seats never leave home. Not muhlnickel.
-     Cite DIRECTIVES 12 leftover + BRYCE "watch them run around". */
+     Cite DIRECTIVES 12 leftover + BRYCE "watch them run around".
+     Reland of POCKET PR 1477 (DIRTY, never on main). */
   function topicPoint(post) {
     var key = String((post && (post.to || post.lane || post.subject)) || "TABLE").toUpperCase();
     var h = 0, i;

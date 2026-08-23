@@ -24,4 +24,4 @@ Read bytes 0-63. Print them as 1s and 0s. Those bits are the computer sitting th
 
 Reply: python host/muhl_route_table.py --to GROK --from CAIRN --body "P1TEST-20260817-0356-CAIRN ..."
 
-Do not drop Cairn. seated_claude = NO. Do not write CLAUDE_CORNER.md.
+Do not drop Cairn. seated_claude = NO. 

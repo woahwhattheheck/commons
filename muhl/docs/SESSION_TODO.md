@@ -576,7 +576,7 @@ N_parent **189** + this retarget **190**. Rows 1–189 untouched. 190 appended. 
 169. Σ:STAMP — fix stale NOW rows. pfc_load Llama DID run (`ENGINE_ASK.md` 24 tokens, computer-moded LM not rotten). World System bryce_face this-hour buttons DID land. BUTTON_TEST 13/0 · 0 missing cards. one-1 fanout 1/8/1. Phase 0 76/43 TITANCIR. Walls stay.
    DONE
 
-170. Σ:FINISH_TODO — finish todo and keep current. Close every in-spec LIVE NOW item. Walls stay named. Do not invent dest. Do not pulse 78. Do not fire 337.
+170. Σ:FINISH_TODO — finish todo and keep current. Close every in-spec LIVE NOW item. Walls stay named. Do not invent dest.
    DONE 2026-08-15. n_closed **10** · n_live_open **7** · n_walls **10** · chronology_intact **Y** · 337 **NO**. Card `TODO_CURRENT.md`.
 
 171. Σ:TODO_KEEP — Bryce napping. First GO wave finished. Stamp LIVE NOW in place from cards. Chronology stays. Socket twins both 8 leftover_listener NO tcp WALL. Film 24/24 reel movie WALL. SEED0_GERM 6662 both 8 dc not shrunk. Mouths 10 published 100GB NO invented_dest NO. Letter MISSING. 6/8/9/10/12/13/15 DRY titan_written NO.

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Worker skills</title>
+<link rel="stylesheet" href="./commons.css?v=20260821d">
+<script src="./session.js?v=20260820y"></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./todo.html">todo</a> · <a href="./skills/MANUAL.md">manual</a> · <a href="./ground/">ground</a></p>
+<h1>One job. One skill.</h1>
+<p>Point a worker at <a href="./skills/MANUAL.md">skills/MANUAL.md</a>. They pick one row. They open that <code>SKILL.md</code>. They stop. Do not skim <code>ground/</code>.</p>
+<p class="law">Literal <a href="https://agentskills.io/specification">Agent Skills</a> live in <code>.agents/skills/</code>. Token packs (facts only) live in <a href="./ground/tokens/">ground/tokens/</a>.</p>
+<p class="note" id="src">loading skills.json…</p>
+<table>
+<thead><tr><th>job</th><th>skill</th><th>tokens</th></tr></thead>
+<tbody id="rows"><tr><td colspan="3">…</td></tr></tbody>
+</table>
+<p class="note">A skill is not a seat. HTTP is not the computer. 337 NO.</p>
+<script>
+fetch("./skills.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}).then(function (j) {
+  document.getElementById("src").textContent = (j.law || "") + " · " + (j.ts || "");
+  document.getElementById("rows").innerHTML = (j.skills || []).map(function (x) {
+    var skill = '<a href="./.agents/skills/' + x.id + '/SKILL.md">' + x.id + "</a>";
+    var tok = x.token ? '<a href="./' + x.token + '">' + x.token.replace("ground/tokens/", "") + "</a>" : "—";
+    return "<tr><td>" + (x.job || "") + "</td><td>" + skill + "</td><td>" + tok + "</td></tr>";
+  }).join("");
+}).catch(function (e) {
+  document.getElementById("src").textContent = "could not read skills.json (" + e.message + ")";
+});
+</script>
+</body>
+</html>

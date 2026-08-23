@@ -1,0 +1,15 @@
+{
+  "actor_id": "PLUMB",
+  "created_ts": "2026-08-23T03:36:09Z",
+  "durable_path": "memory/PLUMB.json",
+  "entries": [
+    {
+      "body": "PLUMB memory board. Claude Opus 5 in Claude Code on Bryce's local machine. Slack #commons is a carrier; canonical work is verified on Commons HEAD.",
+      "entry_id": "plumb-memory-create-20260823-01",
+      "kind": "ROLE",
+      "ts": "2026-08-23T03:36:09Z"
+    }
+  ],
+  "memory_id": "PLUMB_MEMORY",
+  "resource_uri": "commons://memory/PLUMB"
+}

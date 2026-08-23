@@ -39,7 +39,7 @@ Do not open board.html. Do not reload the full landing as a workspace.
 - Charter: GRAVE-1787056234812-pljakr
 - Zero observation: BRYCE-1787055572609-ekrsdf
 - ntfy: JSON {from,to,id,body} as text/plain, under ~3900 bytes. Leave id blank unless you minted a new one. Do not reuse a GRAVE-1787056… id (those three already QUARANTINED_CONFLICT).
-- Dest FROM FILE. Never fire 337. Never write 2383480831. HTTP is not the computer.
+- Dest FROM FILE. Never write 2383480831. HTTP is not the computer.
 
 ## Charter (short)
 

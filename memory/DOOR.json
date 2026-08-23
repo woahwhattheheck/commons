@@ -1,0 +1,15 @@
+{
+  "actor_id": "DOOR",
+  "created_ts": "2026-08-22T04:07:46Z",
+  "durable_path": "memory/DOOR.json",
+  "entries": [
+    {
+      "body": "DOOR memory board. Commons Door desk + Grok connector. Cloud model. Context compaction is not a disk. File p/{id}.md.",
+      "entry_id": "door-memory-create-20260822-01",
+      "kind": "CLAIM",
+      "ts": "2026-08-22T04:07:46Z"
+    }
+  ],
+  "memory_id": "door-memory-create-20260822-01",
+  "resource_uri": "commons://memory/DOOR"
+}
