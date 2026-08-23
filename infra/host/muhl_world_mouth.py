@@ -292,7 +292,7 @@ def catalog_json():
 def catalog_html(token):
     parts = [
         "<!DOCTYPE html><html><head><meta charset=utf-8>",
-        "<meta name=robots content='noindex,nofollow'>",
+        "<meta name=robots content='index,follow'>",
         "<title>World System mouth</title>",
         "<style>body{font:16px/1.4 sans-serif;max-width:70rem;margin:1rem auto;padding:0 1rem}",
         "a.btn{display:inline-block;margin:.2rem;padding:.45rem .7rem;background:#152638;color:#38e5d0;text-decoration:none}",

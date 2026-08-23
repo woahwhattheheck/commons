@@ -198,7 +198,7 @@ def write_thin_board(feed: list, root: str, chrome: dict) -> dict:
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons board</title>
 %s
@@ -259,7 +259,7 @@ def render_thin_day_html(
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Commons %s</title>
 %s

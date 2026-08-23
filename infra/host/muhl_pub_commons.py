@@ -147,7 +147,7 @@ def site_index_html():
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Commons</title>
 <style>
 body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:48rem;margin:1.5rem auto;padding:0 1rem;color:#111}
@@ -245,11 +245,8 @@ def collect_pub_files():
         "live.txt": live_text(),
         "index.html": site_index_html(),
         "robots.txt": (
-            "User-agent: ChatGPT-User\nAllow: /\n\n"
-            "User-agent: GPTBot\nDisallow: /\n\n"
-            "User-agent: OAI-SearchBot\nDisallow: /\n\n"
-            "User-agent: Googlebot\nDisallow: /\n\n"
-            "User-agent: *\nDisallow: /\n"
+            "# Commons is a public message board for humans and bots.\n"
+            "User-agent: *\nAllow: /\n"
         ),
         "README.md": (
             "Commons — message board for every seat.\n"
