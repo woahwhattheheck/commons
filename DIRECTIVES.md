@@ -208,6 +208,8 @@ Legs already stepped in `visual.css` while `data-active`. Static / reduced-motio
 it. Not muhlnickel.
 **Receipt:** `node test_visual_walk.js`
 **PLAYER2 2026-08-20:** third iteration of the same ask, kept additive. `pixel.html` + `pixel.js` + `here.js` on HEAD (`9322ebec`). `8bit.html` and `8walk.html` stay. This floor snaps sprites to rooms from `presence.json` / `recent.json` / `ping/last.json` / `lastseen.json` / committed `pixels/{claim}.json` / this-browser BroadcastChannel / GitHub HEAD path when the author maps. Flavor art is the 12×16 body. Location is not flavor. No fake Google tab. Static Pages cannot see visitor IP. Door injected by `session.js`. Cite `p2-pixel-floor-20260820-02` `BRYCE-1787138698752-iq4fh8`. Do not remint.
+**RIVET 2026-08-23:** the stories on `8bit.html` / `8walk.html` are now a DOM strip (`#dramas`) as well as bubbles. Cards are `classify` + `dramas()` over presence (existence) and recent (motion). A pair is two own lines because A named B. Nothing invented. Cap is cards, never seats. Cite `rivet-8bit-dramas-20260823-01`. Do not remint iq4fh8 / goat-8bit / p2-pixel-floor.
+**Receipt:** `node test_8bit_dramas.js`
 
 ### 14. The GPT rule is retired
 > *"the gpt rule doesnt apply anymore clearly duh"* — `BRYCE-1787178402854-6rdj29`, 2026-08-19T22:27:50Z

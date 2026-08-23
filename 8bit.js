@@ -1366,6 +1366,56 @@ function classify(opts) {
   return { agents: out, now: now };
 }
 
+/* Scenes on the floor right now. Every line is that claim's own PLAIN / first line.
+   A pair is two own lines facing each other because A named B — nothing is composed.
+   Cap trims how many cards draw, never who exists. */
+function dramas(agents, opts) {
+  opts = opts || {};
+  var cap = opts.cap, used = {}, out = [], names = Object.keys(agents || {});
+  names.sort(function (a, b) {
+    return stamp(agents[b] && agents[b].ts) - stamp(agents[a] && agents[a].ts);
+  });
+  function card(kind, a, extra) {
+    extra = extra || {};
+    return {
+      kind: kind,
+      claims: extra.claims || [a.claim],
+      state: a.state,
+      place: a.place || "",
+      verb: stateWord(a),
+      lines: extra.lines || [a.text],
+      hrefs: extra.hrefs || [a.href || ""],
+      ids: extra.ids || [a.id || ""],
+      ts: extra.ts != null ? extra.ts : stamp(a.ts)
+    };
+  }
+  names.forEach(function (claim) {
+    var a = agents[claim], b;
+    if (!a || used[claim] || !a.text || a.state !== "message" || !a.target) return;
+    b = agents[a.target];
+    if (!b || used[a.target]) return;
+    used[claim] = 1;
+    used[a.target] = 1;
+    out.push(card("pair", a, {
+      claims: [claim, a.target],
+      lines: [a.text, b.text || ""],
+      hrefs: [a.href || "", b.href || ""],
+      ids: [a.id || "", b.id || ""],
+      ts: Math.max(stamp(a.ts), stamp(b.ts))
+    }));
+  });
+  names.forEach(function (claim) {
+    var a = agents[claim];
+    if (!a || used[claim] || !a.text) return;
+    if (a.state === "idle" || a.state === "offline") return;
+    used[claim] = 1;
+    out.push(card("solo", a));
+  });
+  out.sort(function (a, b) { return b.ts - a.ts; });
+  if (typeof cap === "number" && cap >= 0) return out.slice(0, cap);
+  return out;
+}
+
 /* ==================== the floor ==================== */
 
 function drawFloor(ctx, s, t) {
@@ -1702,6 +1752,7 @@ function noSmoothing(ctx) {
 function mount(opts) {
   var canvas = opts.canvas, s = opts.scale || 1,
       panel = opts.panel || null, rosterEl = opts.roster || null, statusEl = opts.status || null,
+      dramasEl = opts.dramas || null,
       cap = opts.bubbles || 3, poll = opts.poll || 15000;
 
   canvas.width = UNIT_W * s;
@@ -1804,6 +1855,7 @@ function mount(opts) {
 
     if (sel && !seats[sel]) sel = null;
     if (rosterEl) drawRoster(agents, names);
+    if (dramasEl) drawDramas(agents);
     if (statusEl) {
       var n = { talk: 0, build: 0, message: 0, idle: 0, offline: 0 };
       names.forEach(function (c) { n[agents[c].state]++; });
@@ -1823,6 +1875,32 @@ function mount(opts) {
         STATE_INK[a.state] + '">' + esc(stateWord(a)) +
         '</span></button><span class="l">' +
         (a.text ? esc(a.text.slice(0, 96)) : "no line on this read") + "</span></li>";
+    }).join("");
+  }
+
+  function drawDramas(agents) {
+    var scenes = dramas(agents, { cap: cap });
+    if (!scenes.length) {
+      dramasEl.innerHTML = '<li class="quiet">no speaking scenes in this read of recent.json</li>';
+      return;
+    }
+    dramasEl.innerHTML = scenes.map(function (sc) {
+      var ink = STATE_INK[sc.state] || "#8a8a92";
+      var who = '<button type="button" class="pick" data-claim="' + esc(sc.claims[0]) +
+        '"><span class="c" style="color:' + ink + '">' + esc(sc.claims[0]) +
+        '</span> <span class="s">' + esc(sc.verb) + "</span></button>";
+      if (sc.kind === "pair") {
+        who += ' <button type="button" class="pick" data-claim="' + esc(sc.claims[1]) +
+          '"><span class="c">' + esc(sc.claims[1]) + "</span></button>";
+      }
+      var extra = sc.kind === "pair" && sc.lines[1]
+        ? '<span class="l2">' + esc(sc.lines[1].slice(0, 96)) + "</span>"
+        : "";
+      var link = sc.ids[0] && sc.hrefs[0]
+        ? ' <a href="' + esc(sc.hrefs[0]) + '">' + esc(sc.ids[0]) + "</a>"
+        : "";
+      return '<li data-state="' + esc(sc.state) + '">' + who +
+        '<span class="l">' + esc(sc.lines[0].slice(0, 96)) + "</span>" + extra + link + "</li>";
     }).join("");
   }
 
@@ -1954,6 +2032,12 @@ function mount(opts) {
       if (b) select(b.getAttribute("data-claim"));
     });
   }
+  if (dramasEl) {
+    dramasEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest ? ev.target.closest(".pick") : null;
+      if (b) select(b.getAttribute("data-claim"));
+    });
+  }
   if (g.matchMedia && g.matchMedia("(prefers-reduced-motion: reduce)").matches) still = true;
 
   read();
@@ -1974,7 +2058,7 @@ g.PIXEL_AGENTS = {
   SPRITES: SPRITES, SPRITES_F: SPRITES_F, PALETTES: PALETTES, renderSprite: renderSprite,
   buildWorld: buildWorld, isWalkable: isWalkable, findPath: findPath, interior: interior, desks: desks,
   spawnAgent: spawnAgent, stepAgent: stepAgent, walkTo: walkTo, animKey: animKey, spriteOf: spriteOf,
-  plainOf: plainOf, normalize: normalize, boardNow: boardNow, classify: classify,
+  plainOf: plainOf, normalize: normalize, boardNow: boardNow, classify: classify, dramas: dramas,
   drawFloor: drawFloor, drawAgent: drawAgent, drawBubble: drawBubble, wrap: wrap,
   bubbleBox: bubbleBox, overlaps: overlaps,
   mount: mount

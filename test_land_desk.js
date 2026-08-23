@@ -106,6 +106,16 @@ var praise = api.completionStateFromText("remarkable blueprint, thought-provokin
 assert.strictEqual(praise.state, "CLAIMED");
 assert.ok(/not a land/i.test(praise.note), "talk without completion words is not a land");
 
+var talkOnly = api.excerptState({ sidecar: true, container: false });
+assert.strictEqual(talkOnly.state, "NOT_LANDED");
+assert.ok(/fabricator is not the file/i.test(talkOnly.note));
+
+var excerptOk = api.excerptState({ sidecar: true, container: true, shaMatch: true });
+assert.strictEqual(excerptOk.state, "INTEGRATED");
+
+var shaMiss = api.excerptState({ sidecar: true, container: true, shaMatch: false });
+assert.strictEqual(shaMiss.state, "NOT_LANDED");
+
 var html = fs.readFileSync(path.join(__dirname, "land.html"), "utf8");
 assert.ok(html.indexOf('id="compose-attach"') >= 0, "land form must expose the DROP attach control");
 assert.ok(html.indexOf("carrier.js") >= 0, "land form must use the public carrier");
@@ -113,5 +123,6 @@ assert.ok(html.indexOf("kind: CHALLENGE_CLOSE") >= 0, "close recipe must be visi
 assert.ok(html.indexOf("Finish the merge") >= 0, "desk must tell a window not to stop at PR_OPEN");
 assert.ok(html.indexOf("Talk is not a land") >= 0, "desk must classify talk without a main SHA");
 assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classifier");
+assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
 
 console.log("ok   test_land_desk.js");

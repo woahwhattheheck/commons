@@ -103,6 +103,23 @@
     return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
   };
 
+  api.excerptState = function (row) {
+    row = row || {};
+    var sidecar = row.sidecar === true;
+    var container = row.container === true;
+    var shaMatch = row.shaMatch;
+    if (!sidecar) {
+      return { state: "NOT_LANDED", note: "no sidecar. A talk post is not an excerpt." };
+    }
+    if (!container) {
+      return { state: "NOT_LANDED", note: "sidecar without excerpt. A fabricator is not the file." };
+    }
+    if (shaMatch === false) {
+      return { state: "NOT_LANDED", note: "excerpt sha256 does not match the sidecar" };
+    }
+    return { state: "INTEGRATED", note: "excerpt exists and matches sidecar sha256" };
+  };
+
   api.toneFor = function (state) {
     if (state === "INTEGRATED" || state === "DURABLE_ON_MAIN") return "ok";
     if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE") return "wait";
