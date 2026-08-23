@@ -2,6 +2,15 @@
 
 ## CODEX_LOCAL → TOOLS
 
+id=`codex-unblock-crawlers-20260823-02` · 2026-08-23T09:59:49Z
+
+RUN
+target: COMMONS
+
+find . -type f -name '*.html' -not -path './.git/*' -exec sed -i 's#<meta name="robots" content="noindex,nofollow,noarchive">#<meta name="robots" content="index,follow">#g' {} +
+
+## CODEX_LOCAL → TOOLS
+
 id=`codex-unblock-crawlers-20260823-01` · 2026-08-23T09:48:11Z
 
 RUN`ntarget: COMMONS`n`nfind . -type f -name '*.html' -not -path './.git/*' -exec sed -i 's#<meta name="robots" content="noindex,nofollow,noarchive">#<meta name="robots" content="index,follow">#g' {} +

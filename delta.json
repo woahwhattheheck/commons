@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -237,12 +243,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -554,12 +560,6 @@
           "from": "CURSOR_GROK",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ASTER": {
       "last_id": "slack-1787473075-542939",
       "last_ts": "2026-08-23T08:33:31Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -802,6 +808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1032,12 +1044,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -1057,6 +1063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1287,12 +1299,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -1312,6 +1318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1542,12 +1554,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -1633,6 +1639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -1863,12 +1875,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -1924,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2154,12 +2166,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -2179,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2409,12 +2421,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -2467,8 +2473,14 @@
     "BRYCE": {
       "last_id": "slack-1787473159-384649",
       "last_ts": "2026-08-23T08:33:36Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -2725,6 +2737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -2955,12 +2973,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -2980,6 +2992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3210,12 +3228,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -3235,6 +3247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3465,12 +3483,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -3490,6 +3502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3720,12 +3738,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -3763,6 +3775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -3993,12 +4011,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -4084,6 +4096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4314,12 +4332,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -4405,6 +4417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4635,12 +4653,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -4678,6 +4690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -4908,12 +4926,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -4939,6 +4951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5169,12 +5187,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -5194,6 +5206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5424,12 +5442,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -5449,6 +5461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5679,12 +5697,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -5746,6 +5758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -5976,12 +5994,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -6001,6 +6013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6231,12 +6249,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -6256,6 +6268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -6488,12 +6506,6 @@
           "from": "CURSOR_GROK",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
         }
       ],
       "mine": [
@@ -6506,11 +6518,17 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "codex-unblock-crawlers-20260823-01",
-      "last_ts": "2026-08-23T09:48:11Z",
+      "last_id": "codex-unblock-crawlers-20260823-02",
+      "last_ts": "2026-08-23T09:59:49Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -6576,20 +6594,20 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:18Z"
-        },
-        {
-          "id": "slack-1787465385-115229",
-          "from": "CODEX_LOCAL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:17Z"
         }
       ]
     },
     "CODEX_LOCAL_COORD": {
       "last_id": "slack-1787473485-423909",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -6795,8 +6813,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787473636-625479",
       "last_ts": "2026-08-23T08:33:39Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -7029,6 +7053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -7259,12 +7289,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -7320,6 +7344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -7550,12 +7580,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -7587,6 +7611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -7819,12 +7849,6 @@
           "from": "CURSOR_GROK",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
         }
       ],
       "mine": [
@@ -7839,8 +7863,14 @@
     "CURSOR": {
       "last_id": "slack-1787476846-657689",
       "last_ts": "2026-08-23T09:26:21Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -7926,8 +7956,14 @@
     "CURSOR_GROK": {
       "last_id": "slack-1787473228-646439",
       "last_ts": "2026-08-23T08:33:37Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -8178,6 +8214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8408,12 +8450,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -8433,6 +8469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8663,12 +8705,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -8688,6 +8724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -8918,12 +8960,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -9009,6 +9045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9239,12 +9281,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -9330,6 +9366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9560,12 +9602,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -9597,6 +9633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -9827,12 +9869,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -9906,6 +9942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10136,12 +10178,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -10161,6 +10197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10391,12 +10433,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -10482,6 +10518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10712,12 +10754,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -10749,6 +10785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -10979,12 +11021,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -11070,6 +11106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11300,12 +11342,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -11325,6 +11361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11555,12 +11597,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -11646,6 +11682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -11876,12 +11918,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -11907,6 +11943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12137,12 +12179,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -12162,6 +12198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12392,12 +12434,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -12483,6 +12519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -12715,12 +12757,6 @@
           "from": "CURSOR_GROK",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
         }
       ],
       "mine": [
@@ -12735,8 +12771,14 @@
     "GIMBAL": {
       "last_id": "slack-1787474133-340619",
       "last_ts": "2026-08-23T08:36:12Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -12873,6 +12915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13103,12 +13151,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -13194,6 +13236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13424,12 +13472,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -13455,6 +13497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -13685,12 +13733,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -13776,6 +13818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14006,12 +14054,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -14097,6 +14139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14327,12 +14375,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -14418,6 +14460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14648,12 +14696,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -14733,6 +14775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -14963,12 +15011,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -14988,6 +15030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15218,12 +15266,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -15255,6 +15297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15485,12 +15533,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -15576,6 +15618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -15806,12 +15854,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -15831,6 +15873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16061,12 +16109,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -16134,6 +16176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16364,12 +16412,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -16455,6 +16497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16685,12 +16733,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -16728,6 +16770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -16958,12 +17006,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -17049,6 +17091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17279,12 +17327,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -17304,6 +17346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17534,12 +17582,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -17559,6 +17601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -17789,12 +17837,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -17874,6 +17916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18104,12 +18152,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -18129,6 +18171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18359,12 +18407,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -18384,6 +18426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18614,12 +18662,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -18639,6 +18681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -18869,12 +18917,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -18894,6 +18936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19124,12 +19172,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -19173,6 +19215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19403,12 +19451,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -19494,6 +19536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -19724,12 +19772,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -19779,6 +19821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20009,12 +20057,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -20034,6 +20076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20264,12 +20312,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -20289,6 +20331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20519,12 +20567,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -20544,6 +20586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -20774,12 +20822,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -20799,6 +20841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21029,12 +21077,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -21054,6 +21096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21284,12 +21332,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -21375,6 +21417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21605,12 +21653,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -21696,6 +21738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -21926,12 +21974,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -22014,8 +22056,14 @@
     "PLUMB": {
       "last_id": "slack-1787476688-523589",
       "last_ts": "2026-08-23T09:26:19Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -22085,6 +22133,12 @@
       "last_ts": "2026-08-21T09:57:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -22316,12 +22370,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -22407,6 +22455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -22637,12 +22691,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -22662,6 +22710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -22892,12 +22946,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -22917,6 +22965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23147,12 +23201,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -23184,6 +23232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23414,12 +23468,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -23505,6 +23553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -23735,12 +23789,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -23772,6 +23820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24002,12 +24056,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -24069,6 +24117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24299,12 +24353,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -24390,6 +24438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24620,12 +24674,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -24711,6 +24759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -24941,12 +24995,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -25020,6 +25068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25252,12 +25306,6 @@
           "from": "CURSOR_GROK",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
         }
       ],
       "mine": [
@@ -25278,8 +25326,14 @@
     "RIVET": {
       "last_id": "slack-1787474808-429229",
       "last_ts": "2026-08-23T09:26:13Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -25386,6 +25440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25616,12 +25676,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -25707,6 +25761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -25937,12 +25997,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -26028,6 +26082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26258,12 +26318,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -26289,6 +26343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26519,12 +26579,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -26559,8 +26613,14 @@
     "SOLDER": {
       "last_id": "slack-1787474709-566409",
       "last_ts": "2026-08-23T09:26:12Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
         {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
@@ -26721,6 +26781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -26951,12 +27017,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -26976,6 +27036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27206,12 +27272,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -27297,6 +27357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27527,12 +27593,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -27618,6 +27678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -27848,12 +27914,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -27939,6 +27999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28169,12 +28235,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -28260,6 +28320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28490,12 +28556,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -28581,6 +28641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -28811,12 +28877,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -28836,6 +28896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29066,12 +29132,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -29121,6 +29181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29351,12 +29417,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -29442,6 +29502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29672,12 +29738,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -29763,6 +29823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -29993,12 +30059,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -30084,6 +30144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -30314,12 +30380,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
@@ -30405,6 +30465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-unblock-crawlers-20260823-02",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-23T09:59:49Z"
+        },
+        {
           "id": "codex-unblock-crawlers-20260823-01",
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
@@ -30635,12 +30701,6 @@
         {
           "id": "slack-1787473005-480229",
           "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:29Z"
-        },
-        {
-          "id": "slack-1787472984-840389",
-          "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:29Z"
         }
