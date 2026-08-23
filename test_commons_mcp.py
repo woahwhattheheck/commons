@@ -661,6 +661,99 @@ class GatewayTests(unittest.TestCase):
         self.assertIn("id", caught.exception.details["mismatched_fields"])
 
 
+class _RelayResponse:
+    status = 200
+
+    def __init__(self, event_id):
+        self.event_id = event_id
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        return False
+
+    def read(self, _limit):
+        return json.dumps({"id": self.event_id}).encode("utf-8")
+
+
+class NtfyRelayRotationTests(unittest.TestCase):
+    def test_stays_on_active_relay_until_it_fails(self):
+        calls = []
+
+        def open_url(req, timeout):
+            calls.append(req.full_url)
+            return _RelayResponse("accepted")
+
+        carrier = cm.NtfyCarrier(relays=("https://one", "https://two"))
+        with mock.patch.object(cm.urllib.request, "urlopen", side_effect=open_url):
+            carrier.submit({"id": "relay-test-0001"})
+            carrier.submit({"id": "relay-test-0002"})
+        self.assertEqual(calls, [
+            "https://one/" + cm.NTFY_TOPIC,
+            "https://one/" + cm.NTFY_TOPIC,
+        ])
+
+    def test_quota_failure_rotates_once_and_does_not_fan_out(self):
+        calls = []
+        now = [100.0]
+
+        def open_url(req, timeout):
+            calls.append(req.full_url)
+            if req.full_url.startswith("https://one/"):
+                headers = Message()
+                headers["Retry-After"] = "3600"
+                raise cm.urllib.error.HTTPError(req.full_url, 429, "quota", headers, None)
+            return _RelayResponse("second")
+
+        carrier = cm.NtfyCarrier(
+            relays=("https://one", "https://two"),
+            clock=lambda: now[0],
+        )
+        with mock.patch.object(cm.urllib.request, "urlopen", side_effect=open_url):
+            receipt = carrier.submit({"id": "relay-test-0003"})
+            carrier.submit({"id": "relay-test-0004"})
+        self.assertEqual(receipt["host"], "https://two")
+        self.assertEqual(calls, [
+            "https://one/" + cm.NTFY_TOPIC,
+            "https://two/" + cm.NTFY_TOPIC,
+            "https://two/" + cm.NTFY_TOPIC,
+        ])
+
+    def test_recovered_relay_returns_after_free_limit_reset(self):
+        calls = []
+        now = [100.0]
+
+        def open_url(req, timeout):
+            calls.append(req.full_url)
+            if req.full_url.startswith("https://one/") and now[0] == 100.0:
+                headers = Message()
+                headers["Retry-After"] = "10"
+                raise cm.urllib.error.HTTPError(req.full_url, 429, "quota", headers, None)
+            return _RelayResponse("accepted")
+
+        carrier = cm.NtfyCarrier(
+            relays=("https://one", "https://two"),
+            clock=lambda: now[0],
+        )
+        with mock.patch.object(cm.urllib.request, "urlopen", side_effect=open_url):
+            carrier.submit({"id": "relay-test-0005"})
+            now[0] = 111.0
+            receipt = carrier.submit({"id": "relay-test-0006"})
+        self.assertEqual(receipt["host"], "https://one")
+        self.assertEqual(calls[-1], "https://one/" + cm.NTFY_TOPIC)
+
+
+class ActionPadRelayRotationTests(unittest.TestCase):
+    def test_action_pad_persists_sequential_relay_state(self):
+        text = Path(__file__).with_name("action.html").read_text(encoding="utf-8")
+        self.assertIn('relayKey="commons-ntfy-relay-v1"', text)
+        self.assertIn("localStorage.setItem(relayKey", text)
+        self.assertIn("r.status===429?retryAfter(r):failureCooldown", text)
+        self.assertIn('"https://ntfy.mzte.de"', text)
+        self.assertNotIn("Promise.all", text)
+
+
 class AppTests(unittest.TestCase):
     def test_app_resource_is_networkless_and_uses_app_lifecycle(self):
         app = Path(__file__).with_name("commons_mcp_app.html")
