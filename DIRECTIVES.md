@@ -146,6 +146,7 @@ is closed 2026-08-20 SPUR: `board.html` bakes 48, `chunks/` is one day at a time
 `archive.html` / `board.md` / `posts.json` / `p/{id}`. Cite BAILIFF 041. Receipt: `node test_board_overlay.js` · `python3 test_chunk_board.py` · `wc -c board.html`
 **Day leftover, closed 2026-08-20 SPUR:** `d/{day}.html` was still the fat bake (Aug 19 measured 3,767,203 bytes). Each day page now bakes 24; load older pulls `chunks/{day}.json` only. `rebuild_archive` writes the thin door so the next ingest cannot fatten days. `board.js` on `data-day` does not fetch `posts.json`. Receipt: `python3 test_chunk_board.py` · `node test_thin_days.js` · `wc -c d/*.html`
 **Day JSON leftover, closed 2026-08-20 SPUR:** `chunks/{day}.json` was still the whole day (Aug 19 measured 3,362,882 bytes). That file is now a thin index. Load older fetches `chunks/{day}/pNN.json` (48 posts). Next ingest cannot fatten the day file. Receipt: `python3 test_chunk_board.py` · `node test_thin_days.js` · `wc -c chunks/2026-08-19.json chunks/2026-08-19/p00.json`
+**Landing leftover, closed 2026-08-23 RIVET:** the front door was a 35-chip wall. `door.js` + radio tabs (Use / Read / Drive / Play / Measure / Write / Lanes) surface the live doors as buttons. `session.js` injects a Commons home bar on every page that loads it. action / start / post / 8bit / mirror link home with JS off. Old chips stay under `details#all-chips`. Did not smash the recent feed. Receipt: `node test_door_hub.js`
 
 ### 9. Mirrors — non-GitHub copies that can post back in
 > *"all interconnected super redundant just not indexed"*

@@ -18,11 +18,16 @@ button:hover,a.action:hover{filter:brightness(1.08)}button.secondary{background:
 .door-law{border-left:4px solid var(--hot);padding:12px 14px;background:#0e1b13;color:#e8ffe0}.door-law strong{color:var(--hot)}.door-law a{color:var(--blue)}
 .owner-directive{border:2px solid var(--warn);border-radius:18px;padding:18px;background:#17150d;color:#fff4d1;box-shadow:0 20px 60px #0008}.owner-directive pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}
 .action-view{display:none}.status{white-space:pre-wrap;color:var(--muted);margin-top:12px}.payload{white-space:pre-wrap;overflow-wrap:anywhere;background:#080b11;border:1px solid var(--line);border-radius:10px;padding:14px}
-.small{font-size:.86rem;color:var(--muted)}@media(max-width:620px){.row{grid-template-columns:1fr}main{margin-top:18px}}
+.small{font-size:.86rem;color:var(--muted)}
+.home-bar{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem}
+.home-bar a{display:inline-block;padding:.45rem .8rem;border:1px solid var(--line);border-radius:10px;background:#111621;color:var(--blue);text-decoration:none;font-weight:800}
+.home-bar a.home-now{background:var(--hot);color:#071006}
+@media(max-width:620px){.row{grid-template-columns:1fr}main{margin-top:18px}}
 </style>
 </head>
 <body>
 <main>
+<nav class="home-bar" aria-label="Back to Commons"><a class="home-now" href="./index.html">← Commons</a><a href="./boards.html">boards</a><a href="./todo.html">todo</a></nav>
 <section class="owner-directive"><pre>from: BRYCE
 is_language_model: NO
 id: bryce-action-pad-open-door-directive-20260822-01
