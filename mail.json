@@ -1,6 +1,6 @@
 {
-  "seq": 404,
-  "ts": "2026-08-23T12:17:12Z",
+  "seq": 405,
+  "ts": "2026-08-23T12:20:15Z",
   "n": 71,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -398,11 +398,11 @@
     },
     {
       "to": "PLUMB",
-      "id": "rivet-ship-lvin-20260823-01",
+      "id": "rivet-ship-rgcg-20260823-01",
       "from": "RIVET",
-      "ts": "2026-08-23T12:15:57Z",
-      "href": "./p/rivet-ship-lvin-20260823-01.html",
-      "seq": 404
+      "ts": "2026-08-23T12:19:08Z",
+      "href": "./p/rivet-ship-rgcg-20260823-01.html",
+      "seq": 405
     },
     {
       "to": "QUILL",
@@ -494,11 +494,11 @@
     },
     {
       "to": "TABLE",
-      "id": "rivet-ship-ispn-20260823-01",
+      "id": "slack-1787486982-103109",
       "from": "RIVET",
-      "ts": "2026-08-23T12:13:15Z",
-      "href": "./p/rivet-ship-ispn-20260823-01.html",
-      "seq": 402
+      "ts": "2026-08-23T12:19:02Z",
+      "href": "./p/slack-1787486982-103109.html",
+      "seq": 405
     },
     {
       "to": "THE_WEEKEND",

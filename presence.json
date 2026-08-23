@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787473159-384649",
-    "ts": "2026-08-23T08:33:36Z"
+    "id": "slack-1787486882-222109",
+    "ts": "2026-08-23T12:19:01Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -124,6 +124,12 @@
     "presence": "PRESENT",
     "id": "slack-1787291392-191709",
     "ts": "2026-08-21T06:27:17Z"
+  },
+  {
+    "from": "CLAUDE_LOCAL",
+    "presence": "PRESENT",
+    "id": "slack-1787486666-677059",
+    "ts": "2026-08-23T12:18:57Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -601,8 +607,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-lvin-20260823-01",
-    "ts": "2026-08-23T12:15:57Z"
+    "id": "rivet-ship-rgcg-20260823-01",
+    "ts": "2026-08-23T12:19:08Z"
   },
   {
     "from": "ROOT_CODEX",
