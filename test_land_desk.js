@@ -188,9 +188,28 @@ assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a 
 assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
+assert.ok(html.indexOf("host/shared_one_lever.py") >= 0, "desk must name the shared-one instrument");
+assert.ok(html.indexOf("ground/SHARED_ONE.md") >= 0, "desk must link the shared-one receipt");
 assert.ok(/QUARANTINED_CONFLICT/i.test(html), "desk must name a remint quarantine");
 assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lever must stay a canary");
+assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
+var sharedTalk = api.sharedOneState({});
+assert.strictEqual(sharedTalk.state, "CLAIMED");
+assert.ok(/not a land/i.test(sharedTalk.note), "voltage talk without a measurement is CLAIMED");
+var sharedMiss = api.sharedOneState({ measured: true, const1Written: 0, shareCount: 0 });
+assert.strictEqual(sharedMiss.state, "NOT_LANDED");
+var sharedNoFan = api.sharedOneState({ measured: true, const1Written: 1, shareCount: 0 });
+assert.strictEqual(sharedNoFan.state, "NOT_LANDED");
+var sharedOk = api.sharedOneState({ measured: true, const1Written: 1, shareCount: 1901 });
+assert.strictEqual(sharedOk.state, "INTEGRATED");
+assert.ok(/1901/.test(sharedOk.note), "shared-one receipt must name the fan-in");
+var voltageJam = api.completionStateFromText(
+  "big idea: a write stores voltage in the hard drive, one written 1 overlapping circuitry as stored charge"
+);
+assert.strictEqual(voltageJam.state, "CLAIMED");
+assert.ok(/design jam/i.test(voltageJam.note), "shared-one talk without a SHA is a jam");
 var agents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
 assert.ok(/NEVER `git worktree add`/.test(agents), "AGENTS.md must tell Slack clones not to worktree");
 assert.ok(/Unique work must reach `origin\/main`/.test(agents), "AGENTS.md must require a main land");
