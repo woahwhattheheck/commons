@@ -387,10 +387,15 @@ def scan_diff(diff_text: str) -> list[Violation]:
 
 def git_diff(base: str, head: str) -> str:
     command = ["git", "diff", "--no-ext-diff", "--text", "--unified=0", base, head, "--"]
-    result = subprocess.run(command, capture_output=True, text=True)
+    # A Commons commit may legitimately include binary .mno/artifact bytes.
+    # Git's --text output can therefore contain byte sequences that are not
+    # valid UTF-8.  Decode explicitly and replace only undecodable display
+    # bytes so a binary shipment cannot crash (and thereby blind) the guard.
+    result = subprocess.run(command, capture_output=True)
     if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or "git diff failed")
-    return result.stdout
+        detail = result.stderr.decode("utf-8", errors="replace").strip()
+        raise RuntimeError(detail or "git diff failed")
+    return result.stdout.decode("utf-8", errors="replace")
 
 
 def report(violations: Sequence[Violation]) -> int:

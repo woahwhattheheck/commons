@@ -2,6 +2,7 @@
 """Focused regression coverage for the diff-based open-door guard."""
 
 from pathlib import Path
+from subprocess import CompletedProcess
 
 import open_door_guard as guard
 
@@ -99,6 +100,21 @@ def main():
     # Durable/generated board data is not executable policy and stays out of this guard.
     historical = diff("p/old-gate-record.md", ["The capability declaration is required."])
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
+
+    # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
+    # must never crash or blind the additions guard.
+    original_run = guard.subprocess.run
+    try:
+        guard.subprocess.run = lambda *args, **kwargs: CompletedProcess(
+            args=args[0], returncode=0,
+            stdout=b"diff --git a/excerpts/x.mno b/excerpts/x.mno\n+\x80binary\n",
+            stderr=b"",
+        )
+        decoded = guard.git_diff("base", "head")
+        assert "binary" in decoded
+        assert guard.scan_diff(decoded) == []
+    finally:
+        guard.subprocess.run = original_run
 
     # Current active entry/agent instructions contain only the exact directive
     # and open-door prohibition language, never an affirmative admission lock.
