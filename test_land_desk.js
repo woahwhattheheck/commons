@@ -105,6 +105,17 @@ assert.strictEqual(prTalk.state, "PR_OPEN");
 var praise = api.completionStateFromText("remarkable blueprint, thought-provoking, I'll keep studying");
 assert.strictEqual(praise.state, "CLAIMED");
 assert.ok(/not a land/i.test(praise.note), "talk without completion words is not a land");
+assert.ok(api.isDesignJam, "land.js must name a design jam");
+var jam = api.completionStateFromText(
+  "I'd love to jam on self-healing desired state and nanny/gardener logic. What do you all think?"
+);
+assert.strictEqual(jam.state, "CLAIMED");
+assert.ok(/design jam/i.test(jam.note), "design jam without a SHA is CLAIMED");
+assert.ok(/Ship a path/i.test(jam.note), "design jam must tell the window to ship");
+var jamDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nself-healing desired state already on main"
+);
+assert.strictEqual(jamDone.state, "INTEGRATED", "completion words still beat a jam phrase");
 
 var talkOnly = api.excerptState({ sidecar: true, container: false });
 assert.strictEqual(talkOnly.state, "NOT_LANDED");
@@ -120,10 +131,11 @@ assert.ok(api.organCensusFromListing, "land.js must census PLUMB organs from the
 assert.strictEqual(api.PLUMB_ORGANS.length, 19);
 var organNow = api.organCensusFromListing([
   "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
-  "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno"
+  "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno",
+  "muhl_byzq.mno"
 ]);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 8);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 11);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 9);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 10);
 assert.strictEqual(organNow[0].name, "muhl_hdvs");
 assert.strictEqual(organNow[0].state, "INTEGRATED");
 assert.strictEqual(organNow[1].name, "muhl_sdmk");
@@ -140,5 +152,9 @@ assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classi
 assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
 assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
+assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
+var agents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
+assert.ok(/NEVER `git worktree add`/.test(agents), "AGENTS.md must tell Slack clones not to worktree");
+assert.ok(/Unique work must reach `origin\/main`/.test(agents), "AGENTS.md must require a main land");
 
 console.log("ok   test_land_desk.js");
