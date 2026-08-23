@@ -17,7 +17,14 @@
   },
   "slots": {
     "pc": null,
-    "phone": null
+    "phone": {
+      "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039"
+    }
   },
-  "hashes": []
+  "hashes": [
+    {
+      "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039",
+      "via": "phone"
+    }
+  ]
 }
