@@ -156,5 +156,48 @@ assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 var agents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
 assert.ok(/NEVER `git worktree add`/.test(agents), "AGENTS.md must tell Slack clones not to worktree");
 assert.ok(/Unique work must reach `origin\/main`/.test(agents), "AGENTS.md must require a main land");
+assert.ok(html.indexOf('id="bake-result"') >= 0, "desk must measure bake vs official HEAD");
+assert.ok(html.indexOf('id="canary-list"') >= 0, "desk must expose path canaries");
+assert.ok(html.indexOf('id="latency-result"') >= 0, "desk must time the official SHA GET");
+assert.ok(html.indexOf("Prometheus is not this door") >= 0, "desk must refuse the Prometheus strawman");
+
+assert.ok(api.bakeState, "land.js must compare bake head to official SHA");
+var currentBake = api.bakeState("abc123", { head: "abc123", httpStatus: 200 });
+assert.strictEqual(currentBake.state, "CURRENT");
+assert.ok(/still a bake/i.test(currentBake.note), "matching bake is still a bake");
+var staleBake = api.bakeState("abc123", { head: "def456", httpStatus: 200 });
+assert.strictEqual(staleBake.state, "STALE");
+assert.ok(/not official main/i.test(staleBake.note), "mismatched bake must say STALE");
+var missingBake = api.bakeState("abc123", { httpStatus: 404 });
+assert.strictEqual(missingBake.state, "NOT_LANDED");
+var noSha = api.bakeState("", { head: "abc123", httpStatus: 200 });
+assert.strictEqual(noSha.state, "UNMEASURED");
+
+assert.ok(api.canaryState, "land.js must classify canary HTTP");
+var canaryOk = api.canaryState({ path: "ground/HEAD.md", httpStatus: 200, ms: 12.4 });
+assert.strictEqual(canaryOk.state, "INTEGRATED");
+assert.strictEqual(canaryOk.path, "ground/HEAD.md");
+assert.strictEqual(canaryOk.ms, 12);
+assert.ok(/12 ms/.test(canaryOk.note), "canary note must carry latency");
+var canaryMiss = api.canaryState({ path: "p/nope.md", httpStatus: 404, ms: 8 });
+assert.strictEqual(canaryMiss.state, "NOT_LANDED");
+
+assert.ok(api.latencyState, "land.js must classify SHA GET latency");
+assert.strictEqual(api.latencyState(400).state, "OK");
+assert.strictEqual(api.latencyState(3000).state, "WAIT");
+assert.strictEqual(api.latencyState(9000).state, "SLOW");
+assert.strictEqual(api.latencyState(null).state, "UNMEASURED");
+
+assert.ok(Array.isArray(api.CANARY_PATHS) && api.CANARY_PATHS.length >= 3, "canary list must stay named");
+api.CANARY_PATHS.forEach(function (p) {
+  assert.ok(fs.existsSync(path.join(__dirname, p)), "canary path must exist in the repo: " + p);
+});
+
+var health = fs.readFileSync(path.join(__dirname, "health.html"), "utf8");
+assert.ok(health.indexOf('id="bake-result"') >= 0, "health.html must show live bake vs HEAD");
+assert.ok(health.indexOf('id="canary-list"') >= 0, "health.html must show path canaries");
+assert.ok(health.indexOf("land.js") >= 0, "health.html must reuse the land classifiers");
+assert.ok(health.indexOf("MOUTH health") >= 0, "health.html must keep the mouth dump");
+assert.ok(health.indexOf("Prometheus is not this door") >= 0, "health.html must not ship a Prometheus manifesto");
 
 console.log("ok   test_land_desk.js");
