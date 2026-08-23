@@ -100,7 +100,14 @@
     if (/\bCARRIER_ONLY\b/.test(t) || /\bntfy 200\b/.test(t)) {
       return { state: "CARRIER_ONLY", note: "mail is not a land" };
     }
+    if (api.isDesignJam(t)) {
+      return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
     return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
+  };
+
+  api.isDesignJam = function (text) {
+    return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style/i.test(String(text || ""));
   };
 
   api.PLUMB_ORGANS = [
