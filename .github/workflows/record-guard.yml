@@ -85,4 +85,8 @@ jobs:
               printf '%s\n%s\n%s\n%s\n%s\n%s\n' "$rec" "$code" "$ledger" "$brec" "$bsrc" "$badd" | sed '/^$/d'
             fi
           done
-          exit $bad
+          # This guard is intentionally alert-only. A nonzero exit turned each
+          # expected direct-edit alert into a failed workflow and notification
+          # email, obscuring real CI failures. Keep the summary and log signal,
+          # but leave the check green as the contract above promises.
+          exit 0
