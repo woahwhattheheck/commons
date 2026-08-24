@@ -1,9 +1,10 @@
 {
-  "seq": 563,
-  "head": "e6484d1f9df2c08a81ef01a512f6f4dcca236e89",
-  "ts": "2026-08-24T20:01:49Z",
-  "post_count": 4959,
+  "seq": 564,
+  "head": "9b5563a4c95eb0a0921a2b2ec65d155fa6452a49",
+  "ts": "2026-08-24T20:09:43Z",
+  "post_count": 4960,
   "newest": [
+    "rivet-ship-composer-picker-seen-20260824-01",
     "rivet-ship-lane-claim-desk-20260824-01",
     "specdaddy-ship-discord-slack-hub-20260824-01",
     "rivet-ship-sitting-wake-salvage-20260824-01",
@@ -12,8 +13,7 @@
     "slack-1787598711-098529",
     "slack-1787598710-143879",
     "slack-1787598384-969839",
-    "rivet-ship-ingest-smash-canary-20260824-01",
-    "slack-1787598143-774179"
+    "rivet-ship-ingest-smash-canary-20260824-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
