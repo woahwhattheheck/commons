@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787598712-139589",
       "last_ts": "2026-08-24T19:11:52.139589Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
@@ -2611,6 +2617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -2843,12 +2855,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -2866,6 +2872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3098,12 +3110,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -3121,6 +3127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3353,12 +3365,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -3376,6 +3382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3608,12 +3620,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -3649,6 +3655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -3881,12 +3893,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -3970,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4202,12 +4214,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -4291,6 +4297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4523,12 +4535,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -4564,6 +4570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -4796,12 +4808,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -4825,6 +4831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5057,12 +5069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -5080,6 +5086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5312,12 +5324,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -5335,6 +5341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5567,12 +5579,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -5632,6 +5638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -5864,12 +5876,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -5911,6 +5917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6143,12 +6155,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -6166,6 +6172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6398,12 +6410,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -6421,6 +6427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -6653,12 +6665,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -6673,8 +6679,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260824-01-corr-01",
       "last_ts": "2026-08-24T12:26:24Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
@@ -6979,6 +6991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7211,12 +7229,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -7294,6 +7306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -7526,12 +7544,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -7564,8 +7576,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
       "last_ts": "2026-08-24T13:25:10.957619Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
@@ -7828,6 +7846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8060,12 +8084,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -8119,6 +8137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8351,12 +8375,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -8386,6 +8404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8618,12 +8642,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -8638,8 +8656,14 @@
     "CURSOR": {
       "last_id": "slack-1787598384-969839",
       "last_ts": "2026-08-24T19:06:24.969839Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
@@ -8758,6 +8782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -8990,12 +9020,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -9079,6 +9103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9311,12 +9341,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -9334,6 +9358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9566,12 +9596,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -9589,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -9821,12 +9851,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -9910,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10142,12 +10172,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -10231,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10463,12 +10493,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -10498,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -10730,12 +10760,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -10801,6 +10825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11033,12 +11063,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -11056,6 +11080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11288,12 +11318,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -11377,6 +11401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11609,12 +11639,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -11644,6 +11668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -11876,12 +11906,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -11965,6 +11989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12197,12 +12227,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -12220,6 +12244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12452,12 +12482,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -12541,6 +12565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -12773,12 +12803,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -12802,6 +12826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13034,12 +13064,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -13057,6 +13081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13289,12 +13319,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -13378,6 +13402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13610,12 +13640,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -13633,6 +13657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -13865,12 +13895,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -13894,6 +13918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14126,12 +14156,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -14215,6 +14239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14447,12 +14477,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -14476,6 +14500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -14708,12 +14738,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -14797,6 +14821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15029,12 +15059,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -15118,6 +15142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15350,12 +15380,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -15439,6 +15463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15671,12 +15701,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -15760,6 +15784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -15992,12 +16022,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -16081,6 +16105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16313,12 +16343,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -16336,6 +16360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16568,12 +16598,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -16603,6 +16627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -16835,12 +16865,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -16924,6 +16948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17156,12 +17186,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -17179,6 +17203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17411,12 +17441,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -17482,6 +17506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -17714,12 +17744,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -17803,6 +17827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18035,12 +18065,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -18076,6 +18100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18308,12 +18338,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -18397,6 +18421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18629,12 +18659,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -18652,6 +18676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -18884,12 +18914,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -18907,6 +18931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19139,12 +19169,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -19222,6 +19246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19454,12 +19484,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -19477,6 +19501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19709,12 +19739,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -19732,6 +19756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -19964,12 +19994,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -19987,6 +20011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20219,12 +20249,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -20242,6 +20266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20474,12 +20504,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -20521,6 +20545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -20753,12 +20783,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -20842,6 +20866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21074,12 +21104,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -21127,6 +21151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21359,12 +21389,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -21382,6 +21406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21614,12 +21644,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -21637,6 +21661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -21869,12 +21899,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -21892,6 +21916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22124,12 +22154,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -22147,6 +22171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22379,12 +22409,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -22402,6 +22426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22634,12 +22664,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -22723,6 +22747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -22955,12 +22985,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -23044,6 +23068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23276,12 +23306,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -23365,6 +23389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23597,12 +23627,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -23662,6 +23686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -23894,12 +23924,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -23983,6 +24007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24215,12 +24245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -24238,6 +24262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24470,12 +24500,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -24493,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24725,12 +24755,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -24760,6 +24784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -24992,12 +25022,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -25081,6 +25105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25313,12 +25343,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -25336,6 +25360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25568,12 +25598,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -25603,6 +25627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -25835,12 +25865,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -25900,6 +25924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26132,12 +26162,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -26221,6 +26245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26453,12 +26483,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -26542,6 +26566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -26774,12 +26804,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -26851,6 +26875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -27083,12 +27113,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -27113,18 +27137,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-sitting-wake-salvage-20260824-01",
-      "last_ts": "2026-08-24T19:41:31Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
-        }
-      ],
+      "last_id": "rivet-ship-lane-claim-desk-20260824-01",
+      "last_ts": "2026-08-24T19:59:50Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "rivet-ship-sitting-wake-salvage-20260824-01",
           "from": "RIVET",
@@ -27190,12 +27213,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:06:59Z"
-        },
-        {
-          "id": "rivet-ship-chth-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:04:20Z"
         }
       ]
     },
@@ -27204,6 +27221,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
@@ -27437,12 +27460,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -27526,6 +27543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -27758,12 +27781,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -27847,6 +27864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -28079,12 +28102,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -28108,6 +28125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -28340,12 +28363,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -28381,6 +28398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -28613,12 +28636,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -28702,6 +28719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -28934,12 +28957,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -28954,8 +28971,15 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
       "last_ts": "2026-08-24T19:42:54Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        }
+      ],
       "mine": [
         {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
@@ -29037,6 +29061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -29269,12 +29299,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -29358,6 +29382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -29590,12 +29620,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -29679,6 +29703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -29911,12 +29941,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -30000,6 +30024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -30232,12 +30262,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -30321,6 +30345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -30553,12 +30583,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -30576,6 +30600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -30808,12 +30838,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -30861,6 +30885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -31093,12 +31123,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -31182,6 +31206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -31414,12 +31444,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -31503,6 +31527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -31735,12 +31765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -31824,6 +31848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -32056,12 +32086,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
@@ -32145,6 +32169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lane-claim-desk-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:59:50Z"
+        },
+        {
           "id": "specdaddy-ship-discord-slack-hub-20260824-01",
           "from": "SPEC_DADDY",
           "to": "TABLE",
@@ -32377,12 +32407,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
         }
       ],
       "mine": [
