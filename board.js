@@ -534,16 +534,18 @@ window.COMMONS_BOARD = (function () {
     var all = rows && rows.length ? rows : merged();
     if (!all.length) return null;
     var prefer = (cache.freshIds && cache.freshIds[0]) || "";
-    var i;
-    if (prefer) {
-      for (i = 0; i < all.length; i++) {
-        if (all[i] && all[i].id === prefer) return all[i];
-      }
-    }
+    var preferred = null;
     var top = all[0];
-    for (i = 1; i < all.length; i++) {
+    var i;
+    for (i = 0; i < all.length; i++) {
+      if (all[i] && prefer && all[i].id === prefer) preferred = all[i];
       if (stampOf(all[i]) > stampOf(top)) top = all[i];
     }
+    // fresh[0] keeps tie/order preference only when its valid stamp
+    // (future clocks already fall back in stampOf) is at least the
+    // newest merged row. A stale fresh.md row may not outrank a later
+    // durable/live card.
+    if (preferred && stampOf(preferred) >= stampOf(top)) return preferred;
     return top;
   }
 
