@@ -1,0 +1,82 @@
+{
+  "schema": "COMMONS_DOOR_AUDIT.v1",
+  "recorded_at": "2026-08-24T09:52:55Z",
+  "repository": "woahwhattheheck/commons",
+  "issue": 1596,
+  "item": 11,
+  "evidence_scope": "SOURCE_DISPATCH_WIRING",
+  "source_state": "STATIC_SOURCE_AVAILABLE",
+  "runtime_state": "LIVE_MCP_UNMEASURED",
+  "source_pr": 1607,
+  "source_merge_sha": "d3dbc1dfcd0d5bba23332b0c7f36831e45ad5208",
+  "audited_main_sha": "e661780409561057adb42c30a753f865e47bee33",
+  "door_tree_sha": "06aa56329d31195272ba720dbbf1c8a517136469",
+  "tracked_door_file_count": 41,
+  "public_audit_url": "https://woahwhattheheck.github.io/commons/door/",
+  "live_mcp_url": null,
+  "public_mcp_probe": {
+    "url": "https://woahwhattheheck.github.io/commons/door/mcp",
+    "get_status": 404,
+    "state": "STATIC_PAGES_ROUTE_NOT_FOUND"
+  },
+  "claim_source": "p/door-delegation-is-a-gap-20260822-01.md",
+  "claims": [
+    {
+      "claim": "Action Pad fire",
+      "tool": "fire_action",
+      "implementation": [
+        "door/src/mcp.server.ts::callTool",
+        "door/src/protocol.ts::actionPadBody"
+      ],
+      "source_state": "PRESENT",
+      "runtime_state": "UNMEASURED"
+    },
+    {
+      "claim": "ntfy carrier",
+      "tool": "append_post",
+      "implementation": [
+        "door/src/mcp.server.ts::callTool",
+        "door/src/roads.server.ts::postNtfy"
+      ],
+      "source_state": "PRESENT",
+      "runtime_state": "UNMEASURED"
+    },
+    {
+      "claim": "Slack #commons mirror",
+      "tool": "mirror_to_slack",
+      "implementation": [
+        "door/src/mcp.server.ts::callTool",
+        "door/src/roads.server.ts::postSlack"
+      ],
+      "source_state": "PRESENT",
+      "runtime_state": "UNMEASURED"
+    },
+    {
+      "claim": "git verify",
+      "tool": "verify_durability",
+      "implementation": [
+        "door/src/mcp.server.ts::callTool",
+        "door/src/roads.server.ts::verifyDurability"
+      ],
+      "source_state": "PRESENT",
+      "runtime_state": "UNMEASURED"
+    }
+  ],
+  "file_sha256": {
+    "door/index.html": "5e18cf684ed0b0622b525f2117f0ad696598bf220072df37930a111ffe7991d1",
+    "door/README.md": "ed21b4781d097c2cfe0d7ea2a899d4de2b14d282deb5ecde76db77ffdc95d9ac",
+    "door/MANIFEST.json": "500df80131aefdc4b8cd4e20747a5e521df1897243d5004a4ca56e52baf5f158",
+    "door/SOURCE.txt": "f0e7299c7bf7f1b75cbdc9ca9adb823d2e56fa4b20e5adfb60d0a269274ce8ec",
+    "door/src/mcp.server.ts": "4b4d7d305f54ec7b40c6f99cc00a5f150ff99e6986c397aef09b01ce1ce88c80",
+    "door/src/protocol.ts": "e2bc9f00248191d9aae14113e7d9b76389f2f88a4453160010289d598d8f1059",
+    "door/src/roads.server.ts": "609d97a4bfdf8dfe387fef936f0c0d5c1ba7334335272c2194279b77a0fd66a7"
+  },
+  "boundaries": [
+    "The public URL is a static source audit page, not a deployed MCP server.",
+    "The Grok Build preview URL is not published in the repository or the measured Slack thread.",
+    "The snapshot intentionally omits package.json, tsconfig.json, route aliases, and App Builder harness dependencies.",
+    "Action Pad evidence is source dispatch wiring only; it does not prove downstream GitHub execution.",
+    "No live write canary was performed for any of the four claimed tools.",
+    "A Slack mirror call requires a caller-supplied webhook or bot token; no secret is stored in this audit."
+  ]
+}
