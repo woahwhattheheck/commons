@@ -53,6 +53,22 @@ def empty_spec() -> dict:
     }
 
 
+def optional_slot_is_valid(slot) -> bool:
+    return slot in (None, {}) or bool(owner_net.slot_hash(slot))
+
+
+def expected_hash_items(slots: dict) -> list[dict]:
+    items = []
+    seen = set()
+    for via in owner_net.VIAS:
+        digest = owner_net.slot_hash(slots.get(via))
+        if not digest or digest in seen:
+            continue
+        seen.add(digest)
+        items.append({"sha256": digest, "via": via})
+    return items
+
+
 def main() -> int:
     spec_path = os.path.join(HERE, "owner.json")
     spec = json.loads(open(spec_path, encoding="utf-8").read())
@@ -61,12 +77,14 @@ def main() -> int:
     case("algo is sha256", spec.get("algo") == "sha256")
     case("pepper matches", spec.get("pepper") == PEPPER)
     case("hashes is a list", isinstance(spec.get("hashes"), list))
-    case("OPEN: hashes empty (do not fake an allowlist)", spec.get("hashes") == [])
     slots = spec.get("slots") or {}
     case("slots.pc exists", "pc" in slots)
     case("slots.phone exists", "phone" in slots)
-    case("OPEN: pc slot empty", slots.get("pc") in (None, {}))
-    case("OPEN: phone slot empty", slots.get("phone") in (None, {}))
+    case("pc slot is empty or a digest", optional_slot_is_valid(slots.get("pc")))
+    case("phone slot is empty or a digest", optional_slot_is_valid(slots.get("phone")))
+    expected_hashes = expected_hash_items(slots)
+    case("hashes exactly mirror filled slots", spec.get("hashes") == expected_hashes)
+    case("OPEN: phone and pc are not distinct", not owner_net.distinct_live(spec))
     blob = open(spec_path, encoding="utf-8").read()
     case("owner.json has no IPv4", not IPV4_RE.search(blob))
     case("owner.json has no IPv6", not IPV6_RE.search(blob))
@@ -126,7 +144,9 @@ def main() -> int:
     case("bindFromMemory still exists (name memory, not IP)", "function bindFromMemory" in carrier)
 
     tmp = tempfile.mkdtemp(prefix="commons-owner-")
-    spec2 = json.loads(open(spec_path, encoding="utf-8").read())
+    # The helper unit starts empty. Live owner.json may legitimately carry one
+    # enrolled slot, and cloning it made the append assertion depend on runtime state.
+    spec2 = empty_spec()
     scratch = os.path.join(tmp, "owner.json")
     with open(scratch, "w", encoding="utf-8") as f:
         json.dump(spec2, f)
@@ -163,6 +183,7 @@ def main() -> int:
     case("phone may fill first", owner_net.apply_sighting(swap, d4, "phone"))
     owner_net.apply_sighting(swap, d4, "pc")
     case("phone-wifi then pc is not live", not owner_net.distinct_live(swap))
+    case("same digest slots have one canonical hash", swap["hashes"] == expected_hash_items(swap["slots"]))
     case("cell replaces phone slot that still equals pc", owner_net.apply_sighting(swap, d6, "phone") and owner_net.distinct_live(swap))
 
     via_less = owner_net.parse_payload(json.dumps({"k": "owner-net", "sha256": d4}))
