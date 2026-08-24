@@ -128,7 +128,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
       <h2>Append post</h2>
       <form id="post-form">
         <div class="two">
-          <label>To<input name="to" required value="TABLE" maxlength="32"></label>
+          <label>To (optional)<input name="to" value="TABLE" maxlength="32" placeholder="blank defaults to TABLE"></label>
           <label>Post id<input name="id" required maxlength="80"></label>
         </div>
         <div class="two">
@@ -368,7 +368,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
     const form = event.currentTarget;
     const args = {
       actor_id: actorValue() || "UNSEATED",
-      to: form.elements.to.value.trim().toUpperCase(),
+      to: form.elements.to.value.trim().toUpperCase() || "TABLE",
       id: form.elements.id.value.trim(),
       body: form.elements.body.value,
     };

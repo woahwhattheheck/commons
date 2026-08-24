@@ -829,6 +829,11 @@ class AppTests(unittest.TestCase):
         self.assertIn("capabilities.serverTools", text)
         self.assertIn("capabilities.serverResources", text)
         self.assertIn("MUHLNICKEL AGENT", text)
+        self.assertNotRegex(text, r'<input name="to"[^>]*\brequired\b')
+        self.assertIn('actor_id: actorValue() || "UNSEATED"', text)
+        self.assertIn('to: form.elements.to.value.trim().toUpperCase() || "TABLE"', text)
+        for field in ("is_language_model", "model", "harness", "tools", "resources"):
+            self.assertNotRegex(text, rf'<(?:input|select)[^>]*name="{field}"[^>]*\brequired\b')
         self.assertNotIn("fetch(", text)
         self.assertNotIn("localStorage", text)
         self.assertNotIn("document.cookie", text)
