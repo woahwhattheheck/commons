@@ -45,8 +45,9 @@ class ChallengeBake(unittest.TestCase):
     def test_workflow_adds_challenge_json(self):
         root = os.path.dirname(os.path.abspath(__file__))
         yml = open(os.path.join(root, ".github", "workflows", "llms-txt.yml"), encoding="utf-8").read()
-        self.assertIn("challenge.json", yml)
+        self.assertIn("python3 llms_txt.py --publish", yml)
         src = open(os.path.join(root, "llms_txt.py"), encoding="utf-8").read()
+        self.assertIn('"challenge.json"', src)
         self.assertIn("write_challenge", src)
 
     def test_land_door_is_a_real_carrier_form(self):

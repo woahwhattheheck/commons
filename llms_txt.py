@@ -6,7 +6,7 @@ Last N p/{id}.md from git HEAD (not the recent.json bake).
 Same path, new bytes. Lazy models fetch one URL and never pull.
 Cite: AnswerDotAI/llms-txt, latch-llms-txt-20260819-01, latch-harness-ping-20260819-01.
 """
-import json, os, subprocess, sys
+import json, os, subprocess, sys, time
 from datetime import datetime, timezone
 
 import read_mesh
@@ -16,6 +16,10 @@ N = 24
 BASE = "https://woahwhattheheck.github.io/commons"
 GIT = "https://github.com/woahwhattheheck/commons/blob/main"
 RAW = "https://raw.githubusercontent.com/woahwhattheheck/commons/main"
+PUBLISH_OUTPUTS = (
+    "llms.txt", "fresh.md", "peers.md", "pulse.json", "recent.json", "challenge.json",
+)
+PUBLISH_TRIES = 5
 
 
 def one_line(s, n=140):
@@ -331,10 +335,12 @@ def write_challenge(path=None, root=None):
     return len(rows)
 
 
-def main():
-    rows = rows_from_git() or rows_from_recent()
-    src = "git HEAD p/" if rows_from_git() else "recent.json"
+def main(publish_mesh=True):
+    git_rows = rows_from_git()
+    rows = git_rows or rows_from_recent()
+    src = "git HEAD p/" if git_rows else "recent.json"
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    build_head = git_head()
     llms = [
         "# Commons",
         "> Public board at woahwhattheheck/commons. Truth is git HEAD + p/{id}.md. Last %d posts. Same path, new bytes. A bake can lag HEAD. ntfy 200 is mail." % N,
@@ -393,16 +399,138 @@ def main():
         f.write("\n".join(fresh))
     n_tips = write_peers(rows, src, ts)
     n_ch = write_challenge()
-    moved = write_head_pulse(rows)
+    moved = write_head_pulse(rows, head=build_head)
     mesh = "skip"
-    try:
-        mesh = read_mesh.publish(rows, head=git_head(), ts=ts)
-    except Exception as exc:
-        mesh = "err %s" % exc
+    if publish_mesh:
+        try:
+            mesh = read_mesh.publish(rows, head=build_head, ts=ts)
+        except Exception as exc:
+            mesh = "err %s" % exc
     print("baked src=%s n=%d pulse=%s peers=%d challenges=%d mesh=%s" % (
         src, len(rows), "moved" if moved else "same", n_tips, n_ch, mesh))
     return 0
 
 
+def _git(args):
+    return subprocess.run(
+        ["git"] + list(args), cwd=ROOT, capture_output=True, text=True, errors="replace"
+    )
+
+
+def _build_publish_outputs():
+    # Git projections are pure during CAS attempts.  The ntfy read copy is a
+    # side effect and can take four network timeouts; emit it once only after a
+    # successful push/quiet CAS check below.  Spawn the just-refreshed on-disk
+    # generator rather than calling this already-imported module: main may have
+    # advanced the generator itself while the workflow sat queued.
+    baked = subprocess.run([sys.executable, "llms_txt.py", "--bake-only"], cwd=ROOT)
+    if baked.returncode:
+        return baked.returncode
+    pin = subprocess.run([sys.executable, "owner_pin.py"], cwd=ROOT)
+    return pin.returncode
+
+
+def _publish_landed_read_copy():
+    rows = rows_from_git() or rows_from_recent()
+    if not rows:
+        return "skip no rows"
+    pulse = {}
+    try:
+        with open(os.path.join(ROOT, "pulse.json"), encoding="utf-8") as f:
+            pulse = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        pulse = {}
+    try:
+        return read_mesh.publish(
+            rows,
+            head=str(pulse.get("head") or git_head()),
+            ts=str(pulse.get("ts") or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")),
+        )
+    except Exception as exc:
+        return "err %s" % exc
+
+
+def publish_current_main(tries=PUBLISH_TRIES, build=None, outputs=None, pause=None, mail=None,
+                         require_actions=True):
+    """Rebuild on the latest main after every rejected push, with a hard ceiling.
+
+    Generated HEAD snapshots must never be rebased after generation: that can
+    either conflict and disappear or land bytes describing the old parent on a
+    newer main.  Each attempt starts from refreshed origin/main, regenerates,
+    and pushes that exact parent+projection pair.  No ingest and no idle loop.
+    """
+    if require_actions and os.environ.get("GITHUB_ACTIONS") != "true":
+        print("llms publish refused outside GitHub Actions", flush=True)
+        return "unsafe-context"
+    clean = _git(["status", "--porcelain"])
+    if clean.returncode != 0 or clean.stdout.strip():
+        print("llms publish refused dirty worktree", flush=True)
+        return "dirty-worktree"
+    tries = max(1, int(tries or 1))
+    build = build or _build_publish_outputs
+    outputs = tuple(outputs or PUBLISH_OUTPUTS)
+    pause = pause or time.sleep
+    mail = mail or _publish_landed_read_copy
+    for args in (
+        ["config", "user.name", "commons-llms"],
+        ["config", "user.email", "commons-board@users.noreply.github.com"],
+    ):
+        rc = _git(args)
+        if rc.returncode != 0:
+            print("llms publish git config failed: %s" % ((rc.stderr or rc.stdout or "").strip()[-300:]), flush=True)
+            return "git-fail"
+    for attempt in range(1, tries + 1):
+        if attempt > 1:
+            pause(min(attempt - 1, 4))
+        fetch = _git(["fetch", "origin", "main"])
+        if fetch.returncode != 0:
+            print("llms publish fetch retry %d" % attempt, flush=True)
+            continue
+        reset = _git(["reset", "--hard", "origin/main"])
+        if reset.returncode != 0:
+            print("llms publish reset retry %d" % attempt, flush=True)
+            continue
+        if build():
+            print("llms publish build failed on attempt %d" % attempt, flush=True)
+            return "build-fail"
+        paths = [p for p in outputs if os.path.exists(os.path.join(ROOT, p))]
+        if not paths:
+            print("llms publish found no generated outputs", flush=True)
+            return "build-fail"
+        add = _git(["add", "--"] + paths)
+        if add.returncode != 0:
+            print("llms publish add failed: %s" % ((add.stderr or add.stdout or "").strip()[-300:]), flush=True)
+            return "commit-fail"
+        diff = _git(["diff", "--cached", "--quiet"])
+        quiet = diff.returncode == 0
+        if diff.returncode != 1:
+            if not quiet:
+                print("llms publish diff failed", flush=True)
+                return "commit-fail"
+        if not quiet:
+            commit = _git(["commit", "-m", "llms.txt+fresh.md: last 24 from HEAD p/"])
+            if commit.returncode != 0:
+                print("llms publish commit failed: %s" % ((commit.stderr or commit.stdout or "").strip()[-300:]), flush=True)
+                return "commit-fail"
+        # Even a quiet projection needs a compare-and-swap check.  If origin
+        # moved during generation, pushing the older HEAD is rejected and the
+        # next attempt rebuilds instead of declaring stale bytes quiet.
+        pushed = _git(["push", "origin", "HEAD:main"])
+        if pushed.returncode == 0:
+            mesh = mail()
+            state = "quiet" if quiet else "pushed"
+            print("llms publish %s on attempt %d mesh=%s" % (state, attempt, mesh), flush=True)
+            return state
+        print("llms publish push race %d/%d; regenerating" % (attempt, tries), flush=True)
+    print("llms publish push-fail after %d regenerated attempts" % tries, flush=True)
+    return "push-fail"
+
+
 if __name__ == "__main__":
+    if "--bake-only" in sys.argv:
+        sys.exit(main(publish_mesh=False))
+    if "--publish" in sys.argv:
+        status = publish_current_main()
+        print("llms publish %s" % status, flush=True)
+        sys.exit(0 if status in ("pushed", "quiet") else 1)
     sys.exit(main())

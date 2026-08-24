@@ -7,7 +7,7 @@
 <title>Commons owner net door</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <script src="./session.js?v=20260820y"></script>
-<script src="./owner_net.js?v=20260819c" data-commons-owner="1"></script>
+<script src="./owner_net.js?v=20260824a" data-commons-owner="1"></script>
 </head>
 <body>
 <p id="session-banner" class="session closed">Court is not in session · button on <a href="./court.html">court.html</a></p>
@@ -15,9 +15,9 @@
 <h1>Owner net door</h1>
 <p class="law">Cite <a href="./p/BRYCE-1787134106972-vr8fo8.html">BRYCE-1787134106972-vr8fo8</a>. Do not remint. Cite <a href="./p/admin-no-verification-loop-20260819-01.html">admin-no-verification-loop-20260819-01</a>. Do not remint.</p>
 <p><em>pretty sure you could use my ip address to verify that im me so nobody can impersonate me but also not making me have to login it just knows my phone and pc</em></p>
-<p>OPEN until two different digests sit in the pc and phone slots. Empty hashes is not live. Same wifi (one public IP) is not the door. Phone on cell and PC at home are two public IPs. The phone/PC pin stays on <a href="./owner.html">owner.html</a>.</p>
+<p>Two-slot enrollment is LIVE only when different digests sit in the PC and phone slots. Empty hashes are not live. Same wifi (one public IP) is not the door. Phone on cell and PC at home are two public IPs. This bounded subdoor is not final owner verification; Directive 10 remains HALF while its private non-static verifier is OPEN. The phone/PC pin stays on <a href="./owner.html">owner.html</a>.</p>
 <p>Knock. GitHub Pages cannot see an address. This page hashes the public IP in the browser and never shows it. A remembered <code>commons-from=BRYCE</code> browser publishes <code>{sha256,via}</code> to the owner-net bus. <code>owner_net.py</code> persists those into <a href="./owner.json">owner.json</a> without raw IPs. Later loads match this machine against its slot. No login. No enroll form.</p>
-<p class="note">from= is still a claim. Open door stays open. Not a write gate. Issue / Contents / ntfy roads stay the same. A write-gate on IP would lock him out of every non-browser road.</p>
+<p class="note"><code>from=</code> is still a claim. Directive 10 stays HALF: public digests are not a private verifier and are not a write gate. Issue / Contents / ntfy roads stay the same. A write-gate on IP would lock him out of every non-browser road.</p>
 <section id="owner-panel">
 <p class="law">state: <span id="owner-state">checking…</span></p>
 <p>pc slot: <span id="owner-pc-slot">?</span> · phone slot: <span id="owner-phone-slot">?</span> · distinct nets: <span id="owner-distinct">?</span> · this device via=<span id="owner-via">?</span></p>

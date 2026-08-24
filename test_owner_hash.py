@@ -84,7 +84,7 @@ def main() -> int:
     case("phone slot is empty or a digest", optional_slot_is_valid(slots.get("phone")))
     expected_hashes = expected_hash_items(slots)
     case("hashes exactly mirror filled slots", spec.get("hashes") == expected_hashes)
-    case("OPEN: phone and pc are not distinct", not owner_net.distinct_live(spec))
+    case("two-slot enrollment is live", owner_net.distinct_live(spec))
     blob = open(spec_path, encoding="utf-8").read()
     case("owner.json has no IPv4", not IPV4_RE.search(blob))
     case("owner.json has no IPv6", not IPV6_RE.search(blob))
@@ -113,6 +113,9 @@ def main() -> int:
 
     js = open(os.path.join(HERE, "owner_net.js"), encoding="utf-8").read()
     case("owner_net.js has the same pepper fallback", FALLBACK_IN_JS(js))
+    case("owner_net.js keeps the phone/PC pin namespace intact",
+         not re.search(r"window\.COMMONS_OWNER\s*=", js) and
+         'window.COMMONS_OWNER_NET = "hashed-ip-door"' in js)
     case("owner_net.js never console.logs", "console.log" not in js)
     case("owner_net.js does not write ip into the DOM", "textContent = ip" not in js and "innerHTML = ip" not in js)
     case("owner_net.js refuses non-BRYCE claims", 'ONLY_CLAIM = "BRYCE"' in js)
@@ -135,12 +138,24 @@ def main() -> int:
     case("owner-net.html cites the no-loop law", "admin-no-verification-loop-20260819-01" in html)
     case("owner-net.html does not remint vr8fo8", html.count("BRYCE-1787134106972-vr8fo8") >= 1)
     case("owner.html says same wifi is not the door", "Same wifi" in html or "same wifi" in html)
-    case("owner.html stays OPEN until two slots", "OPEN until two different" in html)
+    case("owner-net separates live enrollment from the half directive",
+         "Two-slot enrollment is LIVE only" in html and
+         "Directive 10 remains HALF" in html and
+         "private non-static verifier is OPEN" in html)
+    case("owner-net loads the state-contract script revision", "owner_net.js?v=20260824a" in html)
+
+    owner_html = open(os.path.join(HERE, "owner.html"), encoding="utf-8").read()
+    case("owner.html pins both owner scripts before session boot",
+         owner_html.index("owner.js?v=20260824a") < owner_html.index("owner_net.js?v=20260824a") <
+         owner_html.index("session.js?v=20260820y"))
+    case("owner.html waits for the pin API, not a truthy collision marker",
+         'typeof window.COMMONS_OWNER.readPin === "function"' in owner_html)
 
     carrier = open(os.path.join(HERE, "carrier.js"), encoding="utf-8").read()
     session = open(os.path.join(HERE, "session.js"), encoding="utf-8").read()
-    case("carrier.js loads owner_net.js", "loadOwnerDoor" in carrier and "owner_net.js" in carrier)
-    case("session.js loads owner_net.js", "loadOwnerDoor" in session and "owner_net.js" in session)
+    case("carrier.js loads current owner_net.js",
+         "loadOwnerDoor" in carrier and 'owner_net.js") + "?v=20260824a"' in carrier)
+    case("session.js loads current owner_net.js", "loadOwnerDoor" in session and "owner_net.js?v=20260824a" in session)
     case("bindFromMemory still exists (name memory, not IP)", "function bindFromMemory" in carrier)
 
     tmp = tempfile.mkdtemp(prefix="commons-owner-")
@@ -206,9 +221,20 @@ def main() -> int:
 
     directives = open(os.path.join(HERE, "DIRECTIVES.md"), encoding="utf-8").read()
     todo = open(os.path.join(HERE, "todo.html"), encoding="utf-8").read()
-    case("DIRECTIVES item 10 is OPEN not LANDED", "**Status:** OPEN. Not LANDED." in directives)
-    case("todo row 10 stays OPEN", bool(re.search(r"<td>10</td>.*OPEN</td></tr>", todo, re.S)))
-    case("knock receipt is not treated as a land in DIRECTIVES", "knock-dir10-owner-net-door-20260819-01` is not a land" in directives)
+    directive10_match = re.search(r"^### 10\..*?(?=^### 11\.)", directives, re.M | re.S)
+    directive10 = directive10_match.group(0) if directive10_match else ""
+    case("DIRECTIVES item 10 exists", bool(directive10_match))
+    case("DIRECTIVES item 10 is HALF", "**Status:** HALF 2026-08-24" in directive10)
+    case("DIRECTIVES records live slots without closing private verifier",
+         "hashed-IP recognition is LIVE" in directive10 and
+         "Still OPEN inside this line" in directive10 and
+         "private" in directive10)
+    todo10_match = re.search(r"<tr><td>10</td>.*?</tr>", todo, re.S)
+    todo10 = todo10_match.group(0) if todo10_match else ""
+    case("todo row 10 exists", bool(todo10_match))
+    case("todo row 10 is HALF", 'class="s-half">HALF</b>' in todo10)
+    case("todo row 10 records live hashed-IP recognition", "hashed-IP recognition is LIVE" in todo10)
+    case("knock receipt is not treated as a land in DIRECTIVES", "knock-dir10-owner-net-door-20260819-01` is not a land" in directive10)
 
     print("OWNER HASH TEST: %d passed, %d failed" % (ok, fail))
     return 0 if fail == 0 else 1
