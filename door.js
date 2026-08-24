@@ -81,6 +81,7 @@
       label: "Measure",
       doors: [
         ["land.html", "land"],
+        ["tabletop.html", "tabletop"],
         ["builds.html", "build ledger"],
         ["health.html", "health"],
         ["head.html", "HEAD"],

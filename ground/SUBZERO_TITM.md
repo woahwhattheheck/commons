@@ -33,4 +33,4 @@ python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_titanx_mirror.py
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_titanx_mirror.py --dry
 ```
 
-titan: **NOT_WRITTEN**. Organ 31 stays NOT_LANDED.
+titan: **NOT_WRITTEN**. Organ 31 was the leftover at this receipt.
