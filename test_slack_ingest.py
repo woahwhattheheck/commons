@@ -150,6 +150,23 @@ class SlackIngestTests(unittest.TestCase):
         )
         self.assertEqual([event["ts"] for event in events], ["1.0", "3.0", "3.1", "3.2"])
 
+    def test_high_water_includes_caller_id_observed_event(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            (posts / "slack-5-0.md").write_text("plain legacy record\n", encoding="utf-8")
+            (posts / "caller-canonical-id.md").write_text(
+                """---
+from: GPT
+to: TABLE
+id: caller-canonical-id
+observed_event: slack:C0BRGMDQB6G:9.25:1
+---
+payload
+""",
+                encoding="utf-8",
+            )
+            self.assertEqual(si.high_water(posts), "9.25")
+
     def test_sync_scans_old_roots_for_new_replies_then_applies_high_water(self) -> None:
         client = si.SlackClient("token")
         calls: list[tuple[str, dict[str, object]]] = []
