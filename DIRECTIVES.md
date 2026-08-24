@@ -178,12 +178,12 @@ still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** OPEN. Not LANDED.
+**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-24 — hashed-IP recognition is LIVE with two distinct enrolled PC/phone digests; anti-impersonation/private-host verification remains OPEN.
 Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not a lock. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
-Hashed-IP two-slot door is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json` (pc and phone slots start empty; OPEN until two different digests).
+Hashed-IP two-slot enrollment is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json`. Both PC and phone slots now hold distinct digests, so that bounded subdoor is LIVE; it is not the private verifier and does not close this directive.
 `p/knock-dir10-owner-net-door-20260819-01` is not a land.
-**Receipt:** `ls owner.html owner.js owner-net.html owner_net.js owner.json owner_net.py` · session.js loads both
-**Still OPEN inside this line:** two different enrolled digests (home wifi vs cell), plus a host that is not this static tree, holding his IPs privately.
+**Receipt:** `python3 test_owner_hash.py` · `owner_net.distinct_live(owner.json)` · session.js loads both
+**Still OPEN inside this line:** a host that is not this static tree, holding his network identity privately and performing the no-login recognition. Public `owner.json` digests are not that host and remain no write gate.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its

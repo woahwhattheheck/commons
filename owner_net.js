@@ -1,4 +1,4 @@
-window.COMMONS_OWNER = "hashed-ip-door";
+window.COMMONS_OWNER_NET = "hashed-ip-door";
 (function () {
   // Directive 10. Cite BRYCE-1787134106972-vr8fo8. Do not remint.
   // Law: admin-no-verification-loop-20260819-01. Do not remint.
@@ -256,8 +256,9 @@ window.COMMONS_OWNER = "hashed-ip-door";
     host.className = "law";
     host.innerHTML = "this machine matches the " + viaSlot +
       " slot for " + claim +
-      " (hashed IP, no login). from= is still a claim." +
-      (live ? "" : " door still OPEN until pc and phone hold different digests.") +
+      " (hashed IP, no login). from= is still a claim. " +
+      (live ? "two-slot enrollment is LIVE; Directive 10 is HALF because the private verifier remains OPEN." :
+        "two-slot enrollment is OPEN; Directive 10's private verifier is also OPEN.") +
       ' <a href="' + assetUrl("owner-net.html") + '">owner door</a>';
   }
 
@@ -282,7 +283,8 @@ window.COMMONS_OWNER = "hashed-ip-door";
     var knock = document.getElementById("owner-knock-result");
     if (knock) {
       if (live && matchedSlot) {
-        knock.textContent = "both slots enrolled on different nets. this machine is the " + matchedSlot + " slot. no login.";
+        knock.textContent = "two-slot enrollment is LIVE. this machine is the " + matchedSlot +
+          " slot. Directive 10 is HALF because the private verifier remains OPEN.";
       } else if (matchedSlot) {
         knock.textContent = "this machine matches the " + matchedSlot + " slot. still OPEN: need the other machine on a different public IP.";
       } else if (!digest) {
@@ -323,7 +325,7 @@ window.COMMONS_OWNER = "hashed-ip-door";
           digests.forEach(function (h) { publishDigest(h); });
         }
         if (panel) {
-          var state = live ? "LIVE (two distinct nets)" :
+          var state = live ? "TWO-SLOT LIVE — PRIVATE VERIFIER OPEN" :
             (matchedSlot ? "OPEN — this machine matches " + matchedSlot :
               "OPEN — waiting for pc and phone on different public IPs");
           paintPanel(state, spec, digests, matchedSlot, live);

@@ -38,7 +38,7 @@ setImmediate(function () {
   assert.strictEqual((rows.match(/<tr>/g) || []).length, 22, "live parser renders every directive");
   assert(/<tr><td>7<\/td>[\s\S]*?s-built'>BUILT<\/b>/.test(rows), "avatar status is BUILT");
   assert(/<tr><td>9<\/td>[\s\S]*?s-half'>HALF<\/b>/.test(rows), "mirror status is HALF");
-  assert(/<tr><td>10<\/td>[\s\S]*?s-open'>OPEN<\/b> Not LANDED/.test(rows), "OPEN beats later Not LANDED");
+  assert(/<tr><td>10<\/td>[\s\S]*?s-half'>HALF<\/b> 2026-08-24/.test(rows), "owner recognition status is HALF");
   assert(/<tr><td>18<\/td>[\s\S]*?s-measured'>MEASURED<\/b>/.test(rows), "MEASURED is first-class");
   assert.strictEqual(elements.src.textContent, "live — 22 directives parsed from DIRECTIVES.md just now");
   console.log("TODO LIVE PARSER TEST: 22 canonical rows, statuses exact");
