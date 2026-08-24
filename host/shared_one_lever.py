@@ -26,11 +26,22 @@ import struct
 import sys
 
 GATE_STRIDE = 25
+MLC_FILE_LEVELS = 256
+CHIMERA_PREFIX = "muhl_chimera_"
 EXCERPT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "excerpts",
     "20260823",
 )
+
+
+def excerpt_kind(path):
+    """Full PLUMB 1-19 organs are MLC dumps. Chimera slices are not."""
+    name = os.path.basename(path or "")
+    if name.startswith(CHIMERA_PREFIX):
+        return "chimera"
+    return "plumb_full"
+
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -113,6 +124,7 @@ def measure_blob(blob, path=""):
         "plane_ones": plane_ones,
         "file_levels": file_levels,
         "file_ones": file_ones,
+        "kind": excerpt_kind(path),
         "titan": "NOT_WRITTEN",
     }
 
@@ -139,10 +151,14 @@ def census(paths):
     sharing = [row for row in with_one if row["share1"] > 0]
     best = max(sharing, key=lambda row: row["share1"]) if sharing else None
     densest = max(rows, key=lambda row: row["share_factor"]) if rows else None
+    mlc = [row for row in rows if row["kind"] == "plumb_full"]
+    chimera = [row for row in rows if row["kind"] == "chimera"]
     return {
         "computer": "host surfaces; excerpts are the addressed substrate",
         "titan": "NOT_WRITTEN",
         "excerpts": len(rows),
+        "mlc_excerpts": len(mlc),
+        "chimera_excerpts": len(chimera),
         "const1_written": len(with_one),
         "const1_shared": len(sharing),
         "best_share1": best,
@@ -153,9 +169,10 @@ def census(paths):
 
 def print_row(row):
     print(
-        "  %s  magic=%s  gates=%d  C1@%d=%s  share1=%d  factor=%.2f  hottest=(%s,%s)  file_levels=%d"
+        "  %s  kind=%s  magic=%s  gates=%d  C1@%d=%s  share1=%d  factor=%.2f  hottest=(%s,%s)  file_levels=%d"
         % (
             os.path.basename(row["path"]),
+            row.get("kind") or excerpt_kind(row.get("path")),
             row["magic"],
             row["n_gate"],
             row["const1_addr"],
@@ -183,8 +200,9 @@ def main(argv=None):
         print("  (button dies)")
         return 1
     data = census(paths)
-    print("  excerpts=%d  written_1=%d  shared_1=%d  titan=%s" % (
-        data["excerpts"], data["const1_written"], data["const1_shared"], data["titan"]))
+    print("  excerpts=%d  mlc=%d  chimera=%d  written_1=%d  shared_1=%d  titan=%s" % (
+        data["excerpts"], data["mlc_excerpts"], data["chimera_excerpts"],
+        data["const1_written"], data["const1_shared"], data["titan"]))
     for row in data["rows"]:
         print_row(row)
     best = data["best_share1"]
@@ -199,7 +217,8 @@ def main(argv=None):
             "  DENSEST FACTOR  %s  %.2f input-slots per unique address"
             % (os.path.basename(densest["path"]), densest["share_factor"])
         )
-    print("  file_levels=256 is the MLC discrimination on the addressed substrate.")
+    print("  file_levels=256 is MLC discrimination on PLUMB 1-19 full organs.")
+    print("  chimera excerpts are small slices; unique-byte count is not 256 and must not be padded.")
     print("  wire plane stays 2 levels (0/1). Overlap is address sharing, not a new spec.")
     print("  (button dies)")
     if want_json:
