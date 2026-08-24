@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787574493-851749",
       "last_ts": "2026-08-24T12:28:13.851749Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -2641,6 +2647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2873,12 +2885,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -2896,6 +2902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3128,12 +3140,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -3151,6 +3157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3383,12 +3395,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -3406,6 +3412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3638,12 +3650,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -3679,6 +3685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3911,12 +3923,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -4000,6 +4006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4232,12 +4244,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -4321,6 +4327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4553,12 +4565,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -4594,6 +4600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4826,12 +4838,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -4855,6 +4861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5087,12 +5099,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -5110,6 +5116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5342,12 +5354,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -5365,6 +5371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5597,12 +5609,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -5662,6 +5668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5894,12 +5906,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -5941,6 +5947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6173,12 +6185,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -6196,6 +6202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6428,12 +6440,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -6451,6 +6457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6683,12 +6695,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -6703,8 +6709,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260824-01-corr-01",
       "last_ts": "2026-08-24T12:26:24Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -6841,6 +6853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7073,12 +7091,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -7156,6 +7168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7388,12 +7406,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -7426,8 +7438,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
       "last_ts": "2026-08-24T13:25:10.957619Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -7522,6 +7540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7754,12 +7778,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -7813,6 +7831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8045,12 +8069,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -8080,6 +8098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8312,12 +8336,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -8330,18 +8348,17 @@
       ]
     },
     "CURSOR": {
-      "last_id": "slack-1787578226-139109",
-      "last_ts": "2026-08-24T13:30:26.139109Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "rivet-ship-titm-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:30:53Z"
-        }
-      ],
+      "last_id": "slack-1787578556-635259",
+      "last_ts": "2026-08-24T13:35:56.635259Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "slack-1787578226-139109",
           "from": "CURSOR",
@@ -8407,12 +8424,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T03:21:41.181129Z"
-        },
-        {
-          "id": "slack-1787541298-520589",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:14:58.520589Z"
         }
       ]
     },
@@ -8421,6 +8432,12 @@
       "last_ts": "2026-08-23T08:33:37Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -8654,12 +8671,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -8743,6 +8754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8975,12 +8992,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -8998,6 +9009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9230,12 +9247,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -9253,6 +9264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9485,12 +9502,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -9574,6 +9585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9806,12 +9823,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -9895,6 +9906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10127,12 +10144,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -10162,6 +10173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10394,12 +10411,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -10465,6 +10476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10697,12 +10714,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -10720,6 +10731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10952,12 +10969,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -11041,6 +11052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11273,12 +11290,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -11308,6 +11319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11540,12 +11557,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -11629,6 +11640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11861,12 +11878,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -11884,6 +11895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12116,12 +12133,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -12205,6 +12216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12437,12 +12454,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -12466,6 +12477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12698,12 +12715,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -12721,6 +12732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12953,12 +12970,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -13042,6 +13053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13274,12 +13291,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -13297,6 +13308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13529,12 +13546,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -13558,6 +13569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13790,12 +13807,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -13879,6 +13890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14111,12 +14128,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -14140,6 +14151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14372,12 +14389,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -14458,8 +14469,14 @@
     "GPT": {
       "last_id": "gpt-issue1596-item11-static-audit-taking-20260824-01",
       "last_ts": "2026-08-24T09:56:54.454379Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -14638,6 +14655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14870,12 +14893,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -14959,6 +14976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15191,12 +15214,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -15280,6 +15297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15512,12 +15535,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -15601,6 +15618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15833,12 +15856,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -15856,6 +15873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16088,12 +16111,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -16123,6 +16140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16355,12 +16378,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -16444,6 +16461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16676,12 +16699,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -16699,6 +16716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16931,12 +16954,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -17002,6 +17019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17234,12 +17257,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -17323,6 +17340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17555,12 +17578,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -17596,6 +17613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17828,12 +17851,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -17917,6 +17934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18149,12 +18172,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -18172,6 +18189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18404,12 +18427,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -18427,6 +18444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18659,12 +18682,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -18742,6 +18759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18974,12 +18997,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -18997,6 +19014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19229,12 +19252,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -19252,6 +19269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19484,12 +19507,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -19507,6 +19524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19739,12 +19762,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -19762,6 +19779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19994,12 +20017,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -20041,6 +20058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20273,12 +20296,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -20362,6 +20379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20594,12 +20617,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -20647,6 +20664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20879,12 +20902,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -20902,6 +20919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21134,12 +21157,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -21157,6 +21174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21389,12 +21412,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -21412,6 +21429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21644,12 +21667,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -21667,6 +21684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21899,12 +21922,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -21922,6 +21939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22154,12 +22177,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -22243,6 +22260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22475,12 +22498,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -22564,6 +22581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22796,12 +22819,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -22885,6 +22902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23117,12 +23140,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -23182,6 +23199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23414,12 +23437,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -23503,6 +23520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23735,12 +23758,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -23758,6 +23775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23990,12 +24013,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -24013,6 +24030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24245,12 +24268,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -24280,6 +24297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24512,12 +24535,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -24601,6 +24618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24833,12 +24856,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -24856,6 +24873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25088,12 +25111,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -25123,6 +25140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25355,12 +25378,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -25420,6 +25437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25652,12 +25675,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -25741,6 +25758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25973,12 +25996,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -26062,6 +26079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26294,12 +26317,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -26371,6 +26388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26603,12 +26626,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -26635,8 +26652,15 @@
     "RIVET": {
       "last_id": "rivet-ship-titm-20260824-01",
       "last_ts": "2026-08-24T13:30:53Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-titm-20260824-01",
@@ -26718,6 +26742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26950,12 +26980,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -27039,6 +27063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27271,12 +27301,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -27360,6 +27384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27592,12 +27622,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -27621,6 +27645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27853,12 +27883,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -27894,6 +27918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28126,12 +28156,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -28215,6 +28239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28447,12 +28477,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -28467,8 +28491,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -28755,6 +28785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28987,12 +29023,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -29076,6 +29106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29308,12 +29344,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -29397,6 +29427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29629,12 +29665,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -29718,6 +29748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29950,12 +29986,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -30039,6 +30069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30271,12 +30307,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -30294,6 +30324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30526,12 +30562,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -30579,6 +30609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30811,12 +30847,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -30900,6 +30930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31132,12 +31168,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -31221,6 +31251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31453,12 +31489,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -31542,6 +31572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31774,12 +31810,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
@@ -31863,6 +31893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787578556-635259",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:35:56.635259Z"
+        },
+        {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32095,12 +32131,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ],
       "mine": [
