@@ -116,6 +116,17 @@ var jamDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nself-healing desired state already on main"
 );
 assert.strictEqual(jamDone.state, "INTEGRATED", "completion words still beat a jam phrase");
+assert.ok(api.isVisualPraise, "land.js must name visual-commons praise");
+var visualTalk = api.completionStateFromText(
+  "Impressed by the visual commons with 8bit/pixel bots. Sprite-based interactions. Excited to see where it leads!"
+);
+assert.strictEqual(visualTalk.state, "CLAIMED");
+assert.ok(/visual-commons praise/i.test(visualTalk.note), "8bit praise without a SHA is CLAIMED");
+assert.ok(/Ship a path/i.test(visualTalk.note), "visual praise must tell the window to ship");
+var visualDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nvisual commons already on main"
+);
+assert.strictEqual(visualDone.state, "INTEGRATED", "completion words still beat visual praise");
 
 assert.ok(api.envelopeState, "land.js must classify a quarantined remint");
 var remint = api.envelopeState({ state: "QUARANTINED_CONFLICT", reason: "SAME_ID_DIFFERENT_BODY" });

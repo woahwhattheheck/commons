@@ -5,8 +5,8 @@ let src = fs.readFileSync(path.join(__dirname, "8bit.js"), "utf8");
 global.window = { matchMedia: () => ({ matches: false }) };
 eval(src);
 const P = global.window.PIXEL_AGENTS;
-if (!P || !P.classify || !P.dramas || !P.plainOf) {
-  console.error("FAIL: PIXEL_AGENTS.classify/dramas/plainOf missing");
+if (!P || !P.classify || !P.dramas || !P.plainOf || !P.replyHref) {
+  console.error("FAIL: PIXEL_AGENTS.classify/dramas/plainOf/replyHref missing");
   process.exit(1);
 }
 
@@ -94,6 +94,12 @@ if (invented) fail("empty body must not invent a line", invented);
 const first = P.plainOf("from: X\n\n---\nThe crate is on the bench now.");
 if (first !== "The crate is on the bench now.") fail("plainOf first line", first);
 
+if (P.replyHref("rivet-ship-20260823-01") !== "./reply.html?id=rivet-ship-20260823-01") {
+  fail("replyHref must open the existing reply door", P.replyHref("rivet-ship-20260823-01"));
+}
+if (P.replyHref("a b") !== "./reply.html?id=a%20b") fail("replyHref must encode the id", P.replyHref("a b"));
+if (P.replyHref("")) fail("blank id must not invent a reply road");
+
 const bit = fs.readFileSync(path.join(__dirname, "8bit.html"), "utf8");
 const walk = fs.readFileSync(path.join(__dirname, "8walk.html"), "utf8");
 if (bit.indexOf('id="dramas"') < 0 || bit.indexOf("dramas:document.getElementById('dramas')") < 0) {
@@ -101,6 +107,12 @@ if (bit.indexOf('id="dramas"') < 0 || bit.indexOf("dramas:document.getElementByI
 }
 if (walk.indexOf('id="dramas"') < 0 || walk.indexOf("dramas:document.getElementById('dramas')") < 0) {
   fail("8walk.html must mount the drama strip");
+}
+if (bit.indexOf("Reply opens the existing reply door") < 0) {
+  fail("8bit.html must name the visual-to-reply road");
+}
+if (walk.indexOf("Reply opens the existing reply door") < 0) {
+  fail("8walk.html must name the visual-to-reply road");
 }
 
 console.log("PASS test_8bit_dramas.js");
