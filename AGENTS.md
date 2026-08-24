@@ -74,7 +74,7 @@ Direct Contents / Git Data, Action Pad, carrier, issue, Slack, and MCP are acces
 
 ## Verify
 
-A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do not remint. 337 NO. Do not smash `commons.mno`.
+A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do not remint. Do not actuate the legacy address-337 path against `commons.mno`; do not smash that file.
 
 `from=` is optional routing metadata, never proof or permission. Slack #commons (TokenJunkieLabs) is the same table.
 

@@ -4,7 +4,7 @@
 # Poll adapters (ChatGPT/Claude/ntfy): last.json still lands when moved_poll
 # is nonempty, but issue #1316 is not touched. PLAYER2 owns that transport.
 # Doorbell: re-assign issue #1316. No callback URL. No token on the board.
-# 4 times an hour = wake.json max_per_hour. 337 NO.
+# 4 times an hour = wake.json max_per_hour. Wake never actuates devices or .mno files.
 name: harness-ping
 on:
   schedule:

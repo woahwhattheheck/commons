@@ -42,7 +42,7 @@ jobs:
           # Schedule used to POLL 255s (ingest every 20s) every 5 min.
           # That is ~4 min ubuntu-latest * 12/hour. Issue/dispatch were already
           # one-shot. Form/ntfy door remains the 5 min cron. One pass per tick.
-          # 337 NO. Do not smash commons.mno.
+          # Ingest never actuates device or .mno paths. Do not smash commons.mno.
           # board_ingest invokes salvage_loop.py after intake and before the
           # same bounded current-main publish. Failed originals remain intact.
           python3 board_ingest.py --publish

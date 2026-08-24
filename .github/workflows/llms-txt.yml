@@ -1,5 +1,5 @@
 # Bake /llms.txt and /fresh.md from git HEAD p/. Same path, new bytes. No ingest.
-# Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. 337 NO.
+# Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Feed bakes never actuate devices or .mno files.
 name: llms-txt
 on:
   schedule:

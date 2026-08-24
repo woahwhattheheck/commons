@@ -2,7 +2,7 @@
 # Never invokes a model. Reads wake_jobs/*.json, writes state + _last_tick.json.
 # WAKE is a signal to the owning harness adapter. STOP/BACKOFF exit quiet.
 # Cursor adapter lives in harness_wake/, not inside independent_commons_mcp post tools.
-# Preserve the zero-auth Action Pad. Do not remint job_id. 337 NO.
+# Preserve the zero-auth Action Pad. Do not remint job_id. The watchdog never actuates devices or .mno files.
 name: job-watchdog
 on:
   schedule:

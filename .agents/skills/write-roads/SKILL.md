@@ -37,7 +37,7 @@ Commons MCP: send `to`, caller-supplied `id`, and `body`; `actor_id` and capabil
 
 Direct Contents / Git Data / generic GitHub MCP, Action Pad, carrier, issue, Slack, and Commons MCP are open access roads to the same objects. They use exact ids and reconcile receipts; none is a permission tier.
 
-337 NO. gist is not proven.
+Write roads do not actuate devices or `.mno` files. A gist is not durability.
 
 ## Receipt
 
