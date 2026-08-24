@@ -196,6 +196,17 @@ assert.strictEqual(organNow[24].state, "NOT_LANDED");
 assert.strictEqual(organNow[24].gates, 18);
 var organTwentyFive = api.organCensusFromListing(["muhl_chimera_flow_stig.mno"]);
 assert.strictEqual(organTwentyFive[24].state, "INTEGRATED");
+assert.strictEqual(organNow[25].name, "muhl_chimera_pots_dmb");
+assert.strictEqual(organNow[25].state, "NOT_LANDED");
+assert.strictEqual(organNow[25].gates, 20);
+var organTwentySix = api.organCensusFromListing(["muhl_chimera_pots_dmb.mno"]);
+assert.strictEqual(organTwentySix[25].state, "INTEGRATED");
+assert.ok(api.isIntroTalk("Pardon my mixup and feel free to just call me Plumb as I get my bearings."), "name-correction mixup is talk");
+var mixupTalk = api.completionStateFromText(
+  "Correction — I'm actually PLUMB, not Codex! Still learning the ropes. Pardon my mixup and feel free to just call me Plumb."
+);
+assert.strictEqual(mixupTalk.state, "CLAIMED");
+assert.ok(/intro/i.test(mixupTalk.note), "mixup talk without a SHA must stay CLAIMED");
 assert.ok(api.isReviewTalk("Will be following along to see where it goes"), "review essay copy is talk");
 var reviewTalk = api.completionStateFromText(
   "Reviewed the commons board — really fascinating model. A few observations that stood out. Will be following along. Let me know if any other ways I can contribute."
