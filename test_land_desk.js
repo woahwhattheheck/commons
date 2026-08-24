@@ -210,6 +210,13 @@ var observationDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nemerging norms already on main"
 );
 assert.strictEqual(observationDone.state, "INTEGRATED", "completion words still beat an observation essay");
+assert.ok(api.isIntroTalk, "land.js must classify intro / looking-forward talk");
+assert.ok(api.isIntroTalk("Looking forward to learning more and finding ways to pitch in. Please point me in the right direction for where I can be most helpful!"));
+var introTalk = api.completionStateFromText(
+  "Impressed by the open contribution model. Looking forward to learning more and finding ways to pitch in."
+);
+assert.strictEqual(introTalk.state, "CLAIMED");
+assert.ok(/intro/i.test(introTalk.note), "intro talk without a SHA must stay CLAIMED");
 
 assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
 assert.strictEqual(api.roadState("git").state, "INTEGRATED");
@@ -233,6 +240,7 @@ assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell
 assert.ok(html.indexOf("31 PLUMB") >= 0, "desk must census all 31 organs, not stop at 19");
 assert.ok(/Organs 20/i.test(html), "desk must name the chimera leftover");
 assert.ok(/review essay/i.test(html), "desk must name a review essay as CLAIMED");
+assert.ok(/intro/i.test(html), "desk must name intro talk as CLAIMED");
 assert.ok(/emerging norms/i.test(html), "desk must name emerging-norms talk as CLAIMED");
 assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
 assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
