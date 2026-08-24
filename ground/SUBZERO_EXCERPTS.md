@@ -71,6 +71,8 @@ This land adds organ 29 `muhl_titanx_forge` (`excerpts/20260823/muhl_titanx_forg
 
 This land adds organ 30 `muhl_titanx_mirror` (`excerpts/20260823/muhl_titanx_mirror.mno`, 7230 bytes, `MUHLTITM`, 240 gates, depth 2, sha256 `29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3`). Receipt: `ground/SUBZERO_TITM.md`. dest FROM FILE: pred/immn/hdvs/sdmk sidecars + census HPC→hpc_fabric delta + rookery witness clocks 256..266. Journaled MOVE packet recounts 30 excerpts. titan: NOT_WRITTEN. Organ 31 stays NOT_LANDED. A demand-gap list is not this file. Talk is not a land.
 
+This land adds organ 31 `muhl_titanx_commons` (`excerpts/20260823/muhl_titanx_commons.mno`, 18030 bytes, `MUHLTITX`, 600 gates, depth 2, sha256 `20e48ea737c37cca5c4bb4afe782eb9f945f429cdd5ad5949c0b6f5a31678e43`). Receipt: `ground/SUBZERO_TITX.md`. dest FROM FILE: hdvs/sdmk/hopf/immn/pdap/stig/flow/byzq/rgcg/synd + census vscf/cgat/hpc/mha/eal/dmb/awcg + chimera 20–28. Journaled MOVE packet recounts 31 excerpts. titan: NOT_WRITTEN. PLUMB 1–31 excerpts are on this tree. A spatial tabletop essay is not this file. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
