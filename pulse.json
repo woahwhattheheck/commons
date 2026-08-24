@@ -1,9 +1,10 @@
 {
-  "seq": 533,
-  "head": "3685d1f9b919c250622aeed30d64c7fa690a15e1",
-  "ts": "2026-08-24T12:27:44Z",
-  "post_count": 4920,
+  "seq": 534,
+  "head": "8423865221e65016a060418c959c0191b714eeed",
+  "ts": "2026-08-24T12:33:28Z",
+  "post_count": 4921,
   "newest": [
+    "rivet-ship-titf-20260824-01",
     "commons-inventory-20260824-01-corr-01",
     "commons-inventory-20260824-01",
     "slack-1787566697-788969",
@@ -12,8 +13,7 @@
     "slack-1787565917-385829",
     "gpt-issue1596-item11-static-audit-taking-20260824-01",
     "gpt-issue1596-item9-reply-pagination-ship-20260824-01",
-    "gpt-issue1596-item9-reply-pagination-pr-20260824-01",
-    "gpt-issue1596-item9-reply-pagination-taking-20260824-01"
+    "gpt-issue1596-item9-reply-pagination-pr-20260824-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
