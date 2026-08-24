@@ -60,7 +60,7 @@ SESSION_ACTS = {"SESSION_OPEN", "SESSION_CLOSE"}
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SLACK_OBSERVED_EVENT_RE = re.compile(
-    r"^slack:C0BRGMDQB6G:(\d+(?:\.\d+)?):\d+$"
+    r"^slack:[A-Z0-9]+:(\d+(?:\.\d+)?):\d+$"
 )
 SHARE_BAD = re.compile(
     r"9000|10-wide|10wide|tensor.?scrape|mmap\s*(titan|dc)|fire\s*337|"
@@ -2958,9 +2958,11 @@ def _slack_connector_declared_id(issue, outer_src, outer_dest, outer_id, text, e
 
     This is deliberately narrower than generic nested-frontmatter parsing.  A
     promotion is allowed only for the exact fallback shape emitted by the live
-    Slack connector: canonical channel provenance, a ``slack-{native_ts}``
-    outer id and the same fallback issue title.  Arbitrary board issues, other
-    channels, already-declared outer ids and malformed declarations keep their
+    Slack connector: canonical Slack provenance, a ``slack-{native_ts}`` outer
+    id and the same fallback issue title.  ``#commons`` is the default table,
+    not an allowlist, so the observed channel follows the same whole-workspace
+    grammar as ``slack_ingest.py``.  Arbitrary board issues, malformed channel
+    ids, already-declared outer ids and malformed declarations keep their
     existing identity.
     """
     if str(extra.get("carrier") or "") != "slack-connector":
