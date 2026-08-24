@@ -12,6 +12,7 @@ import tempfile
 import unittest
 import urllib.parse
 from pathlib import Path
+from unittest import mock
 
 from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, redact
 from independent_commons_mcp.gateway import Gateway, GatewayError
@@ -330,6 +331,28 @@ class ReviewFixTests(unittest.TestCase):
         self.assertEqual(result["durable"]["state"], "DURABLE_PAGE")
         self.assertIn("ntfy", result["accepted_lanes"])
         self.assertIn("slack", result["failed_lanes"])
+
+    def test_durable_plus_unconfigured_requested_lane_is_partial(self):
+        gw, net = make_gateway()
+        with mock.patch.dict(
+            os.environ,
+            {
+                "COMMONS_SLACK_BOT_TOKEN": "",
+                "SLACK_BOT_TOKEN": "",
+                "COMMONS_SLACK_WEBHOOK_URL": "",
+                "SLACK_WEBHOOK_URL": "",
+            },
+        ):
+            result = gw.post({
+                **declared("kite-durable-unconfigured-01"),
+                "lanes": ["ntfy", "slack"],
+            })
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["state"], "PARTIAL")
+        self.assertIsNotNone(result["durable"])
+        self.assertEqual(result["durable"]["state"], "DURABLE_PAGE")
+        self.assertIn("ntfy", result["accepted_lanes"])
+        self.assertIn("slack", result["skipped_lanes"])
 
     def test_slack_projection_keeps_routing_fields(self):
         gw, net = make_gateway()
