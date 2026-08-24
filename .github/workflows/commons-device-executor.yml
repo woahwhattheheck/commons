@@ -13,49 +13,23 @@ jobs:
     outputs:
       has_pending: ${{ steps.pending.outputs.has_pending }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: main
+          fetch-depth: 0
           persist-credentials: false
       - id: pending
-        name: measure pending device actions on current main
-        run: |
-          python3 - <<'PY'
-          import os
-          import action_executor
-
-          value = "true" if action_executor.pending("device") else "false"
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-              out.write(f"has_pending={value}\n")
-          PY
-  execute:
+        name: measure history-unlatched device actions on current main
+        run: >-
+          python3 device_action_state.py preflight
+          --github-output "$GITHUB_OUTPUT"
+  cycle:
     needs: preflight
     if: needs.preflight.outputs.has_pending == 'true'
+    uses: ./.github/workflows/commons-device-cycle.yml
+    permissions:
+      contents: write
     concurrency:
       group: commons-device-executor
       cancel-in-progress: false
-    runs-on: [self-hosted, commons-device]
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          persist-credentials: false
-      - name: fire every pending device action
-        run: python3 action_executor.py --scope device > .device_changed.json
-      - name: report bounded receipts without command output
-        if: always()
-        run: |
-          python3 - <<'PY'
-          import json, pathlib
-          manifest_path = pathlib.Path(".device_changed.json")
-          manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
-          for name in sorted((manifest.get("result_records") or {}).keys()):
-              path = pathlib.Path(name)
-              if not path.is_file():
-                  continue
-              row = json.loads(path.read_text(encoding="utf-8"))
-              receipt = {key: row.get(key) for key in ("id", "verb", "target", "scope", "ok", "executed_at")}
-              receipt["error_code"] = "EXECUTION_FAILED" if not row.get("ok") else None
-              print(json.dumps(receipt, sort_keys=True))
-          PY
+      queue: max

@@ -32,6 +32,19 @@ class ActionExecutorTests(unittest.TestCase):
             self.assertEqual(rec["target"], "out.txt")
             self.assertEqual(rec["payload"], "hello")
 
+    def test_device_executor_import_does_not_load_repository_writer_graph(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                "import sys, action_executor; assert 'board_ingest' not in sys.modules",
+            ],
+            cwd=Path(__file__).parent,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+
     def test_empty_fire_action_is_recorded_noop(self):
         rec = {
             "meta": {"id": "action-empty-0001", "from": "UNSEATED"},
@@ -658,21 +671,42 @@ new file mode 100644
             self.assertEqual(paths, manifest["changed"])
             self.assertEqual(landed, [])
 
-    def test_device_actions_run_automatically_without_a_reviewed_id(self):
+    def test_device_actions_reserve_automatically_without_a_reviewed_id(self):
         executor = Path(__file__).with_name("action_executor.py").read_text(encoding="utf-8")
         workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
         self.assertNotIn("device execution requires --only-id", executor)
         self.assertNotIn("unsigned board actions", executor)
         self.assertIn('workflows: ["commons-board"]', workflow)
-        self.assertIn("fire every pending device action", workflow)
-        self.assertIn("action_executor.py --scope device", workflow)
+        self.assertIn("device_action_state.py preflight", workflow)
+        self.assertIn("uses: ./.github/workflows/commons-device-cycle.yml", workflow)
         self.assertNotIn("reviewed Commons action id", workflow)
         self.assertNotIn("--only-id", workflow)
+        self.assertIn("unbound device execution is disabled", executor)
+
+    def test_parse_record_normalizes_windows_relative_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            action = root / "p" / "windows-device-action-0001.md"
+            action.parent.mkdir()
+            action.write_text(
+                "from: GPT\nto: TOOLS\nid: windows-device-action-0001\n"
+                "kind: ACTION\nact: RUN\ntarget: DEVICE\n\n---\n\n"
+                "RUN\ntarget: DEVICE\n\necho safe\n",
+                encoding="utf-8",
+            )
+            windows_rel = Path("p\\windows-device-action-0001.md")
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(type(action), "relative_to", return_value=windows_rel),
+            ):
+                rec = ae.parse_record(action)
+            self.assertEqual(rec["path"], "p/windows-device-action-0001.md")
 
     def test_device_workflow_gates_the_self_hosted_runner_on_current_main_pending_work(self):
         workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
+        cycle_workflow = (Path(__file__).parent / ".github/workflows/commons-device-cycle.yml").read_text(encoding="utf-8")
         prefix, jobs = workflow.split("jobs:\n", 1)
-        preflight, execute = jobs.split("  execute:\n", 1)
+        preflight, cycle = jobs.split("  cycle:\n", 1)
 
         self.assertNotIn("concurrency:", prefix)
         self.assertIn("permissions:\n  contents: read", prefix)
@@ -680,17 +714,56 @@ new file mode 100644
         self.assertIn("  preflight:\n", "jobs:\n" + preflight)
         self.assertIn("runs-on: ubuntu-latest", preflight)
         self.assertNotIn("self-hosted", preflight)
-        self.assertIn('action_executor.pending("device")', preflight)
+        self.assertIn("device_action_state.py preflight", preflight)
         self.assertIn("has_pending: ${{ steps.pending.outputs.has_pending }}", preflight)
-        self.assertIn('os.environ["GITHUB_OUTPUT"]', preflight)
+        self.assertIn('"$GITHUB_OUTPUT"', preflight)
 
-        self.assertIn("needs: preflight", execute)
-        self.assertIn("if: needs.preflight.outputs.has_pending == 'true'", execute)
-        self.assertIn("runs-on: [self-hosted, commons-device]", execute)
-        self.assertIn("concurrency:\n      group: commons-device-executor\n      cancel-in-progress: false", execute)
-        self.assertIn("action_executor.py --scope device", execute)
-        self.assertEqual(workflow.count("ref: main"), 2)
-        self.assertEqual(workflow.count("persist-credentials: false"), 2)
+        self.assertIn("needs: preflight", cycle)
+        self.assertIn("if: needs.preflight.outputs.has_pending == 'true'", cycle)
+        self.assertIn("uses: ./.github/workflows/commons-device-cycle.yml", cycle)
+        self.assertIn("concurrency:\n      group: commons-device-executor\n      cancel-in-progress: false\n      queue: max", cycle)
+        self.assertNotIn("runs-on:", cycle)
+        self.assertNotIn("secrets: inherit", cycle)
+        self.assertEqual(workflow.count("ref: main"), 1)
+        self.assertEqual(workflow.count("fetch-depth: 0"), 1)
+
+        self.assertIn("on:\n  workflow_call:", cycle_workflow)
+        self.assertEqual(cycle_workflow.count("runs-on: [self-hosted, commons-device]"), 1)
+        self.assertIn("ref: ${{ needs.prepare.outputs.prepared_commit }}", cycle_workflow)
+        self.assertIn("device_action_state.py execute-batch", cycle_workflow)
+        self.assertNotIn("matrix:", cycle_workflow)
+        self.assertNotIn("max-parallel:", cycle_workflow)
+        execute_job = cycle_workflow.partition("\n  execute:\n")[2].partition("\n  finalize:\n")[0]
+        self.assertEqual(execute_job.count("    timeout-minutes: 260\n"), 1)
+        execute_step = cycle_workflow.partition("execute the prepared batch in sorted order")[2].partition("- uses: actions/upload-artifact")[0]
+        self.assertNotIn("\\\n", execute_step)
+        self.assertIn("run: >-", execute_step)
+        self.assertNotIn("${{ github.workflow_ref }}", execute_step)
+        self.assertNotIn("--workflow-ref", execute_step)
+        self.assertIn("retention-days: 7", cycle_workflow)
+        self.assertIn("name: commons-device-receipts-${{ github.run_id }}-${{ github.run_attempt }}", cycle_workflow)
+        self.assertIn("path: ${{ runner.temp }}/device-receipts", cycle_workflow)
+        upload_step = cycle_workflow.partition("- uses: actions/upload-artifact")[2].partition("\n\n  finalize:")[0]
+        self.assertNotRegex(upload_step, r"(?m)^\s+if\s*:")
+        finalize_job = cycle_workflow.partition("\n  finalize:\n")[2]
+        self.assertEqual(
+            finalize_job.count(
+                "    if: ${{ always() && needs.prepare.result == 'success' && "
+                "needs.execute.result == 'success' && "
+                "needs.prepare.outputs.reservation_count != '0' }}\n"
+            ),
+            1,
+        )
+        self.assertNotIn("action_executor.py --scope device", cycle_workflow)
+        self.assertIn("persist-credentials: false", cycle_workflow)
+        self.assertIn("permissions:\n      contents: read", cycle_workflow)
+        self.assertIn("permissions:\n      contents: write", cycle_workflow)
+        self.assertIn("always() && needs.prepare.result == 'success'", cycle_workflow)
+        self.assertIn("actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02", cycle_workflow)
+        self.assertIn("actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093", cycle_workflow)
+        self.assertNotRegex(cycle_workflow, r"uses: actions/(?:checkout|upload-artifact|download-artifact)@v\d")
+        self.assertNotIn("action_land.py", cycle_workflow)
+        self.assertNotIn("secrets: inherit", cycle_workflow)
 
     def test_action_html_parses_and_one_click_author_fire_keeps_shared_link_explicit(self):
         html = Path(__file__).with_name("action.html").read_text(encoding="utf-8")

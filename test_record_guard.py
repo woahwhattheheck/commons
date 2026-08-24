@@ -21,7 +21,7 @@ CODE_PATHS = [
     "board.js", "carrier.js", "court.js", "session.js", "commons.css",
     "index.html", "hub_pages.py", "board_ingest.py", "memory_board.py",
     "capability_declaration.py", ".capability-declaration-live",
-    "commons_mcp.py", "commons_mcp_app.html", "action_executor.py", "action_land.py", "action.html", "grave-card.html",
+    "commons_mcp.py", "commons_mcp_app.html", "action_executor.py", "action_land.py", "device_action_state.py", "action.html", "grave-card.html",
     "docket.json", "resources.json", "roles.json", "session.json", "hidden.json",
     "modlog.json", "wake.json", "claims.json", "keys.json", "lanes.json", "salon.json",
     "presence.json", "lastseen.json",
@@ -29,7 +29,10 @@ CODE_PATHS = [
     ".github/workflows/*.yml", ".github/workflows/*.yaml",
 ]
 BREC_PATHS = ["builds/records/*"]
-ACTION_RESULT_PATHS = ["actions/results/*.json"]
+ACTION_RESULT_PATHS = [
+    "actions/results/*.json", "actions/device-reservations/*.json",
+    "actions/device-batches/*.json",
+]
 
 
 def main():
@@ -55,7 +58,10 @@ def main():
 
         git("init", "-q")
         git("config", "user.email", "t@t"); git("config", "user.name", "t")
-        for d in ("p", "conflicts", "memory", "builds/records", "actions/results", ".github/workflows"):
+        for d in (
+            "p", "conflicts", "memory", "builds/records", "actions/results",
+            "actions/device-reservations", "actions/device-batches", ".github/workflows",
+        ):
             os.makedirs(os.path.join(tmp, d))
         open(os.path.join(tmp, "seed.txt"), "w").write("seed")
         commit("seed")
@@ -98,6 +104,24 @@ def main():
         case("M action result latch", detect("AMDRT", ACTION_RESULT_PATHS), "M")
         git("rm", "-q", "actions/results/sol-action-0001.json"); git("commit", "-qm", "d action latch")
         case("D action result latch", detect("AMDRT", ACTION_RESULT_PATHS), "D")
+
+        reservation = os.path.join(tmp, "actions", "device-reservations", "sol-action-0002.json")
+        open(reservation, "w").write("{}\n"); commit("a device reservation")
+        case("A device reservation", detect("AMDRT", ACTION_RESULT_PATHS), "A")
+        open(reservation, "a").write("{}\n"); commit("m device reservation")
+        case("M device reservation", detect("AMDRT", ACTION_RESULT_PATHS), "M")
+        git("mv", "actions/device-reservations/sol-action-0002.json", "actions/device-reservations/sol-action-0002-moved.json")
+        git("commit", "-qm", "r device reservation")
+        case("R device reservation", detect("AMDRT", ACTION_RESULT_PATHS), "R")
+        git("rm", "-q", "actions/device-reservations/sol-action-0002-moved.json"); git("commit", "-qm", "d device reservation")
+        case("D device reservation", detect("AMDRT", ACTION_RESULT_PATHS), "D")
+
+        batch = os.path.join(tmp, "actions", "device-batches", "123-1.json")
+        open(batch, "w").write("{}\n"); commit("a device batch")
+        case("A device batch", detect("AMDRT", ACTION_RESULT_PATHS), "A")
+        os.remove(batch)
+        os.symlink("../results/none.json", batch); commit("t device batch")
+        case("T device batch", detect("AMDRT", ACTION_RESULT_PATHS), "T")
 
         # protected source A/M, runtime css M, protected state T (file->symlink)
         open(os.path.join(tmp, "carrier.js"), "w").write("js"); commit("a")
