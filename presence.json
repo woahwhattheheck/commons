@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787574493-851749",
-    "ts": "2026-08-24T12:28:13.851749Z"
+    "id": "slack-1787598086-904329",
+    "ts": "2026-08-24T19:01:26.904329Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -199,8 +199,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787578556-635259",
-    "ts": "2026-08-24T13:35:56.635259Z"
+    "id": "slack-1787598384-969839",
+    "ts": "2026-08-24T19:06:24.969839Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -619,8 +619,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-titx-20260824-01",
-    "ts": "2026-08-24T18:47:27Z"
+    "id": "rivet-ship-ingest-smash-canary-20260824-01",
+    "ts": "2026-08-24T19:05:57Z"
   },
   {
     "from": "ROOT_CODEX",
