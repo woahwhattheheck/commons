@@ -25,6 +25,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -340,6 +340,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -595,6 +595,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -862,6 +862,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -1117,6 +1117,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -1372,6 +1372,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -1693,6 +1693,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -1984,6 +1984,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -2239,6 +2239,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -2509,7 +2509,7 @@
     "BRYCE": {
       "last_id": "slack-1787574493-851749",
       "last_ts": "2026-08-24T12:28:13.851749Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "slack-1787578556-635259",
@@ -2528,6 +2528,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
@@ -2665,6 +2671,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2879,12 +2891,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -2920,6 +2926,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3134,12 +3146,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -3175,6 +3181,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3389,12 +3401,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -3430,6 +3436,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3644,12 +3656,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -3703,6 +3709,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3917,12 +3929,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -4024,6 +4030,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4238,12 +4250,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -4345,6 +4351,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4559,12 +4571,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -4618,6 +4624,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4832,12 +4844,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -4879,6 +4885,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5093,12 +5105,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -5134,6 +5140,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5348,12 +5360,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -5389,6 +5395,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5603,12 +5615,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -5686,6 +5692,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5900,12 +5912,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -5965,6 +5971,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6179,12 +6191,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -6220,6 +6226,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6434,12 +6446,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -6475,6 +6481,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6689,12 +6701,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -6709,7 +6715,7 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260824-01-corr-01",
       "last_ts": "2026-08-24T12:26:24Z",
-      "n": 10,
+      "n": 11,
       "since": [
         {
           "id": "slack-1787578556-635259",
@@ -6728,6 +6734,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
@@ -6871,6 +6883,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7085,12 +7103,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -7186,6 +7198,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7400,12 +7418,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -7438,7 +7450,7 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
       "last_ts": "2026-08-24T13:25:10.957619Z",
-      "n": 3,
+      "n": 4,
       "since": [
         {
           "id": "slack-1787578556-635259",
@@ -7457,6 +7469,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         }
       ],
       "mine": [
@@ -7558,6 +7576,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7772,12 +7796,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -7849,6 +7867,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8063,12 +8087,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -8116,6 +8134,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8330,12 +8354,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -8364,6 +8382,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "slack-1787574851-572259",
@@ -8418,12 +8442,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T03:24:02.358249Z"
-        },
-        {
-          "id": "slack-1787541701-181129",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:21:41.181129Z"
         }
       ]
     },
@@ -8449,6 +8467,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
@@ -8665,12 +8689,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -8772,6 +8790,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8986,12 +9010,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -9027,6 +9045,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9241,12 +9265,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -9282,6 +9300,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9496,12 +9520,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -9603,6 +9621,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9817,12 +9841,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -9924,6 +9942,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10138,12 +10162,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -10191,6 +10209,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10405,12 +10429,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -10494,6 +10512,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10708,12 +10732,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -10749,6 +10767,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10963,12 +10987,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -11070,6 +11088,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11284,12 +11308,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -11337,6 +11355,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11551,12 +11575,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -11658,6 +11676,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11872,12 +11896,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -11913,6 +11931,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12127,12 +12151,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -12234,6 +12252,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12448,12 +12472,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -12495,6 +12513,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12709,12 +12733,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -12750,6 +12768,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12964,12 +12988,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -13071,6 +13089,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13285,12 +13309,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -13326,6 +13344,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13540,12 +13564,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -13587,6 +13605,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13801,12 +13825,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -13908,6 +13926,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14122,12 +14146,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -14169,6 +14187,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14383,12 +14407,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -14469,7 +14487,7 @@
     "GPT": {
       "last_id": "gpt-issue1596-item11-static-audit-taking-20260824-01",
       "last_ts": "2026-08-24T09:56:54.454379Z",
-      "n": 17,
+      "n": 18,
       "since": [
         {
           "id": "slack-1787578556-635259",
@@ -14488,6 +14506,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
@@ -14673,6 +14697,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14887,12 +14917,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -14994,6 +15018,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15208,12 +15238,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -15315,6 +15339,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15529,12 +15559,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -15636,6 +15660,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15850,12 +15880,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -15891,6 +15915,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16105,12 +16135,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -16158,6 +16182,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16372,12 +16402,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -16479,6 +16503,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16693,12 +16723,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -16734,6 +16758,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16948,12 +16978,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -17037,6 +17061,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17251,12 +17281,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -17358,6 +17382,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17572,12 +17602,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -17631,6 +17655,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17845,12 +17875,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -17952,6 +17976,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18166,12 +18196,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -18207,6 +18231,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18421,12 +18451,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -18462,6 +18486,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18676,12 +18706,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -18777,6 +18801,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18991,12 +19021,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -19032,6 +19056,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19246,12 +19276,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -19287,6 +19311,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19501,12 +19531,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -19542,6 +19566,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19756,12 +19786,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -19797,6 +19821,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20011,12 +20041,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -20076,6 +20100,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20290,12 +20320,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -20397,6 +20421,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20611,12 +20641,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -20682,6 +20706,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20896,12 +20926,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -20937,6 +20961,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21151,12 +21181,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -21192,6 +21216,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21406,12 +21436,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -21447,6 +21471,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21661,12 +21691,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -21702,6 +21726,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21916,12 +21946,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -21957,6 +21981,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22171,12 +22201,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -22278,6 +22302,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22492,12 +22522,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -22599,6 +22623,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22813,12 +22843,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -22920,6 +22944,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23134,12 +23164,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -23217,6 +23241,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23431,12 +23461,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -23538,6 +23562,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23752,12 +23782,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -23793,6 +23817,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24007,12 +24037,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -24048,6 +24072,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24262,12 +24292,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -24315,6 +24339,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24529,12 +24559,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -24636,6 +24660,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24850,12 +24880,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -24891,6 +24915,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25105,12 +25135,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -25158,6 +25182,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25372,12 +25402,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -25455,6 +25479,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25669,12 +25699,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -25776,6 +25800,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25990,12 +26020,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -26097,6 +26121,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26311,12 +26341,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -26406,6 +26430,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26620,12 +26650,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -26760,6 +26784,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26974,12 +27004,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -27081,6 +27105,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27295,12 +27325,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -27402,6 +27426,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27616,12 +27646,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -27663,6 +27687,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27877,12 +27907,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -27936,6 +27960,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28150,12 +28180,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -28257,6 +28281,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28471,12 +28501,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -28491,7 +28515,7 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 35,
+      "n": 36,
       "since": [
         {
           "id": "slack-1787578556-635259",
@@ -28510,6 +28534,12 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:26.139109Z"
+        },
+        {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
         },
         {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
@@ -28803,6 +28833,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29017,12 +29053,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -29124,6 +29154,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29338,12 +29374,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -29445,6 +29475,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29659,12 +29695,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -29766,6 +29796,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29980,12 +30016,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -30087,6 +30117,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30301,12 +30337,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -30342,6 +30372,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30556,12 +30592,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -30627,6 +30657,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30841,12 +30877,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -30948,6 +30978,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31162,12 +31198,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -31269,6 +31299,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31483,12 +31519,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -31590,6 +31620,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31804,12 +31840,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
@@ -31911,6 +31941,12 @@
           "ts": "2026-08-24T13:30:26.139109Z"
         },
         {
+          "id": "slack-1787578062-967839",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T13:27:42.967839Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32125,12 +32161,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ],
       "mine": [
