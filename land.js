@@ -349,6 +349,12 @@
     if (api.isFixTalk(t)) {
       return { state: "CLAIMED", note: "being-fixed talk. Talk is not a land. Measure board_ingest.py on current main." };
     }
+    if (api.isRebaseTalk(t)) {
+      return { state: "CLAIMED", note: "already-integrated rebase talk. Do not remint. Ship a unique leftover." };
+    }
+    if (api.isShipTalk(t)) {
+      return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
+    }
     return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
@@ -386,6 +392,40 @@
 
   api.isFixTalk = function (text) {
     return /it is being fixed|i am aware of the ingest|ingest bug|being fixed relax/i.test(String(text || ""));
+  };
+
+  api.isRebaseTalk = function (text) {
+    return /already integrated|please rebase and avoid duplicating|this is already integrated/i.test(String(text || ""));
+  };
+
+  api.isShipTalk = function (text) {
+    return /make sure people do more than talk|actually gets shipped to main|do more than talk about/i.test(String(text || ""));
+  };
+
+  api.isStaleRestorePr = function (pr) {
+    var blob = String((pr && pr.title) || "") + "\n" + String((pr && pr.body) || "");
+    return /restore smashed ingest|finish Auto-Salvage Loop leftovers|tokens truncated/i.test(blob);
+  };
+
+  api.staleRestoreState = function (pr, ingest) {
+    ingest = ingest || {};
+    if (!api.isStaleRestorePr(pr)) return null;
+    if (ingest.state === "INTEGRATED") {
+      return {
+        state: "SUPERSEDED",
+        note: "ingest on current main is source. A sitting restore PR must not overwrite it."
+      };
+    }
+    if (ingest.state === "NOT_LANDED") {
+      return {
+        state: "PR_OPEN",
+        note: "ingest is smashed. This restore is unfinished ship."
+      };
+    }
+    return {
+      state: "UNMEASURED",
+      note: "ingest smash not measured. Do not merge a restore blind."
+    };
   };
 
   api.ingestSmashState = function (text) {
@@ -680,7 +720,7 @@
     });
   }
 
-  function loadPulls(sha) {
+  function loadPulls(sha, ingest) {
     if (!prHost) return Promise.resolve();
     prHost.innerHTML = "<li>measuring open pull requests against current main…</li>";
     return getJSON(API + "/pulls?state=open&per_page=12&sort=updated").then(function (prs) {
@@ -695,7 +735,8 @@
           return { pr: pr, got: { state: "PR_OPEN", note: "compare skipped; SHA missing" } };
         }
         return getJSON(API + "/compare/" + sha + "..." + head).then(function (cmp) {
-          return { pr: pr, got: api.prStateFromCompare(pr, cmp), cmp: cmp };
+          var got = api.staleRestoreState(pr, ingest) || api.prStateFromCompare(pr, cmp);
+          return { pr: pr, got: got, cmp: cmp };
         }).catch(function (e) {
           return { pr: pr, got: { state: "PR_OPEN", note: "compare failed (" + e.message + ")" } };
         });
@@ -772,23 +813,29 @@
   }
 
   function loadIngestSmash(sha) {
-    if (!ingestOut) return Promise.resolve();
+    if (!ingestOut) return Promise.resolve(null);
     ingestOut.innerHTML = "<b>UNMEASURED</b><p>Reading board_ingest.py at the official SHA…</p>";
     var url = RAW + sha + "/board_ingest.py";
     return fetch(url, { cache: "no-store" }).then(function (r) {
       if (r.status === 404) {
-        paintIngest({ state: "NOT_LANDED", note: "board_ingest.py absent at the measured main SHA" });
-        return;
+        var missing = { state: "NOT_LANDED", note: "board_ingest.py absent at the measured main SHA" };
+        paintIngest(missing);
+        return missing;
       }
       if (!r.ok) {
-        paintIngest({ state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." });
-        return;
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintIngest(failed);
+        return failed;
       }
       return r.text().then(function (text) {
-        paintIngest(api.ingestSmashState(text));
+        var got = api.ingestSmashState(text);
+        paintIngest(got);
+        return got;
       });
     }).catch(function (e) {
-      paintIngest({ state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." });
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintIngest(err);
+      return err;
     });
   }
 
@@ -935,11 +982,12 @@
   loadMainSha().then(function (sha) {
     if (!sha) return;
     loadKnownChallenge(sha);
-    loadPulls(sha);
     loadOrgans(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
-    loadIngestSmash(sha);
+    loadIngestSmash(sha).then(function (ingest) {
+      loadPulls(sha, ingest);
+    });
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {

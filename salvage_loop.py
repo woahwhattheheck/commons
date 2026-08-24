@@ -18,7 +18,54 @@ from datetime import datetime, timezone
 
 
 SKIP_REASONS = {"PUSH_FAIL", "empty", "bad-from", "bad-to"}
+NTFY_FILE_NOTICE = re.compile(r"^You received a file:", re.I)
 RECEIPT_PATH = os.path.join("salvage", "receipts.json")
+
+
+def _tos_reason(reason):
+    return str(reason or "").lower().replace("_", "-").startswith("tos-")
+
+
+def _repair_json_text(text):
+    """Deterministic JSON cleanup: trailing commas, smart quotes, missing braces."""
+    t = str(text or "").strip()
+    t = t.replace("\u201c", '"').replace("\u201d", '"').replace("\u2018", "'").replace("\u2019", "'")
+    t = re.sub(r",\s*([}\]])", r"\1", t)
+    if t.startswith("{") and t.count("{") > t.count("}"):
+        t = t + ("}" * (t.count("{") - t.count("}")))
+    if t.startswith("[") and t.count("[") > t.count("]"):
+        t = t + ("]" * (t.count("[") - t.count("]")))
+    if "'" in t and '"' not in t:
+        swapped = t.replace("'", '"')
+        try:
+            json.loads(swapped)
+            t = swapped
+        except (json.JSONDecodeError, TypeError, ValueError):
+            pass
+    return t
+
+
+def _repair_markdown(text):
+    """Turn from=/to=/id= shorthand into parseable record headers."""
+    t = str(text or "").replace("\r\n", "\n")
+    t = re.sub(
+        r"^(from|to|id|subject|board|kind)\s*=\s*",
+        r"\1: ",
+        t,
+        flags=re.I | re.M,
+    )
+    lines = t.splitlines()
+    if not lines or not re.match(r"^(from|to|id)\s*:", lines[0], re.I):
+        return t
+    if any(line.strip() == "---" for line in lines[:40]):
+        return t
+    i = 0
+    header = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*\s*:")
+    while i < len(lines) and (not lines[i].strip() or header.match(lines[i])):
+        i += 1
+        if i > 40:
+            break
+    return "\n".join(lines[:i] + ["---"] + lines[i:])
 
 
 def _load(path, default):
@@ -59,8 +106,8 @@ def _object_from_text(raw, board):
         candidates.append(text.replace("\\r\\n", "\n").replace("\\n", "\n"))
     for candidate in candidates:
         try:
-            value = json.loads(candidate)
-        except (json.JSONDecodeError, TypeError):
+            value = json.loads(_repair_json_text(candidate))
+        except (json.JSONDecodeError, TypeError, ValueError):
             value = None
         if isinstance(value, dict):
             return value, "json"
@@ -70,7 +117,7 @@ def _object_from_text(raw, board):
             value = None
         if isinstance(value, dict) and all(isinstance(k, str) for k in value):
             return value, "python-literal"
-        value = board.ntfy_envelope(candidate)
+        value = board.ntfy_envelope(_repair_markdown(candidate))
         if isinstance(value, dict):
             return value, "record"
     return None, ""
@@ -81,7 +128,9 @@ def repair(row, board):
     state = str(row.get("state") or "")
     reason = str(row.get("reason") or row.get("code") or "")
     raw = row.get("raw")
-    if state in {"QUARANTINED_CONFLICT", "PUSH_FAIL"} or reason in SKIP_REASONS:
+    if state in {"QUARANTINED_CONFLICT", "PUSH_FAIL"} or reason in SKIP_REASONS or _tos_reason(reason):
+        return None
+    if isinstance(raw, str) and NTFY_FILE_NOTICE.match(raw.strip()):
         return None
     # ``body`` on reject rows is deliberately a 400-byte diagnostic excerpt.
     # It is never reconstructive input.
