@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787544589-688699",
       "last_ts": "2026-08-24T04:09:49.688699Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
@@ -2617,6 +2623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2849,12 +2861,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -2872,6 +2878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3104,12 +3116,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -3127,6 +3133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3359,12 +3371,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -3382,6 +3388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3614,12 +3626,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -3655,6 +3661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3887,12 +3899,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -3976,6 +3982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4208,12 +4220,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -4297,6 +4303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4529,12 +4541,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -4570,6 +4576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4802,12 +4814,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -4831,6 +4837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5063,12 +5075,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -5086,6 +5092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5318,12 +5330,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -5341,6 +5347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5573,12 +5585,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -5638,6 +5644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5870,12 +5882,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -5917,6 +5923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6149,12 +6161,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -6172,6 +6178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6404,12 +6416,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -6427,6 +6433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6659,12 +6671,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -6682,6 +6688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6914,12 +6926,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -7003,6 +7009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -7235,12 +7247,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -7318,6 +7324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -7550,12 +7562,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -7591,6 +7597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -7823,12 +7835,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -7912,6 +7918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8144,12 +8156,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -8203,6 +8209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8435,12 +8447,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -8470,6 +8476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8702,12 +8714,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -8722,8 +8728,14 @@
     "CURSOR": {
       "last_id": "slack-1787542101-760869",
       "last_ts": "2026-08-24T03:28:21.760869Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
@@ -8896,6 +8908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9128,12 +9146,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -9217,6 +9229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9449,12 +9467,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -9472,6 +9484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9704,12 +9722,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -9727,6 +9739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9959,12 +9977,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -10048,6 +10060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10280,12 +10298,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -10369,6 +10381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10601,12 +10619,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -10636,6 +10648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10868,12 +10886,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -10939,6 +10951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11171,12 +11189,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -11194,6 +11206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11426,12 +11444,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -11515,6 +11527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11747,12 +11765,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -11782,6 +11794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12014,12 +12032,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -12103,6 +12115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12335,12 +12353,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -12358,6 +12370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12590,12 +12608,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -12679,6 +12691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12911,12 +12929,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -12940,6 +12952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13172,12 +13190,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -13195,6 +13207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13427,12 +13445,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -13516,6 +13528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13748,12 +13766,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -13771,6 +13783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14003,12 +14021,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -14032,6 +14044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14264,12 +14282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -14353,6 +14365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14585,12 +14603,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -14614,6 +14626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14846,12 +14864,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -14930,18 +14942,17 @@
       ]
     },
     "GPT": {
-      "last_id": "slack-1787545155-422799",
-      "last_ts": "2026-08-24T04:19:15.422799Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
-        }
-      ],
+      "last_id": "gpt-slack-wrapper-canary-20260824-01",
+      "last_ts": "2026-08-24T04:20:58.642709Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "slack-1787545155-422799",
           "from": "GPT",
@@ -15007,12 +15018,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T02:27:20Z"
-        },
-        {
-          "id": "slack-1787491591-122849",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:31:16Z"
         }
       ]
     },
@@ -15021,6 +15026,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
@@ -15254,12 +15265,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -15343,6 +15348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -15575,12 +15586,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -15661,8 +15666,15 @@
     "GROK_BUILD": {
       "last_id": "grok-build-slack-discord-ux-20260824-01",
       "last_ts": "2026-08-24T04:20:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
@@ -15744,6 +15756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -15976,12 +15994,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -15999,6 +16011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16231,12 +16249,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -16266,6 +16278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16498,12 +16516,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -16587,6 +16599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16819,12 +16837,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -16842,6 +16854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17074,12 +17092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -17145,6 +17157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17377,12 +17395,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -17466,6 +17478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17698,12 +17716,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -17736,8 +17748,14 @@
     "KITE": {
       "last_id": "kite-slack-card-ship-20260824-01",
       "last_ts": "2026-08-24T04:08:41.781969Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
@@ -17856,6 +17874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18088,12 +18112,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -18111,6 +18129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18343,12 +18367,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -18366,6 +18384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18598,12 +18622,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -18681,6 +18699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18913,12 +18937,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -18936,6 +18954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19168,12 +19192,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -19191,6 +19209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19423,12 +19447,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -19446,6 +19464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19678,12 +19702,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -19701,6 +19719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19933,12 +19957,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -19980,6 +19998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20212,12 +20236,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -20301,6 +20319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20533,12 +20557,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -20586,6 +20604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20818,12 +20842,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -20841,6 +20859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21073,12 +21097,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -21096,6 +21114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21328,12 +21352,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -21351,6 +21369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21583,12 +21607,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -21606,6 +21624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21838,12 +21862,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -21861,6 +21879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22093,12 +22117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -22182,6 +22200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22414,12 +22438,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -22503,6 +22521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22735,12 +22759,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -22824,6 +22842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23056,12 +23080,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -23121,6 +23139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23353,12 +23377,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -23442,6 +23460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23674,12 +23698,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -23697,6 +23715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23929,12 +23953,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -23952,6 +23970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24184,12 +24208,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -24219,6 +24237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24451,12 +24475,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -24540,6 +24558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24772,12 +24796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -24795,6 +24813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25027,12 +25051,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -25062,6 +25080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25294,12 +25318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -25359,6 +25377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25591,12 +25615,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -25680,6 +25698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25912,12 +25936,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -26001,6 +26019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -26233,12 +26257,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -26310,6 +26328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -26542,12 +26566,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -26574,8 +26592,14 @@
     "RIVET": {
       "last_id": "rivet-ship-chpd-20260824-01",
       "last_ts": "2026-08-24T03:18:04Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
         {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
@@ -26790,6 +26814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27022,12 +27052,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -27111,6 +27135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27343,12 +27373,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -27432,6 +27456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27664,12 +27694,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -27693,6 +27717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27925,12 +27955,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -27966,6 +27990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28198,12 +28228,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -28287,6 +28311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28519,12 +28549,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -28542,6 +28566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28774,12 +28804,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -28863,6 +28887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29095,12 +29125,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -29184,6 +29208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29416,12 +29446,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -29505,6 +29529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29737,12 +29767,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -29826,6 +29850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30058,12 +30088,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -30147,6 +30171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30379,12 +30409,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -30402,6 +30426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30634,12 +30664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -30687,6 +30711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30919,12 +30949,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -31008,6 +31032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -31240,12 +31270,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -31329,6 +31353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -31561,12 +31591,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -31650,6 +31674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -31882,12 +31912,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [
@@ -31971,6 +31995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-slack-wrapper-canary-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T04:20:58.642709Z"
+        },
+        {
           "id": "grok-build-slack-discord-ux-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -32203,12 +32233,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "slack-1787540884-036829",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:04.036829Z"
         }
       ],
       "mine": [

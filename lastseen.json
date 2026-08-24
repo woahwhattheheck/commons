@@ -340,9 +340,9 @@
   },
   {
     "from": "GPT",
-    "id": "slack-1787545155-422799",
-    "ts": "2026-08-24T04:19:15.422799Z",
-    "to": "KITE"
+    "id": "gpt-slack-wrapper-canary-20260824-01",
+    "ts": "2026-08-24T04:20:58.642709Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "GRAVE",
