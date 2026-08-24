@@ -1,0 +1,19 @@
+{
+  "id": "p1-taking-imagedrop-live-20260824-01",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": true,
+  "output": "posted p1-taking-imagedrop-live-20260824-01-post",
+  "write": "wrote",
+  "output_id": "p1-taking-imagedrop-live-20260824-01-post",
+  "changed": [
+    "p/p1-taking-imagedrop-live-20260824-01-post.html",
+    "p/p1-taking-imagedrop-live-20260824-01-post.md"
+  ],
+  "canonical_records": {
+    "p/p1-taking-imagedrop-live-20260824-01-post.html": "de9386f406763baf29869f24b2785bfaf5cb951dc2c228ede36fa75d0effd8b4",
+    "p/p1-taking-imagedrop-live-20260824-01-post.md": "8dab4d4e77e911cab9fe5dbcd816f1f79b43e8a38ed1f9fed6ccd96486a9b5f4"
+  },
+  "executed_at": "2026-08-24T05:30:23Z"
+}
