@@ -1,19 +1,19 @@
 {
   "seq": 548,
-  "head": "4f450d9183b08daa37ff37d4c61418a850978ab6",
-  "ts": "2026-08-24T17:33:39Z",
+  "head": "a1a21239e4137867778e59ffce56b817b8a886fc",
+  "ts": "2026-08-24T17:47:40Z",
   "post_count": 4932,
   "newest": [
-    "slack-1787578556-635259",
-    "rivet-ship-titm-20260824-01",
-    "slack-1787578226-139109",
     "slack-1787578062-967839",
+    "slack-1787578556-635259",
+    "slack-1787578226-139109",
     "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
+    "rivet-ship-titm-20260824-01",
     "codexsol-bryce-demand-gap-20260824-01",
+    "slack-1787574540-677909",
+    "slack-1787574493-851749",
     "slack-1787574851-572259",
-    "rivet-ship-titf-20260824-01",
-    "slack-1787574689-788589",
-    "slack-1787574540-677909"
+    "slack-1787574689-788589"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
