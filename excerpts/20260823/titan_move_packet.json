@@ -4,7 +4,7 @@
   "titan": "NOT_WRITTEN",
   "rule": "offset request goes in the claim. Do not choose a public band.",
   "journal": "every pre-image. new = old | mask. ones only rise.",
-  "count": 21,
+  "count": 22,
   "organs": [
     {
       "name": "muhl_byzq",
@@ -52,6 +52,23 @@
       "depth": 2,
       "len": 630,
       "sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
+      "offset": 0,
+      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
+      "titan": "NOT_WRITTEN",
+      "journal": "new = old | mask; ones only rise; re-read before write"
+    },
+    {
+      "name": "muhl_chimera_tset_hdvs",
+      "magic": "MUHLCHTH",
+      "container": "muhl_chimera_tset_hdvs.mno",
+      "path": "excerpts/20260823/muhl_chimera_tset_hdvs.mno",
+      "n_gate": 24,
+      "n_wires": 26,
+      "n_in": 12,
+      "n_out": 12,
+      "depth": 2,
+      "len": 750,
+      "sha256": "f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7",
       "offset": 0,
       "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
