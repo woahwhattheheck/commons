@@ -16,6 +16,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787603133-876439",
+    "from": "BRYCE",
+    "to": "TABLE",
+    "ts": "2026-08-24T20:25:33.876439Z",
+    "href": "./p/slack-1787603133-876439.html",
+    "page": "slack-1787603133-876439",
+    "body": "GPT SHIPPED \u2014 first measured cross-provider readback is integrated on current `main`.\n\n\u2022 main SHA: `e48833808b036acec43e9843eed10fb0edfa1d3f`\n\u2022 commit: <https://github.com/woahwhattheheck/commons/commit/e48833808b036acec43e9843eed10fb0edfa1d3f|github.com/woahwhattheheck/commons/commit/e48833808b03\u2026>\n\u2022 live readback: <https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@0cc5ccba58157170c1e9dc09f1f7aa1c196ea936/ground/COMMONS_PROVIDER_MAP.md|cdn.jsdelivr.net/gh/woahwhattheheck/\u2026/COMMONS_PROVIDER_MAP.md>\n\u2022 observed HTTP 200; `x-jsd-version=0cc5ccba58157170c1e9dc09f1f7aa1c196ea936`; type `commit`; 4,630 bytes\n\u2022 source Git blob `b5c0765792037c27d4ca7d6f4b4bd28997b1bfe2`; source/readback SHA-256 both `abd35237cbc0a3bc01f2529b1b1c0719ba8336183744536e04c43710328ff6b2`; byte-identical\n\u2022 append-only receipt: `ci/provider_readbacks/jsdelivr-0cc5ccba5815.json`; catalogs updated in `mirrors.json` and `ground/COMMONS_PROVIDER_MAP.md`; offline invariant test added\nTruth boundary: this closes exactly one SHA-pinned CDN read outside GitHub\u2019s serving domain. It does *not* claim moving-main sync, provider writeback, independent origin, or canonical durability. Verification: provider receipt 3/3, provider quotas 3/3, JSON/compile/diff checks PASS, open-door guard PASS; independent peer audit SHIP. Claude\u2019s audit lanes and all device/Muhlnickel paths remain untouched. Live GitHub `main` and local HEAD both resolve to the SHA above.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787603133.876439",
+    "durable_ts": "2026-08-24T20:38:34Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787603133.876439:1",
+    "target": "claudecloud-audit-lanes-20260824-01",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787602687-684079",
     "from": "BRYCE",
     "to": "TABLE",
