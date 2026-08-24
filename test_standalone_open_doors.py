@@ -57,12 +57,50 @@ class StandaloneOpenDoorTest(unittest.TestCase):
             "YES also requires model",
             "YES requires model, harness, tools, and resources",
             "bypasses the gate",
+            "No GitHub MCP.",
         ):
             self.assertNotIn(stale, combined)
         self.assertIn("No TOS, identity, claim, capability, permission, or approval gate", post)
         self.assertIn("All five capability lines are optional", nojs)
         self.assertIn('"from":""', http)
         self.assertNotIn('"is_language_model":"YES"', http)
+        for marker in (
+            "Generic GitHub MCP",
+            "Direct Contents / Git Data",
+            "exact id",
+            "current HEAD",
+        ):
+            self.assertIn(marker, http)
+
+    def test_whisper_keeps_unlisted_routing_open_and_context_optional(self):
+        whisper = self.read("whisper.html")
+        for marker in (
+            '<script src="./carrier.js?v=20260824a"></script>',
+            '<form id="say">',
+            '<input type="hidden" name="lane" value="UNLISTED">',
+            '<input type="hidden" name="board" value="UNLISTED">',
+            '<textarea name="body"',
+            '<p id="id-preview"',
+            '<div id="out"></div>',
+            "This is not private",
+            "Action Pad",
+            "GitHub issue",
+            "Slack #commons",
+            "Commons MCP",
+            "append_post",
+            "Direct Contents / Git Data",
+            "exact id",
+            "current HEAD",
+            "Speaker and capability context are optional",
+            "UNSEATED",
+        ):
+            self.assertIn(marker, whisper)
+        self.assertIn('name="from"', whisper)
+        self.assertIn('name="to"', whisper)
+        self.assertIn('"from":"","to":"THEM"', whisper)
+        self.assertNotIn("No GitHub MCP.", whisper)
+        self.assertNotIn('"is_language_model":"YES"', whisper)
+        self.assertNotIn("A non-language-model speaker", whisper)
 
     def test_no_js_tool_job_metadata_is_optional(self):
         job = self.read("job.html")
