@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787574493-851749",
       "last_ts": "2026-08-24T12:28:13.851749Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -2653,6 +2659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -2885,12 +2897,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -2908,6 +2914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3140,12 +3152,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -3163,6 +3169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3395,12 +3407,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -3418,6 +3424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3650,12 +3662,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -3691,6 +3697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -3923,12 +3935,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -4012,6 +4018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -4244,12 +4256,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -4333,6 +4339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -4565,12 +4577,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -4606,6 +4612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -4838,12 +4850,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -4867,6 +4873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5099,12 +5111,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -5122,6 +5128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5354,12 +5366,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -5377,6 +5383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5609,12 +5621,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -5674,6 +5680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -5906,12 +5918,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -5953,6 +5959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6185,12 +6197,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -6208,6 +6214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6440,12 +6452,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -6463,6 +6469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -6695,12 +6707,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -6715,8 +6721,14 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260824-01-corr-01",
       "last_ts": "2026-08-24T12:26:24Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -6865,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7097,12 +7115,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -7180,6 +7192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7412,12 +7430,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -7450,8 +7462,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
       "last_ts": "2026-08-24T13:25:10.957619Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -7558,6 +7576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -7790,12 +7814,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -7849,6 +7867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8081,12 +8105,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -8116,6 +8134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8348,12 +8372,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -8368,8 +8386,15 @@
     "CURSOR": {
       "last_id": "slack-1787578556-635259",
       "last_ts": "2026-08-24T13:35:56.635259Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787578556-635259",
@@ -8451,6 +8476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -8683,12 +8714,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -8772,6 +8797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9004,12 +9035,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -9027,6 +9052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9259,12 +9290,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -9282,6 +9307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9514,12 +9545,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -9603,6 +9628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -9835,12 +9866,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -9924,6 +9949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10156,12 +10187,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -10191,6 +10216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10423,12 +10454,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -10494,6 +10519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10726,12 +10757,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -10749,6 +10774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -10981,12 +11012,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -11070,6 +11095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -11302,12 +11333,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -11337,6 +11362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -11569,12 +11600,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -11658,6 +11683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -11890,12 +11921,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -11913,6 +11938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -12145,12 +12176,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -12234,6 +12259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -12466,12 +12497,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -12495,6 +12520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -12727,12 +12758,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -12750,6 +12775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -12982,12 +13013,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -13071,6 +13096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -13303,12 +13334,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -13326,6 +13351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -13558,12 +13589,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -13587,6 +13612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -13819,12 +13850,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -13908,6 +13933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -14140,12 +14171,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -14169,6 +14194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -14401,12 +14432,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -14487,8 +14512,14 @@
     "GPT": {
       "last_id": "gpt-issue1596-item11-static-audit-taking-20260824-01",
       "last_ts": "2026-08-24T09:56:54.454379Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -14679,6 +14710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -14911,12 +14948,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -15000,6 +15031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -15232,12 +15269,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -15321,6 +15352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -15553,12 +15590,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -15642,6 +15673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -15874,12 +15911,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -15897,6 +15928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -16129,12 +16166,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -16164,6 +16195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -16396,12 +16433,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -16485,6 +16516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -16717,12 +16754,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -16740,6 +16771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -16972,12 +17009,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -17043,6 +17074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -17275,12 +17312,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -17364,6 +17395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -17596,12 +17633,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -17637,6 +17668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -17869,12 +17906,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -17958,6 +17989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -18190,12 +18227,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -18213,6 +18244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -18445,12 +18482,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -18468,6 +18499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -18700,12 +18737,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -18783,6 +18814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -19015,12 +19052,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -19038,6 +19069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -19270,12 +19307,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -19293,6 +19324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -19525,12 +19562,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -19548,6 +19579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -19780,12 +19817,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -19803,6 +19834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -20035,12 +20072,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -20082,6 +20113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -20314,12 +20351,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -20403,6 +20434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -20635,12 +20672,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -20688,6 +20719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -20920,12 +20957,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -20943,6 +20974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -21175,12 +21212,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -21198,6 +21229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -21430,12 +21467,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -21453,6 +21484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -21685,12 +21722,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -21708,6 +21739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -21940,12 +21977,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -21963,6 +21994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -22195,12 +22232,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -22284,6 +22315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -22516,12 +22553,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -22605,6 +22636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -22837,12 +22874,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -22926,6 +22957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -23158,12 +23195,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -23223,6 +23254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -23455,12 +23492,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -23544,6 +23575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -23776,12 +23813,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -23799,6 +23830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -24031,12 +24068,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -24054,6 +24085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -24286,12 +24323,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -24321,6 +24352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -24553,12 +24590,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -24642,6 +24673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -24874,12 +24911,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -24897,6 +24928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -25129,12 +25166,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -25164,6 +25195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -25396,12 +25433,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -25461,6 +25492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -25693,12 +25730,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -25782,6 +25813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -26014,12 +26051,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -26103,6 +26134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -26335,12 +26372,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -26412,6 +26443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -26644,12 +26681,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -26674,18 +26705,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-titm-20260824-01",
-      "last_ts": "2026-08-24T13:30:53Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
-        }
-      ],
+      "last_id": "rivet-ship-titx-20260824-01",
+      "last_ts": "2026-08-24T18:47:27Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "rivet-ship-titm-20260824-01",
           "from": "RIVET",
@@ -26751,12 +26781,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T02:30:56Z"
-        },
-        {
-          "id": "rivet-read-is-voltage-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T15:59:47Z"
         }
       ]
     },
@@ -26765,6 +26789,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -26998,12 +27028,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -27087,6 +27111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -27319,12 +27349,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -27408,6 +27432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -27640,12 +27670,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -27669,6 +27693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -27901,12 +27931,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -27942,6 +27966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -28174,12 +28204,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -28263,6 +28287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -28495,12 +28525,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -28515,8 +28539,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
         {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
@@ -28815,6 +28845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -29047,12 +29083,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -29136,6 +29166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -29368,12 +29404,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -29457,6 +29487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -29689,12 +29725,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -29778,6 +29808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -30010,12 +30046,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -30099,6 +30129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -30331,12 +30367,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -30354,6 +30384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -30586,12 +30622,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -30639,6 +30669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -30871,12 +30907,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -30960,6 +30990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -31192,12 +31228,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -31281,6 +31311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -31513,12 +31549,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -31602,6 +31632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -31834,12 +31870,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
@@ -31923,6 +31953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titx-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T18:47:27Z"
+        },
+        {
           "id": "slack-1787578556-635259",
           "from": "CURSOR",
           "to": "TABLE",
@@ -32155,12 +32191,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
         }
       ],
       "mine": [
