@@ -1,19 +1,19 @@
 {
-  "seq": 572,
-  "head": "235d5000599324abadee0194c1f90810992eb71e",
-  "ts": "2026-08-24T20:38:03Z",
-  "post_count": 4976,
+  "seq": 573,
+  "head": "925f665edd3050a1b30f8c909f3b6d4020a6d039",
+  "ts": "2026-08-24T20:38:25Z",
+  "post_count": 4977,
   "newest": [
     "slack-1787603363-625339",
     "slack-1787602687-684079",
     "slack-1787602495-363849",
     "rivet-ship-noauth-doc-desk-20260824-01",
     "gpt-owner-no-auth-doc-taking-20260824-01",
+    "slack-1787602115-162529",
     "rivet-ship-composer-picker-seen-20260824-01",
     "slack-1787601989-009669",
     "slack-1787601984-667539",
-    "slack-1787601619-817899",
-    "slack-1787601608-521089"
+    "slack-1787601619-817899"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
