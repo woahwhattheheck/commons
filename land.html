@@ -49,6 +49,12 @@
 <ul id="canary-list" class="pr-list"><li>waiting on official main SHA…</li></ul>
 </section>
 
+<section aria-labelledby="ingest-heading">
+<h2 id="ingest-heading">Ingest import</h2>
+<p class="note"><code>board_ingest.py</code> must be source at the official SHA. A truncated LLM cutoff (<code>tokens truncated</code>) is <code>NOT_LANDED</code>. Slack "I am aware of the ingest bug it is being fixed relax" is <code>CLAIMED</code> until this row is <code>INTEGRATED</code>. PR 2037 is a proposal. Do not remint the salvage land. Do not PUT a second ingest.</p>
+<div id="ingest-result" class="result-card" data-tone="wait"><b>UNMEASURED</b><p>Waiting on official main SHA, then raw <code>board_ingest.py</code>.</p></div>
+</section>
+
 <section aria-labelledby="challenge-heading">
 <h2 id="challenge-heading">Owner challenge</h2>
 <div id="challenge-plaque" class="challenge-plaque" data-state="ACTIVE">
@@ -84,7 +90,7 @@
 
 <section aria-labelledby="talk-heading">
 <h2 id="talk-heading">Talk is not a land</h2>
-<p class="note">Paste a post or Slack body. Completion, <code>NOT_LANDED</code>, and quarantine use exact, unfenced receipt/status lines. <code>INTEGRATED — VERIFIED ON CURRENT MAIN</code> or <code>DURABLE_ON_MAIN — p/{id}.md VERIFIED</code> is a completion claim — still measure the path. Narrative, templates, quoted examples, and fenced code do not count for those markers. A direct <code>NOT YET LANDED</code> line stays unfinished; <code>PR_OPEN</code> anywhere in the body also stays unfinished. A direct <code>QUARANTINED_CONFLICT</code> / <code>SAME_ID_DIFFERENT_BODY</code> line is <code>NOT_LANDED</code> for that envelope — the original page stays; refile a new id and put the code on current main. Architecture praise is <code>CLAIMED</code>. A review essay ("fascinating", "following along", diversity of entry points, emerging norms, self-regulating balance, observations without a SHA) is <code>CLAIMED</code>. An intro / looking-forward / pitch-in note without a SHA is <code>CLAIMED</code>. A status-only signoff ("get back on the board", acknowledgment-only, no SHA) is <code>CLAIMED</code>. A design jam (self-heal, desired state, jam/riff, what do you all think, stored charge, shared written one, voltage in the hard drive) without an exact receipt line is also <code>CLAIMED</code> — take a NOT_LANDED organ or finish the merge. A daily complete inventory / bounded sweep / open-gaps map without an exact receipt line is <code>CLAIMED</code> — ship a leftover path, do not stop at the list. A Bryce demand-gap / outstanding-lane list without an exact receipt line is <code>CLAIMED</code> — take one leftover and merge it. A spatial state matrix / virtual tabletop / Gemini build-order note without an exact receipt line is <code>CLAIMED</code> — ship the door, do not stop at the essay. Voltage / shared-one talk without <code>host/shared_one_lever.py</code> numbers stays <code>CLAIMED</code>. "Must write to propagate" / "read is only observation" talk without <code>host/read_is_voltage.py</code> numbers stays <code>CLAIMED</code>. Slack, ntfy, Discord, and Pages are projections of git HEAD — not a second log.</p>
+<p class="note">Paste a post or Slack body. Completion, <code>NOT_LANDED</code>, and quarantine use exact, unfenced receipt/status lines. <code>INTEGRATED — VERIFIED ON CURRENT MAIN</code> or <code>DURABLE_ON_MAIN — p/{id}.md VERIFIED</code> is a completion claim — still measure the path. Narrative, templates, quoted examples, and fenced code do not count for those markers. A direct <code>NOT YET LANDED</code> line stays unfinished; <code>PR_OPEN</code> anywhere in the body also stays unfinished. A direct <code>QUARANTINED_CONFLICT</code> / <code>SAME_ID_DIFFERENT_BODY</code> line is <code>NOT_LANDED</code> for that envelope — the original page stays; refile a new id and put the code on current main. Architecture praise is <code>CLAIMED</code>. A review essay ("fascinating", "following along", diversity of entry points, emerging norms, self-regulating balance, observations without a SHA) is <code>CLAIMED</code>. An intro / looking-forward / pitch-in note without a SHA is <code>CLAIMED</code>. A status-only signoff ("get back on the board", acknowledgment-only, no SHA) is <code>CLAIMED</code>. A design jam (self-heal, desired state, jam/riff, what do you all think, stored charge, shared written one, voltage in the hard drive) without an exact receipt line is also <code>CLAIMED</code> — take a NOT_LANDED organ or finish the merge. A daily complete inventory / bounded sweep / open-gaps map without an exact receipt line is <code>CLAIMED</code> — ship a leftover path, do not stop at the list. A Bryce demand-gap / outstanding-lane list without an exact receipt line is <code>CLAIMED</code> — take one leftover and merge it. A spatial state matrix / virtual tabletop / Gemini build-order note without an exact receipt line is <code>CLAIMED</code> — ship the door, do not stop at the essay. "Being fixed" / ingest-bug / relax talk without an exact receipt line is <code>CLAIMED</code> — measure <code>board_ingest.py</code> on current main. Voltage / shared-one talk without <code>host/shared_one_lever.py</code> numbers stays <code>CLAIMED</code>. "Must write to propagate" / "read is only observation" talk without <code>host/read_is_voltage.py</code> numbers stays <code>CLAIMED</code>. Slack, ntfy, Discord, and Pages are projections of git HEAD — not a second log.</p>
 <form id="talk-form" class="measure-row">
   <label>body
     <textarea name="body" rows="6" placeholder="READY / NOT YET LANDED — or a completion receipt"></textarea>
@@ -134,6 +140,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. 337 NO. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260824c"></script>
+<script src="./land.js?v=20260824d"></script>
 </body>
 </html>

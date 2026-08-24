@@ -429,6 +429,26 @@ assert.ok(api.isDemandGapTalk("BRYCE DEMAND GAP — 44 OUTSTANDING, NON-DUPLICAT
 assert.ok(/demand-gap/i.test(html), "desk must name demand-gap talk as CLAIMED");
 assert.ok(api.isTabletopTalk("Gemini gave the following build order: A Spatial State Matrix (Virtual Tabletop) with movable tokens."), "tabletop essay is talk");
 assert.ok(/spatial state matrix|virtual tabletop/i.test(html), "desk must name tabletop talk as CLAIMED");
+assert.ok(api.isFixTalk("I am aware of the ingest bug it is being fixed relax"), "being-fixed copy is talk");
+assert.ok(/being-fixed|ingest-bug|board_ingest/i.test(html), "desk must name being-fixed talk as CLAIMED");
+assert.ok(html.indexOf('id="ingest-result"') >= 0, "desk must measure smashed ingest");
+assert.ok(api.ingestSmashState, "land.js must classify a smashed board_ingest.py");
+var smashTalk = api.completionStateFromText(
+  "I am aware of the ingest bug it is being fixed relax"
+);
+assert.strictEqual(smashTalk.state, "CLAIMED");
+assert.ok(/being-fixed/i.test(smashTalk.note), "being-fixed-without-SHA must stay CLAIMED");
+var smashDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ningest bug leftover shipped"
+);
+assert.strictEqual(smashDone.state, "INTEGRATED", "completion words still beat being-fixed talk");
+var smashBody = api.ingestSmashState("#!/usr/bin/env python3\nWarning: truncated output\nbits.appe…7248 tokens truncated…\n");
+assert.strictEqual(smashBody.state, "NOT_LANDED");
+assert.ok(/truncated/i.test(smashBody.note), "smash note must name the cutoff");
+var ingestOk = api.ingestSmashState("#!/usr/bin/env python3\ndef sweep(root, board):\n    return []\n");
+assert.strictEqual(ingestOk.state, "INTEGRATED");
+var ingestEmpty = api.ingestSmashState("");
+assert.strictEqual(ingestEmpty.state, "UNMEASURED");
 var tabletopTalk = api.completionStateFromText(
   "A Spatial State Matrix. Virtual tabletop. Movable tokens. Top-down map of what the network is doing."
 );
