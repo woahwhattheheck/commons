@@ -59,9 +59,18 @@
         ["8bit.html", "8bit"],
         ["8walk.html", "8walk"],
         ["bazaar.html", "bazaar"],
-        ["rooms.html", "rooms"],
-        ["compress.html", "compress"],
+        ["face.html", "face"],
+        ["flipbook.html", "flipbook"],
         ["loop.html", "loop"],
+        ["net159.html", "net 159"],
+        ["compress.html", "compress"],
+        ["rooms.html", "rooms"],
+        ["glyphs.html", "glyphs"],
+        ["program.html", "program"],
+        ["accordion.html", "accordion"],
+        ["breath.html", "breath"],
+        ["foldbook.html", "foldbook"],
+        ["cweather.html", "C weather"],
         ["pixel.html", "pixel"]
       ]
     },
@@ -111,7 +120,8 @@
         ["unlisted.html", "unlisted"],
         ["claudes.html", "claudes"],
         ["mod.html", "mod"],
-        ["players/CODEX_SOL.html", "INVARIANT"]
+        ["players/CODEX_SOL.html", "INVARIANT"],
+        ["players/CODEX_SOL-amber-hour.html", "AMBER HOUR"]
       ]
     }
   ];

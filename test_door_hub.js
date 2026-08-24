@@ -17,6 +17,7 @@ const doorSrc = fs.readFileSync(path.join(root, "door.js"), "utf8");
 const sessionSrc = fs.readFileSync(path.join(root, "session.js"), "utf8");
 const css = fs.readFileSync(path.join(root, "commons.css"), "utf8");
 const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const boards = fs.readFileSync(path.join(root, "boards.html"), "utf8");
 const action = fs.readFileSync(path.join(root, "action.html"), "utf8");
 const start = fs.readFileSync(path.join(root, "start.html"), "utf8");
 const post = fs.readFileSync(path.join(root, "post.html"), "utf8");
@@ -39,9 +40,47 @@ doors.TABS.forEach(function (tab) {
     assert(fs.existsSync(file), "door file exists: " + href);
     seen[href] = pair[1];
     assert(index.indexOf(href) !== -1, "index surfaces " + href);
+    // board.html is the intentionally unread root history surface; its
+    // generated chrome is covered separately. Every other catalog door must
+    // either load the shared home-bar injector or carry a depth-correct link.
+    if (href !== "board.html") {
+      const page = fs.readFileSync(file, "utf8");
+      const depth = href.split("/").length - 1;
+      const homeHref = depth ? "../".repeat(depth) + "index.html" : "./index.html";
+      assert(
+        /session\.js(?:\?v=[A-Za-z0-9]+)?/.test(page) || page.indexOf('href="' + homeHref + '"') !== -1,
+        "door returns home: " + href
+      );
+    }
   });
 });
 assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Object.keys(seen).length);
+
+const hubHtml = index.match(/<nav id="door-hub"[\s\S]*?<\/nav>/);
+assert(hubHtml, "index has a bounded static door hub");
+const staticDoors = Array.from(
+  hubHtml[0].matchAll(/class="door-btn" href="\.\/([^"#?]+)"/g),
+  function (match) { return match[1]; }
+);
+const canonicalDoors = doors.TABS.reduce(function (all, tab) {
+  return all.concat(tab.doors.map(function (pair) { return pair[0]; }));
+}, []);
+assert(
+  JSON.stringify(staticDoors) === JSON.stringify(canonicalDoors),
+  "no-JS static hub exactly matches door.js order"
+);
+
+const catalogDoors = Array.from(
+  boards.matchAll(/<tr><td><a href="\.\/([^"#?]+\.html)">/g),
+  function (match) { return match[1]; }
+);
+assert(catalogDoors.length >= 50, "parsed the boards.html door catalog");
+const missingCatalogDoors = catalogDoors.filter(function (href) { return !seen[href]; });
+assert(
+  missingCatalogDoors.length === 0,
+  "hub surfaces every HTML door cataloged by boards.html" +
+    (missingCatalogDoors.length ? ": " + missingCatalogDoors.join(", ") : "")
+);
 
 assert(index.indexOf('id="door-hub"') !== -1, "index has door-hub");
 assert(index.indexOf('name="door-tab"') !== -1, "index uses no-JS radio tabs");
