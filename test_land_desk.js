@@ -451,8 +451,13 @@ var ingestEmpty = api.ingestSmashState("");
 assert.strictEqual(ingestEmpty.state, "UNMEASURED");
 assert.ok(api.isRebaseTalk("this is already integrated; please rebase and avoid duplicating these paths"), "rebase copy is talk");
 assert.ok(api.isShipTalk("Make sure people do more than talk about shit and it actually gets shipped to main."), "ship-talk copy is talk");
+assert.ok(api.isLaneClaimTalk("TAKING NOW — guards. Nothing above is landed. Receipts follow per lane."), "audit-lane taking is talk");
+assert.ok(api.isLaneClaimTalk("OWNER-APPROVED AUDIT LANES. Hands off — not mine, not touching."), "hands-off taking is talk");
 assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk must name rebase talk as CLAIMED");
 assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
+assert.ok(/taking now|audit-lane|nothing above is landed|receipts follow per lane/i.test(html), "desk must name audit-lane taking as CLAIMED");
+assert.ok(html.indexOf('id="composer-result"') >= 0, "desk must measure the composer tool picker leftover");
+assert.ok(api.composerToolsState, "land.js must classify the composer tool picker leftover");
 assert.ok(/SUPERSEDED/i.test(html), "desk must name a sitting restore PR SUPERSEDED when ingest is source");
 var rebaseTalk = api.completionStateFromText(
   "This is already integrated; please rebase and avoid duplicating these paths."
@@ -468,6 +473,27 @@ var shipDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nship-talk leftover landed"
 );
 assert.strictEqual(shipDone.state, "INTEGRATED", "completion words still beat ship-talk");
+var laneTalk = api.completionStateFromText(
+  "OWNER-APPROVED AUDIT LANES. TAKING NOW. Nothing above is landed. Receipts follow per lane."
+);
+assert.strictEqual(laneTalk.state, "CLAIMED");
+assert.ok(/audit-lane|TAKING-NOW/i.test(laneTalk.note), "audit-lane-without-SHA must stay CLAIMED");
+var laneDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nTAKING NOW leftover landed"
+);
+assert.strictEqual(laneDone.state, "INTEGRATED", "completion words still beat an audit-lane taking");
+var composerEmpty = api.composerToolsState("");
+assert.strictEqual(composerEmpty.state, "UNMEASURED");
+var composerMissing = api.composerToolsState("function bindForm(form) { form.addEventListener('submit', send); }");
+assert.strictEqual(composerMissing.state, "NOT_LANDED");
+assert.ok(/not on this SHA/i.test(composerMissing.note), "missing picker is NOT_LANDED");
+var composerGate = api.composerToolsState('<input name="tools" required maxlength="800">\nfetch("tools.json")\ndata-commons-tools');
+assert.strictEqual(composerGate.state, "NOT_LANDED");
+assert.ok(/gate/i.test(composerGate.note), "required tools field is a gate");
+var composerOk = api.composerToolsState('fetch(assetUrl("tools.json"))\nvar box = document.createElement("fieldset"); box.setAttribute("data-commons-tools", "1");');
+assert.strictEqual(composerOk.state, "INTEGRATED");
+var liveCarrier = fs.readFileSync(path.join(__dirname, "carrier.js"), "utf8");
+assert.strictEqual(api.composerToolsState(liveCarrier).state, "NOT_LANDED", "live carrier.js still lacks the picker");
 var staleRestore = api.staleRestoreState(
   { number: 2037, title: "Restore smashed ingest and finish Auto-Salvage Loop leftovers", state: "open" },
   { state: "INTEGRATED" }
