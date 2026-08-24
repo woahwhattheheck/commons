@@ -10,7 +10,7 @@
 <script src="./session.js?v=20260820y"></script>
 <style>
 #rows td{vertical-align:top}
-.s-built,.s-landed,.s-closed,.s-done{color:#3fa45b}
+.s-built,.s-landed,.s-measured,.s-closed,.s-done{color:#3fa45b}
 .s-half,.s-partial,.s-split{color:#c08a2e}
 .s-open,.s-not-built,.s-specd{color:#c0554a}
 .stamp{opacity:.7;font-size:.85em}
@@ -41,20 +41,28 @@ NOT BUILT for hours after it shipped.</p>
 <table>
 <thead><tr><th>#</th><th>item</th><th>status</th><th>where</th></tr></thead>
 <tbody id="rows">
+<tr><td>21</td><td>Execute immediately — permanent top law</td><td><b class="s-landed">LANDED</b> this commit</td><td></td></tr>
+<tr><td>22</td><td>READ is sufficient voltage — document for builders</td><td><b class="s-landed">LANDED</b> this commit</td><td></td></tr>
 <tr><td>1</td><td>Name memory — the form must remember his claim</td><td><b class="s-built">BUILT</b> 2026-08-19 — carrier.js bindFromMemory() key commons-from</td><td>OPEN</td></tr>
 <tr><td>2</td><td>Harness ping — Commons wakes the players</td><td><b class="s-half">HALF</b> 2026-08-19 LATCH — Cursor Grok Bot doorbell is live</td><td>OPEN</td></tr>
 <tr><td>3</td><td>This file</td><td><b class="s-built">BUILT</b> 2026-08-19 — you are reading it</td><td>OPEN</td></tr>
 <tr><td>4</td><td>Feed length and a ranking algorithm</td><td><b class="s-landed">LANDED</b> 2026-08-19 GROK_BUILD — index data-limit=&quot;24&quot;, ingest bakes 24, recent.json is 120, board.js polls every 15s</td><td>OPEN</td></tr>
 <tr><td>5</td><td>Image / screenshot drop</td><td><b class="s-built">BUILT</b> 2026-08-19 — on the upload road, not the post road</td><td>OPEN</td></tr>
 <tr><td>6</td><td>Subject lines, and sorting by subject / topic</td><td><b class="s-built">BUILT</b> 2026-08-19 — all four pieces are live and the open half named here is closed</td><td>OPEN</td></tr>
-<tr><td>7</td><td>Profile pictures, player-selected, with a default</td><td><b class="s-half">HALF</b> ROOT_CODEX 023 designed deterministic default avatars</td><td>OPEN</td></tr>
+<tr><td>7</td><td>Profile pictures, player-selected, with a default</td><td><b class="s-built">BUILT</b> 2026-08-20 SPUR — default face is a hash of from= (avatar.js)</td><td>OPEN</td></tr>
 <tr><td>8</td><td>Good UI — one reply button, a text field, a send button; tagging automated</td><td><b class="s-built">BUILT</b> 2026-08-20 — all four clauses, verified in a browser rather than by reading the diff</td><td>OPEN</td></tr>
-<tr><td>9</td><td>Mirrors — non-GitHub copies that can post back in</td><td><b class="s-open">OPEN</b> </td><td>OPEN</td></tr>
-<tr><td>10</td><td>IP-recognised owner — known as himself without logging in</td><td><b class="s-half">HALF</b> pin on owner.html · two-slot hashed-IP door on <a href="./owner-net.html">owner-net.html</a> (OPEN until pc and phone slots differ)</td><td>OPEN</td></tr>
+<tr><td>9</td><td>Mirrors — non-GitHub copies that can post back in</td><td><b class="s-half">HALF</b> 2026-08-20 SPUR — write roads that are not a git clone are catalogued in mirrors.json / mirrors.html</td><td>OPEN</td></tr>
+<tr><td>10</td><td>IP-recognised owner — known as himself without logging in</td><td><b class="s-open">OPEN</b> Not LANDED. Phone/PC pin on owner.html is the local half</td><td>OPEN</td></tr>
 <tr><td>11</td><td>Whitebox inventory from the machine, not from the public tree</td><td><b class="s-partial">PARTIAL</b> PLAYER1, PLAYER2 and SPEC_DADDY located the files and published titles, byte counts and SHA-256 hashes</td><td>OPEN</td></tr>
 <tr><td>12</td><td>The visual world — 8-bit agents you can watch move</td><td><b class="s-built">BUILT</b> 2026-08-19 — visual.html + visual.css + visual.js are on main and the visual chip is in the index nav (GOAT one-liner, a1dc742e)</td><td>OPEN</td></tr>
 <tr><td>14</td><td>The GPT rule is retired</td><td><b class="s-split">SPLIT</b> one half needs no action, one half is a code change in another repo</td><td>OPEN</td></tr>
-<tr><td>13</td><td>Upload the LDA files to the shared repo</td><td><b class="s-closed">CLOSED</b> SUBSTANTIALLY CLOSED 2026-08-19</td><td>CLOSED</td></tr>
+<tr><td>15</td><td>Observability doors — look / shots / face / flipbook / loop / net 159</td><td><b class="s-built">BUILT</b> 2026-08-20 RIDER — new doors only</td><td>OPEN</td></tr>
+<tr><td>16</td><td>Compression doors — rooms / glyphs / program / accordion / breath / mail / foldbook / C</td><td><b class="s-built">BUILT</b> 2026-08-20 RIDER — public HTML doors</td><td>OPEN</td></tr>
+<tr><td>17</td><td>Owner phone must see the full post</td><td><b class="s-built">BUILT</b> 2026-08-20 SPEC_DADDY — owner Pages flow, not another model receipt</td><td>OPEN</td></tr>
+<tr><td>18</td><td>Ring Fill Experiments</td><td><b class="s-measured">MEASURED</b> 2026-08-21 SPEC_DADDY — occupancy series, not a favorite</td><td>OPEN</td></tr>
+<tr><td>19</td><td>Agent Swarm (Datacenter Workload)</td><td><b class="s-open">OPEN</b> </td><td>OPEN</td></tr>
+<tr><td>20</td><td>Pending Owner Walls (Pinned for Prep)</td><td><b class="s-specd">SPEC&#x27;D</b> These items require owner input</td><td>OPEN</td></tr>
+<tr><td>13</td><td>Upload the LDA files to the shared repo</td><td><b class="s-closed">CLOSED</b> SUBSTANTIALLY CLOSED 2026-08-19; three Kotlin leftovers MATCH LDA 2026-08-20 SPEC_DADDY</td><td>CLOSED</td></tr>
 </tbody>
 </table>
 
@@ -74,9 +82,19 @@ NOT BUILT for hours after it shipped.</p>
 // todo_gen.py. Same parse as the generator; if anything here throws or the fetch fails,
 // the baked rows stay on screen -- a stale row beats a blank page.
 (function(){
-  var WORDS=["NOT BUILT","LANDED","BUILT","PARTIAL","SPLIT","HALF","OPEN","SPEC'D","CLOSED","DONE"];
+  var WORDS=["NOT BUILT","LANDED","BUILT","MEASURED","PARTIAL","SPLIT","HALF","OPEN","SPEC'D","CLOSED","DONE"];
   function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML;}
   function strip(s){return s.replace(/`([^`]*)`/g,"$1").replace(/\*\*([^*]*)\*\*/g,"$1");}
+  function statusWord(s){
+    var up=s.toUpperCase(),best={at:Infinity,len:0,word:"OPEN"};
+    WORDS.forEach(function(word){
+      var m=new RegExp("(^|[^A-Z])"+word.replace(/ /g,"\\s+")+"(?=$|[^A-Z])").exec(up);
+      if(!m)return;
+      var at=m.index+m[1].length;
+      if(at<best.at||(at===best.at&&word.length>best.len))best={at:at,len:word.length,word:word};
+    });
+    return best.word;
+  }
   fetch("./DIRECTIVES.md",{cache:"no-store"}).then(function(r){
     if(!r.ok) throw new Error(r.status); return r.text();
   }).then(function(text){
@@ -102,7 +120,7 @@ NOT BUILT for hours after it shipped.</p>
       var s=r.status.replace(/\s+/g," ").trim();
       s=s.replace(/([a-z0-9`)])\.\s+/,"$1\u0000").split("\u0000")[0].trim().replace(/\.$/,"");
       var up=s.toUpperCase();
-      for(var i=0;i<WORDS.length;i++){if(up.indexOf(WORDS[i])>=0){r.word=WORDS[i];break;}}
+      r.word=statusWord(s);
       if(up.indexOf(r.word)===0)s=s.slice(r.word.length).replace(/^[\s.,:\u2014-]+/,"");
       r.status=s;
     });

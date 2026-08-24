@@ -31,10 +31,26 @@ HEAD = re.compile(r"^###\s+(\d+)\.\s+(.+?)\s*$")
 STATUS = re.compile(r"\*\*Status:\*\*\s*(.+)")
 SECTION = re.compile(r"^##\s+(.+?)\s*$")
 
-# The word that decides the colour. Longest-first so LANDED does not match inside a
-# longer word and NOT BUILT is never read as BUILT.
-WORDS = ["NOT BUILT", "LANDED", "BUILT", "PARTIAL", "SPLIT", "HALF", "OPEN",
-         "SPEC'D", "CLOSED", "DONE"]
+# The word that decides the colour. status_word() chooses the earliest bounded token,
+# so OPEN wins in "OPEN. Not LANDED" and NOT BUILT is never read as BUILT.
+WORDS = ["NOT BUILT", "LANDED", "BUILT", "MEASURED", "PARTIAL", "SPLIT", "HALF",
+         "OPEN", "SPEC'D", "CLOSED", "DONE"]
+
+
+def status_word(status):
+    """Return the first status token, not a later negated token.
+
+    A status such as ``OPEN. Not LANDED.`` must stay OPEN. The old fixed-order
+    substring scan found LANDED later in that sentence and painted an unfinished
+    directive green.
+    """
+    up = status.upper()
+    hits = []
+    for word in WORDS:
+        match = re.search(r"(?<![A-Z])%s(?![A-Z])" % re.escape(word), up)
+        if match:
+            hits.append((match.start(), -len(word), word))
+    return min(hits)[2] if hits else "OPEN"
 
 
 def parse(text):
@@ -70,10 +86,7 @@ def parse(text):
         # one sentence of it -- the rest is receipts, which belong in the file
         s = re.split(r"(?<=[a-z0-9`)])\.\s", s)[0].strip().rstrip(".")
         up = s.upper()
-        for w in WORDS:
-            if w in up:
-                r["word"] = w
-                break
+        r["word"] = status_word(s)
         # do not print "BUILT BUILT 2026-08-19 -- ..."; the badge already says the word
         if up.startswith(r["word"]):
             s = s[len(r["word"]):].lstrip(" .,:\u2014-")
@@ -99,17 +112,26 @@ def render(rows):
     return "\n".join(out)
 
 
-def main():
-    rows = parse(open(SRC, encoding="utf-8").read())
+def project(page, directives):
+    rows = parse(directives)
     if not rows:
-        print("todo_gen: parsed 0 directives -- refusing to write an empty todo", file=sys.stderr)
-        return 1
+        raise ValueError("parsed 0 directives -- refusing to write an empty todo")
+    if '<tbody id="rows">' not in page:
+        raise ValueError('todo.html has no <tbody id="rows"> to fill')
+    new, replacements = re.subn(r'(<tbody id="rows">).*?(</tbody>)',
+                                lambda m: m.group(1) + "\n" + render(rows) + "\n" + m.group(2),
+                                page, count=1, flags=re.S)
+    if replacements != 1:
+        raise ValueError("todo.html has no closing </tbody> for rows")
+    return new, rows
+
+
+def main():
     page = open(OUT, encoding="utf-8").read()
-    new = re.sub(r"(<tbody id=\"rows\">).*?(</tbody>)",
-                 lambda m: m.group(1) + "\n" + render(rows) + "\n" + m.group(2),
-                 page, count=1, flags=re.S)
-    if new == page and "<tbody id=\"rows\">" not in page:
-        print("todo_gen: todo.html has no <tbody id=\"rows\"> to fill", file=sys.stderr)
+    try:
+        new, rows = project(page, open(SRC, encoding="utf-8").read())
+    except ValueError as exc:
+        print("todo_gen: %s" % exc, file=sys.stderr)
         return 1
     open(OUT, "w", encoding="utf-8").write(new)
     print("todo_gen: %d directives baked into %s" % (len(rows), OUT))
