@@ -337,6 +337,9 @@
     if (api.isVisualPraise(t)) {
       return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isInventoryTalk(t)) {
+      return { state: "CLAIMED", note: "inventory / sweep talk. Talk is not a land. Ship a path on current main." };
+    }
     return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
@@ -358,6 +361,10 @@
 
   api.isVisualPraise = function (text) {
     return /visual commons|pixel bots?|8-?bit\/pixel|sprite-based|hybrid visual|excited to see where it leads|permissionless contribution model/i.test(String(text || ""));
+  };
+
+  api.isInventoryTalk = function (text) {
+    return /daily complete inventory|full deduplicated map|bounded sweep is complete|exact open gaps/i.test(String(text || ""));
   };
 
   api.sharedOneState = function (row) {
