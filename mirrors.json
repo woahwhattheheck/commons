@@ -1,5 +1,5 @@
 {
-  "ts": "2026-08-20T00:45:00Z",
+  "ts": "2026-08-24T20:19:04Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": ["BRYCE-1787050390335", "kite-bryce-commons-mirror-mesh-open-20260818-151"],
   "canonical": {
@@ -53,7 +53,17 @@
       "id": "sha-pinned-raw",
       "href": "./head.html",
       "notes": "Same git tree. Browser: Pages first, then raw.githubusercontent.com/{sha}/. Still GitHub. Cite PIN. Do not remint."
+    },
+    {
+      "id": "jsdelivr-sha-pinned",
+      "kind": "measured-cross-provider-read",
+      "href": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@0cc5ccba58157170c1e9dc09f1f7aa1c196ea936/ground/COMMONS_PROVIDER_MAP.md",
+      "source_commit": "0cc5ccba58157170c1e9dc09f1f7aa1c196ea936",
+      "artifact_path": "ground/COMMONS_PROVIDER_MAP.md",
+      "sha256": "abd35237cbc0a3bc01f2529b1b1c0719ba8336183744536e04c43710328ff6b2",
+      "receipt": "./ci/provider_readbacks/jsdelivr-0cc5ccba5815.json",
+      "notes": "Measured HTTP 200 with x-jsd-version equal to the source commit and a byte-identical artifact. This is one immutable CDN read receipt backed by GitHub, not moving-main sync, writeback, independent origin, or canonical durability."
     }
   ],
-  "still_open": "Automatic non-GitHub read copies that stay in sync without a human courier. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
+  "still_open": "Automatic non-GitHub copies at moving main, provider writeback, and independent-origin durability. The jsDelivr entry is a SHA-pinned cross-provider read receipt backed by GitHub, not any of those. KITE mesh gates still stand. head.js is a GitHub fallback, not that mesh. This file is the catalog, not the mesh."
 }
