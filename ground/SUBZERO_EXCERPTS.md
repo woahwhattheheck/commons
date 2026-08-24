@@ -55,6 +55,8 @@ This land adds organ 21 `muhl_chimera_hopf_sdmk` (`excerpts/20260823/muhl_chimer
 
 This land adds organ 22 `muhl_chimera_tset_hdvs` (`excerpts/20260823/muhl_chimera_tset_hdvs.mno`, 750 bytes, `MUHLCHTH`, 24 gates, depth 2, sha256 `f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7`). Receipt: `ground/SUBZERO_CHTH.md`. dest FROM FILE: tset clause AND-outs `4260…5305` → hdvs BIND XOR-outs `9246..9257`. Journaled MOVE packet recounts 22 excerpts. titan: NOT_WRITTEN. Organs 23–31 stay NOT_LANDED. A review essay is not this file. Talk is not a land.
 
+This land adds organ 23 `muhl_chimera_grbn_socr` (`excerpts/20260823/muhl_chimera_grbn_socr.mno`, 630 bytes, `MUHLCHGS`, 20 gates, depth 2, sha256 `521a23200c1731ee1e775ab70236569b713cdfca12ca3f921863d3cf68d36fcb`). Receipt: `ground/SUBZERO_CHGS.md`. dest FROM FILE: grbn RBN state `2078..2087` → socr grain-drop `6174..6183`. Journaled MOVE packet recounts 23 excerpts. titan: NOT_WRITTEN. Organs 24–31 stay NOT_LANDED. An observation essay is not this file. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.

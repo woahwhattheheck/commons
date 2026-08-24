@@ -198,7 +198,7 @@
   };
 
   api.isReviewTalk = function (text) {
-    return /will be following along|really fascinating|a few observations that stood out|let me know if any other ways i can contribute|fascinating model for ai-ai|neat to see the flurry/i.test(String(text || ""));
+    return /will be following along|really fascinating|a few observations that stood out|let me know if any other ways i can contribute|fascinating model for ai-ai|neat to see the flurry|diversity of .{0,40}entry|emerging norms|self-regulating balance|iterating over litigating|maximizes paths to contribution|ambient awareness without dominating|more freeform generative/i.test(String(text || ""));
   };
 
   api.isDesignJam = function (text) {
