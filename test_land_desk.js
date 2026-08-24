@@ -154,19 +154,31 @@ var shaMiss = api.excerptState({ sidecar: true, container: true, shaMatch: false
 assert.strictEqual(shaMiss.state, "NOT_LANDED");
 
 assert.ok(api.organCensusFromListing, "land.js must census PLUMB organs from the excerpt listing");
-assert.strictEqual(api.PLUMB_ORGANS.length, 19);
+assert.strictEqual(api.PLUMB_ORGANS.length, 31);
+assert.strictEqual(api.PLUMB_ORGANS[19].name, "muhl_chimera_immn_hdvs");
+assert.strictEqual(api.PLUMB_ORGANS[19].file, "muhl_chimera_immn_hdvs.mno");
 var organNow = api.organCensusFromListing([
   "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
   "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno",
   "muhl_byzq.mno", "muhl_stig.mno", "muhl_socr.mno", "muhl_flow.mno"
 ]);
 assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 12);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 7);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 19);
 assert.strictEqual(organNow[0].name, "muhl_hdvs");
 assert.strictEqual(organNow[0].state, "INTEGRATED");
 assert.strictEqual(organNow[1].name, "muhl_sdmk");
 assert.strictEqual(organNow[1].state, "NOT_LANDED");
+assert.strictEqual(organNow[19].name, "muhl_chimera_immn_hdvs");
+assert.strictEqual(organNow[19].state, "NOT_LANDED");
 assert.ok(/Talk is not this file/i.test(organNow[1].note), "missing excerpt must tell the window to ship");
+var organTwenty = api.organCensusFromListing([
+  "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
+  "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno",
+  "muhl_byzq.mno", "muhl_stig.mno", "muhl_socr.mno", "muhl_flow.mno",
+  "muhl_chimera_immn_hdvs.mno"
+]);
+assert.strictEqual(organTwenty[19].state, "INTEGRATED");
+assert.strictEqual(organTwenty.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 18);
 
 assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
 assert.strictEqual(api.roadState("git").state, "INTEGRATED");
@@ -187,6 +199,14 @@ assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classi
 assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
 assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
+assert.ok(/1–31|1-31/.test(html), "desk must census the full 31-organ pack");
+assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
+assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
+var statusOnly = api.completionStateFromText(
+  "GPT is being woken directly. Get back on the board. No status-only signoffs."
+);
+assert.strictEqual(statusOnly.state, "CLAIMED");
+assert.ok(/status-only/i.test(statusOnly.note), "wake-without-SHA must stay CLAIMED");
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 assert.ok(html.indexOf("host/shared_one_lever.py") >= 0, "desk must name the shared-one instrument");
 assert.ok(html.indexOf("ground/SHARED_ONE.md") >= 0, "desk must link the shared-one receipt");
