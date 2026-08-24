@@ -535,14 +535,26 @@ window.COMMONS_BOARD = (function () {
     if (!all.length) return null;
     var prefer = (cache.freshIds && cache.freshIds[0]) || "";
     var i;
-    if (prefer) {
-      for (i = 0; i < all.length; i++) {
-        if (all[i] && all[i].id === prefer) return all[i];
+    var top = all[0];
+    var topStamp = stampOf(top);
+    for (i = 1; i < all.length; i++) {
+      var nextStamp = stampOf(all[i]);
+      if (nextStamp > topStamp) {
+        top = all[i];
+        topStamp = nextStamp;
       }
     }
-    var top = all[0];
-    for (i = 1; i < all.length; i++) {
-      if (stampOf(all[i]) > stampOf(top)) top = all[i];
+    // HEAD fresh.md order breaks equal-clock ties, but a failed publisher can
+    // leave that file behind newer durable/live rows.  Never let its stale
+    // first id freeze the visible NEWEST stamp.
+    if (prefer) {
+      for (i = 0; i < all.length; i++) {
+        if (all[i] && all[i].id === prefer) {
+          var preferStamp = stampOf(all[i]);
+          if (preferStamp && (!topStamp || preferStamp >= topStamp)) return all[i];
+          break;
+        }
+      }
     }
     return top;
   }
