@@ -108,6 +108,12 @@ def main():
         failed = open(os.path.join(os.path.dirname(__file__), "failed.html"), encoding="utf-8").read()
         assert "Rescued messages" not in failed
         assert "belongs in git" in failed
+        assert "transport and parse integrity only" in failed
+        assert "operational diagnostics, not posting policy" in failed
+        assert "this list never decides access" in failed
+        assert "TOS rejects:" not in failed
+        assert "tos-ban drops the body" not in failed
+        assert "tos-death" not in failed
 
         print("ok  ntfy envelope lands as git; failed.html is not a body dump")
         return 0
