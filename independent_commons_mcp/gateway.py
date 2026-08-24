@@ -163,7 +163,7 @@ class Gateway:
         accepted = [row for row in lane_rows if row.get("state") in {"ACCEPTED", "ALIASED"}]
         failed = [row for row in lane_rows if row.get("state") == "ERROR"]
         skipped = [row for row in lane_rows if row.get("state") in {"UNCONFIGURED", "SKIPPED"}]
-        if durable and failed:
+        if durable and (failed or skipped):
             state = "PARTIAL"
             ok = False
         elif durable:
