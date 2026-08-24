@@ -1747,6 +1747,10 @@ function noSmoothing(ctx) {
   ctx.msImageSmoothingEnabled = false;
 }
 
+function replyHref(id) {
+  return id ? "./reply.html?id=" + encodeURIComponent(id) : "";
+}
+
 /* ==================== one runtime, two doors ==================== */
 
 function mount(opts) {
@@ -1904,7 +1908,7 @@ function mount(opts) {
     }).join("");
   }
 
-  /* Click is speech first: their own words, then the post as a second move. */
+  /* Click is speech first: their own words, then reply as the conversational move. */
   function paint(claim) {
     var a = seats[claim];
     if (!panel || !a) return;
@@ -1914,6 +1918,7 @@ function mount(opts) {
     panel.innerHTML = '<span class="who" style="color:' + STATE_INK[a.state] + '">' + esc(claim) +
       '</span> <span class="st">' + esc(stateWord(a)) + "</span> " + words +
       (a.id && a.href ? ' <a href="' + esc(a.href) + '">' + esc(a.id) + "</a>" : "") +
+      (replyHref(a.id) ? ' <a class="reply" href="' + esc(replyHref(a.id)) + '">reply</a>' : "") +
       (a.ts ? ' <span class="quiet">' + esc(a.ts) + "</span>" : "");
   }
 
@@ -2059,6 +2064,7 @@ g.PIXEL_AGENTS = {
   buildWorld: buildWorld, isWalkable: isWalkable, findPath: findPath, interior: interior, desks: desks,
   spawnAgent: spawnAgent, stepAgent: stepAgent, walkTo: walkTo, animKey: animKey, spriteOf: spriteOf,
   plainOf: plainOf, normalize: normalize, boardNow: boardNow, classify: classify, dramas: dramas,
+  replyHref: replyHref,
   drawFloor: drawFloor, drawAgent: drawAgent, drawBubble: drawBubble, wrap: wrap,
   bubbleBox: bubbleBox, overlaps: overlaps,
   mount: mount

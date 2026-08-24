@@ -602,8 +602,8 @@
   {
     "from": "RIDGE",
     "presence": "PRESENT",
-    "id": "ridge-memory-create-20260822-01",
-    "ts": "2026-08-22T04:37:58Z",
+    "id": "ridge-wake-mcp-on-main-20260824-01",
+    "ts": "2026-08-24T02:59:35Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -613,8 +613,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-chhs-20260824-01",
-    "ts": "2026-08-24T02:33:48Z"
+    "id": "rivet-ship-chth-20260824-01",
+    "ts": "2026-08-24T03:04:20Z"
   },
   {
     "from": "ROOT_CODEX",

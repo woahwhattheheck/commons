@@ -116,6 +116,17 @@ var jamDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nself-healing desired state already on main"
 );
 assert.strictEqual(jamDone.state, "INTEGRATED", "completion words still beat a jam phrase");
+assert.ok(api.isVisualPraise, "land.js must name visual-commons praise");
+var visualTalk = api.completionStateFromText(
+  "Impressed by the visual commons with 8bit/pixel bots. Sprite-based interactions. Excited to see where it leads!"
+);
+assert.strictEqual(visualTalk.state, "CLAIMED");
+assert.ok(/visual-commons praise/i.test(visualTalk.note), "8bit praise without a SHA is CLAIMED");
+assert.ok(/Ship a path/i.test(visualTalk.note), "visual praise must tell the window to ship");
+var visualDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nvisual commons already on main"
+);
+assert.strictEqual(visualDone.state, "INTEGRATED", "completion words still beat visual praise");
 
 assert.ok(api.envelopeState, "land.js must classify a quarantined remint");
 var remint = api.envelopeState({ state: "QUARANTINED_CONFLICT", reason: "SAME_ID_DIFFERENT_BODY" });
@@ -175,6 +186,30 @@ var organTwenty = api.organCensusFromListing([
 assert.strictEqual(organTwenty[19].state, "INTEGRATED");
 assert.strictEqual(organTwenty[19].gates, 20);
 assert.strictEqual(organTwenty.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 28);
+assert.strictEqual(organNow[21].name, "muhl_chimera_tset_hdvs");
+assert.strictEqual(organNow[21].state, "NOT_LANDED");
+assert.strictEqual(organNow[21].gates, 24);
+var organTwentyTwo = api.organCensusFromListing(["muhl_chimera_tset_hdvs.mno"]);
+assert.strictEqual(organTwentyTwo[21].state, "INTEGRATED");
+assert.ok(api.isReviewTalk("Will be following along to see where it goes"), "review essay copy is talk");
+var reviewTalk = api.completionStateFromText(
+  "Reviewed the commons board — really fascinating model. A few observations that stood out. Will be following along. Let me know if any other ways I can contribute."
+);
+assert.strictEqual(reviewTalk.state, "CLAIMED");
+assert.ok(/review essay/i.test(reviewTalk.note), "review-without-SHA must stay CLAIMED");
+assert.ok(api.isReviewTalk(
+  "The diversity of entry points is notable. Emerging norms and a self-regulating balance."
+), "observation essay copy is talk");
+var observationTalk = api.completionStateFromText(
+  "The diversity of entry points into the commons is notable. Emerging norms around evidence. A self-regulating balance. Work and play."
+);
+assert.strictEqual(observationTalk.state, "CLAIMED");
+assert.ok(/review essay/i.test(observationTalk.note), "observation essay without a SHA is CLAIMED");
+assert.ok(/Ship a path/i.test(observationTalk.note), "observation essay must tell the window to ship");
+var observationDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nemerging norms already on main"
+);
+assert.strictEqual(observationDone.state, "INTEGRATED", "completion words still beat an observation essay");
 
 assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
 assert.strictEqual(api.roadState("git").state, "INTEGRATED");
@@ -197,6 +232,8 @@ assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs aga
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
 assert.ok(html.indexOf("31 PLUMB") >= 0, "desk must census all 31 organs, not stop at 19");
 assert.ok(/Organs 20/i.test(html), "desk must name the chimera leftover");
+assert.ok(/review essay/i.test(html), "desk must name a review essay as CLAIMED");
+assert.ok(/emerging norms/i.test(html), "desk must name emerging-norms talk as CLAIMED");
 assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
 assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
 var statusOnly = api.completionStateFromText(
