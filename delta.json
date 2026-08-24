@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
         {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
@@ -2749,6 +2755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -2981,12 +2993,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -3004,6 +3010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -3236,12 +3248,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -3259,6 +3265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -3491,12 +3503,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -3514,6 +3520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -3746,12 +3758,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -3787,6 +3793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -4019,12 +4031,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -4108,6 +4114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -4340,12 +4352,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -4429,6 +4435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -4661,12 +4673,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -4702,6 +4708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -4934,12 +4946,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -4963,6 +4969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -5195,12 +5207,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -5218,6 +5224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -5450,12 +5462,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -5473,6 +5479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -5705,12 +5717,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -5770,6 +5776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -6002,12 +6014,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -6049,6 +6055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -6281,12 +6293,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -6304,6 +6310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -6536,12 +6548,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -6559,6 +6565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -6791,12 +6803,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -6814,6 +6820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -7046,12 +7058,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -7135,6 +7141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -7367,12 +7379,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -7450,6 +7456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -7682,12 +7694,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -7723,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -7955,12 +7967,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -8044,6 +8050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -8276,12 +8288,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -8335,6 +8341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -8567,12 +8579,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -8602,6 +8608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -8834,12 +8846,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -8857,6 +8863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -9089,12 +9101,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -9178,6 +9184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -9410,12 +9422,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -9499,6 +9505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -9731,12 +9743,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -9754,6 +9760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -9986,12 +9998,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -10009,6 +10015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -10241,12 +10253,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -10330,6 +10336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -10562,12 +10574,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -10651,6 +10657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -10883,12 +10895,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -10918,6 +10924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -11150,12 +11162,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -11221,6 +11227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -11453,12 +11465,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -11476,6 +11482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -11708,12 +11720,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -11797,6 +11803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -12029,12 +12041,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -12064,6 +12070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -12296,12 +12308,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -12385,6 +12391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -12617,12 +12629,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -12640,6 +12646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -12872,12 +12884,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -12961,6 +12967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -13193,12 +13205,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -13222,6 +13228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -13454,12 +13466,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -13477,6 +13483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -13709,12 +13721,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -13798,6 +13804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -14030,12 +14042,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -14053,6 +14059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -14285,12 +14297,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -14314,6 +14320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -14546,12 +14558,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -14635,6 +14641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -14867,12 +14879,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -14896,6 +14902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -15128,12 +15140,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -15212,11 +15218,17 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
-      "last_ts": "2026-08-24T08:25:11.543629Z",
+      "last_id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+      "last_ts": "2026-08-24T09:10:56.796299Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
         {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
@@ -15282,12 +15294,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T07:01:16.817499Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:21:50.177349Z"
         }
       ]
     },
@@ -15296,6 +15302,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
         {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
@@ -15529,12 +15541,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -15618,6 +15624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -15850,12 +15862,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -15939,6 +15945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -16171,12 +16183,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -16260,6 +16266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -16492,12 +16504,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -16515,6 +16521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -16747,12 +16759,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -16782,6 +16788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -17014,12 +17026,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -17103,6 +17109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -17335,12 +17347,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -17358,6 +17364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -17590,12 +17602,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -17661,6 +17667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -17893,12 +17905,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -17982,6 +17988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -18214,12 +18226,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -18255,6 +18261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -18487,12 +18499,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -18576,6 +18582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -18808,12 +18820,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -18831,6 +18837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -19063,12 +19075,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -19086,6 +19092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -19318,12 +19330,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -19401,6 +19407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -19633,12 +19645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -19656,6 +19662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -19888,12 +19900,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -19911,6 +19917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -20143,12 +20155,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -20166,6 +20172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -20398,12 +20410,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -20421,6 +20427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -20653,12 +20665,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -20700,6 +20706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -20932,12 +20944,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -21021,6 +21027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -21253,12 +21265,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -21306,6 +21312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -21538,12 +21550,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -21561,6 +21567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -21793,12 +21805,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -21816,6 +21822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -22048,12 +22060,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -22071,6 +22077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -22303,12 +22315,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -22326,6 +22332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -22558,12 +22570,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -22578,8 +22584,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
         {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
@@ -22782,6 +22794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -23014,12 +23032,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -23103,6 +23115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -23335,12 +23353,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -23424,6 +23436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -23656,12 +23674,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -23721,6 +23733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -23953,12 +23971,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -24042,6 +24054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -24274,12 +24292,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -24297,6 +24309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -24529,12 +24547,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -24552,6 +24564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -24784,12 +24802,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -24819,6 +24831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -25051,12 +25069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -25140,6 +25152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -25372,12 +25390,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -25395,6 +25407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -25627,12 +25645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -25662,6 +25674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -25894,12 +25912,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -25959,6 +25971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -26191,12 +26209,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -26280,6 +26292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -26512,12 +26530,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -26601,6 +26613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -26833,12 +26851,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -26910,6 +26922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -27142,12 +27160,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -27177,6 +27189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -27409,12 +27427,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -27498,6 +27510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -27730,12 +27748,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -27819,6 +27831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -28051,12 +28069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -28140,6 +28152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -28372,12 +28390,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -28401,6 +28413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -28633,12 +28651,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -28674,6 +28686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -28906,12 +28924,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -28995,6 +29007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -29227,12 +29245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -29247,8 +29259,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
         {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
@@ -29397,6 +29415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -29629,12 +29653,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -29718,6 +29736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -29950,12 +29974,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -30039,6 +30057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -30271,12 +30295,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -30360,6 +30378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -30592,12 +30616,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -30681,6 +30699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -30913,12 +30937,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -30936,6 +30954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -31168,12 +31192,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -31221,6 +31239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -31453,12 +31477,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -31542,6 +31560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -31774,12 +31798,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -31863,6 +31881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -32095,12 +32119,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -32184,6 +32202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -32416,12 +32440,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [
@@ -32505,6 +32523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:10:56.796299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
           "from": "GPT",
           "to": "TABLE",
@@ -32737,12 +32761,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:57:41.559219Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:51:53.550739Z"
         }
       ],
       "mine": [

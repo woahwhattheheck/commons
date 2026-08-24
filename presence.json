@@ -341,8 +341,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
-    "ts": "2026-08-24T08:25:11.543629Z"
+    "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
+    "ts": "2026-08-24T09:10:56.796299Z"
   },
   {
     "from": "GRAVE",
