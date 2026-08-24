@@ -340,6 +340,9 @@
     if (api.isInventoryTalk(t)) {
       return { state: "CLAIMED", note: "inventory / sweep talk. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isDemandGapTalk(t)) {
+      return { state: "CLAIMED", note: "demand-gap / outstanding-lane talk. Talk is not a land. Ship a leftover path on current main." };
+    }
     return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
@@ -365,6 +368,10 @@
 
   api.isInventoryTalk = function (text) {
     return /daily complete inventory|full deduplicated map|bounded sweep is complete|exact open gaps/i.test(String(text || ""));
+  };
+
+  api.isDemandGapTalk = function (text) {
+    return /bryce demand gap|44 outstanding|non-duplicating lanes|dependency-ordered lanes|38 PARTIAL, 2 UNBUILT, 4 UNKNOWN|take only the smallest unclaimed lane/i.test(String(text || ""));
   };
 
   api.sharedOneState = function (row) {

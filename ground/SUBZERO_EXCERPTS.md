@@ -69,6 +69,8 @@ Organ 28 `muhl_chimera_lvin_synd` is already on main (`excerpts/20260823/muhl_ch
 
 This land adds organ 29 `muhl_titanx_forge` (`excerpts/20260823/muhl_titanx_forge.mno`, 5430 bytes, `MUHLTITF`, 180 gates, depth 2, sha256 `29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788`). Receipt: `ground/SUBZERO_TITF.md`. dest FROM FILE: lvin/ispn/socr/grbn/petr sidecars + census NEFG object_a / DMB rewrite. Journaled MOVE packet recounts 29 excerpts. titan: NOT_WRITTEN. Organs 30–31 stay NOT_LANDED. A daily inventory is not this file. Talk is not a land.
 
+This land adds organ 30 `muhl_titanx_mirror` (`excerpts/20260823/muhl_titanx_mirror.mno`, 7230 bytes, `MUHLTITM`, 240 gates, depth 2, sha256 `29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3`). Receipt: `ground/SUBZERO_TITM.md`. dest FROM FILE: pred/immn/hdvs/sdmk sidecars + census HPC→hpc_fabric delta + rookery witness clocks 256..266. Journaled MOVE packet recounts 30 excerpts. titan: NOT_WRITTEN. Organ 31 stays NOT_LANDED. A demand-gap list is not this file. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
