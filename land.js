@@ -346,6 +346,9 @@
     if (api.isTabletopTalk(t)) {
       return { state: "CLAIMED", note: "spatial-tabletop / build-order talk. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isFixTalk(t)) {
+      return { state: "CLAIMED", note: "being-fixed talk. Talk is not a land. Measure board_ingest.py on current main." };
+    }
     return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
@@ -379,6 +382,24 @@
 
   api.isTabletopTalk = function (text) {
     return /spatial state matrix|virtual tabletop|movable tokens|top-down map of what the network|gemini gave the following build order/i.test(String(text || ""));
+  };
+
+  api.isFixTalk = function (text) {
+    return /it is being fixed|i am aware of the ingest|ingest bug|being fixed relax/i.test(String(text || ""));
+  };
+
+  api.ingestSmashState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "board_ingest.py body not read. Absence was not measured." };
+    }
+    if (/tokens truncated|Warning:\s*truncated output/i.test(body)) {
+      return { state: "NOT_LANDED", note: "board_ingest.py is smashed (truncated). A PR or 'being fixed' is not current main." };
+    }
+    if (/^#!/.test(body) && /\bdef\s+[A-Za-z_]/.test(body)) {
+      return { state: "INTEGRATED", note: "board_ingest.py is source, not a cutoff marker. Still import it." };
+    }
+    return { state: "UNMEASURED", note: "board_ingest.py body did not match smash or source markers." };
   };
 
   api.sharedOneState = function (row) {
@@ -538,6 +559,7 @@
   var bakeOut = document.getElementById("bake-result");
   var canaryHost = document.getElementById("canary-list");
   var latencyOut = document.getElementById("latency-result");
+  var ingestOut = document.getElementById("ingest-result");
   var challengeAuthority = api.createChallengeAuthority();
 
   function setNote(text) {
@@ -743,6 +765,33 @@
     });
   }
 
+  function paintIngest(result) {
+    if (!ingestOut) return;
+    ingestOut.setAttribute("data-tone", api.toneFor(result.state));
+    ingestOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadIngestSmash(sha) {
+    if (!ingestOut) return Promise.resolve();
+    ingestOut.innerHTML = "<b>UNMEASURED</b><p>Reading board_ingest.py at the official SHA…</p>";
+    var url = RAW + sha + "/board_ingest.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        paintIngest({ state: "NOT_LANDED", note: "board_ingest.py absent at the measured main SHA" });
+        return;
+      }
+      if (!r.ok) {
+        paintIngest({ state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." });
+        return;
+      }
+      return r.text().then(function (text) {
+        paintIngest(api.ingestSmashState(text));
+      });
+    }).catch(function (e) {
+      paintIngest({ state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." });
+    });
+  }
+
   function loadCanaries(sha) {
     if (!canaryHost) return Promise.resolve();
     canaryHost.innerHTML = "<li>measuring known paths at the official SHA…</li>";
@@ -890,6 +939,7 @@
     loadOrgans(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
+    loadIngestSmash(sha);
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {
