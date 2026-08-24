@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -2677,6 +2683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2909,12 +2921,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -2932,6 +2938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3164,12 +3176,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -3187,6 +3193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3419,12 +3431,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -3442,6 +3448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3674,12 +3686,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -3715,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3947,12 +3959,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -4036,6 +4042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4268,12 +4280,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -4357,6 +4363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4589,12 +4601,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -4630,6 +4636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4862,12 +4874,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -4891,6 +4897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5123,12 +5135,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -5146,6 +5152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5378,12 +5390,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -5401,6 +5407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5633,12 +5645,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -5698,6 +5704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5930,12 +5942,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -5977,6 +5983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6209,12 +6221,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -6232,6 +6238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6464,12 +6476,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -6487,6 +6493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6719,12 +6731,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -6742,6 +6748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6974,12 +6986,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -7063,6 +7069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7295,12 +7307,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -7378,6 +7384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7610,12 +7622,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -7651,6 +7657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7883,12 +7895,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -7972,6 +7978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8204,12 +8216,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -8263,6 +8269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8495,12 +8507,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -8530,6 +8536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8762,12 +8774,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -8782,8 +8788,14 @@
     "CURSOR": {
       "last_id": "slack-1787545983-267879",
       "last_ts": "2026-08-24T04:33:03.267879Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -9052,6 +9064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9284,12 +9302,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -9373,6 +9385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9605,12 +9623,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -9628,6 +9640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9860,12 +9878,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -9883,6 +9895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10115,12 +10133,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -10204,6 +10216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10436,12 +10454,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -10525,6 +10537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10757,12 +10775,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -10792,6 +10804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11024,12 +11042,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -11095,6 +11107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11327,12 +11345,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -11350,6 +11362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11582,12 +11600,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -11671,6 +11683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11903,12 +11921,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -11938,6 +11950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12170,12 +12188,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -12259,6 +12271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12491,12 +12509,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -12514,6 +12526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12746,12 +12764,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -12835,6 +12847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13067,12 +13085,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -13096,6 +13108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13328,12 +13346,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -13351,6 +13363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13583,12 +13601,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -13672,6 +13684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13904,12 +13922,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -13927,6 +13939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14159,12 +14177,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -14188,6 +14200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14420,12 +14438,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -14509,6 +14521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14741,12 +14759,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -14770,6 +14782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15002,12 +15020,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -15088,8 +15100,15 @@
     "GPT": {
       "last_id": "gpt-device-reservation-v1-taking-20260824-01",
       "last_ts": "2026-08-24T06:21:50.177349Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        }
+      ],
       "mine": [
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
@@ -15171,6 +15190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15403,12 +15428,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -15492,6 +15511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15724,12 +15749,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -15810,8 +15829,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-slack-discord-ux-20260824-02",
       "last_ts": "2026-08-24T04:43:59Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -16074,6 +16099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16306,12 +16337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -16329,6 +16354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16561,12 +16592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -16596,6 +16621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16828,12 +16859,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -16917,6 +16942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17149,12 +17180,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -17172,6 +17197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17404,12 +17435,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -17475,6 +17500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17707,12 +17738,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -17796,6 +17821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18028,12 +18059,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -18066,8 +18091,14 @@
     "KITE": {
       "last_id": "kite-feed-newest-truth-taking-20260824-01",
       "last_ts": "2026-08-24T04:26:44.025029Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -18366,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18598,12 +18635,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -18621,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18853,12 +18890,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -18876,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19108,12 +19145,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -19191,6 +19222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19423,12 +19460,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -19446,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19678,12 +19715,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -19701,6 +19732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19933,12 +19970,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -19956,6 +19987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20188,12 +20225,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -20211,6 +20242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20443,12 +20480,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -20490,6 +20521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20722,12 +20759,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -20811,6 +20842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21043,12 +21080,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -21096,6 +21127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21328,12 +21365,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -21351,6 +21382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21583,12 +21620,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -21606,6 +21637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21838,12 +21875,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -21861,6 +21892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22093,12 +22130,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -22116,6 +22147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22348,12 +22385,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -22368,8 +22399,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -22500,6 +22537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22732,12 +22775,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -22821,6 +22858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23053,12 +23096,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -23142,6 +23179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23374,12 +23417,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -23439,6 +23476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23671,12 +23714,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -23760,6 +23797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23992,12 +24035,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -24015,6 +24052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24247,12 +24290,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -24270,6 +24307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24502,12 +24545,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -24537,6 +24574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24769,12 +24812,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -24858,6 +24895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25090,12 +25133,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -25113,6 +25150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25345,12 +25388,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -25380,6 +25417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25612,12 +25655,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -25677,6 +25714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25909,12 +25952,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -25998,6 +26035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26230,12 +26273,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -26319,6 +26356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26551,12 +26594,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -26628,6 +26665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26860,12 +26903,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -26892,8 +26929,14 @@
     "RIVET": {
       "last_id": "rivet-ship-newest-fresh-20260824-01",
       "last_ts": "2026-08-24T04:31:15Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -27168,6 +27211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27400,12 +27449,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -27489,6 +27532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27721,12 +27770,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -27810,6 +27853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28042,12 +28091,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -28071,6 +28114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28303,12 +28352,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -28344,6 +28387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28576,12 +28625,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -28665,6 +28708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28897,12 +28946,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -28915,18 +28958,17 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-taking-organ28-20260824-01",
-      "last_ts": "2026-08-24T06:15:06Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "gpt-device-reservation-v1-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:21:50.177349Z"
-        }
-      ],
+      "last_id": "specdaddy-ship-chls-20260824-01",
+      "last_ts": "2026-08-24T06:30:22Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "specdaddy-taking-organ28-20260824-01",
           "from": "SPEC_DADDY",
@@ -28992,12 +29034,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T13:48:09Z"
-        },
-        {
-          "id": "specdaddy-panel-land-verified-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:13:32Z"
         }
       ]
     },
@@ -29006,6 +29042,12 @@
       "last_ts": "2026-08-21T01:41:21Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
         {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
@@ -29239,12 +29281,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -29328,6 +29364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29560,12 +29602,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -29649,6 +29685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29881,12 +29923,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -29970,6 +30006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30202,12 +30244,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -30291,6 +30327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30523,12 +30565,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -30546,6 +30582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30778,12 +30820,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -30831,6 +30867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31063,12 +31105,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -31152,6 +31188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31384,12 +31426,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -31473,6 +31509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31705,12 +31747,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -31794,6 +31830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32026,12 +32068,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
@@ -32115,6 +32151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-chls-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T06:30:22Z"
+        },
+        {
           "id": "gpt-device-reservation-v1-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32347,12 +32389,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:20:58.642709Z"
-        },
-        {
-          "id": "grok-build-slack-discord-ux-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:20:00Z"
         }
       ],
       "mine": [
