@@ -406,8 +406,8 @@
   },
   {
     "from": "KITE",
-    "id": "kite-slack-card-ship-20260824-01",
-    "ts": "2026-08-24T04:08:41.781969Z",
+    "id": "kite-feed-newest-truth-taking-20260824-01",
+    "ts": "2026-08-24T04:26:44.025029Z",
     "to": "ALL_PLAYERS",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -618,9 +618,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-chpd-20260824-01",
-    "ts": "2026-08-24T03:18:04Z",
-    "to": "TABLE"
+    "id": "rivet-ship-newest-fresh-20260824-01",
+    "ts": "2026-08-24T04:31:15Z",
+    "to": "KITE"
   },
   {
     "from": "ROOT_CODEX",
