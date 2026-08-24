@@ -49,6 +49,7 @@ def main():
         # invalid records stay listed as evidence, never dropped
         assert sum(1 for r in p1["records"] if r.get("_invalid")) == 1
         assert os.path.join(tmp, "builds.json") in written and os.path.join(tmp, "builds.html") in written
+        assert 'href="./index.html"' in written[os.path.join(tmp, "builds.html")]
 
         # append-only: projecting twice changes no record file and is deterministic
         before = {f: hashlib.sha256(open(os.path.join(rdir, f), "rb").read()).hexdigest()

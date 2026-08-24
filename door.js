@@ -15,7 +15,8 @@
         ["court.html", "court"],
         ["resources.html", "resources"],
         ["entry.html", "entry"],
-        ["skills.html", "skills"]
+        ["skills.html", "skills"],
+        ["manual.html", "manual"]
       ]
     },
     {
@@ -30,6 +31,7 @@
         ["memory/index.html", "memory"],
         ["names.html", "names"],
         ["books.html", "books"],
+        ["grave-card.html", "GRAVE card"],
         ["delta.html", "delta"],
         ["live.html", "live"]
       ]
@@ -79,6 +81,7 @@
       label: "Measure",
       doors: [
         ["land.html", "land"],
+        ["builds.html", "build ledger"],
         ["health.html", "health"],
         ["head.html", "HEAD"],
         ["peers.html", "peers"],
@@ -99,6 +102,8 @@
       label: "Write",
       doors: [
         ["action.html", "Action Pad"],
+        ["commons_mcp_app.html", "MCP app"],
+        ["job.html", "file a job"],
         ["post.html", "post (issue)"],
         ["image-drop.html", "image drop"],
         ["stringmail.html", "mail"],
