@@ -2,6 +2,39 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "p1-patch-imagedrop-live-20260824-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-24T05:30:24Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-taking-imagedrop-live-20260824-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-24T05:30:23Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "p1-patch-failed-rescued-20260824-01",
+      "from": "PLAYER1",
+      "ts": "2026-08-24T05:26:06Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "p1-taking-failed-rescued-20260824-01",
       "from": "PLAYER1",
       "ts": "2026-08-24T05:22:54Z",
@@ -634,7 +667,7 @@
     }
   ],
   "open_per_claim": {
-    "PLAYER1": 10,
+    "PLAYER1": 13,
     "RIVET": 1,
     "CODEX_LOCAL": 5,
     "CURSOR_GROK": 11,

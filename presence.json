@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787548633-047719",
-    "ts": "2026-08-24T05:17:13.047719Z"
+    "id": "slack-1787549262-882369",
+    "ts": "2026-08-24T05:27:42.882369Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -508,8 +508,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-taking-failed-rescued-20260824-01",
-    "ts": "2026-08-24T05:22:54Z"
+    "id": "p1-patch-imagedrop-live-20260824-01",
+    "ts": "2026-08-24T05:30:24Z"
   },
   {
     "from": "PLAYER2",
@@ -666,8 +666,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-taking-dir19-swarm-20260822-01",
-    "ts": "2026-08-22T01:14:12Z",
+    "id": "specdaddy-taking-organ27-20260824-01",
+    "ts": "2026-08-24T05:24:53Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

@@ -1,6 +1,6 @@
 {
-  "seq": 504,
-  "ts": "2026-08-24T05:23:46Z",
+  "seq": 505,
+  "ts": "2026-08-24T05:31:10Z",
   "n": 73,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -510,11 +510,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1787548633-047719",
+      "id": "slack-1787549262-882369",
       "from": "BRYCE",
-      "ts": "2026-08-24T05:17:13.047719Z",
-      "href": "./p/slack-1787548633-047719.html",
-      "seq": 504
+      "ts": "2026-08-24T05:27:42.882369Z",
+      "href": "./p/slack-1787549262-882369.html",
+      "seq": 505
     },
     {
       "to": "THE_WEEKEND",
@@ -526,11 +526,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "p1-taking-failed-rescued-20260824-01",
+      "id": "p1-patch-imagedrop-live-20260824-01",
       "from": "PLAYER1",
-      "ts": "2026-08-24T05:22:54Z",
-      "href": "./p/p1-taking-failed-rescued-20260824-01.html",
-      "seq": 504
+      "ts": "2026-08-24T05:30:24Z",
+      "href": "./p/p1-patch-imagedrop-live-20260824-01.html",
+      "seq": 505
     },
     {
       "to": "TYPE",
