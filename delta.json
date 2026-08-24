@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -2507,24 +2507,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "slack-1787601984-667539",
-      "last_ts": "2026-08-24T20:06:24.667539Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "rivet-ship-noauth-doc-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:13:53Z"
-        },
-        {
-          "id": "rivet-ship-composer-picker-seen-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:08:13Z"
-        }
-      ],
+      "last_id": "slack-1787602687-684079",
+      "last_ts": "2026-08-24T20:18:07.684079Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
         {
           "id": "slack-1787601984-667539",
           "from": "BRYCE",
@@ -2590,12 +2583,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:51:04.461669Z"
-        },
-        {
-          "id": "slack-1787597001-207899",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:43:21.207899Z"
         }
       ]
     },
@@ -2604,6 +2591,12 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
@@ -2837,12 +2830,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -2860,6 +2847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3092,12 +3085,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -3115,6 +3102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3347,12 +3340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -3370,6 +3357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3602,12 +3595,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -3643,6 +3630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3875,12 +3868,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -3964,6 +3951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4196,12 +4189,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -4285,6 +4272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4517,12 +4510,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -4558,6 +4545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4790,12 +4783,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -4819,6 +4806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5051,12 +5044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -5074,6 +5061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5306,12 +5299,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -5329,6 +5316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5561,12 +5554,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -5623,8 +5610,14 @@
     "CLAUDE_CLOUD": {
       "last_id": "claudecloud-audit-lanes-20260824-01",
       "last_ts": "2026-08-24T19:52:47.785779Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
@@ -5695,6 +5688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5927,12 +5926,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -5974,6 +5967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6206,12 +6205,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -6229,6 +6222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6461,12 +6460,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -6484,6 +6477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6716,12 +6715,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -6739,6 +6732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6971,12 +6970,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -7060,6 +7053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7292,12 +7291,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -7375,6 +7368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7607,12 +7606,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -7648,6 +7641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7880,12 +7879,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -7969,6 +7962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8201,12 +8200,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -8260,6 +8253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8492,12 +8491,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -8527,6 +8520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8759,12 +8758,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -8779,8 +8772,14 @@
     "CURSOR": {
       "last_id": "slack-1787601619-817899",
       "last_ts": "2026-08-24T20:00:19.817899Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
@@ -8881,6 +8880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9113,12 +9118,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -9202,6 +9201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9434,12 +9439,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -9457,6 +9456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9689,12 +9694,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -9712,6 +9711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9944,12 +9949,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -10033,6 +10032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10265,12 +10270,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -10354,6 +10353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10586,12 +10591,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -10621,6 +10620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10853,12 +10858,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -10924,6 +10923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11156,12 +11161,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -11179,6 +11178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11411,12 +11416,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -11500,6 +11499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11732,12 +11737,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -11767,6 +11766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11999,12 +12004,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -12088,6 +12087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12320,12 +12325,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -12343,6 +12342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12575,12 +12580,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -12664,6 +12663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12896,12 +12901,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -12925,6 +12924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13157,12 +13162,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -13180,6 +13179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13412,12 +13417,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -13501,6 +13500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13733,12 +13738,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -13756,6 +13755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13988,12 +13993,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -14017,6 +14016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14249,12 +14254,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -14338,6 +14337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14570,12 +14575,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -14599,6 +14598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14831,12 +14836,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -14920,6 +14919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15152,12 +15157,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -15241,6 +15240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15473,12 +15478,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -15562,6 +15561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15794,12 +15799,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -15883,6 +15882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16115,12 +16120,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -16204,6 +16203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16436,12 +16441,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -16459,6 +16458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16691,12 +16696,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -16726,6 +16725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16958,12 +16963,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -17047,6 +17046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17279,12 +17284,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -17302,6 +17301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17534,12 +17539,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -17605,6 +17604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17837,12 +17842,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -17926,6 +17925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18158,12 +18163,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -18199,6 +18198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18431,12 +18436,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -18520,6 +18519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18752,12 +18757,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -18775,6 +18774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19007,12 +19012,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -19030,6 +19029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19262,12 +19267,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -19345,6 +19344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19577,12 +19582,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -19600,6 +19599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19832,12 +19837,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -19855,6 +19854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20087,12 +20092,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -20110,6 +20109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20342,12 +20347,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -20365,6 +20364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20597,12 +20602,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -20644,6 +20643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20876,12 +20881,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -20965,6 +20964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21197,12 +21202,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -21250,6 +21249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21482,12 +21487,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -21505,6 +21504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21737,12 +21742,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -21760,6 +21759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21992,12 +21997,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -22015,6 +22014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22247,12 +22252,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -22270,6 +22269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22502,12 +22507,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -22525,6 +22524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22757,12 +22762,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -22846,6 +22845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23078,12 +23083,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -23167,6 +23166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23399,12 +23404,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -23488,6 +23487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23720,12 +23725,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -23785,6 +23784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24017,12 +24022,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -24106,6 +24105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24338,12 +24343,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -24361,6 +24360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24593,12 +24598,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -24616,6 +24615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24848,12 +24853,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -24883,6 +24882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25115,12 +25120,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -25204,6 +25203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25436,12 +25441,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -25459,6 +25458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25691,12 +25696,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -25726,6 +25725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25958,12 +25963,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -26023,6 +26022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26255,12 +26260,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -26344,6 +26343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26576,12 +26581,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -26665,6 +26664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26897,12 +26902,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -26974,6 +26973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27206,12 +27211,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -27238,8 +27237,15 @@
     "RIVET": {
       "last_id": "rivet-ship-noauth-doc-desk-20260824-01",
       "last_ts": "2026-08-24T20:13:53Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
@@ -27321,6 +27327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27553,12 +27565,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -27642,6 +27648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27874,12 +27886,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -27963,6 +27969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28195,12 +28207,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -28224,6 +28230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28456,12 +28468,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -28497,6 +28503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28729,12 +28741,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -28818,6 +28824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29050,12 +29062,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -29070,8 +29076,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
       "last_ts": "2026-08-24T19:42:54Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
         {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
@@ -29214,6 +29226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29446,12 +29464,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -29535,6 +29547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29767,12 +29785,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -29856,6 +29868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30088,12 +30106,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -30177,6 +30189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30409,12 +30427,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -30498,6 +30510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30730,12 +30748,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -30753,6 +30765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30985,12 +31003,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -31038,6 +31050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31270,12 +31288,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -31359,6 +31371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31591,12 +31609,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -31680,6 +31692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31912,12 +31930,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -32001,6 +32013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32233,12 +32251,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
@@ -32322,6 +32334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787602687-684079",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:18:07.684079Z"
+        },
+        {
           "id": "rivet-ship-noauth-doc-desk-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32554,12 +32572,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
         }
       ],
       "mine": [
