@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN PLAYER1 [p1-taking-failed-rescued-20260824-01](../p/p1-taking-failed-rescued-20260824-01.md) tool=
 - OPEN RIVET [rivet-ship-crawler-leftover-20260823-01](../p/rivet-ship-crawler-leftover-20260823-01.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260823-01-corr-01](../p/commons-inventory-20260823-01-corr-01.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260823-01](../p/commons-inventory-20260823-01.md) tool=
