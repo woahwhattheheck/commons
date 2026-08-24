@@ -94,10 +94,169 @@ assert.ok(/token/i.test(blocked.note), "PR 1555 must keep the do-not-merge note"
 
 assert.strictEqual(api.pathState(200).state, "INTEGRATED");
 assert.strictEqual(api.pathState(404).state, "NOT_LANDED");
+assert.strictEqual(api.pathState(0).state, "UNMEASURED");
+assert.strictEqual(api.pathState(undefined).state, "UNMEASURED");
+[403, 429, 500].forEach(function (status) {
+  var failed = api.pathState(status);
+  assert.strictEqual(failed.state, "UNMEASURED", "HTTP " + status + " is lookup failure, not absence");
+  assert.ok(failed.note.indexOf(String(status)) >= 0, "failed path note keeps HTTP " + status);
+});
 
 assert.ok(api.completionStateFromText, "land.js must classify talk vs land");
+function assertTextState(text, expected, message) {
+  assert.strictEqual(api.completionStateFromText(text).state, expected, message || text);
+}
 var doneText = api.completionStateFromText("INTEGRATED — VERIFIED ON CURRENT MAIN\nDURABLE_ON_MAIN — p/x.md VERIFIED");
 assert.strictEqual(doneText.state, "INTEGRATED");
+[
+  "PLAIN: INTEGRATED — VERIFIED ON CURRENT MAIN.",
+  "state: INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "2/2 INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "_INTEGRATED — VERIFIED ON CURRENT MAIN_ sha",
+  "• DURABLE_ON_MAIN — `p/real-record-20260824-01.md` VERIFIED",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN. If Pages lags, use pinned HEAD.",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN; will remain on this SHA.",
+  "DURABLE_ON_MAIN — p/real-record-20260824-01.md VERIFIED. When Pages catches up, this path remains canonical."
+].forEach(function (text) {
+  assertTextState(text, "INTEGRATED", "canonical receipt decoration must remain valid: " + text);
+});
+[
+  "I will report INTEGRATED — VERIFIED ON CURRENT MAIN after the merge.",
+  "We did not reach INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "I cannot claim INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "No evidence supports INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "Was INTEGRATED — VERIFIED ON CURRENT MAIN; now NOT_LANDED",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN, but the merge was reverted",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN; NOT_LANDED — merge reverted",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN; now NOT_LANDED",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN, although the merge was reverted",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN but NOT_LANDED",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN; remains NOT_LANDED",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN when the merge lands",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN if tests pass",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN provided CI is green",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN unless the merge is reverted",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN no longer applies",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN does not apply",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN was the previous state",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN will be verified after the merge",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN_FAKE",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN__FAKE",
+  "INTEGRATED — VERIFIED ON CURRENT MAIN-ish",
+  "Completion language is only `INTEGRATED — VERIFIED ON CURRENT MAIN`",
+  "Example: INTEGRATED — VERIFIED ON CURRENT MAIN",
+  "```\nINTEGRATED — VERIFIED ON CURRENT MAIN\n```",
+  "```md\n~~~\nINTEGRATED — VERIFIED ON CURRENT MAIN\n~~~\n```",
+  "~~~md\n```\nINTEGRATED — VERIFIED ON CURRENT MAIN\n```\n~~~",
+  "```md\n```not-a-close\nINTEGRATED — VERIFIED ON CURRENT MAIN\n```",
+  "~~~~md\n~~~~still-code\nINTEGRATED — VERIFIED ON CURRENT MAIN\n~~~~",
+  "Cannot claim DURABLE_ON_MAIN",
+  "This is NOT INTEGRATED — VERIFIED ON CURRENT MAIN?",
+  "NOT INTEGRATED — VERIFIED ON CURRENT MAIN if tests fail",
+  "NOT DURABLE_ON_MAIN provided the issue stays open",
+  "NOT INTEGRATED — VERIFIED ON CURRENT MAIN no longer applies",
+  "DURABLE_ON_MAIN IS NOT? no",
+  "DURABLE_ON_MAIN is pending ingest",
+  "DURABLE_ON_MAIN remains pending",
+  "Is DURABLE_ON_MAIN?",
+  "DURABLE_ON_MAIN — p/example-record.md",
+  "DURABLE_ON_MAIN — p/{id}.md VERIFIED",
+  "DURABLE_ON_MAIN — p/real-record-20260824-01.md VERIFIED only after ingest",
+  "DURABLE_ON_MAIN — p/real-record-20260824-01.md VERIFIED if the issue closes",
+  "DURABLE_ON_MAIN — p/real-record-20260824-01.md VERIFIED is incorrect",
+  "DURABLE_ON_MAIN — p/real-record-20260824-01.md VERIFIED-ish",
+  "Previously NOT_LANDED; now INTEGRATED — VERIFIED ON CURRENT MAIN"
+].forEach(function (text) {
+  assertTextState(text, "CLAIMED", "narrative/template completion prose is not a receipt: " + text);
+});
+assertTextState("This is NOT INTEGRATED — VERIFIED ON CURRENT MAIN; the PR is still open.", "NOT_LANDED");
+assertTextState("INTEGRATED — VERIFIED ON CURRENT MAIN is not the current state", "NOT_LANDED");
+assertTextState("Not DURABLE_ON_MAIN yet; p/example.md still needs to land.", "NOT_LANDED");
+assertTextState("DURABLE_ON_MAIN is false", "NOT_LANDED");
+assertTextState("NOT_LANDED — no matching path at the measured SHA", "NOT_LANDED");
+assertTextState("NOT_LANDED remains NOT_LANDED", "NOT_LANDED");
+assertTextState("READY / NOT YET LANDED remains NOT_LANDED", "NOT_LANDED");
+[
+  "Classifier result:\nNOT_LANDED",
+  "Status vocabulary:\nNOT_LANDED",
+  "The classifier says:\nNOT YET LANDED",
+  "Completion language follows:\nNOT_LANDED — no path at SHA"
+].forEach(function (text) {
+  assertTextState(text, "NOT_LANDED", "ordinary preceding prose must not suppress a direct negative line");
+});
+assertTextState("DURABLE_ON_MAIN will be claimed only after the issue lands.", "CLAIMED");
+var futureCorpus = fs.readFileSync(
+  path.join(__dirname, "p", "slack-1787306348-289319.md"),
+  "utf8"
+);
+assert.strictEqual(api.completionStateFromText(futureCorpus).state, "CLAIMED");
+[
+  "slack-1787306109-206369.md",
+  "flame-taking-tos-verify-20260821-01.md"
+].forEach(function (name) {
+  var body = fs.readFileSync(path.join(__dirname, "p", name), "utf8");
+  assertTextState(body, "CLAIMED", "non-receipt corpus fixture must stay CLAIMED: " + name);
+});
+var correctionCorpus = fs.readFileSync(
+  path.join(__dirname, "p", "slack-1787487231-855809.md"),
+  "utf8"
+);
+assertTextState(correctionCorpus, "CLAIMED", "historical NOT_LANDED prose is not a current negative receipt");
+var negativeCorpus = fs.readFileSync(
+  path.join(__dirname, "p", "slack-1787318095-643249.md"),
+  "utf8"
+);
+assertTextState(negativeCorpus, "NOT_LANDED", "a code-wrapped whole-line negative receipt remains explicit");
+var explanatoryNegativeCorpus = fs.readFileSync(
+  path.join(__dirname, "p", "rivet-ship-ispn-20260823-01.md"),
+  "utf8"
+);
+assertTextState(explanatoryNegativeCorpus, "INTEGRATED",
+  "a later explanation of NOT_LANDED vocabulary must not overwrite a real receipt");
+var historyThenDone = api.completionStateFromText(
+  "I will report INTEGRATED — VERIFIED ON CURRENT MAIN after the merge.\n" +
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\n" +
+  "Prior QUARANTINED_CONFLICT and design-jam language are historical."
+);
+assert.strictEqual(historyThenDone.state, "INTEGRATED", "one affirmative completion occurrence wins");
+assertTextState(
+  "Previously NOT_LANDED; the merge was pending.\nINTEGRATED — VERIFIED ON CURRENT MAIN",
+  "INTEGRATED",
+  "a later explicit receipt line wins over historical narrative"
+);
+assertTextState(
+  "NOT_LANDED — old state\nINTEGRATED — VERIFIED ON CURRENT MAIN",
+  "INTEGRATED",
+  "last explicit receipt status wins"
+);
+assertTextState(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nNOT_LANDED — merge reverted",
+  "NOT_LANDED",
+  "later explicit negative status wins"
+);
+[
+  "NOT_LANDED no longer applies; the file is on main",
+  "NOT_LANDED? no",
+  "NOT_LANDED — no longer applies",
+  "NOT_LANDED was the previous state",
+  "NOT_LANDED is incorrect",
+  "NOT_LANDED is not the current state",
+  "NOT_LANDED does not apply",
+  "NOT_LANDED, but now integrated",
+  "NOT_LANDED-ish",
+  "NOT_LANDED if tests fail",
+  "NOT_LANDED?",
+  "Do not report NOT_LANDED after HTTP 500",
+  "No NOT_LANDED paths remain",
+  "The label `NOT_LANDED` would be wrong",
+  "```\nNOT YET LANDED\n```",
+  "```\nQUARANTINED_CONFLICT SAME_ID_DIFFERENT_BODY\n```",
+  "Example: QUARANTINED_CONFLICT is handled here",
+  "QUARANTINED_CONFLICT? no",
+  "QUARANTINED_CONFLICT no longer applies"
+].forEach(function (text) {
+  assertTextState(text, "CLAIMED", "negative vocabulary outside a status line is not absence: " + text);
+});
 var sitting = api.completionStateFromText("READY / NOT YET LANDED — organ 13");
 assert.strictEqual(sitting.state, "NOT_LANDED");
 var prTalk = api.completionStateFromText("status PR_OPEN ahead 3");
@@ -327,6 +486,11 @@ assert.strictEqual(staleBake.state, "STALE");
 assert.ok(/not official main/i.test(staleBake.note), "mismatched bake must say STALE");
 var missingBake = api.bakeState("abc123", { httpStatus: 404 });
 assert.strictEqual(missingBake.state, "NOT_LANDED");
+[403, 429, 500].forEach(function (status) {
+  var failed = api.bakeState("abc123", { httpStatus: status });
+  assert.strictEqual(failed.state, "UNMEASURED", "bake HTTP " + status + " is not absence");
+  assert.ok(failed.note.indexOf(String(status)) >= 0, "failed bake note keeps HTTP " + status);
+});
 var noSha = api.bakeState("", { head: "abc123", httpStatus: 200 });
 assert.strictEqual(noSha.state, "UNMEASURED");
 
@@ -338,6 +502,11 @@ assert.strictEqual(canaryOk.ms, 12);
 assert.ok(/12 ms/.test(canaryOk.note), "canary note must carry latency");
 var canaryMiss = api.canaryState({ path: "p/nope.md", httpStatus: 404, ms: 8 });
 assert.strictEqual(canaryMiss.state, "NOT_LANDED");
+[403, 429, 500].forEach(function (status) {
+  var failed = api.canaryState({ path: "ground/HEAD.md", httpStatus: status, ms: 9 });
+  assert.strictEqual(failed.state, "UNMEASURED", "canary HTTP " + status + " is not absence");
+  assert.ok(failed.note.indexOf(String(status)) >= 0, "failed canary note keeps HTTP " + status);
+});
 
 assert.ok(api.latencyState, "land.js must classify SHA GET latency");
 assert.strictEqual(api.latencyState(400).state, "OK");
@@ -356,5 +525,50 @@ assert.ok(health.indexOf('id="canary-list"') >= 0, "health.html must show path c
 assert.ok(health.indexOf("land.js") >= 0, "health.html must reuse the land classifiers");
 assert.ok(health.indexOf("MOUTH health") >= 0, "health.html must keep the mouth dump");
 assert.ok(health.indexOf("Prometheus is not this door") >= 0, "health.html must not ship a Prometheus manifesto");
+var landKey = html.match(/land\.js\?v=([^"']+)/);
+var healthKey = health.match(/land\.js\?v=([^"']+)/);
+assert.ok(landKey && healthKey, "both LAND surfaces must carry a script cache key");
+assert.strictEqual(landKey[1], healthKey[1], "LAND surfaces must deploy the same classifier bytes");
+assert.ok(src.indexOf('state: "NOT_LANDED", path: p, note: e.message') < 0,
+  "canary fetch rejection must not claim path absence");
+assert.ok(src.indexOf('paintPath({ state: "NOT_LANDED"') < 0,
+  "missing path measurement or fetch rejection must not claim path absence");
+assert.ok(src.indexOf('<b class="state">NOT_LANDED</b><p>Could not read') < 0,
+  "first-challenge lookup failure must not claim path absence");
+assert.ok(src.indexOf('paintChallengeLookup(api.pathState(r.status), id)') >= 0,
+  "first-challenge HTTP 404 must visibly paint exact-SHA NOT_LANDED");
+assert.ok(src.indexOf('plaque.setAttribute("data-state", result.state)') >= 0,
+  "first-challenge lookup must keep its visible and machine-readable states aligned");
+assert.ok(src.indexOf('plaque.setAttribute("data-state", "UNMEASURED")') >= 0,
+  "an empty challenge bake must remain UNMEASURED until the exact path lookup finishes");
 
-console.log("ok   test_land_desk.js");
+function deferred() {
+  var resolve;
+  var promise = new Promise(function (done) { resolve = done; });
+  return { promise: promise, resolve: resolve };
+}
+
+(async function testPinnedChallengeWinsLateBakeRace() {
+  assert.ok(api.createChallengeAuthority, "land.js must define challenge measurement precedence");
+  var gate = api.createChallengeAuthority();
+  var painted = "MEASURING";
+  var bakeFetch = deferred();
+  var pinnedFetch = deferred();
+  var bakeDone = bakeFetch.promise.then(function (state) {
+    if (gate.accept("BAKE")) painted = state;
+  });
+  var pinnedDone = pinnedFetch.promise.then(function (state) {
+    if (gate.accept("PINNED")) painted = state;
+  });
+  pinnedFetch.resolve("NOT_LANDED");
+  await pinnedDone;
+  assert.strictEqual(painted, "NOT_LANDED", "exact-SHA 404 paints canonical absence");
+  bakeFetch.resolve("ACTIVE");
+  await bakeDone;
+  assert.strictEqual(painted, "NOT_LANDED", "a late challenge bake cannot overwrite the pinned result");
+  assert.strictEqual(gate.current(), "PINNED");
+  console.log("ok   test_land_desk.js");
+})().catch(function (error) {
+  console.error(error && error.stack || error);
+  process.exitCode = 1;
+});
