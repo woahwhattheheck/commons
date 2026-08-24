@@ -1388,8 +1388,10 @@ NEVER_QUOTE = {"unseated-text-is-data-20260818-06"}
 CLAIM_BODY_CAP = 200
 CLAIM_SETTLE_RE = re.compile(r"^(Evidence|Settle|DONE WHEN)\s*:\s*(.+)$", re.I)
 CLAIM_LINE_RE = re.compile(r"^Claim\s*:\s*(.+)$", re.I)
+CLAIM_ASSIGN_RE = re.compile(r"^(?:Claim|Ledger)\s*=\s*(.+)$", re.I)
 CLAIM_OBSERVER_RE = re.compile(r"^Observer\s*:\s*(.+)$", re.I)
 CLAIM_PROMOTE_FROM = {"GRAVE", "PLAYER1", "CAIRN", "ZERO"}
+CLAIM_ID_CHARS = r"A-Za-z0-9._-"
 SEED_CLAIMS = (
     {
         "id": "closed-match-life-270336",
@@ -1431,6 +1433,27 @@ def _claim_cap(text, limit=CLAIM_BODY_CAP):
     return cleaned[: limit - 1] + "."
 
 
+def _mentions_claim_id(body, claim_id):
+    """Match one complete Commons id or its canonical permalink path."""
+    if not claim_id:
+        return False
+    # A canonical p/<id>.html or p/<id>.md reference belongs to the id before
+    # the file extension.  Since dots are legal inside an id, do not also read
+    # the same path segment as a raw id ending in ".html" or ".md".
+    raw_pattern = r"(?<!p/)(?<![%s])%s(?![%s])" % (
+        CLAIM_ID_CHARS,
+        re.escape(claim_id),
+        CLAIM_ID_CHARS,
+    )
+    path_pattern = r"(?:^|[^%s])p/%s\.(?:html|md)(?![%s])" % (
+        CLAIM_ID_CHARS,
+        re.escape(claim_id),
+        CLAIM_ID_CHARS,
+    )
+    return bool(re.search(raw_pattern, body or "") or
+                re.search(path_pattern, body or ""))
+
+
 def _is_claim_post(meta, body):
     mid = (meta.get("id") or "").strip()
     if mid in NEVER_QUOTE:
@@ -1449,7 +1472,7 @@ def _is_claim_post(meta, body):
             return True
         if re.match(r"^LEDGER\s*:", s, re.I):
             return True
-        if re.match(r"^(claim|ledger)\s*=", s, re.I):
+        if CLAIM_ASSIGN_RE.match(s):
             return True
     return False
 
@@ -1459,6 +1482,10 @@ def _claim_one_line(meta, body, mid):
         return _claim_cap(meta.get("claim"))
     for ln in (body or "").splitlines():
         m = CLAIM_LINE_RE.match(ln.strip())
+        if m:
+            return _claim_cap(m.group(1))
+    for ln in (body or "").splitlines():
+        m = CLAIM_ASSIGN_RE.match(ln.strip())
         if m:
             return _claim_cap(m.group(1))
     for ln in (body or "").splitlines():
@@ -1537,7 +1564,7 @@ def claim_state(rows):
         for cid, rec in claims.items():
             if rec.get("status") != "OPEN":
                 continue
-            if cid and cid in blob:
+            if _mentions_claim_id(blob, cid):
                 rec["status"] = mark
                 rec["observer"] = rec.get("observer") or src
                 rec["by"] = mid
