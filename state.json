@@ -1,0 +1,33 @@
+{
+ "built": "2026-08-24T20:37:44Z",
+ "checks": [
+  {
+   "name": "source parses",
+   "ok": false,
+   "why": "every tracked .py/.js can still be read by its language",
+   "summary": "of the file rather than patching around the break."
+  },
+  {
+   "name": "phone readable",
+   "ok": true,
+   "why": "no page renders at desktop width on a phone",
+   "summary": "5249 pages checked, 0 missing viewport"
+  },
+  {
+   "name": "durable pages",
+   "ok": true,
+   "why": "every post claiming DURABLE_PAGE has one",
+   "summary": "4933 posts claim DURABLE_PAGE, 0 have no page at the href they carry"
+  },
+  {
+   "name": "doc links",
+   "ok": false,
+   "why": "no instruction names a file the repo does not have",
+   "summary": "A card naming a dead file sends a cold agent down a road that is not there."
+  }
+ ],
+ "posts": 4933,
+ "newest_post": "yapper-wake-transport-confirmed-20260818-016",
+ "newest_age_hours": 1.7,
+ "head": "4bfbc7229de1cc5d355c929089e845b939c20440"
+}

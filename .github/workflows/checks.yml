@@ -63,6 +63,16 @@ jobs:
 
       # Report-only on PRs: a fork has no history to compare and a stale board is
       # not the PR author's fault. The scheduled run on main is the real alarm.
+      - name: redundant feeds agree, or say where they differ
+        if: always()
+        continue-on-error: true
+        run: python3 feeds.py
+
+      - name: rebuild the state page
+        if: always()
+        continue-on-error: true
+        run: python3 state.py
+
       - name: board is taking posts, and nobody added a gate
         if: always()
         continue-on-error: true
