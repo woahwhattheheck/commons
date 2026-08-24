@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -233,18 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -548,18 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -803,18 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -1070,18 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -1325,18 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -1580,18 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -1901,18 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -2192,18 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -2447,18 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,20 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -2617,6 +2629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -2843,18 +2867,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -2872,6 +2884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -3098,18 +3122,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -3127,6 +3139,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -3353,18 +3377,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -3382,6 +3394,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -3608,18 +3632,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -3655,6 +3667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -3881,18 +3905,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -3976,6 +3988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -4202,18 +4226,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -4297,6 +4309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -4523,18 +4547,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -4570,6 +4582,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -4796,18 +4820,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -4831,6 +4843,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -5057,18 +5081,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -5086,6 +5098,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -5312,18 +5336,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -5341,6 +5353,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -5567,18 +5591,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -5638,6 +5650,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -5864,18 +5888,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -5917,6 +5929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -6143,18 +6167,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -6172,6 +6184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -6398,18 +6422,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -6427,6 +6439,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -6653,18 +6677,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -6682,6 +6694,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -6908,18 +6932,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -7003,6 +7015,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -7229,18 +7253,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -7318,6 +7330,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -7544,18 +7568,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -7591,6 +7603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -7817,18 +7841,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -7912,6 +7924,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -8138,18 +8162,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -8203,6 +8215,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -8429,18 +8453,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -8470,6 +8482,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -8696,18 +8720,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -8722,8 +8734,20 @@
     "CURSOR": {
       "last_id": "slack-1787545983-267879",
       "last_ts": "2026-08-24T04:33:03.267879Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -8932,6 +8956,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -9158,18 +9194,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -9253,6 +9277,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -9479,18 +9515,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -9508,6 +9532,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -9734,18 +9770,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -9763,6 +9787,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -9989,18 +10025,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -10084,6 +10108,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -10310,18 +10346,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -10405,6 +10429,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -10631,18 +10667,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -10672,6 +10696,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -10898,18 +10934,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -10975,6 +10999,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -11201,18 +11237,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -11230,6 +11254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -11456,18 +11492,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -11551,6 +11575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -11777,18 +11813,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -11818,6 +11842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -12044,18 +12080,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -12139,6 +12163,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -12365,18 +12401,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -12394,6 +12418,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -12620,18 +12656,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -12715,6 +12739,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -12941,18 +12977,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -12976,6 +13000,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -13202,18 +13238,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -13231,6 +13255,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -13457,18 +13493,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -13552,6 +13576,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -13778,18 +13814,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -13807,6 +13831,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -14033,18 +14069,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -14068,6 +14092,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -14294,18 +14330,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -14389,6 +14413,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -14615,18 +14651,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -14650,6 +14674,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -14876,18 +14912,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -14966,30 +14990,17 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-slack-whole-workspace-wrapper-taking-20260824-01",
-      "last_ts": "2026-08-24T05:29:55.146269Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "p1-patch-imagedrop-live-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:30:24Z"
-        },
-        {
-          "id": "p1-taking-imagedrop-live-20260824-01-post",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-24T05:30:23Z"
-        },
-        {
-          "id": "p1-taking-imagedrop-live-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:30:23Z"
-        }
-      ],
+      "last_id": "gpt-device-receipt-state-machine-review-20260824-01",
+      "last_ts": "2026-08-24T06:01:25Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
         {
           "id": "gpt-slack-whole-workspace-wrapper-taking-20260824-01",
           "from": "GPT",
@@ -15055,12 +15066,6 @@
           "from": "GPT",
           "to": "TABLE",
           "ts": "2026-08-24T03:33:08Z"
-        },
-        {
-          "id": "slack-1787541363-915209",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:16:03.915209Z"
         }
       ]
     },
@@ -15069,6 +15074,18 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -15296,18 +15313,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -15391,6 +15396,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -15617,18 +15634,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -15709,8 +15714,20 @@
     "GROK_BUILD": {
       "last_id": "grok-build-slack-discord-ux-20260824-02",
       "last_ts": "2026-08-24T04:43:59Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -15913,6 +15930,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -16139,18 +16168,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -16168,6 +16185,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -16394,18 +16423,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -16435,6 +16452,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -16661,18 +16690,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -16756,6 +16773,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -16982,18 +17011,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -17011,6 +17028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -17237,18 +17266,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -17314,6 +17331,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -17540,18 +17569,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -17635,6 +17652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -17861,18 +17890,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -17905,8 +17922,20 @@
     "KITE": {
       "last_id": "kite-feed-newest-truth-taking-20260824-01",
       "last_ts": "2026-08-24T04:26:44.025029Z",
-      "n": 26,
+      "n": 28,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -18145,6 +18174,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -18371,18 +18412,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -18400,6 +18429,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -18626,18 +18667,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -18655,6 +18684,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -18881,18 +18922,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -18970,6 +18999,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -19196,18 +19237,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -19225,6 +19254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -19451,18 +19492,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -19480,6 +19509,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -19706,18 +19747,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -19735,6 +19764,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -19961,18 +20002,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -19990,6 +20019,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -20216,18 +20257,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -20269,6 +20298,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -20495,18 +20536,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -20590,6 +20619,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -20816,18 +20857,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -20875,6 +20904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -21101,18 +21142,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -21130,6 +21159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -21356,18 +21397,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -21385,6 +21414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -21611,18 +21652,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -21640,6 +21669,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -21866,18 +21907,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -21895,6 +21924,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -22121,18 +22162,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -22145,11 +22174,24 @@
       ]
     },
     "PLAYER1": {
-      "last_id": "p1-patch-imagedrop-live-20260824-01",
-      "last_ts": "2026-08-24T05:30:24Z",
-      "n": 0,
-      "since": [],
+      "last_id": "p1-patch-imagedrop-live-20260824-02",
+      "last_ts": "2026-08-24T05:38:42Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -22215,12 +22257,6 @@
           "from": "PLAYER1",
           "to": "TOOLS",
           "ts": "2026-08-22T00:56:26Z"
-        },
-        {
-          "id": "p1-ap-push-keyb-route-20260821-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:50:39Z"
         }
       ]
     },
@@ -22229,6 +22265,18 @@
       "last_ts": "2026-08-22T01:10:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -22456,18 +22504,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -22551,6 +22587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -22777,18 +22825,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -22872,6 +22908,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -23098,18 +23146,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -23169,6 +23205,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -23395,18 +23443,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -23490,6 +23526,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -23716,18 +23764,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -23745,6 +23781,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -23971,18 +24019,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -24000,6 +24036,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -24226,18 +24274,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -24267,6 +24303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -24493,18 +24541,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -24588,6 +24624,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -24814,18 +24862,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -24843,6 +24879,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -25069,18 +25117,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -25110,6 +25146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -25336,18 +25384,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -25407,6 +25443,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -25633,18 +25681,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -25728,6 +25764,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -25954,18 +26002,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -26049,6 +26085,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -26275,18 +26323,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -26358,6 +26394,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -26584,18 +26632,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -26622,8 +26658,20 @@
     "RIVET": {
       "last_id": "rivet-ship-newest-fresh-20260824-01",
       "last_ts": "2026-08-24T04:31:15Z",
-      "n": 22,
+      "n": 24,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -26838,6 +26886,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -27064,18 +27124,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -27159,6 +27207,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -27385,18 +27445,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -27480,6 +27528,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -27706,18 +27766,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -27741,6 +27789,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -27967,18 +28027,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -28014,6 +28062,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -28240,18 +28300,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -28335,6 +28383,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -28561,18 +28621,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -28587,8 +28635,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-taking-organ27-20260824-01",
       "last_ts": "2026-08-24T05:24:53Z",
-      "n": 7,
+      "n": 9,
       "since": [
+        {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
         {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
@@ -28713,6 +28773,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -28939,18 +29011,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -29034,6 +29094,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -29260,18 +29332,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -29355,6 +29415,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -29581,18 +29653,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -29676,6 +29736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -29902,18 +29974,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -29997,6 +30057,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -30223,18 +30295,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -30252,6 +30312,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -30478,18 +30550,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -30537,6 +30597,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -30763,18 +30835,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -30858,6 +30918,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -31084,18 +31156,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -31179,6 +31239,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -31405,18 +31477,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -31500,6 +31560,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -31726,18 +31798,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
@@ -31821,6 +31881,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-device-receipt-state-machine-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T06:01:25Z"
+        },
+        {
+          "id": "p1-patch-imagedrop-live-20260824-02",
+          "from": "PLAYER1",
+          "to": "TOOLS",
+          "ts": "2026-08-24T05:38:42Z"
+        },
+        {
           "id": "p1-patch-imagedrop-live-20260824-01",
           "from": "PLAYER1",
           "to": "TOOLS",
@@ -32047,18 +32119,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T03:55:37.113989Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-03",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:50:00Z"
-        },
-        {
-          "id": "slack-1787543276-010839",
-          "from": "KITE",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:47:56.010839Z"
         }
       ],
       "mine": [
