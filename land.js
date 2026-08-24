@@ -419,7 +419,7 @@
       return { state: "NOT_LANDED", note: "composer tools field is required. That is a gate. Remove it." };
     }
     var loadsCatalog = /tools\.json/.test(body);
-    var hasPicker = /data-commons-tools|commons-tools|tool-catalog|tool-picker|tool selector|tool.?picker/i.test(body);
+    var hasPicker = /data-commons-tool-selector|commons-tool-selector|data-commons-tool-id|data-commons-tools|commons-tools|tool-catalog|tool-picker|tool selector|tool.?picker|mountCommonsToolSelector/i.test(body);
     if (loadsCatalog && hasPicker) {
       return { state: "INTEGRATED", note: "composer loads tools.json and exposes a picker. Still not a send gate." };
     }

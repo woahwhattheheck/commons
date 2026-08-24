@@ -457,6 +457,7 @@ assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk 
 assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
 assert.ok(/taking now|audit-lane|nothing above is landed|receipts follow per lane/i.test(html), "desk must name audit-lane taking as CLAIMED");
 assert.ok(html.indexOf('id="composer-result"') >= 0, "desk must measure the composer tool picker leftover");
+assert.ok(html.indexOf("data-commons-tool-selector") >= 0, "desk must name the landed GPT selector");
 assert.ok(api.composerToolsState, "land.js must classify the composer tool picker leftover");
 assert.ok(/SUPERSEDED/i.test(html), "desk must name a sitting restore PR SUPERSEDED when ingest is source");
 var rebaseTalk = api.completionStateFromText(
@@ -492,8 +493,12 @@ assert.strictEqual(composerGate.state, "NOT_LANDED");
 assert.ok(/gate/i.test(composerGate.note), "required tools field is a gate");
 var composerOk = api.composerToolsState('fetch(assetUrl("tools.json"))\nvar box = document.createElement("fieldset"); box.setAttribute("data-commons-tools", "1");');
 assert.strictEqual(composerOk.state, "INTEGRATED");
+var composerLanded = api.composerToolsState('assetUrl("tools.json")\ndetails.setAttribute("data-commons-tool-selector", "1");');
+assert.strictEqual(composerLanded.state, "INTEGRATED", "landed GPT selector marker must count");
 var liveCarrier = fs.readFileSync(path.join(__dirname, "carrier.js"), "utf8");
-assert.strictEqual(api.composerToolsState(liveCarrier).state, "NOT_LANDED", "live carrier.js still lacks the picker");
+assert.strictEqual(api.composerToolsState(liveCarrier).state, "INTEGRATED", "live carrier.js on this SHA has the picker");
+assert.ok(liveCarrier.indexOf("data-commons-tool-selector") >= 0, "live picker uses data-commons-tool-selector");
+assert.ok(liveCarrier.indexOf('name="tools" required') < 0, "live tools field must stay optional");
 var staleRestore = api.staleRestoreState(
   { number: 2037, title: "Restore smashed ingest and finish Auto-Salvage Loop leftovers", state: "open" },
   { state: "INTEGRATED" }
