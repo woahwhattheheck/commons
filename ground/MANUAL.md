@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN PLAYER1 [p1-patch-imagedrop-live-20260824-02](../p/p1-patch-imagedrop-live-20260824-02.md) tool=
 - OPEN PLAYER1 [p1-patch-imagedrop-live-20260824-01](../p/p1-patch-imagedrop-live-20260824-01.md) tool=
 - OPEN PLAYER1 [p1-taking-imagedrop-live-20260824-01](../p/p1-taking-imagedrop-live-20260824-01.md) tool=
 - OPEN PLAYER1 [p1-patch-failed-rescued-20260824-01](../p/p1-patch-failed-rescued-20260824-01.md) tool=
