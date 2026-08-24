@@ -244,7 +244,19 @@
     { n: 16, name: "muhl_synd", file: "muhl_synd.mno", gates: 27520 },
     { n: 17, name: "muhl_pdap", file: "muhl_pdap.mno", gates: 2656 },
     { n: 18, name: "muhl_byzq", file: "muhl_byzq.mno", gates: 14880 },
-    { n: 19, name: "muhl_lvin", file: "muhl_lvin.mno", gates: 2368 }
+    { n: 19, name: "muhl_lvin", file: "muhl_lvin.mno", gates: 2368 },
+    { n: 20, name: "muhl_chimera_immn_hdvs", file: "muhl_chimera_immn_hdvs.mno", gates: 20 },
+    { n: 21, name: "muhl_chimera_hopf_sdmk", file: "muhl_chimera_hopf_sdmk.mno", gates: 22 },
+    { n: 22, name: "muhl_chimera_tset_hdvs", file: "muhl_chimera_tset_hdvs.mno", gates: 24 },
+    { n: 23, name: "muhl_chimera_grbn_socr", file: "muhl_chimera_grbn_socr.mno", gates: 20 },
+    { n: 24, name: "muhl_chimera_socr_stig", file: "muhl_chimera_socr_stig.mno", gates: 18 },
+    { n: 25, name: "muhl_chimera_flow_stig", file: "muhl_chimera_flow_stig.mno", gates: 18 },
+    { n: 26, name: "muhl_chimera_pots_dmb", file: "muhl_chimera_pots_dmb.mno", gates: 20 },
+    { n: 27, name: "muhl_chimera_pred_rgcg", file: "muhl_chimera_pred_rgcg.mno", gates: 24 },
+    { n: 28, name: "muhl_chimera_lvin_synd", file: "muhl_chimera_lvin_synd.mno", gates: 22 },
+    { n: 29, name: "muhl_titanx_forge", file: "muhl_titanx_forge.mno", gates: 180 },
+    { n: 30, name: "muhl_titanx_mirror", file: "muhl_titanx_mirror.mno", gates: 240 },
+    { n: 31, name: "muhl_titanx_commons", file: "muhl_titanx_commons.mno", gates: 600 }
   ];
 
   api.organCensusFromListing = function (names) {
@@ -552,7 +564,7 @@
       var open = census.length - landed;
       if (organSum) {
         organSum.textContent = landed + " INTEGRATED · " + open + " NOT_LANDED of " + census.length +
-          " PLUMB 1–19 archetypes. Take a NOT_LANDED row. A PR is not this list.";
+          " PLUMB 1–31 organs. Take a NOT_LANDED row. A PR is not this list.";
       }
       organHost.innerHTML = census.map(function (row) {
         return "<li><span class=\"st st-" + esc(row.state) + "\">" + esc(row.state) + "</span> " +

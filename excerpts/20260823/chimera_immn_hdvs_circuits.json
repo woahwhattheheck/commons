@@ -1,0 +1,48 @@
+{
+  "muhl_chimera_immn_hdvs": {
+    "name": "muhl_chimera_immn_hdvs",
+    "magic": "MUHLCHIH",
+    "n_gate": 20,
+    "n_wires": 22,
+    "n_in": 10,
+    "n_out": 10,
+    "depth": 2,
+    "len": 630,
+    "offset": 0,
+    "container": "muhl_chimera_immn_hdvs.mno",
+    "format": "physical",
+    "gate_stride": 25,
+    "lanes": 10,
+    "src": "immn detector-bank match flags",
+    "dst": "hdvs BUNDLE plane slots",
+    "buffer": "NAND NAND identity, 2 g per lane",
+    "flags": "FLAGS, NEVER GATES. Door stays open.",
+    "input_addrs": [
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119
+    ],
+    "output_addrs": [
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119
+    ],
+    "sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
+    "clock": "bundle-slot out IS detector-flag in",
+    "titan": "NOT_WRITTEN"
+  }
+}
