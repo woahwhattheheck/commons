@@ -102,6 +102,8 @@ class MCPServer:
             "checkpoint_job": lambda: self.jobs.checkpoint(
                 str(arguments.get("job_id") or ""),
                 arguments.get("checkpoint") or {},
+                attempt_id=str(arguments.get("attempt_id") or ""),
+                lease_id=str(arguments.get("lease_id") or ""),
                 next_wake_at=arguments.get("next_wake_at"),
                 tokens_used=arguments.get("tokens_used"),
                 worker_id=str(arguments.get("worker_id") or "watchdog"),
