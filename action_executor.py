@@ -2,7 +2,9 @@
 """Execute addressed Commons ACTION posts.
 
 The action record is the instruction register.  A new p/*.md record with
-kind: ACTION is fired once; actions/results/<id>.json is the durable latch.
+kind: ACTION is fired once.  Repository actions use actions/results/<id>.json
+as their terminal latch.  Device actions additionally require a durable,
+history-backed reservation before a separate read-only runner may execute.
 """
 from __future__ import annotations
 
@@ -18,14 +20,31 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-import board_ingest
-
 ROOT = Path(__file__).resolve().parent
 POSTS = ROOT / "p"
 RESULTS = ROOT / "actions" / "results"
+DEVICE_RESERVATIONS = ROOT / "actions" / "device-reservations"
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 DEVICE_TARGETS = {"BRYCE-PC", "BRYCE_PHONE", "BRYCE-PHONE", "CURRENT-DEVICE", "DEVICE"}
+MAX_ACTION_VERB_CHARS = 160
+MAX_DEVICE_TARGET_CHARS = 1024
 WRITER_OK = {"wrote", "exists", "unchanged"}
+
+
+def _load_board_ingest():
+    """Load the repository writer only for github-scope POST/REPLY work."""
+    import board_ingest as module
+
+    globals()["board_ingest"] = module
+    return module
+
+
+def __getattr__(name: str):
+    # Preserve the historical module attribute for callers/tests without making
+    # the device executor import board_ingest and its mutable dependency graph.
+    if name == "board_ingest":
+        return _load_board_ingest()
+    raise AttributeError(name)
 
 
 def parse_record(path: Path) -> dict | None:
@@ -55,7 +74,7 @@ def parse_record(path: Path) -> dict | None:
     while lines and not lines[0].strip():
         lines.pop(0)
     try:
-        record_path = str(path.relative_to(ROOT))
+        record_path = str(path.relative_to(ROOT)).replace("\\", "/")
     except ValueError:
         record_path = str(path)
     return {"path": record_path, "meta": meta, "verb": verb,
@@ -219,6 +238,72 @@ def result_path(ident: str) -> Path:
     return RESULTS / f"{ident}.json"
 
 
+def device_reservation_path(ident: str) -> Path:
+    # Derive from ROOT so isolated tests that relocate the executor cannot
+    # accidentally consult the real checkout's latch directory.
+    return ROOT / "actions" / "device-reservations" / f"{ident}.json"
+
+
+def _path_entry_exists(path: Path) -> bool:
+    """Treat every filesystem object, including a broken symlink, as a latch."""
+    return os.path.lexists(path)
+
+
+def _safe_state_directory(path: Path) -> bool:
+    """Reject state namespaces that traverse symlinks or non-directories."""
+    try:
+        rel = path.relative_to(ROOT)
+    except ValueError:
+        # Relocated pure-test directories have no shared repository namespace.
+        return True
+    cursor = ROOT
+    for part in rel.parts:
+        cursor = cursor / part
+        if not os.path.lexists(cursor):
+            continue
+        if cursor.is_symlink() or not cursor.is_dir():
+            return False
+    return True
+
+
+def ever_latched(ident: str) -> bool:
+    """Return whether a reservation/result exists now or in reachable HEAD history.
+
+    The history check prevents deleting or renaming a one-shot record from
+    reopening the action id.  Production workflows use full-history checkouts.
+    A non-Git scratch root is supported for the executor's pure unit tests; a
+    shallow Git checkout fails closed instead of pretending its partial history
+    is authoritative.
+    """
+    paths = (result_path(ident), device_reservation_path(ident))
+    if any(_path_entry_exists(path) for path in paths):
+        return True
+    inside = subprocess.run(
+        ["git", "rev-parse", "--is-inside-work-tree"], cwd=ROOT,
+        text=True, capture_output=True,
+    )
+    if inside.returncode != 0 or inside.stdout.strip() != "true":
+        return False
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"], cwd=ROOT,
+        text=True, capture_output=True,
+    )
+    if shallow.returncode != 0 or shallow.stdout.strip() != "false":
+        raise RuntimeError("device/action latch history is unavailable or shallow")
+    try:
+        rels = [str(path.relative_to(ROOT)).replace("\\", "/") for path in paths]
+    except ValueError:
+        # Isolated tests may relocate POSTS/RESULTS without relocating ROOT.
+        # Current filesystem latches above still apply; there is no shared Git
+        # history to consult across those unrelated roots.
+        return False
+    seen = subprocess.run(
+        ["git", "log", "--full-history", "-1", "--format=%H", "HEAD", "--", *rels], cwd=ROOT,
+        text=True, capture_output=True, check=True,
+    )
+    return bool(seen.stdout.strip())
+
+
 def post_path(ident: str, suffix: str) -> Path:
     keep = 80 - len(suffix)
     return POSTS / f"{ident[:keep]}{suffix}.md"
@@ -226,6 +311,7 @@ def post_path(ident: str, suffix: str) -> Path:
 
 def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, reply: bool) -> dict:
     """Run POST/REPLY through board_ingest.write_post, never a direct file write."""
+    board_ingest = _load_board_ingest()
     if Path(board_ingest.ROOT).resolve() != ROOT.resolve() or Path(board_ingest.POSTS).resolve() != POSTS.resolve():
         raise RuntimeError("canonical writer root does not match action checkout")
     suffix = "-reply" if reply else "-post"
@@ -422,17 +508,55 @@ def git_changed(include_results: bool = False) -> list[str]:
 
 
 def pending(scope: str, only_id: str | None = None) -> list[dict]:
-    RESULTS.mkdir(parents=True, exist_ok=True)
     if only_id is not None and not ID_RE.fullmatch(only_id):
         raise ValueError("--only-id must be an exact 8-80 character Commons id")
-    out = []
+    if not _safe_state_directory(ROOT / "actions" / "results"):
+        return []
+    if not _safe_state_directory(ROOT / "actions" / "device-reservations"):
+        return []
+    if POSTS.is_symlink() or not POSTS.is_dir():
+        return []
+    declared: dict[str, list[Path]] = {}
+    parsed: dict[str, dict] = {}
     for path in sorted(POSTS.glob("*.md")):
+        # A symlink/directory in the canonical source namespace makes the
+        # snapshot ambiguous.  Fail the whole scan closed instead of following
+        # attacker-selected bytes or silently ignoring an alias.
+        if path.is_symlink() or not path.is_file():
+            return []
+        plain = parse_plain_post(path)
+        declared_id = plain.get("id", "")
+        if plain.get("kind", "").upper() == "ACTION" and ID_RE.fullmatch(declared_id):
+            declared.setdefault(declared_id, []).append(path)
         rec = parse_record(path)
-        if not rec or result_path(rec["meta"]["id"]).exists():
+        if rec:
+            parsed[str(path)] = rec
+
+    out = []
+    for ident in sorted(declared):
+        paths = declared[ident]
+        # A single canonical source path is part of the execution address.
+        # Duplicate declarations (including an otherwise malformed duplicate)
+        # and filename/id mismatches are UNKNOWN, not candidates that may race
+        # through different scopes.
+        if len(paths) != 1 or paths[0] != POSTS / f"{ident}.md":
             continue
-        if only_id is not None and rec["meta"]["id"] != only_id:
+        rec = parsed.get(str(paths[0]))
+        if rec is None:
+            continue
+        if only_id is not None and ident != only_id:
+            continue
+        if ever_latched(ident):
             continue
         device = is_device_target(rec["target"])
+        if device and (
+            len(rec["verb"]) > MAX_ACTION_VERB_CHARS
+            or len(rec["target"]) > MAX_DEVICE_TARGET_CHARS
+            or "\n" in rec["target"]
+        ):
+            # Non-reservable device records are permanently UNKNOWN and must
+            # not starve later canonical work in the bounded batch prefix.
+            continue
         if (scope == "device") != device:
             continue
         out.append(rec)
@@ -444,6 +568,11 @@ def main() -> int:
     ap.add_argument("--scope", choices=("github", "device"), required=True)
     ap.add_argument("--only-id", help="optionally execute only this action id")
     args = ap.parse_args()
+    if args.scope == "device":
+        ap.error(
+            "unbound device execution is disabled; use the durable "
+            "device reservation workflow"
+        )
     RESULTS.mkdir(parents=True, exist_ok=True)
     all_changed: list[str] = []
     canonical_records: dict[str, str] = {}

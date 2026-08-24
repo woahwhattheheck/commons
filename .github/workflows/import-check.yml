@@ -41,7 +41,7 @@ jobs:
           sys.path.insert(0, ".")
           for mod in (
               "hub_pages", "memory_board", "capability_declaration", "board_ingest", "builds_ledger", "file_drop",
-              "commons_mcp", "action_executor", "action_land",
+              "commons_mcp", "action_executor", "action_land", "device_action_state",
           ):
               try:
                   __import__(mod)
@@ -59,7 +59,7 @@ jobs:
           # in one push is the signature of a whole-file write from an incomplete
           # copy -- the exact shape of both outages. Advisory: this step reports,
           # the import check above is what fails the run.
-          for f in board_ingest.py memory_board.py capability_declaration.py .capability-declaration-live commons_mcp.py commons_mcp_app.html action_executor.py action_land.py action.html hub_pages.py board.js carrier.js commons.css index.html; do
+          for f in board_ingest.py memory_board.py capability_declaration.py .capability-declaration-live commons_mcp.py commons_mcp_app.html action_executor.py action_land.py device_action_state.py action.html hub_pages.py board.js carrier.js commons.css index.html; do
             git cat-file -e "HEAD~1:$f" 2>/dev/null || continue
             [ -f "$f" ] || { echo "::warning::$f was deleted"; continue; }
             was=$(git cat-file -s "HEAD~1:$f")
