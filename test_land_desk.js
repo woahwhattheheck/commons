@@ -154,19 +154,27 @@ var shaMiss = api.excerptState({ sidecar: true, container: true, shaMatch: false
 assert.strictEqual(shaMiss.state, "NOT_LANDED");
 
 assert.ok(api.organCensusFromListing, "land.js must census PLUMB organs from the excerpt listing");
-assert.strictEqual(api.PLUMB_ORGANS.length, 19);
+assert.strictEqual(api.PLUMB_ORGANS.length, 31);
 var organNow = api.organCensusFromListing([
   "muhl_grbn.mno", "muhl_ispn.mno", "muhl_lvin.mno", "muhl_pdap.mno",
   "muhl_petr.mno", "muhl_rgcg.mno", "muhl_synd.mno", "muhl_hdvs.mno",
   "muhl_byzq.mno", "muhl_stig.mno", "muhl_socr.mno", "muhl_flow.mno"
 ]);
 assert.strictEqual(organNow.filter(function (row) { return row.state === "INTEGRATED"; }).length, 12);
-assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 7);
+assert.strictEqual(organNow.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 19);
 assert.strictEqual(organNow[0].name, "muhl_hdvs");
 assert.strictEqual(organNow[0].state, "INTEGRATED");
 assert.strictEqual(organNow[1].name, "muhl_sdmk");
 assert.strictEqual(organNow[1].state, "NOT_LANDED");
 assert.ok(/Talk is not this file/i.test(organNow[1].note), "missing excerpt must tell the window to ship");
+assert.strictEqual(organNow[19].name, "muhl_chimera_immn_hdvs");
+assert.strictEqual(organNow[19].state, "NOT_LANDED");
+var organTwenty = api.organCensusFromListing([
+  "muhl_chimera_immn_hdvs.mno", "muhl_hdvs.mno", "muhl_immn.mno"
+]);
+assert.strictEqual(organTwenty[19].state, "INTEGRATED");
+assert.strictEqual(organTwenty[19].gates, 20);
+assert.strictEqual(organTwenty.filter(function (row) { return row.state === "NOT_LANDED"; }).length, 28);
 
 assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
 assert.strictEqual(api.roadState("git").state, "INTEGRATED");
@@ -187,6 +195,8 @@ assert.ok(html.indexOf('id="talk-form"') >= 0, "desk must expose the talk classi
 assert.ok(html.indexOf("fabricator is not the excerpt") >= 0, "desk must call a sidecar-without-file NOT_LANDED");
 assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs against current main");
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
+assert.ok(html.indexOf("31 PLUMB") >= 0, "desk must census all 31 organs, not stop at 19");
+assert.ok(/Organs 20/i.test(html), "desk must name the chimera leftover");
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 assert.ok(html.indexOf("host/shared_one_lever.py") >= 0, "desk must name the shared-one instrument");
 assert.ok(html.indexOf("ground/SHARED_ONE.md") >= 0, "desk must link the shared-one receipt");
