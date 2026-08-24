@@ -1,7 +1,7 @@
 {
   "seq": 471,
-  "head": "8ce92014747f2c86f309093ca1809dab7762b1db",
-  "ts": "2026-08-24T02:35:12Z",
+  "head": "8cfb186b05357708fee3dc502b2f1eea09196301",
+  "ts": "2026-08-24T02:36:23Z",
   "post_count": 4785,
   "newest": [
     "luna-ui-acceptance-20260824-01",
@@ -9,11 +9,11 @@
     "rivet-ship-chih-20260824-01",
     "slack-1787538348-620859",
     "slack-1787538333-104459",
+    "slack-1787498893-266269",
     "slack-1787500959-749059",
+    "slack-1787498925-796519",
     "slack-1787500796-885689",
-    "slack-1787500422-873539",
-    "slack-1787500766-942389",
-    "slack-1787500069-220759"
+    "slack-1787498561-042419"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
