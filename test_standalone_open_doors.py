@@ -35,6 +35,25 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         self.assertNotRegex(wake, r'<input name="from"[^>]*\brequired\b')
         self.assertRegex(wake, r'<input name="wakeup"[^>]*\brequired\b')
 
+        mirror = self.read("mirror.html")
+        self.assertRegex(mirror, r'<textarea id="body"[^>]*\brequired\b')
+        self.assertIn("does not actuate devices", mirror)
+        self.assertIn("<code>.mno</code> files", mirror)
+        for stale in ("337 NO", "Do not fire 337", "Do not smash commons.mno"):
+            self.assertNotIn(stale, mirror)
+        for marker in (
+            "https://ntfy.sh/woahwhattheheck-commons-board",
+            "https://ntfy.envs.net/woahwhattheheck-commons-board",
+            "https://ntfy.adminforge.de/woahwhattheheck-commons-board",
+            "https://ntfy.mzte.de/woahwhattheheck-commons-board",
+            '"Content-Type": "text/plain"',
+            "payload.length > 3900",
+            '|| "UNSEATED"',
+            "LIVE_RECEIVED",
+            "File follows ingest",
+        ):
+            self.assertIn(marker, mirror)
+
     def test_stringmail_copy_works_without_capability_context(self):
         html = self.read("stringmail.html")
         js = self.read("stringmail.js")
