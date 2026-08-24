@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Slack -> Commons canonical issue ingest.
 
-Slack event identity is the record identity. This program never writes p/
-directly: it formats or creates ordinary ``label=board`` GitHub issues and lets
-the canonical Commons publisher create ``p/slack-{native_ts}.md``.
+Slack event identity remains durable provenance.  A valid caller-supplied
+Commons ``id`` is the canonical record identity; ordinary chat or an invalid
+or missing declaration falls back to ``slack-{native_ts}``.  This program never
+writes p/ directly: it formats or creates ordinary ``label=board`` GitHub
+issues and lets the canonical Commons publisher create the record.
 
 The default ``sync`` mode is a fallback for a runner that already has
 ``SLACK_BOT_TOKEN`` and ``GITHUB_TOKEN``. ``format`` and ``plan`` are offline
@@ -45,7 +47,11 @@ REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "woahwhattheheck/commons")
 SLACK_API = "https://slack.com/api"
 GITHUB_API = "https://api.github.com"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
+DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
+SENDER_DISCLOSURE_RE = re.compile(
+    r"\n?\*Sent using\*\s+<@[^>\n]+\|[^>\n]+>\s*$"
+)
 COPY_FIELDS = (
     "is_language_model",
     "model",
@@ -57,6 +63,16 @@ COPY_FIELDS = (
     "subject",
     "supersedes",
 )
+PROJECTION_FIELDS = {
+    "from",
+    "to",
+    "id",
+    "ts",
+    "carrier",
+    "revision",
+    "kind",
+    *COPY_FIELDS,
+}
 STRUCTURAL_SUBTYPES = {
     "channel_join",
     "channel_leave",
@@ -107,6 +123,21 @@ def canonical_id(native_ts: str) -> str:
     return "slack-%s-%s" % (whole, fraction)
 
 
+def declared_id(fields: dict[str, str]) -> str:
+    """Return a valid declared Commons id, or an empty fallback signal.
+
+    This is the same public grammar used by ``board_ingest.slug_id`` before
+    sanitization.  Slack transport provenance remains keyed by native ts; a
+    caller id only selects the canonical record name.
+    """
+    value = str(fields.get("id") or "").strip()
+    return value if DECLARED_ID_RE.fullmatch(value) else ""
+
+
+def record_id(native_ts: str, fields: dict[str, str]) -> str:
+    return declared_id(fields) or canonical_id(native_ts)
+
+
 def iso_from_slack(native_ts: str) -> str:
     value = _decimal_ts(native_ts)
     seconds = int(value)
@@ -136,6 +167,33 @@ def leading_fields(text: str) -> dict[str, str]:
         out[key] = value.strip()
         saw_field = True
     return out
+
+
+def canonical_projection_body(text: str) -> str:
+    """Remove measured Slack carrier decoration for canonical comparison.
+
+    Slack has been observed to remove frontmatter fences, render the ``↔``
+    glyph as its named emoji, and append the connector sender disclosure.
+    This function only normalizes those measured carrier changes.  Any other
+    body difference remains a deterministic immutable mismatch.
+    """
+    lines = (text or "").splitlines(keepends=True)
+    saw_field = False
+    index = 0
+    for index, raw in enumerate(lines):
+        line = raw.strip()
+        if line == "---" or not line:
+            continue
+        key, sep, _value = line.partition(":")
+        if sep and key.strip().lower() in PROJECTION_FIELDS:
+            saw_field = True
+            continue
+        break
+    else:
+        index = len(lines)
+    body = "".join(lines[index:] if saw_field else lines)
+    body = SENDER_DISCLOSURE_RE.sub("", body.rstrip("\n"))
+    return body.replace(":left_right_arrow:", "↔")
 
 
 def legal_claim(value: str) -> str:
@@ -171,15 +229,20 @@ def issue_record(message: dict[str, Any], channel_id: str = CHANNEL_ID) -> Issue
         raise IngestError("event is not mirrorable")
     text = str(message.get("text") or "")
     native_ts = str(message.get("ts") or "").strip()
-    ident = canonical_id(native_ts)
-    stamp = iso_from_slack(native_ts)
     fields = leading_fields(text)
+    ident = record_id(native_ts, fields)
+    stamp = iso_from_slack(native_ts)
     src = source_claim(message, fields)
     dest = legal_claim(fields.get("to", "TABLE"))
     thread_ts = str(message.get("thread_ts") or "").strip()
     is_reply = bool(thread_ts and thread_ts != native_ts)
     kind = "slack_thread_reply" if is_reply else "slack_message"
-    target = canonical_id(thread_ts) if is_reply else ""
+    parent_id = str(message.get("_thread_canonical_id") or "").strip()
+    target = (
+        parent_id
+        if is_reply and DECLARED_ID_RE.fullmatch(parent_id)
+        else canonical_id(thread_ts) if is_reply else ""
+    )
 
     envelope: list[tuple[str, str]] = [
         ("from", src),
@@ -224,6 +287,13 @@ def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_I
     # The canonical writer normalizes the final newline; source bytes otherwise stay.
     if marker in raw and body.rstrip("\n") == _record_body(record.body).rstrip("\n"):
         return True
+    # A Git-first record may already be canonical before its Slack copy is
+    # observed.  Accept only a measured carrier-normalized exact body match;
+    # never rewrite it and never collapse a real divergence into a receipt.
+    if declared_id(leading_fields(_record_body(record.body))):
+        projected = canonical_projection_body(_record_body(record.body))
+        if projected.rstrip("\n") == body.rstrip("\n"):
+            return True
     raise ImmutableMismatch("existing %s differs from Slack event %s" % (path, record.native_ts))
 
 
@@ -276,9 +346,12 @@ def collect_events(
             events[ts] = root
         if not ts or not int(root.get("reply_count") or 0):
             continue
+        root_id = record_id(ts, leading_fields(str(root.get("text") or "")))
         for reply in paged(lambda cursor, root_ts=ts: replies_fetch(root_ts, cursor)):
             reply_ts = str(reply.get("ts") or "")
             if reply_ts and reply_ts != ts:
+                reply = dict(reply)
+                reply["_thread_canonical_id"] = root_id
                 events[reply_ts] = reply
     return [events[key] for key in sorted(events, key=_decimal_ts)]
 
@@ -415,14 +488,24 @@ def load_events(path: Path) -> list[dict[str, Any]]:
 
 def plan(events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[IssueRecord]:
     out: list[IssueRecord] = []
-    seen: set[str] = set()
+    seen: dict[str, IssueRecord] = {}
     for event in sorted(events, key=lambda item: _decimal_ts(item.get("ts"))):
         if should_skip(event):
             continue
         record = issue_record(event)
-        if record.title in seen:
-            continue
-        seen.add(record.title)
+        previous = seen.get(record.title)
+        if previous is not None:
+            if (
+                previous.native_ts == record.native_ts
+                and _record_body(previous.body).rstrip("\n")
+                == _record_body(record.body).rstrip("\n")
+            ):
+                continue
+            raise ImmutableMismatch(
+                "declared id %s is claimed by Slack events %s and %s"
+                % (record.title, previous.native_ts, record.native_ts)
+            )
+        seen[record.title] = record
         if not verify_existing(posts_dir / (record.title + ".md"), record):
             out.append(record)
     return out
