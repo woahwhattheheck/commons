@@ -343,6 +343,9 @@
     if (api.isDemandGapTalk(t)) {
       return { state: "CLAIMED", note: "demand-gap / outstanding-lane talk. Talk is not a land. Ship a leftover path on current main." };
     }
+    if (api.isTabletopTalk(t)) {
+      return { state: "CLAIMED", note: "spatial-tabletop / build-order talk. Talk is not a land. Ship a path on current main." };
+    }
     return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
@@ -372,6 +375,10 @@
 
   api.isDemandGapTalk = function (text) {
     return /bryce demand gap|44 outstanding|non-duplicating lanes|dependency-ordered lanes|38 PARTIAL, 2 UNBUILT, 4 UNKNOWN|take only the smallest unclaimed lane/i.test(String(text || ""));
+  };
+
+  api.isTabletopTalk = function (text) {
+    return /spatial state matrix|virtual tabletop|movable tokens|top-down map of what the network|gemini gave the following build order/i.test(String(text || ""));
   };
 
   api.sharedOneState = function (row) {

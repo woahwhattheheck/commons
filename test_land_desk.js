@@ -427,6 +427,17 @@ assert.ok(/daily complete inventory/i.test(html), "desk must name inventory talk
 assert.ok(api.isInventoryTalk("FULL DEDUPLICATED MAP (27 canonical systems)"), "inventory copy is talk");
 assert.ok(api.isDemandGapTalk("BRYCE DEMAND GAP — 44 OUTSTANDING, NON-DUPLICATING LANES"), "demand-gap copy is talk");
 assert.ok(/demand-gap/i.test(html), "desk must name demand-gap talk as CLAIMED");
+assert.ok(api.isTabletopTalk("Gemini gave the following build order: A Spatial State Matrix (Virtual Tabletop) with movable tokens."), "tabletop essay is talk");
+assert.ok(/spatial state matrix|virtual tabletop/i.test(html), "desk must name tabletop talk as CLAIMED");
+var tabletopTalk = api.completionStateFromText(
+  "A Spatial State Matrix. Virtual tabletop. Movable tokens. Top-down map of what the network is doing."
+);
+assert.strictEqual(tabletopTalk.state, "CLAIMED");
+assert.ok(/tabletop/i.test(tabletopTalk.note), "tabletop-without-SHA must stay CLAIMED");
+var tabletopDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nspatial state matrix leftover shipped"
+);
+assert.strictEqual(tabletopDone.state, "INTEGRATED", "completion words still beat a tabletop essay");
 var demandGapTalk = api.completionStateFromText(
   "44 outstanding. Take only the smallest unclaimed lane. DEPENDENCY-ORDERED LANES. 38 PARTIAL, 2 UNBUILT, 4 UNKNOWN."
 );
