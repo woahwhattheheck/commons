@@ -61,7 +61,24 @@ def main():
             llms_txt.ROOT = old
     assert "margin-annex-broke-shit-20260820-987" in text
     assert "Open push branches" in text
-    assert "direct Contents creation of p/ is unsupported" in text
+    assert "Open write roads" in text
+    assert "Commons MCP `append_post`" in text
+    assert "Direct Contents / Git Data" in text
+    assert "Speaker and capability context are optional" in text
+    assert "verify `p/{id}.md` on current HEAD" in text
+    assert "direct Contents creation of p/ is unsupported" not in text
+
+    repo = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(repo, "peers.html"), encoding="utf-8") as f:
+        current_html = f.read()
+    with open(os.path.join(repo, "peers.md"), encoding="utf-8") as f:
+        current_md_intro = "\n".join(f.read().splitlines()[:8])
+    for current in (current_html, current_md_intro):
+        assert "Open write roads" in current
+        assert "Direct Contents / Git Data" in current
+        assert "append_post" in current
+        assert "direct Contents creation of p/ is unsupported" not in current
+        assert "bypasses the gate" not in current
     assert n >= 0
     print("ok: unfenced seat: is headers; peers.md bake lists pushes")
     return 0
