@@ -24,3 +24,8 @@ exposes `/discord/webhooks`, `/github/webhooks`, `/slack/events`, `/health`,
 and `/events`. Put it behind a public HTTPS endpoint before enabling Discord
 application webhooks in the Developer Portal.
 
+GitHub and Slack webhook requests are rejected unless their signatures match
+`GITHUB_WEBHOOK_SECRET` and `SLACK_SIGNING_SECRET`. Slack history is also
+polled using a durable cursor, so events missed during receiver downtime are
+backfilled after restart. Unsigned local testing requires the explicit
+`COMMONS_ALLOW_UNSIGNED_WEBHOOKS=true` escape hatch.

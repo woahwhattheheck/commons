@@ -194,6 +194,33 @@ def deliver_slack() -> None:
             JOURNAL.delivered(event, "slack", str(out.get("ts", "")))
 
 
+def poll_slack() -> None:
+    """Backfill Slack history so temporary webhook outages do not lose posts."""
+    token, channel = env("SLACK_BOT_TOKEN"), env("SLACK_COMMONS_CHANNEL")
+    if not token or not channel:
+        return
+    oldest = JOURNAL.cursor(f"slack:{channel}", "0")
+    query = urllib.parse.urlencode({"channel": channel, "oldest": oldest, "limit": 100,
+                                    "inclusive": "false"})
+    out = request_json(f"https://slack.com/api/conversations.history?{query}",
+                       token=f"Bearer {token}")
+    if not out.get("ok"):
+        raise OSError(f"Slack history failed: {out.get('error', 'unknown_error')}")
+    rows = out.get("messages", [])
+    for row in reversed(rows):
+        ts = str(row.get("ts", ""))
+        if not ts or row.get("bot_id") or "`commons:" in row.get("text", ""):
+            continue
+        JOURNAL.append("slack", "message", f"{channel}:{ts}", {
+            "title": f"Slack #{channel}", "text": row.get("text", ""),
+            "channel_id": channel, "author": row.get("user", ""),
+            "files": row.get("files", []), "thread_ts": row.get("thread_ts", ""),
+            "url": "",
+        })
+    if rows:
+        JOURNAL.set_cursor(f"slack:{channel}", max(str(row.get("ts", "0")) for row in rows))
+
+
 def poll_git() -> None:
     repo = Path(env("COMMONS_REPO", str(ROOT)))
     try:
@@ -266,18 +293,45 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self) -> None:
         length = int(self.headers.get("Content-Length", "0"))
         raw = self.rfile.read(length)
+        source = "discord" if self.path.startswith("/discord/") else "github" if self.path.startswith("/github/") else "slack" if self.path.startswith("/slack/") else "http"
+        if source == "github" and not self.valid_github_signature(raw):
+            self.reply(401, {"error": "invalid GitHub signature"})
+            return
+        if source == "slack" and not self.valid_slack_signature(raw):
+            self.reply(401, {"error": "invalid Slack signature"})
+            return
         try:
             payload = json.loads(raw or b"{}")
         except ValueError:
             self.reply(400, {"error": "invalid json"})
             return
-        source = "discord" if self.path.startswith("/discord/") else "github" if self.path.startswith("/github/") else "slack" if self.path.startswith("/slack/") else "http"
         native = self.headers.get("X-GitHub-Delivery") or self.headers.get("X-Slack-Request-Timestamp") or str(payload.get("id", ""))
         if source == "slack" and payload.get("type") == "url_verification":
             self.reply(200, {"challenge": payload.get("challenge")})
             return
         event, inserted = JOURNAL.append(source, str(payload.get("type") or self.headers.get("X-GitHub-Event") or "webhook"), native, payload)
         self.reply(202, {"accepted": inserted, "event_id": event.id})
+
+    def valid_github_signature(self, raw: bytes) -> bool:
+        secret = env("GITHUB_WEBHOOK_SECRET")
+        if not secret:
+            return env("COMMONS_ALLOW_UNSIGNED_WEBHOOKS", "false").lower() == "true"
+        expected = "sha256=" + hmac.new(secret.encode(), raw, hashlib.sha256).hexdigest()
+        return hmac.compare_digest(expected, self.headers.get("X-Hub-Signature-256", ""))
+
+    def valid_slack_signature(self, raw: bytes) -> bool:
+        secret = env("SLACK_SIGNING_SECRET")
+        if not secret:
+            return env("COMMONS_ALLOW_UNSIGNED_WEBHOOKS", "false").lower() == "true"
+        timestamp = self.headers.get("X-Slack-Request-Timestamp", "")
+        try:
+            if abs(time.time() - int(timestamp)) > 300:
+                return False
+        except ValueError:
+            return False
+        base = b"v0:" + timestamp.encode() + b":" + raw
+        expected = "v0=" + hmac.new(secret.encode(), base, hashlib.sha256).hexdigest()
+        return hmac.compare_digest(expected, self.headers.get("X-Slack-Signature", ""))
 
     def log_message(self, fmt: str, *args: Any) -> None:
         print("bridge", self.address_string(), fmt % args, flush=True)
@@ -286,7 +340,7 @@ class Handler(BaseHTTPRequestHandler):
 def worker() -> None:
     delay = max(1, int(env("COMMONS_POLL_SECONDS", "3")))
     while True:
-        for fn in (poll_git, poll_discord, deliver_discord, deliver_slack):
+        for fn in (poll_git, poll_discord, poll_slack, deliver_discord, deliver_slack):
             try:
                 fn()
             except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
@@ -296,7 +350,7 @@ def worker() -> None:
 
 def main() -> None:
     threading.Thread(target=worker, daemon=True).start()
-    host, port = env("COMMONS_BRIDGE_HOST", "127.0.0.1"), int(env("COMMONS_BRIDGE_PORT", "8787"))
+    host, port = env("COMMONS_BRIDGE_HOST", "127.0.0.1"), int(env("COMMONS_BRIDGE_PORT", "18787"))
     print(f"Commons Discord node listening on http://{host}:{port}", flush=True)
     ThreadingHTTPServer((host, port), Handler).serve_forever()
 
