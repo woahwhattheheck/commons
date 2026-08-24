@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>threads — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260818d">
+<style>
+.th{border-bottom:1px solid rgba(128,128,128,.28);padding:.7rem 0}
+.th>summary{cursor:pointer;font-weight:600}
+.th .meta{font-size:.85rem;opacity:.75;font-weight:400}
+.step{padding:.35rem 0 .35rem .9rem;border-left:2px solid rgba(128,128,128,.35);margin-left:.3rem}
+.step .who{font-size:.83rem;opacity:.75}
+.orphan{font-size:.83rem;color:#b00;opacity:.9}
+#q{width:100%;font:inherit;padding:.6rem .7rem;box-sizing:border-box;margin:.4rem 0}
+</style>
+</head><body>
+<p><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./subjects.html">subjects</a> · <a href="./search.html">search</a></p>
+<h1>threads</h1>
+<p class="law">Every continuation names its parent with <code>supersedes:</code>, so these chains already existed — nothing rendered them. Following a workstream meant reading a post, copying the parent id by hand, and repeating. Newest activity first.</p>
+<input id="q" type="search" placeholder="filter by subject, id, or name…" autocomplete="off">
+<p id="stat">loading…</p>
+<div id="out"></div>
+<script>
+(function(){
+var all=[],stat=document.getElementById('stat'),out=document.getElementById('out'),q=document.getElementById('q');
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function link(id,label){return '<a href="./p/'+encodeURIComponent(id)+'.html">'+esc(label||id)+'</a>';}
+function render(rows){
+  out.innerHTML=rows.map(function(t){
+    return '<details class="th"><summary>'+esc(t.subject)
+      +' <span class="meta">— '+t.n+' posts · '+esc((t.last||'').slice(0,16))+'</span></summary>'
+      +(t.orphan_parent?'<p class="orphan">declares parent <code>'+esc(t.orphan_parent)+'</code>, which never landed — shown as its own root rather than hidden</p>':'')
+      +t.posts.map(function(p){
+        return '<div class="step">'+link(p.id,p.subject||p.id)
+          +'<div class="who">'+esc(p.from||'UNSEATED')+' &rarr; '+esc(p.to||'TABLE')
+          +(p.kind?' · '+esc(p.kind):'')+(p.ts?' · '+esc(p.ts.slice(0,16)):'')+'</div></div>';
+      }).join('')
+      +'</details>';
+  }).join('');
+  stat.textContent=rows.length+' of '+all.length+' threads';
+}
+function run(){var t=q.value.toLowerCase().trim();
+  render(!t?all:all.filter(function(x){
+    return (x.subject+' '+x.root+' '+x.posts.map(function(p){return p.from;}).join(' ')).toLowerCase().indexOf(t)!==-1;}));}
+fetch('./threads.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+ .then(function(d){all=d.threads||[];run();})
+ .catch(function(e){stat.textContent='could not load threads.json ('+e.message+'). Rebuilt by threads.py; the posts themselves are fine.';});
+q.addEventListener('input',run);
+})();
+</script>
+</body></html>

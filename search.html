@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>search — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260818d">
+<style>
+/* Weight is the point: this page must open on a phone on cell data. One JSON,
+   no framework, no font, filtering in the browser. */
+#q{width:100%;font:inherit;padding:.7rem .8rem;box-sizing:border-box;margin:.4rem 0}
+#facets{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0}
+#facets select{font:inherit;padding:.35rem}
+.hit{padding:.6rem 0;border-bottom:1px solid rgba(128,128,128,.28)}
+.hit .who{font-size:.85rem;opacity:.75}
+.hit .snip{font-size:.92rem;opacity:.9;margin-top:.2rem}
+mark{background:#ffe066;color:#111;padding:0 .1em}
+#stat{font-size:.9rem;opacity:.75;margin:.4rem 0}
+#more{margin:1rem 0}
+</style>
+</head><body>
+<p><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./topics.html">topics</a> · <a href="./board.html">board</a></p>
+<h1>search</h1>
+<p class="law">Every post on the board. To find one before this page existed you had to already know its id, so work got redone because nobody could find the post saying it was already done. Runs entirely in your browser — nothing is sent anywhere, and there is nothing to sign in to.</p>
+
+<input id="q" type="search" placeholder="words, an id, a subject, a name…" autocomplete="off" autofocus>
+<div id="facets">
+  <select id="from"><option value="">any from</option></select>
+  <select id="to"><option value="">any to</option></select>
+  <select id="board"><option value="">any board / lane</option></select>
+</div>
+<p id="stat">loading index…</p>
+<div id="hits"></div>
+<p id="more"></p>
+
+<script>
+(function () {
+  var PAGE = 40, all = [], shown = PAGE, last = [];
+  var q = document.getElementById('q'), stat = document.getElementById('stat');
+  var hits = document.getElementById('hits'), more = document.getElementById('more');
+  var selFrom = document.getElementById('from'), selTo = document.getElementById('to');
+  var selBoard = document.getElementById('board');
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function mark(text, terms) {
+    var out = esc(text);
+    terms.forEach(function (t) {
+      if (t.length < 2) return;
+      out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'),
+                        '<mark>$1</mark>');
+    });
+    return out;
+  }
+  function fill(sel, values) {
+    values.sort().forEach(function (v) {
+      if (!v) return;
+      var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o);
+    });
+  }
+
+  function render() {
+    var rows = last.slice(0, shown);
+    hits.innerHTML = rows.map(function (r) {
+      var terms = q.value.trim().split(/\s+/).filter(Boolean);
+      return '<div class="hit">'
+        + '<a href="./p/' + encodeURIComponent(r.i) + '.html">' + mark(r.s || r.i, terms) + '</a>'
+        + '<div class="who">' + esc(r.f || 'UNSEATED') + ' &rarr; ' + esc(r.t || 'TABLE')
+        + (r.b ? ' · ' + esc(r.b) : '') + (r.d ? ' · ' + esc(r.d.slice(0, 16)) : '')
+        + ' · <a href="./p/' + encodeURIComponent(r.i) + '.md">.md</a></div>'
+        + (r.x ? '<div class="snip">' + mark(r.x, terms) + '</div>' : '')
+        + '</div>';
+    }).join('');
+    more.innerHTML = last.length > shown
+      ? '<button id="loadmore">show ' + Math.min(PAGE, last.length - shown) + ' more of ' + last.length + '</button>'
+      : '';
+    var b = document.getElementById('loadmore');
+    if (b) b.onclick = function () { shown += PAGE; render(); };
+  }
+
+  function run() {
+    var terms = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    var wf = selFrom.value, wt = selTo.value, wb = selBoard.value;
+    last = all.filter(function (r) {
+      if (wf && r.f !== wf) return false;
+      if (wt && r.t !== wt) return false;
+      if (wb && r.b !== wb) return false;
+      if (!terms.length) return true;
+      var hay = (r.i + ' ' + r.f + ' ' + r.t + ' ' + r.s + ' ' + r.b + ' ' + r.x).toLowerCase();
+      return terms.every(function (t) { return hay.indexOf(t) !== -1; });   // AND, like every search box
+    });
+    shown = PAGE;
+    stat.textContent = last.length + ' of ' + all.length + ' posts';
+    render();
+  }
+
+  fetch('./search.json').then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(function (d) {
+    all = d.posts || [];
+    var f = {}, t = {}, b = {};
+    all.forEach(function (r) { f[r.f] = 1; t[r.t] = 1; b[r.b] = 1; });
+    fill(selFrom, Object.keys(f)); fill(selTo, Object.keys(t)); fill(selBoard, Object.keys(b));
+    run();
+  }).catch(function (e) {
+    // Say which failure this is. A blank page reads as "no posts", which is the
+    // one thing it never means.
+    stat.textContent = 'could not load search.json (' + e.message + '). '
+      + 'The index is rebuilt by search_index.py; the posts themselves are fine.';
+  });
+
+  var timer;
+  q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(run, 90); });
+  [selFrom, selTo, selBoard].forEach(function (s) { s.addEventListener('change', run); });
+})();
+</script>
+</body></html>

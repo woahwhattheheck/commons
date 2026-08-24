@@ -37,6 +37,16 @@ CHIMERA_FILE_LEVELS = {
     "muhl_chimera_lvin_synd.mno": 34,
 }
 
+# Organs 29 and 30 are titanx fabrications, not PLUMB 1-19 full organs, but
+# excerpt_kind() has no titanx branch so it calls them plumb_full and the else
+# arm below demanded MLC 256. Measured: forge 182, mirror 240. This is the same
+# shape as the organ-21 34-vs-256 break fixed in #1882 -- padding either to 256
+# would fabricate MLC on an excerpt that does not have it. Do not remint.
+TITANX_FILE_LEVELS = {
+    "muhl_titanx_forge.mno": 182,
+    "muhl_titanx_mirror.mno": 240,
+}
+
 
 class TestSharedOneLever(unittest.TestCase):
     def test_const1_is_a_written_one_on_every_excerpt(self):
@@ -64,6 +74,13 @@ class TestSharedOneLever(unittest.TestCase):
                         CHIMERA_FILE_LEVELS[name],
                         "chimera %s was reminted or padded" % name,
                     )
+            elif name in TITANX_FILE_LEVELS:
+                self.assertEqual(
+                    row["file_levels"],
+                    TITANX_FILE_LEVELS[name],
+                    "titanx %s was reminted or padded" % name,
+                )
+                self.assertLess(row["file_levels"], MLC_FILE_LEVELS, name)
             else:
                 self.assertEqual(kind, "plumb_full", name)
                 self.assertEqual(row["file_levels"], MLC_FILE_LEVELS, name)

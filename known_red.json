@@ -1,0 +1,176 @@
+{
+  "_comment": [
+    "Tests that are red for a reason already known and owned. Reported, not fatal.",
+    "EVERY entry has an expiry. A permanent exception is a deleted test with extra steps.",
+    "run_tests.py exits 2 when an entry passes or goes past its date, because a stale",
+    "exception hides the next real break the same way the floor-of-21 did.",
+    "Membership is measured, not guessed: an entry is here because the run actually",
+    "emitted the board_ingest SyntaxError, which catches indirect importers",
+    "(action_executor, owner_pin) that a grep for 'import board_ingest' misses.",
+    "Do not add an entry to make CI quiet. Add it when someone owns the fix and dated it."
+  ],
+  "expected_failures": [
+    {
+      "test": "test_action_executor.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_action_pad_zero_auth.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_capability_declaration.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_claims_ledger.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_conflict_dedupe.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_echo_skip.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_engine_guard.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_exactly_once.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_full_rebuild_frozen.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_header_alias.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_heal_recordless.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_heal_subpage_chrome.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_memory_gate.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_ntfy_git_land.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_owner_pin.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_permalink_follows_file.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_post_forms.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_post_image.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_push_replay.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_rebuild_determinism.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_removed_posts.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_salvage_loop.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_slack_link_render.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_subject_keep.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_subpage_assets.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_sweep_integration.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    },
+    {
+      "test": "test_unfenced_shorthand.py",
+      "until": "2026-08-31",
+      "why": "cascade: board_ingest.py does not parse on main (0759ccf, U+2026 at line 1450). GPT owns the repair; these go green with it.",
+      "issue": "board_ingest-truncation-20260824"
+    }
+  ]
+}

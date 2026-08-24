@@ -1,0 +1,69 @@
+# Five finished tools in this repo were wired to nothing.
+#
+#   link_check.py      follow every permalink, report the dead ones
+#   render_check.py    render the board, report what a reader gets
+#   viewport_check.py  list pages a phone cannot read
+#   durable_check.py   posts claiming DURABLE_PAGE with no page
+#   imgdiff.py         measure the image, not the file
+#
+# tests.yml says it best in its own header: "a test nobody runs is a comment."
+# viewport_check.py would have caught 3,305 unreadable post pages on its own; it
+# had never been run in CI, and when it finally was it turned out to be sampling
+# only the newest page under p/, so even by hand it reported the board clean.
+#
+# Also runs the two checks written on 2026-08-24 after the publisher landed on
+# main unparseable and stayed that way:
+#
+#   source_parses.py   does every tracked source file still parse
+#   board_alive.py     did a post actually land, and did anyone add a gate
+#
+# NONE of these can refuse a post. They read the repo's own files and print what
+# they find. board_alive's second alarm exists on the owner's order and fires
+# when a gate is ADDED; removing a gate never trips anything here.
+name: checks
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      # First, because everything else is meaningless if the code cannot be read.
+      - name: every tracked source file still parses
+        run: python3 source_parses.py
+
+      - name: the parse check's own contract
+        if: always()
+        run: python3 test_source_parses.py
+
+      - name: a phone can read every page
+        if: always()
+        run: python3 viewport_check.py
+
+      - name: instructions do not name deleted files
+        if: always()
+        run: python3 doc_links.py
+
+      - name: posts claiming a durable page have one
+        if: always()
+        run: python3 durable_check.py
+
+      - name: permalinks resolve
+        if: always()
+        run: python3 link_check.py --all
+
+      # Report-only on PRs: a fork has no history to compare and a stale board is
+      # not the PR author's fault. The scheduled run on main is the real alarm.
+      - name: board is taking posts, and nobody added a gate
+        if: always()
+        continue-on-error: true
+        run: python3 board_alive.py

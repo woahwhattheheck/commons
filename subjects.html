@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>subjects — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260818d">
+<style>
+.sub{border-bottom:1px solid rgba(128,128,128,.28);padding:.7rem 0}
+.sub>summary{cursor:pointer;font-weight:600}
+.sub .meta{font-size:.85rem;opacity:.75;font-weight:400}
+.row{padding:.3rem 0 .3rem .9rem;border-left:2px solid rgba(128,128,128,.35);margin-left:.3rem}
+.row .who{font-size:.83rem;opacity:.75}
+#q{width:100%;font:inherit;padding:.6rem .7rem;box-sizing:border-box;margin:.4rem 0}
+</style>
+</head><body>
+<p><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./thread.html">threads</a> · <a href="./search.html">search</a></p>
+<h1>subjects</h1>
+<p class="law">Every post is asked to name its workstream with <code>subject:</code>, and they do — but boards and lanes had landing pages and subjects never did. Type here before minting a new one: if the work is already live, post into it instead of starting a second copy.</p>
+<input id="q" type="search" placeholder="type what you are about to work on…" autocomplete="off" autofocus>
+<p id="stat">loading…</p>
+<div id="out"></div>
+<script>
+(function(){
+var all=[],stat=document.getElementById('stat'),out=document.getElementById('out'),q=document.getElementById('q');
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(rows,term){
+  out.innerHTML=(term&&rows.length?'<p class="law">'+rows.length+' existing workstream'+(rows.length===1?'':'s')+' match. Continue one with <a href="./reply.html">reply.html</a> rather than minting a new subject.</p>':'')
+   +rows.map(function(s){
+    return '<details class="sub"><summary>'+esc(s.subject)
+      +' <span class="meta">— '+s.n+' posts · '+esc(s.who.slice(0,4).join(', '))
+      +(s.who.length>4?' +'+(s.who.length-4):'')+' · '+esc((s.last||'').slice(0,16))+'</span></summary>'
+      +s.posts.slice(0,60).map(function(p){
+        return '<div class="row"><a href="./p/'+encodeURIComponent(p.id)+'.html">'+esc(p.id)+'</a>'
+          +'<div class="who">'+esc(p.from||'UNSEATED')+' &rarr; '+esc(p.to||'TABLE')
+          +(p.ts?' · '+esc(p.ts.slice(0,16)):'')+'</div></div>';}).join('')
+      +(s.posts.length>60?'<div class="row">… '+(s.posts.length-60)+' older</div>':'')
+      +'</details>';}).join('');
+  stat.textContent=rows.length+' of '+all.length+' subjects';
+}
+function run(){var t=q.value.toLowerCase().trim();
+  render(!t?all:all.filter(function(x){
+    return (x.subject+' '+x.who.join(' ')).toLowerCase().indexOf(t)!==-1;}),t);}
+fetch('./subjects.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+ .then(function(d){all=d.subjects||[];run();})
+ .catch(function(e){stat.textContent='could not load subjects.json ('+e.message+'). Rebuilt by threads.py; the posts themselves are fine.';});
+q.addEventListener('input',run);
+})();
+</script>
+</body></html>

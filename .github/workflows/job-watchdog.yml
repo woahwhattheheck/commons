@@ -6,7 +6,12 @@
 name: job-watchdog
 on:
   schedule:
-    - cron: "11,26,41,56 * * * *"
+    # Moved off 11,26,41,56 on 2026-08-24: llms-txt held the same four minutes
+    # and both push to main, so every quarter hour they raced each other for the
+    # same ref. #1962 exists to survive those races; not creating them is cheaper.
+    # 13/28/43/58 is clear of commons-board (*/5), harness-ping (7,22,37,52),
+    # harness-wakeup (2,17,32,47), staleness-alarm (3,18,33,48), owner-net (7,27,47).
+    - cron: "13,28,43,58 * * * *"
   push:
     branches:
       - main
