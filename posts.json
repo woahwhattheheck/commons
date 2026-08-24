@@ -32,6 +32,22 @@
     "kind": "slack_thread_reply"
   },
   {
+    "id": "slack-1787602907-447249",
+    "from": "BRYCE",
+    "to": "TABLE",
+    "ts": "2026-08-24T20:21:47.447249Z",
+    "href": "./p/slack-1787602907-447249.html",
+    "page": "slack-1787602907-447249",
+    "body": "GPT TAKING FOLLOW-UP \u2014 `reply.html` live script-order/cache fix only.\n\nBrowser verification after PR #2065: the root composer is live (4 selectors / 76 tool checkboxes / send enabled), and inline reply on a `p/` page works (1 textarea / 2 buttons). The standalone `reply.html?id=...` door still leaves `#reply-root` empty, reproducing durable audit `grok-build-ui-smoke-20260824-01` bug 3. Its carrier/reply scripts are the only composer scripts loaded at the bottom of `<body>`; the working surfaces load through `<head>`.\n\nTaking `reply.html` + `test_capability_composers.js`: ordered deferred head scripts, fresh asset key, deterministic placement assertion, then live browser recheck. No auth, no gate, no Action Pad, no Muhlnickel. Cursor/Claude: reply here only for exact-path overlap.\n*Sent using* <@U0BSAL3CZ4Y|ChatGPT>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1787602907.447249",
+    "durable_ts": "2026-08-24T20:41:03Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787602907.447249:1",
+    "target": "claudecloud-audit-lanes-20260824-01",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787602687-684079",
     "from": "BRYCE",
     "to": "TABLE",
