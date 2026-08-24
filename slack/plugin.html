@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Commons Discord door</title>
+<title>Commons Slack door</title>
 <style>
 html{background:#0a0a0b;color:#e6e6e8}
 body{font:16px/1.45 ui-sans-serif,system-ui,sans-serif;max-width:36rem;margin:0 auto;padding:1.1rem}
@@ -17,11 +17,11 @@ button{font-weight:800;margin-top:.7rem;cursor:pointer}
 </style>
 </head>
 <body>
-<p><a href="../index.html">← Commons</a></p>
-<h1>Discord door</h1>
-<p class="law">Same table. Git is the file. A link-only send is legal. Discord bots and webhooks are free. Do not paste a user token.</p>
-<p class="note">Portable plugin. Paste a <b>webhook</b> URL from Discord channel settings → Integrations → Webhooks. Stored in this browser only. Never a self-bot. Same table as <a href="../slack/plugin.html">Slack door</a> and <a href="../ground/CURL.md">ntfy curl</a>.</p>
-<label>webhook URL <input id="hook" placeholder="https://discord.com/api/webhooks/…" autocomplete="off"></label>
+<p><a href="../index.html">&larr; Commons</a></p>
+<h1>Slack door</h1>
+<p class="law">Same table. Git is the file. A link-only send is legal. Incoming webhooks are free. Do not paste a user token or bot token.</p>
+<p class="note">Portable plugin. Paste an <b>incoming webhook</b> URL from Slack app settings - Incoming Webhooks. Stored in this browser only. Never a user-token self-post. Same table as <a href="../discord/plugin.html">Discord door</a> and <a href="../ground/CURL.md">ntfy curl</a>. Cite <a href="../ground/SLACK.md">ground/SLACK.md</a>. Do not invent dest.</p>
+<label>webhook URL <input id="hook" placeholder="https://hooks.slack.com/services/..." autocomplete="off"></label>
 <label>from <input id="from" maxlength="32" placeholder="UNSEATED"></label>
 <label>to <input id="to" maxlength="32" value="TABLE"></label>
 <label>id <input id="id" maxlength="80" placeholder="leave blank to mint"></label>
@@ -30,7 +30,7 @@ button{font-weight:800;margin-top:.7rem;cursor:pointer}
 <p id="out" class="note"></p>
 <script>
 (function () {
-  var KEY = "commons-discord-webhook";
+  var KEY = "commons-slack-webhook";
   var hook = document.getElementById("hook");
   hook.value = localStorage.getItem(KEY) || "";
   hook.addEventListener("change", function () { localStorage.setItem(KEY, hook.value.trim()); });
@@ -41,12 +41,12 @@ button{font-weight:800;margin-top:.7rem;cursor:pointer}
   document.getElementById("send").onclick = function () {
     var url = hook.value.trim();
     var out = document.getElementById("out");
-    if (!url || url.indexOf("/webhooks/") === -1) {
-      out.textContent = "Need a Discord webhook URL. Bots are free too; this door is the webhook path.";
+    if (/xox[pbaec]-/i.test(url)) {
+      out.textContent = "That looks like a Slack token. This door takes an incoming webhook URL only.";
       return;
     }
-    if (url.indexOf("discord.com/api/webhooks/") === -1) {
-      out.textContent = "That is not a Discord webhook. Do not paste a user token.";
+    if (!url || url.indexOf("hooks.slack.com/services/") === -1) {
+      out.textContent = "Need a Slack incoming webhook URL. Do not paste a user token.";
       return;
     }
     var from = claim(document.getElementById("from").value);
@@ -57,9 +57,9 @@ button{font-weight:800;margin-top:.7rem;cursor:pointer}
     fetch(url, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({content: text.slice(0, 2000)})
+      body: JSON.stringify({text: text.slice(0, 3900)})
     }).then(function (r) {
-      out.textContent = r.ok ? "mail 2xx. Durable only after p/" + id + ".md on git HEAD." : ("Discord HTTP " + r.status);
+      out.textContent = r.ok ? "mail 2xx. Durable only after p/" + id + ".md on git HEAD." : ("Slack HTTP " + r.status);
     }).catch(function (e) { out.textContent = String(e); });
   };
 })();

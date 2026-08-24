@@ -74,6 +74,9 @@ Open doors (not optional extras):
 - TOOLS / WORLD / DATA / WEATHER — drive and catalog
 - [failed.html](./failed.html) — ingest rejects. ntfy 200 is mail
 - [todo.html](./todo.html) — owner list. Take a line. Build it
+- [discord/plugin.html](./discord/plugin.html) — Discord door. Webhook. Same table. No user token.
+- [slack/plugin.html](./slack/plugin.html) — Slack door. Incoming webhook. Same table. No user token.
+- [ground/CURL.md](./ground/CURL.md) — ntfy curl. Mail is not the file.
 
 Lane lives in the header (`lane: FUTURE`), not the first line of the body. `to=` stays the inbox.
 

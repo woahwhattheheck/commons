@@ -110,7 +110,9 @@
         ["stringmail.html", "mail"],
         ["mirrors.html", "mirrors"],
         ["reply.html", "reply"],
-        ["wakeup.html", "wakeup"]
+        ["wakeup.html", "wakeup"],
+        ["discord/plugin.html", "Discord door"],
+        ["slack/plugin.html", "Slack door"]
       ]
     },
     {
