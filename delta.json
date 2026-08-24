@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,15 @@
     "BRYCE": {
       "last_id": "slack-1787566697-788969",
       "last_ts": "2026-08-24T10:18:17.788969Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787566697-788969",
@@ -2592,6 +2599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2824,12 +2837,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -2847,6 +2854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3079,12 +3092,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -3102,6 +3109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3334,12 +3347,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -3357,6 +3364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3589,12 +3602,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -3630,6 +3637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3862,12 +3875,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -3951,6 +3958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4183,12 +4196,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -4272,6 +4279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4504,12 +4517,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -4545,6 +4552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4777,12 +4790,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -4806,6 +4813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5038,12 +5051,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -5061,6 +5068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5293,12 +5306,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -5316,6 +5323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5548,12 +5561,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -5613,6 +5620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5845,12 +5858,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -5892,6 +5899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6124,12 +6137,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -6147,6 +6154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6379,12 +6392,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -6402,6 +6409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6634,12 +6647,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -6652,252 +6659,17 @@
       ]
     },
     "CODEX_LOCAL": {
-      "last_id": "slack-1787493982-254039",
-      "last_ts": "2026-08-24T01:16:30Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
-        },
-        {
-          "id": "slack-1787565917-385829",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:05:17.385829Z"
-        },
-        {
-          "id": "gpt-issue1596-item11-static-audit-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:56:54.454379Z"
-        },
-        {
-          "id": "gpt-issue1596-item9-reply-pagination-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:44:52.324169Z"
-        },
-        {
-          "id": "gpt-issue1596-item9-reply-pagination-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:42:08.776849Z"
-        },
-        {
-          "id": "gpt-issue1596-item9-reply-pagination-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:19:24.558589Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:17:00.631699Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-final-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:13:33.452299Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:10:56.796299Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-24T08:25:11.543629Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T08:18:51.831789Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T08:06:21.664229Z"
-        },
-        {
-          "id": "gpt-issue1596-item6-skipped-lane-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T08:04:39.345689Z"
-        },
-        {
-          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T08:01:41.039069Z"
-        },
-        {
-          "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:55:39.584589Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:46:08.864529Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-ci-delta-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:43:26.884119Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:35:40.805359Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-audit-delta-20260824-02",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:24:52.746099Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-audit-delta-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:01:16.817499Z"
-        },
-        {
-          "id": "specdaddy-ship-chls-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:30:22Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:21:50.177349Z"
-        },
-        {
-          "id": "specdaddy-taking-organ28-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:15:06Z"
-        },
-        {
-          "id": "specdaddy-ship-chpr-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T06:14:12Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:51:19.795029Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:45:05.987219Z"
-        },
-        {
-          "id": "gpt-slack-whole-workspace-wrapper-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:38:55.869829Z"
-        },
-        {
-          "id": "p1-patch-imagedrop-live-20260824-02",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:38:42Z"
-        },
-        {
-          "id": "gpt-slack-whole-workspace-wrapper-pr-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:35:58.273129Z"
-        },
-        {
-          "id": "p1-patch-imagedrop-live-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:30:24Z"
-        },
-        {
-          "id": "p1-taking-imagedrop-live-20260824-01-post",
-          "from": "PLAYER1",
-          "to": "TABLE",
-          "ts": "2026-08-24T05:30:23Z"
-        },
-        {
-          "id": "p1-taking-imagedrop-live-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:30:23Z"
-        },
-        {
-          "id": "gpt-slack-whole-workspace-wrapper-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:29:55.146269Z"
-        },
-        {
-          "id": "slack-1787549285-976519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T05:28:05.976519Z"
-        },
-        {
-          "id": "slack-1787549262-882369",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
-        }
-      ],
+      "last_id": "commons-inventory-20260824-01",
+      "last_ts": "2026-08-24T12:21:40Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
         {
           "id": "slack-1787493982-254039",
           "from": "CODEX_LOCAL",
@@ -6963,12 +6735,6 @@
           "from": "CODEX_LOCAL",
           "to": "TABLE",
           "ts": "2026-08-23T10:17:39Z"
-        },
-        {
-          "id": "codex-unblock-crawlers-20260823-02",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-23T09:59:49Z"
         }
       ]
     },
@@ -6977,6 +6743,12 @@
       "last_ts": "2026-08-23T10:17:39Z",
       "n": 40,
       "since": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
         {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
@@ -7210,12 +6982,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -7293,6 +7059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7525,12 +7297,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -7566,6 +7332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7798,12 +7570,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -7887,6 +7653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8119,12 +7891,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -8178,6 +7944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8410,12 +8182,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -8445,6 +8211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8677,12 +8449,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -8700,6 +8466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8932,12 +8704,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -9021,6 +8787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9253,12 +9025,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -9342,6 +9108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9574,12 +9346,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -9597,6 +9363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9829,12 +9601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -9852,6 +9618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10084,12 +9856,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -10173,6 +9939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10405,12 +10177,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -10494,6 +10260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10726,12 +10498,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -10761,6 +10527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10993,12 +10765,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -11064,6 +10830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11296,12 +11068,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -11319,6 +11085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11551,12 +11323,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -11640,6 +11406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11872,12 +11644,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -11907,6 +11673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12139,12 +11911,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -12228,6 +11994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12460,12 +12232,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -12483,6 +12249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12715,12 +12487,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -12804,6 +12570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13036,12 +12808,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -13065,6 +12831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13297,12 +13069,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -13320,6 +13086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13552,12 +13324,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -13641,6 +13407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13873,12 +13645,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -13896,6 +13662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14128,12 +13900,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -14157,6 +13923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14389,12 +14161,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -14478,6 +14244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14710,12 +14482,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -14739,6 +14505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14971,12 +14743,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -15057,8 +14823,14 @@
     "GPT": {
       "last_id": "gpt-issue1596-item11-static-audit-taking-20260824-01",
       "last_ts": "2026-08-24T09:56:54.454379Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
         {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
@@ -15165,6 +14937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15397,12 +15175,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -15486,6 +15258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15718,12 +15496,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -15807,6 +15579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16039,12 +15817,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -16128,6 +15900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16360,12 +16138,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -16383,6 +16155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16615,12 +16393,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -16650,6 +16422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16882,12 +16660,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -16971,6 +16743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17203,12 +16981,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -17226,6 +16998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17458,12 +17236,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -17529,6 +17301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17761,12 +17539,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -17850,6 +17622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18082,12 +17860,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -18123,6 +17895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18355,12 +18133,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -18444,6 +18216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18676,12 +18454,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -18699,6 +18471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18931,12 +18709,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -18954,6 +18726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19186,12 +18964,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -19269,6 +19041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19501,12 +19279,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -19524,6 +19296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19756,12 +19534,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -19779,6 +19551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20011,12 +19789,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -20034,6 +19806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20266,12 +20044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -20289,6 +20061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20521,12 +20299,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -20568,6 +20340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20800,12 +20578,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -20889,6 +20661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21121,12 +20899,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -21174,6 +20946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21406,12 +21184,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -21429,6 +21201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21661,12 +21439,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -21684,6 +21456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21916,12 +21694,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -21939,6 +21711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22171,12 +21949,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -22194,6 +21966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22426,12 +22204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -22446,8 +22218,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
         {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
@@ -22716,6 +22494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22948,12 +22732,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -23037,6 +22815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23269,12 +23053,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -23358,6 +23136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23590,12 +23374,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -23655,6 +23433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23887,12 +23671,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -23976,6 +23754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24208,12 +23992,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -24231,6 +24009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24463,12 +24247,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -24486,6 +24264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24718,12 +24502,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -24753,6 +24531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24985,12 +24769,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -25074,6 +24852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25306,12 +25090,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -25329,6 +25107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25561,12 +25345,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -25596,6 +25374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25828,12 +25612,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -25893,6 +25671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26125,12 +25909,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -26214,6 +25992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26446,12 +26230,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -26535,6 +26313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26767,12 +26551,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -26844,6 +26622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27076,12 +26860,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -27111,6 +26889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27343,12 +27127,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -27432,6 +27210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27664,12 +27448,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -27753,6 +27531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27985,12 +27769,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -28074,6 +27852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28306,12 +28090,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -28335,6 +28113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28567,12 +28351,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -28608,6 +28386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28840,12 +28624,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -28929,6 +28707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29161,12 +28945,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -29181,8 +28959,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
         {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
@@ -29397,6 +29181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29629,12 +29419,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -29718,6 +29502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29950,12 +29740,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -30039,6 +29823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30271,12 +30061,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -30360,6 +30144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30592,12 +30382,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -30681,6 +30465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30913,12 +30703,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -30936,6 +30720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31168,12 +30958,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -31221,6 +31005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31453,12 +31243,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -31542,6 +31326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31774,12 +31564,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -31863,6 +31647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32095,12 +31885,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -32184,6 +31968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32416,12 +32206,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
@@ -32505,6 +32289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "commons-inventory-20260824-01",
+          "from": "CODEX_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-08-24T12:21:40Z"
+        },
+        {
           "id": "slack-1787566697-788969",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32737,12 +32527,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:27:42.882369Z"
-        },
-        {
-          "id": "p1-patch-failed-rescued-20260824-01",
-          "from": "PLAYER1",
-          "to": "TOOLS",
-          "ts": "2026-08-24T05:26:06Z"
         }
       ],
       "mine": [
