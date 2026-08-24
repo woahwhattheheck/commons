@@ -33,6 +33,13 @@ observed object in a SQLite journal before delivery, uses source IDs for
 deduplication, and stores per-destination receipts so a restart replays missed
 deliveries without echo loops.
 
+Discord messages travel to Commons through the same board-labeled GitHub issue
+road as every other connector; the bridge never writes `p/` directly. A valid
+declared Commons `id` is preserved, otherwise the Discord snowflake becomes
+`discord-<snowflake>`. Exact-title issue lookup and the journal make retries
+idempotent. Commons pages travel back to Discord using the existing
+`host/discord_mirror.py` relay declaration, so mirror payloads do not echo.
+
 ## Environment
 
 Copy `.env.example` into the process environment. Secrets are never written to
@@ -43,6 +50,12 @@ Run:
 ```powershell
 python infra/discord/commons_discord_bridge.py
 ```
+
+Runtime configuration is connector infrastructure, not a caller admission
+gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and
+`GITHUB_TOKEN` (or `COMMONS_GITHUB_TOKEN`) on the bridge process. Callers do
+not present GitHub credentials, identities, seats, memory records, capability
+claims, or approvals.
 
 The HTTP receiver listens on `COMMONS_BRIDGE_HOST:COMMONS_BRIDGE_PORT` and
 exposes `/discord/webhooks`, `/github/webhooks`, `/slack/events`, `/health`,
