@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
@@ -2743,6 +2749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2975,12 +2987,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -2998,6 +3004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3230,12 +3242,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -3253,6 +3259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3485,12 +3497,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -3508,6 +3514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3740,12 +3752,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -3781,6 +3787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4013,12 +4025,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -4102,6 +4108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4334,12 +4346,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -4423,6 +4429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4655,12 +4667,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -4696,6 +4702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4928,12 +4940,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -4957,6 +4963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5189,12 +5201,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -5212,6 +5218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5444,12 +5456,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -5467,6 +5473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5699,12 +5711,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -5764,6 +5770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5996,12 +6008,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -6043,6 +6049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6275,12 +6287,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -6298,6 +6304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6530,12 +6542,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -6553,6 +6559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6785,12 +6797,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -6808,6 +6814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7040,12 +7052,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -7129,6 +7135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7361,12 +7373,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -7444,6 +7450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7676,12 +7688,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -7717,6 +7723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7949,12 +7961,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -8038,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8270,12 +8282,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -8329,6 +8335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8561,12 +8573,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -8596,6 +8602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8828,12 +8840,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -8851,6 +8857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9083,12 +9095,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -9172,6 +9178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9404,12 +9416,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -9493,6 +9499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9725,12 +9737,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -9748,6 +9754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9980,12 +9992,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -10003,6 +10009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10235,12 +10247,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -10324,6 +10330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10556,12 +10568,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -10645,6 +10651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10877,12 +10889,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -10912,6 +10918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11144,12 +11156,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -11215,6 +11221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11447,12 +11459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -11470,6 +11476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11702,12 +11714,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -11791,6 +11797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12023,12 +12035,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -12058,6 +12064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12290,12 +12302,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -12379,6 +12385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12611,12 +12623,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -12634,6 +12640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12866,12 +12878,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -12955,6 +12961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13187,12 +13199,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -13216,6 +13222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13448,12 +13460,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -13471,6 +13477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13703,12 +13715,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -13792,6 +13798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14024,12 +14036,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -14047,6 +14053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14279,12 +14291,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -14308,6 +14314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14540,12 +14552,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -14629,6 +14635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14861,12 +14873,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -14890,6 +14896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15122,12 +15134,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -15206,11 +15212,17 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
-      "last_ts": "2026-08-24T08:18:51.831789Z",
+      "last_id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+      "last_ts": "2026-08-24T08:25:11.543629Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
@@ -15276,12 +15288,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:21:50.177349Z"
-        },
-        {
-          "id": "gpt-device-executor-preflight-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:04:55.600529Z"
         }
       ]
     },
@@ -15290,6 +15296,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
@@ -15523,12 +15535,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -15612,6 +15618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15844,12 +15856,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -15933,6 +15939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16165,12 +16177,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -16254,6 +16260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16486,12 +16498,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -16509,6 +16515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16741,12 +16753,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -16776,6 +16782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17008,12 +17020,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -17097,6 +17103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17329,12 +17341,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -17352,6 +17358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17584,12 +17596,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -17655,6 +17661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17887,12 +17899,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -17976,6 +17982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18208,12 +18220,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -18249,6 +18255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18481,12 +18493,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -18570,6 +18576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18802,12 +18814,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -18825,6 +18831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19057,12 +19069,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -19080,6 +19086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19312,12 +19324,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -19395,6 +19401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19627,12 +19639,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -19650,6 +19656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19882,12 +19894,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -19905,6 +19911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20137,12 +20149,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -20160,6 +20166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20392,12 +20404,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -20415,6 +20421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20647,12 +20659,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -20694,6 +20700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20926,12 +20938,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -21015,6 +21021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21247,12 +21259,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -21300,6 +21306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21532,12 +21544,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -21555,6 +21561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21787,12 +21799,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -21810,6 +21816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22042,12 +22054,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -22065,6 +22071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22297,12 +22309,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -22320,6 +22326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22552,12 +22564,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -22572,8 +22578,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
@@ -22770,6 +22782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23002,12 +23020,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -23091,6 +23103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23323,12 +23341,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -23412,6 +23424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23644,12 +23662,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -23709,6 +23721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23941,12 +23959,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -24030,6 +24042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24262,12 +24280,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -24285,6 +24297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24517,12 +24535,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -24540,6 +24552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24772,12 +24790,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -24807,6 +24819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25039,12 +25057,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -25128,6 +25140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25360,12 +25378,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -25383,6 +25395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25615,12 +25633,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -25650,6 +25662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25882,12 +25900,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -25947,6 +25959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26179,12 +26197,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -26268,6 +26280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26500,12 +26518,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -26589,6 +26601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26821,12 +26839,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -26898,6 +26910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27130,12 +27148,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -27165,6 +27177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27397,12 +27415,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -27486,6 +27498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27718,12 +27736,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -27807,6 +27819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28039,12 +28057,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -28128,6 +28140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28360,12 +28378,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -28389,6 +28401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28621,12 +28639,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -28662,6 +28674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28894,12 +28912,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -28983,6 +28995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29215,12 +29233,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -29235,8 +29247,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
@@ -29379,6 +29397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29611,12 +29635,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -29700,6 +29718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29932,12 +29956,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -30021,6 +30039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30253,12 +30277,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -30342,6 +30360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30574,12 +30598,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -30663,6 +30681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30895,12 +30919,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -30918,6 +30936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31150,12 +31174,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -31203,6 +31221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31435,12 +31459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -31524,6 +31542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31756,12 +31780,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -31845,6 +31863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32077,12 +32101,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -32166,6 +32184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32398,12 +32422,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
@@ -32487,6 +32505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-concurrency-hold-20260824-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-24T08:25:11.543629Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32719,12 +32743,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T04:51:53.550739Z"
-        },
-        {
-          "id": "slack-1787546862-648049",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:47:42.648049Z"
         }
       ],
       "mine": [
