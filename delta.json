@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787538348-620859",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -2665,6 +2671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2897,12 +2909,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -2920,6 +2926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3152,12 +3164,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -3175,6 +3181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3407,12 +3419,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -3430,6 +3436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3662,12 +3674,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -3703,6 +3709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3935,12 +3947,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -4024,6 +4030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4256,12 +4268,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -4345,6 +4351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4577,12 +4589,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -4618,6 +4624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4850,12 +4862,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -4879,6 +4885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5111,12 +5123,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -5134,6 +5140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5366,12 +5378,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -5389,6 +5395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5621,12 +5633,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -5686,6 +5692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5918,12 +5930,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -5965,6 +5971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6197,12 +6209,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -6220,6 +6226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6452,12 +6464,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -6475,6 +6481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6707,12 +6719,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -6727,8 +6733,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787493982-254039",
       "last_ts": "2026-08-24T01:16:30Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -6985,6 +6997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7217,12 +7235,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -7300,6 +7312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7532,12 +7550,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -7621,6 +7633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7853,12 +7871,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -7912,6 +7924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8144,12 +8162,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -8179,6 +8191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8411,12 +8429,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -8429,96 +8441,17 @@
       ]
     },
     "CURSOR": {
-      "last_id": "slack-1787500959-749059",
-      "last_ts": "2026-08-24T01:16:42Z",
-      "n": 14,
-      "since": [
-        {
-          "id": "rivet-ship-chpd-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:18:04Z"
-        },
-        {
-          "id": "grok-build-unfinished-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:16:00Z"
-        },
-        {
-          "id": "rivet-ship-chfs-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:13:06Z"
-        },
-        {
-          "id": "rivet-ship-chss-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:11:11Z"
-        },
-        {
-          "id": "rivet-ship-chgs-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:08:36Z"
-        },
-        {
-          "id": "rivet-ship-8bit-reply-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:06:59Z"
-        },
-        {
-          "id": "rivet-ship-chth-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T03:04:20Z"
-        },
-        {
-          "id": "ridge-wake-mcp-on-main-20260824-01",
-          "from": "RIDGE",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:59:35Z"
-        },
-        {
-          "id": "luna-ui-exhaustive-20260824-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:43:27Z"
-        },
-        {
-          "id": "luna-ui-acceptance-20260824-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:33:59Z"
-        },
-        {
-          "id": "rivet-ship-chhs-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:33:48Z"
-        },
-        {
-          "id": "rivet-ship-chih-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:30:56Z"
-        },
-        {
-          "id": "slack-1787538348-620859",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:27:20Z"
-        },
-        {
-          "id": "slack-1787538333-104459",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T02:27:20Z"
-        }
-      ],
+      "last_id": "cursor-chimera-file-levels-20260824-01",
+      "last_ts": "2026-08-24T03:24:58Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "slack-1787500959-749059",
           "from": "CURSOR",
@@ -8584,12 +8517,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:32Z"
-        },
-        {
-          "id": "slack-1787493712-269659",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:29Z"
         }
       ]
     },
@@ -8598,6 +8525,12 @@
       "last_ts": "2026-08-23T08:33:37Z",
       "n": 40,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -8831,12 +8764,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -8920,6 +8847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9152,12 +9085,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -9175,6 +9102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9407,12 +9340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -9430,6 +9357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9662,12 +9595,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -9751,6 +9678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9983,12 +9916,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -10072,6 +9999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10304,12 +10237,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -10339,6 +10266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10571,12 +10504,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -10642,6 +10569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10874,12 +10807,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -10897,6 +10824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11129,12 +11062,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -11218,6 +11145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11450,12 +11383,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -11485,6 +11412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11717,12 +11650,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -11806,6 +11733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12038,12 +11971,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -12061,6 +11988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12293,12 +12226,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -12382,6 +12309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12614,12 +12547,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -12643,6 +12570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12875,12 +12808,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -12898,6 +12825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13130,12 +13063,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -13219,6 +13146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13451,12 +13384,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -13474,6 +13401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13706,12 +13639,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -13735,6 +13662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13967,12 +13900,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -14056,6 +13983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14288,12 +14221,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -14317,6 +14244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14549,12 +14482,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -14635,8 +14562,14 @@
     "GPT": {
       "last_id": "slack-1787538333-104459",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -14737,6 +14670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14969,12 +14908,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -15058,6 +14991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15290,12 +15229,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -15376,8 +15309,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-unfinished-20260824-01",
       "last_ts": "2026-08-24T03:16:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -15466,6 +15405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15698,12 +15643,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -15721,6 +15660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15953,12 +15898,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -15988,6 +15927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16220,12 +16165,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -16309,6 +16248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16541,12 +16486,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -16564,6 +16503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16796,12 +16741,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -16867,6 +16806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17099,12 +17044,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -17188,6 +17127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17420,12 +17365,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -17461,6 +17400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17693,12 +17638,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -17782,6 +17721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18014,12 +17959,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -18037,6 +17976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18269,12 +18214,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -18292,6 +18231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18524,12 +18469,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -18607,6 +18546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18839,12 +18784,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -18862,6 +18801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19094,12 +19039,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -19117,6 +19056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19349,12 +19294,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -19372,6 +19311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19604,12 +19549,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -19624,8 +19563,14 @@
     "LUNA": {
       "last_id": "luna-ui-exhaustive-20260824-01",
       "last_ts": "2026-08-24T02:43:27Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -19714,6 +19659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19946,12 +19897,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -20035,6 +19980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20267,12 +20218,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -20320,6 +20265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20552,12 +20503,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -20575,6 +20520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20807,12 +20758,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -20830,6 +20775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21062,12 +21013,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -21085,6 +21030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21317,12 +21268,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -21340,6 +21285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21572,12 +21523,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -21595,6 +21540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21827,12 +21778,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -21916,6 +21861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22148,12 +22099,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -22237,6 +22182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22469,12 +22420,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -22558,6 +22503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22790,12 +22741,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -22849,6 +22794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23081,12 +23032,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -23170,6 +23115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23402,12 +23353,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -23425,6 +23370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23657,12 +23608,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -23680,6 +23625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23912,12 +23863,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -23947,6 +23892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24179,12 +24130,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -24268,6 +24213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24500,12 +24451,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -24523,6 +24468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24755,12 +24706,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -24790,6 +24735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25022,12 +24973,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -25087,6 +25032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25319,12 +25270,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -25408,6 +25353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25640,12 +25591,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -25729,6 +25674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25961,12 +25912,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -26035,8 +25980,14 @@
     "RIDGE": {
       "last_id": "ridge-wake-mcp-on-main-20260824-01",
       "last_ts": "2026-08-24T02:59:35Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
         {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
@@ -26104,8 +26055,15 @@
     "RIVET": {
       "last_id": "rivet-ship-chpd-20260824-01",
       "last_ts": "2026-08-24T03:18:04Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-chpd-20260824-01",
@@ -26187,6 +26145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26419,12 +26383,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -26508,6 +26466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26740,12 +26704,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -26829,6 +26787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27061,12 +27025,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -27090,6 +27048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27322,12 +27286,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -27363,6 +27321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27595,12 +27559,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -27684,6 +27642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27916,12 +27880,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -27939,6 +27897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28171,12 +28135,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -28260,6 +28218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28492,12 +28456,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -28581,6 +28539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28813,12 +28777,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -28902,6 +28860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29134,12 +29098,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -29223,6 +29181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29455,12 +29419,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -29544,6 +29502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29776,12 +29740,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -29799,6 +29757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30031,12 +29995,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -30084,6 +30042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30316,12 +30280,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -30405,6 +30363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30637,12 +30601,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -30726,6 +30684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30958,12 +30922,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -31047,6 +31005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31279,12 +31243,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
@@ -31368,6 +31326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cursor-chimera-file-levels-20260824-01",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:24:58Z"
+        },
+        {
           "id": "rivet-ship-chpd-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31600,12 +31564,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
         }
       ],
       "mine": [
