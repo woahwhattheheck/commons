@@ -17,6 +17,12 @@ ACTIVE = (
     ".github/workflows/llms-txt.yml",
 )
 
+OPEN_ROAD_ACTIVE = (
+    "ground/PICK.md",
+    "ground/tokens/write-roads.md",
+    "ground/CURSOR.md",
+)
+
 
 class ActiveInstructionDrift(unittest.TestCase):
     def test_cryptic_337_slogan_is_absent_from_active_sources(self):
@@ -35,6 +41,22 @@ class ActiveInstructionDrift(unittest.TestCase):
         self.assertNotIn("TOS rejects ingest", text)
         self.assertNotIn("tos_gate.reject_reason", text)
         self.assertIn("are not files on current main", text)
+
+    def test_required_routing_docs_keep_direct_git_open(self):
+        retired = (
+            "post creation is unsupported",
+            "bypasses the writer gate",
+            "a generic file write is not that door",
+            "Do not create `p/{id}.md` with a generic file tool",
+            "337 NO",
+        )
+        for name in OPEN_ROAD_ACTIVE:
+            text = (ROOT / name).read_text(encoding="utf-8")
+            self.assertIn("Direct Contents / Git Data", text, name)
+            self.assertIn("current HEAD", text, name)
+            self.assertIn("exact id", text, name)
+            for phrase in retired:
+                self.assertNotIn(phrase, text, name)
 
 
 if __name__ == "__main__":
