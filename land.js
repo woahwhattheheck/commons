@@ -352,6 +352,9 @@
     if (api.isRebaseTalk(t)) {
       return { state: "CLAIMED", note: "already-integrated rebase talk. Do not remint. Ship a unique leftover." };
     }
+    if (api.isLaneClaimTalk(t)) {
+      return { state: "CLAIMED", note: "audit-lane / TAKING-NOW talk. Talk is not a land. A taking is CLAIMED until the path is on current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -400,6 +403,27 @@
 
   api.isShipTalk = function (text) {
     return /make sure people do more than talk|actually gets shipped to main|do more than talk about/i.test(String(text || ""));
+  };
+
+  api.isLaneClaimTalk = function (text) {
+    return /taking now|nothing above is landed|receipts follow per lane|owner-approved audit lanes|hands off — not mine|hands off - not mine/i.test(String(text || ""));
+  };
+
+  api.composerToolsState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "carrier.js body not read. Absence was not measured." };
+    }
+    var requiredTools = /<(?:input|select|textarea)\b(?=[^>]*(?:name|id)\s*=\s*['"]tools['"])(?=[^>]*\brequired\b)/i.test(body);
+    if (requiredTools) {
+      return { state: "NOT_LANDED", note: "composer tools field is required. That is a gate. Remove it." };
+    }
+    var loadsCatalog = /tools\.json/.test(body);
+    var hasPicker = /data-commons-tools|commons-tools|tool-catalog|tool-picker|tool selector|tool.?picker/i.test(body);
+    if (loadsCatalog && hasPicker) {
+      return { state: "INTEGRATED", note: "composer loads tools.json and exposes a picker. Still not a send gate." };
+    }
+    return { state: "NOT_LANDED", note: "composer tool picker not on this SHA. A Slack taking is not current main." };
   };
 
   api.isStaleRestorePr = function (pr) {
@@ -812,6 +836,41 @@
     ingestOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  var composerOut = document.getElementById("composer-result");
+
+  function paintComposer(result) {
+    if (!composerOut) return;
+    composerOut.setAttribute("data-tone", api.toneFor(result.state));
+    composerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadComposerTools(sha) {
+    if (!composerOut) return Promise.resolve(null);
+    composerOut.innerHTML = "<b>UNMEASURED</b><p>Reading carrier.js at the official SHA…</p>";
+    var url = RAW + sha + "/carrier.js";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "carrier.js absent at the measured main SHA" };
+        paintComposer(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintComposer(failed);
+        return failed;
+      }
+      return r.text().then(function (text) {
+        var got = api.composerToolsState(text);
+        paintComposer(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintComposer(err);
+      return err;
+    });
+  }
+
   function loadIngestSmash(sha) {
     if (!ingestOut) return Promise.resolve(null);
     ingestOut.innerHTML = "<b>UNMEASURED</b><p>Reading board_ingest.py at the official SHA…</p>";
@@ -988,6 +1047,7 @@
     loadIngestSmash(sha).then(function (ingest) {
       loadPulls(sha, ingest);
     });
+    loadComposerTools(sha);
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {
