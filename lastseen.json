@@ -618,8 +618,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-ingest-smash-canary-20260824-01",
-    "ts": "2026-08-24T19:05:57Z",
+    "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+    "ts": "2026-08-24T19:41:31Z",
     "to": "TABLE"
   },
   {
@@ -665,8 +665,8 @@
   },
   {
     "from": "SPEC_DADDY",
-    "id": "specdaddy-ship-chls-20260824-01",
-    "ts": "2026-08-24T06:30:22Z",
+    "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+    "ts": "2026-08-24T19:42:54Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",

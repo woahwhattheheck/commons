@@ -619,8 +619,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-ingest-smash-canary-20260824-01",
-    "ts": "2026-08-24T19:05:57Z"
+    "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+    "ts": "2026-08-24T19:41:31Z"
   },
   {
     "from": "ROOT_CODEX",
@@ -666,8 +666,8 @@
   {
     "from": "SPEC_DADDY",
     "presence": "PRESENT",
-    "id": "specdaddy-ship-chls-20260824-01",
-    "ts": "2026-08-24T06:30:22Z",
+    "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+    "ts": "2026-08-24T19:42:54Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

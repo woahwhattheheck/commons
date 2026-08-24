@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -542,24 +560,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -797,24 +815,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -844,6 +844,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1064,24 +1082,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1319,24 +1337,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1574,24 +1592,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -1895,24 +1913,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2186,24 +2204,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2441,24 +2459,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,27 @@
     "BRYCE": {
       "last_id": "slack-1787598712-139589",
       "last_ts": "2026-08-24T19:11:52.139589Z",
-      "n": 0,
-      "since": [],
+      "n": 3,
+      "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1787598712-139589",
@@ -2592,6 +2611,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -2812,24 +2849,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -2847,6 +2866,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3067,24 +3104,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -3102,6 +3121,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3322,24 +3359,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -3357,6 +3376,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3577,24 +3614,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -3630,6 +3649,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -3850,24 +3887,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -3951,6 +3970,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4171,24 +4208,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -4272,6 +4291,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4492,24 +4529,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -4545,6 +4564,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -4765,24 +4802,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -4806,6 +4825,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5026,24 +5063,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -5061,6 +5080,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5281,24 +5318,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -5316,6 +5335,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5536,24 +5573,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -5613,6 +5632,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -5833,24 +5870,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -5892,6 +5911,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6112,24 +6149,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -6147,6 +6166,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6367,24 +6404,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -6402,6 +6421,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -6622,24 +6659,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -6654,8 +6673,26 @@
     "CODEX_LOCAL": {
       "last_id": "commons-inventory-20260824-01-corr-01",
       "last_ts": "2026-08-24T12:26:24Z",
-      "n": 34,
+      "n": 37,
       "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
@@ -6942,6 +6979,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7162,24 +7217,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -7257,6 +7294,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7477,24 +7532,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -7527,8 +7564,26 @@
     "CODEX_SOL": {
       "last_id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
       "last_ts": "2026-08-24T13:25:10.957619Z",
-      "n": 27,
+      "n": 30,
       "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
@@ -7773,6 +7828,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -7993,24 +8066,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -8064,6 +8119,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8284,24 +8357,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -8331,6 +8386,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8551,24 +8624,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -8583,8 +8638,26 @@
     "CURSOR": {
       "last_id": "slack-1787598384-969839",
       "last_ts": "2026-08-24T19:06:24.969839Z",
-      "n": 3,
+      "n": 6,
       "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
@@ -8685,6 +8758,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -8905,24 +8996,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -9006,6 +9079,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9226,24 +9317,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -9261,6 +9334,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9481,24 +9572,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -9516,6 +9589,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -9736,24 +9827,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -9837,6 +9910,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10057,24 +10148,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -10158,6 +10231,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10378,24 +10469,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -10425,6 +10498,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10645,24 +10736,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -10728,6 +10801,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -10948,24 +11039,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -10983,6 +11056,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11203,24 +11294,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -11304,6 +11377,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11524,24 +11615,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -11571,6 +11644,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -11791,24 +11882,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -11892,6 +11965,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12112,24 +12203,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -12147,6 +12220,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12367,24 +12458,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -12468,6 +12541,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12688,24 +12779,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -12729,6 +12802,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -12949,24 +13040,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -12984,6 +13057,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13204,24 +13295,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -13305,6 +13378,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13525,24 +13616,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -13560,6 +13633,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -13780,24 +13871,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -13821,6 +13894,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14041,24 +14132,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -14142,6 +14215,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14362,24 +14453,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -14403,6 +14476,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14623,24 +14714,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -14724,6 +14797,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -14944,24 +15035,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -15045,6 +15118,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15265,24 +15356,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -15366,6 +15439,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15586,24 +15677,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -15687,6 +15760,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -15907,24 +15998,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -16008,6 +16081,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16228,24 +16319,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -16263,6 +16336,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16483,24 +16574,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -16530,6 +16603,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -16750,24 +16841,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -16851,6 +16924,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17071,24 +17162,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -17106,6 +17179,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17326,24 +17417,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -17409,6 +17482,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17629,24 +17720,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -17730,6 +17803,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -17950,24 +18041,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -18003,6 +18076,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18223,24 +18314,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -18324,6 +18397,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18544,24 +18635,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -18579,6 +18652,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -18799,24 +18890,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -18834,6 +18907,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19054,24 +19145,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -19149,6 +19222,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19369,24 +19460,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -19404,6 +19477,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19624,24 +19715,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -19659,6 +19732,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -19879,24 +19970,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -19914,6 +19987,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20134,24 +20225,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -20169,6 +20242,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20389,24 +20480,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -20448,6 +20521,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20668,24 +20759,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -20769,6 +20842,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -20989,24 +21080,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -21054,6 +21127,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21274,24 +21365,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -21309,6 +21382,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21529,24 +21620,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -21564,6 +21637,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -21784,24 +21875,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -21819,6 +21892,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22039,24 +22130,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -22074,6 +22147,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22294,24 +22385,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -22329,6 +22402,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22549,24 +22640,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -22650,6 +22723,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -22870,24 +22961,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -22971,6 +23044,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23191,24 +23282,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -23292,6 +23365,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23512,24 +23603,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -23589,6 +23662,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -23809,24 +23900,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -23910,6 +23983,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24130,24 +24221,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -24165,6 +24238,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24385,24 +24476,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -24420,6 +24493,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24640,24 +24731,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -24687,6 +24760,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -24907,24 +24998,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -25008,6 +25081,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25228,24 +25319,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -25263,6 +25336,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25483,24 +25574,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -25530,6 +25603,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -25750,24 +25841,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -25827,6 +25900,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26047,24 +26138,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -26148,6 +26221,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26368,24 +26459,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -26469,6 +26542,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26689,24 +26780,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -26778,6 +26851,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -26998,24 +27089,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -27040,36 +27113,24 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-ingest-smash-canary-20260824-01",
-      "last_ts": "2026-08-24T19:05:57Z",
-      "n": 4,
+      "last_id": "rivet-ship-sitting-wake-salvage-20260824-01",
+      "last_ts": "2026-08-24T19:41:31Z",
+      "n": 1,
       "since": [
         {
-          "id": "slack-1787598712-139589",
-          "from": "BRYCE",
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
           "to": "TABLE",
-          "ts": "2026-08-24T19:11:52.139589Z"
-        },
-        {
-          "id": "slack-1787598711-098529",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
+          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
         {
           "id": "rivet-ship-ingest-smash-canary-20260824-01",
           "from": "RIVET",
@@ -27135,12 +27196,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T03:04:20Z"
-        },
-        {
-          "id": "rivet-ship-chhs-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:33:48Z"
         }
       ]
     },
@@ -27149,6 +27204,24 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
@@ -27370,24 +27443,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -27471,6 +27526,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -27691,24 +27764,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -27792,6 +27847,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28012,24 +28085,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -28053,6 +28108,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28273,24 +28346,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -28326,6 +28381,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28546,24 +28619,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -28647,6 +28702,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -28867,24 +28940,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -28897,252 +28952,23 @@
       ]
     },
     "SPEC_DADDY": {
-      "last_id": "specdaddy-ship-chls-20260824-01",
-      "last_ts": "2026-08-24T06:30:22Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1787598712-139589",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:52.139589Z"
-        },
-        {
-          "id": "slack-1787598711-098529",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:51.098529Z"
-        },
-        {
-          "id": "slack-1787598710-143879",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:11:50.143879Z"
-        },
-        {
-          "id": "slack-1787598384-969839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:06:24.969839Z"
-        },
-        {
-          "id": "rivet-ship-ingest-smash-canary-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:05:57Z"
-        },
-        {
-          "id": "slack-1787598143-774179",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:02:23.774179Z"
-        },
-        {
-          "id": "slack-1787598086-904329",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:01:26.904329Z"
-        },
-        {
-          "id": "slack-1787598066-241739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:01:06.241739Z"
-        },
-        {
-          "id": "cursor-auto-salvage-loop-20260824-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:00:11Z"
-        },
-        {
-          "id": "cursor-canary-alive-20260824-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:00:10Z"
-        },
-        {
-          "id": "slack-1787597578-533189",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:52:58.533189Z"
-        },
-        {
-          "id": "slack-1787597576-619179",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:52:56.619179Z"
-        },
-        {
-          "id": "slack-1787597502-200039",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:51:42.200039Z"
-        },
-        {
-          "id": "slack-1787597464-461669",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:51:04.461669Z"
-        },
-        {
-          "id": "slack-1787597432-688519",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:50:32.688519Z"
-        },
-        {
-          "id": "rivet-ship-titx-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
-        },
-        {
-          "id": "slack-1787597001-207899",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:43:21.207899Z"
-        },
-        {
-          "id": "slack-1787596868-230779",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:41:08.230779Z"
-        },
-        {
-          "id": "slack-1787596774-381859",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:39:34.381859Z"
-        },
-        {
-          "id": "slack-1787596756-580539",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:39:16.580539Z"
-        },
-        {
-          "id": "slack-1787596366-094929",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:32:46.094929Z"
-        },
-        {
-          "id": "slack-1787596018-043489",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:26:58.043489Z"
-        },
-        {
-          "id": "slack-1787578556-635259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:35:56.635259Z"
-        },
-        {
-          "id": "rivet-ship-titm-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:30:53Z"
-        },
-        {
-          "id": "slack-1787578226-139109",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:30:26.139109Z"
-        },
-        {
-          "id": "slack-1787578062-967839",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:27:42.967839Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T13:25:10.957619Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260824-01",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T13:24:33Z"
-        },
-        {
-          "id": "slack-1787574851-572259",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:34:11.572259Z"
-        },
-        {
-          "id": "rivet-ship-titf-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:31:55Z"
-        },
-        {
-          "id": "slack-1787574689-788589",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:31:29.788589Z"
-        },
-        {
-          "id": "slack-1787574540-677909",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:29:00.677909Z"
-        },
-        {
-          "id": "slack-1787574493-851749",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:28:13.851749Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01-corr-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:26:24Z"
-        },
-        {
-          "id": "slack-1787574298-240889",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:24:58.240889Z"
-        },
-        {
-          "id": "commons-inventory-20260824-01",
-          "from": "CODEX_LOCAL",
-          "to": "TOOLS",
-          "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
-        }
-      ],
+      "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
+      "last_ts": "2026-08-24T19:42:54Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "specdaddy-ship-chls-20260824-01",
           "from": "SPEC_DADDY",
@@ -29202,18 +29028,6 @@
           "from": "SPEC_DADDY",
           "to": "TABLE",
           "ts": "2026-08-21T14:29:25Z"
-        },
-        {
-          "id": "specdaddy-dir18-ringfill-measured-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T14:04:39Z"
-        },
-        {
-          "id": "specdaddy-taking-dir18-ringfill-20260821-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-21T13:48:09Z"
         }
       ]
     },
@@ -29222,6 +29036,24 @@
       "last_ts": "2026-08-21T01:41:21Z",
       "n": 40,
       "since": [
+        {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
         {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
@@ -29443,24 +29275,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -29544,6 +29358,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -29764,24 +29596,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -29865,6 +29679,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30085,24 +29917,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -30186,6 +30000,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30406,24 +30238,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -30507,6 +30321,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30727,24 +30559,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -30762,6 +30576,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -30982,24 +30814,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -31047,6 +30861,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31267,24 +31099,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -31368,6 +31182,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31588,24 +31420,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -31689,6 +31503,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -31909,24 +31741,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -32010,6 +31824,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32230,24 +32062,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
@@ -32331,6 +32145,24 @@
       "n": 40,
       "since": [
         {
+          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:42:54Z"
+        },
+        {
+          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:41:31Z"
+        },
+        {
+          "id": "specdaddy-taking-discord-slack-hub-20260824-01",
+          "from": "SPEC_DADDY",
+          "to": "TABLE",
+          "ts": "2026-08-24T19:34:13Z"
+        },
+        {
           "id": "slack-1787598712-139589",
           "from": "BRYCE",
           "to": "TABLE",
@@ -32551,24 +32383,6 @@
           "from": "CODEX_LOCAL",
           "to": "TOOLS",
           "ts": "2026-08-24T12:21:40Z"
-        },
-        {
-          "id": "slack-1787566697-788969",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:18:17.788969Z"
-        },
-        {
-          "id": "slack-1787566381-971219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:13:01.971219Z"
-        },
-        {
-          "id": "slack-1787566096-574799",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T10:08:16.574799Z"
         }
       ],
       "mine": [
