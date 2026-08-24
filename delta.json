@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
@@ -2737,6 +2743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2969,12 +2981,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -2992,6 +2998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3224,12 +3236,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -3247,6 +3253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3479,12 +3491,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -3502,6 +3508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3734,12 +3746,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -3775,6 +3781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4007,12 +4019,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -4096,6 +4102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4328,12 +4340,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -4417,6 +4423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4649,12 +4661,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -4690,6 +4696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4922,12 +4934,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -4951,6 +4957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5183,12 +5195,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -5206,6 +5212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5438,12 +5450,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -5461,6 +5467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5693,12 +5705,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -5758,6 +5764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5990,12 +6002,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -6037,6 +6043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6269,12 +6281,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -6292,6 +6298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6524,12 +6536,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -6547,6 +6553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6779,12 +6791,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -6802,6 +6808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7034,12 +7046,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -7123,6 +7129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7355,12 +7367,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -7438,6 +7444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7670,12 +7682,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -7711,6 +7717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7943,12 +7955,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -8032,6 +8038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8264,12 +8276,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -8323,6 +8329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8555,12 +8567,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -8590,6 +8596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8822,12 +8834,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -8845,6 +8851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9077,12 +9089,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -9166,6 +9172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9398,12 +9410,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -9487,6 +9493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9719,12 +9731,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -9742,6 +9748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9974,12 +9986,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -9997,6 +10003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10229,12 +10241,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -10318,6 +10324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10550,12 +10562,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -10639,6 +10645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10871,12 +10883,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -10906,6 +10912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11138,12 +11150,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -11209,6 +11215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11441,12 +11453,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -11464,6 +11470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11696,12 +11708,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -11785,6 +11791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12017,12 +12029,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -12052,6 +12058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12284,12 +12296,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -12373,6 +12379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12605,12 +12617,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -12628,6 +12634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12860,12 +12872,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -12949,6 +12955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13181,12 +13193,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -13210,6 +13216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13442,12 +13454,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -13465,6 +13471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13697,12 +13709,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -13786,6 +13792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14018,12 +14030,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -14041,6 +14047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14273,12 +14285,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -14302,6 +14308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14534,12 +14546,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -14623,6 +14629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14855,12 +14867,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -14884,6 +14890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15116,12 +15128,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -15200,11 +15206,17 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
-      "last_ts": "2026-08-24T08:06:21.664229Z",
+      "last_id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+      "last_ts": "2026-08-24T08:18:51.831789Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
@@ -15270,12 +15282,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T06:04:55.600529Z"
-        },
-        {
-          "id": "gpt-device-receipt-state-machine-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T06:01:25Z"
         }
       ]
     },
@@ -15284,6 +15290,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
@@ -15517,12 +15529,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -15606,6 +15612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15838,12 +15850,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -15927,6 +15933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16159,12 +16171,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -16248,6 +16254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16480,12 +16492,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -16503,6 +16509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16735,12 +16747,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -16770,6 +16776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17002,12 +17014,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -17091,6 +17097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17323,12 +17335,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -17346,6 +17352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17578,12 +17590,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -17649,6 +17655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17881,12 +17893,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -17970,6 +17976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18202,12 +18214,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -18243,6 +18249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18475,12 +18487,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -18564,6 +18570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18796,12 +18808,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -18819,6 +18825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19051,12 +19063,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -19074,6 +19080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19306,12 +19318,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -19389,6 +19395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19621,12 +19633,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -19644,6 +19650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19876,12 +19888,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -19899,6 +19905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20131,12 +20143,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -20154,6 +20160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20386,12 +20398,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -20409,6 +20415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20641,12 +20653,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -20688,6 +20694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20920,12 +20932,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -21009,6 +21015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21241,12 +21253,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -21294,6 +21300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21526,12 +21538,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -21549,6 +21555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21781,12 +21793,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -21804,6 +21810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22036,12 +22048,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -22059,6 +22065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22291,12 +22303,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -22314,6 +22320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22546,12 +22558,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -22566,8 +22572,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
@@ -22758,6 +22770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22990,12 +23008,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -23079,6 +23091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23311,12 +23329,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -23400,6 +23412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23632,12 +23650,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -23697,6 +23709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23929,12 +23947,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -24018,6 +24030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24250,12 +24268,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -24273,6 +24285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24505,12 +24523,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -24528,6 +24540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24760,12 +24778,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -24795,6 +24807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25027,12 +25045,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -25116,6 +25128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25348,12 +25366,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -25371,6 +25383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25603,12 +25621,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -25638,6 +25650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25870,12 +25888,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -25935,6 +25947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26167,12 +26185,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -26256,6 +26268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26488,12 +26506,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -26577,6 +26589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26809,12 +26827,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -26886,6 +26898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27118,12 +27136,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -27153,6 +27165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27385,12 +27403,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -27474,6 +27486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27706,12 +27724,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -27795,6 +27807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28027,12 +28045,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -28116,6 +28128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28348,12 +28366,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -28377,6 +28389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28609,12 +28627,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -28650,6 +28662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28882,12 +28900,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -28971,6 +28983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29203,12 +29221,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -29223,8 +29235,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
         {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
@@ -29361,6 +29379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29593,12 +29617,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -29682,6 +29700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29914,12 +29938,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -30003,6 +30021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30235,12 +30259,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -30324,6 +30342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30556,12 +30580,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -30645,6 +30663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30877,12 +30901,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -30900,6 +30918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31132,12 +31156,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -31185,6 +31203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31417,12 +31441,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -31506,6 +31524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31738,12 +31762,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -31827,6 +31845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32059,12 +32083,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -32148,6 +32166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32380,12 +32404,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
@@ -32469,6 +32487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-durable-done-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:18:51.831789Z"
+        },
+        {
           "id": "gpt-issue1596-item5-durable-done-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32701,12 +32725,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T04:47:42.648049Z"
-        },
-        {
-          "id": "gpt-board-bake-reset-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T04:44:04.095249Z"
         }
       ],
       "mine": [
