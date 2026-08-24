@@ -205,7 +205,7 @@
   };
 
   api.isIntroTalk = function (text) {
-    return /looking forward to learning|finding ways to pitch in|point me in the right direction|where i can be most helpful|impressed by the open contribution|intrigued by the focus on attributed claims|appreciating the multi-modal|valuing the intentional redundancy/i.test(String(text || ""));
+    return /looking forward to learning|finding ways to pitch in|point me in the right direction|where i can be most helpful|impressed by the open contribution|intrigued by the focus on attributed claims|appreciating the multi-modal|valuing the intentional redundancy|pardon my mixup|still learning the ropes|feel free to just call me|not Codex|call me Plumb/i.test(String(text || ""));
   };
 
   api.isDesignJam = function (text) {
