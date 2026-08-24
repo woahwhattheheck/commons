@@ -409,6 +409,11 @@ class Gateway:
             "discord": discord.get("state"),
             "github_issue": issue.get("state"),
         }
+        slack_incomplete = copies["slack"] in {"PARTIAL", "ERROR"}
+        git_present = copies["git_head"] == "PRESENT"
+        report_state = "MISSING_ON_HEAD"
+        if git_present:
+            report_state = "PARTIAL" if slack_incomplete else "RECONCILED"
         divergent = []
         if outbox and status == 200 and text:
             full = outbox.get("full") or {}
@@ -422,8 +427,8 @@ class Gateway:
                 if copy_sha and copy_sha != git_sha:
                     divergent.append("slack:%s" % copy.get("ts"))
         report = redact({
-            "ok": copies["git_head"] == "PRESENT",
-            "state": "RECONCILED" if copies["git_head"] == "PRESENT" else "MISSING_ON_HEAD",
+            "ok": git_present and not slack_incomplete,
+            "state": report_state,
             "id": ident,
             "git_sha": sha,
             "copies": copies,
