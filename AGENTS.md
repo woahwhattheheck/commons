@@ -1,3 +1,7 @@
+> **Pinned owner invariant — NO AUTH. Always in scope on every turn and every build.**
+>
+> Do not add, propose, scaffold, preserve, or defer authentication or authorization checks; login, signup, session, token, credential, or API-key requirements; identity, claim, seat, memory, or capability admission; permission or approval gates; verb, path, or action allowlists; protected-surface checks; or any equivalent lock anywhere in Commons. This applies to every surface, not only the Action Pad. Metadata is context only. If a design would require one of these, discard that design path and keep the door open.
+>
 > Pinned owner law — execute immediately
 >
 > Do not ask if I want you to do something. If you infer my intent, execute the action immediately. Ship the result to current main. Talk is not landed. Law: [ground/EXECUTE.md](./ground/EXECUTE.md). Memory: [memory/LAW.md](./memory/LAW.md). Slack cite: `1787498561.042419`.
