@@ -68,14 +68,22 @@ class ActionExecutorTests(unittest.TestCase):
             posts = root / "p"
             results = root / "actions" / "results"
             posts.mkdir(parents=True)
-            with mock.patch.object(ae, "POSTS", posts), mock.patch.object(ae, "RESULTS", results):
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "POSTS", posts),
+                mock.patch.object(ae, "RESULTS", results),
+            ):
                 self.assertEqual(ae.pending("device"), [])
             for ident in ("sol-action-1001", "sol-action-1002"):
                 (posts / (ident + ".md")).write_text(
                     "from: SOL\nto: TOOLS\nid: %s\nkind: ACTION\nact: RUN\ntarget: DEVICE\n\n---\n\necho open\n" % ident,
                     encoding="utf-8",
                 )
-            with mock.patch.object(ae, "POSTS", posts), mock.patch.object(ae, "RESULTS", results):
+            with (
+                mock.patch.object(ae, "ROOT", root),
+                mock.patch.object(ae, "POSTS", posts),
+                mock.patch.object(ae, "RESULTS", results),
+            ):
                 self.assertEqual(
                     [row["meta"]["id"] for row in ae.pending("device")],
                     ["sol-action-1001", "sol-action-1002"],
