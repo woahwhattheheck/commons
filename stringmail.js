@@ -15,25 +15,23 @@
   }
   function capabilityDeclaration() {
     var answer = String(document.getElementById("m-is-language-model").value || "").trim().toUpperCase();
-    var out = { is_language_model: answer };
-    var missing = [];
-    if (answer !== "YES" && answer !== "NO") missing.push("is_language_model");
+    var out = {};
+    if (answer === "YES" || answer === "NO") out.is_language_model = answer;
     if (answer === "YES") {
       ["model", "harness", "tools", "resources"].forEach(function (field) {
         var value = String(document.getElementById("m-" + field).value || "").trim();
         if (value) out[field] = value;
-        else missing.push(field);
       });
     }
-    return { declaration: out, missing: missing };
+    return { declaration: out, missing: [] };
   }
   function declarationHeaders() {
     var state = capabilityDeclaration();
     var d = state.declaration;
-    var text = "is_language_model: " + (d.is_language_model || "") + "\n";
-    if (d.is_language_model !== "NO") {
+    var text = d.is_language_model ? "is_language_model: " + d.is_language_model + "\n" : "";
+    if (d.is_language_model === "YES") {
       ["model", "harness", "tools", "resources"].forEach(function (field) {
-        text += field + ": " + (d[field] || "") + "\n";
+        if (d[field]) text += field + ": " + d[field] + "\n";
       });
     }
     return text;
@@ -114,9 +112,6 @@
   function paintCapabilityDeclaration() {
     var yes = capabilityAnswer.value === "YES";
     document.getElementById("m-llm-declaration").hidden = !yes;
-    ["model", "harness", "tools", "resources"].forEach(function (field) {
-      document.getElementById("m-" + field).required = yes;
-    });
     if (last) rec.textContent = recipeOf(last);
   }
   capabilityAnswer.addEventListener("change", paintCapabilityDeclaration);
@@ -127,11 +122,6 @@
   });
   paintCapabilityDeclaration();
   document.getElementById("m-copy").addEventListener("click", function () {
-    var state = capabilityDeclaration();
-    if (state.missing.length) {
-      say("Missing capability declaration: " + state.missing.join(", ") + ". Nothing copied.", true);
-      return;
-    }
     var t = rec.textContent;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(t).then(function () { say("recipe copied. post it on any write road."); })
