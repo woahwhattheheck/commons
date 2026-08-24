@@ -37,7 +37,7 @@ def bake(root):
 
 def main():
     tmp = tempfile.mkdtemp(prefix="commons-replay-")
-    saved = (board_ingest.ROOT, board_ingest.rebuild)
+    saved = (board_ingest.ROOT, board_ingest.rebuild, board_ingest.push_origin_main)
     try:
         origin = os.path.join(tmp, "origin.git")
         ours = os.path.join(tmp, "ours")
@@ -132,9 +132,194 @@ def main():
         baked2 = open(os.path.join(check2, "board.html")).read()
         assert baked2 == "BAKE:a.md,b.md,c.md,dup.md,e.md,f.md\n", baked2
 
+        # Phase-two reset regression: after our record wins, race the derived
+        # bake with a conflicting stale bake.  The replay reset must surface
+        # as bake-reset (not a successful no-op push), rebuild from refreshed
+        # origin exactly once, and push the union.  The retry itself gets one
+        # push attempt, so a permanently moving main cannot create a loop.
+        cp3 = os.path.join(tmp, "cp3")
+        racer = os.path.join(tmp, "racer")
+        run(["git", "clone", "-q", origin, cp3], tmp)
+        run(["git", "clone", "-q", origin, racer], tmp)
+        for cwd in (cp3, racer):
+            run(["git", "config", "user.email", "r@r"], cwd)
+            run(["git", "config", "user.name", "r"], cwd)
+        board_ingest.ROOT = cp3
+        board_ingest.rebuild = lambda: bake(cp3)
+        write(os.path.join(cp3, "p", "g.md"), "post g\n")
+        bake(cp3)
+
+        real_push = board_ingest.push_origin_main
+        push_receipts = []
+        raced = [False]
+
+        def push_with_one_bake_race(*args, **kwargs):
+            bake_phase = kwargs.get("bake_phase", False)
+            if bake_phase and not raced[0]:
+                raced[0] = True
+                run(["git", "pull", "-q", "origin", "main"], racer)
+                write(os.path.join(racer, "p", "h.md"), "post h\n")
+                write(os.path.join(racer, "board.html"), "STALE CONFLICTING BAKE\n")
+                run(["git", "add", "-A"], racer)
+                run(["git", "commit", "-qm", "racing stale bake"], racer)
+                run(["git", "push", "-q", "origin", "HEAD:main"], racer)
+            result = real_push(*args, **kwargs)
+            push_receipts.append((bake_phase, kwargs.get("tries"), result))
+            return result
+
+        board_ingest.push_origin_main = push_with_one_bake_race
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html", "p"])
+        board_ingest.push_origin_main = real_push
+        assert st == "pushed", st
+        bake_receipts = [row for row in push_receipts if row[0] is True]
+        assert bake_receipts[0][2] == "bake-reset", bake_receipts
+        assert bake_receipts[-1] == (True, 1, "pushed"), bake_receipts
+
+        check3 = os.path.join(tmp, "check3")
+        run(["git", "clone", "-q", origin, check3], tmp)
+        baked3 = open(os.path.join(check3, "board.html")).read()
+        assert baked3 == "BAKE:a.md,b.md,c.md,dup.md,e.md,f.md,g.md,h.md\n", baked3
+
+        # The same reset signal is required when phase one has no new record:
+        # scheduled/idempotent runs still carry repaired derivative pages.  A
+        # receipt-policy flag cannot double as the phase discriminator.
+        cp4 = os.path.join(tmp, "cp4")
+        racer2 = os.path.join(tmp, "racer2")
+        run(["git", "clone", "-q", origin, cp4], tmp)
+        run(["git", "clone", "-q", origin, racer2], tmp)
+        for cwd in (cp4, racer2):
+            run(["git", "config", "user.email", "s@s"], cwd)
+            run(["git", "config", "user.name", "s"], cwd)
+        board_ingest.ROOT = cp4
+        board_ingest.rebuild = lambda: bake(cp4)
+        write(os.path.join(cp4, "board.html"), "LOCAL DERIVED REPAIR\n")
+
+        real_push = board_ingest.push_origin_main
+        push_receipts = []
+        raced = [False]
+
+        def push_with_recordless_bake_race(*args, **kwargs):
+            bake_phase = kwargs.get("bake_phase", False)
+            if bake_phase and not raced[0]:
+                raced[0] = True
+                write(os.path.join(racer2, "board.html"), "STALE RACER BAKE\n")
+                run(["git", "add", "-A"], racer2)
+                run(["git", "commit", "-qm", "recordless stale bake"], racer2)
+                run(["git", "push", "-q", "origin", "HEAD:main"], racer2)
+            result = real_push(*args, **kwargs)
+            push_receipts.append((bake_phase, kwargs.get("tries"), result))
+            return result
+
+        board_ingest.push_origin_main = push_with_recordless_bake_race
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html"])
+        board_ingest.push_origin_main = real_push
+        assert st == "pushed", st
+        bake_receipts = [row for row in push_receipts if row[0] is True]
+        assert bake_receipts[0][2] == "bake-reset", bake_receipts
+        assert bake_receipts[-1] == (True, 1, "pushed"), bake_receipts
+
+        check4 = os.path.join(tmp, "check4")
+        run(["git", "clone", "-q", origin, check4], tmp)
+        baked4 = open(os.path.join(check4, "board.html")).read()
+        assert baked4 == baked3, (baked3, baked4)
+
+        # A second recordless race stops after that one retry and reports an
+        # actual publish failure.  It must not spin and it must not turn the
+        # second reset into another no-op success.
+        cp5 = os.path.join(tmp, "cp5")
+        racer3 = os.path.join(tmp, "racer3")
+        run(["git", "clone", "-q", origin, cp5], tmp)
+        run(["git", "clone", "-q", origin, racer3], tmp)
+        for cwd in (cp5, racer3):
+            run(["git", "config", "user.email", "u@u"], cwd)
+            run(["git", "config", "user.name", "u"], cwd)
+        board_ingest.ROOT = cp5
+        board_ingest.rebuild = lambda: bake(cp5)
+        write(os.path.join(cp5, "board.html"), "LOCAL RECORDLESS REPAIR\n")
+
+        real_push = board_ingest.push_origin_main
+        push_receipts = []
+        race_count = [0]
+
+        def push_with_two_recordless_races(*args, **kwargs):
+            bake_phase = kwargs.get("bake_phase", False)
+            if bake_phase:
+                race_count[0] += 1
+                run(["git", "pull", "-q", "origin", "main"], racer3)
+                write(
+                    os.path.join(racer3, "board.html"),
+                    "STALE RECORDLESS RACE %d\n" % race_count[0],
+                )
+                run(["git", "add", "-A"], racer3)
+                run(["git", "commit", "-qm", "recordless race %d" % race_count[0]], racer3)
+                run(["git", "push", "-q", "origin", "HEAD:main"], racer3)
+            result = real_push(*args, **kwargs)
+            push_receipts.append((bake_phase, kwargs.get("tries"), result))
+            return result
+
+        board_ingest.push_origin_main = push_with_two_recordless_races
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html"])
+        board_ingest.push_origin_main = real_push
+        assert st == "push-fail", st
+        bake_receipts = [row for row in push_receipts if row[0] is True]
+        assert bake_receipts == [
+            (True, None, "bake-reset"),
+            (True, 1, "bake-reset"),
+        ], bake_receipts
+        assert race_count[0] == 2, race_count
+
+        # With a new source record, the same two-race ceiling preserves the
+        # already-pushed record and reports overall record success while
+        # explicitly deferring only the derived bake.
+        cp6 = os.path.join(tmp, "cp6")
+        racer4 = os.path.join(tmp, "racer4")
+        run(["git", "clone", "-q", origin, cp6], tmp)
+        run(["git", "clone", "-q", origin, racer4], tmp)
+        for cwd in (cp6, racer4):
+            run(["git", "config", "user.email", "v@v"], cwd)
+            run(["git", "config", "user.name", "v"], cwd)
+        board_ingest.ROOT = cp6
+        board_ingest.rebuild = lambda: bake(cp6)
+        write(os.path.join(cp6, "p", "i.md"), "post i\n")
+        bake(cp6)
+
+        real_push = board_ingest.push_origin_main
+        push_receipts = []
+        race_count = [0]
+
+        def push_with_two_recorded_races(*args, **kwargs):
+            bake_phase = kwargs.get("bake_phase", False)
+            if bake_phase:
+                race_count[0] += 1
+                run(["git", "pull", "-q", "origin", "main"], racer4)
+                write(
+                    os.path.join(racer4, "board.html"),
+                    "STALE RECORDED RACE %d\n" % race_count[0],
+                )
+                run(["git", "add", "-A"], racer4)
+                run(["git", "commit", "-qm", "recorded race %d" % race_count[0]], racer4)
+                run(["git", "push", "-q", "origin", "HEAD:main"], racer4)
+            result = real_push(*args, **kwargs)
+            push_receipts.append((bake_phase, kwargs.get("tries"), result))
+            return result
+
+        board_ingest.push_origin_main = push_with_two_recorded_races
+        st = board_ingest.commit_and_push("board ingest", extra_paths=["board.html", "p"])
+        board_ingest.push_origin_main = real_push
+        assert st == "pushed", st
+        bake_receipts = [row for row in push_receipts if row[0] is True]
+        assert bake_receipts == [
+            (True, None, "bake-reset"),
+            (True, 1, "bake-reset"),
+        ], bake_receipts
+        assert race_count[0] == 2, race_count
+        check6 = os.path.join(tmp, "check6")
+        run(["git", "clone", "-q", origin, check6], tmp)
+        assert os.path.isfile(os.path.join(check6, "p", "i.md")), "durable record lost"
+
         print("PUSH REPLAY TEST: ALL PASS")
     finally:
-        board_ingest.ROOT, board_ingest.rebuild = saved
+        board_ingest.ROOT, board_ingest.rebuild, board_ingest.push_origin_main = saved
         shutil.rmtree(tmp, ignore_errors=True)
 
 
