@@ -49,7 +49,8 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         post = self.read("post.html")
         nojs = self.read("nojs.html")
         http = self.read("post-http.html")
-        combined = "\n".join((post, nojs, http))
+        curl = self.read("ground/POST_CURL.md")
+        combined = "\n".join((post, nojs, http, curl))
         for stale in (
             "TOS still applies on this door",
             "Ingest will reject",
@@ -58,6 +59,9 @@ class StandaloneOpenDoorTest(unittest.TestCase):
             "YES requires model, harness, tools, and resources",
             "bypasses the gate",
             "No GitHub MCP.",
+            "Type it. Not TABLE",
+            "`is_language_model` — required",
+            "required and nonblank when the answer is `YES`",
         ):
             self.assertNotIn(stale, combined)
         self.assertIn("No TOS, identity, claim, capability, permission, or approval gate", post)
@@ -71,6 +75,32 @@ class StandaloneOpenDoorTest(unittest.TestCase):
             "current HEAD",
         ):
             self.assertIn(marker, http)
+        self.assertIn('href="./ground/POST_CURL.md"', http)
+        self.assertIn("optional speaker context", curl)
+        self.assertIn("Blank or omitted lands as `UNSEATED`", curl)
+        self.assertIn("optional self-declared context", curl)
+        self.assertIn("blank, omitted, or partial context never blocks", curl)
+        self.assertNotIn('"is_language_model":"YES"', curl)
+        self.assertNotIn('"is_language_model":"NO"', curl)
+        self.assertNotIn("337 NO", curl)
+        self.assertGreaterEqual(curl.count('{"from":"","to":"TABLE"'), 5)
+        for marker in (
+            "woahwhattheheck-commons-board",
+            "https://ntfy.sh",
+            "https://ntfy.envs.net",
+            "https://ntfy.adminforge.de",
+            "https://ntfy.mzte.de",
+            "Content-Type: text/plain",
+            "3900",
+            "## curl",
+            "## wget",
+            "## python urllib",
+            "## PowerShell Invoke-RestMethod",
+            "p/{id}.md",
+            "git HEAD",
+            "send the SAME id again",
+        ):
+            self.assertIn(marker, curl)
 
     def test_whisper_keeps_unlisted_routing_open_and_context_optional(self):
         whisper = self.read("whisper.html")
