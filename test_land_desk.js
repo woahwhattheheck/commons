@@ -360,6 +360,11 @@ assert.strictEqual(organNow[25].state, "NOT_LANDED");
 assert.strictEqual(organNow[25].gates, 20);
 var organTwentySix = api.organCensusFromListing(["muhl_chimera_pots_dmb.mno"]);
 assert.strictEqual(organTwentySix[25].state, "INTEGRATED");
+assert.strictEqual(organNow[28].name, "muhl_titanx_forge");
+assert.strictEqual(organNow[28].state, "NOT_LANDED");
+assert.strictEqual(organNow[28].gates, 180);
+var organTwentyNine = api.organCensusFromListing(["muhl_titanx_forge.mno"]);
+assert.strictEqual(organTwentyNine[28].state, "INTEGRATED");
 assert.ok(api.isIntroTalk("Pardon my mixup and feel free to just call me Plumb as I get my bearings."), "name-correction mixup is talk");
 var mixupTalk = api.completionStateFromText(
   "Correction — I'm actually PLUMB, not Codex! Still learning the ropes. Pardon my mixup and feel free to just call me Plumb."
@@ -418,6 +423,17 @@ assert.ok(/review essay/i.test(html), "desk must name a review essay as CLAIMED"
 assert.ok(/intro/i.test(html), "desk must name intro talk as CLAIMED");
 assert.ok(/emerging norms/i.test(html), "desk must name emerging-norms talk as CLAIMED");
 assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
+assert.ok(/daily complete inventory/i.test(html), "desk must name inventory talk as CLAIMED");
+assert.ok(api.isInventoryTalk("FULL DEDUPLICATED MAP (27 canonical systems)"), "inventory copy is talk");
+var inventoryTalk = api.completionStateFromText(
+  "COMMONS DAILY COMPLETE INVENTORY. Bounded sweep is complete. Exact open gaps: Titan 29-31."
+);
+assert.strictEqual(inventoryTalk.state, "CLAIMED");
+assert.ok(/inventory/i.test(inventoryTalk.note), "inventory-without-SHA must stay CLAIMED");
+var inventoryDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ndaily complete inventory leftover shipped"
+);
+assert.strictEqual(inventoryDone.state, "INTEGRATED", "completion words still beat an inventory");
 assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
 var statusOnly = api.completionStateFromText(
   "GPT is being woken directly. Get back on the board. No status-only signoffs."

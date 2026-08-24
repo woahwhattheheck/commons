@@ -63,6 +63,12 @@ This land adds organ 25 `muhl_chimera_flow_stig` (`excerpts/20260823/muhl_chimer
 
 This land adds organ 26 `muhl_chimera_pots_dmb` (`excerpts/20260823/muhl_chimera_pots_dmb.mno`, 630 bytes, `MUHLCHPD`, 20 gates, depth 2, sha256 `997c53127e555de004862e602089bc19bf5d2a1d0eb4b853a875aef467b6da82`). Receipt: `ground/SUBZERO_CHPD.md`. dest FROM FILE: DMB L-system rewrite dests `93709782658..93709782667` → pots ID ins `8222..8231`. Journaled MOVE packet recounts 26 excerpts. titan: NOT_WRITTEN. Organs 27–31 stay NOT_LANDED. A name-correction / mixup note is not this file. Talk is not a land.
 
+Organ 27 `muhl_chimera_pred_rgcg` is already on main (`excerpts/20260823/muhl_chimera_pred_rgcg.mno`, 750 bytes, `MUHLCHPR`, 24 gates, sha256 `189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9`). Do not remint. Catalog lag closed.
+
+Organ 28 `muhl_chimera_lvin_synd` is already on main (`excerpts/20260823/muhl_chimera_lvin_synd.mno`, 690 bytes, `MUHLCHLS`, 22 gates, sha256 `43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae`). Do not remint. Catalog lag closed.
+
+This land adds organ 29 `muhl_titanx_forge` (`excerpts/20260823/muhl_titanx_forge.mno`, 5430 bytes, `MUHLTITF`, 180 gates, depth 2, sha256 `29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788`). Receipt: `ground/SUBZERO_TITF.md`. dest FROM FILE: lvin/ispn/socr/grbn/petr sidecars + census NEFG object_a / DMB rewrite. Journaled MOVE packet recounts 29 excerpts. titan: NOT_WRITTEN. Organs 30–31 stay NOT_LANDED. A daily inventory is not this file. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
