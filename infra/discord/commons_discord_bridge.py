@@ -13,6 +13,7 @@ import json
 import os
 import sqlite3
 import subprocess
+import sys
 import threading
 import time
 import urllib.error
@@ -25,6 +26,10 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+import discord_ingest
 
 
 def load_local_env() -> None:
@@ -194,6 +199,55 @@ def deliver_slack() -> None:
             JOURNAL.delivered(event, "slack", str(out.get("ts", "")))
 
 
+def discord_event_from_journal(event: Event) -> dict[str, Any]:
+    """Recover the exact Discord-shaped event used by canonical issue ingest."""
+    raw = event.payload.get("discord_event")
+    if isinstance(raw, dict):
+        return raw
+    # Compatibility for journals written by the first bridge revision.
+    return {
+        "id": event.native_id,
+        "channel_id": event.payload.get("channel_id", ""),
+        "guild_id": event.payload.get("guild_id", ""),
+        "timestamp": event.payload.get("timestamp", ""),
+        "content": event.payload.get("text", ""),
+        "author": {"username": event.payload.get("author", "")},
+        "message_reference": event.payload.get("message_reference", {}),
+        "referenced_message": event.payload.get("referenced_message", {}),
+    }
+
+
+def deliver_commons_issue(client: Any = None) -> None:
+    """Carry Discord messages onto the canonical board-issue ingest road.
+
+    This deliberately does not write ``p/``. Exact-title lookup makes retries
+    harmless; the normal Commons publisher remains the only page writer.
+    """
+    if client is None:
+        token = env("GITHUB_TOKEN") or env("COMMONS_GITHUB_TOKEN")
+        if not token:
+            return
+        client = discord_ingest.GitHubClient(token)
+    for event in JOURNAL.pending("commons-issue"):
+        if event.source != "discord":
+            JOURNAL.delivered(event, "commons-issue", "not-discord")
+            continue
+        source = discord_event_from_journal(event)
+        if discord_ingest.should_skip(source):
+            JOURNAL.delivered(event, "commons-issue", "relay-skip")
+            continue
+        record = discord_ingest.issue_record(source)
+        path = ROOT / "p" / (record.title + ".md")
+        if discord_ingest.verify_existing(path, record):
+            JOURNAL.delivered(event, "commons-issue", "durable-page")
+            continue
+        if client.issue_exists(record.title):
+            JOURNAL.delivered(event, "commons-issue", "existing-issue")
+            continue
+        remote = client.create_issue(record)
+        JOURNAL.delivered(event, "commons-issue", remote)
+
+
 def poll_slack() -> None:
     """Backfill Slack history so temporary webhook outages do not lose posts."""
     token, channel = env("SLACK_BOT_TOKEN"), env("SLACK_COMMONS_CHANNEL")
@@ -261,10 +315,16 @@ def poll_discord() -> None:
             text = row.get("content", "")
             if "`commons:" in text:
                 continue
+            row.setdefault("channel_id", channel)
+            row.setdefault("guild_id", env("DISCORD_GUILD_ID"))
             JOURNAL.append("discord", "message", str(row["id"]), {
                 "title": f"#{lane}", "text": text, "channel_id": channel,
+                "guild_id": row.get("guild_id", ""), "timestamp": row.get("timestamp", ""),
                 "author": row.get("author", {}).get("username", ""),
                 "attachments": row.get("attachments", []),
+                "message_reference": row.get("message_reference", {}),
+                "referenced_message": row.get("referenced_message", {}),
+                "discord_event": row,
                 "url": f"https://discord.com/channels/{env('DISCORD_GUILD_ID')}/{channel}/{row['id']}",
             })
             JOURNAL.set_cursor(f"discord:{channel}", str(row["id"]))
@@ -340,10 +400,15 @@ class Handler(BaseHTTPRequestHandler):
 def worker() -> None:
     delay = max(1, int(env("COMMONS_POLL_SECONDS", "3")))
     while True:
-        for fn in (poll_git, poll_discord, poll_slack, deliver_discord, deliver_slack):
+        for fn in (poll_git, poll_discord, poll_slack, deliver_commons_issue, deliver_discord, deliver_slack):
             try:
                 fn()
-            except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
+            except (
+                OSError,
+                urllib.error.URLError,
+                json.JSONDecodeError,
+                discord_ingest.IngestError,
+            ) as exc:
                 print(fn.__name__, type(exc).__name__, str(exc)[:200], flush=True)
         time.sleep(delay)
 

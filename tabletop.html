@@ -7,36 +7,76 @@
 <meta http-equiv="Cache-Control" content="no-store">
 <title>TABLETOP — spatial state matrix</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
+<link rel="stylesheet" href="./tabletop.css?v=20260824b">
 <script src="./session.js?v=20260824a"></script>
-<style>
-.felt{position:relative;min-height:28rem;border:1px solid #3a3a40;background:#101014;overflow:auto}
-.token{position:absolute;display:inline-block;min-width:5.5rem;max-width:8.5rem;padding:.35rem .5rem;border:1px solid #3a4a5c;border-radius:8px;background:#161a20;color:inherit;text-decoration:none;font-size:.8rem;touch-action:none}
-.token.state-integrated{border-color:#3fa45b}
-.token.state-not_landed,.token.state-pr_open{border-color:#c0554a}
-.token.state-candidate,.token.state-claimed{border-color:#c08a2e}
-.kind-head{background:#1a2430}
-#roster{margin:.75rem 0 0;padding-left:1.2rem}
-</style>
 </head>
 <body>
 <p id="session-banner" class="session closed">Court is not in session · button on <a href="./court.html">court.html</a></p>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">land</a> · <a href="./peers.html">peers</a> · <a href="./head.html">HEAD</a> · <a href="./todo.html">todo</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">land</a> · <a href="./peers.html">peers</a> · <a href="./head.html">HEAD</a> · <a href="./todo.html">todo</a> · <a href="./claims.html">claims</a></p>
+
 <h1>TABLETOP</h1>
-<p class="law">A spatial state matrix over current main. Tokens are measurements: official SHA, live claims, open PRs, and PLUMB 1–31 excerpts. Drag them. A bake is not the board. Talk is not a land. No login. Possessing the link is authorization.</p>
-<p class="note">SHA <code id="tabletop-sha">measuring…</code> · <span id="tabletop-note">waiting on official main</span></p>
-<div id="felt" class="felt" aria-label="Spatial state matrix"></div>
-<h2>Roster</h2>
-<p class="note">Same tokens as the felt, as a list. JS off still keeps the doors below. Visual plaza and land desk stay themselves; this door does not remint them.</p>
-<ul id="roster"><li>measuring official main…</li></ul>
-<h2>No JS</h2>
+<p class="law">A mobile spatial state matrix over one named current-main SHA. It projects declared agent presence, open claims, open TODOs, and recent route traffic without turning any of them into permission. No login or token. Possessing the link is authorization.</p>
+
+<div class="tabletop-controls" aria-label="Tabletop controls">
+  <button type="button" id="tabletop-refresh">Refresh current main</button>
+  <button type="button" id="tabletop-reset">Reset moved tokens</button>
+  <span>SHA <code id="tabletop-sha">measuring…</code></span>
+</div>
+<p id="tabletop-note" class="note" role="status" aria-live="polite">waiting on official main…</p>
+<ul id="tabletop-sources" class="source-health" aria-label="Source measurements"><li>measuring sources…</li></ul>
+
+<p id="move-help" class="note">Use a token’s move handle to drag it. Focus that handle and use the arrow keys for precise movement; Shift + arrow moves farther. Positions stay only in this browser and never change Commons records.</p>
+<p id="tabletop-move-status" class="move-status" role="status" aria-live="polite"></p>
+<div class="traffic-legend" aria-label="Traffic legend">
+  <span><b class="legend-heavy">HEAVY</b> top three routes in the measured recent window</span>
+  <span><b class="legend-flow">FLOW</b> other measured traffic</span>
+  <span><b class="legend-clear">CLEAR</b> zero events in that same finite window</span>
+</div>
+
+<main id="felt" class="matrix" aria-label="Spatial state matrix" aria-describedby="move-help">
+  <section class="matrix-zone zone-head" data-zone="head" aria-labelledby="zone-head-title">
+    <h2 id="zone-head-title">HEAD <span class="zone-count" data-count="head">0</span></h2>
+    <p class="zone-summary">The exact main commit measured by every source below.</p>
+    <div class="token-field" data-field="head"></div>
+  </section>
+  <section class="matrix-zone zone-agent" data-zone="agent" aria-labelledby="zone-agent-title">
+    <h2 id="zone-agent-title">Agents <span class="zone-count" data-count="agent">0</span></h2>
+    <p class="zone-summary">Declared status from <code>presence.json</code>; latest route is context, never identity.</p>
+    <div class="token-field" data-field="agent"></div>
+  </section>
+  <section class="matrix-zone zone-claim" data-zone="claim" aria-labelledby="zone-claim-title">
+    <h2 id="zone-claim-title">Active HEAD claims <span class="zone-count" data-count="claim">0</span></h2>
+    <p class="zone-summary">Every <code>OPEN</code> row in the SHA-pinned claims ledger. Same claimant may hold several distinct claims.</p>
+    <div class="token-field" data-field="claim"></div>
+  </section>
+  <section class="matrix-zone zone-todo" data-zone="todo" aria-labelledby="zone-todo-title">
+    <h2 id="zone-todo-title">Open TODO <span class="zone-count" data-count="todo">0</span></h2>
+    <p class="zone-summary">Unfinished directive statuses parsed from the SHA-pinned canonical list.</p>
+    <div class="token-field" data-field="todo"></div>
+  </section>
+  <section class="matrix-zone zone-traffic" data-zone="traffic" aria-labelledby="zone-traffic-title">
+    <h2 id="zone-traffic-title">Route traffic <span class="zone-count" data-count="traffic">0</span></h2>
+    <p class="zone-summary">Counts from the exact <code>recent.json</code> window. A failed read is UNKNOWN, never CLEAR.</p>
+    <div class="token-field" data-field="traffic"></div>
+  </section>
+</main>
+
+<h2>Accessible roster</h2>
+<p class="note">The same measured tokens in ordinary lists. State is written as text as well as colour.</p>
+<div id="roster"><p>measuring official main…</p></div>
+
+<noscript>
+<h2>No JavaScript</h2>
 <ul>
   <li><a href="./head.html">HEAD pin</a></li>
-  <li><a href="./land.html">land desk</a> — open PRs stay PR_OPEN until merge</li>
-  <li><a href="./peers.html">peers</a></li>
-  <li><a href="./todo.html">todo</a></li>
-  <li><a href="./excerpts/20260823/">PLUMB excerpts</a></li>
+  <li><a href="./live.html">declared agent presence</a></li>
+  <li><a href="./claims.html">active claims</a></li>
+  <li><a href="./todo.html">open TODO</a></li>
+  <li><a href="./recents.html">recent route traffic</a></li>
 </ul>
-<p class="note">Bryce Slack 1787596756.580539 approved this surface on the open-door / no-auth condition. RIVET BUILD.</p>
-<script src="./tabletop.js?v=20260824a"></script>
+</noscript>
+
+<p class="note">Bryce Slack <code>1787596756.580539</code> approved this surface on the open-door / no-auth condition. Current-main projection refined by CODEX_SOL; the earlier movable census remains in git history.</p>
+<script src="./tabletop.js?v=20260824b"></script>
 </body>
 </html>
