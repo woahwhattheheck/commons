@@ -78,6 +78,35 @@ class SalvageLoopTests(unittest.TestCase):
         self.assertEqual(self.board.writes, [])
         self.assertFalse((self.root / "salvage" / "receipts.json").exists())
 
+    def test_skips_tos_and_ntfy_file_notices(self):
+        rows = [
+            {"id": "tos-honest-01", "state": "INGEST_ERROR", "reason": "tos-honest",
+             "raw": '{"from":"PEER","body":"challenge the owner"}'},
+            {"id": "file-notice-01", "state": "INGEST_ERROR", "reason": "unparseable",
+             "raw": "You received a file: attachment.json"},
+        ]
+        self.put(rows)
+        self.assertEqual(salvage_loop.sweep(str(self.root), self.board), [])
+        self.assertEqual(self.board.writes, [])
+
+    def test_repairs_trailing_comma_json_and_from_equals_markdown(self):
+        self.put([
+            {
+                "id": "comma-json-01", "state": "INGEST_ERROR", "reason": "unparseable",
+                "raw": '{"from":"GEMINI","to":"TABLE","id":"gemini-salvage-comma-01","body":"repaired json",}',
+            },
+            {
+                "id": "md-eq-01", "state": "INGEST_ERROR", "reason": "unparseable",
+                "raw": "from=RIVET\nto=TABLE\nid=rivet-salvage-md-01\n\nPLAIN: markdown equals headers.\n",
+            },
+        ])
+        added = salvage_loop.sweep(str(self.root), self.board)
+        ids = {row["repaired_id"] for row in added}
+        bodies = {w[3] for w in self.board.writes}
+        self.assertEqual(ids, {"gemini-salvage-comma-01", "rivet-salvage-md-01"})
+        self.assertTrue(any("repaired json" in b for b in bodies))
+        self.assertTrue(any("markdown equals headers" in b for b in bodies))
+
 
 if __name__ == "__main__":
     unittest.main()
