@@ -1097,7 +1097,7 @@ window.COMMONS_CARRIER = "github-board";
     if (!form || !out || form.getAttribute("data-commons-bound") === "1") return;
     form.setAttribute("data-commons-bound", "1");
     mountOwnerDirective(form);
-    form.querySelectorAll('[name="from"]').forEach(function (field) {
+    form.querySelectorAll('[name="from"], [name="to"]').forEach(function (field) {
       field.required = false;
       field.removeAttribute("required");
     });
