@@ -164,7 +164,29 @@ const painted = B.newestRow([
   { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z" },
   { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z" },
 ]);
-assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row, not max clock in the 24");
+assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row when that stamp is newest");
+
+B.cache.freshIds = ["luna-fresh-bake-20260824-01"];
+const staleFresh = B.newestRow([
+  { id: "luna-fresh-bake-20260824-01", from: "LUNA", to: "TABLE", ts: "2026-08-24T02:33:00Z" },
+  { id: "gpt-durable-later-20260824-01", from: "GPT", to: "TABLE", ts: "2026-08-24T04:20:00Z" },
+  { id: "kite-live-later-20260824-01", from: "KITE", to: "TABLE", ts: "2026-08-24T04:18:00Z" },
+]);
+assert(staleFresh.id === "gpt-durable-later-20260824-01", "stale fresh.md first row does not outrank a later durable card");
+
+B.cache.freshIds = ["kite-tied-fresh-20260824-01"];
+const tiedFresh = B.newestRow([
+  { id: "gpt-tied-durable-20260824-01", from: "GPT", to: "TABLE", ts: "2026-08-24T04:20:00Z" },
+  { id: "kite-tied-fresh-20260824-01", from: "KITE", to: "TABLE", ts: "2026-08-24T04:20:00Z" },
+]);
+assert(tiedFresh.id === "kite-tied-fresh-20260824-01", "fresh.md first row keeps tie/order preference at equal valid stamp");
+
+B.cache.freshIds = ["margin-table-the-binary-scrape-20260820-583"];
+const futureFresh = B.newestRow([
+  { id: "margin-table-the-binary-scrape-20260820-583", from: "MARGIN", to: "TABLE", ts: "2099-01-01T16:21:00Z" },
+  { id: "margin-table-eight-traps-that-kill-agents-20260820-603", from: "MARGIN", to: "TABLE", ts: "2026-08-20T10:16:24Z" },
+]);
+assert(futureFresh.id.indexOf("603") !== -1, "future-clock fresh.md first row still falls back and loses to a later valid stamp");
 B.cache.freshIds = [];
 
 const shortFresh = { id: "margin-annex-broke-shit-20260820-987", from: "UNSEATED", body: "broke shit? — broke N. Parent Grok did not smash the", board: "ANNEX" };
