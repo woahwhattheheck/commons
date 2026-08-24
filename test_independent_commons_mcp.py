@@ -59,6 +59,7 @@ class FakeNet:
         self.slack_messages = []
         self.slack_pages = None
         self.slack_replies = {}
+        self.slack_reply_pages = {}
         self.discord_ok = True
         self.discord_messages = []
 
@@ -125,6 +126,16 @@ class FakeNet:
         if method == "GET" and "conversations.replies" in url:
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
             ts = (qs.get("ts") or [""])[0]
+            pages = self.slack_reply_pages.get(ts)
+            if pages is not None:
+                idx = int((qs.get("cursor") or ["0"])[0] or 0)
+                messages = pages[idx] if 0 <= idx < len(pages) else []
+                next_cursor = str(idx + 1) if idx + 1 < len(pages) else ""
+                return {
+                    "status": 200,
+                    "body": json.dumps({"ok": True, "messages": messages, "response_metadata": {"next_cursor": next_cursor}}),
+                    "error": "",
+                }
             return {"status": 200, "body": json.dumps({"ok": True, "messages": self.slack_replies.get(ts) or []}), "error": ""}
         if method == "GET" and "conversations.list" in url:
             return {
@@ -450,6 +461,187 @@ class ReviewFixTests(unittest.TestCase):
             self.assertNotIn("slack:200.1", report["divergent"])
         finally:
             os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+
+    def test_slack_find_exhausts_history_beyond_ten_pages(self):
+        ident = "kite-find-old-page-0001"
+        gw, net = make_gateway()
+        net.slack_pages = [
+            [{"ts": "%d.0" % (20 - idx), "text": "unrelated page %d" % idx}]
+            for idx in range(10)
+        ] + [[{"ts": "1.0", "text": slack_text(ident, "old exact copy", kind="POST")}]]
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "FOUND")
+        self.assertEqual([row["ts"] for row in found["copies"]], ["1.0"])
+        history_calls = [call for call in net.calls if "conversations.history" in call["url"]]
+        self.assertEqual(len(history_calls), 11)
+
+    def test_slack_find_exhausts_reply_pages_without_skipping_later_first_row(self):
+        ident = "kite-find-deep-reply-0001"
+        root = {"ts": "300.0", "text": "root without id", "reply_count": 201}
+        target = {
+            "ts": "300.201",
+            "thread_ts": "300.0",
+            "text": slack_text(ident, "late thread copy", kind="REPLY"),
+            "edited": {"ts": "300.202"},
+        }
+        gw, net = make_gateway()
+        net.slack_pages = [[root]]
+        net.slack_reply_pages = {
+            "300.0": [[root, {"ts": "300.1", "thread_ts": "300.0", "text": "unrelated"}], [target]],
+        }
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+            net.pages[ident] = page(ident, "canonical body")
+            report = gw.reconcile({"id": ident})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "FOUND")
+        self.assertEqual(len(found["copies"]), 1)
+        self.assertEqual(found["copies"][0]["ts"], "300.201")
+        self.assertEqual(found["copies"][0]["revision"], "300.202")
+        self.assertTrue(found["copies"][0]["edited"])
+        reply_calls = [call for call in net.calls if "conversations.replies" in call["url"]]
+        self.assertEqual(len(reply_calls), 4)
+        self.assertIn("slack:300.201", report["divergent"])
+
+    def test_slack_find_cursor_loop_is_partial_not_false_found(self):
+        ident = "kite-find-loop-0001"
+        hit = {"ts": "400.0", "text": slack_text(ident, "visible copy", kind="POST")}
+        gw, net = make_gateway()
+
+        def looping_http(method, url, data=None, headers=None, timeout=20.0):
+            if method == "GET" and "conversations.history" in url:
+                return {
+                    "status": 200,
+                    "body": json.dumps({
+                        "ok": True,
+                        "messages": [hit],
+                        "response_metadata": {"next_cursor": "again"},
+                    }),
+                    "error": "",
+                }
+            return net.http(method, url, data=data, headers=headers, timeout=timeout)
+
+        gw.lanes.http = looping_http
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+            net.pages[ident] = page(ident, "visible copy")
+            report = gw.reconcile({"id": ident})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "PARTIAL")
+        self.assertFalse(found["scan_complete"])
+        self.assertIn("cursor loop", found["error"])
+        self.assertEqual(len(found["copies"]), 1)
+        self.assertEqual(report["state"], "PARTIAL")
+        self.assertFalse(report["ok"])
+        self.assertEqual(report["copies"]["slack"], "PARTIAL")
+
+    def test_slack_find_page_budget_is_error_not_false_missing(self):
+        ident = "kite-find-budget-0001"
+        gw, net = make_gateway()
+        net.slack_pages = [
+            [{"ts": "3.0", "text": "unrelated first page"}],
+            [{"ts": "2.0", "text": "unrelated second page"}],
+            [{"ts": "1.0", "text": slack_text(ident, "beyond explicit budget", kind="POST")}],
+        ]
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            with mock.patch("independent_commons_mcp.lanes.SLACK_SCAN_MAX_PAGES", 2):
+                found = gw.lanes.slack_find(ident)
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "ERROR")
+        self.assertFalse(found["scan_complete"])
+        self.assertIn("exceeded 2 total pages", found["error"])
+        self.assertEqual(found["pages_scanned"], 2)
+        self.assertEqual(found["copies"], [])
+
+    def test_slack_find_uses_one_budget_across_history_and_threads(self):
+        ident = "kite-find-shared-budget-0001"
+        roots = [
+            {"ts": "500.0", "text": "root one", "reply_count": 2},
+            {"ts": "400.0", "text": "root two", "reply_count": 2},
+        ]
+        gw, net = make_gateway()
+        net.slack_pages = [roots]
+        net.slack_reply_pages = {
+            "500.0": [[roots[0]], [{"ts": "500.1", "thread_ts": "500.0", "text": "late"}]],
+            "400.0": [[roots[1]], [{"ts": "400.1", "thread_ts": "400.0", "text": "late"}]],
+        }
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            with mock.patch("independent_commons_mcp.lanes.SLACK_SCAN_MAX_PAGES", 2):
+                found = gw.lanes.slack_find(ident)
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        scan_calls = [
+            call for call in net.calls
+            if "conversations.history" in call["url"] or "conversations.replies" in call["url"]
+        ]
+        self.assertEqual(len(scan_calls), 2)
+        self.assertEqual(found["state"], "ERROR")
+        self.assertFalse(found["scan_complete"])
+        self.assertEqual(found["pages_scanned"], 2)
+        self.assertIn("exceeded 2 total pages", found["error"])
+
+    def test_slack_find_folds_newer_edited_reply_root(self):
+        ident = "kite-find-edited-root-0001"
+        stale_root = {"ts": "600.0", "text": "stale root", "reply_count": 1}
+        edited_root = {
+            "ts": "600.0",
+            "text": slack_text(ident, "edited root copy", kind="POST"),
+            "edited": {"ts": "600.2"},
+        }
+        gw, net = make_gateway()
+        net.slack_pages = [[stale_root]]
+        net.slack_reply_pages = {"600.0": [[edited_root]]}
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "FOUND")
+        self.assertTrue(found["scan_complete"])
+        self.assertEqual(len(found["copies"]), 1)
+        self.assertEqual(found["copies"][0]["ts"], "600.0")
+        self.assertEqual(found["copies"][0]["revision"], "600.2")
+
+    def test_slack_find_keeps_only_latest_revision_per_message_ts(self):
+        ident = "kite-find-latest-revision-0001"
+        root = {"ts": "700.0", "text": "root", "reply_count": 2}
+        old = {
+            "ts": "700.1",
+            "thread_ts": "700.0",
+            "text": slack_text(ident, "superseded body", kind="REPLY"),
+            "edited": {"ts": "700.2"},
+        }
+        current = {
+            "ts": "700.1",
+            "thread_ts": "700.0",
+            "text": slack_text(ident, "canonical body", kind="REPLY"),
+            "edited": {"ts": "700.3"},
+        }
+        gw, net = make_gateway()
+        net.slack_pages = [[root]]
+        net.slack_reply_pages = {"700.0": [[root, old], [current]]}
+        net.pages[ident] = page(ident, "canonical body")
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            found = gw.lanes.slack_find(ident)
+            report = gw.reconcile({"id": ident})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(found["state"], "FOUND")
+        self.assertEqual(len(found["copies"]), 1)
+        self.assertEqual(found["copies"][0]["revision"], "700.3")
+        self.assertNotIn("slack:700.1", report["divergent"])
 
     def test_repair_refused_without_outbox(self):
         gw, net = make_gateway()

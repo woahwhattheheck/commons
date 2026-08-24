@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import urllib.parse
+from decimal import Decimal, InvalidOperation
 from typing import Any, Callable
 
 from . import ACTION_PAD, DISCORD_API, GITHUB_API, PAGES, REPO, SLACK_CHANNEL, TOPIC
@@ -17,6 +18,7 @@ NTFY_HOSTS = (
     "https://ntfy.adminforge.de",
     "https://ntfy.mzte.de",
 )
+SLACK_SCAN_MAX_PAGES = 1000
 
 
 def _lane(name: str, state: str, **extra: Any) -> dict[str, Any]:
@@ -209,11 +211,43 @@ class Lanes:
         if not token:
             return _lane("slack_in", "UNCONFIGURED", id=ident, error="no server-side Slack bot token for read")
         dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or SLACK_CHANNEL).strip()
-        hits: list[dict[str, Any]] = []
+        errors: list[str] = []
+        observations: dict[str, tuple[Decimal, dict[str, Any] | None]] = {}
+        page_budget = [SLACK_SCAN_MAX_PAGES]
+        scanned_threads: set[str] = set()
+
+        def observe(message: dict[str, Any]) -> None:
+            ts = str(message.get("ts") or "")
+            if not ts:
+                return
+            edited = message.get("edited") if isinstance(message.get("edited"), dict) else {}
+            revision = str(edited.get("ts") or "1")
+            try:
+                revision_value = Decimal(revision)
+                if not revision_value.is_finite():
+                    revision_value = Decimal(-1)
+            except InvalidOperation:
+                revision_value = Decimal(-1)
+            rows = _copy_from_slack_message(ident, message)
+            copy = rows[0] if rows else None
+            current = observations.get(ts)
+            if current is None or revision_value > current[0]:
+                observations[ts] = (revision_value, copy)
+            elif revision_value == current[0] and copy != current[1]:
+                errors.append("conflicting Slack observations for %s revision %s" % (ts, revision))
+                observations[ts] = (revision_value, copy)
+
         cursor = ""
-        pages = 0
-        while pages < 10:
-            pages += 1
+        seen_cursors: set[str] = set()
+        while True:
+            if page_budget[0] <= 0:
+                errors.append("Slack scan exceeded %d total pages" % SLACK_SCAN_MAX_PAGES)
+                break
+            if cursor in seen_cursors:
+                errors.append("conversations.history cursor loop: %s" % cursor)
+                break
+            seen_cursors.add(cursor)
+            page_budget[0] -= 1
             url = "https://slack.com/api/conversations.history?channel=%s&limit=200" % dest
             if cursor:
                 url += "&cursor=" + urllib.parse.quote(cursor)
@@ -228,42 +262,100 @@ class Lanes:
             except json.JSONDecodeError:
                 parsed = {}
             if not parsed.get("ok"):
-                return _lane("slack_in", "ERROR", id=ident, error="conversations.history not ok")
+                errors.append("conversations.history not ok")
+                break
             for message in parsed.get("messages") or []:
-                hits.extend(self._slack_copies(ident, message, token, dest))
+                if not isinstance(message, dict):
+                    continue
+                observe(message)
+                thread_ts = str(message.get("ts") or "")
+                if (
+                    thread_ts
+                    and int(message.get("reply_count") or 0) > 0
+                    and thread_ts not in scanned_threads
+                ):
+                    scanned_threads.add(thread_ts)
+                    error = self._scan_slack_thread(
+                        message,
+                        token,
+                        dest,
+                        page_budget,
+                        observe,
+                    )
+                    if error:
+                        errors.append(error)
             cursor = ((parsed.get("response_metadata") or {}).get("next_cursor") or "").strip()
             if not cursor:
                 break
+        hits = [copy for _revision, copy in observations.values() if copy is not None]
         hits.sort(key=lambda row: str(row.get("ts") or ""), reverse=True)
+        if errors:
+            state = "PARTIAL" if hits else "ERROR"
+        else:
+            state = "FOUND" if hits else "MISSING"
+        extra: dict[str, Any] = {
+            "channel": dest,
+            "copies": hits,
+            "scan_complete": not errors,
+            "pages_scanned": SLACK_SCAN_MAX_PAGES - page_budget[0],
+            "note": (
+                "read-only; exact id header; caller or default channel, not an allowlist; "
+                "threads, edits, cursor pagination; incomplete scans are PARTIAL/ERROR; does not write p/"
+            ),
+        }
+        if errors:
+            extra["error"] = "; ".join(dict.fromkeys(errors))
         return _lane(
             "slack_in",
-            "FOUND" if hits else "MISSING",
+            state,
             id=ident,
-            channel=dest,
-            copies=hits,
-            note="read-only; exact id header; caller or default channel, not an allowlist; threads, edits, pagination; does not write p/",
+            **extra,
         )
 
-    def _slack_copies(self, ident: str, message: dict[str, Any], token: str, channel: str) -> list[dict[str, Any]]:
-        out = _copy_from_slack_message(ident, message)
+    def _scan_slack_thread(
+        self,
+        message: dict[str, Any],
+        token: str,
+        channel: str,
+        page_budget: list[int],
+        observe: Callable[[dict[str, Any]], None],
+    ) -> str:
         ts = str(message.get("ts") or "")
         if int(message.get("reply_count") or 0) <= 0 or not ts:
-            return out
-        reply_row = self.http(
-            "GET",
-            "https://slack.com/api/conversations.replies?channel=%s&ts=%s&limit=200" % (channel, urllib.parse.quote(ts)),
-            headers={"Authorization": "Bearer " + token},
-            timeout=15.0,
-        )
-        try:
-            replies = json.loads(reply_row.get("body") or "{}")
-        except json.JSONDecodeError:
-            replies = {}
-        if not replies.get("ok"):
-            return out
-        for reply in (replies.get("messages") or [])[1:]:
-            out.extend(_copy_from_slack_message(ident, reply))
-        return out
+            return ""
+        cursor = ""
+        seen_cursors: set[str] = set()
+        while True:
+            if page_budget[0] <= 0:
+                return "Slack scan exceeded %d total pages" % SLACK_SCAN_MAX_PAGES
+            if cursor in seen_cursors:
+                return "conversations.replies cursor loop for %s: %s" % (ts, cursor)
+            seen_cursors.add(cursor)
+            page_budget[0] -= 1
+            url = "https://slack.com/api/conversations.replies?channel=%s&ts=%s&limit=200" % (
+                channel,
+                urllib.parse.quote(ts),
+            )
+            if cursor:
+                url += "&cursor=" + urllib.parse.quote(cursor)
+            reply_row = self.http(
+                "GET",
+                url,
+                headers={"Authorization": "Bearer " + token},
+                timeout=15.0,
+            )
+            try:
+                replies = json.loads(reply_row.get("body") or "{}")
+            except json.JSONDecodeError:
+                replies = {}
+            if not replies.get("ok"):
+                return "conversations.replies not ok for %s" % ts
+            for reply in replies.get("messages") or []:
+                if isinstance(reply, dict):
+                    observe(reply)
+            cursor = ((replies.get("response_metadata") or {}).get("next_cursor") or "").strip()
+            if not cursor:
+                return ""
 
     def slack_send_raw(self, text: str, *, channel: str = "", thread_ts: str = "") -> dict[str, Any]:
         """Human Slack send. Link-only is legal. Empty is skip. No thread-per-post."""
