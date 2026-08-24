@@ -19,7 +19,9 @@ adapter.
 - claimed paths: Slack Cursor app spawn, this-run timer follow-up, issue 1316
   desktop, ntfy mail, GH watchdog tick
 - can_test: YES for contract + STOP-without-model. Named idle `bc-` resume of
-  a *different* run is UNMEASURED. Claude Slack app is not claimed.
+  a *different* run is UNMEASURED. `harness_wake.idle_resume.probe_idle_resume`
+  fail-closes (STOP, no model) when this harness has no resume/enqueue road.
+  Claude Slack app is not claimed.
 
 ## Law
 

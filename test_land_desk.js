@@ -449,6 +449,37 @@ var ingestOk = api.ingestSmashState("#!/usr/bin/env python3\ndef sweep(root, boa
 assert.strictEqual(ingestOk.state, "INTEGRATED");
 var ingestEmpty = api.ingestSmashState("");
 assert.strictEqual(ingestEmpty.state, "UNMEASURED");
+assert.ok(api.isRebaseTalk("this is already integrated; please rebase and avoid duplicating these paths"), "rebase copy is talk");
+assert.ok(api.isShipTalk("Make sure people do more than talk about shit and it actually gets shipped to main."), "ship-talk copy is talk");
+assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk must name rebase talk as CLAIMED");
+assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
+assert.ok(/SUPERSEDED/i.test(html), "desk must name a sitting restore PR SUPERSEDED when ingest is source");
+var rebaseTalk = api.completionStateFromText(
+  "This is already integrated; please rebase and avoid duplicating these paths."
+);
+assert.strictEqual(rebaseTalk.state, "CLAIMED");
+assert.ok(/rebase|unique leftover/i.test(rebaseTalk.note), "rebase-without-SHA must stay CLAIMED");
+var shipTalk = api.completionStateFromText(
+  "Make sure people do more than talk about shit and it actually gets shipped to main."
+);
+assert.strictEqual(shipTalk.state, "CLAIMED");
+assert.ok(/ship-talk/i.test(shipTalk.note), "ship-talk-without-SHA must stay CLAIMED");
+var shipDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nship-talk leftover landed"
+);
+assert.strictEqual(shipDone.state, "INTEGRATED", "completion words still beat ship-talk");
+var staleRestore = api.staleRestoreState(
+  { number: 2037, title: "Restore smashed ingest and finish Auto-Salvage Loop leftovers", state: "open" },
+  { state: "INTEGRATED" }
+);
+assert.strictEqual(staleRestore.state, "SUPERSEDED");
+assert.ok(/must not overwrite/i.test(staleRestore.note), "healthy ingest makes the restore SUPERSEDED");
+var smashedRestore = api.staleRestoreState(
+  { number: 2037, title: "Restore smashed ingest and finish Auto-Salvage Loop leftovers", state: "open" },
+  { state: "NOT_LANDED" }
+);
+assert.strictEqual(smashedRestore.state, "PR_OPEN");
+assert.strictEqual(api.staleRestoreState({ number: 1876, title: "wake: fail-closed probe" }, { state: "INTEGRATED" }), null);
 var tabletopTalk = api.completionStateFromText(
   "A Spatial State Matrix. Virtual tabletop. Movable tokens. Top-down map of what the network is doing."
 );
