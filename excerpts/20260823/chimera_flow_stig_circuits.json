@@ -1,0 +1,70 @@
+{
+  "muhl_chimera_flow_stig": {
+    "name": "muhl_chimera_flow_stig",
+    "magic": "MUHLCHFS",
+    "n_gate": 18,
+    "n_wires": 20,
+    "n_in": 9,
+    "n_out": 9,
+    "depth": 2,
+    "len": 570,
+    "offset": 0,
+    "container": "muhl_chimera_flow_stig.mno",
+    "format": "physical",
+    "gate_stride": 25,
+    "lanes": 9,
+    "src": "flow conductance outs",
+    "dst": "stig evaporation-rate ins",
+    "buffer": "NAND NAND identity, 2 g per lane",
+    "src_addrs": [
+      16414,
+      16415,
+      16416,
+      16417,
+      16418,
+      16419,
+      16420,
+      16421,
+      16422
+    ],
+    "dst_addrs": [
+      6174,
+      6175,
+      6176,
+      6177,
+      6178,
+      6179,
+      6180,
+      6181,
+      6182
+    ],
+    "flow_sha256": "8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d",
+    "stig_sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
+    "input_addrs": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "output_addrs": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "sha256": "20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba",
+    "clock": "evaporate-rate out IS conductance in",
+    "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
+    "titan": "NOT_WRITTEN"
+  }
+}

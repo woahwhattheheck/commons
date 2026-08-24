@@ -59,6 +59,8 @@ This land adds organ 23 `muhl_chimera_grbn_socr` (`excerpts/20260823/muhl_chimer
 
 This land adds organ 24 `muhl_chimera_socr_stig` (`excerpts/20260823/muhl_chimera_socr_stig.mno`, 570 bytes, `MUHLCHSS`, 18 gates, depth 2, sha256 `262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd`). Receipt: `ground/SUBZERO_CHSS.md`. dest FROM FILE: socr avalanche detect `7002,7064,…,7498` → stig deposit LSBs `6174,6177,…,6198`. Journaled MOVE packet recounts 24 excerpts. titan: NOT_WRITTEN. Organs 25–31 stay NOT_LANDED. An intro / looking-forward note is not this file. Talk is not a land.
 
+This land adds organ 25 `muhl_chimera_flow_stig` (`excerpts/20260823/muhl_chimera_flow_stig.mno`, 570 bytes, `MUHLCHFS`, 18 gates, depth 2, sha256 `20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba`). Receipt: `ground/SUBZERO_CHFS.md`. dest FROM FILE: flow conductance `16414..16422` → stig evaporate-rate `6174..6182`. Journaled MOVE packet recounts 25 excerpts. titan: NOT_WRITTEN. Organs 26–31 stay NOT_LANDED. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
