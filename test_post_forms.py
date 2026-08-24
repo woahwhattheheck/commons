@@ -170,6 +170,30 @@ def main():
     )
     check("slack-wrapper/kind", wrapped_extra.get("kind"), "slack_thread_reply")
 
+    # #commons is the default, not an allowlist.  The external automation may
+    # wrap a post from any public/private channel that slack_ingest can see;
+    # that channel keeps the same declared-id contract and exact provenance.
+    other_channel_raw = SLACK_WRAPPED_DECLARED.replace(
+        "slack:C0BRGMDQB6G:", "slack:C0SOMEOTHER1:"
+    )
+    other_channel_issue = {
+        "title": "slack-1987540348-664969",
+        "body": other_channel_raw,
+        "labels": [{"name": "board"}],
+    }
+    _src, _dest, other_channel_id, _body, other_channel_extra = \
+        board_ingest._issue_post_fields(other_channel_issue)
+    check(
+        "slack-wrapper/whole-workspace declared id",
+        other_channel_id,
+        "gpt-slack-caller-id-parity-20260824-01",
+    )
+    check(
+        "slack-wrapper/whole-workspace provenance",
+        other_channel_extra.get("observed_event"),
+        "slack:C0SOMEOTHER1:1987540348.664969:1",
+    )
+
     # Generic nested headers and lookalike Slack envelopes must not acquire a
     # different canonical identity.  The outer issue id remains authoritative
     # unless every measured connector invariant agrees.
@@ -179,8 +203,10 @@ def main():
             lambda raw: raw.replace("carrier: slack-connector", "carrier: github-issue"),
         ),
         (
-            "foreign channel",
-            lambda raw: raw.replace("slack:C0BRGMDQB6G:", "slack:COTHER:"),
+            "malformed channel",
+            lambda raw: raw.replace(
+                "slack:C0BRGMDQB6G:", "slack:COTHER-INVALID:"
+            ),
         ),
         (
             "wrong outer id",
