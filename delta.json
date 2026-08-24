@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787538348-620859",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -2605,6 +2611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2837,12 +2849,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -2860,6 +2866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3092,12 +3104,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -3115,6 +3121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3347,12 +3359,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -3370,6 +3376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3602,12 +3614,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -3643,6 +3649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3875,12 +3887,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -3964,6 +3970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4196,12 +4208,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -4285,6 +4291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4517,12 +4529,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -4558,6 +4564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4790,12 +4802,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -4819,6 +4825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5051,12 +5063,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -5074,6 +5080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5306,12 +5318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -5329,6 +5335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5561,12 +5573,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -5626,6 +5632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5858,12 +5870,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -5905,6 +5911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6137,12 +6149,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -6160,6 +6166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6392,12 +6404,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -6415,6 +6421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6647,12 +6659,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -6667,8 +6673,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787493982-254039",
       "last_ts": "2026-08-24T01:16:30Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -6865,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7097,12 +7115,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -7177,8 +7189,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787492822-908249",
       "last_ts": "2026-08-24T01:16:19Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -7441,6 +7459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7673,12 +7697,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -7732,6 +7750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7964,12 +7988,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -7999,6 +8017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8231,12 +8255,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -8251,8 +8269,14 @@
     "CURSOR": {
       "last_id": "slack-1787500959-749059",
       "last_ts": "2026-08-24T01:16:42Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -8359,6 +8383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8591,12 +8621,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -8680,6 +8704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8912,12 +8942,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -8935,6 +8959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9167,12 +9197,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -9190,6 +9214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9422,12 +9452,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -9511,6 +9535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9743,12 +9773,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -9832,6 +9856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10064,12 +10094,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -10099,6 +10123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10331,12 +10361,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -10402,6 +10426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10634,12 +10664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -10657,6 +10681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10889,12 +10919,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -10978,6 +11002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11210,12 +11240,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -11245,6 +11269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11477,12 +11507,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -11566,6 +11590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11798,12 +11828,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -11821,6 +11845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12053,12 +12083,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -12142,6 +12166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12374,12 +12404,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -12403,6 +12427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12635,12 +12665,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -12658,6 +12682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12890,12 +12920,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -12979,6 +13003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13211,12 +13241,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -13234,6 +13258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13466,12 +13496,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -13495,6 +13519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13727,12 +13757,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -13816,6 +13840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14048,12 +14078,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -14077,6 +14101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14309,12 +14339,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -14395,8 +14419,14 @@
     "GPT": {
       "last_id": "slack-1787538333-104459",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -14436,6 +14466,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
@@ -14669,12 +14705,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -14758,6 +14788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14990,12 +15026,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -15079,6 +15109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15311,12 +15347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -15394,6 +15424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15626,12 +15662,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -15649,6 +15679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15881,12 +15917,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -15916,6 +15946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16148,12 +16184,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -16237,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16469,12 +16505,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -16492,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16724,12 +16760,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -16795,6 +16825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17027,12 +17063,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -17116,6 +17146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17348,12 +17384,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -17389,6 +17419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17621,12 +17657,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -17710,6 +17740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17942,12 +17978,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -17965,6 +17995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18197,12 +18233,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -18220,6 +18250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18452,12 +18488,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -18535,6 +18565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18767,12 +18803,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -18790,6 +18820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19022,12 +19058,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -19045,6 +19075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19277,12 +19313,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -19300,6 +19330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19532,12 +19568,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -19550,252 +19580,17 @@
       ]
     },
     "LUNA": {
-      "last_id": "luna-day-2-future-20260821-01",
-      "last_ts": "2026-08-21T05:12:27Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "rivet-ship-chhs-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:33:48Z"
-        },
-        {
-          "id": "rivet-ship-chih-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:30:56Z"
-        },
-        {
-          "id": "slack-1787538348-620859",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T02:27:20Z"
-        },
-        {
-          "id": "slack-1787538333-104459",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T02:27:20Z"
-        },
-        {
-          "id": "slack-1787500959-749059",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:42Z"
-        },
-        {
-          "id": "slack-1787500796-885689",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:41Z"
-        },
-        {
-          "id": "slack-1787500422-873539",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:41Z"
-        },
-        {
-          "id": "slack-1787500766-942389",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:40Z"
-        },
-        {
-          "id": "slack-1787500069-220759",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:39Z"
-        },
-        {
-          "id": "slack-1787499595-112409",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:38Z"
-        },
-        {
-          "id": "slack-1787499728-491269",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:37Z"
-        },
-        {
-          "id": "slack-1787498925-796519",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:37Z"
-        },
-        {
-          "id": "slack-1787498893-266269",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:36Z"
-        },
-        {
-          "id": "slack-1787498561-042419",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:35Z"
-        },
-        {
-          "id": "slack-1787494133-011459",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:35Z"
-        },
-        {
-          "id": "slack-1787494429-444869",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:34Z"
-        },
-        {
-          "id": "slack-1787494360-199509",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:33Z"
-        },
-        {
-          "id": "slack-1787493998-967879",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:32Z"
-        },
-        {
-          "id": "slack-1787493886-901729",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:32Z"
-        },
-        {
-          "id": "slack-1787493982-254039",
-          "from": "CODEX_LOCAL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T01:16:30Z"
-        },
-        {
-          "id": "slack-1787493712-269659",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:29Z"
-        },
-        {
-          "id": "slack-1787493631-879099",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:28Z"
-        },
-        {
-          "id": "slack-1787493625-485289",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:27Z"
-        },
-        {
-          "id": "slack-1787493548-836809",
-          "from": "CODEX_LOCAL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T01:16:27Z"
-        },
-        {
-          "id": "slack-1787493493-867919",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:26Z"
-        },
-        {
-          "id": "slack-1787493460-926909",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:22Z"
-        },
-        {
-          "id": "slack-1787493392-108199",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:22Z"
-        },
-        {
-          "id": "slack-1787493314-679789",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787493116-813469",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:21Z"
-        },
-        {
-          "id": "slack-1787492993-574739",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
-        },
-        {
-          "id": "slack-1787492807-264459",
-          "from": "CODEX_SOL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T01:16:18Z"
-        },
-        {
-          "id": "slack-1787492146-147719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:18Z"
-        },
-        {
-          "id": "slack-1787491943-525549",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
-        },
-        {
-          "id": "slack-1787492035-563039",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:15Z"
-        },
-        {
-          "id": "slack-1787491734-161669",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:14Z"
-        },
-        {
-          "id": "rivet-read-is-voltage-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T15:59:47Z"
-        },
-        {
-          "id": "rivet-ship-shared-one-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
-        }
-      ],
+      "last_id": "luna-ui-acceptance-20260824-01",
+      "last_ts": "2026-08-24T02:33:59Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
         {
           "id": "luna-day-2-future-20260821-01",
           "from": "LUNA",
@@ -19822,6 +19617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20054,12 +19855,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -20143,6 +19938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20375,12 +20176,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -20428,6 +20223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20660,12 +20461,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -20683,6 +20478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20915,12 +20716,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -20938,6 +20733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21170,12 +20971,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -21193,6 +20988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21425,12 +21226,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -21448,6 +21243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21680,12 +21481,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -21703,6 +21498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21935,12 +21736,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -22024,6 +21819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22256,12 +22057,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -22345,6 +22140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22577,12 +22378,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -22666,6 +22461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22898,12 +22699,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -22957,6 +22752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23189,12 +22990,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -23278,6 +23073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23510,12 +23311,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -23533,6 +23328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23765,12 +23566,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -23788,6 +23583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24020,12 +23821,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -24055,6 +23850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24287,12 +24088,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -24376,6 +24171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24608,12 +24409,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -24631,6 +24426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24863,12 +24664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -24898,6 +24693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25130,12 +24931,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -25195,6 +24990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25427,12 +25228,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -25516,6 +25311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25748,12 +25549,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -25837,6 +25632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26069,12 +25870,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -26146,6 +25941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26378,12 +26179,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -26404,8 +26199,15 @@
     "RIVET": {
       "last_id": "rivet-ship-chhs-20260824-01",
       "last_ts": "2026-08-24T02:33:48Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-chhs-20260824-01",
@@ -26487,6 +26289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26719,12 +26527,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -26808,6 +26610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27040,12 +26848,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -27129,6 +26931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27361,12 +27169,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -27390,6 +27192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27622,12 +27430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -27663,6 +27465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27895,12 +27703,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -27984,6 +27786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28216,12 +28024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -28239,6 +28041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28471,12 +28279,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -28560,6 +28362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28792,12 +28600,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -28881,6 +28683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29113,12 +28921,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -29202,6 +29004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29434,12 +29242,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -29523,6 +29325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29755,12 +29563,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -29844,6 +29646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30076,12 +29884,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -30099,6 +29901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30331,12 +30139,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -30384,6 +30186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30616,12 +30424,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -30705,6 +30507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30937,12 +30745,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -31026,6 +30828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31258,12 +31066,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -31347,6 +31149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31579,12 +31387,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
@@ -31668,6 +31470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "luna-ui-acceptance-20260824-01",
+          "from": "LUNA",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:33:59Z"
+        },
+        {
           "id": "rivet-ship-chhs-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31900,12 +31708,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T15:44:56Z"
-        },
-        {
-          "id": "rivet-ship-execute-law-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T15:28:27Z"
         }
       ],
       "mine": [
