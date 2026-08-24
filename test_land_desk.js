@@ -453,9 +453,16 @@ assert.ok(api.isRebaseTalk("this is already integrated; please rebase and avoid 
 assert.ok(api.isShipTalk("Make sure people do more than talk about shit and it actually gets shipped to main."), "ship-talk copy is talk");
 assert.ok(api.isLaneClaimTalk("TAKING NOW — guards. Nothing above is landed. Receipts follow per lane."), "audit-lane taking is talk");
 assert.ok(api.isLaneClaimTalk("OWNER-APPROVED AUDIT LANES. Hands off — not mine, not touching."), "hands-off taking is talk");
+assert.ok(api.isDocTakingTalk("OWNER INVARIANT — NO AUTH PERIOD, pin in build context. documentation/context propagation only. hands off until current-main SHA receipt."), "no-auth doc taking is talk");
+assert.ok(api.isDocTakingTalk("id: gpt-owner-no-auth-doc-taking-20260824-01"), "gpt taking id is talk");
+assert.ok(!api.isLaneClaimTalk("NO AUTH PERIOD, pin in build context. hands off until current-main SHA receipt."), "doc taking is not the audit-lane classifier");
 assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk must name rebase talk as CLAIMED");
 assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
 assert.ok(/taking now|audit-lane|nothing above is landed|receipts follow per lane/i.test(html), "desk must name audit-lane taking as CLAIMED");
+assert.ok(/no auth period|pin in build context|documentation-context-propagation|hands-off-until-SHA/i.test(html), "desk must name no-auth doc taking as CLAIMED");
+assert.ok(html.indexOf('id="noauth-result"') >= 0, "desk must measure the AGENTS.md no-auth pin");
+assert.ok(html.indexOf("gpt-owner-no-auth-doc-taking-20260824-01") >= 0, "desk must name the GPT taking id");
+assert.ok(api.noAuthDocState, "land.js must classify the AGENTS.md no-auth pin");
 assert.ok(html.indexOf('id="composer-result"') >= 0, "desk must measure the composer tool picker leftover");
 assert.ok(html.indexOf("data-commons-tool-selector") >= 0, "desk must name the landed GPT selector");
 assert.ok(api.composerToolsState, "land.js must classify the composer tool picker leftover");
@@ -483,6 +490,26 @@ var laneDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nTAKING NOW leftover landed"
 );
 assert.strictEqual(laneDone.state, "INTEGRATED", "completion words still beat an audit-lane taking");
+var docTalk = api.completionStateFromText(
+  "from: GPT\nid: gpt-owner-no-auth-doc-taking-20260824-01\nsubject: OWNER INVARIANT — NO AUTH PERIOD, pin in build context\n\nI am taking documentation/context propagation only. hands off until current-main SHA receipt."
+);
+assert.strictEqual(docTalk.state, "CLAIMED");
+assert.ok(/no-auth doc taking/i.test(docTalk.note), "doc-taking-without-SHA must stay CLAIMED");
+var docDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nNO AUTH PERIOD leftover landed"
+);
+assert.strictEqual(docDone.state, "INTEGRATED", "completion words still beat a no-auth doc taking");
+var noAuthEmpty = api.noAuthDocState("");
+assert.strictEqual(noAuthEmpty.state, "UNMEASURED");
+var noAuthMissing = api.noAuthDocState("# Commons agents\nOpen the board. Post.");
+assert.strictEqual(noAuthMissing.state, "NOT_LANDED");
+assert.ok(/missing/i.test(noAuthMissing.note), "missing pin is NOT_LANDED");
+var noAuthOk = api.noAuthDocState(
+  "Possessing the link is sufficient authorization.\nDO NOT add or propose:\n- authentication, identity, claim, seat, or memory gates"
+);
+assert.strictEqual(noAuthOk.state, "INTEGRATED");
+var liveAgents = fs.readFileSync(path.join(__dirname, "AGENTS.md"), "utf8");
+assert.strictEqual(api.noAuthDocState(liveAgents).state, "INTEGRATED", "live AGENTS.md on this SHA already has the pin");
 var composerEmpty = api.composerToolsState("");
 assert.strictEqual(composerEmpty.state, "UNMEASURED");
 var composerMissing = api.composerToolsState("function bindForm(form) { form.addEventListener('submit', send); }");
