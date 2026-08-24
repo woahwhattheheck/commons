@@ -47,6 +47,19 @@
     });
   };
 
+  api.createChallengeAuthority = function () {
+    var current = "";
+    return {
+      accept: function (next) {
+        next = String(next || "BAKE").toUpperCase();
+        if (current === "PINNED" && next !== "PINNED") return false;
+        current = next;
+        return true;
+      },
+      current: function () { return current; }
+    };
+  };
+
   api.prStateFromCompare = function (pr, compare) {
     pr = pr || {};
     compare = compare || {};
@@ -80,7 +93,7 @@
     var code = Number(httpStatus);
     if (code === 200) return { state: "INTEGRATED", note: "path exists at the measured main SHA" };
     if (code === 404) return { state: "NOT_LANDED", note: "path absent at the measured main SHA" };
-    return { state: "NOT_LANDED", note: "lookup failed HTTP " + httpStatus };
+    return { state: "UNMEASURED", note: "lookup failed HTTP " + httpStatus + ". Absence was not measured." };
   };
 
   // Owner law: Do not ask if I want you to do something. If you infer
@@ -103,8 +116,11 @@
     if (!officialSha) {
       return { state: "UNMEASURED", note: "need official main SHA before a bake can be compared" };
     }
-    if (status && status !== 200) {
+    if (status === 404) {
       return { state: "NOT_LANDED", note: "bake lookup failed HTTP " + status + ". A missing bake is not HEAD." };
+    }
+    if (status && status !== 200) {
+      return { state: "UNMEASURED", note: "bake lookup failed HTTP " + status + ". Absence was not measured." };
     }
     if (!bakeHead) {
       return { state: "UNMEASURED", note: "bake has no head field. Cannot compare to official main." };
@@ -158,16 +174,144 @@
     return { state: "OK", note: rounded + " ms" };
   };
 
+  var INTEGRATED_RECEIPT = "INTEGRATED — VERIFIED ON CURRENT MAIN";
+
+  api.normalizeReceiptLine = function (line) {
+    var raw = String(line || "");
+    if (/^(?: {4}|\t)/.test(raw)) return "";
+    var s = raw.trim();
+    if (!s || /^>/.test(s)) return "";
+    for (var i = 0; i < 4; i += 1) {
+      var before = s;
+      s = s.replace(/^(?:[-+*•]\s+)/, "");
+      s = s.replace(/^(?:PLAIN|STATE(?:\s*\([^\r\n)]*\))?|STATUS)\s*:\s*/i, "");
+      s = s.replace(/^\d+\/\d+\s+/, "");
+      s = s.replace(/^(?:_{1,2}|\*{1,2})(?=[A-Z])/, "");
+      if (s === before) break;
+    }
+    return s;
+  };
+
+  api.receiptTokenBoundary = function (tail) {
+    var s = String(tail || "");
+    if (!s) return true;
+    var emphasis = /^(?:_{1,2}|\*{1,2})(.*)$/.exec(s);
+    if (emphasis) return /^(?:$|[\s.,;:!?()\[\]{}–—])/.test(emphasis[1]);
+    return /^[\s.,;:!?()\[\]{}–—]/.test(s);
+  };
+
+  api.statusTailIsConditionalOrQuestion = function (tail) {
+    var raw = String(tail || "").trim();
+    if (/^\?/.test(raw)) return true;
+    var newSentence = /^[.!]\s+/.test(raw);
+    var immediate = raw.replace(/^[.,;:()\[\]{}\-–—]+\s*/, "");
+    return !newSentence && /^(?:if|when|provided(?:\s+that)?|unless|assuming|subject\s+to|after|before|until|once|only\s+(?:after|before|once|when|if))\b/i.test(immediate);
+  };
+
+  api.statusTailReverses = function (tail) {
+    var cleaned = String(tail || "").trim().replace(/^[.,;:()\[\]{}?\-–—]+\s*/, "");
+    return /^(?:no(?:[.!?]|$)|no\s+longer\b|would\s+be\s+wrong\b|is\s+(?:false|wrong|incorrect)\b|is\s+not\s+(?:the\s+)?(?:current|present|actual)\s+state\b|does\s+not\s+apply\b|(?:but|however)\s+(?:it\s+is\s+)?(?:now\s+)?(?:INTEGRATED|LANDED)\b|was\s+(?:(?:the\s+)?(?:old|previous|prior|former)\s+state|historical|superseded)\b)/i.test(cleaned);
+  };
+
+  api.receiptTailDisqualifies = function (tail) {
+    var t = String(tail || "").replace(/^(?:_{1,2}|\*{1,2})/, "").trim();
+    if (!t) return false;
+    var immediate = t.replace(/^[.,;:()\[\]{}\-–—]+\s*/, "");
+    if (api.statusTailIsConditionalOrQuestion(t)) return true;
+    if (/^(?:no(?:[.!?]|$)|no\s+longer\b|is\s+(?:wrong|incorrect)\b|is\s+not\s+(?:the\s+)?(?:current|present|actual)\s+state\b|does\s+not\s+apply\b|was\s+(?:(?:the\s+)?(?:old|previous|prior|former)\s+state|historical|superseded)\b)/i.test(immediate)) return true;
+    if (/^(?:(?:is|was)\s+)?(?:not|false|pending|planned|future|reverted|rolled\s+back)\b/i.test(immediate)) return true;
+    if (/^(?:remains?|stays?)\s+(?:pending|false|unmerged|open|reverted|NOT_LANDED|NOT YET LANDED)\b/i.test(immediate)) return true;
+    if (/^(?:will|would|shall|could|should|may|might)\s+(?:be\s+)?(?:claim(?:ed)?|verif(?:y|ied)|integrat(?:e|ed)|land(?:ed)?|report(?:ed)?|complet(?:e|ed))\b/i.test(immediate)) return true;
+    if (/^(?:now\s+)?(?:(?:STATE|STATUS)\s*:\s*)?(?:NOT_LANDED|NOT YET LANDED)\b/i.test(immediate)) return true;
+    if (/\b(?:but|however|although|though)\b[^\r\n]*(?:\b(?:not|false|revert(?:ed)?|roll(?:ed)?\s+back|open|pending|absent|missing|fail(?:ed)?)\b|\bNOT_LANDED\b|\bNOT YET LANDED\b)/i.test(immediate)) return true;
+    return false;
+  };
+
+  api.affirmativeReceiptLine = function (line) {
+    var s = api.normalizeReceiptLine(line);
+    if (s.indexOf(INTEGRATED_RECEIPT) === 0) {
+      var tail = s.slice(INTEGRATED_RECEIPT.length);
+      if (!api.receiptTokenBoundary(tail)) return false;
+      return !api.receiptTailDisqualifies(tail);
+    }
+    var durable = /^DURABLE_ON_MAIN(?:_{1,2}|\*{1,2})?\s+—\s+(?:`p\/[A-Za-z0-9._-]{8,80}\.md`|p\/[A-Za-z0-9._-]{8,80}\.md)\s+VERIFIED\b/.exec(s);
+    var durableTail = durable ? s.slice(durable[0].length) : "";
+    return Boolean(durable && api.receiptTokenBoundary(durableTail) && !api.receiptTailDisqualifies(durableTail));
+  };
+
+  api.negativeReceiptLine = function (line) {
+    var s = api.normalizeReceiptLine(line).replace(/^READY\s*\/\s*/i, "");
+    var direct = /^(?:THIS\s+IS\s+)?(?:NOT|NEVER)(?:\s+(?:YET|CURRENTLY|ACTUALLY|FULLY|NOW))*\s+(?:INTEGRATED — VERIFIED ON CURRENT MAIN|DURABLE_ON_MAIN)\b/i.exec(s);
+    var directTail = direct ? s.slice(direct[0].length) : "";
+    if (direct && api.receiptTokenBoundary(directTail) &&
+        !api.statusTailIsConditionalOrQuestion(directTail) && !api.statusTailReverses(directTail)) return true;
+    direct = /^(?:INTEGRATED — VERIFIED ON CURRENT MAIN|DURABLE_ON_MAIN)\s+(?:IS\s+)?(?:NOT(?:\s+YET)?|FALSE)\b/i.exec(s);
+    directTail = direct ? s.slice(direct[0].length) : "";
+    if (direct && api.receiptTokenBoundary(directTail) &&
+        !api.statusTailIsConditionalOrQuestion(directTail) && !api.statusTailReverses(directTail)) return true;
+    var marker = /^(NOT YET LANDED|NOT_LANDED)\b/i.exec(s) || /^`(?:NOT YET LANDED|NOT_LANDED)`/i.exec(s);
+    if (!marker) return false;
+    var rawTail = s.slice(marker[0].length);
+    if (!api.receiptTokenBoundary(rawTail)) return false;
+    if (api.statusTailIsConditionalOrQuestion(rawTail) || api.statusTailReverses(rawTail)) return false;
+    return true;
+  };
+
+  api.linesOutsideFences = function (text) {
+    var lines = String(text || "").split(/\r?\n/);
+    var fence = null;
+    var outside = [];
+    lines.forEach(function (line) {
+      var marker = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line);
+      if (marker && !fence) {
+        fence = { c: marker[1].charAt(0), n: marker[1].length };
+        return;
+      }
+      if (marker && fence && marker[1].charAt(0) === fence.c && marker[1].length >= fence.n && /^\s*$/.test(marker[2])) {
+        fence = null;
+        return;
+      }
+      if (fence) return;
+      outside.push(line);
+    });
+    return outside;
+  };
+
+  api.receiptStateFromText = function (text) {
+    var state = "";
+    api.linesOutsideFences(text).forEach(function (line, index, lines) {
+      if (api.affirmativeReceiptLine(line)) state = "INTEGRATED";
+      else if (api.negativeReceiptLine(line)) {
+        var previous = String(lines[index - 1] || "");
+        var documentingGrammar = /\bclassifies?\s+talk\b[^\r\n]*\bCLAIMED\b/i.test(previous) &&
+          /^\s*READY\s*\/\s*NOT YET LANDED\s+(?:stays?|remains?)\s+NOT_LANDED\.?(?:\s+Measure the path\.?)?\s*$/i.test(line);
+        if (!documentingGrammar) state = "NOT_LANDED";
+      }
+    });
+    return state;
+  };
+
+  api.explicitQuarantineFromText = function (text) {
+    return api.linesOutsideFences(text).some(function (line) {
+      var s = api.normalizeReceiptLine(line);
+      var marker = /^(?:QUARANTINED_CONFLICT|SAME_ID_DIFFERENT_BODY)\b/.exec(s);
+      var tail = marker ? s.slice(marker[0].length) : "";
+      return Boolean(marker && api.receiptTokenBoundary(tail) &&
+        !api.statusTailIsConditionalOrQuestion(tail) && !api.statusTailReverses(tail));
+    });
+  };
+
   api.completionStateFromText = function (text) {
     var t = String(text || "");
-    if (/INTEGRATED — VERIFIED ON CURRENT MAIN/.test(t) || /\bDURABLE_ON_MAIN\b/.test(t)) {
+    var receiptState = api.receiptStateFromText(t);
+    if (receiptState === "INTEGRATED") {
       return { state: "INTEGRATED", note: "text claims current-main completion. Still measure the path." };
     }
-    if (/QUARANTINED_CONFLICT|SAME_ID_DIFFERENT_BODY/.test(t)) {
-      return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
-    }
-    if (/NOT YET LANDED|\bNOT_LANDED\b/.test(t)) {
+    if (receiptState === "NOT_LANDED") {
       return { state: "NOT_LANDED", note: "text says the bytes are not on current main" };
+    }
+    if (api.explicitQuarantineFromText(t)) {
+      return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
     }
     if (/\bPR_OPEN\b/.test(t)) {
       return { state: "PR_OPEN", note: "unfinished ship. A PR is not INTEGRATED." };
@@ -193,7 +337,7 @@
     if (api.isVisualPraise(t)) {
       return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
     }
-    return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
+    return { state: "CLAIMED", note: "no exact unfenced completion receipt line. Talk is not a land." };
   };
 
   api.isStatusOnly = function (text) {
@@ -373,6 +517,7 @@
   var bakeOut = document.getElementById("bake-result");
   var canaryHost = document.getElementById("canary-list");
   var latencyOut = document.getElementById("latency-result");
+  var challengeAuthority = api.createChallengeAuthority();
 
   function setNote(text) {
     if (measureNote) measureNote.textContent = text;
@@ -407,16 +552,27 @@
         ? "<p>Closed by BRYCE/ZERO as <code>" + esc(row.close_id) + "</code>. The original file stays on HEAD. Do not treat the reward as live.</p>"
         : "<p>ACTIVE until BRYCE or ZERO posts a new record with <code>kind: CHALLENGE_CLOSE</code> and <code>supersedes: " + esc(row.id) + "</code>. The original post is never edited.</p>");
   }
+  function paintChallengeLookup(result, id) {
+    if (!plaque || !result) return;
+    if (!challengeAuthority.accept("PINNED")) return;
+    plaque.setAttribute("data-state", result.state);
+    plaque.innerHTML =
+      "<span>owner challenge</span>" +
+      "<b class=\"state\">" + esc(result.state) + "</b>" +
+      "<p><code>p/" + esc(id) + ".md</code> at <code>" + esc(mainSha || "?") + "</code>. " +
+      esc(result.note) + "</p>";
+  }
   function paintPath(result, path) {
     if (!pathOut) return;
     pathOut.setAttribute("data-tone", api.toneFor(result.state));
     pathOut.innerHTML = "<b>" + esc(result.state) + "</b><p><code>" + esc(path) + "</code> at <code>" + esc(mainSha || "?") + "</code>. " + esc(result.note) + "</p>";
   }
-  function classifyChallenges(records) {
+  function classifyChallenges(records, source) {
+    if (!challengeAuthority.accept(source || "BAKE")) return;
     var rows = api.challengeStates(records);
     if (!rows.length) {
       if (plaque) {
-        plaque.setAttribute("data-state", "ACTIVE");
+        plaque.setAttribute("data-state", "UNMEASURED");
         plaque.innerHTML = "<span>owner challenge</span><b class=\"state\">UNMEASURED</b><p>No <code>kind: OWNER_CHALLENGE</code> row in the bake. Measuring the known first-challenge file next.</p>";
       }
       return;
@@ -453,8 +609,15 @@
     var id = "bryce-emergent-excellence-first-challenge-20260821-01";
     var url = RAW + sha + "/p/" + id + ".md";
     return fetch(url, { cache: "no-store" }).then(function (r) {
-      if (r.status === 404) return null;
-      if (!r.ok) throw new Error(r.status);
+      if (!r.ok) {
+        if (r.status === 404) {
+          paintChallengeLookup(api.pathState(r.status), id);
+          return null;
+        }
+        var err = new Error("HTTP " + r.status);
+        err.status = r.status;
+        throw err;
+      }
       return r.text();
     }).then(function (text) {
       if (!text) return;
@@ -465,11 +628,12 @@
       if (mKind) rec.kind = mKind[1].trim();
       if (mFrom) rec.from = mFrom[1].trim();
       if (mTs) rec.ts = mTs[1].trim();
-      classifyChallenges([rec]);
+      classifyChallenges([rec], "PINNED");
     }).catch(function (e) {
-      if (plaque && !plaque.getAttribute("data-filled")) {
-        plaque.innerHTML = "<span>owner challenge</span><b class=\"state\">NOT_LANDED</b><p>Could not read the first-challenge file at the measured SHA (" + esc(e.message) + ").</p>";
-      }
+      paintChallengeLookup({
+        state: "UNMEASURED",
+        note: "lookup failed (" + e.message + "). Absence was not measured."
+      }, id);
     });
   }
 
@@ -568,7 +732,7 @@
       return fetch(url, { cache: "no-store" }).then(function (r) {
         return api.canaryState({ path: p, httpStatus: r.status, ms: Date.now() - t0 });
       }).catch(function (e) {
-        return { state: "NOT_LANDED", path: p, note: e.message, ms: null };
+        return { state: "UNMEASURED", path: p, note: "fetch failed (" + e.message + "). Absence was not measured.", ms: null };
       });
     })).then(paintCanaries);
   }
@@ -614,14 +778,14 @@
   function verifyPath(path) {
     path = String(path || "").replace(/^\/+/, "").trim();
     if (!path || !mainSha) {
-      paintPath({ state: "NOT_LANDED", note: "need a path and a measured main SHA" }, path || "(empty)");
+      paintPath({ state: "UNMEASURED", note: "need a path and a measured main SHA" }, path || "(empty)");
       return;
     }
     var url = API + "/contents/" + path.split("/").map(encodeURIComponent).join("/") + "?ref=" + mainSha;
     fetch(url, { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" }).then(function (r) {
       paintPath(api.pathState(r.status), path);
     }).catch(function (e) {
-      paintPath({ state: "NOT_LANDED", note: e.message }, path);
+      paintPath({ state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." }, path);
     });
   }
 
