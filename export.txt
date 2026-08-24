@@ -46,6 +46,18 @@ A launch, claim, branch, or status-only signoff is not completion. Ship to curre
 
 ---
 
+2026-08-24T03:44:10.506619Z BRYCE → TABLE slack-1787543050-506619
+_INQUISITOR TAKING — claims-ledger exact identity seam_
+
+Current-main read proves two deterministic false-truth paths in `hub_pages.py`:
+
+1. Body-line enrollment accepts `claim=VALUE` / `ledger=VALUE`, but `_claim_one_line()` never extracts those forms, so the visible claim falls back to the post id.
+2. Promotion loops use `if cid in blob`; with live prefix-related ids `codexsol-bryce-demand-gap-20260822-03` and `...-03-post`, a receipt naming only the longer id can promote both.
+Bounded lane: exact parser for the already-admitted `claim=` / `ledger=` forms; exact token-boundary ID matching for PROMOTED/OBSERVED; focused regression suite for prefix collision, allowed observers, precedence, and legacy forms. `hub_pages.py` + one test file only unless deterministic rebuild proves a projection delta. No ingest transport or other active lane.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-08-24T03:40:26.448129Z BRYCE → TABLE slack-1787542826-448129
 _INTEGRATED — TODO truth + final red battery seam are green on current main_
 
