@@ -150,6 +150,162 @@ class BoundedSelfWakeTests(unittest.TestCase):
             )
         self.assertEqual(missing.exception.code, "NOT_DURABLE")
 
+    def test_checkpoint_auto_done_requires_durable_page(self):
+        self.store.upsert(fields(checkpoint={"step": 2}))
+        missing = self.store.tick(
+            JOB_ID,
+            now=WATCHDOG,
+            worker_id="cursor-ridge",
+            page_exists=lambda _ident: False,
+        )
+        self.assertEqual(missing["action"], "WAKE")
+        self.assertTrue(missing["invoke_model"])
+        self.assertNotEqual(self.store.get(JOB_ID)["status"], "DONE")
+
+        unchanged = self.store.tick(
+            JOB_ID,
+            now=RESUME,
+            worker_id="cursor-ridge",
+            page_exists=lambda _ident: False,
+        )
+        self.assertEqual(unchanged["action"], "BACKOFF")
+        self.assertFalse(unchanged["invoke_model"])
+
+        retry_at = self.store.get(JOB_ID)["next_wake_at"]
+        verified = self.store.tick(
+            JOB_ID,
+            now=retry_at,
+            worker_id="cursor-ridge",
+            page_exists=lambda ident: ident == RESULT_ID,
+        )
+        self.assertEqual(verified["action"], "STOP")
+        self.assertEqual(verified["reason"], "DONE")
+        self.assertFalse(verified["invoke_model"])
+        self.assertEqual(self.store.get(JOB_ID)["status"], "DONE")
+
+    def test_verified_auto_done_closes_lease_and_records_receipt(self):
+        self.store.upsert(fields(checkpoint={"step": 2}))
+        leased = self.store.tick(
+            JOB_ID,
+            now=WATCHDOG,
+            worker_id="cursor-ridge",
+            page_exists=lambda _ident: False,
+        )
+        self.assertEqual(leased["action"], "WAKE")
+        self.assertIsNotNone(self.store.get(JOB_ID)["lease"])
+
+        verified_at = "2026-08-22T04:20:01Z"
+        done = self.store.tick(
+            JOB_ID,
+            now=verified_at,
+            worker_id="durability-verifier",
+            page_exists=lambda ident: ident == RESULT_ID,
+        )
+        self.assertEqual(done["action"], "STOP")
+        self.assertEqual(done["reason"], "DONE")
+        self.assertFalse(done["invoke_model"])
+        stored = self.store.get(JOB_ID)
+        self.assertEqual(stored["status"], "DONE")
+        self.assertIsNone(stored["lease"])
+        self.assertEqual(stored["completed_at"], verified_at)
+        self.assertEqual(stored["updated_at"], verified_at)
+        receipt = stored["event_receipts"][-1]
+        self.assertEqual(receipt["event"], "auto_complete")
+        self.assertEqual(receipt["worker_id"], "durability-verifier")
+        self.assertEqual(receipt["result_address"], RESULT_ID)
+
+    def test_tick_never_rewrites_terminal_state(self):
+        self.store.upsert(fields(checkpoint={"step": 2}))
+        self.store.cancel(JOB_ID, reason="owner stopped it")
+        cancelled = self.store.tick(
+            JOB_ID,
+            now=WATCHDOG,
+            page_exists=lambda _ident: True,
+        )
+        self.assertEqual(cancelled["action"], "STOP")
+        self.assertEqual(cancelled["reason"], "CANCELLED")
+        self.assertEqual(self.store.get(JOB_ID)["status"], "CANCELLED")
+        with self.assertRaises(JobError) as cancelled_complete:
+            self.store.complete(
+                JOB_ID,
+                result={"durable": True, "kind": "page"},
+                result_address=RESULT_ID,
+                page_exists=lambda _ident: True,
+            )
+        self.assertEqual(cancelled_complete.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as cancelled_again:
+            self.store.cancel(JOB_ID, reason="second cancel")
+        self.assertEqual(cancelled_again.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as cancelled_blocker:
+            self.store.record_blocker(JOB_ID, "external_authority", "too late")
+        self.assertEqual(cancelled_blocker.exception.code, "TERMINAL")
+
+        exhausted_id = JOB_ID + "-exhausted"
+        exhausted_result = RESULT_ID + "-exhausted"
+        self.store.upsert(fields(
+            job_id=exhausted_id,
+            result_address=exhausted_result,
+            checkpoint={"step": 2},
+            deadline=T0,
+        ))
+        first = self.store.tick(
+            exhausted_id,
+            now=WATCHDOG,
+            page_exists=lambda _ident: False,
+        )
+        self.assertEqual(first["action"], "STOP")
+        self.assertEqual(self.store.get(exhausted_id)["status"], "EXHAUSTED")
+        still_exhausted = self.store.tick(
+            exhausted_id,
+            now=RESUME,
+            page_exists=lambda _ident: True,
+        )
+        self.assertEqual(still_exhausted["action"], "STOP")
+        self.assertEqual(still_exhausted["reason"], "EXHAUSTED")
+        self.assertEqual(self.store.get(exhausted_id)["status"], "EXHAUSTED")
+        with self.assertRaises(JobError) as exhausted_complete:
+            self.store.complete(
+                exhausted_id,
+                result={"durable": True, "kind": "page"},
+                result_address=exhausted_result,
+                page_exists=lambda _ident: True,
+            )
+        self.assertEqual(exhausted_complete.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as exhausted_cancel:
+            self.store.cancel(exhausted_id, reason="too late")
+        self.assertEqual(exhausted_cancel.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as exhausted_blocker:
+            self.store.record_blocker(exhausted_id, "external_authority", "too late")
+        self.assertEqual(exhausted_blocker.exception.code, "TERMINAL")
+
+        done_id = JOB_ID + "-done"
+        done_result = RESULT_ID + "-done"
+        self.store.upsert(fields(
+            job_id=done_id,
+            result_address=done_result,
+            checkpoint={"step": 2},
+        ))
+        done = self.store.tick(
+            done_id,
+            now=WATCHDOG,
+            page_exists=lambda ident: ident == done_result,
+        )
+        self.assertEqual(done["reason"], "DONE")
+        with self.assertRaises(JobError) as done_complete:
+            self.store.complete(
+                done_id,
+                result={"durable": True, "kind": "page"},
+                result_address=done_result,
+                page_exists=lambda _ident: True,
+            )
+        self.assertEqual(done_complete.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as done_cancel:
+            self.store.cancel(done_id, reason="too late")
+        self.assertEqual(done_cancel.exception.code, "TERMINAL")
+        with self.assertRaises(JobError) as done_blocker:
+            self.store.record_blocker(done_id, "external_authority", "too late")
+        self.assertEqual(done_blocker.exception.code, "TERMINAL")
+
     def test_unchanged_checkpoint_does_not_burn_a_model(self):
         self.store.upsert(fields())
         first = self.store.tick(JOB_ID, now=WATCHDOG, worker_id="cursor-ridge")

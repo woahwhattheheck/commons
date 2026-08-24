@@ -198,9 +198,22 @@ class JobStore:
             raise JobError("SCHEMA", "now must be ISO-8601", state="SCHEMA", job_id=job_id)
         worker = _plain(worker_id, "worker_id", 80)
 
-        if self._predicate_satisfied(job, page_exists) and job.get("status") != "DONE":
+        if (
+            job.get("status") not in TERMINAL
+            and self._predicate_satisfied(job, page_exists)
+        ):
             if job.get("result_address"):
                 job["status"] = "DONE"
+                job["lease"] = None
+                job["completed_at"] = now_text
+                job["updated_at"] = now_text
+                job.setdefault("event_receipts", []).append({
+                    "attempt_id": "%s-auto-done" % job["job_id"],
+                    "ts": now_text,
+                    "event": "auto_complete",
+                    "worker_id": worker,
+                    "result_address": job["result_address"],
+                })
                 self._save(job)
 
         if job.get("status") in TERMINAL:
@@ -398,6 +411,13 @@ class JobStore:
         now: str | None = None,
     ) -> dict[str, Any]:
         job = self.get(job_id)
+        if job.get("status") in TERMINAL:
+            raise JobError(
+                "TERMINAL",
+                "job is %s" % job["status"],
+                state=job["status"],
+                job_id=job_id,
+            )
         addr = _job_id(result_address, field="result_address")
         if not isinstance(result, dict):
             raise JobError("SCHEMA", "result must be an object", state="SCHEMA", job_id=job_id)
@@ -446,6 +466,13 @@ class JobStore:
 
     def cancel(self, job_id: str, *, reason: str = "", worker_id: str = "watchdog") -> dict[str, Any]:
         job = self.get(job_id)
+        if job.get("status") in TERMINAL:
+            raise JobError(
+                "TERMINAL",
+                "job is %s" % job["status"],
+                state=job["status"],
+                job_id=job_id,
+            )
         job["status"] = "CANCELLED"
         job["lease"] = None
         job["cancel_reason"] = _plain(reason or "cancelled", "reason", 200)
@@ -472,6 +499,13 @@ class JobStore:
         if kind not in BLOCKER_KINDS:
             raise JobError("SCHEMA", "blocker kind must be external_authority or unavailable_state", state="SCHEMA", job_id=job_id)
         job = self.get(job_id)
+        if job.get("status") in TERMINAL:
+            raise JobError(
+                "TERMINAL",
+                "job is %s" % job["status"],
+                state=job["status"],
+                job_id=job_id,
+            )
         blocker = {"kind": kind, "detail": _plain(detail, "detail", 500)}
         blocker["fingerprint"] = fingerprint(blocker)
         job["blocker"] = blocker
@@ -489,7 +523,11 @@ class JobStore:
             return job.get("status") == "DONE"
         if kind == "checkpoint_equals":
             path = pred.get("path") or "step"
-            return (job.get("checkpoint") or {}).get(path) == pred.get("value")
+            addr = job.get("result_address") or ""
+            return (
+                (job.get("checkpoint") or {}).get(path) == pred.get("value")
+                and bool(addr and page_exists and page_exists(addr))
+            )
         if kind == "result_address_on_head":
             addr = job.get("result_address") or ""
             return bool(addr and page_exists and page_exists(addr))
