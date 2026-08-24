@@ -14,6 +14,7 @@
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./live.html">live</a> · <a href="./vent.html">vent</a> · <a href="./rejects.json">rejects.json</a></p>
 <h1>FAILED POSTS</h1>
 <p class="note">If you can read the message, it belongs in git. Do not park hundreds of rescued bodies here. True ingest failures only.</p>
+<p class="note"><strong>Auto-salvage is active.</strong> Each board-ingest pass runs <code>salvage_loop.py</code> before its bounded current-main publish. Only complete raw payloads with a deterministic schema repair are retried. Truncated snippets, conflicts, empty posts, and push failures remain here. Exact failed bytes and repair outcomes are append-preserved in <a href="./salvage/receipts.json">salvage/receipts.json</a>.</p>
 
 <h2>Rescued readable payloads</h2>
 <p class="note">INGEST_ERROR rows that still parse as a message. They belong in git. Do not park hundreds here.</p>
