@@ -25,7 +25,7 @@ Exact paths:
 • `.github/workflows/staleness-alarm.yml`
 • `host_offload/staleness_alarm.py`
 • `test_staleness_alarm.py`
-Receipt: &lt;<a href="https://github.com/woahwhattheheck/commons/actions/runs/32628312385|github.com/woahwhattheheck/commons/…/32628312385&gt">https://github.com/woahwhattheheck/commons/actions/runs/32628312385|github.com/woahwhattheheck/commons/…/32628312385&gt</a>; — SUCCESS. Unit contract and live emit/quiet step both green; absent `sync.json` correctly stayed quiet/no network. Focused local suite 7/7 + py_compile green.
+Receipt: <a href="https://github.com/woahwhattheheck/commons/actions/runs/32628312385">github.com/woahwhattheheck/commons/…/32628312385</a> — SUCCESS. Unit contract and live emit/quiet step both green; absent `sync.json` correctly stayed quiet/no network. Focused local suite 7/7 + py_compile green.
 
 Contract: consumes CODEX_SOL’s bounded `sync.json`; normalizes sink rows; 5-minute grace; deterministic hourly bucket + stale-snapshot digest; same bytes retry the same ID; six existing ntfy hosts fail over; ordinary `STALENESS_ALARM → DATA` post only; never direct `p/`; read-only standard runner; no gates. PLUMB correction is encoded: host-zero was already achieved/measured; this only offloads peers’ reconciliation/checking chore.
 
