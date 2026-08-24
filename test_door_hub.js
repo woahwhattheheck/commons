@@ -12,6 +12,10 @@ function assert(cond, msg) {
   console.log("PASS " + msg);
 }
 
+function hasSessionScript(page) {
+  return /<script[^>]+src=["'](?:\.\/|\.\.\/)*session\.js(?:\?v=[A-Za-z0-9]+)?["'][^>]*>/i.test(page);
+}
+
 const root = __dirname;
 const doorSrc = fs.readFileSync(path.join(root, "door.js"), "utf8");
 const sessionSrc = fs.readFileSync(path.join(root, "session.js"), "utf8");
@@ -23,6 +27,7 @@ const start = fs.readFileSync(path.join(root, "start.html"), "utf8");
 const post = fs.readFileSync(path.join(root, "post.html"), "utf8");
 const bit = fs.readFileSync(path.join(root, "8bit.html"), "utf8");
 const mirror = fs.readFileSync(path.join(root, "mirror.html"), "utf8");
+const independentConsole = fs.readFileSync(path.join(root, "independent_commons_mcp", "console.html"), "utf8");
 
 const sandbox = { globalThis: {}, window: undefined, document: undefined };
 sandbox.globalThis = sandbox;
@@ -48,7 +53,7 @@ doors.TABS.forEach(function (tab) {
       const depth = href.split("/").length - 1;
       const homeHref = depth ? "../".repeat(depth) + "index.html" : "./index.html";
       assert(
-        /session\.js(?:\?v=[A-Za-z0-9]+)?/.test(page) || page.indexOf('href="' + homeHref + '"') !== -1,
+        hasSessionScript(page) || page.indexOf('href="' + homeHref + '"') !== -1,
         "door returns home: " + href
       );
     }
@@ -59,15 +64,15 @@ assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Ob
 const hubHtml = index.match(/<nav id="door-hub"[\s\S]*?<\/nav>/);
 assert(hubHtml, "index has a bounded static door hub");
 const staticDoors = Array.from(
-  hubHtml[0].matchAll(/class="door-btn" href="\.\/([^"#?]+)"/g),
-  function (match) { return match[1]; }
+  hubHtml[0].matchAll(/class="door-btn" href="\.\/([^"#?]+)">([^<]+)<\/a>/g),
+  function (match) { return [match[1], match[2]]; }
 );
 const canonicalDoors = doors.TABS.reduce(function (all, tab) {
-  return all.concat(tab.doors.map(function (pair) { return pair[0]; }));
+  return all.concat(tab.doors.map(function (pair) { return [pair[0], pair[1]]; }));
 }, []);
 assert(
   JSON.stringify(staticDoors) === JSON.stringify(canonicalDoors),
-  "no-JS static hub exactly matches door.js order"
+  "no-JS static hub exactly matches door.js hrefs, labels, and order"
 );
 
 const catalogDoors = Array.from(
@@ -104,5 +109,20 @@ assert(start.indexOf('href="./index.html"') !== -1, "start links home");
 assert(post.indexOf('href="./index.html"') !== -1, "post door links home");
 assert(bit.indexOf('href="./index.html"') !== -1, "8bit links home");
 assert(mirror.indexOf('href="./index.html"') !== -1, "mirror door links home");
+assert(independentConsole.indexOf('href="../index.html"') !== -1, "independent MCP console links home");
+
+const rootHtmlPages = fs.readdirSync(root).filter(function (name) {
+  return name.endsWith(".html") && name !== "board.html";
+});
+assert(rootHtmlPages.length >= 80, "parsed the root HTML surface");
+const rootHomeGaps = rootHtmlPages.filter(function (name) {
+  const page = fs.readFileSync(path.join(root, name), "utf8");
+  return !hasSessionScript(page) && page.indexOf('href="./index.html"') === -1;
+});
+assert(
+  rootHomeGaps.length === 0,
+  "every non-history root page returns home" +
+    (rootHomeGaps.length ? ": " + rootHomeGaps.join(", ") : "")
+);
 
 console.log("DOOR_HUB_OK " + Object.keys(seen).length + " doors");
