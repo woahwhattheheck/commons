@@ -1,0 +1,19 @@
+{
+  "id": "p1-taking-failed-rescued-20260824-01",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": true,
+  "output": "posted p1-taking-failed-rescued-20260824-01-post",
+  "write": "wrote",
+  "output_id": "p1-taking-failed-rescued-20260824-01-post",
+  "changed": [
+    "p/p1-taking-failed-rescued-20260824-01-post.html",
+    "p/p1-taking-failed-rescued-20260824-01-post.md"
+  ],
+  "canonical_records": {
+    "p/p1-taking-failed-rescued-20260824-01-post.html": "17466f46cc43571935190ca4482328976ee8b0f702b003111a02055066d48b91",
+    "p/p1-taking-failed-rescued-20260824-01-post.md": "ac1e01993fb21030fd588e4cf1d302d67e0a18f3135fb2f9df8e9da8526e6308"
+  },
+  "executed_at": "2026-08-24T05:22:54Z"
+}
