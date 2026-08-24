@@ -26,6 +26,24 @@ The exact body stays exact.
 
 
 class SlackIngestTests(unittest.TestCase):
+    def test_valid_declared_id_is_preserved_with_slack_ts_as_provenance(self) -> None:
+        text = "from: GPT\nto: TABLE\nid: gpt-caller-id-20260824-01\n\nPLAIN: exact payload"
+        record = si.issue_record({"ts": "1787539715.067529", "text": text, "user": "U1"})
+        self.assertEqual(record.title, "gpt-caller-id-20260824-01")
+        self.assertIn(
+            "observed_event: slack:C0BRGMDQB6G:1787539715.067529:1\n",
+            record.body,
+        )
+
+        invalid = si.issue_record(
+            {"ts": "1787539716.1", "text": "from: GPT\nid: bad id\n\nordinary", "user": "U1"}
+        )
+        missing = si.issue_record(
+            {"ts": "1787539717.2", "text": "from: GPT\n\nordinary", "user": "U1"}
+        )
+        self.assertEqual(invalid.title, "slack-1787539716-1")
+        self.assertEqual(missing.title, "slack-1787539717-2")
+
     def test_id_is_native_ts_not_claim(self) -> None:
         self.assertEqual(si.canonical_id("1787472270.224369"), "slack-1787472270-224369")
         self.assertEqual(si.canonical_id("1787472270.120000"), "slack-1787472270-120000")
@@ -63,6 +81,31 @@ class SlackIngestTests(unittest.TestCase):
         self.assertEqual(record.kind, "slack_thread_reply")
         self.assertEqual(record.target, "slack-1787472270-224369")
         self.assertIn("target: slack-1787472270-224369\n", record.body)
+
+    def test_collected_reply_targets_parent_declared_id(self) -> None:
+        events = si.collect_events(
+            lambda _cursor: {
+                "ok": True,
+                "messages": [
+                    {
+                        "ts": "3.0",
+                        "text": "from: GPT\nid: parent-canonical-01\n\nroot",
+                        "reply_count": 1,
+                    }
+                ],
+            },
+            lambda _thread, _cursor: {
+                "ok": True,
+                "messages": [
+                    {"ts": "3.0", "text": "root"},
+                    {"ts": "3.1", "thread_ts": "3.0", "text": "reply"},
+                ],
+            },
+        )
+        reply = next(event for event in events if event["ts"] == "3.1")
+        record = si.issue_record(reply)
+        self.assertEqual(record.target, "parent-canonical-01")
+        self.assertIn("target: parent-canonical-01\n", record.body)
 
     def test_relay_and_structural_events_are_skipped(self) -> None:
         self.assertTrue(si.should_skip({"ts": "1.1", "text": "", "user": "U1"}))
@@ -147,6 +190,35 @@ class SlackIngestTests(unittest.TestCase):
             with self.assertRaises(si.ImmutableMismatch):
                 si.verify_existing(path, record)
 
+    def test_git_first_record_reconciles_only_measured_carrier_normalization(self) -> None:
+        canonical = """---
+from: GPT
+to: TABLE
+id: gpt-parity-normalized-01
+---
+PLAIN: Slack ↔ Commons exact body.
+"""
+        slack_text = """from: GPT
+to: TABLE
+id: gpt-parity-normalized-01
+
+PLAIN: Slack :left_right_arrow: Commons exact body.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>"""
+        record = si.issue_record({"ts": "1787539718.3", "text": slack_text, "user": "U1"})
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "gpt-parity-normalized-01.md"
+            path.write_text(canonical, encoding="utf-8")
+            self.assertTrue(si.verify_existing(path, record))
+            divergent = si.issue_record(
+                {
+                    "ts": "1787539718.3",
+                    "text": slack_text.replace("exact body", "changed body"),
+                    "user": "U1",
+                }
+            )
+            with self.assertRaises(si.ImmutableMismatch):
+                si.verify_existing(path, divergent)
+
     def test_plan_is_sorted_duplicate_safe_and_never_writes_p(self) -> None:
         events = [
             {"ts": "2.0", "text": "from: B\n\ntwo", "user": "U2"},
@@ -158,6 +230,15 @@ class SlackIngestTests(unittest.TestCase):
             records = si.plan(events, posts)
             self.assertEqual([record.title for record in records], ["slack-1-0", "slack-2-0"])
             self.assertEqual(list(posts.iterdir()), [])
+
+    def test_plan_rejects_two_events_claiming_one_declared_id(self) -> None:
+        events = [
+            {"ts": "1.0", "text": "from: A\nid: shared-caller-id\n\none", "user": "U1"},
+            {"ts": "2.0", "text": "from: B\nid: shared-caller-id\n\ntwo", "user": "U2"},
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(si.ImmutableMismatch):
+                si.plan(events, Path(tmp))
 
     def test_cli_format_emits_issue_payload(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
