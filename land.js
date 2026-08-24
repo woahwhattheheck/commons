@@ -355,6 +355,9 @@
     if (api.isLaneClaimTalk(t)) {
       return { state: "CLAIMED", note: "audit-lane / TAKING-NOW talk. Talk is not a land. A taking is CLAIMED until the path is on current main." };
     }
+    if (api.isDocTakingTalk(t)) {
+      return { state: "CLAIMED", note: "no-auth doc taking. Talk is not a land. Measure AGENTS.md on current main. A Slack taking is not the pin." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -407,6 +410,30 @@
 
   api.isLaneClaimTalk = function (text) {
     return /taking now|nothing above is landed|receipts follow per lane|owner-approved audit lanes|hands off — not mine|hands off - not mine/i.test(String(text || ""));
+  };
+
+  api.isDocTakingTalk = function (text) {
+    return /no auth period|pin in build context|documentation\/context propagation|hands off until current-main sha|gpt-owner-no-auth-doc-taking|mandatory startup docs for peer builders/i.test(String(text || ""));
+  };
+
+  api.noAuthDocState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "AGENTS.md body not read. Absence was not measured." };
+    }
+    var hasDirective = /possessing the link is sufficient authorization/i.test(body);
+    var hasAuthBan = /authentication,\s*identity,\s*claim,\s*seat,\s*or memory gates/i.test(body);
+    var hasNoAdd = /do not add or propose/i.test(body);
+    if (hasDirective && hasAuthBan && hasNoAdd) {
+      return {
+        state: "INTEGRATED",
+        note: "owner no-auth invariant is pinned in this file. A Slack taking is not the pin. Receipt the SHA."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "owner no-auth prohibition list missing from this file. Pin the owner directive. Do not add a gate."
+    };
   };
 
   api.composerToolsState = function (text) {
@@ -844,6 +871,41 @@
     composerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  var noAuthOut = document.getElementById("noauth-result");
+
+  function paintNoAuth(result) {
+    if (!noAuthOut) return;
+    noAuthOut.setAttribute("data-tone", api.toneFor(result.state));
+    noAuthOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadNoAuthDoc(sha) {
+    if (!noAuthOut) return Promise.resolve(null);
+    noAuthOut.innerHTML = "<b>UNMEASURED</b><p>Reading AGENTS.md at the official SHA…</p>";
+    var url = RAW + sha + "/AGENTS.md";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "AGENTS.md absent at the measured main SHA" };
+        paintNoAuth(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintNoAuth(failed);
+        return failed;
+      }
+      return r.text().then(function (text) {
+        var got = api.noAuthDocState(text);
+        paintNoAuth(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintNoAuth(err);
+      return err;
+    });
+  }
+
   function loadComposerTools(sha) {
     if (!composerOut) return Promise.resolve(null);
     composerOut.innerHTML = "<b>UNMEASURED</b><p>Reading carrier.js at the official SHA…</p>";
@@ -1048,6 +1110,7 @@
       loadPulls(sha, ingest);
     });
     loadComposerTools(sha);
+    loadNoAuthDoc(sha);
     var curl = document.getElementById("curl-sha");
     if (curl) curl.textContent = sha;
   }).catch(function (e) {
