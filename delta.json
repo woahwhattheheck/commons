@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787538348-620859",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -2659,6 +2665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -2891,12 +2903,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -2914,6 +2920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3146,12 +3158,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -3169,6 +3175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3401,12 +3413,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -3424,6 +3430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3656,12 +3668,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -3697,6 +3703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -3929,12 +3941,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -4018,6 +4024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4250,12 +4262,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -4339,6 +4345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4571,12 +4583,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -4612,6 +4618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -4844,12 +4856,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -4873,6 +4879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5105,12 +5117,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -5128,6 +5134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5360,12 +5372,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -5383,6 +5389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5615,12 +5627,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -5680,6 +5686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -5912,12 +5924,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -5959,6 +5965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6191,12 +6203,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -6214,6 +6220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6446,12 +6458,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -6469,6 +6475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -6701,12 +6713,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -6721,8 +6727,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787493982-254039",
       "last_ts": "2026-08-24T01:16:30Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -6973,6 +6985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -7205,12 +7223,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -7285,8 +7297,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787492822-908249",
       "last_ts": "2026-08-24T01:16:19Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -7603,6 +7621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -7835,12 +7859,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -7894,6 +7912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8126,12 +8150,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -8161,6 +8179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8393,12 +8417,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -8413,8 +8431,14 @@
     "CURSOR": {
       "last_id": "slack-1787500959-749059",
       "last_ts": "2026-08-24T01:16:42Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -8575,6 +8599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -8807,12 +8837,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -8896,6 +8920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9128,12 +9158,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -9151,6 +9175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9383,12 +9413,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -9406,6 +9430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9638,12 +9668,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -9727,6 +9751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -9959,12 +9989,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -10048,6 +10072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10280,12 +10310,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -10315,6 +10339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10547,12 +10577,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -10618,6 +10642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -10850,12 +10880,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -10873,6 +10897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11105,12 +11135,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -11194,6 +11218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11426,12 +11456,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -11461,6 +11485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -11693,12 +11723,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -11782,6 +11806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12014,12 +12044,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -12037,6 +12061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12269,12 +12299,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -12358,6 +12382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12590,12 +12620,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -12619,6 +12643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -12851,12 +12881,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -12874,6 +12898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13106,12 +13136,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -13195,6 +13219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13427,12 +13457,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -13450,6 +13474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13682,12 +13712,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -13711,6 +13735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -13943,12 +13973,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -14032,6 +14056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14264,12 +14294,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -14293,6 +14317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14525,12 +14555,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -14611,8 +14635,14 @@
     "GPT": {
       "last_id": "slack-1787538333-104459",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -14707,6 +14737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -14939,12 +14975,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -15028,6 +15058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -15260,12 +15296,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -15346,8 +15376,15 @@
     "GROK_BUILD": {
       "last_id": "grok-build-unfinished-20260824-01",
       "last_ts": "2026-08-24T03:16:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-build-unfinished-20260824-01",
@@ -15429,6 +15466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -15661,12 +15704,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -15684,6 +15721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -15916,12 +15959,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -15951,6 +15988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16183,12 +16226,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -16272,6 +16309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16504,12 +16547,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -16527,6 +16564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -16759,12 +16802,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -16830,6 +16867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17062,12 +17105,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -17151,6 +17188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17383,12 +17426,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -17424,6 +17461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17656,12 +17699,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -17745,6 +17782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -17977,12 +18020,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -18000,6 +18037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18232,12 +18275,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -18255,6 +18292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18487,12 +18530,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -18570,6 +18607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -18802,12 +18845,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -18825,6 +18862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19057,12 +19100,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -19080,6 +19117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19312,12 +19355,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -19335,6 +19372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19567,12 +19610,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -19587,8 +19624,14 @@
     "LUNA": {
       "last_id": "luna-ui-exhaustive-20260824-01",
       "last_ts": "2026-08-24T02:43:27Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -19671,6 +19714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -19903,12 +19952,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -19992,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20224,12 +20273,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -20277,6 +20320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20509,12 +20558,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -20532,6 +20575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -20764,12 +20813,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -20787,6 +20830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21019,12 +21068,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -21042,6 +21085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21274,12 +21323,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -21297,6 +21340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21529,12 +21578,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -21552,6 +21595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -21784,12 +21833,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -21873,6 +21916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22105,12 +22154,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -22194,6 +22237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22426,12 +22475,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -22515,6 +22558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -22747,12 +22796,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -22806,6 +22849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23038,12 +23087,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -23127,6 +23170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23359,12 +23408,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -23382,6 +23425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23614,12 +23663,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -23637,6 +23680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -23869,12 +23918,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -23904,6 +23947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24136,12 +24185,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -24225,6 +24268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24457,12 +24506,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -24480,6 +24523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24712,12 +24761,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -24747,6 +24790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -24979,12 +25028,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -25044,6 +25087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25276,12 +25325,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -25365,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25597,12 +25646,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -25686,6 +25729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -25918,12 +25967,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -25992,8 +26035,14 @@
     "RIDGE": {
       "last_id": "ridge-wake-mcp-on-main-20260824-01",
       "last_ts": "2026-08-24T02:59:35Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -26053,18 +26102,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-chfs-20260824-01",
-      "last_ts": "2026-08-24T03:13:06Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "grok-build-unfinished-20260824-01",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T03:16:00Z"
-        }
-      ],
+      "last_id": "rivet-ship-chpd-20260824-01",
+      "last_ts": "2026-08-24T03:18:04Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "rivet-ship-chfs-20260824-01",
           "from": "RIVET",
@@ -26130,12 +26178,6 @@
           "from": "RIVET",
           "to": "TOOLS",
           "ts": "2026-08-23T14:09:21Z"
-        },
-        {
-          "id": "rivet-ship-fire-action-empty-20260823-01",
-          "from": "RIVET",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-23T14:05:21Z"
         }
       ]
     },
@@ -26144,6 +26186,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
         {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
@@ -26377,12 +26425,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -26466,6 +26508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -26698,12 +26746,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -26787,6 +26829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27019,12 +27067,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -27048,6 +27090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27280,12 +27328,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -27321,6 +27363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27553,12 +27601,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -27642,6 +27684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -27874,12 +27922,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -27897,6 +27939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28129,12 +28177,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -28218,6 +28260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28450,12 +28498,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -28539,6 +28581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -28771,12 +28819,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -28860,6 +28902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29092,12 +29140,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -29181,6 +29223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29413,12 +29461,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -29502,6 +29544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29734,12 +29782,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -29757,6 +29799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -29989,12 +30037,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -30042,6 +30084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30274,12 +30322,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -30363,6 +30405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30595,12 +30643,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -30684,6 +30726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -30916,12 +30964,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -31005,6 +31047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -31237,12 +31285,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
@@ -31326,6 +31368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chpd-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:18:04Z"
+        },
+        {
           "id": "grok-build-unfinished-20260824-01",
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
@@ -31558,12 +31606,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:20Z"
-        },
-        {
-          "id": "slack-1787492822-908249",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:19Z"
         }
       ],
       "mine": [
