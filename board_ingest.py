@@ -442,24 +442,41 @@ def struct_from_body(body: str, extra: dict) -> dict:
     return out
 
 
-_BARE_URL = re.compile(r'https?://[^\s<]+')
+_LINK = re.compile(
+    r'&lt;(?P<slack_url>https?://[^\s|]+?)(?:\|(?P<slack_label>[^\r\n]*?))?&gt;'
+    r'|(?P<bare_url>https?://[^\s<]+)'
+)
 
 def _autolink(escaped):
-    """Turn bare URLs into clickable <a> links in already-HTML-escaped text."""
+    """Link bare URLs and Slack ``<URL|label>`` in HTML-escaped text."""
     def _repl(m):
-        url = m.group()
+        # Slack stores links as <https://example.test|label>.  At this point
+        # the post is already escaped, so consume the whole encoded marker in
+        # one match.  Letting the bare-URL branch see it produces the measured
+        # bad href ``https://example.test|label`` and leaves angle entities on
+        # screen.  The URL and label remain escaped, so this adds no raw HTML.
+        slack_url = m.group("slack_url")
+        if slack_url:
+            return '<a href="%s">%s</a>' % (
+                slack_url, m.group("slack_label") or slack_url)
+
+        url = m.group("bare_url")
         trail = ''
-        while url and url[-1] in '.,;:!?)':
-            trail = url[-1] + trail
-            url = url[:-1]
-        for suf in ('&quot;', '&gt;'):
-            while url.endswith(suf):
-                trail = suf + trail
-                url = url[:-len(suf)]
+        while url:
+            entity = next((suf for suf in ('&quot;', '&gt;') if url.endswith(suf)), None)
+            if entity:
+                trail = entity + trail
+                url = url[:-len(entity)]
+                continue
+            if url[-1] in '.,;:!?)':
+                trail = url[-1] + trail
+                url = url[:-1]
+                continue
+            break
         if url.endswith('://'):
-            return m.group()
+            return m.group(0)
         return '<a href="%s">%s</a>%s' % (url, url, trail)
-    return _BARE_URL.sub(_repl, escaped)
+    return _LINK.sub(_repl, escaped)
 
 
 POST_IMAGE_EXT = (".png", ".jpg", ".jpeg", ".gif", ".webp")
@@ -2166,6 +2183,46 @@ def heal_missing_pages(rows):
     return healed
 
 
+def heal_slack_link_permalinks(rows):
+    """Refresh only stale rendered bodies that contain Slack link markers.
+
+    A source fix in :func:`post_html` affects new posts, but existing
+    ``p/*.html`` files are deliberately immutable to ``heal_missing_pages``.
+    That left old Slack ``<URL|label>`` bodies with ``|label`` inside the href
+    forever.  The markdown is the canonical record; the HTML is a derivative.
+    Replace only the final body ``<pre>`` from that markdown-derived body and
+    preserve every byte of page chrome around it.
+    """
+    healed = 0
+    for _ts, meta, body in rows:
+        if "<http://" not in body and "<https://" not in body:
+            continue
+        page = page_of(meta)
+        if not page:
+            continue
+        path = os.path.join(POSTS, page + ".html")
+        if not os.path.isfile(path):
+            continue
+        try:
+            text = _read(path)
+        except OSError:
+            continue
+        start = text.rfind("<pre>")
+        if start < 0:
+            continue
+        end = text.find("</pre>", start + 5)
+        if end < 0:
+            continue
+        rendered = _autolink(html.escape(body))
+        out = text[:start + 5] + rendered + text[end:]
+        if out != text:
+            _write(path, out)
+            healed += 1
+    if healed:
+        print("heal_slack_link_permalinks: refreshed %s page(s)" % healed)
+    return healed
+
+
 # A pathological tree must not turn one ingest run into a thousand renders. The
 # cap is logged when it bites -- a silent truncation would read as "nothing left
 # to heal" on exactly the run where that is least true.
@@ -2486,6 +2543,7 @@ def rebuild():
     purge_removed_posts()
     rows = list_posts()
     heal_missing_pages(rows)
+    heal_slack_link_permalinks(rows)
     heal_subpage_chrome()
     write_durable_gaps(rows)
     builds_ledger.project(ROOT, _write)

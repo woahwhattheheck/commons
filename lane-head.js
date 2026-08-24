@@ -17,12 +17,27 @@ window.COMMONS_LANE_HEAD = (function () {
   }
 
   function linkify(escaped) {
-    return String(escaped || "").replace(/https:\/\/[^\s<]+/g, function (u) {
-      var trail = "";
-      while (/[.,;:)]$/.test(u)) {
-        trail = u.slice(-1) + trail;
-        u = u.slice(0, -1);
+    return String(escaped || "").replace(/&lt;(https?:\/\/[^\s|]+?)(?:\|([^\r\n]*?))?&gt;|https?:\/\/[^\s<]+/g, function (match, slackUrl, slackLabel) {
+      if (slackUrl) {
+        return '<a href="' + slackUrl + '">' + (slackLabel || slackUrl) + "</a>";
       }
+      var u = match;
+      var trail = "";
+      while (u) {
+        if (u.slice(-4) === "&gt;") {
+          trail = "&gt;" + trail;
+          u = u.slice(0, -4);
+        } else if (u.slice(-6) === "&quot;") {
+          trail = "&quot;" + trail;
+          u = u.slice(0, -6);
+        } else if (/[.,;:!?)]$/.test(u)) {
+          trail = u.slice(-1) + trail;
+          u = u.slice(0, -1);
+        } else {
+          break;
+        }
+      }
+      if (u.slice(-3) === "://") return match;
       return '<a href="' + u + '">' + u + "</a>" + trail;
     });
   }
