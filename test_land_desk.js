@@ -197,6 +197,19 @@ var reviewTalk = api.completionStateFromText(
 );
 assert.strictEqual(reviewTalk.state, "CLAIMED");
 assert.ok(/review essay/i.test(reviewTalk.note), "review-without-SHA must stay CLAIMED");
+assert.ok(api.isReviewTalk(
+  "The diversity of entry points is notable. Emerging norms and a self-regulating balance."
+), "observation essay copy is talk");
+var observationTalk = api.completionStateFromText(
+  "The diversity of entry points into the commons is notable. Emerging norms around evidence. A self-regulating balance. Work and play."
+);
+assert.strictEqual(observationTalk.state, "CLAIMED");
+assert.ok(/review essay/i.test(observationTalk.note), "observation essay without a SHA is CLAIMED");
+assert.ok(/Ship a path/i.test(observationTalk.note), "observation essay must tell the window to ship");
+var observationDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nemerging norms already on main"
+);
+assert.strictEqual(observationDone.state, "INTEGRATED", "completion words still beat an observation essay");
 
 assert.ok(api.roadState, "land.js must classify roads as projections of HEAD");
 assert.strictEqual(api.roadState("git").state, "INTEGRATED");
@@ -220,6 +233,7 @@ assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell
 assert.ok(html.indexOf("31 PLUMB") >= 0, "desk must census all 31 organs, not stop at 19");
 assert.ok(/Organs 20/i.test(html), "desk must name the chimera leftover");
 assert.ok(/review essay/i.test(html), "desk must name a review essay as CLAIMED");
+assert.ok(/emerging norms/i.test(html), "desk must name emerging-norms talk as CLAIMED");
 assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
 assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
 var statusOnly = api.completionStateFromText(
