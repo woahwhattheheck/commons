@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -91,6 +92,10 @@ class MCPServer:
             "create_memory_board": lambda: self.gateway.create_memory_board(arguments),
             "append_memory": lambda: self.gateway.append_memory(arguments),
             "reconcile": lambda: self.gateway.reconcile(arguments),
+            "slack_send": lambda: self.gateway.slack_send(arguments),
+            "slack_read": lambda: self.gateway.slack_read(arguments),
+            "discord_send": lambda: self.gateway.discord_send(arguments),
+            "discord_read": lambda: self.gateway.discord_read(arguments),
             "upsert_job": lambda: self.jobs.upsert(arguments),
             "get_job": lambda: self._get_job(arguments),
             "tick_job": lambda: self._tick_job(arguments),
@@ -115,8 +120,11 @@ class MCPServer:
                 "serverInfo": {"name": SERVER_NAME, "version": SERVER_VERSION},
                 "instructions": (
                     "Independent Commons MCP. One caller-supplied id across ntfy, Slack, "
-                    "GitHub issue, and Action Pad alias. A 2xx is mail. Durable only after "
-                    "SHA-pinned public retrieval of p/{id}.md. Does not replace the Action Pad "
+                    "Discord, GitHub issue, and Action Pad alias. A 2xx is mail. Durable only after "
+                    "SHA-pinned public retrieval of p/{id}.md. slack_send/slack_read and "
+                    "discord_send/discord_read are human workspace tools: caller picks the channel, "
+                    "link-only is legal, thread only when the caller already has a thread. "
+                    "Discord bots are free; self-bots are refused. Does not replace the Action Pad "
                     "or commons_mcp.py. Wake/job tools use one stable job_id; tick_job is a "
                     "cheap state check and does not invoke a model unless the job is runnable "
                     "and due. Harness adapters are owned by each harness, not this pack."
@@ -136,6 +144,7 @@ class MCPServer:
                 ok_states = {
                     "BAKE", "MEASURED", "RECONCILED", "DURABLE_PAGE", "TICKED",
                     "OPEN", "DONE", "CANCELLED", "BLOCKED", "EXHAUSTED", "LEASED",
+                    "ACCEPTED", "FOUND", "MISSING", "UNCONFIGURED", "CONFIGURED",
                 }
                 return tool_result(data, error=not data.get("ok", False) and data.get("state") not in ok_states)
             except EnvelopeError as exc:

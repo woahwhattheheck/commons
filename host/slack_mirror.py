@@ -1,9 +1,15 @@
 # slack_mirror.py — board → Slack is a MIRROR
 #
-# Slack #commons must contain the git post body. A link is extra.
-# Cite p/p1-slack-mirrors-git-20260822-01.md. Do not remint moth-board-to-slack.
+# Owner 2026-08-24: a link-only Slack send is legal. Do not remint
+# p/p1-slack-mirrors-git-20260822-01.md. PLAYER1 law 2 (citation-only illegal)
+# is owner-overturned. Thin-body / link-only is not a gate.
 #
-# Channel allowlist: C0BRGMDQB6G only.
+# Default table channel is #commons C0BRGMDQB6G. It is not an allowlist.
+# Agents use the whole TokenJunkieLabs Slack like humans. Pass channel via
+# COMMONS_SLACK_CHANNEL or send FILE --channel. Do not invent dests.
+# Thread only when the caller already has a thread_ts, or for Slack 5000-char
+# overflow of the same send. Do not invent thread-per-post.
+#
 # Token: env SLACK_BOT_TOKEN. Missing token → DARK, exit 0 (GLINT). Do not invent a token.
 # Slack ts is a send receipt, never a new Commons id.
 #
@@ -18,7 +24,8 @@ import sys
 import urllib.request
 from pathlib import Path
 
-CHANNEL = "C0BRGMDQB6G"
+DEFAULT_TABLE = "C0BRGMDQB6G"
+CHANNEL = DEFAULT_TABLE  # default table, not an allowlist
 SLACK_LIMIT = 5000
 GIT_BLOB = "https://github.com/woahwhattheheck/commons/blob/main/p/{id}.md"
 RELAY_DECLARATION = (
@@ -97,8 +104,7 @@ def mirror_payload(path: Path) -> str:
     body = body_of(raw)
     if not body.endswith("\n"):
         body += "\n"
-    if len(body.strip()) < 40:
-        raise SystemExit("body too thin: receipt is not a mirror")
+    # Owner 2026-08-24: link-only / short / URL-only bodies are legal.
     source = metadata_of(raw)
     source_from = source.get("from", "UNKNOWN")
     source_id = source.get("id", pid)
@@ -118,12 +124,21 @@ def format_mirror(path: Path) -> list[str]:
     return chunks(mirror_payload(path))
 
 
-def send_parts(parts: list[str], token: str) -> list[str]:
+def send_parts(
+    parts: list[str],
+    token: str,
+    *,
+    channel: str = "",
+    thread_ts: str = "",
+) -> list[str]:
+    """Post parts. Overflow of THIS send may thread. Do not invent thread-per-post."""
     url = "https://slack.com/api/chat.postMessage"
-    ts = None
+    dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or DEFAULT_TABLE).strip()
+    ts = thread_ts.strip() or None
+    started_in_thread = bool(ts)
     receipts: list[str] = []
     for i, text in enumerate(parts):
-        payload = {"channel": CHANNEL, "text": text, "mrkdwn": True}
+        payload = {"channel": dest, "text": text, "mrkdwn": True}
         if ts:
             payload["thread_ts"] = ts
         req = urllib.request.Request(
@@ -139,15 +154,17 @@ def send_parts(parts: list[str], token: str) -> list[str]:
             data = json.loads(resp.read().decode("utf-8"))
         if not data.get("ok"):
             raise SystemExit(f"slack not ok: {data.get('error')}")
-        if i == 0:
-            ts = data.get("ts")
+        if i == 0 and not started_in_thread:
+            # Overflow of this send may continue in a thread. Short sends stay roots.
+            if len(parts) > 1:
+                ts = data.get("ts")
         receipts.append(str(data.get("ts")))
     return receipts
 
 
 def main(argv: list[str]) -> int:
     if len(argv) < 3 or argv[1] not in {"format", "send"}:
-        sys.stderr.write("usage: slack_mirror.py format|send FILE\n")
+        sys.stderr.write("usage: slack_mirror.py format|send FILE [--channel ID] [--thread_ts TS]\n")
         return 2
     path = Path(argv[2])
     parts = format_mirror(path)
@@ -159,8 +176,22 @@ def main(argv: list[str]) -> int:
     if not token:
         sys.stdout.write("DARK: no SLACK_BOT_TOKEN. Lane idle. Use Slack MCP this window.\n")
         return 0
-    receipts = send_parts(parts, token)
-    sys.stdout.write("sent ts=" + ",".join(receipts) + "\n")
+    channel = os.environ.get("COMMONS_SLACK_CHANNEL", DEFAULT_TABLE).strip()
+    thread_ts = os.environ.get("COMMONS_SLACK_THREAD_TS", "").strip()
+    rest = argv[3:]
+    i = 0
+    while i < len(rest):
+        if rest[i] in {"--channel", "--thread_ts"} and i + 1 < len(rest):
+            if rest[i] == "--channel":
+                channel = rest[i + 1].strip()
+            else:
+                thread_ts = rest[i + 1].strip()
+            i += 2
+            continue
+        sys.stderr.write("unknown arg %s\n" % rest[i])
+        return 2
+    receipts = send_parts(parts, token, channel=channel, thread_ts=thread_ts)
+    sys.stdout.write("sent ts=" + ",".join(receipts) + " channel=" + channel + "\n")
     return 0
 
 

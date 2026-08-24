@@ -125,7 +125,16 @@ class Gateway:
             self.sleeper(min(delay, max(0.01, self.timeout - elapsed)))
             delay = min(delay * 1.5, 15.0)
 
-    def _dispatch_lanes(self, payload: dict[str, Any], wanted: list[str], *, thread_ts: str = "") -> list[dict[str, Any]]:
+    def _dispatch_lanes(
+        self,
+        payload: dict[str, Any],
+        wanted: list[str],
+        *,
+        thread_ts: str = "",
+        slack_channel: str = "",
+        discord_channel: str = "",
+        discord_message_id: str = "",
+    ) -> list[dict[str, Any]]:
         rows = []
         for name in wanted:
             if name == "ntfy":
@@ -133,7 +142,9 @@ class Gateway:
             elif name == "github_issue":
                 rows.append(self.lanes.github_issue_submit(payload))
             elif name == "slack":
-                rows.append(self.lanes.slack_submit(payload, thread_ts=thread_ts))
+                rows.append(self.lanes.slack_submit(payload, thread_ts=thread_ts, channel=slack_channel))
+            elif name == "discord":
+                rows.append(self.lanes.discord_submit(payload, channel=discord_channel, message_id=discord_message_id))
             elif name == "action_pad":
                 rows.append(self.lanes.action_pad_alias(payload))
         for row in rows:
@@ -192,6 +203,9 @@ class Gateway:
         payload = build_envelope(arguments, kind=kind)
         wanted = lanes_from(arguments.get("lanes"))
         thread_ts = str(arguments.get("slack_thread_ts") or "")
+        slack_channel = str(arguments.get("slack_channel") or "")
+        discord_channel = str(arguments.get("discord_channel") or "")
+        discord_message_id = str(arguments.get("discord_message_id") or "")
         try:
             sha = self.truth.head_sha()
             status, text = self.truth.read_at_sha("p/%s.md" % payload["id"], sha)
@@ -219,7 +233,14 @@ class Gateway:
                 "durable": {"ok": True, "state": "DURABLE_PAGE", "id": payload["id"], **urls, "body_sha256": sha256_text(payload["body"])},
                 "note": "same-id same-envelope retry; no carrier mail",
             })
-        lane_rows = self._dispatch_lanes(payload, wanted, thread_ts=thread_ts)
+        lane_rows = self._dispatch_lanes(
+            payload,
+            wanted,
+            thread_ts=thread_ts,
+            slack_channel=slack_channel,
+            discord_channel=discord_channel,
+            discord_message_id=discord_message_id,
+        )
         self._record_outbox(payload, lane_rows)
         accepted = [row for row in lane_rows if row.get("state") == "ACCEPTED"]
         durable = None
@@ -335,6 +356,30 @@ class Gateway:
         merged.setdefault("to", "MEMORY")
         return self.post(merged, kind="MEMORY_APPEND")
 
+    def slack_send(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        text = str(arguments.get("text") or arguments.get("body") or "")
+        channel = str(arguments.get("channel") or arguments.get("slack_channel") or "")
+        thread_ts = str(arguments.get("thread_ts") or arguments.get("slack_thread_ts") or "")
+        return self.lanes.slack_send_raw(text, channel=channel, thread_ts=thread_ts)
+
+    def slack_read(self, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
+        arguments = arguments or {}
+        channel = str(arguments.get("channel") or arguments.get("slack_channel") or "")
+        limit = int(arguments.get("limit") or 50)
+        return self.lanes.slack_read_raw(channel=channel, limit=limit)
+
+    def discord_send(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        text = str(arguments.get("text") or arguments.get("body") or "")
+        channel = str(arguments.get("channel") or arguments.get("discord_channel") or "")
+        message_id = str(arguments.get("message_id") or arguments.get("discord_message_id") or "")
+        return self.lanes.discord_send_raw(text, channel=channel, message_id=message_id)
+
+    def discord_read(self, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
+        arguments = arguments or {}
+        channel = str(arguments.get("channel") or arguments.get("discord_channel") or "")
+        limit = int(arguments.get("limit") or 50)
+        return self.lanes.discord_read_raw(channel=channel, limit=limit)
+
     def measure_roads(self, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
         return self.lanes.measure(self.truth.head_sha, lambda ident, sha: self.truth.read_at_sha("p/%s.md" % ident, sha))
 
@@ -354,12 +399,14 @@ class Gateway:
             bake_hit = any(isinstance(row, dict) and row.get("id") == ident for row in rows)
         outbox = self._read_outbox(ident)
         slack = self.lanes.slack_find(ident)
+        discord = self.lanes.discord_find(ident)
         issue = self.lanes.github_find(ident)
         copies = {
             "git_head": "PRESENT" if status == 200 and text else "MISSING",
             "recent_bake": "PRESENT" if bake_hit else "MISSING",
             "outbox": "PRESENT" if outbox else "MISSING",
             "slack": slack.get("state"),
+            "discord": discord.get("state"),
             "github_issue": issue.get("state"),
         }
         divergent = []
@@ -382,6 +429,7 @@ class Gateway:
             "copies": copies,
             "divergent": divergent,
             "slack": slack,
+            "discord": discord,
             "github_issue": issue,
             "public": self.truth.public_urls(ident, sha),
             "repair_attempted": False,

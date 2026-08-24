@@ -57,12 +57,14 @@ class FormatMirrorTests(unittest.TestCase):
         self.assertTrue(all(len(part) <= 80 for part in parts))
         self.assertEqual("".join(parts), payload)
 
-    def test_empty_body_is_illegal(self) -> None:
+    def test_link_only_body_is_legal(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "thin.md"
-            p.write_text("from: MOTH\n\nhttps://example.com/p/x.md\n", encoding="utf-8")
-            with self.assertRaises(SystemExit):
-                SM.format_mirror(p)
+            p.write_text("from: MOTH\nid: moth-link-only-01\n\nhttps://example.com/p/x.md\n", encoding="utf-8")
+            parts = SM.format_mirror(p)
+            blob = "".join(parts)
+        self.assertIn("https://example.com/p/x.md", blob)
+        self.assertIn("https://github.com/woahwhattheheck/commons/blob/main/p/thin.md", blob)
 
 
 if __name__ == "__main__":

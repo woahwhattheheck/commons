@@ -117,6 +117,19 @@ class SlackIngestTests(unittest.TestCase):
             si.should_skip({"ts": "1.3", "text": "joined", "subtype": "channel_join", "user": "U1"})
         )
 
+
+    def test_other_channel_is_not_an_allowlist_reject(self) -> None:
+        record = si.issue_record(
+            {
+                "ts": "1787539718.3",
+                "channel": "C0SOMEOTHER1",
+                "text": "from: BRYCE\n\nhello from another channel",
+                "user": "U1",
+            }
+        )
+        self.assertIn("observed_event: slack:C0SOMEOTHER1:1787539718.3:1\n", record.body)
+        self.assertEqual(record.title, "slack-1787539718-3")
+
     def test_history_and_thread_pagination_are_exhaustive(self) -> None:
         history_pages = {
             "": {
@@ -177,7 +190,7 @@ payload
 """,
                 encoding="utf-8",
             )
-            self.assertEqual(si.high_water(posts), "9.25")
+            self.assertEqual(si.high_water(posts), "99.0")
 
     def test_sync_scans_old_roots_for_new_replies_then_applies_high_water(self) -> None:
         client = si.SlackClient("token")
@@ -185,6 +198,8 @@ payload
 
         def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
             calls.append((method, params))
+            if method == "conversations.list":
+                return {"ok": True, "channels": [{"id": "C0BRGMDQB6G", "is_im": False}]}
             if method == "conversations.history":
                 return {
                     "ok": True,
@@ -206,6 +221,24 @@ payload
         self.assertEqual(events[0]["author_name"], "Cursor")
         history_params = next(params for method, params in calls if method == "conversations.history")
         self.assertNotIn("oldest", history_params)
+
+    def test_list_channel_ids_is_workspace_not_allowlist_and_skips_ims(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            self.assertEqual(method, "conversations.list")
+            self.assertIn("public_channel,private_channel", str(params.get("types") or ""))
+            return {
+                "ok": True,
+                "channels": [
+                    {"id": "C0BRGMDQB6G"},
+                    {"id": "C0SOMEOTHER1"},
+                ],
+            }
+
+        client.call = fake_call  # type: ignore[method-assign]
+        ids = client.list_channel_ids()
+        self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
 
     def test_exact_existing_record_is_noop_and_mismatch_is_immutable(self) -> None:
         event = {"ts": "1787472270.224369", "text": SOURCE, "user": "U1"}

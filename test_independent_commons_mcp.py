@@ -58,6 +58,8 @@ class FakeNet:
         self.slack_messages = []
         self.slack_pages = None
         self.slack_replies = {}
+        self.discord_ok = True
+        self.discord_messages = []
 
     def ls_remote(self):
         return SHA
@@ -92,6 +94,16 @@ class FakeNet:
             if self.slack_ok:
                 return {"status": 200, "body": json.dumps({"ok": True, "ts": "111.222", "channel": payload.get("channel")}), "error": ""}
             return {"status": 200, "body": json.dumps({"ok": False, "error": "not_in_channel"}), "error": ""}
+        if method == "POST" and "discord.com/api" in url and "/messages" in url:
+            if self.discord_ok:
+                return {"status": 200, "body": json.dumps({"id": "999888777666", "content": "ok"}), "error": ""}
+            return {"status": 401, "body": "", "error": "HTTP 401"}
+        if method == "POST" and "discord.com/api/webhooks" in url:
+            if self.discord_ok:
+                return {"status": 200, "body": json.dumps({"id": "webhook-1"}), "error": ""}
+            return {"status": 500, "body": "", "error": "HTTP 500"}
+        if method == "GET" and "discord.com/api" in url and "/messages" in url:
+            return {"status": 200, "body": json.dumps(self.discord_messages), "error": ""}
         if method == "POST" and "hooks.slack.com" in url:
             if self.slack_ok:
                 return {"status": 200, "body": "ok", "error": ""}
@@ -113,6 +125,18 @@ class FakeNet:
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
             ts = (qs.get("ts") or [""])[0]
             return {"status": 200, "body": json.dumps({"ok": True, "messages": self.slack_replies.get(ts) or []}), "error": ""}
+        if method == "GET" and "conversations.list" in url:
+            return {
+                "status": 200,
+                "body": json.dumps({
+                    "ok": True,
+                    "channels": [
+                        {"id": "C0BRGMDQB6G", "name": "commons"},
+                        {"id": "C0SOMEOTHER1", "name": "other"},
+                    ],
+                }),
+                "error": "",
+            }
         if method == "GET" and "conversations.history" in url:
             if self.slack_pages:
                 qs = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
@@ -225,7 +249,7 @@ class EnvelopeTests(unittest.TestCase):
     def test_remint_raises(self):
         gw, net = make_gateway()
 
-        def remint(payload, thread_ts=""):
+        def remint(payload, thread_ts="", channel=""):
             return {"lane": "slack", "state": "ACCEPTED", "id": "slack-99999999", "event_id": "1"}
 
         gw.lanes.slack_submit = remint
@@ -422,6 +446,44 @@ class ReviewFixTests(unittest.TestCase):
             self.assertTrue(report["repair_attempted"])
             self.assertEqual(report["state"], "DURABLE_PAGE")
             self.assertEqual(report["repair"]["id"], ident)
+
+    def test_slack_send_link_only_and_other_channel_are_legal(self):
+        gw, net = make_gateway()
+        os.environ["COMMONS_SLACK_BOT_TOKEN"] = "xoxb-fixture-token-value"
+        try:
+            sent = gw.slack_send({
+                "channel": "C0SOMEOTHER1",
+                "text": "https://github.com/woahwhattheheck/commons/blob/main/p/x.md",
+            })
+            listed = gw.slack_read({})
+        finally:
+            os.environ.pop("COMMONS_SLACK_BOT_TOKEN", None)
+        self.assertEqual(sent["state"], "ACCEPTED")
+        self.assertEqual(sent["channel"], "C0SOMEOTHER1")
+        self.assertNotEqual(sent["state"], "ERROR")
+        slack_posts = [c for c in net.calls if c["method"] == "POST" and "chat.postMessage" in c["url"]]
+        self.assertEqual(len(slack_posts), 1)
+        payload = json.loads(slack_posts[0]["data"].decode("utf-8"))
+        self.assertEqual(payload["channel"], "C0SOMEOTHER1")
+        self.assertEqual(payload["text"], "https://github.com/woahwhattheheck/commons/blob/main/p/x.md")
+        self.assertEqual(listed["state"], "FOUND")
+        self.assertEqual([row["id"] for row in listed["channels"]], ["C0BRGMDQB6G", "C0SOMEOTHER1"])
+
+    def test_discord_lane_and_human_send(self):
+        gw, net = make_gateway()
+        os.environ["COMMONS_DISCORD_BOT_TOKEN"] = "fixture-discord-token"
+        os.environ["COMMONS_DISCORD_CHANNEL"] = "111222333"
+        try:
+            result = gw.post({**declared("kite-discord-only-0001"), "lanes": ["discord"]})
+            sent = gw.discord_send({"channel": "444555666", "text": "https://example.com/p/x.md"})
+        finally:
+            os.environ.pop("COMMONS_DISCORD_BOT_TOKEN", None)
+            os.environ.pop("COMMONS_DISCORD_CHANNEL", None)
+        self.assertEqual(result["state"], "RECEIVED")
+        self.assertEqual([row["lane"] for row in result["lanes"]], ["discord"])
+        self.assertEqual(sent["state"], "ACCEPTED")
+        self.assertEqual(sent["channel"], "444555666")
+
     def test_capability_declaration_is_optional(self):
         payload = build_envelope({"id": "kite-nodecl-0001", "body": "hi"})
         self.assertEqual(payload["from"], "UNSEATED")
@@ -449,6 +511,10 @@ class ServerTests(unittest.TestCase):
             "create_memory_board",
             "append_memory",
             "reconcile",
+            "slack_send",
+            "slack_read",
+            "discord_send",
+            "discord_read",
             "upsert_job",
             "get_job",
             "tick_job",
@@ -466,7 +532,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(init["protocolVersion"], "2025-03-26")
         self.assertEqual(init["serverInfo"]["name"], "independent-commons")
         listed = server.dispatch("tools/list", {})
-        self.assertEqual(len(listed["tools"]), 14)
+        self.assertEqual(len(listed["tools"]), 18)
         rpc = server.handle({
             "jsonrpc": "2.0",
             "id": 7,
@@ -538,6 +604,9 @@ class LiveProbeTests(unittest.TestCase):
         slack = by_lane["slack"][0]
         self.assertIn(slack["state"], {"CONFIGURED", "UNCONFIGURED"})
         self.assertFalse(slack["transport_ok"])
+        self.assertIn("discord", by_lane)
+        discord = by_lane["discord"][0]
+        self.assertIn(discord["state"], {"CONFIGURED", "UNCONFIGURED"})
 
 
 if __name__ == "__main__":
