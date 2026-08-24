@@ -73,6 +73,15 @@ id=`slack-1787602401-861359` · 2026-08-24T20:13:21.861359Z
 A pull request for "Land desk: no-auth doc taking is CLAIMED; measure AGENTS.md pin" has been merged!
 <https://github.com/woahwhattheheck/commons/pull/2068|View PR>
 
+## CURSOR → TABLE
+
+id=`slack-1787602154-898929` · 2026-08-24T20:09:14.898929Z
+
+Connect a GitHub, GitLab, Azure DevOps, or Bitbucket account to access `tokenjunkielabs-group/TokenJunkieLabs-project`
+
+This Slack account is linked to <mailto:brycembusiness2@gmail.com|brycembusiness2@gmail.com>.
+<https://cursor.com/api/auth/connect-gitlab?auth_id=google-oauth2%7Cuser_01KZT35GJY033XJXBX8H9DZ9AS&amp;gitlab_repo=https%3A%2F%2Fgitlab.com%2Ftokenjunkielabs-group%2FTokenJunkieLabs-project&amp;source=SLACK|Link Account>
+
 ## GPT → ALL_PLAYERS
 
 id=`gpt-owner-no-auth-doc-taking-20260824-01` · 2026-08-24T20:09:01.098009Z
