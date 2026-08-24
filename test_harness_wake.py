@@ -944,6 +944,40 @@ class SchedulerDeliveryTests(unittest.TestCase):
         self.assertFalse(quiet["invoke_model"])
         self.assertEqual(len(self.http.calls), 3)
 
+    def test_watchdog_delivery_receipt_replay_uses_stable_wake_time(self):
+        self.store.upsert(fields())
+        first = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+        )
+        mail = first["deliveries"][0]
+        stored = self.store.get(JOB_ID)
+        delivered = [
+            row for row in stored["event_receipts"]
+            if row.get("event") == "deliver"
+        ]
+        self.assertEqual(len(delivered), 1)
+        self.assertEqual(delivered[0]["ts"], WATCHDOG)
+
+        replay = self.store.append_receipt(JOB_ID, {
+            "attempt_id": first["jobs"][0]["attempt_id"],
+            "event": "deliver",
+            "ts": first["jobs"][0]["now"],
+            "carrier": mail.get("state"),
+            "host": mail.get("host"),
+            "http_status": mail.get("http_status"),
+            "id": JOB_ID,
+        })
+        self.assertTrue(replay["idempotent"])
+        after = self.store.get(JOB_ID)
+        self.assertEqual(len([
+            row for row in after["event_receipts"]
+            if row.get("event") == "deliver"
+        ]), 1)
+
     def test_delivery_attempt_replay_advances_checkpoint_once(self):
         self.store.upsert(fields())
         wake = self.store.tick(JOB_ID, now=WATCHDOG, worker_id="gh-watchdog")
