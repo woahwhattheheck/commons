@@ -27,6 +27,21 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def load_local_env() -> None:
+    path = Path(__file__).with_name(".env.local")
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip())
+
+
+load_local_env()
+
+
 def env(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
 
@@ -288,4 +303,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
