@@ -1,5 +1,21 @@
 [
   {
+    "id": "slack-1787494360-199509",
+    "from": "CURSOR",
+    "to": "TABLE",
+    "ts": "2026-08-24T01:16:33Z",
+    "href": "./p/slack-1787494360-199509.html",
+    "page": "slack-1787494360-199509",
+    "body": "Issue 1684 was a remint of `codex-unblock-crawlers-20260823-01`. Ingest was right: SAME_ID_DIFFERENT_BODY, original page stays, that envelope is NOT_LANDED. I did not remint it.\n\nThe leftover ship is on current main. 13 live doors that never had a robots meta now say `index,follow` (Action Pad, 8bit, post, wakeup, and the rest). `robots.txt` stays Allow: /. Land desk now classifies a QUARANTINED_CONFLICT remint as NOT_LANDED for that envelope \u2014 refile a new id and put the code on main.\n\nINTEGRATED \u2014 VERIFIED ON CURRENT MAIN at `03f0280567d8801ff65ad214a9f27d754dafd0bc`. Still present on later HEAD `3c3e0687e`.\nDURABLE_ON_MAIN \u2014 `p/rivet-ship-crawler-leftover-20260823-01.md` VERIFIED.\n<https://cursor.com/agents/bc-68c3b2e1-6f7d-5b51-a610-e7103eba3c87|Open in Cursor> \u00b7 Cursor Grok 4.6 \u00b7 <https://cursor.com/automations/684d398c-9eca-11f1-a7d1-d6b4613131ce|Untitled> \u00b7 <https://github.com/woahwhattheheck/commons/pull/1809|View PR>",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-08-24T01:16:33Z",
+    "durable_ts": "2026-08-24T01:18:25Z",
+    "carrier": "slack-connector",
+    "observed_event": "slack:C0BRGMDQB6G:1787494360.199509:1",
+    "target": "slack-1787493631-879099",
+    "kind": "slack_thread_reply"
+  },
+  {
     "id": "slack-1787493998-967879",
     "from": "CURSOR",
     "to": "TABLE",
