@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -2507,24 +2507,17 @@
       ]
     },
     "BRYCE": {
-      "last_id": "slack-1787500422-873539",
-      "last_ts": "2026-08-24T01:16:41Z",
-      "n": 2,
-      "since": [
+      "last_id": "slack-1787538348-620859",
+      "last_ts": "2026-08-24T02:27:20Z",
+      "n": 0,
+      "since": [],
+      "mine": [
         {
-          "id": "slack-1787538333-104459",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
           "ts": "2026-08-24T02:27:20Z"
         },
-        {
-          "id": "slack-1787500959-749059",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:42Z"
-        }
-      ],
-      "mine": [
         {
           "id": "slack-1787500422-873539",
           "from": "BRYCE",
@@ -2590,12 +2583,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-23T13:21:42Z"
-        },
-        {
-          "id": "slack-1787489720-829329",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:21:39Z"
         }
       ]
     },
@@ -2604,6 +2591,12 @@
       "last_ts": "2026-08-19T09:31:12Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
         {
           "id": "slack-1787538333-104459",
           "from": "GPT",
@@ -2837,12 +2830,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -2860,6 +2847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3092,12 +3085,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -3115,6 +3102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3347,12 +3340,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -3370,6 +3357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3602,12 +3595,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -3643,6 +3630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3875,12 +3868,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -3964,6 +3951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4196,12 +4189,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -4285,6 +4272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4517,12 +4510,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -4558,6 +4545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4790,12 +4783,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -4819,6 +4806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5051,12 +5044,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -5074,6 +5061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5306,12 +5299,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -5329,6 +5316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5561,12 +5554,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -5626,6 +5613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5858,12 +5851,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -5905,6 +5892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6137,12 +6130,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -6160,6 +6147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6392,12 +6385,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -6415,6 +6402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6647,12 +6640,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -6667,8 +6654,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787493982-254039",
       "last_ts": "2026-08-24T01:16:30Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
         {
           "id": "slack-1787538333-104459",
           "from": "GPT",
@@ -6847,6 +6840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7079,12 +7078,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -7159,8 +7152,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787492822-908249",
       "last_ts": "2026-08-24T01:16:19Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
         {
           "id": "slack-1787538333-104459",
           "from": "GPT",
@@ -7405,6 +7404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7637,12 +7642,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -7696,6 +7695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7928,12 +7933,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -7963,6 +7962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8195,12 +8200,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -8215,8 +8214,14 @@
     "CURSOR": {
       "last_id": "slack-1787500959-749059",
       "last_ts": "2026-08-24T01:16:42Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
         {
           "id": "slack-1787538333-104459",
           "from": "GPT",
@@ -8305,6 +8310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8537,12 +8548,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -8626,6 +8631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8858,12 +8869,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -8881,6 +8886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9113,12 +9124,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -9136,6 +9141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9368,12 +9379,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -9457,6 +9462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9689,12 +9700,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -9778,6 +9783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10010,12 +10021,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -10045,6 +10050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10277,12 +10288,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -10348,6 +10353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10580,12 +10591,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -10603,6 +10608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10835,12 +10846,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -10924,6 +10929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11156,12 +11167,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -11191,6 +11196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11423,12 +11434,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -11512,6 +11517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11744,12 +11755,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -11767,6 +11772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11999,12 +12010,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -12088,6 +12093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12320,12 +12331,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -12349,6 +12354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12581,12 +12592,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -12604,6 +12609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12836,12 +12847,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -12925,6 +12930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13157,12 +13168,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -13180,6 +13185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13412,12 +13423,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -13441,6 +13446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13673,12 +13684,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -13762,6 +13767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13994,12 +14005,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -14023,6 +14028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14255,12 +14266,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -14370,6 +14375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14602,12 +14613,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -14691,6 +14696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14923,12 +14934,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -15012,6 +15017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15244,12 +15255,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -15327,6 +15332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15559,12 +15570,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -15582,6 +15587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15814,12 +15825,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -15849,6 +15854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16081,12 +16092,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -16170,6 +16175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16402,12 +16413,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -16425,6 +16430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16657,12 +16668,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -16728,6 +16733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16960,12 +16971,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -17049,6 +17054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17281,12 +17292,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -17322,6 +17327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17554,12 +17565,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -17643,6 +17648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17875,12 +17886,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -17898,6 +17903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18130,12 +18141,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -18153,6 +18158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18385,12 +18396,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -18468,6 +18473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18700,12 +18711,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -18723,6 +18728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18955,12 +18966,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -18978,6 +18983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19210,12 +19221,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -19233,6 +19238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19465,12 +19476,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -19488,6 +19493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19720,12 +19731,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -19755,6 +19760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19987,12 +19998,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -20076,6 +20081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20308,12 +20319,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -20361,6 +20366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20593,12 +20604,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -20616,6 +20621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20848,12 +20859,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -20871,6 +20876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21103,12 +21114,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -21126,6 +21131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21358,12 +21369,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -21381,6 +21386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21613,12 +21624,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -21636,6 +21641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21868,12 +21879,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -21957,6 +21962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22189,12 +22200,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -22278,6 +22283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22510,12 +22521,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -22599,6 +22604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22831,12 +22842,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -22890,6 +22895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23122,12 +23133,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -23211,6 +23216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23443,12 +23454,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -23466,6 +23471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23698,12 +23709,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -23721,6 +23726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23953,12 +23964,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -23988,6 +23993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24220,12 +24231,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -24309,6 +24314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24541,12 +24552,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -24564,6 +24569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24796,12 +24807,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -24831,6 +24836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25063,12 +25074,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -25128,6 +25133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25360,12 +25371,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -25449,6 +25454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25681,12 +25692,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -25770,6 +25775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26002,12 +26013,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -26079,6 +26084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26311,12 +26322,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -26337,8 +26342,14 @@
     "RIVET": {
       "last_id": "rivet-read-is-voltage-20260823-01",
       "last_ts": "2026-08-23T15:59:47Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
         {
           "id": "slack-1787538333-104459",
           "from": "GPT",
@@ -26625,6 +26636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26857,12 +26874,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -26946,6 +26957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27178,12 +27195,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -27267,6 +27278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27499,12 +27516,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -27528,6 +27539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27760,12 +27777,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -27801,6 +27812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28033,12 +28050,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -28122,6 +28133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28354,12 +28371,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -28377,6 +28388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28609,12 +28626,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -28698,6 +28709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28930,12 +28947,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -29019,6 +29030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29251,12 +29268,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -29340,6 +29351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29572,12 +29589,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -29661,6 +29672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29893,12 +29910,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -29982,6 +29993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30214,12 +30231,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -30237,6 +30248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30469,12 +30486,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -30522,6 +30533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30754,12 +30771,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -30843,6 +30854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31075,12 +31092,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -31164,6 +31175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31396,12 +31413,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -31485,6 +31496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31717,12 +31734,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [
@@ -31806,6 +31817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1787538348-620859",
+          "from": "BRYCE",
+          "to": "TABLE",
+          "ts": "2026-08-24T02:27:20Z"
+        },
+        {
           "id": "slack-1787538333-104459",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32038,12 +32055,6 @@
           "from": "RIVET",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-23T14:05:21Z"
-        },
-        {
-          "id": "rivet-ship-door-hub-20260823-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-23T13:58:25Z"
         }
       ],
       "mine": [

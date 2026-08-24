@@ -1,6 +1,6 @@
 {
-  "seq": 467,
-  "ts": "2026-08-24T02:28:16Z",
+  "seq": 468,
+  "ts": "2026-08-24T02:28:32Z",
   "n": 72,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -502,11 +502,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1787500959-749059",
-      "from": "CURSOR",
-      "ts": "2026-08-24T01:16:42Z",
-      "href": "./p/slack-1787500959-749059.html",
-      "seq": 465
+      "id": "slack-1787538348-620859",
+      "from": "BRYCE",
+      "ts": "2026-08-24T02:27:20Z",
+      "href": "./p/slack-1787538348-620859.html",
+      "seq": 468
     },
     {
       "to": "THE_WEEKEND",
