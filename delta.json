@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -233,18 +245,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -548,18 +560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -803,18 +815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1070,18 +1082,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1325,18 +1337,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1580,18 +1592,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1901,18 +1913,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2192,18 +2204,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2447,18 +2459,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,20 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
         {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
@@ -2755,6 +2767,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2981,18 +3005,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -3010,6 +3022,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3236,18 +3260,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -3265,6 +3277,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3491,18 +3515,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -3520,6 +3532,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3746,18 +3770,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -3793,6 +3805,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4019,18 +4043,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -4114,6 +4126,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4340,18 +4364,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -4435,6 +4447,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4661,18 +4685,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -4708,6 +4720,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4934,18 +4958,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -4969,6 +4981,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5195,18 +5219,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -5224,6 +5236,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5450,18 +5474,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -5479,6 +5491,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5705,18 +5729,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -5776,6 +5788,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6002,18 +6026,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -6055,6 +6067,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6281,18 +6305,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -6310,6 +6322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6536,18 +6560,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -6565,6 +6577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6791,18 +6815,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -6820,6 +6832,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7046,18 +7070,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -7141,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7367,18 +7391,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -7456,6 +7468,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7682,18 +7706,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -7729,6 +7741,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7955,18 +7979,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -8050,6 +8062,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8276,18 +8300,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -8341,6 +8353,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8567,18 +8591,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -8608,6 +8620,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8834,18 +8858,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -8863,6 +8875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9089,18 +9113,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -9184,6 +9196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9410,18 +9434,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -9505,6 +9517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9731,18 +9755,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -9760,6 +9772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9986,18 +10010,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -10015,6 +10027,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10241,18 +10265,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -10336,6 +10348,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10562,18 +10586,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -10657,6 +10669,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10883,18 +10907,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -10924,6 +10936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11150,18 +11174,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -11227,6 +11239,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11453,18 +11477,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -11482,6 +11494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11708,18 +11732,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -11803,6 +11815,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12029,18 +12053,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -12070,6 +12082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12296,18 +12320,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -12391,6 +12403,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12617,18 +12641,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -12646,6 +12658,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12872,18 +12896,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -12967,6 +12979,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13193,18 +13217,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -13228,6 +13240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13454,18 +13478,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -13483,6 +13495,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13709,18 +13733,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -13804,6 +13816,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14030,18 +14054,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -14059,6 +14071,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14285,18 +14309,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -14320,6 +14332,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14546,18 +14570,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -14641,6 +14653,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14867,18 +14891,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -14902,6 +14914,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15128,18 +15152,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -15218,11 +15230,23 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
-      "last_ts": "2026-08-24T09:10:56.796299Z",
+      "last_id": "gpt-issue1596-item5-ship-20260824-01",
+      "last_ts": "2026-08-24T09:17:00.631699Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
         {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
@@ -15282,18 +15306,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T07:35:40.805359Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-audit-delta-20260824-02",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:24:52.746099Z"
-        },
-        {
-          "id": "gpt-device-reservation-v1-audit-delta-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T07:01:16.817499Z"
         }
       ]
     },
@@ -15302,6 +15314,18 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
         {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
@@ -15529,18 +15553,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -15624,6 +15636,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15850,18 +15874,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -15945,6 +15957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16171,18 +16195,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -16266,6 +16278,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16492,18 +16516,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -16521,6 +16533,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16747,18 +16771,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -16788,6 +16800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17014,18 +17038,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -17109,6 +17121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17335,18 +17359,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -17364,6 +17376,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17590,18 +17614,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -17667,6 +17679,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17893,18 +17917,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -17988,6 +18000,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18214,18 +18238,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -18261,6 +18273,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18487,18 +18511,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -18582,6 +18594,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18808,18 +18832,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -18837,6 +18849,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19063,18 +19087,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -19092,6 +19104,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19318,18 +19342,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -19407,6 +19419,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19633,18 +19657,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -19662,6 +19674,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19888,18 +19912,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -19917,6 +19929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20143,18 +20167,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -20172,6 +20184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20398,18 +20422,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -20427,6 +20439,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20653,18 +20677,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -20706,6 +20718,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20932,18 +20956,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -21027,6 +21039,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21253,18 +21277,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -21312,6 +21324,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21538,18 +21562,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -21567,6 +21579,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21793,18 +21817,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -21822,6 +21834,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22048,18 +22072,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -22077,6 +22089,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22303,18 +22327,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -22332,6 +22344,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22558,18 +22582,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -22584,8 +22596,20 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 21,
+      "n": 23,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
         {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
@@ -22794,6 +22818,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23020,18 +23056,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -23115,6 +23139,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23341,18 +23377,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -23436,6 +23460,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23662,18 +23698,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -23733,6 +23757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23959,18 +23995,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -24054,6 +24078,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24280,18 +24316,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -24309,6 +24333,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24535,18 +24571,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -24564,6 +24588,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24790,18 +24826,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -24831,6 +24855,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25057,18 +25093,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -25152,6 +25176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25378,18 +25414,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -25407,6 +25431,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25633,18 +25669,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -25674,6 +25698,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25900,18 +25936,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -25971,6 +25995,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26197,18 +26233,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -26292,6 +26316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26518,18 +26554,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -26613,6 +26637,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26839,18 +26875,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -26922,6 +26946,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27148,18 +27184,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -27189,6 +27213,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27415,18 +27451,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -27510,6 +27534,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27736,18 +27772,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -27831,6 +27855,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28057,18 +28093,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -28152,6 +28176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28378,18 +28414,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -28413,6 +28437,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28639,18 +28675,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -28686,6 +28710,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28912,18 +28948,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -29007,6 +29031,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29233,18 +29269,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -29259,8 +29283,20 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 12,
+      "n": 14,
       "since": [
+        {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
         {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
@@ -29415,6 +29451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29641,18 +29689,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -29736,6 +29772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29962,18 +30010,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -30057,6 +30093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30283,18 +30331,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -30378,6 +30414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30604,18 +30652,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -30699,6 +30735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30925,18 +30973,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -30954,6 +30990,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31180,18 +31228,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -31239,6 +31275,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31465,18 +31513,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -31560,6 +31596,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31786,18 +31834,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -31881,6 +31917,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32107,18 +32155,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -32202,6 +32238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32428,18 +32476,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
@@ -32523,6 +32559,18 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item5-ship-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:17:00.631699Z"
+        },
+        {
+          "id": "gpt-issue1596-item5-final-review-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T09:13:33.452299Z"
+        },
+        {
           "id": "gpt-issue1596-item5-race-replay-replacement-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32749,18 +32797,6 @@
           "from": "BRYCE",
           "to": "TABLE",
           "ts": "2026-08-24T05:08:54.008439Z"
-        },
-        {
-          "id": "gpt-llms-fresh-cas-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:07:39.685859Z"
-        },
-        {
-          "id": "slack-1787547461-559219",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T04:57:41.559219Z"
         }
       ],
       "mine": [
