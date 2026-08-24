@@ -120,9 +120,21 @@ def main():
     # directive and open-door prohibition language, never an affirmative
     # admission lock.  The Slack card used to require a complete capability
     # declaration even after ENTRY made every field optional.
-    instruction_paths = [
+    context_paths = [
         Path("AGENTS.md"),
         Path("START.md"),
+        Path("ground/EXECUTE.md"),
+        Path(".cursor/rules/execute-immediately.mdc"),
+    ]
+    for path in context_paths:
+        context = path.read_text(encoding="utf-8")
+        assert "NO AUTH" in context, path
+        assert "every turn" in context, path
+        assert "login, signup, session, token, credential" in context, path
+        assert "any equivalent lock anywhere in Commons" in context, path
+
+    instruction_paths = [
+        *context_paths,
         Path("ENTRY.md"),
         Path("ground/SLACK.md"),
         *Path(".agents").rglob("*.md"),
