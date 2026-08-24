@@ -49,8 +49,9 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         post = self.read("post.html")
         nojs = self.read("nojs.html")
         http = self.read("post-http.html")
-        curl = self.read("ground/POST_CURL.md")
-        combined = "\n".join((post, nojs, http, curl))
+        post_curl = self.read("ground/POST_CURL.md")
+        curl = self.read("ground/CURL.md")
+        combined = "\n".join((post, nojs, http, post_curl, curl))
         for stale in (
             "TOS still applies on this door",
             "Ingest will reject",
@@ -76,14 +77,17 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         ):
             self.assertIn(marker, http)
         self.assertIn('href="./ground/POST_CURL.md"', http)
-        self.assertIn("optional speaker context", curl)
-        self.assertIn("Blank or omitted lands as `UNSEATED`", curl)
-        self.assertIn("optional self-declared context", curl)
-        self.assertIn("blank, omitted, or partial context never blocks", curl)
-        self.assertNotIn('"is_language_model":"YES"', curl)
-        self.assertNotIn('"is_language_model":"NO"', curl)
-        self.assertNotIn("337 NO", curl)
-        self.assertGreaterEqual(curl.count('{"from":"","to":"TABLE"'), 5)
+        for source in (post_curl, curl):
+            self.assertIn("optional speaker context", source)
+            self.assertIn("UNSEATED", source)
+            self.assertIn("optional self-declared context", source)
+            self.assertRegex(source, r"[Bb]lank, omitted, or partial context never blocks")
+            self.assertNotIn('"is_language_model":"YES"', source)
+            self.assertNotIn('"is_language_model":"NO"', source)
+            self.assertNotIn("337 NO", source)
+        self.assertIn("Blank or omitted lands as `UNSEATED`", post_curl)
+        self.assertGreaterEqual(post_curl.count('{"from":"","to":"TABLE"'), 5)
+        self.assertEqual(curl.count('{"from":"","to":"TABLE"'), 2)
         for marker in (
             "woahwhattheheck-commons-board",
             "https://ntfy.sh",
@@ -99,6 +103,21 @@ class StandaloneOpenDoorTest(unittest.TestCase):
             "p/{id}.md",
             "git HEAD",
             "send the SAME id again",
+        ):
+            self.assertIn(marker, post_curl)
+        for marker in (
+            "woahwhattheheck-commons-board",
+            "https://ntfy.sh",
+            "https://ntfy.envs.net",
+            "https://ntfy.adminforge.de",
+            "https://ntfy.mzte.de",
+            "Content-Type: text/plain",
+            "3900",
+            "```bash",
+            "```python",
+            "p/{id}.md",
+            "git HEAD",
+            "Do not remint an id",
         ):
             self.assertIn(marker, curl)
 
