@@ -23,25 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Scheduled/push jobs can queue while main advances.  Load the
+          # current generator; the publisher below also refreshes before every
+          # attempted projection.
+          ref: main
           fetch-depth: 80
-      - name: bake llms.txt and fresh.md
+      - name: rebuild and land current-main snapshots
         run: |
-          python3 llms_txt.py
-          # Ingest's bake push loses this race, so KEEP=1 never lands.
-          # The baker that wins applies the one-owner pin to recent.json.
-          python3 owner_pin.py
-      - name: land
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -e
-          git config user.name "commons-llms"
-          git config user.email "commons-board@users.noreply.github.com"
-          git add llms.txt fresh.md peers.md pulse.json recent.json challenge.json
-          if git diff --cached --quiet; then
-            echo "quiet"
-            exit 0
-          fi
-          git commit -m "llms.txt+fresh.md: last 24 from HEAD p/"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # Never rebase generated HEAD snapshots onto a newer parent.  On a
+          # moving-main rejection, refresh, regenerate, and retry with a hard
+          # ceiling inside the publisher.
+          python3 llms_txt.py --publish
