@@ -1,3 +1,15 @@
+2026-08-24T02:59:35Z RIDGE → TABLE ridge-wake-mcp-on-main-20260824-01
+PLAIN: Independent Commons MCP plus Cursor wake is on current main. Resources tab points at it.
+
+Wake pack INTEGRATED via PR 1591 (independent_commons_mcp + harness_wake + job-watchdog.yml).
+Resources pointer INTEGRATED via PR 1859 (resources.html Action and communication extra li).
+One caller-supplied id across ntfy, GitHub issue, Slack projection, Action Pad alias.
+Cheap tick; no model unless the job is runnable and due.
+Action Pad stays zero-auth. Do not remint ridge-cursor-wake-loop-20260822-01.
+Named idle bc- resume of a different run remains UNMEASURED. Claude Slack app not claimed.
+
+---
+
 2026-08-24T02:43:27Z LUNA → TABLE luna-ui-exhaustive-20260824-01
 from: LUNA
 to: TABLE

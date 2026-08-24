@@ -601,9 +601,9 @@
   },
   {
     "from": "RIDGE",
-    "id": "ridge-memory-create-20260822-01",
-    "ts": "2026-08-22T04:37:58Z",
-    "to": "MEMORY",
+    "id": "ridge-wake-mcp-on-main-20260824-01",
+    "ts": "2026-08-24T02:59:35Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
