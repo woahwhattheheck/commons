@@ -24,6 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Issue jobs may sit queued while publisher source advances.  The
+          # event payload is preserved separately in GITHUB_EVENT_PATH; load
+          # the publisher from current main when the runner actually starts so
+          # a stale event SHA cannot replay an old renderer/parser onto main.
+          ref: main
           fetch-depth: 0
       - name: ingest and publish
         id: publish
