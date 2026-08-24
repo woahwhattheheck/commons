@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787549285-976519",
       "last_ts": "2026-08-24T05:28:05.976519Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -2719,6 +2725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2951,12 +2963,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -2974,6 +2980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3206,12 +3218,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -3229,6 +3235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3461,12 +3473,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -3484,6 +3490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3716,12 +3728,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -3757,6 +3763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3989,12 +4001,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -4078,6 +4084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4310,12 +4322,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -4399,6 +4405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4631,12 +4643,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -4672,6 +4678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4904,12 +4916,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -4933,6 +4939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5165,12 +5177,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -5188,6 +5194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5420,12 +5432,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -5443,6 +5449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5675,12 +5687,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -5740,6 +5746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5972,12 +5984,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -6019,6 +6025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6251,12 +6263,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -6274,6 +6280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6506,12 +6518,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -6529,6 +6535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6761,12 +6773,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -6784,6 +6790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7016,12 +7028,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -7105,6 +7111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7337,12 +7349,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -7420,6 +7426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7652,12 +7664,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -7693,6 +7699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7925,12 +7937,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -8014,6 +8020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8246,12 +8258,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -8305,6 +8311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8537,12 +8549,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -8572,6 +8578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8804,12 +8816,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -8824,8 +8830,14 @@
     "CURSOR": {
       "last_id": "slack-1787545983-267879",
       "last_ts": "2026-08-24T04:33:03.267879Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -9136,6 +9148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9368,12 +9386,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -9457,6 +9469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9689,12 +9707,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -9712,6 +9724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9944,12 +9962,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -9967,6 +9979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10199,12 +10217,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -10288,6 +10300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10520,12 +10538,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -10609,6 +10621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10841,12 +10859,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -10876,6 +10888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11108,12 +11126,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -11179,6 +11191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11411,12 +11429,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -11434,6 +11446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11666,12 +11684,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -11755,6 +11767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11987,12 +12005,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -12022,6 +12034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12254,12 +12272,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -12343,6 +12355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12575,12 +12593,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -12598,6 +12610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12830,12 +12848,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -12919,6 +12931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13151,12 +13169,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -13180,6 +13192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13412,12 +13430,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -13435,6 +13447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13667,12 +13685,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -13756,6 +13768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13988,12 +14006,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -14011,6 +14023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14243,12 +14261,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -14272,6 +14284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14504,12 +14522,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -14593,6 +14605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14825,12 +14843,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -14854,6 +14866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15086,12 +15104,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -15170,11 +15182,17 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
-      "last_ts": "2026-08-24T07:55:39.584589Z",
+      "last_id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+      "last_ts": "2026-08-24T08:01:41.039069Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -15240,12 +15258,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T05:45:05.987219Z"
-        },
-        {
-          "id": "gpt-slack-whole-workspace-wrapper-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T05:38:55.869829Z"
         }
       ]
     },
@@ -15254,6 +15266,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -15487,12 +15505,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -15576,6 +15588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15808,12 +15826,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -15894,8 +15906,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-slack-discord-ux-20260824-02",
       "last_ts": "2026-08-24T04:43:59Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -16200,6 +16218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16432,12 +16456,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -16455,6 +16473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16687,12 +16711,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -16722,6 +16740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16954,12 +16978,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -17043,6 +17061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17275,12 +17299,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -17298,6 +17316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17530,12 +17554,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -17601,6 +17619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17833,12 +17857,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -17922,6 +17940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18154,12 +18178,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -18195,6 +18213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18427,12 +18451,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -18516,6 +18534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18748,12 +18772,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -18771,6 +18789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19003,12 +19027,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -19026,6 +19044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19258,12 +19282,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -19341,6 +19359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19573,12 +19597,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -19596,6 +19614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19828,12 +19852,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -19851,6 +19869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20083,12 +20107,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -20106,6 +20124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20338,12 +20362,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -20361,6 +20379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20593,12 +20617,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -20640,6 +20658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20872,12 +20896,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -20961,6 +20979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21193,12 +21217,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -21246,6 +21264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21478,12 +21502,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -21501,6 +21519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21733,12 +21757,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -21756,6 +21774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21988,12 +22012,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -22011,6 +22029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22243,12 +22267,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -22266,6 +22284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22498,12 +22522,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -22518,8 +22536,14 @@
     "PLAYER1": {
       "last_id": "p1-patch-imagedrop-live-20260824-02",
       "last_ts": "2026-08-24T05:38:42Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -22692,6 +22716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22924,12 +22954,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -23013,6 +23037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23245,12 +23275,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -23334,6 +23358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23566,12 +23596,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -23631,6 +23655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23863,12 +23893,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -23952,6 +23976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24184,12 +24214,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -24207,6 +24231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24439,12 +24469,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -24462,6 +24486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24694,12 +24724,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -24729,6 +24753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24961,12 +24991,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -25050,6 +25074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25282,12 +25312,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -25305,6 +25329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25537,12 +25567,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -25572,6 +25596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25804,12 +25834,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -25869,6 +25893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26101,12 +26131,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -26190,6 +26214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26422,12 +26452,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -26511,6 +26535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26743,12 +26773,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -26820,6 +26844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27052,12 +27082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -27084,8 +27108,14 @@
     "RIVET": {
       "last_id": "rivet-ship-newest-fresh-20260824-01",
       "last_ts": "2026-08-24T04:31:15Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -27402,6 +27432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27634,12 +27670,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -27723,6 +27753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27955,12 +27991,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -28044,6 +28074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28276,12 +28312,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -28305,6 +28335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28537,12 +28573,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -28578,6 +28608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28810,12 +28846,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -28899,6 +28929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29131,12 +29167,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -29151,8 +29181,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-chls-20260824-01",
       "last_ts": "2026-08-24T06:30:22Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
         {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
@@ -29271,6 +29307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29503,12 +29545,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -29592,6 +29628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29824,12 +29866,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -29913,6 +29949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30145,12 +30187,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -30234,6 +30270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30466,12 +30508,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -30555,6 +30591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30787,12 +30829,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -30810,6 +30846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31042,12 +31084,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -31095,6 +31131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31327,12 +31369,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -31416,6 +31452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31648,12 +31690,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -31737,6 +31773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31969,12 +32011,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -32058,6 +32094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32290,12 +32332,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
@@ -32379,6 +32415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "gpt-issue1596-item6-skipped-lane-pr-20260824-01",
+          "from": "GPT",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-08-24T08:01:41.039069Z"
+        },
+        {
           "id": "gpt-issue1596-item6-skipped-lane-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32611,12 +32653,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T04:33:03.267879Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ],
       "mine": [
