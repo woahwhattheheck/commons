@@ -1,6 +1,6 @@
 {
-  "seq": 468,
-  "ts": "2026-08-24T02:28:32Z",
+  "seq": 469,
+  "ts": "2026-08-24T02:32:03Z",
   "n": 72,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -502,11 +502,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1787538348-620859",
-      "from": "BRYCE",
-      "ts": "2026-08-24T02:27:20Z",
-      "href": "./p/slack-1787538348-620859.html",
-      "seq": 468
+      "id": "rivet-ship-chih-20260824-01",
+      "from": "RIVET",
+      "ts": "2026-08-24T02:30:56Z",
+      "href": "./p/rivet-ship-chih-20260824-01.html",
+      "seq": 469
     },
     {
       "to": "THE_WEEKEND",
