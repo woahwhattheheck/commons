@@ -16,12 +16,18 @@
     ]
   },
   "slots": {
-    "pc": null,
+    "pc": {
+      "sha256": "2785bcee1d9b106dcb26c046609bc4359b1284f8f5ffb1e6a51f8917280c0afe"
+    },
     "phone": {
       "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039"
     }
   },
   "hashes": [
+    {
+      "sha256": "2785bcee1d9b106dcb26c046609bc4359b1284f8f5ffb1e6a51f8917280c0afe",
+      "via": "pc"
+    },
     {
       "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039",
       "via": "phone"
