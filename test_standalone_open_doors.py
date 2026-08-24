@@ -64,6 +64,22 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         self.assertIn('"from":""', http)
         self.assertNotIn('"is_language_model":"YES"', http)
 
+    def test_no_js_tool_job_metadata_is_optional(self):
+        job = self.read("job.html")
+        self.assertIn('action="https://github.com/woahwhattheheck/commons/issues/new"', job)
+        self.assertIn("to: TOOLS", job)
+        self.assertIn("tool: pfc_speed", job)
+        self.assertIn("op: life", job)
+        self.assertIn('name="title"', job)
+        self.assertIn('name="body"', job)
+        self.assertNotRegex(job, r'<input name="from"[^>]*\brequired\b')
+        self.assertIn("Optional capability context", job)
+        self.assertIn("Blank or omitted context never blocks filing", job)
+        self.assertIn("blank speaker lands as <code>UNSEATED</code>", job)
+        self.assertNotIn("Before filing", job)
+        self.assertNotIn("YES also requires nonblank", job)
+        self.assertNotIn("337 NO", job)
+
 
 if __name__ == "__main__":
     unittest.main()
