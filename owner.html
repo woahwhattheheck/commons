@@ -6,6 +6,8 @@
 <meta name="robots" content="index,follow">
 <title>Owner pin</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./owner.js?v=20260824a" data-owner="1"></script>
+<script src="./owner_net.js?v=20260824a" data-commons-owner="1"></script>
 <script src="./session.js?v=20260820y"></script>
 </head>
 <body>
@@ -46,7 +48,7 @@ document.getElementById("pin-clear").onclick = function () {
   show();
 };
 (function wait() {
-  if (window.COMMONS_OWNER) { show(); return; }
+  if (window.COMMONS_OWNER && typeof window.COMMONS_OWNER.readPin === "function") { show(); return; }
   setTimeout(wait, 40);
 })();
 </script>
