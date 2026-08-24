@@ -1122,7 +1122,7 @@ def _push_backoff(i):
 
 
 def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIES,
-                     record_fail=True):
+                     record_fail=True, bake_phase=False):
     env = git_env(env)
     last_err = ""
     deadline = time.monotonic() + PUSH_DEADLINE_S
@@ -1155,6 +1155,15 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
                 last_err = "rebase conflict could not be resolved: " + \
                     ((rc.stderr or rc.stdout or "").strip()[-300:] or "(no output)")
                 break
+            # A bake-phase replay reset deliberately throws away the derived
+            # commit and keeps origin's record.  Do not run around the loop
+            # once more and call the resulting no-op push "pushed": callers
+            # need the exact state so they can rebuild once from refreshed
+            # origin.  Record-phase replay keeps its older behavior and pushes
+            # any restored append-only source on the next iteration.
+            if bake_phase:
+                print("bake replay reset discarded the derived commit", flush=True)
+                return "bake-reset"
     else:
         i = tries
     # the receipt must say what actually happened: the loop can break on the
@@ -1263,7 +1272,50 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
                 return recorded if recorded == "pushed" else "unchanged"
             return "commit-fail" if recorded != "pushed" else "pushed"
         st = push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta,
-                              record_fail=(recorded != "pushed"))
+                              record_fail=(recorded != "pushed"), bake_phase=True)
+        if st == "bake-reset":
+            # _resolve_rebase refreshed the checkout and intentionally
+            # discarded the conflicting bake.  This also matters on scheduled
+            # or duplicate runs with no new record in phase one, so bake_phase
+            # is an explicit flag rather than an alias for record_fail.
+            # Derive once more from the newer union and make one bounded push
+            # attempt.  A second race is deferred explicitly; never loop and
+            # never stamp PUSH_FAIL on a record that is already durable.
+            print("bake reset on refreshed origin; rebuilding once", flush=True)
+            rebuild()
+            _stage_board(env, extra_paths=extra_paths, add_all=add_all)
+            retry_commit = commit(msg)
+            retry_output = ((retry_commit.stderr or "") + (retry_commit.stdout or "")).lower()
+            if retry_commit.returncode != 0:
+                if "nothing to commit" in retry_output:
+                    # _resolve_rebase may already have committed a restored
+                    # source-like path (for example a newly rendered p/*.html)
+                    # on top of origin.  A clean rebuild therefore still needs
+                    # this one push check; do not equate "no additional commit"
+                    # with "origin already has HEAD".
+                    print("bake rebuild made no additional commit; checking refreshed HEAD", flush=True)
+                else:
+                    if recorded == "pushed":
+                        print("bake retry commit failed; record is durable, bake deferred", flush=True)
+                        return "pushed"
+                    print("bake retry commit failed", flush=True)
+                    return "commit-fail"
+            retry = push_origin_main(
+                env,
+                extra_paths=extra_paths,
+                fail_meta=fail_meta,
+                tries=1,
+                record_fail=(recorded != "pushed"),
+                bake_phase=True,
+            )
+            if retry == "pushed":
+                print("bake retry pushed from refreshed origin", flush=True)
+                return "pushed"
+            if recorded == "pushed":
+                print("bake retry deferred after one bounded attempt; record is durable", flush=True)
+                return "pushed"
+            print("bake retry failed after one bounded attempt", flush=True)
+            return "push-fail"
         if recorded == "pushed" and st != "pushed":
             print("bake push lost the race; record is durable, next run rebakes", flush=True)
             return "pushed"
