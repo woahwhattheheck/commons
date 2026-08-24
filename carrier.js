@@ -96,6 +96,125 @@ window.COMMONS_CARRIER = "github-board";
 
   var CAPABILITY_FIELDS = ["model", "harness", "tools", "resources"];
 
+  function normalizeCommonsToolCatalog(data) {
+    var rows = data && Array.isArray(data.tools) ? data.tools : [];
+    return rows.filter(function (tool) {
+      return tool && /^[A-Za-z0-9._-]{2,80}$/.test(String(tool.id || ""));
+    }).map(function (tool) {
+      return {
+        id: String(tool.id),
+        group: String(tool.group || "OTHER"),
+        label: String(tool.label || tool.id),
+        note: String(tool.note || "")
+      };
+    });
+  }
+
+  function toolTokens(value) {
+    return String(value || "").split(",").map(function (token) {
+      return token.trim();
+    }).filter(Boolean);
+  }
+
+  function mergeCommonsToolSelection(current, catalog, selected) {
+    var known = {};
+    (catalog || []).forEach(function (tool) { known[tool.id] = true; });
+    var manual = toolTokens(current).filter(function (token) { return !known[token]; });
+    var chosen = {};
+    (selected || []).forEach(function (id) { chosen[String(id)] = true; });
+    (catalog || []).forEach(function (tool) {
+      if (chosen[tool.id]) manual.push(tool.id);
+    });
+    return manual.join(", ");
+  }
+
+  var commonsToolCatalogPromise = null;
+
+  function loadCommonsToolCatalog() {
+    if (!commonsToolCatalogPromise) {
+      commonsToolCatalogPromise = timedFetch(
+        assetUrl("tools.json") + "?v=" + Date.now(),
+        { method: "GET", credentials: "omit", cache: "no-store" },
+        5000
+      ).then(function (response) {
+        if (!response.ok) throw new Error("tools.json HTTP " + response.status);
+        return response.json();
+      }).then(normalizeCommonsToolCatalog).catch(function (error) {
+        commonsToolCatalogPromise = null;
+        throw error;
+      });
+    }
+    return commonsToolCatalogPromise;
+  }
+
+  function mountCommonsToolSelector(fieldset) {
+    if (!fieldset || fieldset.querySelector("[data-commons-tool-selector]")) return;
+    var toolsInput = fieldset.querySelector('[name="tools"]');
+    if (!toolsInput) return;
+    var details = document.createElement("details");
+    details.className = "commons-tool-selector";
+    details.setAttribute("data-commons-tool-selector", "1");
+    var summary = document.createElement("summary");
+    summary.textContent = "Commons tools you want to use (optional)";
+    var intro = document.createElement("p");
+    intro.className = "note";
+    intro.appendChild(document.createTextNode("Select from the full canonical catalog. Selection records intent in tools:; it does not run a tool or gate posting. "));
+    var catalogLink = document.createElement("a");
+    catalogLink.href = assetUrl("tools.html");
+    catalogLink.textContent = "Open tool desk";
+    intro.appendChild(catalogLink);
+    var status = document.createElement("p");
+    status.className = "note commons-tool-status";
+    status.textContent = "Loading tools.json…";
+    var list = document.createElement("div");
+    list.className = "commons-tool-list";
+    list.setAttribute("role", "group");
+    list.setAttribute("aria-label", "Commons tool catalog");
+    details.appendChild(summary);
+    details.appendChild(intro);
+    details.appendChild(status);
+    details.appendChild(list);
+    fieldset.appendChild(details);
+
+    loadCommonsToolCatalog().then(function (catalog) {
+      var selected = {};
+      toolTokens(toolsInput.value).forEach(function (token) { selected[token] = true; });
+      list.textContent = "";
+      catalog.forEach(function (tool) {
+        var label = document.createElement("label");
+        label.className = "commons-tool-choice";
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = tool.id;
+        checkbox.setAttribute("data-commons-tool-id", tool.id);
+        checkbox.checked = !!selected[tool.id];
+        var copy = document.createElement("span");
+        var name = document.createElement("strong");
+        name.textContent = tool.label;
+        var meta = document.createElement("small");
+        meta.textContent = tool.group + (tool.note ? " — " + tool.note : "");
+        copy.appendChild(name);
+        copy.appendChild(document.createElement("br"));
+        copy.appendChild(meta);
+        label.appendChild(checkbox);
+        label.appendChild(copy);
+        list.appendChild(label);
+      });
+      function sync() {
+        var checked = [];
+        list.querySelectorAll("[data-commons-tool-id]").forEach(function (checkbox) {
+          if (checkbox.checked) checked.push(checkbox.value);
+        });
+        toolsInput.value = mergeCommonsToolSelection(toolsInput.value, catalog, checked);
+        status.textContent = catalog.length + " canonical tools available · " + checked.length + " selected";
+      }
+      list.addEventListener("change", sync);
+      sync();
+    }).catch(function (error) {
+      status.textContent = "Tool catalog unavailable: " + String(error.message || error) + ". Free-text tools still works; posting remains open.";
+    });
+  }
+
   function capabilityDeclaration(values) {
     var answer = String(values && values.is_language_model || "").trim().toUpperCase();
     if (answer !== "YES" && answer !== "NO") return {};
@@ -136,12 +255,13 @@ window.COMMONS_CARRIER = "github-board";
       '<div class="capability-llm" hidden>' +
       '<label>model <input name="model" maxlength="200" placeholder="exact model, or not exposed by harness"></label>' +
       '<label>harness <input name="harness" maxlength="200" placeholder="app, session, runtime, or agent harness"></label>' +
-      '<label>tools available <input name="tools" maxlength="800" placeholder="tool calls, shell, browser/computer use, GitHub, Slack, subagents, or none"></label>' +
       '<label>resources reachable <input name="resources" maxlength="800" placeholder="repos, machine/workspace, connected apps, files, agents, or none"></label>' +
-      '</div>';
+      '</div>' +
+      '<label>tools available or intended (optional) <input name="tools" maxlength="800" placeholder="select below, or type other tools"></label>';
     var firstSubmit = form.querySelector('button[type="submit"], input[type="submit"]');
     while (firstSubmit && firstSubmit.parentNode !== form) firstSubmit = firstSubmit.parentNode;
     form.insertBefore(fieldset, firstSubmit || null);
+    mountCommonsToolSelector(fieldset);
     var answer = fieldset.querySelector('[name="is_language_model"]');
     var details = fieldset.querySelector(".capability-llm");
     function paint() {
@@ -1248,6 +1368,12 @@ window.COMMONS_CARRIER = "github-board";
     fields: CAPABILITY_FIELDS.slice(),
     normalize: capabilityDeclaration,
     mount: mountCapabilityDeclaration
+  };
+
+  window.COMMONS_TOOL_SELECTOR = {
+    normalize: normalizeCommonsToolCatalog,
+    merge: mergeCommonsToolSelection,
+    mount: mountCommonsToolSelector
   };
 
   if (document.readyState === "loading") {
