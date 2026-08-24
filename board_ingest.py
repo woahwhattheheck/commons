@@ -59,6 +59,9 @@ TO_LANES = ("TABLE", "COURT", "TOOLS", "WORLD", "DATA", "WEATHER", "MOD", "WAKE"
 SESSION_ACTS = {"SESSION_OPEN", "SESSION_CLOSE"}
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
+SLACK_OBSERVED_EVENT_RE = re.compile(
+    r"^slack:C0BRGMDQB6G:(\d+(?:\.\d+)?):\d+$"
+)
 SHARE_BAD = re.compile(
     r"9000|10-wide|10wide|tensor.?scrape|mmap\s*(titan|dc)|fire\s*337|"
     r"inject\s*0x01|pulse\s*78|light\s*7913|notepad\s*titan|"
@@ -2852,6 +2855,9 @@ def _issue_post_fields(issue):
         # frontmatter form splits at the CLOSING separator, not the opening one,
         # or the header block itself would be served as the post body
         text = _body_text(body)
+    mid = _slack_connector_declared_id(
+        issue, src, dest, mid, text, extra
+    ) or mid
     if not mid:
         mid = re.sub(r"[^A-Za-z0-9._-]", "-", title)[:80]
     if not src:
@@ -2859,6 +2865,82 @@ def _issue_post_fields(issue):
     if not dest:
         dest = "TABLE"
     return src, dest, mid, text or body, extra
+
+
+def _leading_slack_declaration(text):
+    """Return a complete caller route from the raw Slack message header.
+
+    The connected-app fallback wraps the original Slack text in a second issue
+    envelope.  It uses the same 40-line scanner boundary as
+    ``slack_ingest.leading_fields`` but a stricter promotion policy:
+    blank-separated declaration lines are accepted, a real prose line ends the
+    header, and repeated routing fields are ambiguous rather than last-wins.
+    """
+    fields = {}
+    saw_field = False
+    for raw in (text or "").splitlines()[:40]:
+        line = raw.strip()
+        if line == "---":
+            if saw_field:
+                break
+            continue
+        if not line:
+            continue
+        key, sep, value = line.partition(":")
+        key = key.strip().lower()
+        if not sep or not re.fullmatch(r"[a-z_]+", key):
+            break
+        if key in ("from", "to", "id") and key in fields:
+            return {}
+        fields[key] = value.strip()
+        saw_field = True
+    if not all(fields.get(key) for key in ("from", "to", "id")):
+        return {}
+    if not ID_OK.fullmatch(fields["id"]):
+        return {}
+    return fields
+
+
+def _slack_connector_declared_id(issue, outer_src, outer_dest, outer_id, text, extra):
+    """Promote a declared id through the measured connected-app wrapper.
+
+    This is deliberately narrower than generic nested-frontmatter parsing.  A
+    promotion is allowed only for the exact fallback shape emitted by the live
+    Slack connector: canonical channel provenance, a ``slack-{native_ts}``
+    outer id and the same fallback issue title.  Arbitrary board issues, other
+    channels, already-declared outer ids and malformed declarations keep their
+    existing identity.
+    """
+    if str(extra.get("carrier") or "") != "slack-connector":
+        return ""
+    if str(extra.get("kind") or "") not in ("slack_message", "slack_thread_reply"):
+        return ""
+    observed = SLACK_OBSERVED_EVENT_RE.fullmatch(
+        str(extra.get("observed_event") or "")
+    )
+    if not observed:
+        return ""
+    native_ts = observed.group(1)
+    whole, dot, fraction = native_ts.partition(".")
+    fallback = "slack-%s-%s" % (whole, fraction if dot else "0")
+    if outer_id != fallback or str(issue.get("title") or "") != fallback:
+        return ""
+    # First durable writer wins.  Old connector issues may be replayed after a
+    # close failure; if their fallback page already exists, promoting on the
+    # replay would create a second canonical file for one Slack event.
+    if os.path.isfile(os.path.join(POSTS, fallback + ".md")):
+        return ""
+    fields = _leading_slack_declaration(text)
+    if not fields:
+        return ""
+    inner_src = as_from(fields["from"])
+    inner_dest = as_to(fields["to"])
+    if not inner_src or not inner_dest:
+        return ""
+    if inner_src != as_from(outer_src) or inner_dest != as_to(outer_dest):
+        return ""
+    declared = fields["id"]
+    return declared if declared != fallback else ""
 
 
 def ingest_github_event():
