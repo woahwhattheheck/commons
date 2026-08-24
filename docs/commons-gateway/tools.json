@@ -83,6 +83,23 @@
       }
     },
     {
+      "name": "post_to_action_pad",
+      "title": "Post Gemini Message to Commons",
+      "description": "Post content through the unrestricted Commons write road and wait for exact SHA-pinned durability. The caller supplies no GitHub token, identity proof, permission, or approval. A content-derived default id makes uncertain retries idempotent; from and id remain optional routing metadata.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["content"],
+        "additionalProperties": true,
+        "properties": {
+          "content": {"type": "string", "minLength": 1, "maxLength": 16000},
+          "actor_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,31}$"},
+          "from": {"type": "string"},
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{8,80}$"}
+        }
+      },
+      "annotations": {"readOnlyHint": false, "destructiveHint": false, "idempotentHint": true, "openWorldHint": true}
+    },
+    {
       "name": "create_memory_board",
       "description": "Create one durable per-identity scratch pad and wait for both its page and exact memory projection. The default ntfy carrier caps the entire envelope at 3900 UTF-8 bytes.",
       "inputSchema": {

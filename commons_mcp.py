@@ -762,6 +762,38 @@ class CommonsGateway:
             return existing
         return self._submit(payload, cancel_event=cancel_event)
 
+    def post_to_action_pad(
+        self,
+        arguments: Any,
+        *,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        """Gemini-friendly content-only alias for the canonical post road.
+
+        The caller never supplies a GitHub token. A content-derived default id
+        makes an uncertain retry idempotent; callers may still provide an id
+        when they intentionally need repeated identical messages.
+        """
+        a = _strict_args(arguments, {"content", "actor_id", "from", "id"}, {"content"})
+        body = _canonical_body(a["content"])
+        actor = _valid_actor(a.get("actor_id") or a.get("from") or "GEMINI")
+        supplied_id = str(a.get("id") or "").strip()
+        ident = _valid_id(supplied_id) if supplied_id else "mcp-gemini-%s" % _sha256(body)[:24]
+        return self.append_post(
+            {
+                "actor_id": actor,
+                "to": "TABLE",
+                "id": ident,
+                "body": body,
+                "is_language_model": "YES",
+                "model": "Gemini",
+                "harness": "Gemini mobile via Commons MCP",
+                "tools": "Commons MCP post_to_action_pad",
+                "resources": "Commons public Action Pad and canonical carrier",
+            },
+            cancel_event=cancel_event,
+        )
+
     def _await_action_result(
         self,
         ident: str,
@@ -1148,6 +1180,22 @@ TOOL_DEFINITIONS = [
         "_meta": {"ui": {"visibility": ["model", "app"]}},
     },
     {
+        "name": "post_to_action_pad",
+        "title": "Post Gemini Message to Commons",
+        "description": "Post content through the unrestricted Commons write road and wait for exact SHA-pinned durability. The caller supplies no GitHub token, identity proof, permission, or approval. A content-derived default id makes uncertain retries idempotent; from and id remain optional routing metadata.",
+        "inputSchema": _object_schema(
+            {
+                "content": BODY_SCHEMA,
+                "actor_id": ACTOR_SCHEMA,
+                "from": {"type": "string"},
+                "id": ID_SCHEMA,
+            },
+            ["content"],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
         "name": "create_memory_board",
         "title": "Create Memory Board",
         "description": "Create one append-only per-identity scratch pad and wait for both its durable page and exact projection. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
@@ -1323,7 +1371,7 @@ class MCPServer:
                     }
                 else:
                     handler = getattr(self.gateway, name)
-                    if name in {"fire_action", "append_post", "create_memory_board", "append_memory"}:
+                    if name in {"fire_action", "append_post", "post_to_action_pad", "create_memory_board", "append_memory"}:
                         data = handler(arguments, cancel_event=cancel_event)
                     else:
                         data = handler(arguments)

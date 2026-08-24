@@ -60,6 +60,7 @@ REQUIRED_TOOLS = {
     "open_commons_composer",
     "fire_action",
     "append_post",
+    "post_to_action_pad",
     "verify_durability",
     "create_memory_board",
     "append_memory",
@@ -242,6 +243,7 @@ def main() -> int:
     required_inputs = {
         "fire_action": set(),
         "append_post": {"id", "body"},
+        "post_to_action_pad": {"content"},
         "create_memory_board": {"actor_id", "id", "actor_class", "intelligence_kind", "surface", "body"},
         "append_memory": {"actor_id", "id", "memory_id", "memory_kind", "body"},
         "verify_durability": {"id"},

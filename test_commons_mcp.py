@@ -169,8 +169,8 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(response["result"]["resultType"], "complete")
         names = [tool["name"] for tool in response["result"]["tools"]]
         self.assertEqual(names, [
-            "open_commons_composer", "fire_action", "append_post", "create_memory_board",
-            "append_memory", "verify_durability",
+            "open_commons_composer", "fire_action", "append_post", "post_to_action_pad",
+            "create_memory_board", "append_memory", "verify_durability",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
         launcher = response["result"]["tools"][0]
@@ -184,6 +184,9 @@ class ProtocolTests(unittest.TestCase):
         # inputs for a new post or an exact retry.
         self.assertNotIn("is_language_model", append_schema["required"])
         self.assertEqual(append_schema["properties"]["is_language_model"]["enum"], ["YES", "NO"])
+        gemini_schema = response["result"]["tools"][3]["inputSchema"]
+        self.assertEqual(gemini_schema["required"], ["content"])
+        self.assertNotIn("token", gemini_schema["properties"])
 
     def test_body_preserves_literal_local_paths(self):
         literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
@@ -457,6 +460,28 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(result["body_sha256"], cm._sha256("hello"))
         self.assertEqual(len(carrier.calls), 1)
         self.assertTrue(all(sha in {SHA0, SHA1} for _, sha in truth.reads))
+
+    def test_gemini_content_only_post_uses_open_canonical_carrier(self):
+        carrier = FakeCarrier()
+        body = "hello from Gemini mobile"
+        ident = "mcp-gemini-%s" % cm._sha256(body)[:24]
+        metadata = {
+            "is_language_model": "YES",
+            "model": "Gemini",
+            "harness": "Gemini mobile via Commons MCP",
+            "tools": "Commons MCP post_to_action_pad",
+            "resources": "Commons public Action Pad and canonical carrier",
+        }
+        files = {
+            "p/%s.md" % ident: post_text("GEMINI", "TABLE", ident, body, **metadata)
+        }
+        gw, _, _ = gateway([(SHA0, {}), (SHA1, files)], carrier)
+        result = gw.post_to_action_pad({"content": body})
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        self.assertEqual(result["git_sha"], SHA1)
+        self.assertEqual(carrier.calls[0]["id"], ident)
+        self.assertEqual(carrier.calls[0]["from"], "GEMINI")
+        self.assertNotIn("token", carrier.calls[0])
 
     def test_missing_memory_does_not_gate_carrier(self):
         carrier = FakeCarrier()
