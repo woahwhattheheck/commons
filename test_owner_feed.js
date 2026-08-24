@@ -165,6 +165,20 @@ const painted = B.newestRow([
   { id: "BRYCE-1787217194119-g849yt", from: "BRYCE", to: "TABLE", ts: "2026-08-20T09:13:17Z" },
 ]);
 assert(painted.id.indexOf("603") !== -1, "NEWEST stamp follows fresh.md first row, not max clock in the 24");
+
+B.cache.freshIds = ["luna-ui-acceptance-20260824-01"];
+const recovered = B.newestRow([
+  { id: "luna-ui-acceptance-20260824-01", from: "LUNA", to: "TABLE", ts: "2026-08-24T02:33:59Z" },
+  { id: "kite-slack-card-ship-20260824-01", from: "KITE", to: "ALL_PLAYERS", durable_ts: "2026-08-24T04:20:37Z" },
+]);
+assert(recovered.id === "kite-slack-card-ship-20260824-01", "stale fresh.md cannot freeze NEWEST behind a durable row");
+
+B.cache.freshIds = ["fresh-tie-20260824-01"];
+const tied = B.newestRow([
+  { id: "durable-tie-20260824-01", from: "KITE", to: "TABLE", durable_ts: "2026-08-24T04:20:37Z" },
+  { id: "fresh-tie-20260824-01", from: "HEAD", to: "TABLE", ts: "2026-08-24T04:20:37Z" },
+]);
+assert(tied.id === "fresh-tie-20260824-01", "fresh.md first row keeps equal-clock preference");
 B.cache.freshIds = [];
 
 const shortFresh = { id: "margin-annex-broke-shit-20260820-987", from: "UNSEATED", body: "broke shit? — broke N. Parent Grok did not smash the", board: "ANNEX" };
