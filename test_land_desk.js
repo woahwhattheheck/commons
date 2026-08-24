@@ -425,6 +425,17 @@ assert.ok(/emerging norms/i.test(html), "desk must name emerging-norms talk as C
 assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
 assert.ok(/daily complete inventory/i.test(html), "desk must name inventory talk as CLAIMED");
 assert.ok(api.isInventoryTalk("FULL DEDUPLICATED MAP (27 canonical systems)"), "inventory copy is talk");
+assert.ok(api.isDemandGapTalk("BRYCE DEMAND GAP — 44 OUTSTANDING, NON-DUPLICATING LANES"), "demand-gap copy is talk");
+assert.ok(/demand-gap/i.test(html), "desk must name demand-gap talk as CLAIMED");
+var demandGapTalk = api.completionStateFromText(
+  "44 outstanding. Take only the smallest unclaimed lane. DEPENDENCY-ORDERED LANES. 38 PARTIAL, 2 UNBUILT, 4 UNKNOWN."
+);
+assert.strictEqual(demandGapTalk.state, "CLAIMED");
+assert.ok(/demand-gap/i.test(demandGapTalk.note), "demand-gap-without-SHA must stay CLAIMED");
+var demandGapDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\n44 outstanding leftover shipped"
+);
+assert.strictEqual(demandGapDone.state, "INTEGRATED", "completion words still beat a demand-gap list");
 var inventoryTalk = api.completionStateFromText(
   "COMMONS DAILY COMPLETE INVENTORY. Bounded sweep is complete. Exact open gaps: Titan 29-31."
 );
