@@ -187,6 +187,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isVisualPraise(t)) {
+      return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
+    }
     return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
   };
 
@@ -200,6 +203,10 @@
 
   api.isDesignJam = function (text) {
     return /self-heal|desired state|what do you all think|love to jam|excited to riff|noodling|workflow orchestration|nanny\/gardener|k8s-style|shared written one|stored charge|addressed substrate|voltage in the hard drive|overlapping.{0,40}circuit|must write to propagate|read is only observation|read is just observation|reads do not propagate|write-only voltage/i.test(String(text || ""));
+  };
+
+  api.isVisualPraise = function (text) {
+    return /visual commons|pixel bots?|8-?bit\/pixel|sprite-based|hybrid visual|excited to see where it leads|permissionless contribution model/i.test(String(text || ""));
   };
 
   api.sharedOneState = function (row) {
