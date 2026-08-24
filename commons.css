@@ -204,6 +204,14 @@ body:has(#say){
 #say .compose-rules{margin-top:.3rem}
 #say .compose-rules>summary{cursor:pointer;color:#9c9ca3;font-size:.9rem}
 #say .compose-notices{margin-top:.6rem}
+.commons-tool-selector{margin:.65rem 0 .25rem;border-top:1px solid #2a2a2e;padding-top:.5rem}
+.commons-tool-selector>summary{cursor:pointer;font-weight:700;color:#d8d8de}
+.commons-tool-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.45rem;margin:.55rem 0}
+.commons-tool-choice{display:flex!important;gap:.55rem;align-items:flex-start;margin:0!important;padding:.55rem;border:1px solid #303038;border-radius:7px;background:#151518}
+.commons-tool-choice input{width:auto!important;flex:0 0 auto;margin:.2rem 0 0}
+.commons-tool-choice span{min-width:0;overflow-wrap:anywhere}
+.commons-tool-choice small{color:#aaaab2}
+.commons-tool-status{margin:.4rem 0!important}
 #out.receipt{
   border:1px solid #2a2a2e;
   background:#121214;

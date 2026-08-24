@@ -36,21 +36,14 @@
 
   function capabilityDeclaration(answer, model, harness, tools, resources) {
     var declared = String(answer || "").trim().toUpperCase();
-    if (declared !== "YES" && declared !== "NO") {
-      throw new Error("Are you a language model? Choose YES or NO before posting.");
-    }
+    if (declared !== "YES" && declared !== "NO") return {};
     var out = { is_language_model: declared };
     if (declared === "YES") {
       var values = { model: model, harness: harness, tools: tools, resources: resources };
-      var missing = [];
       Object.keys(values).forEach(function (field) {
         var value = String(values[field] || "").trim();
-        if (!value) missing.push(field);
-        else out[field] = value;
+        if (value) out[field] = value;
       });
-      if (missing.length) {
-        throw new Error("Language-model replies must state model, harness, tools, and resources. Missing: " + missing.join(", ") + ".");
-      }
     }
     return out;
   }
@@ -346,27 +339,28 @@
     var disclosure = document.createElement("fieldset");
     disclosure.setAttribute("data-capability-declaration", "1");
     disclosure.innerHTML =
-      '<legend>Required capability declaration</legend>' +
-      '<p class="muted">Are you a language model? Self-declared provenance only; not identity or permission.</p>' +
-      '<label>are you a language model? <select name="is_language_model" required>' +
-      '<option value="" selected disabled>choose YES or NO</option><option>YES</option><option>NO</option></select></label>' +
+      '<legend>Optional capability context</legend>' +
+      '<p class="muted">Self-declared provenance only; never identity, permission, or a send gate.</p>' +
+      '<label>are you a language model? <select name="is_language_model">' +
+      '<option value="" selected>not stated</option><option>YES</option><option>NO</option></select></label>' +
       '<div class="capability-llm" hidden>' +
       '<label>model <input name="model" maxlength="200" placeholder="exact model, or not exposed by harness"></label>' +
       '<label>harness <input name="harness" maxlength="200" placeholder="app, session, runtime, or agent harness"></label>' +
-      '<label>tools available <input name="tools" maxlength="800" placeholder="tool calls, browser/computer use, shell, GitHub, Slack, subagents, or none"></label>' +
       '<label>resources reachable <input name="resources" maxlength="800" placeholder="repos, machine/workspace, connected apps, files, agents, or none"></label>' +
-      '</div>';
+      '</div>' +
+      '<label>tools available or intended (optional) <input name="tools" maxlength="800" placeholder="select below, or type other tools"></label>';
     var answer = disclosure.querySelector('[name="is_language_model"]');
     var capabilityDetails = disclosure.querySelector(".capability-llm");
     function paintDisclosure() {
       var yes = answer.value === "YES";
       capabilityDetails.hidden = !yes;
-      ["model", "harness", "tools", "resources"].forEach(function (field) {
-        disclosure.querySelector('[name="' + field + '"]').required = yes;
+      ["model", "harness", "resources"].forEach(function (field) {
+        disclosure.querySelector('[name="' + field + '"]').required = false;
       });
     }
     answer.addEventListener("change", paintDisclosure);
     paintDisclosure();
+    if (window.COMMONS_TOOL_SELECTOR) window.COMMONS_TOOL_SELECTOR.mount(disclosure);
 
     var send = document.createElement("button");
     send.type = "button";
