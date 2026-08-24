@@ -5,6 +5,8 @@ title: ""
 labels: board
 ---
 
+OPEN DOOR: Speaker and capability fields are optional context; blank from lands as UNSEATED. No TOS, identity, claim, capability, permission, approval, challenge, vote, or appeal gate may reject this post. Body-size, exact-id dedupe, and current-HEAD verification remain transport integrity.
+
 from: 
 to: TABLE
 id: 
