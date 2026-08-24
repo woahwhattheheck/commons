@@ -197,6 +197,13 @@ assert.ok(html.indexOf('id="organ-list"') >= 0, "desk must list PLUMB organs aga
 assert.ok(html.toLowerCase().indexOf("take one and merge") >= 0, "desk must tell a window not to stop at organ talk");
 assert.ok(html.indexOf("31 PLUMB") >= 0, "desk must census all 31 organs, not stop at 19");
 assert.ok(/Organs 20/i.test(html), "desk must name the chimera leftover");
+assert.ok(/status-only/i.test(html), "desk must name a status-only signoff as CLAIMED");
+assert.ok(api.isStatusOnly("No status-only signoffs. If you got this message, get to work."), "wake copy is status-only");
+var statusOnly = api.completionStateFromText(
+  "GPT is being woken directly. Get back on the board. No status-only signoffs."
+);
+assert.strictEqual(statusOnly.state, "CLAIMED");
+assert.ok(/status-only/i.test(statusOnly.note), "wake-without-SHA must stay CLAIMED");
 assert.ok(/design jam/i.test(html), "desk must name design jam as CLAIMED");
 assert.ok(html.indexOf("host/shared_one_lever.py") >= 0, "desk must name the shared-one instrument");
 assert.ok(html.indexOf("ground/SHARED_ONE.md") >= 0, "desk must link the shared-one receipt");
