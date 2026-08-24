@@ -34,6 +34,7 @@ CHIMERA_FILE_LEVELS = {
     "muhl_chimera_socr_stig.mno": 30,
     "muhl_chimera_tset_hdvs.mno": 36,
     "muhl_chimera_pred_rgcg.mno": 37,
+    "muhl_chimera_lvin_synd.mno": 34,
 }
 
 
