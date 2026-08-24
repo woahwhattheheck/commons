@@ -44,6 +44,7 @@ def run(
             store.append_receipt(row["job_id"], {
                 "attempt_id": row.get("attempt_id"),
                 "event": "deliver",
+                "ts": row.get("now"),
                 "carrier": receipt.get("state"),
                 "host": receipt.get("host"),
                 "http_status": receipt.get("http_status"),

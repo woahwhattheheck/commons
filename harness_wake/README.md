@@ -39,3 +39,18 @@ ntfy 200 is mail. The watchdog process always reports
 `process_model_invocations: 0`. A separately running harness consumes the
 delivery via `harness_wake.callback.consume_delivery`; `tick()` never calls
 it.
+
+A delivery must be claimed before its live lease expires. `consume_delivery`
+returns `CLAIMED / invoke_model=true` while retaining the lease; after the
+owning harness actually performs useful work it calls `finish_delivery`. The
+claim does not itself advance the checkpoint or ACK the carrier. A replay is a
+no-model no-op. Nonterminal finish commits checkpoint + ACK together; terminal
+finish commits checkpoint + ACK + DONE only after the durable page verifies.
+If claimed work or verification fails, recovery uses a newly minted wake
+attempt. Direct `checkpoint_job` calls likewise require the current
+`attempt_id` and `lease_id`; a worker label alone is not authority.
+
+One local jobs directory is serialized across threads and OS processes sharing
+the same host/temp namespace. This is not a distributed lock across separate
+containers, Actions checkouts, or machines; those copies still reconcile
+through git rather than a shared local transaction.

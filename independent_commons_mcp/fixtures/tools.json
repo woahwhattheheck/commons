@@ -304,14 +304,16 @@
     },
     {
       "name": "checkpoint_job",
-      "description": "Write the next concrete checkpoint after a harness did useful work. Releases the lease. Does not mark DONE. Does not remint job_id.",
+      "description": "Write the next concrete checkpoint after a harness did useful work. Requires the current attempt_id and lease_id, then releases that lease. Does not mark DONE or remint job_id.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["job_id", "checkpoint"],
+        "required": ["job_id", "checkpoint", "attempt_id", "lease_id"],
         "properties": {
           "job_id": { "type": "string" },
           "checkpoint": { "type": "object" },
+          "attempt_id": { "type": "string" },
+          "lease_id": { "type": "string" },
           "next_wake_at": { "type": "string" },
           "tokens_used": { "type": "integer" },
           "worker_id": { "type": "string" }
