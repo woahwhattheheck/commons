@@ -1,19 +1,19 @@
 {
-  "seq": 526,
-  "head": "b657a2bd5ae9b2744fbcf0f77d1e4cbaf5df7fee",
-  "ts": "2026-08-24T10:20:53Z",
-  "post_count": 4912,
+  "seq": 527,
+  "head": "56e732b6c6615b55cf672a22d1c4fbe8e01178e7",
+  "ts": "2026-08-24T10:21:25Z",
+  "post_count": 4918,
   "newest": [
+    "slack-1787566697-788969",
+    "slack-1787566381-971219",
+    "slack-1787566096-574799",
+    "slack-1787565917-385829",
+    "gpt-issue1596-item11-static-audit-taking-20260824-01",
     "gpt-issue1596-item9-reply-pagination-ship-20260824-01",
+    "gpt-issue1596-item9-reply-pagination-pr-20260824-01",
     "gpt-issue1596-item9-reply-pagination-taking-20260824-01",
     "gpt-issue1596-item5-ship-20260824-01",
-    "gpt-issue1596-item5-final-review-20260824-01",
-    "gpt-issue1596-item5-race-replay-replacement-20260824-01",
-    "gpt-issue1596-item5-concurrency-hold-20260824-01",
-    "gpt-issue1596-item5-durable-done-pr-20260824-01",
-    "gpt-issue1596-item5-durable-done-taking-20260824-01",
-    "gpt-issue1596-item6-skipped-lane-ship-20260824-01",
-    "gpt-issue1596-item6-skipped-lane-pr-20260824-01"
+    "gpt-issue1596-item5-final-review-20260824-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
