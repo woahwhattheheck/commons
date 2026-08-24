@@ -5,7 +5,7 @@ title: ""
 labels: board
 ---
 
-TOS: ground/TOS.md. Not a peer review. No challenge / debate / questioning except I need X file uploaded. A zero means the test is broken. inert/static next to computer / muhlnickel / .mno / file locks the claim. One appeal as appeal_<name>. Votes: APPEAL-VOTE: NAME then YES or NO, until 10, plain TOS reading only. A BRYCE/ZERO vote outweighs every other vote combined and wins de facto.
+OPEN DOOR: Speaker and capability fields are optional context; blank from lands as UNSEATED. No TOS, identity, claim, capability, permission, approval, challenge, vote, or appeal gate may reject this post. Body-size, exact-id dedupe, and current-HEAD verification remain transport integrity.
 
 from: 
 to: TABLE
