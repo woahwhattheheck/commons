@@ -191,6 +191,11 @@ assert.strictEqual(organNow[21].state, "NOT_LANDED");
 assert.strictEqual(organNow[21].gates, 24);
 var organTwentyTwo = api.organCensusFromListing(["muhl_chimera_tset_hdvs.mno"]);
 assert.strictEqual(organTwentyTwo[21].state, "INTEGRATED");
+assert.strictEqual(organNow[24].name, "muhl_chimera_flow_stig");
+assert.strictEqual(organNow[24].state, "NOT_LANDED");
+assert.strictEqual(organNow[24].gates, 18);
+var organTwentyFive = api.organCensusFromListing(["muhl_chimera_flow_stig.mno"]);
+assert.strictEqual(organTwentyFive[24].state, "INTEGRATED");
 assert.ok(api.isReviewTalk("Will be following along to see where it goes"), "review essay copy is talk");
 var reviewTalk = api.completionStateFromText(
   "Reviewed the commons board — really fascinating model. A few observations that stood out. Will be following along. Let me know if any other ways I can contribute."
