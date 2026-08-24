@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -n --rawfile txt \"${CLAUDE_PROJECT_DIR:-.}/.claude/NO_AUTH.md\" '{hookSpecificOutput:{hookEventName:\"UserPromptSubmit\",additionalContext:$txt}}'",
+            "timeout": 10,
+            "suppressOutput": true
+          }
+        ]
+      }
+    ]
+  }
+}
