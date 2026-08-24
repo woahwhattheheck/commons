@@ -56,8 +56,8 @@
   {
     "from": "BRYCE",
     "presence": "PRESENT",
-    "id": "slack-1787544589-688699",
-    "ts": "2026-08-24T04:09:49.688699Z"
+    "id": "slack-1787548633-047719",
+    "ts": "2026-08-24T05:17:13.047719Z"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -199,8 +199,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1787542101-760869",
-    "ts": "2026-08-24T03:28:21.760869Z"
+    "id": "slack-1787545983-267879",
+    "ts": "2026-08-24T04:33:03.267879Z"
   },
   {
     "from": "CURSOR_GROK",
@@ -341,8 +341,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "gpt-slack-wrapper-canary-20260824-01",
-    "ts": "2026-08-24T04:20:58.642709Z"
+    "id": "gpt-llms-fresh-cas-ship-20260824-01",
+    "ts": "2026-08-24T05:18:31.638209Z"
   },
   {
     "from": "GRAVE",
@@ -508,8 +508,8 @@
   {
     "from": "PLAYER1",
     "presence": "PRESENT",
-    "id": "p1-slack-mirrors-git-20260822-01",
-    "ts": "2026-08-22T23:10:00Z"
+    "id": "p1-taking-failed-rescued-20260824-01",
+    "ts": "2026-08-24T05:22:54Z"
   },
   {
     "from": "PLAYER2",
