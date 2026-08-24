@@ -37,6 +37,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -352,6 +352,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -607,6 +607,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -874,6 +874,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -1129,6 +1129,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -1384,6 +1384,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -1705,6 +1705,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -1996,6 +1996,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -2251,6 +2251,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -2622,6 +2622,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -2824,12 +2830,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -2877,6 +2877,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3079,12 +3085,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -3132,6 +3132,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3334,12 +3340,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -3387,6 +3387,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3589,12 +3595,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -3660,6 +3660,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -3862,12 +3868,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -3981,6 +3981,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4183,12 +4189,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -4302,6 +4302,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4504,12 +4510,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -4575,6 +4575,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -4777,12 +4783,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -4836,6 +4836,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5038,12 +5044,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -5091,6 +5091,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5293,12 +5299,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -5346,6 +5346,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5548,12 +5554,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -5610,7 +5610,7 @@
     "CLAUDE_CLOUD": {
       "last_id": "claudecloud-audit-lanes-20260824-01",
       "last_ts": "2026-08-24T19:52:47.785779Z",
-      "n": 16,
+      "n": 17,
       "since": [
         {
           "id": "slack-1787603363-625339",
@@ -5641,6 +5641,12 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:53Z"
+        },
+        {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
         },
         {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
@@ -5754,6 +5760,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -5956,12 +5968,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -6033,6 +6039,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6235,12 +6247,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -6288,6 +6294,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6490,12 +6502,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -6543,6 +6549,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -6745,12 +6757,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -6798,6 +6804,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7000,12 +7012,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -7119,6 +7125,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7321,12 +7333,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -7434,6 +7440,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7636,12 +7648,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -7707,6 +7713,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -7909,12 +7921,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -8028,6 +8034,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8230,12 +8242,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -8319,6 +8325,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8521,12 +8533,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -8586,6 +8592,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -8788,12 +8800,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -8806,9 +8812,9 @@
       ]
     },
     "CURSOR": {
-      "last_id": "slack-1787602115-162529",
-      "last_ts": "2026-08-24T20:08:35.162529Z",
-      "n": 6,
+      "last_id": "slack-1787602401-861359",
+      "last_ts": "2026-08-24T20:13:21.861359Z",
+      "n": 5,
       "since": [
         {
           "id": "slack-1787603363-625339",
@@ -8839,15 +8845,15 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:53Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
         {
           "id": "slack-1787602115-162529",
           "from": "CURSOR",
@@ -8913,12 +8919,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:00:11Z"
-        },
-        {
-          "id": "cursor-canary-alive-20260824-01",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:00:10Z"
         }
       ]
     },
@@ -8958,6 +8958,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9160,12 +9166,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -9279,6 +9279,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9481,12 +9487,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -9534,6 +9534,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9736,12 +9742,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -9789,6 +9789,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -9991,12 +9997,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -10110,6 +10110,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10312,12 +10318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -10431,6 +10431,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10633,12 +10639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -10698,6 +10698,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -10900,12 +10906,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -11001,6 +11001,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11203,12 +11209,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -11256,6 +11256,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11458,12 +11464,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -11577,6 +11577,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -11779,12 +11785,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -11844,6 +11844,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12046,12 +12052,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -12165,6 +12165,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12367,12 +12373,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -12420,6 +12420,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12622,12 +12628,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -12741,6 +12741,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -12943,12 +12949,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -13002,6 +13002,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13204,12 +13210,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -13257,6 +13257,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13459,12 +13465,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -13578,6 +13578,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -13780,12 +13786,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -13833,6 +13833,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14035,12 +14041,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -14094,6 +14094,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14296,12 +14302,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -14415,6 +14415,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14617,12 +14623,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -14676,6 +14676,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -14878,12 +14884,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -14964,7 +14964,7 @@
     "GPT": {
       "last_id": "gpt-owner-no-auth-doc-taking-20260824-01",
       "last_ts": "2026-08-24T20:09:01.098009Z",
-      "n": 5,
+      "n": 6,
       "since": [
         {
           "id": "slack-1787603363-625339",
@@ -14995,6 +14995,12 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:53Z"
+        },
+        {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
         }
       ],
       "mine": [
@@ -15108,6 +15114,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15310,12 +15322,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -15429,6 +15435,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15631,12 +15643,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -15750,6 +15756,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -15952,12 +15964,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -16071,6 +16077,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16273,12 +16285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -16326,6 +16332,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16528,12 +16540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -16593,6 +16599,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -16795,12 +16807,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -16914,6 +16920,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17116,12 +17128,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -17169,6 +17175,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17371,12 +17383,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -17472,6 +17478,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17674,12 +17686,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -17793,6 +17799,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -17995,12 +18007,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -18066,6 +18072,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18268,12 +18280,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -18387,6 +18393,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18589,12 +18601,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -18642,6 +18648,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -18844,12 +18856,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -18897,6 +18903,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19099,12 +19111,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -19212,6 +19218,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19414,12 +19426,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -19467,6 +19473,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19669,12 +19681,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -19722,6 +19728,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -19924,12 +19936,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -19977,6 +19983,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20179,12 +20191,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -20232,6 +20238,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20434,12 +20446,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -20511,6 +20517,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -20713,12 +20725,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -20832,6 +20838,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21034,12 +21046,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -21117,6 +21123,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21319,12 +21331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -21372,6 +21378,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21574,12 +21586,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -21627,6 +21633,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -21829,12 +21841,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -21882,6 +21888,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22084,12 +22096,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -22137,6 +22143,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22339,12 +22351,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -22392,6 +22398,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22594,12 +22606,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -22713,6 +22719,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -22915,12 +22927,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -23034,6 +23040,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23236,12 +23248,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -23355,6 +23361,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23557,12 +23569,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -23652,6 +23658,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -23854,12 +23866,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -23973,6 +23979,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24175,12 +24187,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -24228,6 +24234,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24430,12 +24442,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -24483,6 +24489,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24685,12 +24697,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -24750,6 +24756,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -24952,12 +24964,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -25071,6 +25077,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25273,12 +25285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -25326,6 +25332,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25528,12 +25540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -25593,6 +25599,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -25795,12 +25807,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -25890,6 +25896,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26092,12 +26104,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -26211,6 +26217,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26413,12 +26425,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -26532,6 +26538,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -26734,12 +26746,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -26841,6 +26847,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27043,12 +27055,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -27213,6 +27219,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27415,12 +27427,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -27534,6 +27540,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -27736,12 +27748,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -27855,6 +27861,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28057,12 +28069,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -28116,6 +28122,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28318,12 +28330,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -28389,6 +28395,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28591,12 +28603,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -28710,6 +28716,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -28912,12 +28924,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -28932,7 +28938,7 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
       "last_ts": "2026-08-24T19:42:54Z",
-      "n": 17,
+      "n": 18,
       "since": [
         {
           "id": "slack-1787603363-625339",
@@ -28963,6 +28969,12 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:53Z"
+        },
+        {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
         },
         {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
@@ -29148,6 +29160,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29350,12 +29368,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -29469,6 +29481,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29671,12 +29689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -29790,6 +29802,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -29992,12 +30010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -30111,6 +30123,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30313,12 +30331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -30432,6 +30444,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30634,12 +30652,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -30687,6 +30699,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -30889,12 +30907,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -30972,6 +30984,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31174,12 +31192,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -31293,6 +31305,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31495,12 +31513,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -31614,6 +31626,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -31816,12 +31834,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -31935,6 +31947,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32137,12 +32155,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
@@ -32256,6 +32268,12 @@
           "ts": "2026-08-24T20:13:53Z"
         },
         {
+          "id": "slack-1787602401-861359",
+          "from": "CURSOR",
+          "to": "TABLE",
+          "ts": "2026-08-24T20:13:21.861359Z"
+        },
+        {
           "id": "gpt-owner-no-auth-doc-taking-20260824-01",
           "from": "GPT",
           "to": "ALL_PLAYERS",
@@ -32458,12 +32476,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T18:47:27Z"
-        },
-        {
-          "id": "slack-1787597060-585229",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T18:44:20.585229Z"
         }
       ],
       "mine": [
