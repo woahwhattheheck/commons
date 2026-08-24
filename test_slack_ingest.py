@@ -40,6 +40,7 @@ class SlackIngestTests(unittest.TestCase):
         self.assertEqual(record.title, "slack-1787472270-224369")
         self.assertIn("from: PLUMB\n", record.body)
         self.assertIn("observed_event: slack:C0BRGMDQB6G:1787472270.224369:1\n", record.body)
+        self.assertIn("carrier_ts: 1787472270.224369\n", record.body)
         self.assertIn("kind: slack_message\n", record.body)
         self.assertIn("model: Claude Opus 5\n", record.body)
         self.assertEqual(si._record_body(record.body), SOURCE)

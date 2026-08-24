@@ -68,6 +68,8 @@ def main():
         os.environ["GITHUB_TOKEN"] = "test-token"
 
         created = "2026-08-18T11:11:11Z"
+        source_ts = "2026-08-18T10:10:10.123456Z"
+        native_ts = "1787033410.123456"
         api = FakeAPI({
             10: {"number": 10, "state": "open", "labels": [{"name": "board"}], "title": "t",
                  "body": "from: W7\nto: TABLE\nid: int-test-a-0001\n\n---\n\nrecovered body",
@@ -77,6 +79,13 @@ def main():
                  "created_at": created},
             12: {"number": 12, "state": "open", "labels": [], "title": "ordinary bug report",
                  "body": "The build breaks on Android 16", "created_at": created},
+            13: {"number": 13, "state": "open", "labels": [{"name": "board"}], "title": "t",
+                 "body": (
+                     "from: GPT\nto: TABLE\nid: slack-clock-sweep-0001\n"
+                     "ts: %s\ncarrier_ts: %s\ncarrier: slack-connector\n\n---\n\n"
+                     "source-clock body" % (source_ts, native_ts)
+                 ),
+                 "created_at": created},
         })
         board_ingest._gh_api = api
 
@@ -88,12 +97,20 @@ def main():
         planned = board_ingest.sweep_collect()
         writes = [c for c in api.calls if c[0] in ("POST", "PATCH")]
         assert not writes, writes
-        assert {p["id"] for p in planned} == {"int-test-a-0001", "int-test-conflict-01"}, planned
+        assert {p["id"] for p in planned} == {
+            "int-test-a-0001", "int-test-conflict-01", "slack-clock-sweep-0001"
+        }, planned
         assert all(p["num"] != 12 for p in planned), "ordinary issue must be untouched"
 
         # carrier clock: the recovered page's carrier_ts is the ISSUE's created_at
         page = open(os.path.join(board_ingest.POSTS, "int-test-a-0001.md")).read()
         assert "carrier_ts: %s" % created in page, page[:300]
+
+        # Explicit Slack clocks beat the later issue-created timestamp while a
+        # generic issue above retains the existing created_at fallback.
+        clocked = open(os.path.join(board_ingest.POSTS, "slack-clock-sweep-0001.md")).read()
+        assert "ts: %s" % source_ts in clocked, clocked[:400]
+        assert "carrier_ts: %s" % native_ts in clocked, clocked[:400]
 
         # PUSH FAILURE: finalize is simply never called — assert the invariant
         # that collect alone produced zero API side effects (proved above), and

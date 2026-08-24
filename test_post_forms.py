@@ -49,6 +49,16 @@ resources: Commons repo, workspace
 ---
 declared body
 """
+CLOCKED_ISSUE = """from: GPT
+to: ALL_PLAYERS
+id: slack-clock-preservation-01
+ts: 2026-08-24T02:25:33.104459Z
+carrier_ts: 1787538333.104459
+carrier: slack-connector
+observed_event: slack:C0BRGMDQB6G:1787538333.104459:1
+---
+clocked body
+"""
 
 
 def main():
@@ -102,6 +112,15 @@ def main():
     check("declared/issue harness", issue_extra.get("harness"), "harness-y")
     check("declared/issue body", issue_body, "declared body")
     check("legacy/no declaration invented", "is_language_model" in board_ingest.parse_post(FENCE)[0], False)
+
+    # Slack's source clocks live in the issue envelope. They must cross the
+    # GitHub issue road without making generic body-leading ``ts:`` lines
+    # structural on every other transport.
+    issue = {"title": "t", "body": CLOCKED_ISSUE, "labels": [{"name": "board"}]}
+    _src, _dest, _ident, issue_body, issue_extra = board_ingest._issue_post_fields(issue)
+    check("clocked/issue ts", issue_extra.get("ts"), "2026-08-24T02:25:33.104459Z")
+    check("clocked/issue carrier_ts", issue_extra.get("carrier_ts"), "1787538333.104459")
+    check("clocked/issue body", issue_body, "clocked body")
 
     root = os.path.dirname(os.path.abspath(__file__))
     for name in ("post.html", ".github/ISSUE_TEMPLATE/commons-post.md", ".github/ISSUE_TEMPLATE/board.md"):

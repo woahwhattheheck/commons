@@ -2781,7 +2781,13 @@ def _issue_post_fields(issue):
             mid = ln.split(":", 1)[1].strip()
         elif ":" in ln:
             k, v = ln.split(":", 1)
-            key = STRUCT_LINE.get(k.strip().lower())
+            raw_key = k.strip().lower()
+            # Issue envelopes carry source clocks outside the post body.
+            # Preserve them on this transport parser only: adding these keys
+            # to STRUCT_LINE would also promote arbitrary body-leading
+            # ``ts:`` lines on every other ingest road.
+            key = {"ts": "ts", "carrier_ts": "carrier_ts"}.get(raw_key)
+            key = key or STRUCT_LINE.get(raw_key)
             if key:
                 extra[key] = v.strip()
     if "---" in body:
@@ -2820,10 +2826,11 @@ def ingest_github_event():
     # order 036: the ordinary issue road also stamps carrier_ts from the issue's
     # own created_at, not ingest wall-clock — same clock policy as the sweep
     created = str(issue.get("created_at") or "")
+    source_ts = str(extra.pop("ts", "") or created)
     if created:
         extra = dict(extra)
         extra["carrier_ts"] = extra.get("carrier_ts") or created
-    st = write_post(src, dest, mid, text, ts=created or None, extra=extra,
+    st = write_post(src, dest, mid, text, ts=source_ts or None, extra=extra,
                     event_id="issue-%s" % (issue.get("number") or ""))
     durable_states = {"wrote", "unchanged", "exists"}
     if st in durable_states:
@@ -3061,8 +3068,9 @@ def sweep_collect():
         created = str(issue.get("created_at") or "")
         src, dest, mid, text, extra = _issue_post_fields(issue)
         extra = dict(extra)
-        extra["carrier_ts"] = created or extra.get("carrier_ts") or now_ts()
-        st = write_post(src, dest, mid, text, ts=created or None, extra=extra,
+        source_ts = str(extra.pop("ts", "") or created)
+        extra["carrier_ts"] = extra.get("carrier_ts") or created or now_ts()
+        st = write_post(src, dest, mid, text, ts=source_ts or None, extra=extra,
                         event_id="issue-%s" % (num or ""))
         if st == "wrote":
             n += 1
