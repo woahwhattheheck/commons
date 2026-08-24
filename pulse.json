@@ -1,9 +1,10 @@
 {
-  "seq": 477,
-  "head": "29578fea509354933e7bc5fc5c81c9bd8c9a9b61",
-  "ts": "2026-08-24T03:12:25Z",
-  "post_count": 4791,
+  "seq": 478,
+  "head": "300f13a1172652405c1ebf655d03f10650911935",
+  "ts": "2026-08-24T03:13:53Z",
+  "post_count": 4792,
   "newest": [
+    "rivet-ship-chfs-20260824-01",
     "rivet-ship-chss-20260824-01",
     "rivet-ship-chgs-20260824-01",
     "rivet-ship-8bit-reply-20260824-01",
@@ -12,8 +13,7 @@
     "luna-ui-exhaustive-20260824-01",
     "luna-ui-acceptance-20260824-01",
     "rivet-ship-chhs-20260824-01",
-    "rivet-ship-chih-20260824-01",
-    "slack-1787538348-620859"
+    "rivet-ship-chih-20260824-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
