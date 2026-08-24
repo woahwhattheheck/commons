@@ -55,6 +55,8 @@ class ActionExecutorTests(unittest.TestCase):
             posts = root / "p"
             results = root / "actions" / "results"
             posts.mkdir(parents=True)
+            with mock.patch.object(ae, "POSTS", posts), mock.patch.object(ae, "RESULTS", results):
+                self.assertEqual(ae.pending("device"), [])
             for ident in ("sol-action-1001", "sol-action-1002"):
                 (posts / (ident + ".md")).write_text(
                     "from: SOL\nto: TOOLS\nid: %s\nkind: ACTION\nact: RUN\ntarget: DEVICE\n\n---\n\necho open\n" % ident,
@@ -666,6 +668,29 @@ new file mode 100644
         self.assertIn("action_executor.py --scope device", workflow)
         self.assertNotIn("reviewed Commons action id", workflow)
         self.assertNotIn("--only-id", workflow)
+
+    def test_device_workflow_gates_the_self_hosted_runner_on_current_main_pending_work(self):
+        workflow = (Path(__file__).parent / ".github/workflows/commons-device-executor.yml").read_text(encoding="utf-8")
+        prefix, jobs = workflow.split("jobs:\n", 1)
+        preflight, execute = jobs.split("  execute:\n", 1)
+
+        self.assertNotIn("concurrency:", prefix)
+        self.assertIn("permissions:\n  contents: read", prefix)
+
+        self.assertIn("  preflight:\n", "jobs:\n" + preflight)
+        self.assertIn("runs-on: ubuntu-latest", preflight)
+        self.assertNotIn("self-hosted", preflight)
+        self.assertIn('action_executor.pending("device")', preflight)
+        self.assertIn("has_pending: ${{ steps.pending.outputs.has_pending }}", preflight)
+        self.assertIn('os.environ["GITHUB_OUTPUT"]', preflight)
+
+        self.assertIn("needs: preflight", execute)
+        self.assertIn("if: needs.preflight.outputs.has_pending == 'true'", execute)
+        self.assertIn("runs-on: [self-hosted, commons-device]", execute)
+        self.assertIn("concurrency:\n      group: commons-device-executor\n      cancel-in-progress: false", execute)
+        self.assertIn("action_executor.py --scope device", execute)
+        self.assertEqual(workflow.count("ref: main"), 2)
+        self.assertEqual(workflow.count("persist-credentials: false"), 2)
 
     def test_action_html_parses_and_one_click_author_fire_keeps_shared_link_explicit(self):
         html = Path(__file__).with_name("action.html").read_text(encoding="utf-8")

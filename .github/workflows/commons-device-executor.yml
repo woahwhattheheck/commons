@@ -6,17 +6,40 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: commons-device-executor
-  cancel-in-progress: false
 jobs:
-  execute:
+  preflight:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      has_pending: ${{ steps.pending.outputs.has_pending }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - id: pending
+        name: measure pending device actions on current main
+        run: |
+          python3 - <<'PY'
+          import os
+          import action_executor
+
+          value = "true" if action_executor.pending("device") else "false"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"has_pending={value}\n")
+          PY
+  execute:
+    needs: preflight
+    if: needs.preflight.outputs.has_pending == 'true'
+    concurrency:
+      group: commons-device-executor
+      cancel-in-progress: false
     runs-on: [self-hosted, commons-device]
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
       - name: fire every pending device action
         run: python3 action_executor.py --scope device > .device_changed.json
