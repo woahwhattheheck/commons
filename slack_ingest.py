@@ -48,6 +48,7 @@ SLACK_API = "https://slack.com/api"
 GITHUB_API = "https://api.github.com"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
 DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
+OBSERVED_SLACK_RE = re.compile(r"^slack:[^:\s]+:(\d+(?:\.\d+)?):1$")
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
     r"\n?\*Sent using\*\s+<@[^>\n]+\|[^>\n]+>\s*$"
@@ -300,13 +301,24 @@ def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_I
 def high_water(posts_dir: Path = POSTS_DIR) -> str:
     newest = Decimal(0)
     if posts_dir.is_dir():
-        for path in posts_dir.glob("slack-*.md"):
+        for path in posts_dir.glob("*.md"):
             match = ID_RE.match(path.stem)
-            if not match:
+            if match:
+                value = Decimal("%s.%s" % match.groups())
+                if value > newest:
+                    newest = value
+            # Caller-id records no longer expose native Slack time in their
+            # filename.  The immutable observed-event receipt advances the
+            # same cursor without forcing those events to be reprocessed.
+            try:
+                fields = leading_fields(path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError):
                 continue
-            value = Decimal("%s.%s" % match.groups())
-            if value > newest:
-                newest = value
+            observed = OBSERVED_SLACK_RE.fullmatch(fields.get("observed_event", ""))
+            if observed:
+                value = _decimal_ts(observed.group(1))
+                if value > newest:
+                    newest = value
     return format(newest, "f")
 
 
