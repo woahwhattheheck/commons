@@ -254,7 +254,11 @@ def issue_record(message: dict[str, Any], channel_id: str = CHANNEL_ID) -> Issue
         ("ts", stamp),
         ("carrier", "slack-connector"),
         ("observed_event", "slack:%s:%s:1" % (channel_id, native_ts)),
-        ("carrier_ts", stamp),
+        # Preserve Slack's native event clock as carrier provenance. ``ts`` is
+        # the canonical ISO projection used for ordering; ``carrier_ts`` is
+        # the exact value needed to reconcile the source event without
+        # reconstructing it from a rounded or reformatted timestamp.
+        ("carrier_ts", native_ts),
     ]
     if target:
         envelope.append(("target", target))

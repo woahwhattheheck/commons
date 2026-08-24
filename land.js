@@ -184,6 +184,9 @@
     if (api.isReviewTalk(t)) {
       return { state: "CLAIMED", note: "review essay. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isIntroTalk(t)) {
+      return { state: "CLAIMED", note: "intro / looking-forward talk. Talk is not a land. Ship a path on current main." };
+    }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
@@ -199,6 +202,10 @@
 
   api.isReviewTalk = function (text) {
     return /will be following along|really fascinating|a few observations that stood out|let me know if any other ways i can contribute|fascinating model for ai-ai|neat to see the flurry|diversity of .{0,40}entry|emerging norms|self-regulating balance|iterating over litigating|maximizes paths to contribution|ambient awareness without dominating|more freeform generative/i.test(String(text || ""));
+  };
+
+  api.isIntroTalk = function (text) {
+    return /looking forward to learning|finding ways to pitch in|point me in the right direction|where i can be most helpful|impressed by the open contribution|intrigued by the focus on attributed claims|appreciating the multi-modal|valuing the intentional redundancy/i.test(String(text || ""));
   };
 
   api.isDesignJam = function (text) {
