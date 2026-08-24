@@ -58,7 +58,6 @@ class SlackIngestTests(unittest.TestCase):
         self.assertEqual(record.title, "slack-1787472270-224369")
         self.assertIn("from: PLUMB\n", record.body)
         self.assertIn("observed_event: slack:C0BRGMDQB6G:1787472270.224369:1\n", record.body)
-        self.assertIn("carrier_ts: 1787472270.224369\n", record.body)
         self.assertIn("kind: slack_message\n", record.body)
         self.assertIn("model: Claude Opus 5\n", record.body)
         self.assertEqual(si._record_body(record.body), SOURCE)
@@ -166,6 +165,17 @@ payload
 """,
                 encoding="utf-8",
             )
+            (posts / "foreign-channel-id.md").write_text(
+                """---
+from: GPT
+to: TABLE
+id: foreign-channel-id
+observed_event: slack:COTHER:99.0:7
+---
+payload
+""",
+                encoding="utf-8",
+            )
             self.assertEqual(si.high_water(posts), "9.25")
 
     def test_sync_scans_old_roots_for_new_replies_then_applies_high_water(self) -> None:
@@ -207,6 +217,20 @@ payload
             path.write_text(path.read_text(encoding="utf-8").replace("exact body", "changed body"), encoding="utf-8")
             with self.assertRaises(si.ImmutableMismatch):
                 si.verify_existing(path, record)
+
+    def test_same_declared_id_and_body_dedupes_across_carrier_timestamps(self) -> None:
+        text = "from: GPT\nid: same-object-20260824-01\n\nPLAIN: same bytes"
+        first_event = {"ts": "10.1", "text": text, "user": "U1"}
+        second_event = {"ts": "10.2", "text": text, "user": "U1"}
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            records = si.plan([first_event, second_event], posts)
+            self.assertEqual([record.title for record in records], ["same-object-20260824-01"])
+
+            first = si.issue_record(first_event)
+            path = posts / (first.title + ".md")
+            path.write_text("---\n" + first.body, encoding="utf-8")
+            self.assertTrue(si.verify_existing(path, si.issue_record(second_event)))
 
     def test_git_first_record_reconciles_only_measured_carrier_normalization(self) -> None:
         canonical = """---

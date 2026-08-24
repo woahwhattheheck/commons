@@ -48,7 +48,9 @@ SLACK_API = "https://slack.com/api"
 GITHUB_API = "https://api.github.com"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
 DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
-OBSERVED_SLACK_RE = re.compile(r"^slack:[^:\s]+:(\d+(?:\.\d+)?):1$")
+OBSERVED_SLACK_RE = re.compile(
+    r"^slack:%s:(\d+(?:\.\d+)?):\d+$" % re.escape(CHANNEL_ID)
+)
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
     r"\n?\*Sent using\*\s+<@[^>\n]+\|[^>\n]+>\s*$"
@@ -252,11 +254,7 @@ def issue_record(message: dict[str, Any], channel_id: str = CHANNEL_ID) -> Issue
         ("ts", stamp),
         ("carrier", "slack-connector"),
         ("observed_event", "slack:%s:%s:1" % (channel_id, native_ts)),
-        # Preserve Slack's native event clock as carrier provenance. ``ts`` is
-        # the canonical ISO projection used for ordering; ``carrier_ts`` is
-        # the exact value needed to reconcile the source event without
-        # reconstructing it from a rounded or reformatted timestamp.
-        ("carrier_ts", native_ts),
+        ("carrier_ts", stamp),
     ]
     if target:
         envelope.append(("target", target))
@@ -283,20 +281,25 @@ def _record_body(text: str) -> str:
 
 
 def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_ID) -> bool:
-    """Return True for an exact durable event, raise for immutable mismatch."""
+    """Return True for the same canonical body, raise for immutable mismatch.
+
+    Carrier timestamps are receipts, not object identities.  A byte-identical
+    repeat of a declared id is therefore a no-op even when it arrived in a
+    different Slack event.
+    """
     if not path.is_file():
         return False
     raw = path.read_text(encoding="utf-8")
-    marker = "observed_event: slack:%s:%s:1" % (channel_id, record.native_ts)
     body = _record_body(raw)
+    incoming = _record_body(record.body)
     # The canonical writer normalizes the final newline; source bytes otherwise stay.
-    if marker in raw and body.rstrip("\n") == _record_body(record.body).rstrip("\n"):
+    if body.rstrip("\n") == incoming.rstrip("\n"):
         return True
     # A Git-first record may already be canonical before its Slack copy is
     # observed.  Accept only a measured carrier-normalized exact body match;
     # never rewrite it and never collapse a real divergence into a receipt.
-    if declared_id(leading_fields(_record_body(record.body))):
-        projected = canonical_projection_body(_record_body(record.body))
+    if declared_id(leading_fields(incoming)):
+        projected = canonical_projection_body(incoming)
         if projected.rstrip("\n") == body.rstrip("\n"):
             return True
     raise ImmutableMismatch("existing %s differs from Slack event %s" % (path, record.native_ts))
@@ -512,8 +515,7 @@ def plan(events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[
         previous = seen.get(record.title)
         if previous is not None:
             if (
-                previous.native_ts == record.native_ts
-                and _record_body(previous.body).rstrip("\n")
+                _record_body(previous.body).rstrip("\n")
                 == _record_body(record.body).rstrip("\n")
             ):
                 continue
