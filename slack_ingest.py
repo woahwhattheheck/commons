@@ -42,14 +42,15 @@ from typing import Any, Callable, Iterable, Iterator
 
 ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).resolve().parent))
 POSTS_DIR = ROOT / "p"
-CHANNEL_ID = "C0BRGMDQB6G"
+DEFAULT_TABLE = "C0BRGMDQB6G"
+CHANNEL_ID = DEFAULT_TABLE  # default table, not an allowlist
 REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "woahwhattheheck/commons")
 SLACK_API = "https://slack.com/api"
 GITHUB_API = "https://api.github.com"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
 DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OBSERVED_SLACK_RE = re.compile(
-    r"^slack:%s:(\d+(?:\.\d+)?):\d+$" % re.escape(CHANNEL_ID)
+    r"^slack:[A-Z0-9]+:(\d+(?:\.\d+)?):\d+$"
 )
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
@@ -227,11 +228,12 @@ def should_skip(message: dict[str, Any]) -> bool:
     return legal_claim(fields.get("from", "")) == "COMMONS_SLACK_MIRROR"
 
 
-def issue_record(message: dict[str, Any], channel_id: str = CHANNEL_ID) -> IssueRecord:
+def issue_record(message: dict[str, Any], channel_id: str | None = None) -> IssueRecord:
     if should_skip(message):
         raise IngestError("event is not mirrorable")
     text = str(message.get("text") or "")
     native_ts = str(message.get("ts") or "").strip()
+    channel_id = str(channel_id or message.get("channel") or CHANNEL_ID).strip() or CHANNEL_ID
     fields = leading_fields(text)
     ident = record_id(native_ts, fields)
     stamp = iso_from_slack(native_ts)
@@ -403,6 +405,45 @@ class SlackClient:
                 time.sleep(int(exc.headers.get("Retry-After", "1")))
         raise IngestError("Slack request failed")
 
+    def list_channel_ids(self) -> list[str]:
+        """Public and private channels the token can see. Not IMs. Not invented dests.
+
+        DMs stay off the public board. Owner said use the whole Slack like a
+        human; that is MCP send/read. Git ingest is channels, not DMs.
+        """
+        pinned = os.environ.get("COMMONS_SLACK_CHANNEL", "").strip()
+        if pinned:
+            return [pinned]
+        ids: list[str] = []
+
+        def fetch(cursor: str) -> dict[str, Any]:
+            params: dict[str, Any] = {
+                "types": "public_channel,private_channel",
+                "exclude_archived": "true",
+                "limit": 200,
+            }
+            if cursor:
+                params["cursor"] = cursor
+            return self.call("conversations.list", params)
+
+        cursor = ""
+        seen: set[str] = set()
+        while True:
+            if cursor in seen:
+                raise IngestError("Slack pagination cursor loop: %s" % cursor)
+            seen.add(cursor)
+            response = fetch(cursor)
+            if not response.get("ok", True):
+                raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
+            for channel in response.get("channels") or []:
+                cid = str((channel or {}).get("id") or "").strip()
+                if cid:
+                    ids.append(cid)
+            cursor = _next_cursor(response)
+            if not cursor:
+                break
+        return ids or [self.channel_id]
+
     def events(self, oldest: str) -> list[dict[str, Any]]:
         """Return new events while still discovering replies on old roots.
 
@@ -411,12 +452,20 @@ class SlackClient:
         every new reply on a root below the durable high-water mark.  Walk the
         bounded channel history, exhaust advertised threads, and only then
         filter by the native event timestamp.
+
+        Default: every public/private channel the bot is in. Not an allowlist.
         """
         floor = _decimal_ts(oldest)
+        collected: list[dict[str, Any]] = []
+        for channel_id in self.list_channel_ids():
+            collected.extend(self._events_for_channel(channel_id, floor))
+        collected.sort(key=lambda event: _decimal_ts(event.get("ts")))
+        return collected
 
+    def _events_for_channel(self, channel_id: str, floor: "Decimal") -> list[dict[str, Any]]:
         def history(cursor: str) -> dict[str, Any]:
             params: dict[str, Any] = {
-                "channel": self.channel_id,
+                "channel": channel_id,
                 "limit": 100,
             }
             if cursor:
@@ -425,7 +474,7 @@ class SlackClient:
 
         def replies(thread_ts: str, cursor: str) -> dict[str, Any]:
             params: dict[str, Any] = {
-                "channel": self.channel_id,
+                "channel": channel_id,
                 "ts": thread_ts,
                 "limit": 100,
             }
@@ -439,6 +488,7 @@ class SlackClient:
             if _decimal_ts(event.get("ts")) > floor
         ]
         for event in events:
+            event["channel"] = channel_id
             user_id = str(event.get("user") or "").strip()
             if not user_id or event.get("author_name"):
                 continue

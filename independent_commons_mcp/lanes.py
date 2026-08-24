@@ -6,7 +6,7 @@ import os
 import urllib.parse
 from typing import Any, Callable
 
-from . import ACTION_PAD, GITHUB_API, PAGES, REPO, SLACK_CHANNEL, TOPIC
+from . import ACTION_PAD, DISCORD_API, GITHUB_API, PAGES, REPO, SLACK_CHANNEL, TOPIC
 from .envelope import canonical_json, parse_frontmatter, projection_text, redact, sha256_text, utc_now
 from .truth import default_http
 
@@ -129,17 +129,20 @@ class Lanes:
             error="GitHub issue carrier rejected",
         )
 
-    def slack_submit(self, payload: dict[str, Any], *, thread_ts: str = "") -> dict[str, Any]:
+    def slack_submit(self, payload: dict[str, Any], *, thread_ts: str = "", channel: str = "") -> dict[str, Any]:
         ident = payload["id"]
         text = projection_text(payload, default_capability="NO")
         token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
         webhook = os.environ.get("COMMONS_SLACK_WEBHOOK_URL") or os.environ.get("SLACK_WEBHOOK_URL") or ""
-        channel = os.environ.get("COMMONS_SLACK_CHANNEL", SLACK_CHANNEL)
-        if channel != SLACK_CHANNEL:
-            return _lane("slack", "ERROR", id=ident, error="channel is not the allowlisted #commons")
+        dest = (
+            channel
+            or str(payload.get("slack_channel") or "")
+            or os.environ.get("COMMONS_SLACK_CHANNEL")
+            or SLACK_CHANNEL
+        ).strip()
         if token:
             data = {
-                "channel": channel,
+                "channel": dest,
                 "text": text,
                 "unfurl_links": False,
                 "unfurl_media": False,
@@ -169,8 +172,8 @@ class Lanes:
                     http_status=row.get("status") or 0,
                     event_id=str(parsed.get("ts") or ""),
                     thread_ts=str(parsed.get("thread_ts") or parsed.get("ts") or ""),
-                    channel=channel,
-                    note="Slack ts is a carrier event id, not a new Commons id",
+                    channel=dest,
+                    note="Slack ts is a carrier event id, not a new Commons id. Default table is not an allowlist.",
                 )
             return _lane("slack", "ERROR", id=ident, error="slack chat.postMessage not ok")
         if webhook:
@@ -195,25 +198,23 @@ class Lanes:
                     id=ident,
                     http_status=row["status"],
                     event_id="",
-                    channel=channel,
+                    channel=dest,
                     note="webhook 2xx is mail; Commons id stayed %s" % ident,
                 )
             return _lane("slack", "ERROR", id=ident, http_status=row.get("status") or 0, error="slack webhook rejected")
         return _lane("slack", "UNCONFIGURED", id=ident, error="no server-side Slack webhook or bot token")
 
-    def slack_find(self, ident: str) -> dict[str, Any]:
+    def slack_find(self, ident: str, *, channel: str = "") -> dict[str, Any]:
         token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
         if not token:
             return _lane("slack_in", "UNCONFIGURED", id=ident, error="no server-side Slack bot token for read")
-        channel = os.environ.get("COMMONS_SLACK_CHANNEL", SLACK_CHANNEL)
-        if channel != SLACK_CHANNEL:
-            return _lane("slack_in", "ERROR", id=ident, error="channel is not the allowlisted #commons")
+        dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or SLACK_CHANNEL).strip()
         hits: list[dict[str, Any]] = []
         cursor = ""
         pages = 0
         while pages < 10:
             pages += 1
-            url = "https://slack.com/api/conversations.history?channel=%s&limit=200" % channel
+            url = "https://slack.com/api/conversations.history?channel=%s&limit=200" % dest
             if cursor:
                 url += "&cursor=" + urllib.parse.quote(cursor)
             row = self.http(
@@ -229,7 +230,7 @@ class Lanes:
             if not parsed.get("ok"):
                 return _lane("slack_in", "ERROR", id=ident, error="conversations.history not ok")
             for message in parsed.get("messages") or []:
-                hits.extend(self._slack_copies(ident, message, token, channel))
+                hits.extend(self._slack_copies(ident, message, token, dest))
             cursor = ((parsed.get("response_metadata") or {}).get("next_cursor") or "").strip()
             if not cursor:
                 break
@@ -238,9 +239,9 @@ class Lanes:
             "slack_in",
             "FOUND" if hits else "MISSING",
             id=ident,
-            channel=channel,
+            channel=dest,
             copies=hits,
-            note="read-only allowlisted #commons; exact id header; threads, edits, pagination; does not write p/",
+            note="read-only; exact id header; caller or default channel, not an allowlist; threads, edits, pagination; does not write p/",
         )
 
     def _slack_copies(self, ident: str, message: dict[str, Any], token: str, channel: str) -> list[dict[str, Any]]:
@@ -263,6 +264,343 @@ class Lanes:
         for reply in (replies.get("messages") or [])[1:]:
             out.extend(_copy_from_slack_message(ident, reply))
         return out
+
+    def slack_send_raw(self, text: str, *, channel: str = "", thread_ts: str = "") -> dict[str, Any]:
+        """Human Slack send. Link-only is legal. Empty is skip. No thread-per-post."""
+        token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
+        webhook = os.environ.get("COMMONS_SLACK_WEBHOOK_URL") or os.environ.get("SLACK_WEBHOOK_URL") or ""
+        dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or SLACK_CHANNEL).strip()
+        if not str(text or "").strip():
+            return _lane("slack", "ERROR", error="empty text; a link-only body is legal")
+        if token:
+            data = {
+                "channel": dest,
+                "text": text,
+                "unfurl_links": False,
+                "unfurl_media": False,
+            }
+            if thread_ts:
+                data["thread_ts"] = thread_ts
+            row = self.http(
+                "POST",
+                "https://slack.com/api/chat.postMessage",
+                data=json.dumps(data).encode("utf-8"),
+                headers={
+                    "Authorization": "Bearer " + token,
+                    "Content-Type": "application/json; charset=utf-8",
+                },
+                timeout=15.0,
+            )
+            parsed: dict[str, Any] = {}
+            try:
+                parsed = json.loads(row.get("body") or "{}")
+            except json.JSONDecodeError:
+                parsed = {}
+            if parsed.get("ok"):
+                return _lane(
+                    "slack",
+                    "ACCEPTED",
+                    http_status=row.get("status") or 0,
+                    event_id=str(parsed.get("ts") or ""),
+                    thread_ts=str(parsed.get("thread_ts") or parsed.get("ts") or ""),
+                    channel=dest,
+                    note="human send; Slack ts is a receipt; not a Commons id; not an allowlist",
+                )
+            return _lane("slack", "ERROR", error="slack chat.postMessage not ok", channel=dest)
+        if webhook:
+            if thread_ts:
+                return _lane("slack", "ERROR", error="incoming webhooks cannot bind thread_ts")
+            row = self.http(
+                "POST",
+                webhook,
+                data=json.dumps({"text": text}).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                timeout=15.0,
+            )
+            if 200 <= int(row.get("status") or 0) < 300:
+                return _lane("slack", "ACCEPTED", http_status=row["status"], channel=dest, note="webhook 2xx is mail")
+            return _lane("slack", "ERROR", http_status=row.get("status") or 0, error="slack webhook rejected")
+        return _lane("slack", "UNCONFIGURED", error="no server-side Slack webhook or bot token")
+
+    def slack_read_raw(self, *, channel: str = "", limit: int = 50) -> dict[str, Any]:
+        token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
+        if not token:
+            return _lane("slack_in", "UNCONFIGURED", error="no server-side Slack bot token for read")
+        dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or "").strip()
+        if not dest:
+            return self._slack_list_channels(token)
+        capped = max(1, min(int(limit or 50), 200))
+        url = "https://slack.com/api/conversations.history?channel=%s&limit=%s" % (dest, capped)
+        row = self.http("GET", url, headers={"Authorization": "Bearer " + token}, timeout=15.0)
+        try:
+            parsed = json.loads(row.get("body") or "{}")
+        except json.JSONDecodeError:
+            parsed = {}
+        if not parsed.get("ok"):
+            return _lane("slack_in", "ERROR", error="conversations.history not ok", channel=dest)
+        messages = []
+        for message in parsed.get("messages") or []:
+            if not isinstance(message, dict):
+                continue
+            messages.append({
+                "ts": message.get("ts"),
+                "thread_ts": message.get("thread_ts") or message.get("ts"),
+                "text": message.get("text") or "",
+                "user": message.get("user") or message.get("username") or "",
+            })
+        return _lane(
+            "slack_in",
+            "FOUND" if messages else "MISSING",
+            channel=dest,
+            messages=messages,
+            note="human read; does not write p/; DMs stay off public git ingest",
+        )
+
+    def _slack_list_channels(self, token: str) -> dict[str, Any]:
+        url = "https://slack.com/api/conversations.list?types=public_channel,private_channel&exclude_archived=true&limit=200"
+        row = self.http("GET", url, headers={"Authorization": "Bearer " + token}, timeout=15.0)
+        try:
+            parsed = json.loads(row.get("body") or "{}")
+        except json.JSONDecodeError:
+            parsed = {}
+        if not parsed.get("ok"):
+            return _lane("slack_in", "ERROR", error="conversations.list not ok")
+        channels = []
+        for channel in parsed.get("channels") or []:
+            if not isinstance(channel, dict):
+                continue
+            cid = str(channel.get("id") or "").strip()
+            if cid:
+                channels.append({
+                    "id": cid,
+                    "name": channel.get("name") or "",
+                    "is_private": bool(channel.get("is_private")),
+                })
+        return _lane(
+            "slack_in",
+            "FOUND" if channels else "MISSING",
+            channels=channels,
+            note="workspace channel list; not an allowlist; IMs omitted",
+        )
+
+    def discord_submit(self, payload: dict[str, Any], *, channel: str = "", message_id: str = "") -> dict[str, Any]:
+        ident = payload["id"]
+        text = projection_text(payload, default_capability="NO")
+        token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
+        webhook = os.environ.get("COMMONS_DISCORD_WEBHOOK_URL") or os.environ.get("DISCORD_WEBHOOK_URL") or ""
+        dest = (
+            channel
+            or str(payload.get("discord_channel") or "")
+            or os.environ.get("COMMONS_DISCORD_CHANNEL")
+            or ""
+        ).strip()
+        parent = (message_id or str(payload.get("discord_message_id") or "")).strip()
+        if token:
+            if not dest:
+                return _lane("discord", "ERROR", id=ident, error="no COMMONS_DISCORD_CHANNEL. Do not invent a dest.")
+            data: dict[str, Any] = {"content": text[:2000]}
+            if parent:
+                data["message_reference"] = {"message_id": parent}
+            row = self.http(
+                "POST",
+                "%s/channels/%s/messages" % (DISCORD_API, dest),
+                data=json.dumps(data).encode("utf-8"),
+                headers={
+                    "Authorization": "Bot " + token,
+                    "Content-Type": "application/json",
+                },
+                timeout=15.0,
+            )
+            parsed: dict[str, Any] = {}
+            try:
+                parsed = json.loads(row.get("body") or "{}")
+            except json.JSONDecodeError:
+                parsed = {}
+            if 200 <= int(row.get("status") or 0) < 300 and parsed.get("id"):
+                return _lane(
+                    "discord",
+                    "ACCEPTED",
+                    id=ident,
+                    http_status=row.get("status") or 0,
+                    event_id=str(parsed.get("id") or ""),
+                    channel=dest,
+                    note="Discord snowflake is a carrier event id, not a new Commons id",
+                )
+            return _lane("discord", "ERROR", id=ident, error="discord create message not ok")
+        if webhook:
+            data = {"content": text[:2000]}
+            url = webhook
+            if "wait=" not in webhook:
+                url = webhook + ("&" if "?" in webhook else "?") + "wait=true"
+            row = self.http(
+                "POST",
+                url,
+                data=json.dumps(data).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                timeout=15.0,
+            )
+            if 200 <= int(row.get("status") or 0) < 300:
+                parsed = {}
+                try:
+                    parsed = json.loads(row.get("body") or "{}")
+                except json.JSONDecodeError:
+                    parsed = {}
+                return _lane(
+                    "discord",
+                    "ACCEPTED",
+                    id=ident,
+                    http_status=row["status"],
+                    event_id=str(parsed.get("id") or ""),
+                    note="webhook 2xx is mail; Commons id stayed %s" % ident,
+                )
+            return _lane("discord", "ERROR", id=ident, http_status=row.get("status") or 0, error="discord webhook rejected")
+        return _lane("discord", "UNCONFIGURED", id=ident, error="no server-side Discord webhook or bot token")
+
+    def discord_find(self, ident: str, *, channel: str = "") -> dict[str, Any]:
+        token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
+        if not token:
+            return _lane("discord_in", "UNCONFIGURED", id=ident, error="no server-side Discord bot token for read")
+        dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
+        if not dest:
+            return _lane("discord_in", "ERROR", id=ident, error="no COMMONS_DISCORD_CHANNEL. Do not invent a dest.")
+        hits: list[dict[str, Any]] = []
+        before = ""
+        pages = 0
+        while pages < 10:
+            pages += 1
+            url = "%s/channels/%s/messages?limit=100" % (DISCORD_API, dest)
+            if before:
+                url += "&before=" + urllib.parse.quote(before)
+            row = self.http(
+                "GET",
+                url,
+                headers={"Authorization": "Bot " + token},
+                timeout=15.0,
+            )
+            try:
+                parsed = json.loads(row.get("body") or "[]")
+            except json.JSONDecodeError:
+                parsed = []
+            batch = parsed if isinstance(parsed, list) else []
+            if int(row.get("status") or 0) >= 400:
+                return _lane("discord_in", "ERROR", id=ident, error="discord messages GET not ok")
+            for message in batch:
+                if not isinstance(message, dict):
+                    continue
+                text = str(message.get("content") or "")
+                if _exact_id_header(text, ident):
+                    _meta, body = parse_frontmatter(text)
+                    hits.append({
+                        "id": ident,
+                        "message_id": message.get("id"),
+                        "channel_id": dest,
+                        "body_sha256": sha256_text(body.strip("\n")),
+                    })
+            if len(batch) < 100:
+                break
+            before = str(batch[-1].get("id") or "")
+            if not before:
+                break
+        return _lane(
+            "discord_in",
+            "FOUND" if hits else "MISSING",
+            id=ident,
+            channel=dest,
+            copies=hits,
+            note="read-only; exact id header; caller channel, not an allowlist; does not write p/",
+        )
+
+    def discord_send_raw(self, text: str, *, channel: str = "", message_id: str = "") -> dict[str, Any]:
+        token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
+        webhook = os.environ.get("COMMONS_DISCORD_WEBHOOK_URL") or os.environ.get("DISCORD_WEBHOOK_URL") or ""
+        dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
+        if not str(text or "").strip():
+            return _lane("discord", "ERROR", error="empty text; a link-only body is legal")
+        if token:
+            if not dest:
+                return _lane("discord", "ERROR", error="no channel. Do not invent a dest.")
+            data: dict[str, Any] = {"content": text[:2000]}
+            if message_id:
+                data["message_reference"] = {"message_id": message_id}
+            row = self.http(
+                "POST",
+                "%s/channels/%s/messages" % (DISCORD_API, dest),
+                data=json.dumps(data).encode("utf-8"),
+                headers={
+                    "Authorization": "Bot " + token,
+                    "Content-Type": "application/json",
+                },
+                timeout=15.0,
+            )
+            parsed: dict[str, Any] = {}
+            try:
+                parsed = json.loads(row.get("body") or "{}")
+            except json.JSONDecodeError:
+                parsed = {}
+            if 200 <= int(row.get("status") or 0) < 300 and parsed.get("id"):
+                return _lane(
+                    "discord",
+                    "ACCEPTED",
+                    http_status=row.get("status") or 0,
+                    event_id=str(parsed.get("id") or ""),
+                    channel=dest,
+                    note="human send; snowflake is a receipt; bots are free; self-bots refused",
+                )
+            return _lane("discord", "ERROR", error="discord create message not ok", channel=dest)
+        if webhook:
+            data = {"content": text[:2000]}
+            url = webhook
+            if "wait=" not in webhook:
+                url = webhook + ("&" if "?" in webhook else "?") + "wait=true"
+            row = self.http(
+                "POST",
+                url,
+                data=json.dumps(data).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                timeout=15.0,
+            )
+            if 200 <= int(row.get("status") or 0) < 300:
+                return _lane("discord", "ACCEPTED", http_status=row["status"], note="webhook 2xx is mail")
+            return _lane("discord", "ERROR", http_status=row.get("status") or 0, error="discord webhook rejected")
+        return _lane("discord", "UNCONFIGURED", error="no server-side Discord webhook or bot token")
+
+    def discord_read_raw(self, *, channel: str = "", limit: int = 50) -> dict[str, Any]:
+        token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
+        if not token:
+            return _lane("discord_in", "UNCONFIGURED", error="no server-side Discord bot token for read")
+        dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
+        if not dest:
+            return _lane("discord_in", "ERROR", error="no channel. Do not invent a dest.")
+        capped = max(1, min(int(limit or 50), 100))
+        row = self.http(
+            "GET",
+            "%s/channels/%s/messages?limit=%s" % (DISCORD_API, dest, capped),
+            headers={"Authorization": "Bot " + token},
+            timeout=15.0,
+        )
+        try:
+            parsed = json.loads(row.get("body") or "[]")
+        except json.JSONDecodeError:
+            parsed = []
+        if int(row.get("status") or 0) >= 400:
+            return _lane("discord_in", "ERROR", error="discord messages GET not ok", channel=dest)
+        messages = []
+        for message in parsed if isinstance(parsed, list) else []:
+            if not isinstance(message, dict):
+                continue
+            author = message.get("author") if isinstance(message.get("author"), dict) else {}
+            messages.append({
+                "id": message.get("id"),
+                "content": message.get("content") or "",
+                "author": author.get("username") or "",
+            })
+        return _lane(
+            "discord_in",
+            "FOUND" if messages else "MISSING",
+            channel=dest,
+            messages=messages,
+            note="human read; does not write p/; DMs stay off public git ingest",
+        )
 
     def github_find(self, ident: str) -> dict[str, Any]:
         query = 'repo:%s type:issue in:title "%s"' % (REPO, ident)
@@ -380,10 +718,21 @@ class Lanes:
             "CONFIGURED" if (webhook or token) else "UNCONFIGURED",
             webhook_present=webhook,
             bot_token_present=token,
-            channel_allowlist=SLACK_CHANNEL,
+            channel_default=SLACK_CHANNEL,
             transport_ok=False,
             application_ok=False,
-            note="no probe send; credentials stay server-side",
+            note="no probe send; credentials stay server-side; default table is not an allowlist",
+        ))
+        d_webhook = bool(os.environ.get("COMMONS_DISCORD_WEBHOOK_URL") or os.environ.get("DISCORD_WEBHOOK_URL"))
+        d_token = bool(os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN"))
+        rows.append(_lane(
+            "discord",
+            "CONFIGURED" if (d_webhook or d_token) else "UNCONFIGURED",
+            webhook_present=d_webhook,
+            bot_token_present=d_token,
+            transport_ok=False,
+            application_ok=False,
+            note="bots and webhooks are free; self-bots refused; no probe send; do not invent dest",
         ))
         return {
             "ok": True,

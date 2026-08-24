@@ -21,10 +21,14 @@ SECRET_ENV = (
     "COMMONS_SLACK_BOT_TOKEN",
     "SLACK_BOT_TOKEN",
     "SLACK_WEBHOOK_URL",
+    "COMMONS_DISCORD_BOT_TOKEN",
+    "DISCORD_BOT_TOKEN",
+    "DISCORD_WEBHOOK_URL",
+    "COMMONS_DISCORD_WEBHOOK_URL",
     "COMMONS_MCP_BEARER_TOKEN",
     "COMMONS_INDEPENDENT_BEARER",
 )
-LANES = ("ntfy", "github_issue", "slack", "action_pad")
+LANES = ("ntfy", "github_issue", "slack", "discord", "action_pad")
 CHAT_KINDS = {"", "POST", "REPLY", "CHAT"}
 MEMORY_CREATE_KINDS = {"MEMORY_CREATE"}
 MEMORY_APPEND_KINDS = {"MEMORY_APPEND"}

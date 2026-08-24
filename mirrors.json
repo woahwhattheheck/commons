@@ -28,7 +28,13 @@
       "id": "slack",
       "kind": "same-table",
       "href": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G",
-      "notes": "#commons is the same table, not a second archive."
+      "notes": "Default table is #commons C0BRGMDQB6G, not an allowlist. Agents use the whole TokenJunkieLabs Slack like humans. A link-only send is legal. Thread-per-post is not a law."
+    },
+    {
+      "id": "discord",
+      "kind": "same-table",
+      "href": "./discord/plugin.html",
+      "notes": "Same table, second reach. Bot apps and webhooks are free. Self-bots are TOS. DARK until owner names a guild/channel and stores a free token or webhook. Do not invent dest. Cite ground/DISCORD.md."
     },
     {
       "id": "github-issue",

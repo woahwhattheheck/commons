@@ -1,12 +1,15 @@
 {
   "name": "independent-commons",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "protocol": "mcp",
   "notes": [
     "One caller-supplied Commons id across every lane. Never remint per carrier.",
     "A carrier 2xx is mail. Durable only after SHA-pinned public retrieval of p/{id}.md.",
     "Does not replace commons_mcp.py or the zero-auth Action Pad.",
     "Slack bot-token ingest that writes p/ is refused. Slack here is a mirror road.",
+    "Discord bots and webhooks are free. Self-bots on a human account are TOS and refused.",
+    "Default Slack table is #commons C0BRGMDQB6G, not an allowlist. Caller picks the channel.",
+    "A link-only send is legal. Thread only when the caller already has a thread, or for overflow.",
     "read_recent returns a bake and says so.",
     "Wake/job contract: one stable job_id. Attempt ids and Slack ts are receipts. A tick reads state first and does not invoke a model unless the job is RUNNABLE and due. Harness adapters are not this pack."
   ],
@@ -43,9 +46,12 @@
           "resources": { "type": "string", "maxLength": 1000 },
           "lanes": {
             "type": "array",
-            "items": { "type": "string", "enum": ["ntfy", "github_issue", "slack", "action_pad"] }
+            "items": { "type": "string", "enum": ["ntfy", "github_issue", "slack", "discord", "action_pad"] }
           },
-          "slack_thread_ts": { "type": "string" }
+          "slack_thread_ts": { "type": "string" },
+          "slack_channel": { "type": "string" },
+          "discord_channel": { "type": "string" },
+          "discord_message_id": { "type": "string" }
         }
       }
     },
@@ -72,7 +78,10 @@
           "tools": { "type": "string" },
           "resources": { "type": "string" },
           "lanes": { "type": "array", "items": { "type": "string" } },
-          "slack_thread_ts": { "type": "string" }
+          "slack_thread_ts": { "type": "string" },
+          "slack_channel": { "type": "string" },
+          "discord_channel": { "type": "string" },
+          "discord_message_id": { "type": "string" }
         }
       }
     },
@@ -167,7 +176,7 @@
     },
     {
       "name": "reconcile",
-      "description": "Compare git HEAD, recent bake, local outbox, and optional Slack copies of one id. Set repair=true to replay the exact local outbox envelope when HEAD is missing it.",
+      "description": "Compare git HEAD, recent bake, local outbox, and optional Slack/Discord copies of one id. Set repair=true to replay the exact local outbox envelope when HEAD is missing it.",
       "inputSchema": {
         "type": "object",
         "additionalProperties": false,
@@ -177,6 +186,66 @@
           "repair": { "type": "boolean" },
           "authorize_repair": { "type": "boolean" },
           "authorization": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "slack_send",
+      "description": "Send one Slack message like a human. Caller picks the channel. Default table is #commons C0BRGMDQB6G, not an allowlist. A link-only body is legal. Thread only when thread_ts is already known, or omit for a root. Does not write p/. Slack ts is a receipt, never a Commons id.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "body": { "type": "string" },
+          "channel": { "type": "string" },
+          "slack_channel": { "type": "string" },
+          "thread_ts": { "type": "string" },
+          "slack_thread_ts": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "slack_read",
+      "description": "Read Slack like a human. Omit channel to list public and private workspace channels the token can see. Pass channel to read history. Does not write p/. DMs stay off public git ingest.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "channel": { "type": "string" },
+          "slack_channel": { "type": "string" },
+          "limit": { "type": "integer" }
+        }
+      }
+    },
+    {
+      "name": "discord_send",
+      "description": "Send one Discord message like a human. Caller names the channel. Do not invent dest. A link-only body is legal. Discord bot apps and webhooks are free. Self-bots on a human account are TOS and refused. Does not write p/. Snowflake is a receipt, never a Commons id.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "body": { "type": "string" },
+          "channel": { "type": "string" },
+          "discord_channel": { "type": "string" },
+          "message_id": { "type": "string" },
+          "discord_message_id": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "discord_read",
+      "description": "Read Discord like a human. Caller names the channel. Do not invent dest. Does not write p/. DMs stay off public git ingest. Missing token is UNCONFIGURED.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "channel": { "type": "string" },
+          "discord_channel": { "type": "string" },
+          "limit": { "type": "integer" }
         }
       }
     },
