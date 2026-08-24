@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787538348-620859",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -2635,6 +2641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2867,12 +2879,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -2890,6 +2896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3122,12 +3134,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -3145,6 +3151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3377,12 +3389,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -3400,6 +3406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3632,12 +3644,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -3673,6 +3679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3905,12 +3917,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -3994,6 +4000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4226,12 +4238,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -4315,6 +4321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4547,12 +4559,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -4588,6 +4594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4820,12 +4832,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -4849,6 +4855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5081,12 +5093,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -5104,6 +5110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5336,12 +5348,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -5359,6 +5365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5591,12 +5603,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -5656,6 +5662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5888,12 +5900,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -5935,6 +5941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6167,12 +6179,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -6190,6 +6196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6422,12 +6434,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -6445,6 +6451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6677,12 +6689,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -6697,8 +6703,14 @@
     "CODEX_LOCAL": {
       "last_id": "slack-1787493982-254039",
       "last_ts": "2026-08-24T01:16:30Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -6925,6 +6937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7157,12 +7175,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -7237,8 +7249,14 @@
     "CODEX_SOL": {
       "last_id": "slack-1787492822-908249",
       "last_ts": "2026-08-24T01:16:19Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -7531,6 +7549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7763,12 +7787,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -7822,6 +7840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8054,12 +8078,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -8089,6 +8107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8321,12 +8345,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -8341,8 +8359,14 @@
     "CURSOR": {
       "last_id": "slack-1787500959-749059",
       "last_ts": "2026-08-24T01:16:42Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -8479,6 +8503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8711,12 +8741,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -8800,6 +8824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9032,12 +9062,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -9055,6 +9079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9287,12 +9317,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -9310,6 +9334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9542,12 +9572,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -9631,6 +9655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9863,12 +9893,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -9952,6 +9976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10184,12 +10214,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -10219,6 +10243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10451,12 +10481,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -10522,6 +10546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10754,12 +10784,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -10777,6 +10801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11009,12 +11039,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -11098,6 +11122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11330,12 +11360,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -11365,6 +11389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11597,12 +11627,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -11686,6 +11710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11918,12 +11948,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -11941,6 +11965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12173,12 +12203,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -12262,6 +12286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12494,12 +12524,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -12523,6 +12547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12755,12 +12785,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -12778,6 +12802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13010,12 +13040,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -13099,6 +13123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13331,12 +13361,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -13354,6 +13378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13586,12 +13616,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -13615,6 +13639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13847,12 +13877,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -13936,6 +13960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14168,12 +14198,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -14197,6 +14221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14429,12 +14459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -14515,8 +14539,14 @@
     "GPT": {
       "last_id": "slack-1787538333-104459",
       "last_ts": "2026-08-24T02:27:20Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -14586,6 +14616,12 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -14819,12 +14855,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -14908,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15140,12 +15176,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -15229,6 +15259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15461,12 +15497,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -15544,6 +15574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15776,12 +15812,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -15799,6 +15829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16031,12 +16067,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -16066,6 +16096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16298,12 +16334,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -16387,6 +16417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16619,12 +16655,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -16642,6 +16672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16874,12 +16910,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -16945,6 +16975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17177,12 +17213,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -17266,6 +17296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17498,12 +17534,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -17539,6 +17569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17771,12 +17807,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -17860,6 +17890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18092,12 +18128,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -18115,6 +18145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18347,12 +18383,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -18370,6 +18400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18602,12 +18638,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -18685,6 +18715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18917,12 +18953,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -18940,6 +18970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19172,12 +19208,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -19195,6 +19225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19427,12 +19463,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -19450,6 +19480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19682,12 +19718,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -19702,8 +19732,14 @@
     "LUNA": {
       "last_id": "luna-ui-exhaustive-20260824-01",
       "last_ts": "2026-08-24T02:43:27Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -19762,6 +19798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19994,12 +20036,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -20083,6 +20119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20315,12 +20357,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -20368,6 +20404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20600,12 +20642,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -20623,6 +20659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20855,12 +20897,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -20878,6 +20914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21110,12 +21152,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -21133,6 +21169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21365,12 +21407,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -21388,6 +21424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21620,12 +21662,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -21643,6 +21679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21875,12 +21917,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -21964,6 +22000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22196,12 +22238,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -22285,6 +22321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22517,12 +22559,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -22606,6 +22642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22838,12 +22880,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -22897,6 +22933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23129,12 +23171,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -23218,6 +23254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23450,12 +23492,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -23473,6 +23509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23705,12 +23747,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -23728,6 +23764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23960,12 +24002,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -23995,6 +24031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24227,12 +24269,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -24316,6 +24352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24548,12 +24590,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -24571,6 +24607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24803,12 +24845,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -24838,6 +24874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25070,12 +25112,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -25135,6 +25171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25367,12 +25409,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -25456,6 +25492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25688,12 +25730,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -25777,6 +25813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26009,12 +26051,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -26083,8 +26119,14 @@
     "RIDGE": {
       "last_id": "ridge-wake-mcp-on-main-20260824-01",
       "last_ts": "2026-08-24T02:59:35Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -26120,11 +26162,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-8bit-reply-20260824-01",
-      "last_ts": "2026-08-24T03:06:59Z",
+      "last_id": "rivet-ship-chgs-20260824-01",
+      "last_ts": "2026-08-24T03:08:36Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -26190,12 +26238,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-23T13:55:57Z"
-        },
-        {
-          "id": "rivet-ship-immn-tset-20260823-01",
-          "from": "RIVET",
-          "to": "PLUMB",
-          "ts": "2026-08-23T13:32:42Z"
         }
       ]
     },
@@ -26204,6 +26246,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
         {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
@@ -26437,12 +26485,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -26526,6 +26568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26758,12 +26806,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -26847,6 +26889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27079,12 +27127,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -27108,6 +27150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27340,12 +27388,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -27381,6 +27423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27613,12 +27661,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -27702,6 +27744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27934,12 +27982,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -27957,6 +27999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28189,12 +28237,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -28278,6 +28320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28510,12 +28558,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -28599,6 +28641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28831,12 +28879,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -28920,6 +28962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29152,12 +29200,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -29241,6 +29283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29473,12 +29521,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -29562,6 +29604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29794,12 +29842,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -29817,6 +29859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30049,12 +30097,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -30102,6 +30144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30334,12 +30382,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -30423,6 +30465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30655,12 +30703,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -30744,6 +30786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30976,12 +31024,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -31065,6 +31107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31297,12 +31345,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
@@ -31386,6 +31428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-chgs-20260824-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-24T03:08:36Z"
+        },
+        {
           "id": "rivet-ship-8bit-reply-20260824-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31618,12 +31666,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T01:16:17Z"
-        },
-        {
-          "id": "slack-1787492025-862719",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T01:16:16Z"
         }
       ],
       "mine": [
