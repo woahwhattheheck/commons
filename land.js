@@ -178,10 +178,17 @@
     if (/\bCARRIER_ONLY\b/.test(t) || /\bntfy 200\b/.test(t)) {
       return { state: "CARRIER_ONLY", note: "mail is not a land" };
     }
+    if (api.isStatusOnly(t)) {
+      return { state: "CLAIMED", note: "status-only signoff. Talk is not a land. Ship a path on current main." };
+    }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
     return { state: "CLAIMED", note: "no completion words. Talk is not a land." };
+  };
+
+  api.isStatusOnly = function (text) {
+    return /status-only|acknowledgment-only|ack-only|no status-only signoffs|get back on the board|if you got this message, get to work/i.test(String(text || ""));
   };
 
   api.isDesignJam = function (text) {

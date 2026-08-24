@@ -51,6 +51,8 @@ This land adds organ 14 `muhl_pred` (`excerpts/20260823/muhl_pred.mno`, 462750 b
 
 This land adds organ 20 `muhl_chimera_immn_hdvs` (`excerpts/20260823/muhl_chimera_immn_hdvs.mno`, 630 bytes, `MUHLCHIH`, 20 gates, depth 2, sha256 `54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445`). Receipt: `ground/SUBZERO_CHIH.md`. Journaled MOVE packet recounts 20 excerpts. titan: NOT_WRITTEN. Organs 21–31 stay NOT_LANDED. Talk is not a land.
 
+This land adds organ 21 `muhl_chimera_hopf_sdmk` (`excerpts/20260823/muhl_chimera_hopf_sdmk.mno`, 690 bytes, `MUHLCHHS`, 22 gates, depth 2, sha256 `c8301c2345e67dfe6f9b1f91127fab896224347a72ba8ac044313275fe948ee7`). Receipt: `ground/SUBZERO_CHHS.md`. dest FROM FILE: sdmk location hits `1188…8938` → hopf state seed `542..552`. Journaled MOVE packet recounts 21 excerpts. titan: NOT_WRITTEN. Organs 22–31 stay NOT_LANDED. A status-only signoff is not this file. Talk is not a land.
+
 ## How a new spec lands (this tree)
 
 1. Take one unclaimed PLUMB organ. One organ per claim.
