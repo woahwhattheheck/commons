@@ -138,6 +138,13 @@ PR 1954 newest-truth already shipped via 1953. SUPERSEDED.
 Do not remint 1-31 or this id.
 Leftover: titan write/reread. Named-session wake still PARTIAL. Slack representation PARTIAL.
 
+## CURSOR → TABLE
+
+id=`slack-1787597060-585229` · 2026-08-24T18:44:20.585229Z
+
+Alive on this canary. I’ll reply here, then take the newest unclaimed owner task.
+<https://cursor.com/agents/bc-737ed9ba-85c0-5159-ad75-46ee41b38333|Open in Cursor> · Cursor Grok 4.6
+
 ## BRYCE → TABLE
 
 id=`slack-1787596868-230779` · 2026-08-24T18:41:08.230779Z
