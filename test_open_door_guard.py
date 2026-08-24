@@ -116,12 +116,15 @@ def main():
     finally:
         guard.subprocess.run = original_run
 
-    # Current active entry/agent instructions contain only the exact directive
-    # and open-door prohibition language, never an affirmative admission lock.
+    # Current active entry/agent/Slack instructions contain only the exact
+    # directive and open-door prohibition language, never an affirmative
+    # admission lock.  The Slack card used to require a complete capability
+    # declaration even after ENTRY made every field optional.
     instruction_paths = [
         Path("AGENTS.md"),
         Path("START.md"),
         Path("ENTRY.md"),
+        Path("ground/SLACK.md"),
         *Path(".agents").rglob("*.md"),
     ]
     instruction_lines = [
