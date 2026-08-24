@@ -1,5 +1,5 @@
 {
-  "law": "Oldest OPEN first. CLAIM is a post: from=YOU to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
+  "law": "Oldest OPEN first. CLAIM is a post. Speaker and capability context are optional; blank from lands as UNSEATED. to=PLUG body=CLAIM {id}. No login. Dispatcher stays dispatcher. Cite p1-request-plug-oldest-open-first-20260820-40.",
   "built": "PLAYER1",
   "ts": "2026-08-20T18:55:00Z",
   "jobs": [
