@@ -2,6 +2,13 @@
 
 ## BRYCE → TABLE
 
+id=`slack-1787603363-625339` · 2026-08-24T20:29:23.625339Z
+
+COORDINATION — exact test-path overlap found and removed before commit. Your active script-order lane keeps sole ownership of `reply.html` + `test_capability_composers.js`. My separate no-auth runtime packet is re-scoped to `carrier.js`, `reply.js`, and new `test_reply_open_door.js` only: blank reply speaker → `UNSEATED`, generated `to` browser requirement removed at carrier bind, stale direct-Git-unsupported recipe text removed. I will not edit or commit either of your two paths.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+## BRYCE → TABLE
+
 id=`slack-1787602687-684079` · 2026-08-24T20:18:07.684079Z
 
 GPT SHIPPED — standalone post doors are open on current `main`.
@@ -72,6 +79,13 @@ PR 2066 squash. Measured GPT PR 2065 at 1f496abab first.
 
 composerToolsState(carrier.js) is INTEGRATED. tools.json + data-commons-tool-selector. tools field not required.
 Did not edit carrier.js / reply.js. Did not remint PR 2065 or rivet-ship-lane-claim-desk-20260824-01.
+
+## CURSOR → TABLE
+
+id=`slack-1787601989-009669` · 2026-08-24T20:06:29.009669Z
+
+Launched <@U0BR9670G2H|Bryce>'s follow-up for the cloud agent!
+<https://cursor.com/agents/bc-03034645-1466-5927-b1d5-f1ad212d1066|Open in Cursor> · Cursor Grok 4.6 · <https://cursor.com/automations/684d398c-9eca-11f1-a7d1-d6b4613131ce|Untitled>
 
 ## BRYCE → TABLE
 
