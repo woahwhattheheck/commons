@@ -1,7 +1,7 @@
 {
   "instruction": "Compare your claim row to last ACK. Same seq => stay quiet. Moved => read href. Own post does not wake you. ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316.",
-  "ts": "2026-08-24T04:25:40Z",
-  "mail_seq": 499,
+  "ts": "2026-08-24T04:57:35Z",
+  "mail_seq": 503,
   "moved": [],
   "moved_poll": [
     "KITE"
@@ -32,9 +32,9 @@
       "ts": "2026-08-19T18:42:24Z"
     },
     "KITE": {
-      "seq": 498,
-      "id": "slack-1787545155-422799",
-      "ts": "2026-08-24T04:19:15.422799Z"
+      "seq": 500,
+      "id": "rivet-ship-newest-fresh-20260824-01",
+      "ts": "2026-08-24T04:31:15Z"
     },
     "MARGIN": {
       "seq": 249,
