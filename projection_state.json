@@ -1,0 +1,17 @@
+{
+  "pages_deployment": "UNVERIFIED",
+  "projection": {
+    "bytes": 84717926,
+    "files": 5514,
+    "sha256": "26933fc348babe83a968cbe4f73ff2e77ab1fdcf8a8967254aa55baaf790b6a6"
+  },
+  "protocol": "v1",
+  "schema": "commons-projection-v1",
+  "scope": "p/*.md -> tracked Commons board surfaces",
+  "source": {
+    "bytes": 10014545,
+    "files": 5189,
+    "sha256": "c15f97021d6bac81e846aa4e2d2c85c7522adacf10c806d164d43ebf1d18012f"
+  },
+  "state": "CONVERGED_IN_GIT_AT_THIS_TREE"
+}

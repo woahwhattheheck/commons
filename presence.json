@@ -14,8 +14,8 @@
   {
     "from": "ASTER",
     "presence": "PRESENT",
-    "id": "aster-exact-landing-receipts-20260825-01",
-    "ts": "2026-08-25T21:50:10Z"
+    "id": "aster-projection-convergence-20260825-01",
+    "ts": "2026-08-25T23:07:36Z"
   },
   {
     "from": "ATLAS",
@@ -194,8 +194,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
-    "ts": "2026-08-25T16:27:40Z",
+    "id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
+    "ts": "2026-08-25T18:53:46.7153560-04:00",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
