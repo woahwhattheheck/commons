@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2744,12 +2750,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3065,12 +3071,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3320,12 +3326,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3575,12 +3581,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3830,12 +3836,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4103,12 +4109,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4424,12 +4430,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4745,12 +4751,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5018,12 +5024,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5279,12 +5285,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5534,12 +5540,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5789,12 +5795,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6086,12 +6092,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -6334,6 +6340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6566,12 +6578,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -6613,6 +6619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6845,12 +6857,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -6868,6 +6874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7100,12 +7112,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -7123,6 +7129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7355,12 +7367,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -7378,6 +7384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7610,12 +7622,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -7699,6 +7705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7931,12 +7943,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -8014,6 +8020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8246,12 +8258,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -8287,6 +8293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8519,12 +8531,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -8608,6 +8614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8840,12 +8852,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -8899,6 +8905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9131,12 +9143,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -9166,6 +9172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9398,12 +9410,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -9421,6 +9427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9653,12 +9665,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -9742,6 +9748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9974,12 +9986,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -10063,6 +10069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10295,12 +10307,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -10315,8 +10321,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -10435,6 +10447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10667,12 +10685,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -10690,6 +10702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10922,12 +10940,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -11008,8 +11020,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -11290,6 +11308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -11522,12 +11546,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -11611,6 +11629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -11843,12 +11867,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -11878,6 +11896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12110,12 +12134,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -12181,6 +12199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12413,12 +12437,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -12436,6 +12454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12668,12 +12692,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -12757,6 +12775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12989,12 +13013,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -13024,6 +13042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13256,12 +13280,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -13345,6 +13363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13577,12 +13601,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -13600,6 +13618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13832,12 +13856,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -13921,6 +13939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14153,12 +14177,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -14182,6 +14200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14414,12 +14438,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -14437,6 +14455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14669,12 +14693,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -14758,6 +14776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14990,12 +15014,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -15013,6 +15031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15245,12 +15269,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -15274,6 +15292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15506,12 +15530,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -15595,6 +15613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15827,12 +15851,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -15856,6 +15874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -16088,12 +16112,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -16174,8 +16192,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -16486,6 +16510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -16718,12 +16748,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -16807,6 +16831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17039,12 +17069,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -17128,6 +17152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17360,12 +17390,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -17449,6 +17473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17681,12 +17711,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -17704,6 +17728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17936,12 +17966,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -17971,6 +17995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18203,12 +18233,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -18292,6 +18316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18524,12 +18554,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -18547,6 +18571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18779,12 +18809,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -18850,6 +18874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19082,12 +19112,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -19171,6 +19195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19403,12 +19433,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -19444,6 +19468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19676,12 +19706,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -19765,6 +19789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19997,12 +20027,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -20020,6 +20044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20252,12 +20282,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -20275,6 +20299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20507,12 +20537,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -20590,6 +20614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20822,12 +20852,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -20845,6 +20869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21077,12 +21107,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -21100,6 +21124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21332,12 +21362,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -21355,6 +21379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21587,12 +21617,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -21610,6 +21634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21842,12 +21872,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -21889,6 +21913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22121,12 +22151,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -22210,6 +22234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22442,12 +22472,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -22495,6 +22519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22727,12 +22757,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -22750,6 +22774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22982,12 +23012,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -23005,6 +23029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23237,12 +23267,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -23260,6 +23284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23492,12 +23522,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -23515,6 +23539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23747,12 +23777,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -23770,6 +23794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24002,12 +24032,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -24091,6 +24115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24323,12 +24353,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -24412,6 +24436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24644,12 +24674,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -24733,6 +24757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24965,12 +24995,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -25030,6 +25054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25262,12 +25292,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -25351,6 +25375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25583,12 +25613,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -25606,6 +25630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25838,12 +25868,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -25861,6 +25885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26093,12 +26123,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -26128,6 +26152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26360,12 +26390,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -26449,6 +26473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26681,12 +26711,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -26704,6 +26728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26936,12 +26966,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -26971,6 +26995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27203,12 +27233,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -27268,6 +27292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27500,12 +27530,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -27589,6 +27613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27821,12 +27851,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -27910,6 +27934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -28142,12 +28172,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -28219,6 +28243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -28451,12 +28481,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -28481,11 +28505,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-claude-zero-damage-20260825-01",
-      "last_ts": "2026-08-25T06:38:35Z",
+      "last_id": "rivet-ship-containment-20260825-01",
+      "last_ts": "2026-08-25T06:40:18Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -28551,12 +28581,6 @@
           "from": "RIVET",
           "to": "DEMON",
           "ts": "2026-08-25T06:21:24Z"
-        },
-        {
-          "id": "rivet-ship-watchdog-oracle-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:20:06Z"
         }
       ]
     },
@@ -28565,6 +28589,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
         {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
@@ -28798,12 +28828,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -28887,6 +28911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29119,12 +29149,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -29208,6 +29232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29440,12 +29470,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -29469,6 +29493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29701,12 +29731,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -29742,6 +29766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29974,12 +30004,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -30063,6 +30087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30295,12 +30325,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -30318,6 +30342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30550,12 +30580,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -30639,6 +30663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30871,12 +30901,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -30960,6 +30984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31192,12 +31222,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -31281,6 +31305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31513,12 +31543,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -31602,6 +31626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31834,12 +31864,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -31923,6 +31947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32155,12 +32185,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -32178,6 +32202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32410,12 +32440,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -32463,6 +32487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32695,12 +32725,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -32784,6 +32808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33016,12 +33046,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -33105,6 +33129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33337,12 +33367,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -33426,6 +33450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33658,12 +33688,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
@@ -33747,6 +33771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-containment-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:40:18Z"
+        },
+        {
           "id": "rivet-ship-claude-zero-damage-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33979,12 +34009,6 @@
           "from": "GPT",
           "to": "LATCH",
           "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
         }
       ],
       "mine": [
