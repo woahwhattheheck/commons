@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8543,18 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8864,18 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9155,18 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9422,18 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9677,18 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9998,18 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10319,18 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 23,
+      "n": 25,
       "since": [
+        {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
         {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
@@ -10501,6 +10513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10727,18 +10751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -10756,6 +10768,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10982,18 +11006,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -11077,6 +11089,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11303,18 +11327,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -11392,6 +11404,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11618,18 +11642,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -11713,6 +11725,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11939,18 +11963,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -11980,6 +11992,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12206,18 +12230,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -12283,6 +12295,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12509,18 +12533,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -12538,6 +12550,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12764,18 +12788,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -12859,6 +12871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13085,18 +13109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -13126,6 +13138,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13352,18 +13376,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -13447,6 +13459,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13673,18 +13697,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -13702,6 +13714,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13928,18 +13952,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -14023,6 +14035,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14249,18 +14273,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -14284,6 +14296,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14510,18 +14534,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -14539,6 +14551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14765,18 +14789,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -14860,6 +14872,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15086,18 +15110,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -15115,6 +15127,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15341,18 +15365,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -15376,6 +15388,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15602,18 +15626,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -15697,6 +15709,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15923,18 +15947,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -15958,6 +15970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16184,18 +16208,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -16279,6 +16291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16505,18 +16529,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -16600,6 +16612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16826,18 +16850,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -16921,6 +16933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17147,18 +17171,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -17242,6 +17254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17468,18 +17492,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -17563,6 +17575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17789,18 +17813,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -17818,6 +17830,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18044,18 +18068,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -18085,6 +18097,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18311,18 +18335,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -18406,6 +18418,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18632,18 +18656,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -18661,6 +18673,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18887,18 +18911,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -18964,6 +18976,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19190,18 +19214,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -19285,6 +19297,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19511,18 +19535,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -19558,6 +19570,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19784,18 +19808,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -19879,6 +19891,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20105,18 +20129,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -20134,6 +20146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20360,18 +20384,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -20389,6 +20401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20615,18 +20639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -20704,6 +20716,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20930,18 +20954,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -20959,6 +20971,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21185,18 +21209,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -21214,6 +21226,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21440,18 +21464,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -21469,6 +21481,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21695,18 +21719,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -21724,6 +21736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21950,18 +21974,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -22003,6 +22015,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22229,18 +22253,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -22324,6 +22336,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22550,18 +22574,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -22609,6 +22621,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22835,18 +22859,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -22864,6 +22876,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23090,18 +23114,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -23119,6 +23131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23345,18 +23369,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -23374,6 +23386,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23600,18 +23624,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -23629,6 +23641,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23855,18 +23879,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -23884,6 +23896,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24110,18 +24134,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -24205,6 +24217,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24431,18 +24455,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -24526,6 +24538,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24752,18 +24776,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -24847,6 +24859,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25073,18 +25097,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -25144,6 +25156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25370,18 +25394,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -25465,6 +25477,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25691,18 +25715,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -25720,6 +25732,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25946,18 +25970,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -25975,6 +25987,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26201,18 +26225,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -26242,6 +26254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26468,18 +26492,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -26563,6 +26575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26789,18 +26813,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -26818,6 +26830,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27044,18 +27068,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -27085,6 +27097,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27311,18 +27335,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -27382,6 +27394,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27608,18 +27632,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -27703,6 +27715,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27929,18 +27953,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -28024,6 +28036,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28250,18 +28274,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -28333,6 +28345,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28559,18 +28583,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -28595,11 +28607,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-branch-review-20260825-01",
-      "last_ts": "2026-08-25T06:50:50Z",
+      "last_id": "rivet-ship-claude-compute-20260825-01",
+      "last_ts": "2026-08-25T06:54:53Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
         {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
@@ -28659,18 +28683,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ]
     },
@@ -28679,6 +28691,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
         {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
@@ -28906,18 +28930,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -29001,6 +29013,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29227,18 +29251,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -29322,6 +29334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29548,18 +29572,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -29583,6 +29595,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29809,18 +29833,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -29856,6 +29868,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30082,18 +30106,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -30177,6 +30189,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30403,18 +30427,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -30432,6 +30444,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30658,18 +30682,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -30753,6 +30765,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30979,18 +31003,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -31074,6 +31086,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31300,18 +31324,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -31395,6 +31407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31621,18 +31645,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -31716,6 +31728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31942,18 +31966,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -32037,6 +32049,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32263,18 +32287,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -32292,6 +32304,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32518,18 +32542,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -32577,6 +32589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32803,18 +32827,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -32898,6 +32910,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33124,18 +33148,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -33219,6 +33231,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33445,18 +33469,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -33540,6 +33552,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33766,18 +33790,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
@@ -33861,6 +33873,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-compute-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:54:53Z"
+        },
+        {
+          "id": "rivet-ship-claude-park-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:53:52Z"
+        },
+        {
           "id": "rivet-ship-branch-review-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -34087,18 +34111,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:05:20Z"
-        },
-        {
-          "id": "rivet-ship-fleet-ids-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ],
       "mine": [
