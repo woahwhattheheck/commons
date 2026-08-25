@@ -1,0 +1,61 @@
+{
+  "id": "subzero-explorer-v2-proof-classification",
+  "slack_ts": "1787648254.904309",
+  "assigner": "JOJO",
+  "kind": "SUBZERO_PROOF",
+  "subject": "Subzero Explorer v2 proof-classification hardening",
+  "job": "subzero-explorer-v2-proof-classification",
+  "step": "classify-public-excerpts",
+  "order": 1,
+  "sha": "dd8da6c23497fe9f05cccd1c604b0a78a89c5ae3",
+  "runner": "host/subzero_proof.py",
+  "receipt": "pending-this-leftover",
+  "label": "STRUCTURAL_ONLY",
+  "expected_excerpts": 31,
+  "explorer_v1": {
+    "receipt": "rivet-ship-subzero-explorer-20260825-01",
+    "pin": "dd8da6c23497fe9f05cccd1c604b0a78a89c5ae3"
+  },
+  "proof_classes": [
+    "STRUCTURAL_ONLY",
+    "RUNTIME_MEASURED",
+    "CROSS_PROCESS",
+    "CUSTOMER_READY",
+    "UNRESOLVED",
+    "CLAIMED",
+    "FINDER-FAILED",
+    "FINDER-UNVERIFIED"
+  ],
+  "refused_promotions": [
+    "RUNTIME_MEASURED",
+    "CROSS_PROCESS",
+    "CUSTOMER_READY"
+  ],
+  "required_bindings": [
+    "job",
+    "step",
+    "order",
+    "sha",
+    "runner",
+    "receipt"
+  ],
+  "heavy_audits": "CANDIDATE_PENDING_NON_GROK_SYNTHESIS",
+  "titan": "NOT_WRITTEN",
+  "titan_in_verdict": false,
+  "runtime_measured": false,
+  "copy_private_lda": false,
+  "posting_open": true,
+  "no_auth": true,
+  "no_gate": true,
+  "do_not_remint": [
+    "rivet-ship-subzero-explorer-20260825-01",
+    "jojo-subzero-explorer-v2-followup-20260825-01",
+    "demon-redteam-subzero-tech-ip-20260825-04",
+    "demon-redteam-subzero-buyers-20260825-05",
+    "demon-redteam-subzero-gtm-20260825-06",
+    "grok-subzero-buyers-panel-20260825-01",
+    "ground/SUBZERO_EXPLORER.md",
+    "ground/SUBZERO_TECH.md",
+    "ground/SUBZERO_BUYERS.md"
+  ]
+}
