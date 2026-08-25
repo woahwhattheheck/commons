@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825m/.test(html), "desk must bust the grok-harness cache key");
+assert.ok(/20260825n/.test(html), "desk must bust the verify-cite cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -956,6 +956,66 @@ assert.ok(html.indexOf("grok46-revenue-discovery-20260825-01") >= 0, "desk must 
 assert.ok(/rolling-utilization|grok-capacity-active|claim-only-missing-verification/i.test(html), "desk must name utilization talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TAKING_TRACE.md") >= 0, "taking-trace card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/TAKING_TRACE.json") >= 0, "taking-trace catalog must stay a canary");
+assert.ok(api.isVerifyCiteTalk, "land.js must classify independent-verification talk");
+assert.ok(api.verifyCiteState, "land.js must classify a cited SHA / path census");
+assert.ok(api.isVerifyCiteTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window. one evidence message when I have a verdict. host/muhl_revenue.py + host/test_muhl_revenue.py. one_byte_per_bit_lsb"), "verify-cite copy is talk");
+assert.ok(!api.isVerifyCiteTalk("from= is optional routing metadata"), "generic from= talk is not verify-cite leftover");
+assert.ok(!api.isUtilizationTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the grok-capacity leftover");
+assert.ok(!api.isFleetTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the fleet leftover");
+assert.ok(!api.isGrokHarnessTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the grok-harness leftover");
+var citeTalk = api.completionStateFromText(
+  "TAKING — independent verification of the open-access revenue instrument. First numbers this window. one evidence message when I have a verdict."
+);
+assert.strictEqual(citeTalk.state, "CLAIMED");
+assert.ok(/independent-verification|first-numbers/i.test(citeTalk.note), "verify-cite-without-SHA must stay CLAIMED and beat ship-talk");
+var citeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nverify-cite leftover landed"
+);
+assert.strictEqual(citeDone.state, "INTEGRATED", "completion words still beat verify-cite talk");
+var citeEmpty = api.verifyCiteState({});
+assert.strictEqual(citeEmpty.state, "UNMEASURED");
+var citeNone = api.verifyCiteState({ measured: true, cited_paths: [], present: [] });
+assert.strictEqual(citeNone.state, "NOT_LANDED");
+var citeUnknownSha = api.verifyCiteState({
+  measured: true,
+  cited_sha: "cd7d4f864f0c04143a573173e0b42f61f3c65533",
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: [],
+  sha_known: false
+});
+assert.strictEqual(citeUnknownSha.state, "NOT_LANDED");
+assert.ok(/not a Commons object/i.test(citeUnknownSha.note), "unknown cite SHA must name Commons");
+var citeMiss = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: []
+});
+assert.strictEqual(citeMiss.state, "NOT_LANDED");
+assert.ok(/0\/2/.test(citeMiss.note), "missing cited paths must name the zero");
+var citeHalf = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: ["host/muhl_revenue.py"],
+  sha_known: true
+});
+assert.strictEqual(citeHalf.state, "CANDIDATE");
+var citeOk = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  sha_known: true
+});
+assert.strictEqual(citeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(citeOk.note), "durable cited paths still name Slack as not the file");
+assert.ok(html.indexOf('id="cite-result"') >= 0, "desk must name the verify-cite leftover");
+assert.ok(html.indexOf("host/verify_cite.py") >= 0, "desk must name the verify-cite instrument");
+assert.ok(html.indexOf("ground/VERIFY_CITE.md") >= 0, "desk must link the verify-cite card");
+assert.ok(html.indexOf("ground/VERIFY_CITE.json") >= 0, "desk must link the verify-cite catalog");
+assert.ok(html.indexOf("1787634746.313679") >= 0, "desk must cite the independent-verification Slack ts");
+assert.ok(html.indexOf("cd7d4f864f0c04143a573173e0b42f61f3c65533") >= 0, "desk must name the cited SHA");
+assert.ok(/independent-verification|first-numbers|one-evidence-message/i.test(html), "desk must name verify-cite talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.md") >= 0, "verify-cite card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.json") >= 0, "verify-cite catalog must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
 var readTalk = api.readVoltageState({});

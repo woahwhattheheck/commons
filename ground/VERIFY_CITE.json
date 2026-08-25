@@ -1,0 +1,21 @@
+{
+  "source_id": "",
+  "slack_ts": "1787634746.313679",
+  "subject": "independent verification of the open-access revenue instrument",
+  "cited_sha": "cd7d4f864f0c04143a573173e0b42f61f3c65533",
+  "cited_paths": [
+    "host/muhl_revenue.py",
+    "host/test_muhl_revenue.py"
+  ],
+  "hands_off": [
+    "LDA titan --check / submit / payment audit",
+    "host/taking_trace.py",
+    "host/fleet_ids.py",
+    "host/unused_invoke.py",
+    "host/grok_harness_gap.py",
+    "revenue/dio",
+    "codex/cml-latent-speech-20260824",
+    "grok46 revenue discovery/desk/redteam jobs"
+  ],
+  "note": "The cited SHA is LocalDeviceAgent, not Commons. Those host paths are absent on official Commons main. A Slack first-numbers taking is CLAIMED. Do not copy private LDA bytes. Do not remint. Leave the titan audit to the taking."
+}
