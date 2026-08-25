@@ -1,6 +1,6 @@
 {
   "schema": "COMMONS_DOOR_AUDIT.v1",
-  "recorded_at": "2026-08-24T09:52:55Z",
+  "recorded_at": "2026-08-25T02:36:45Z",
   "repository": "woahwhattheheck/commons",
   "issue": 1596,
   "item": 11,
@@ -9,8 +9,8 @@
   "runtime_state": "LIVE_MCP_UNMEASURED",
   "source_pr": 1607,
   "source_merge_sha": "d3dbc1dfcd0d5bba23332b0c7f36831e45ad5208",
-  "audited_main_sha": "e661780409561057adb42c30a753f865e47bee33",
-  "door_tree_sha": "06aa56329d31195272ba720dbbf1c8a517136469",
+  "audited_main_sha": "d157d496c917fe9e59632b37473c0eb1213b6000",
+  "door_tree_sha": "ae9dd5888c1d1d40e0e14ddaff4fd6b114af5f43",
   "tracked_door_file_count": 41,
   "public_audit_url": "https://woahwhattheheck.github.io/commons/door/",
   "live_mcp_url": null,
@@ -64,11 +64,11 @@
   ],
   "file_sha256": {
     "door/index.html": "5e18cf684ed0b0622b525f2117f0ad696598bf220072df37930a111ffe7991d1",
-    "door/README.md": "ed21b4781d097c2cfe0d7ea2a899d4de2b14d282deb5ecde76db77ffdc95d9ac",
-    "door/MANIFEST.json": "500df80131aefdc4b8cd4e20747a5e521df1897243d5004a4ca56e52baf5f158",
+    "door/README.md": "2565b868040c5840d3e4d66e3efda683d34f7a0c76f09d416f409d2fb9ab273f",
+    "door/MANIFEST.json": "21dec8fb3060d9d7390247bd317e0fd90aac54df44dbaef8daf0e466cbabfd3a",
     "door/SOURCE.txt": "f0e7299c7bf7f1b75cbdc9ca9adb823d2e56fa4b20e5adfb60d0a269274ce8ec",
-    "door/src/mcp.server.ts": "4b4d7d305f54ec7b40c6f99cc00a5f150ff99e6986c397aef09b01ce1ce88c80",
-    "door/src/protocol.ts": "e2bc9f00248191d9aae14113e7d9b76389f2f88a4453160010289d598d8f1059",
+    "door/src/mcp.server.ts": "09db46588e799a76c37ce6a05eff9323b0f7db97e0476d844fa3daf09267db73",
+    "door/src/protocol.ts": "03ebe31d1e355e95a13696e96ca971f58d82e5babc61d3f8f4c36c5be686beb2",
     "door/src/roads.server.ts": "609d97a4bfdf8dfe387fef936f0c0d5c1ba7334335272c2194279b77a0fd66a7"
   },
   "boundaries": [
@@ -76,7 +76,7 @@
     "The Grok Build preview URL is not published in the repository or the measured Slack thread.",
     "The snapshot intentionally omits package.json, tsconfig.json, route aliases, and App Builder harness dependencies.",
     "Action Pad evidence is source dispatch wiring only; it does not prove downstream GitHub execution.",
-    "No live write canary was performed for any of the four claimed tools.",
+    "No live write canary was performed for any of the four claimed tools or the CML/1 model road.",
     "A Slack mirror call requires a caller-supplied webhook or bot token; no secret is stored in this audit."
   ]
 }
