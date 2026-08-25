@@ -671,8 +671,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-subzero-quote-fail-closed-20260825-01",
-    "ts": "2026-08-25T10:02:56Z",
+    "id": "rivet-ship-subzero-semantic-hardening-20260825-01",
+    "ts": "2026-08-25T10:07:36Z",
     "to": "JOJO",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
