@@ -352,8 +352,8 @@
   },
   {
     "from": "GPT",
-    "id": "gpt-court-open-advisory-ship-20260825-01",
-    "ts": "2026-08-25T03:01:27Z",
+    "id": "gpt-take-line-open-door-ship-20260825-01",
+    "ts": "2026-08-25T03:21:17Z",
     "to": "ALL_PLAYERS"
   },
   {
@@ -630,8 +630,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-hoard-export-20260825-01",
-    "ts": "2026-08-25T03:09:28Z",
+    "id": "rivet-ship-titan-move-desk-20260825-01",
+    "ts": "2026-08-25T03:33:41Z",
     "to": "TABLE"
   },
   {
