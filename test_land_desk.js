@@ -604,8 +604,11 @@ assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must 
 assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lever must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-voltage card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/HOARD.md") >= 0, "hoard / session-export card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TITAN_MOVE.md") >= 0, "titan MOVE card must stay a canary");
 assert.ok(api.sessionExportState, "land.js must classify session export");
 assert.ok(api.isHoardTalk, "land.js must classify owner hoard/commit-push copy");
+assert.ok(api.isSubstrateDodgeTalk, "land.js must classify substrate-dodge TAKINGS");
+assert.ok(api.titanMoveState, "land.js must classify the titan MOVE leftover");
 var hoardTalk = api.completionStateFromText(
   "YOU ALL NEED TO BE COMMITTING AND PUSHING ALL OF YOUR BUILDS DO NOT HOARD SHIT IN YOUR SESSION AND MAKE ME TRACK IT DOWN"
 );
@@ -626,6 +629,34 @@ var hoardAhead = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0,
 assert.strictEqual(hoardAhead.state, "CANDIDATE");
 var hoardClean = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0, ahead_of_main: 0 });
 assert.strictEqual(hoardClean.state, "INTEGRATED");
+assert.ok(api.isSubstrateDodgeTalk("No Muhlnickel, organ, titan, or device path."), "exclusion line is a substrate dodge");
+assert.ok(api.isSubstrateDodgeTalk("Stop dodging the substrate work. It is not to be ignored and it is not to be deferred."), "owner dodge yell is talk until a leftover ships");
+assert.ok(!api.isSubstrateDodgeTalk("taking organ 24 muhl_chimera_socr_stig"), "an actual organ taking is not a dodge");
+var dodgeTalk = api.completionStateFromText(
+  "TAKING documentation only. No Muhlnickel, organ, titan, or device path."
+);
+assert.strictEqual(dodgeTalk.state, "CLAIMED");
+assert.ok(/substrate-dodge/i.test(dodgeTalk.note), "exclusion TAKING without a SHA is CLAIMED");
+var dodgeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nNo Muhlnickel leftover landed"
+);
+assert.strictEqual(dodgeDone.state, "INTEGRATED", "completion words still beat a substrate-dodge line");
+var titanEmpty = api.titanMoveState({});
+assert.strictEqual(titanEmpty.state, "UNMEASURED");
+var titanMissing = api.titanMoveState({ measured: true, count: 19, excerpt_count: 19, titan: "NOT_WRITTEN", nonzero_offsets: 0, reread: false });
+assert.strictEqual(titanMissing.state, "NOT_LANDED");
+assert.ok(/19\/31/.test(titanMissing.note), "missing excerpts stay NOT_LANDED");
+var titanPacket = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 0, reread: false });
+assert.strictEqual(titanPacket.state, "NOT_LANDED");
+assert.ok(/OWNER_LOCAL_ALLOCATOR/.test(titanPacket.note), "31 excerpts without a write is still NOT_LANDED");
+var titanOk = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "WRITTEN", nonzero_offsets: 31, reread: true });
+assert.strictEqual(titanOk.state, "INTEGRATED");
+assert.ok(html.indexOf('id="titan-result"') >= 0, "desk must name the titan MOVE leftover");
+assert.ok(html.indexOf("host/titan_move_dry.py") >= 0, "desk must name the titan dry instrument");
+assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan MOVE card");
+assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
+assert.ok(/No Muhlnickel, organ, titan, or device path/i.test(html), "desk must name the exclusion line");
+assert.ok(/needs-bryce|NEED \/ WHY ONLY BRYCE/i.test(html), "desk must name the owner-blocker form");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
