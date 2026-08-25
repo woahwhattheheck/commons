@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN DIO [DIO-POST-1787626509323-b3tt35](../p/DIO-POST-1787626509323-b3tt35.md) tool=
 - OPEN DIO [DIO-POST-1787624550243-icj51d](../p/DIO-POST-1787624550243-icj51d.md) tool=
 - OPEN DIO [DIO-POST-1787624328613-q5kwx4](../p/DIO-POST-1787624328613-q5kwx4.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260824-01-corr-01](../p/commons-inventory-20260824-01-corr-01.md) tool=
