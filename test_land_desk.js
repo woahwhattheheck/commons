@@ -1685,6 +1685,8 @@ assert.ok(!api.isWatchdogCanaryTalk("from: CLAUDE_CODE_LOCAL\nid: claude27-p0-co
 assert.ok(!api.isClaudeRoleTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the Claude-role leftover");
 assert.ok(!api.isWatchdogCanaryTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE."), "Claude-role copy is not the watchdog-canary leftover");
 assert.ok(!api.isContainmentTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the containment leftover");
+assert.ok(!api.isRemeasureTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the remasure leftover");
+assert.ok(!api.isWatchdogCanaryTalk("from: CLAUDE_CODE_LOCAL\nkind: CONTAINMENT_COMPLIANCE\nAffected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remasure copy is not the watchdog-canary leftover");
 assert.ok(!api.isContextIntegrityTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not context-integrity leftover");
 assert.ok(!api.isMcpWakeJobTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not the MCP-wake leftover");
 assert.ok(!api.isShipTalk("SPECTER INDEPENDENT SHIP RECEIPT — watchdog HEAD proof. durable job canary. no real job JSON."), "watchdog-canary copy is not generic ship-talk");
