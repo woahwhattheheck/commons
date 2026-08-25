@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825s/.test(html), "desk must bust the stranded-map cache key");
+assert.ok(/20260825t/.test(html), "desk must bust the lda-android cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1138,6 +1138,41 @@ assert.ok(html.indexOf("cd7d4f864f0c04143a573173e0b42f61f3c65533") >= 0, "desk m
 assert.ok(/independent-verification|first-numbers|one-evidence-message/i.test(html), "desk must name verify-cite talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.md") >= 0, "verify-cite card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.json") >= 0, "verify-cite catalog must stay a canary");
+assert.ok(api.isAndroidCiTalk, "land.js must classify Android-CI / lda/workflows/android.yml talk");
+assert.ok(api.androidCiState, "land.js must classify the lda-android workflow");
+assert.ok(api.isAndroidCiTalk("LocalDeviceAgent has substantive Android source, but lda/workflows/android.yml is outside .github/workflows, so it is not real Android CI. DIO claim the smallest current-main Android CI placement/validation lane."), "stranded-map Android copy is talk");
+assert.ok(!api.isAndroidCiTalk("make sure people do more than talk about shit"), "ship-talk is not the Android leftover");
+assert.ok(!api.isRenderCheckTalk("lda/workflows/android.yml is outside .github/workflows so it is not real Android CI"), "Android-CI copy is not the visual-diff leftover");
+var androidTalk = api.completionStateFromText(
+  "lda/workflows/android.yml is outside .github/workflows, so it is not real Android CI. DIO claim the smallest current-main Android CI placement."
+);
+assert.strictEqual(androidTalk.state, "CLAIMED");
+assert.ok(/Android-CI|lda\/workflows\/android\.yml/i.test(androidTalk.note), "Android-CI-without-SHA must stay CLAIMED and beat utilization");
+var androidDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nlda-android leftover landed"
+);
+assert.strictEqual(androidDone.state, "INTEGRATED", "completion words still beat Android-CI talk");
+var androidEmpty = api.androidCiState("");
+assert.strictEqual(androidEmpty.state, "UNMEASURED");
+var androidMissing = api.androidCiState("# battery only\npython3 test_land_desk.js\n");
+assert.strictEqual(androidMissing.state, "NOT_LANDED");
+var androidWipe = api.androidCiState(
+  "working-directory: lda\nassembleDebug\nsetup-java\npaths:\n  - lda/app/**\nworkflow_dispatch:\nlistArtifactsForRepo\n"
+);
+assert.strictEqual(androidWipe.state, "NOT_LANDED");
+var androidOk = api.androidCiState(
+  "working-directory: lda\nassembleDebug\nsetup-java\npaths:\n  - lda/app/**\nworkflow_dispatch:\n"
+);
+assert.strictEqual(androidOk.state, "INTEGRATED");
+assert.ok(/workflow file is not a run URL/i.test(androidOk.note), "landed Android gate must name a workflow as not a run");
+assert.ok(html.indexOf('id="android-ci-result"') >= 0, "desk must name the Android-CI leftover");
+assert.ok(html.indexOf("host/lda_android_ci.py") >= 0, "desk must name the Android-CI instrument");
+assert.ok(html.indexOf("ground/LDA_ANDROID_CI.md") >= 0, "desk must link the Android-CI card");
+assert.ok(html.indexOf(".github/workflows/lda-android.yml") >= 0, "desk must name the Android-CI workflow");
+assert.ok(html.indexOf("1787635487.642039") >= 0, "desk must cite the stranded-map Slack ts");
+assert.ok(/Android-CI|lda\/workflows\/android\.yml|outside/i.test(html), "desk must name Android-CI talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/LDA_ANDROID_CI.md") >= 0, "Android-CI card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf(".github/workflows/lda-android.yml") >= 0, "Android-CI workflow must stay a canary");
 assert.ok(api.isRenderCheckTalk, "land.js must classify visual-diff / render_check talk");
 assert.ok(api.renderCheckState, "land.js must classify the render-check workflow");
 assert.ok(api.isRenderCheckTalk("DEMON rolling utilization report — 8-BIT/PIXEL STATUS. render_check.py has caught real invisible-sprite failures but is NOT wired to current-main CI. DIO + JOJO: wire a free-runner visual-diff leftover for render_check.py 8bit.html 8walk.html pixel.html visual.html, publishing Chromium receipts."), "render-check copy is talk");

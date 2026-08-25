@@ -124,6 +124,8 @@
     "ground/VERIFY_CITE.json",
     "ground/RENDER_CHECK.md",
     ".github/workflows/render-check.yml",
+    "ground/LDA_ANDROID_CI.md",
+    ".github/workflows/lda-android.yml",
     "ground/STALE_SPEC.md",
     "ground/STALE_SPEC.json",
     "ground/PIXEL_HEARTBEAT.md",
@@ -366,6 +368,9 @@
     if (api.isRenderCheckTalk(t)) {
       return { state: "CLAIMED", note: "visual-diff / Chromium-receipt talk. Talk is not a land. Wire render_check.py 8bit.html 8walk.html pixel.html visual.html onto current-main CI." };
     }
+    if (api.isAndroidCiTalk(t)) {
+      return { state: "CLAIMED", note: "Android-CI / lda/workflows/android.yml talk. Talk is not a land. Place a path-filtered .github/workflows/lda-android.yml on current main." };
+    }
     if (api.isVisualPraise(t)) {
       return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
     }
@@ -602,6 +607,39 @@
 
   api.isRenderCheckTalk = function (text) {
     return /render_check\.py|visual-diff gate|chromium receipts|free-runner visual|not wired to current-main ci|8bit\.html 8walk\.html pixel\.html visual\.html/i.test(String(text || ""));
+  };
+
+  api.isAndroidCiTalk = function (text) {
+    return /lda-android\.yml|not real android ci|android ci placement|smallest current-main android/i.test(String(text || ""));
+  };
+
+  api.androidCiState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: ".github/workflows/lda-android.yml body not read. Absence was not measured." };
+    }
+    var hasWorkdir = /working-directory:\s*lda/.test(body);
+    var hasAssemble = /assembleDebug/.test(body);
+    var hasJdk = /setup-java|java-version|jdk 17/i.test(body);
+    var hasPath = /lda\//.test(body) && /paths:/.test(body);
+    var hasDispatch = /workflow_dispatch/.test(body);
+    var wipes = /listArtifactsForRepo|deleteArtifact|gha-remove-artifacts/i.test(body);
+    if (wipes) {
+      return {
+        state: "NOT_LANDED",
+        note: "workflow would wipe repo-wide artifacts. The LDA-root copy is not Commons CI. Place a path-filtered lda-android leftover."
+      };
+    }
+    if (hasWorkdir && hasAssemble && hasJdk && hasPath && hasDispatch) {
+      return {
+        state: "INTEGRATED",
+        note: "lda-android is a current-main Actions workflow: working-directory lda, path-filtered, assembleDebug, workflow_dispatch. A workflow file is not a run URL. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "LDA Android CI is not a current-main Actions gate. lda/workflows/android.yml outside .github/workflows is CLAIMED until the leftover ships."
+    };
   };
 
   api.renderCheckState = function (text) {
@@ -1234,6 +1272,7 @@
   var grokOut = document.getElementById("grok-harness-result");
   var citeOut = document.getElementById("cite-result");
   var renderOut = document.getElementById("render-result");
+  var androidOut = document.getElementById("android-ci-result");
   var staleOut = document.getElementById("stale-spec-result");
   var pixelOut = document.getElementById("pixel-heartbeat-result");
   var deviceChurnOut = document.getElementById("device-churn-result");
@@ -1651,6 +1690,12 @@
     renderOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintAndroidCi(result) {
+    if (!androidOut) return;
+    androidOut.setAttribute("data-tone", api.toneFor(result.state));
+    androidOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function paintStaleSpec(result) {
     if (!staleOut) return;
     staleOut.setAttribute("data-tone", api.toneFor(result.state));
@@ -1879,6 +1924,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintTaking(err);
+      return err;
+    });
+  }
+
+  function loadAndroidCi(sha) {
+    if (!androidOut) return Promise.resolve(null);
+    androidOut.innerHTML = "<b>UNMEASURED</b><p>Reading .github/workflows/lda-android.yml at the official SHA…</p>";
+    var url = RAW + sha + "/.github/workflows/lda-android.yml";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: ".github/workflows/lda-android.yml absent at the measured main SHA. Android-CI talk is CLAIMED." };
+        paintAndroidCi(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintAndroidCi(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.androidCiState(body);
+        paintAndroidCi(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintAndroidCi(err);
       return err;
     });
   }
@@ -2232,6 +2304,7 @@
     loadGrokHarness(sha);
     loadVerifyCite(sha);
     loadRenderCheck(sha);
+    loadAndroidCi(sha);
     loadStaleSpec(sha);
     loadPixelHeartbeat(sha);
     loadDeviceChurn(sha);
