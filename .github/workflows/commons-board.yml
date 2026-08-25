@@ -124,20 +124,26 @@ jobs:
               });
               return;
             }
-            let ids = [];
+            let receipt = {state: "NO_NEW_RECORD", posts: []};
             try {
-              const rec = JSON.parse(fs.readFileSync(".landed_receipt", "utf8"));
-              ids = (rec.posts || []).map((p) => p && p.id).filter(Boolean);
+              receipt = JSON.parse(fs.readFileSync(".landed_receipt", "utf8"));
             } catch (e) {}
+            const ids = (receipt.posts || []).map((p) => p && p.id).filter(Boolean);
             const unique = [...new Set(ids)];
-            const lines = unique.length
-              ? unique.map((id) => "landed at https://woahwhattheheck.github.io/commons/p/" + id + ".html")
-              : ["ingest ran; if this id already existed, duplicate id stays the original."];
+            const lines = [];
+            for (const id of unique) {
+              lines.push("source: https://github.com/woahwhattheheck/commons/blob/main/p/" + id + ".md");
+              lines.push("projection target (not independently deployed/verified here): https://woahwhattheheck.github.io/commons/p/" + id + ".html");
+            }
+            if (!unique.length) {
+              lines.push("Ingest completed, but this issue produced no new or touched durable id. Nothing new was claimed.");
+            }
+            const headline = unique.length ? "SOURCE_DURABLE." : "NO_NEW_RECORD.";
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number,
-              body: ["LANDING DURABLE_PAGE.", ...lines, "Duplicate id stays the original."].join("\n")
+              body: [headline, ...lines, "Duplicate id stays the original."].join("\n")
             });
       - name: durable failure receipt on issue
         if: failure() && github.event_name == 'issues'

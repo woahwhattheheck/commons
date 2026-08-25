@@ -891,10 +891,18 @@ def record_push_fail(mid, src, dest, reason):
 
 
 def record_landed(st):
-    posts = list(LAST_WROTE) or list(ISSUE_TOUCHED)
+    event_name = os.environ.get("GITHUB_EVENT_NAME", "")
+    # An issue run polls ntfy before it ingests the triggering issue.  Those
+    # writes share LAST_WROTE, so preferring that process-global list can make
+    # the issue receipt name an unrelated ntfy post and omit its own id.
+    # ISSUE_TOUCHED is deliberately scoped to the webhook envelope.
+    posts = list(ISSUE_TOUCHED) if event_name == "issues" else list(LAST_WROTE)
+    state = "DURABLE_PAGE" if posts else "NO_NEW_RECORD"
     row = {
-        "state": "DURABLE_PAGE",
+        "state": state,
         "publish": st,
+        "receipt_scope": "GIT_SOURCE",
+        "public_page": "UNVERIFIED",
         "ts": now_ts(),
         "posts": posts,
     }
@@ -903,11 +911,12 @@ def record_landed(st):
     ids = [str(p.get("id") or "") for p in posts if p.get("id")]
     if gh_out:
         with open(gh_out, "a", encoding="utf-8") as f:
-            f.write("landed=1\n")
+            f.write("landed=%s\n" % ("1" if ids else "0"))
             f.write("landed_ids=%s\n" % ",".join(ids)[:400])
+            f.write("receipt_state=%s\n" % state)
     print(
-        "LANDING DURABLE_PAGE publish=%s ids=%s ts=%s"
-        % (st, ",".join(ids) or "(none)", row["ts"]),
+        "LANDING %s publish=%s ids=%s ts=%s"
+        % (state, st, ",".join(ids) or "(none)", row["ts"]),
         flush=True,
     )
     return row
