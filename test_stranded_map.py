@@ -56,6 +56,54 @@ class TestStrandedMap(unittest.TestCase):
         self.assertEqual(classify(measured)["state"], "INTEGRATED")
         self.assertIn("Slack map is still not the file", classify(measured)["note"])
 
+    def test_done_canary_is_verified(self):
+        measured = measure_from_rows(
+            {
+                "lda_android": True,
+                "gh_android": False,
+                "wake_job_json": 2,
+                "wake_jobs": [
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "DONE",
+                    }
+                ],
+                "mcp_surfaces": [
+                    "commons_mcp.py",
+                    "independent_commons_mcp",
+                    "door/src/mcp.server.ts",
+                    "mcp_server",
+                ],
+                "mcp_inventory": True,
+                "whitebox_source": True,
+                "whitebox_customer_receipt": False,
+                "bazaar_offers": 7,
+                "bazaar_copy_node": False,
+                "titan_packet_size": PACKET_SIZE,
+                "titan_later_size": LATER_SIZE,
+            }
+        )
+        self.assertEqual(measured["wake"], "VERIFIED")
+        self.assertEqual(classify(measured)["state"], "INTEGRATED")
+
+    def test_open_canary_is_candidate(self):
+        measured = measure_from_rows(
+            {
+                "lda_android": True,
+                "gh_android": False,
+                "wake_job_json": 1,
+                "wake_jobs": [
+                    {
+                        "job_id": "specter-watchdog-head-proof-20260825-01",
+                        "status": "OPEN",
+                    }
+                ],
+                "titan_packet_size": PACKET_SIZE,
+                "titan_later_size": LATER_SIZE,
+            }
+        )
+        self.assertEqual(measured["wake"], "CANDIDATE")
+
     def test_missing_titan_size_is_not_landed(self):
         measured = measure_from_rows({"lda_android": True, "gh_android": False})
         self.assertEqual(measured["titan"], "UNMEASURED")
@@ -74,7 +122,7 @@ class TestStrandedMap(unittest.TestCase):
         self.assertFalse(row["gh_android"])
         self.assertEqual(row["android"], "STRANDED")
         self.assertGreaterEqual(row["wake_job_json"], 1)
-        self.assertEqual(row["wake"], "CANDIDATE")
+        self.assertEqual(row["wake"], "VERIFIED")
         self.assertGreaterEqual(len(row["mcp_surfaces"]), 4)
         self.assertTrue(row["mcp_inventory"])
         self.assertEqual(row["mcp"], "INTEGRATED")

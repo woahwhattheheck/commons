@@ -23,7 +23,7 @@
         "specter-watchdog-head-proof-20260825-01"
       ],
       "result_address": "ridge-cursor-wake-loop-20260822-01",
-      "note": "RIVET's durable current-main canary is DONE; SPECTER's bounded canary is OPEN in source and its PR workflow proved HEAD-proof auto-DONE with zero wake, delivery, and process model invocation; named idle resume remains UNMEASURED"
+      "note": "both durable canaries are DONE (RIVET rivet-watchdog-canary-20260825-01 and SPECTER specter-watchdog-head-proof-20260825-01 auto_complete, woke_once=false); named idle resume remains UNMEASURED"
     },
     {
       "id": "mcp_surfaces",

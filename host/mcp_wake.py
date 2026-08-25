@@ -452,6 +452,15 @@ def catalog_from_row(row):
         "wake": row.get("wake"),
         "wake_job_json": int(row.get("wake_job_json") or 0),
         "wake_jobs": list(row.get("wake_jobs") or []),
+        "production_canaries": [
+            {
+                "job_id": str(item.get("job_id") or ""),
+                "source_state": str(item.get("status") or ""),
+                "result_address": str(item.get("result_address") or ""),
+            }
+            for item in (row.get("wake_jobs") or [])
+            if str(item.get("job_id") or "")
+        ],
         "job": {
             "ok": bool(job.get("ok")),
             "state": job.get("state"),

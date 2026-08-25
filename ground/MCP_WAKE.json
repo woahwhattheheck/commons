@@ -19,7 +19,7 @@
     "checkpoint_job",
     "complete_job"
   ],
-  "wake": "CANDIDATE",
+  "wake": "VERIFIED",
   "wake_job_json": 2,
   "production_canaries": [
     {
@@ -30,8 +30,10 @@
     {
       "job_id": "specter-watchdog-head-proof-20260825-01",
       "result_address": "ridge-cursor-wake-loop-20260822-01",
-      "source_state": "OPEN",
-      "expected_terminal_state": "DONE",
+      "source_state": "DONE",
+      "auto_complete": true,
+      "woke_once": false,
+      "attempt_count": 0,
       "expected_wake_count": 0,
       "expected_delivery_count": 0,
       "expected_process_model_invocations": 0

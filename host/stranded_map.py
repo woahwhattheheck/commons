@@ -40,6 +40,7 @@ MCP_INVENTORY = os.path.join("ground", "MCP_INVENTORY.json")
 SLACK_TS = "1787635487.642039"
 PACKET_SIZE = 103812669582
 LATER_SIZE = 103831308164
+PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
 
 
 def _exists(root, rel):
@@ -57,6 +58,38 @@ def _wake_job_json_count(root):
         and name != "_last_tick.json"
         and os.path.isfile(os.path.join(folder, name))
     )
+
+
+def _wake_job_rows(root):
+    """Read status-only job rows. Invalid files stay visible, never silent."""
+    folder = os.path.join(root, WAKE_JOBS)
+    if not os.path.isdir(folder):
+        return []
+    rows = []
+    for name in sorted(os.listdir(folder)):
+        path = os.path.join(folder, name)
+        if (
+            not name.endswith(".json")
+            or name == "_last_tick.json"
+            or not os.path.isfile(path)
+        ):
+            continue
+        try:
+            with open(path, encoding="utf-8") as handle:
+                data = json.load(handle)
+        except (OSError, ValueError):
+            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            continue
+        if not isinstance(data, dict):
+            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            continue
+        rows.append(
+            {
+                "job_id": str(data.get("job_id") or name[:-5]),
+                "status": str(data.get("status") or "UNKNOWN"),
+            }
+        )
+    return rows
 
 
 def _mcp_present(root):
@@ -134,7 +167,21 @@ def measure_from_rows(facts):
     else:
         android = "NOT_LANDED"
     wake_json = int(facts.get("wake_job_json") or 0)
-    wake = "EMPTY" if wake_json <= 0 else "CANDIDATE"
+    wake_jobs = list(facts.get("wake_jobs") or [])
+    canary = next(
+        (
+            item
+            for item in wake_jobs
+            if str(item.get("job_id") or "") == PRODUCTION_CANARY_ID
+        ),
+        None,
+    )
+    if wake_json <= 0:
+        wake = "EMPTY"
+    elif canary and str(canary.get("status") or "") == "DONE":
+        wake = "VERIFIED"
+    else:
+        wake = "CANDIDATE"
     surfaces = list(facts.get("mcp_surfaces") or [])
     inventory = bool(facts.get("mcp_inventory"))
     if surfaces and inventory:
@@ -174,6 +221,7 @@ def measure_from_rows(facts):
         "gh_android": gh,
         "wake": wake,
         "wake_job_json": wake_json,
+        "wake_jobs": wake_jobs,
         "mcp": mcp,
         "mcp_surfaces": surfaces,
         "mcp_inventory": inventory,
@@ -204,6 +252,7 @@ def measure_tree(root, catalog_text=""):
         "lda_android": _exists(root, LDA_ANDROID),
         "gh_android": _exists(root, GH_ANDROID),
         "wake_job_json": _wake_job_json_count(root),
+        "wake_jobs": _wake_job_rows(root),
         "mcp_surfaces": _mcp_present(root),
         "mcp_inventory": _exists(root, MCP_INVENTORY),
         "whitebox_source": _exists(root, WHITEBOX_SOURCE),
@@ -254,9 +303,9 @@ def classify(row):
         "note": (
             "six-item stranded map is measured on this tree. "
             "Android CI stays STRANDED until DIO places "
-            ".github/workflows/android.yml. The first bounded wake_jobs "
-            "canary is CANDIDATE until its production receipt lands; named "
-            "idle resume remains unmeasured. MCP stays FRAGMENTED until "
+            ".github/workflows/android.yml. Bounded wake_jobs canaries "
+            "are VERIFIED when DONE; named idle resume remains "
+            "unmeasured. MCP stays FRAGMENTED until "
             "one inventory lands. White Box stays PROPOSED. Bazaar "
             "copy-node stays UNFULFILLED. Titan posted size stays STALE. "
             "A Slack map is still not the file."
