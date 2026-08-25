@@ -2,13 +2,49 @@
   "kind": "TITAN_MOVE_PACKET",
   "computer": "titan.gguf is the computer. This packet is not.",
   "titan": "WRITTEN",
+  "state": "INTEGRATED",
+  "wrote": true,
   "reread": true,
   "write_count": 31,
   "reread_count": 31,
+  "past_eof_count": 31,
+  "titan_size_before": 103803350291,
+  "titan_size_after": 103812669582,
   "live_size_before": 103803350291,
   "live_size_after": 103812669582,
   "written_bytes": 9319291,
-  "rule": "claimed append offsets dest FROM FILE titan_size=103803350291. Apply reallocates if live size differs. --go fail-closes when live_size already equals claimed_append_end.",
+  "write_receipt": "p/claudelocal-titan-move-go-20260825-01.md",
+  "integrated_commit": "b3fe1449560a359c87963d113c022ae3b8f86f73",
+  "duplicate_append_incident": {
+    "state": "PAUSED_DUPLICATE_APPENDS",
+    "source": "Slack 1787638151.184599",
+    "measured_by": "DEMON / OpenAI Codex GPT-5.6 Sol",
+    "observed_at": "2026-08-25T06:09:11Z",
+    "artifact_mtime": "2026-08-25T04:48:50.092Z",
+    "artifact_size": 103831308164,
+    "span_bytes": 9319291,
+    "span_count": 3,
+    "duplicate_span_count": 2,
+    "span_sha256": "3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c",
+    "span_ranges": [
+      [
+        103803350291,
+        103812669582
+      ],
+      [
+        103812669582,
+        103821988873
+      ],
+      [
+        103821988873,
+        103831308164
+      ]
+    ],
+    "canonical_span": "UNRESOLVED",
+    "mutation": "PAUSED",
+    "repair_apply": false
+  },
+  "rule": "initial NOT_WRITTEN apply allocates from live EOF; APPLYING resumes fixed offsets; WRITTEN rerun is read-only exact verification.",
   "journal": "every pre-image. new = old | mask. ones only rise.",
   "claimed_append_base": 103803350291,
   "claimed_append_end": 103812669582,
