@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825au/.test(html), "desk must bust the Claude-compute cache key");
+assert.ok(/20260825av/.test(html), "desk must bust the Claude-compute + claude-intermediate cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1501,6 +1501,38 @@ assert.ok(html.indexOf("1787640367.070179") >= 0, "desk must cite the DEMON paid
 assert.ok(/paid-compute|compiler-farm|isolated-untrusted|CLAUDE_INTERMEDIATE_UNTRUSTED|adjudicator-in-advance/i.test(html), "desk must name Claude-compute talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.md") >= 0, "Claude-compute card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.json") >= 0, "Claude-compute catalog must stay a canary");
+assert.ok(api.isClaudeIntermediateTalk, "land.js must classify DEMON intermediate-lane ruling talk");
+assert.ok(api.claudeIntermediateState, "land.js must classify the claude-intermediate leftover");
+assert.ok(api.isClaudeIntermediateTalk(":scales: DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER\nP2 SCRIBE drafts. P5 NEVER CLAUSE. OPERATING LABEL CLAUDE_INTERMEDIATE_UNTRUSTED\nP1 rejected for now. P6 amended. REHABILITATION GATE"), "DEMON intermediate ruling is talk");
+assert.ok(!api.isClaudeIntermediateTalk("make sure people do more than talk about shit"), "ship-talk is not the claude-intermediate leftover");
+assert.ok(!api.isClaudeIntermediateTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nkind: PROPOSAL\nsubject: OWNER RELAY — the colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only.\n*P6 — THE TELL."), "colony charter is not the claude-intermediate leftover");
+assert.ok(!api.isClaudeIntermediateTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the claude-intermediate leftover");
+assert.ok(!api.isClaudeIntermediateTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not the claude-intermediate leftover");
+assert.ok(!api.isClaudeRoleTalk(":scales: DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER. CLAUDE_INTERMEDIATE_UNTRUSTED. rehabilitation gate. P1 rejected for now. P6 amended."), "pure DEMON amendment copy without the GAUGE proposal id is not the charter leftover");
+var claudeIntTalk = api.completionStateFromText(
+  "DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER. CLAUDE_INTERMEDIATE_UNTRUSTED. P1 rejected for now. P6 amended. rehabilitation gate."
+);
+assert.strictEqual(claudeIntTalk.state, "CLAIMED");
+assert.ok(/quarantined-intermediate-worker|CLAUDE_INTERMEDIATE_UNTRUSTED|P1-rejected-for-now|P6-amended|rehabilitation-gate/i.test(claudeIntTalk.note), "claude-intermediate-without-SHA must stay CLAIMED and beat the charter leftover");
+var claudeIntDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-intermediate leftover landed"
+);
+assert.strictEqual(claudeIntDone.state, "INTEGRATED", "completion words still beat claude-intermediate talk");
+var claudeIntEmpty = api.claudeIntermediateState("");
+assert.strictEqual(claudeIntEmpty.state, "UNMEASURED");
+var claudeIntMissing = api.claudeIntermediateState("# empty stub\nno leftover");
+assert.strictEqual(claudeIntMissing.state, "NOT_LANDED");
+var claudeIntOk = api.claudeIntermediateState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nCLAUDE_INTERMEDIATE_UNTRUSTED\nP2_SCRIBE\nP5_NEVER\nP1_HANDS\nREJECTED_FOR_NOW\nFINDER-UNVERIFIED\nNever 0\nCursor / Grok\nno_gate\ndoes not add a gate\nCLAUDE_ROLE\ndoes not overwrite\n");
+assert.strictEqual(claudeIntOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(claudeIntOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-intermediate-result"') >= 0, "desk must name the claude-intermediate leftover");
+assert.ok(html.indexOf("host/claude_intermediate.py") >= 0, "desk must name the claude-intermediate instrument");
+assert.ok(html.indexOf("ground/CLAUDE_INTERMEDIATE.md") >= 0, "desk must link the claude-intermediate card");
+assert.ok(html.indexOf("ground/CLAUDE_INTERMEDIATE.json") >= 0, "desk must link the claude-intermediate catalog");
+assert.ok(html.indexOf("1787640206.633649") >= 0, "desk must cite the DEMON ruling Slack ts");
+assert.ok(/quarantined-intermediate-worker|CLAUDE_INTERMEDIATE_UNTRUSTED|P1-rejected-for-now|P6-amended|rehabilitation-gate/i.test(html), "desk must name claude-intermediate talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_INTERMEDIATE.md") >= 0, "claude-intermediate card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_INTERMEDIATE.json") >= 0, "claude-intermediate catalog must stay a canary");
 assert.ok(api.isClaudeRoleTalk, "land.js must classify colony-decides / Claude-family-role talk");
 assert.ok(api.claudeRoleState, "land.js must classify the Claude-role leftover");
 assert.ok(api.isClaudeRoleTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nkind: PROPOSAL\nsubject: OWNER RELAY — the colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only. Exact paths in, receipt out, nothing added to spec.\n*P5 — THE NEVER CLAUSE\n*P6 — THE TELL."), "GAUGE role proposal is talk");

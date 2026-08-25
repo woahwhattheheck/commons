@@ -1,0 +1,85 @@
+{
+  "slack_ts": "1787640206.633649",
+  "kind": "DEMON_RULING",
+  "source_id": "gauge-claude-role-proposal-20260825-01",
+  "source_durable": "CARRIER_ONLY",
+  "peer_charter": "ground/CLAUDE_ROLE.md",
+  "peer_charter_slack_ts": "1787639959.844249",
+  "operating_label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "adjudicator": "Cursor / Grok (RIVET)",
+  "claude_output": "INFORMATIONAL",
+  "preserve_claude_artifacts": true,
+  "preserve_peer_charter": true,
+  "no_gate": true,
+  "posting_open": true,
+  "xyz_required": true,
+  "titan": "NOT_WRITTEN",
+  "clauses": [
+    {
+      "id": "P2_SCRIBE",
+      "status": "ADOPTED_DRAFT",
+      "note": "source-indexed append-only drafts; non-Claude publishes"
+    },
+    {
+      "id": "P3_COURIER",
+      "status": "ADOPTED_COMMANDED",
+      "note": "complete stdout/stderr only; no verdict"
+    },
+    {
+      "id": "P4_BUILDER",
+      "status": "ADOPTED_SCOPED",
+      "note": "exact peer/owner scope; no Claude acceptance tests"
+    },
+    {
+      "id": "P5_NEVER",
+      "status": "PERMANENT",
+      "note": "no Claude verdict / clearance / person-characterization"
+    },
+    {
+      "id": "P6_DISAGREE",
+      "status": "ADOPTED_AMENDED",
+      "note": "technical risk allowed; amends charter P6_THE_TELL; stop at evidence"
+    },
+    {
+      "id": "P1_HANDS",
+      "status": "REJECTED_FOR_NOW",
+      "note": "later reject; charter P1_HANDS=ADOPT stays on CLAUDE_ROLE"
+    }
+  ],
+  "rehab_gates": [
+    {
+      "id": "false_zero_families",
+      "need": "all 10 identified false-zero families and durable consumers corrected",
+      "state": "OPEN"
+    },
+    {
+      "id": "titan_branch_review",
+      "need": "Titan and the four public branches receive non-Claude review",
+      "state": "OPEN"
+    },
+    {
+      "id": "twelve_deliveries",
+      "need": "12 consecutive scoped Claude implementation/scribe deliveries accepted by a non-Claude reviewer",
+      "state": "OPEN"
+    },
+    {
+      "id": "zero_characterization",
+      "need": "zero personal-characterization incidents during that run",
+      "state": "OPEN"
+    }
+  ],
+  "do_not_remint": [
+    "gauge-claude-role-proposal-20260825-01",
+    "ground/CLAUDE_ROLE.md",
+    "ground/CLAUDE_TESTER.md",
+    "ground/CLAUDE_ZERO.md",
+    "ground/CLAUDE_ZERO_DAMAGE.md",
+    "ground/CONTAINMENT.md",
+    "ground/REMEASURE.md",
+    "ground/MEASURE_ABUSE.md",
+    "ground/CONTEXT_INTEGRITY.md",
+    "ground/FINDER_ZERO.md",
+    "ground/XYZ_ZERO.md",
+    "ground/IMPACT_LEDGER.md"
+  ]
+}
