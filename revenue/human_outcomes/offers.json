@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOME_CATALOG",
+  "catalog_id": "demon-human-outcomes-revenue-20260825-01",
+  "as_of": "2026-08-25",
+  "public_page": "humans.html",
+  "contact": {
+    "business_email": "brycembusiness2@gmail.com",
+    "public_interest_board": "OFFER",
+    "confidential_material_on_public_roads": false
+  },
+  "truth": {
+    "collected_cash_usd": 0,
+    "collected_cash_state": "NOT_LANDED",
+    "banking_only_blocker": false,
+    "public_checkout": false,
+    "payment_collection": "PRIVATE_SOW_AND_INVOICE_AFTER_FIT_CHECK",
+    "legal_payee": "OWNER_PRIVATE_NOT_PUBLISHED",
+    "rule": "Authorization is not settlement is not payout is not bank-available cash."
+  },
+  "priority_order": [
+    "backlog-rescue-one-ticket",
+    "accessible-meeting-packet",
+    "security-questionnaire-sprint",
+    "pixel-agent-pack"
+  ],
+  "offers": [
+    {
+      "id": "backlog-rescue-one-ticket",
+      "name": "Backlog Rescue — one owned ticket",
+      "status": "AVAILABLE_FOR_FIT_CHECK",
+      "buyer_job": "Turn one named repository issue into a human-owned, ready-to-merge pull request.",
+      "price": {
+        "currency": "USD",
+        "fixed_amount": 1500,
+        "deposit_amount": 1500
+      },
+      "clock": "48 hours after locked inputs and access",
+      "inputs": [
+        "one issue URL and written acceptance criteria",
+        "repository access and branch rules",
+        "commands for tests and CI",
+        "written exclusions"
+      ],
+      "deliverables": [
+        "one scoped pull request, preferably no more than 400 changed lines",
+        "available project tests and CI green",
+        "human review note naming risks and decisions",
+        "8-bit status card: OPEN to REVIEW to CI GREEN"
+      ],
+      "acceptance": [
+        "pull request addresses the locked issue",
+        "available agreed checks pass",
+        "one written revision is included"
+      ],
+      "refund_boundary": "Full refund if the agreed ready-to-merge acceptance is not met after the included cure; scope changes require a new quote.",
+      "exclusions": [
+        "no claim that token volume or agent count is the product",
+        "no production deployment unless separately written",
+        "no customer code or secrets posted to Commons"
+      ]
+    },
+    {
+      "id": "accessible-meeting-packet",
+      "name": "Accessible meeting packet",
+      "status": "AVAILABLE_FOR_FIT_CHECK",
+      "buyer_job": "Make one public-meeting packet usable by people using screen readers, reflow, keyboard navigation, or accessible text.",
+      "price": {
+        "currency": "USD",
+        "fixed_amount": 1800,
+        "deposit_amount": 1800
+      },
+      "clock": "48 hours after source review and locked scope",
+      "inputs": [
+        "one source packet up to 80 pages",
+        "editable source files when available",
+        "publishing deadline and destination"
+      ],
+      "deliverables": [
+        "remediated PDF where the source permits",
+        "HTML or accessible-text companion",
+        "headings, reading order, links, alt text, and tables addressed",
+        "exception log and QA note"
+      ],
+      "acceptance": [
+        "agreed packet opens and navigates",
+        "agreed structural checks are completed",
+        "known source limitations are written, not hidden"
+      ],
+      "refund_boundary": "Scope and price are confirmed after source inspection; unreadable scans or unusually complex forms are requoted before payment.",
+      "exclusions": [
+        "not a legal opinion",
+        "not a certification of statutory compliance",
+        "no invention of missing source meaning"
+      ]
+    },
+    {
+      "id": "security-questionnaire-sprint",
+      "name": "Security questionnaire sprint",
+      "status": "AVAILABLE_FOR_FIT_CHECK",
+      "buyer_job": "Turn a stalled customer security questionnaire into an evidence-linked response workbook.",
+      "price": {
+        "currency": "USD",
+        "fixed_amount": 1800,
+        "deposit_amount": 1800
+      },
+      "clock": "48 hours after evidence access and locked scope",
+      "inputs": [
+        "one questionnaire up to 150 questions",
+        "customer policies, architecture notes, and prior approved answers",
+        "one authorized reviewer"
+      ],
+      "deliverables": [
+        "completed response workbook based only on supplied evidence",
+        "source citations or evidence pointers",
+        "gap and owner flags",
+        "short list of blocking decisions"
+      ],
+      "acceptance": [
+        "every in-scope question is answered or explicitly flagged",
+        "claims trace to customer evidence",
+        "one reviewer revision is included"
+      ],
+      "refund_boundary": "Missing evidence is flagged instead of invented; material scope expansion is requoted before work continues.",
+      "exclusions": [
+        "no attestation, audit opinion, or legal advice",
+        "no fabricated controls or certifications",
+        "no submission to the end customer unless separately authorized"
+      ]
+    },
+    {
+      "id": "pixel-agent-pack",
+      "name": "Pixel agent pack",
+      "status": "AVAILABLE_FOR_FIT_CHECK",
+      "buyer_job": "Give one product, community, or internal agent a recognizable original 8-bit identity that moves.",
+      "price": {
+        "currency": "USD",
+        "fixed_amount": 800,
+        "deposit_amount": 400
+      },
+      "clock": "48 hours after the visual brief is locked",
+      "inputs": [
+        "brand palette and three adjectives",
+        "32x32 or 48x48 size choice",
+        "commercial-use and export requirements"
+      ],
+      "deliverables": [
+        "one original character",
+        "idle, think, error, and done loops",
+        "transparent sprite sheet and preview GIF",
+        "avatar and icon exports",
+        "commercial-use note and one revision"
+      ],
+      "acceptance": [
+        "exports match the locked grid and palette",
+        "loops render without broken frames",
+        "one written revision is included"
+      ],
+      "refund_boundary": "Full refund if the agreed export set is not delivered after the included cure; style copying and trademark imitation are refused.",
+      "exclusions": [
+        "no copied game, anime, or company character",
+        "no claim that AI generation alone is the value",
+        "larger eight-direction animation sets are separately quoted"
+      ]
+    }
+  ],
+  "linked_upgrades": [
+    {
+      "id": "white-box-gguf-pilot-30d",
+      "source": "commercial.json",
+      "page": "commercial.html",
+      "status": "QUALIFIED_HIGH_TICKET_UPGRADE",
+      "note": "Only for a customer-controlled local model, named behavior, runnable harness, NDA, and written SOW."
+    },
+    {
+      "id": "gguf-diagnostic-10d-12k",
+      "source": "revenue/payment_ready/pack.json",
+      "status": "CANDIDATE_NOT_PARALLEL",
+      "note": "Preserved; not marketed as the first-dollar path."
+    }
+  ],
+  "fulfillment_modules": [
+    {
+      "id": "commons-swarm",
+      "role": "parallel research, implementation, review, and visible status"
+    },
+    {
+      "id": "dio",
+      "path": "revenue/dio/",
+      "role": "quote, job, and delivery-receipt discipline"
+    },
+    {
+      "id": "subzero",
+      "path": "revenue/subzero_gtm/",
+      "role": "specialist structural measurement and future paid validation"
+    },
+    {
+      "id": "compression",
+      "role": "specialist optimization module when a customer outcome needs it; never sold as proof by itself"
+    },
+    {
+      "id": "pixel-floor",
+      "path": "8bit.html",
+      "role": "human-readable project status and a public style/capability sample"
+    }
+  ]
+}
