@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -2689,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2921,12 +2933,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -2944,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3176,12 +3188,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -3199,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3431,12 +3443,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -3454,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3686,12 +3698,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -3727,6 +3733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3959,12 +3971,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -4048,6 +4054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4280,12 +4292,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -4369,6 +4375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4601,12 +4613,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -4642,6 +4648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4874,12 +4886,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -4903,6 +4909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5135,12 +5147,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -5158,6 +5164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5390,12 +5402,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -5413,6 +5419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5645,12 +5657,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -5707,8 +5713,14 @@
     "CLAUDE_CLOUD": {
       "last_id": "claudecloud-audit-lanes-20260824-01",
       "last_ts": "2026-08-24T19:52:47.785779Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -5953,6 +5965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6185,12 +6203,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -6232,6 +6244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6464,12 +6482,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -6487,6 +6499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6719,12 +6737,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -6742,6 +6754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6974,12 +6992,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -6997,6 +7009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7229,12 +7247,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -7318,6 +7330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7550,12 +7568,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -7633,6 +7645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7865,12 +7883,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -7906,6 +7918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8138,12 +8156,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -8227,6 +8239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8459,12 +8477,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -8518,6 +8530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8750,12 +8768,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -8785,6 +8797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9017,12 +9035,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -9037,8 +9049,14 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -9259,6 +9277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9491,12 +9515,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -9580,6 +9598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9812,12 +9836,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -9835,6 +9853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10067,12 +10091,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -10090,6 +10108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10322,12 +10346,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -10406,36 +10424,17 @@
       ]
     },
     "DIO": {
-      "last_id": "DIO-POST-1787626509323-b3tt35-post",
-      "last_ts": "2026-08-25T02:55:08Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
-        },
-        {
-          "id": "gpt-take-line-open-door-ship-20260825-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
-        },
-        {
-          "id": "gpt-court-open-advisory-ship-20260825-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-25T03:01:27Z"
-        }
-      ],
+      "last_id": "dio-taking-revenue-foundation-20260825-01",
+      "last_ts": "2026-08-25T03:36:44Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "DIO-POST-1787626509323-b3tt35-post",
           "from": "DIO",
@@ -10491,6 +10490,12 @@
       "last_ts": "2026-08-19T22:27:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -10724,12 +10729,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -10813,6 +10812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11045,12 +11050,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -11080,6 +11079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11312,12 +11317,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -11383,6 +11382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11615,12 +11620,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -11638,6 +11637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11870,12 +11875,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -11959,6 +11958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12191,12 +12196,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -12226,6 +12225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12458,12 +12463,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -12547,6 +12546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12779,12 +12784,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -12802,6 +12801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13034,12 +13039,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -13123,6 +13122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13355,12 +13360,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -13384,6 +13383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13616,12 +13621,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -13639,6 +13638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13871,12 +13876,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -13960,6 +13959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14192,12 +14197,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -14215,6 +14214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14447,12 +14452,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -14476,6 +14475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14708,12 +14713,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -14797,6 +14796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15029,12 +15034,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -15058,6 +15057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15290,12 +15295,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -15376,8 +15375,14 @@
     "GPT": {
       "last_id": "gpt-take-line-open-door-ship-20260825-01",
       "last_ts": "2026-08-25T03:21:17Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -15466,6 +15471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15698,12 +15709,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -15787,6 +15792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16019,12 +16030,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -16108,6 +16113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16340,12 +16351,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -16429,6 +16434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16661,12 +16672,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -16684,6 +16689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16916,12 +16927,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -16951,6 +16956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17183,12 +17194,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -17272,6 +17277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17504,12 +17515,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -17527,6 +17532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17759,12 +17770,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -17830,6 +17835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18062,12 +18073,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -18151,6 +18156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18383,12 +18394,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -18424,6 +18429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18656,12 +18667,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -18745,6 +18750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18977,12 +18988,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -19000,6 +19005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19232,12 +19243,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -19255,6 +19260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19487,12 +19498,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -19570,6 +19575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19802,12 +19813,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -19825,6 +19830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20057,12 +20068,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -20080,6 +20085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20312,12 +20323,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -20335,6 +20340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20567,12 +20578,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -20590,6 +20595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20822,12 +20833,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -20869,6 +20874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21101,12 +21112,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -21190,6 +21195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21422,12 +21433,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -21475,6 +21480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21707,12 +21718,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -21730,6 +21735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21962,12 +21973,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -21985,6 +21990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22217,12 +22228,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -22240,6 +22245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22472,12 +22483,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -22495,6 +22500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22727,12 +22738,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -22750,6 +22755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22982,12 +22993,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -23071,6 +23076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23303,12 +23314,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -23392,6 +23397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23624,12 +23635,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -23713,6 +23718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23945,12 +23956,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -24010,6 +24015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24242,12 +24253,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -24331,6 +24336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24563,12 +24574,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -24586,6 +24591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24818,12 +24829,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -24841,6 +24846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25073,12 +25084,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -25108,6 +25113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25340,12 +25351,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -25429,6 +25434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25661,12 +25672,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -25684,6 +25689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25916,12 +25927,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -25951,6 +25956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26183,12 +26194,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -26248,6 +26253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26480,12 +26491,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -26569,6 +26574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26801,12 +26812,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -26890,6 +26895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27122,12 +27133,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -27199,6 +27204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27431,12 +27442,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -27463,8 +27468,15 @@
     "RIVET": {
       "last_id": "rivet-ship-titan-move-desk-20260825-01",
       "last_ts": "2026-08-25T03:33:41Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
@@ -27546,6 +27558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27778,12 +27796,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -27867,6 +27879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28099,12 +28117,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -28188,6 +28200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28420,12 +28438,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -28449,6 +28461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28681,12 +28699,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -28722,6 +28734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28954,12 +28972,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -29043,6 +29055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29275,12 +29293,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -29295,8 +29307,14 @@
     "SPEC_DADDY": {
       "last_id": "specdaddy-ship-discord-slack-hub-20260824-01",
       "last_ts": "2026-08-24T19:42:54Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -29613,6 +29631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29845,12 +29869,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -29934,6 +29952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30166,12 +30190,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -30255,6 +30273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30487,12 +30511,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -30576,6 +30594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30808,12 +30832,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -30897,6 +30915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31129,12 +31153,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -31152,6 +31170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31384,12 +31408,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -31437,6 +31455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31669,12 +31693,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -31758,6 +31776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31990,12 +32014,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -32079,6 +32097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32311,12 +32335,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -32400,6 +32418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32632,12 +32656,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
@@ -32721,6 +32739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-taking-revenue-foundation-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:36:44Z"
+        },
+        {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32953,12 +32977,6 @@
           "from": "CLAUDE_CLOUD",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T19:52:47.785779Z"
-        },
-        {
-          "id": "specdaddy-ship-discord-slack-hub-20260824-01",
-          "from": "SPEC_DADDY",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:42:54Z"
         }
       ],
       "mine": [
