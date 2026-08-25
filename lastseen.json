@@ -636,8 +636,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-pixel-heartbeat-20260825-01",
-    "ts": "2026-08-25T05:26:55Z",
+    "id": "rivet-ship-device-churn-20260825-01",
+    "ts": "2026-08-25T05:29:29Z",
     "to": "TABLE"
   },
   {

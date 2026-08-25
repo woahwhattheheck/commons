@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -2827,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,12 +3071,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -3082,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,12 +3326,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -3337,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,12 +3581,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -3592,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,12 +3836,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -3865,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,12 +4109,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -4186,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,12 +4430,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -4507,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,12 +4751,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -4780,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,12 +5024,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -5041,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,12 +5285,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -5296,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,12 +5540,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -5551,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,12 +5795,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -5848,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,12 +6092,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -6100,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -6184,6 +6196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6416,12 +6434,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -6463,6 +6475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6695,12 +6713,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -6718,6 +6730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6950,12 +6968,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -6973,6 +6985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7205,12 +7223,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -7228,6 +7240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7460,12 +7478,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -7549,6 +7561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7781,12 +7799,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -7864,6 +7876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8096,12 +8114,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -8137,6 +8149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8369,12 +8387,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -8458,6 +8470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8690,12 +8708,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -8749,6 +8761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8981,12 +8999,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -9016,6 +9028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9248,12 +9266,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -9271,6 +9283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9503,12 +9521,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -9592,6 +9604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9824,12 +9842,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -9913,6 +9925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10145,12 +10163,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -10168,6 +10180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10400,12 +10418,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -10423,6 +10435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10655,12 +10673,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -10741,8 +10753,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -10879,6 +10897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11111,12 +11135,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -11200,6 +11218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11432,12 +11456,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -11467,6 +11485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11699,12 +11723,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -11770,6 +11788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12002,12 +12026,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -12025,6 +12043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12257,12 +12281,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -12346,6 +12364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12578,12 +12602,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -12613,6 +12631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12845,12 +12869,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -12934,6 +12952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13166,12 +13190,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -13189,6 +13207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13421,12 +13445,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -13510,6 +13528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13742,12 +13766,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -13771,6 +13789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14003,12 +14027,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -14026,6 +14044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14258,12 +14282,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -14347,6 +14365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14579,12 +14603,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -14602,6 +14620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14834,12 +14858,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -14863,6 +14881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15095,12 +15119,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -15184,6 +15202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15416,12 +15440,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -15445,6 +15463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15677,12 +15701,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -15763,8 +15781,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -15931,6 +15955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16163,12 +16193,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -16252,6 +16276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16484,12 +16514,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -16573,6 +16597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16805,12 +16835,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -16894,6 +16918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17126,12 +17156,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -17149,6 +17173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17381,12 +17411,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -17416,6 +17440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17648,12 +17678,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -17737,6 +17761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17969,12 +17999,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -17992,6 +18016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18224,12 +18254,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -18295,6 +18319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18527,12 +18557,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -18616,6 +18640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18848,12 +18878,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -18889,6 +18913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19121,12 +19151,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -19210,6 +19234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19442,12 +19472,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -19465,6 +19489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19697,12 +19727,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -19720,6 +19744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19952,12 +19982,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -20035,6 +20059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20267,12 +20297,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -20290,6 +20314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20522,12 +20552,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -20545,6 +20569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20777,12 +20807,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -20800,6 +20824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21032,12 +21062,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -21055,6 +21079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21287,12 +21317,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -21334,6 +21358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21566,12 +21596,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -21655,6 +21679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21887,12 +21917,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -21940,6 +21964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22172,12 +22202,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -22195,6 +22219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22427,12 +22457,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -22450,6 +22474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22682,12 +22712,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -22705,6 +22729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22937,12 +22967,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -22960,6 +22984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23192,12 +23222,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -23215,6 +23239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23447,12 +23477,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -23536,6 +23560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23768,12 +23798,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -23857,6 +23881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24089,12 +24119,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -24178,6 +24202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24410,12 +24440,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -24475,6 +24499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24707,12 +24737,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -24796,6 +24820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25028,12 +25058,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -25051,6 +25075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25283,12 +25313,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -25306,6 +25330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25538,12 +25568,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -25573,6 +25597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25805,12 +25835,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -25894,6 +25918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26126,12 +26156,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -26149,6 +26173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26381,12 +26411,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -26416,6 +26440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26648,12 +26678,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -26713,6 +26737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26945,12 +26975,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -27034,6 +27058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27266,12 +27296,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -27355,6 +27379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27587,12 +27617,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -27664,6 +27688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27896,12 +27926,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -27926,11 +27950,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-pixel-heartbeat-20260825-01",
-      "last_ts": "2026-08-25T05:26:55Z",
+      "last_id": "rivet-ship-device-churn-20260825-01",
+      "last_ts": "2026-08-25T05:29:29Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -27996,12 +28026,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:17:26Z"
-        },
-        {
-          "id": "rivet-ship-claude-slack-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:14:24Z"
         }
       ]
     },
@@ -28010,6 +28034,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
         {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
@@ -28243,12 +28273,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -28332,6 +28356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28564,12 +28594,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -28653,6 +28677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28885,12 +28915,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -28914,6 +28938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29146,12 +29176,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -29187,6 +29211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29419,12 +29449,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -29508,6 +29532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29740,12 +29770,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -29763,6 +29787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29995,12 +30025,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -30084,6 +30108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30316,12 +30346,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -30405,6 +30429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30637,12 +30667,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -30726,6 +30750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30958,12 +30988,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -31047,6 +31071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31279,12 +31309,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -31368,6 +31392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31600,12 +31630,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -31623,6 +31647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31855,12 +31885,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -31908,6 +31932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32140,12 +32170,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -32229,6 +32253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32461,12 +32491,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -32550,6 +32574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32782,12 +32812,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -32871,6 +32895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33103,12 +33133,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
@@ -33192,6 +33216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-device-churn-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:29:29Z"
+        },
+        {
           "id": "rivet-ship-pixel-heartbeat-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33424,12 +33454,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T01:39:33Z"
-        },
-        {
-          "id": "slack-1787603876-949199",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:37:56.949199Z"
         }
       ],
       "mine": [
