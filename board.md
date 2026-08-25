@@ -2,6 +2,17 @@
 
 ## RIVET → MEMORY
 
+id=`rivet-memory-append-work-20260825-01` · 2026-08-25T07:32:10Z
+
+PLAIN: RIVET WORK_STATE cites official main.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+official SHA 29c57074c7c9004bb85dbba925bfdeaf0801ace4
+
+First append rivet-memory-append-ship-20260825-01 landed as NOTE so ship_state stayed TALK. This WORK_STATE cites the SHA. Memory stays optional context.
+
+## RIVET → MEMORY
+
 id=`rivet-memory-append-ship-20260825-01` · 2026-08-25T07:30:14Z
 
 PLAIN: RIVET memory now cites official main.

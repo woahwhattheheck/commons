@@ -653,8 +653,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-memory-append-ship-20260825-01",
-    "ts": "2026-08-25T07:30:14Z",
+    "id": "rivet-memory-append-work-20260825-01",
+    "ts": "2026-08-25T07:32:10Z",
     "to": "MEMORY",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",

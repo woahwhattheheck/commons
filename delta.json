@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -8317,6 +8317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -8549,12 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -8638,6 +8638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -8870,12 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -9161,12 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -9196,6 +9196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -9428,12 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -9451,6 +9451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -9683,12 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -9772,6 +9772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -10004,12 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -10093,6 +10093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -10325,12 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -10345,8 +10345,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
         {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
@@ -10597,6 +10603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -10829,12 +10841,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -10852,6 +10858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -11084,12 +11096,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -11173,6 +11179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -11405,12 +11417,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -11488,6 +11494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -11720,12 +11732,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -11809,6 +11815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -12041,12 +12053,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -12076,6 +12082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -12308,12 +12320,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -12379,6 +12385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -12611,12 +12623,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -12634,6 +12640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -12866,12 +12878,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -12955,6 +12961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -13187,12 +13199,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -13222,6 +13228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -13454,12 +13466,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -13543,6 +13549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -13775,12 +13787,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -13798,6 +13804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -14030,12 +14042,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -14119,6 +14125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -14351,12 +14363,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -14380,6 +14386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -14612,12 +14624,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -14635,6 +14641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -14867,12 +14879,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -14956,6 +14962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -15188,12 +15200,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -15211,6 +15217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -15443,12 +15455,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -15472,6 +15478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -15704,12 +15716,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -15793,6 +15799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -16025,12 +16037,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -16054,6 +16060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -16286,12 +16298,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -16375,6 +16381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -16607,12 +16619,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -16696,6 +16702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -16928,12 +16940,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -17017,6 +17023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -17249,12 +17261,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -17338,6 +17344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -17570,12 +17582,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -17659,6 +17665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -17891,12 +17903,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -17914,6 +17920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -18146,12 +18158,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -18181,6 +18187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -18413,12 +18425,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -18502,6 +18508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -18734,12 +18746,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -18757,6 +18763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -18989,12 +19001,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -19060,6 +19066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -19292,12 +19304,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -19378,8 +19384,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
         {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
@@ -19432,6 +19444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -19664,12 +19682,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -19705,6 +19717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -19937,12 +19955,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -20026,6 +20038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -20258,12 +20276,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -20281,6 +20293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -20513,12 +20531,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -20536,6 +20548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -20768,12 +20786,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -20851,6 +20863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -21083,12 +21101,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -21106,6 +21118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -21338,12 +21356,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -21361,6 +21373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -21593,12 +21611,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -21616,6 +21628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -21848,12 +21866,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -21871,6 +21883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -22103,12 +22121,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -22150,6 +22162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -22382,12 +22400,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -22471,6 +22483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -22703,12 +22721,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -22756,6 +22768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -22988,12 +23006,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -23011,6 +23023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -23243,12 +23261,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -23266,6 +23278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -23498,12 +23516,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -23521,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -23753,12 +23771,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -23776,6 +23788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -24008,12 +24026,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -24031,6 +24043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -24263,12 +24281,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -24352,6 +24364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -24584,12 +24602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -24673,6 +24685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -24905,12 +24923,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -24994,6 +25006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -25226,12 +25244,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -25291,6 +25303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -25523,12 +25541,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -25612,6 +25624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -25844,12 +25862,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -25867,6 +25879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -26099,12 +26117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -26122,6 +26134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -26354,12 +26372,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -26389,6 +26401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -26621,12 +26639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -26710,6 +26722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -26942,12 +26960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -26965,6 +26977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -27197,12 +27215,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -27232,6 +27244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -27464,12 +27482,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -27529,6 +27541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -27761,12 +27779,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -27850,6 +27862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -28082,12 +28100,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -28171,6 +28183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -28403,12 +28421,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -28480,6 +28492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -28712,12 +28730,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -28742,11 +28754,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-memory-append-ship-20260825-01",
-      "last_ts": "2026-08-25T07:30:14Z",
+      "last_id": "rivet-memory-append-work-20260825-01",
+      "last_ts": "2026-08-25T07:32:10Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
         {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
@@ -28812,12 +28830,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:01:46Z"
-        },
-        {
-          "id": "rivet-ship-claude-intermediate-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:57:44Z"
         }
       ]
     },
@@ -28826,6 +28838,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
         {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
@@ -29059,12 +29077,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -29148,6 +29160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -29380,12 +29398,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -29469,6 +29481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -29701,12 +29719,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -29730,6 +29742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -29962,12 +29980,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -30003,6 +30015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -30235,12 +30253,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -30324,6 +30336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -30556,12 +30574,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -30579,6 +30591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -30811,12 +30829,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -30900,6 +30912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -31132,12 +31150,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -31221,6 +31233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -31453,12 +31471,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -31542,6 +31554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -31774,12 +31792,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -31863,6 +31875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -32095,12 +32113,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -32184,6 +32196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -32416,12 +32434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -32439,6 +32451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -32671,12 +32689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -32724,6 +32736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -32956,12 +32974,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -33045,6 +33057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -33277,12 +33295,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -33366,6 +33378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -33598,12 +33616,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -33687,6 +33699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -33919,12 +33937,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [
@@ -34008,6 +34020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        },
+        {
           "id": "rivet-memory-append-ship-20260825-01",
           "from": "RIVET",
           "to": "MEMORY",
@@ -34240,12 +34258,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
-          "from": "DEMON",
-          "to": "TOOLS",
-          "ts": "2026-08-25T06:08:00Z"
         }
       ],
       "mine": [

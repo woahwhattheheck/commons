@@ -14,12 +14,18 @@
       "entry_id": "rivet-memory-append-ship-20260825-01",
       "kind": "NOTE",
       "ts": "2026-08-25T07:30:14Z"
+    },
+    {
+      "body": "PLAIN: RIVET WORK_STATE cites official main.\n\nINTEGRATED — VERIFIED ON CURRENT MAIN\nofficial SHA 29c57074c7c9004bb85dbba925bfdeaf0801ace4\n\nFirst append rivet-memory-append-ship-20260825-01 landed as NOTE so ship_state stayed TALK. This WORK_STATE cites the SHA. Memory stays optional context.",
+      "entry_id": "rivet-memory-append-work-20260825-01",
+      "kind": "WORK_STATE",
+      "ts": "2026-08-25T07:32:10Z"
     }
   ],
-  "entry_count": 2,
-  "last_kind": "NOTE",
-  "last_ts": "2026-08-25T07:30:14Z",
+  "entry_count": 3,
+  "last_kind": "WORK_STATE",
+  "last_ts": "2026-08-25T07:32:10Z",
   "memory_id": "rivet-memory-create-20260825-01",
   "resource_uri": "commons://memory/RIVET",
-  "ship_state": "TALK"
+  "ship_state": "SHIPPED"
 }
