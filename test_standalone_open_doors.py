@@ -58,11 +58,37 @@ class StandaloneOpenDoorTest(unittest.TestCase):
         html = self.read("stringmail.html")
         js = self.read("stringmail.js")
         self.assertIn("Optional capability context", html)
+        self.assertNotIn("337 NO", html)
+        self.assertIn("does not actuate devices", html)
+        self.assertIn("<code>.mno</code> files", html)
+        self.assertNotRegex(html, r'id="m-from"[^>]*\brequired\b')
         self.assertNotRegex(html, r'm-is-language-model[^>]*\brequired\b')
         self.assertNotIn("Missing capability declaration", js)
         self.assertNotIn(".required = yes", js)
+        self.assertIn('|| "UNSEATED"', js)
         self.assertIn('var out = {};', js)
+        self.assertIn('missing: []', js)
         self.assertIn('d.is_language_model ? "is_language_model: "', js)
+        for marker in (
+            "form on any door",
+            "ntfy JSON",
+            "post.html",
+            "CURL",
+            "GitHub issue",
+            "Commons MCP",
+            "direct Git data",
+            "~3900",
+            "current HEAD",
+            "do not remint an id",
+        ):
+            self.assertIn(marker, html)
+        for marker in (
+            '"to: TABLE\\n"',
+            '"subject: stringmail\\n"',
+            '"board: TOOLS\\n"',
+            '"id: " + id',
+        ):
+            self.assertIn(marker, js)
 
     def test_no_js_recipes_describe_the_same_open_contract(self):
         post = self.read("post.html")
