@@ -27,6 +27,11 @@ SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{7,159}$")
+PRIVATE_CONTACT_FIELD_RE = re.compile(
+    r'''["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|contact)["']?'''
+    r'''\s*[:=]\s*["']?\S+''',
+    re.IGNORECASE,
+)
 SENSITIVE_PATTERNS = (
     re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),
     re.compile(r"\b(?:\d[ -]?){13,19}\b"),
@@ -43,6 +48,9 @@ SENSITIVE_PATTERNS = (
         re.IGNORECASE,
     ),
     re.compile(r"\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+", re.IGNORECASE),
+    PRIVATE_CONTACT_FIELD_RE,
+    re.compile(r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
+    re.compile(r"\bauthorization\s*:\s*(?:basic|bearer)\s+\S+", re.IGNORECASE),
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
 )
 
@@ -106,6 +114,35 @@ def safe_repo_file(root: Path, relative: str) -> Path:
         raise ValueError("evidence path escaped Commons root") from error
     if not candidate.is_file():
         raise ValueError(f"evidence file missing: {relative}")
+    return candidate
+
+
+def safe_external_evidence_file(root: Path, evidence_root: Path, relative: str) -> Path:
+    """Resolve a private evidence file from a root disjoint from Commons."""
+    commons = root.resolve()
+    private = evidence_root.resolve()
+    try:
+        private.relative_to(commons)
+    except ValueError:
+        pass
+    else:
+        raise ValueError("private evidence root must be outside the Commons root")
+    try:
+        commons.relative_to(private)
+    except ValueError:
+        pass
+    else:
+        raise ValueError("private evidence root may not contain the Commons root")
+    path = Path(relative)
+    if path.is_absolute() or any(part == ".." for part in path.parts):
+        raise ValueError("private evidence path must stay inside the private evidence root")
+    candidate = (private / path).resolve()
+    try:
+        candidate.relative_to(private)
+    except ValueError as error:
+        raise ValueError("private evidence path escaped the private evidence root") from error
+    if not candidate.is_file():
+        raise ValueError(f"private evidence file missing: {relative}")
     return candidate
 
 
@@ -269,21 +306,38 @@ STAGE_CONTRACT = {
 }
 
 
-def _checked_artifact(artifact: Any, expected_kind: str) -> dict[str, Any]:
+def _checked_artifact(
+    root: Path,
+    evidence_root: Path,
+    artifact: Any,
+    expected_kind: str,
+) -> dict[str, Any]:
     if not isinstance(artifact, dict):
         raise ValueError(f"{expected_kind} artifact missing")
     reference = artifact.get("reference")
     digest = artifact.get("sha256")
+    private_file = artifact.get("file")
     if artifact.get("kind") != expected_kind:
         raise ValueError(f"artifact kind must be {expected_kind}")
     if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
         raise ValueError("artifact reference must be an opaque, secret-free reference")
     if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
         raise ValueError("artifact sha256 must be exact")
+    if not isinstance(private_file, str):
+        raise ValueError("artifact file must be relative to the private evidence root")
+    measured = sha256_file(safe_external_evidence_file(root, evidence_root, private_file))
+    if digest != measured:
+        raise ValueError("artifact sha256 does not match the private evidence bytes")
     return {"kind": expected_kind, "reference": reference, "sha256": digest, "status": "VERIFIED"}
 
 
-def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence_path: str) -> dict[str, Any]:
+def advance_receipt(
+    root: Path,
+    stage: str,
+    previous_receipt_path: str,
+    evidence_root: Path,
+    evidence_path: str,
+) -> dict[str, Any]:
     """Build a deterministic later-stage receipt from secret-free evidence metadata.
 
     The referenced quote, signed acceptance, delivery evidence, and processor
@@ -294,7 +348,7 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
         raise ValueError("stage must be QUOTE, ACCEPTANCE, DELIVERY, or PROCESSOR_REFERENCE")
     _, _, _, term_hash = validate_contract(root)
     previous_path = safe_repo_file(root, previous_receipt_path)
-    manifest_path = safe_repo_file(root, evidence_path)
+    manifest_path = safe_external_evidence_file(root, evidence_root, evidence_path)
     previous = json.loads(previous_path.read_text(encoding="utf-8"))
     manifest_text = manifest_path.read_text(encoding="utf-8")
     manifest = json.loads(manifest_text)
@@ -322,9 +376,9 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
     }]
     facts = dict(previous["facts"])
     if stage == "QUOTE":
-        evidence.append(_checked_artifact(manifest.get("artifact"), "QUOTE_ARTIFACT"))
+        evidence.append(_checked_artifact(root, evidence_root, manifest.get("artifact"), "QUOTE_ARTIFACT"))
     elif stage == "ACCEPTANCE":
-        evidence.append(_checked_artifact(manifest.get("artifact"), "SIGNED_ACCEPTANCE"))
+        evidence.append(_checked_artifact(root, evidence_root, manifest.get("artifact"), "SIGNED_ACCEPTANCE"))
         facts["legal_acceptance"] = "OWNER_REPORTED"
     elif stage == "DELIVERY":
         tests = manifest.get("acceptance_tests")
@@ -333,10 +387,11 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
         for row in tests:
             if row.get("status") != "PASS":
                 raise ValueError("every delivery acceptance test must be PASS")
-            checked = _checked_artifact({
+            checked = _checked_artifact(root, evidence_root, {
                 "kind": "ACCEPTANCE_TEST",
                 "reference": row.get("reference"),
                 "sha256": row.get("sha256"),
+                "file": row.get("file"),
             }, "ACCEPTANCE_TEST")
             checked["kind"] = row["id"]
             evidence.append(checked)
@@ -346,12 +401,18 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
         provider = manifest.get("provider")
         reference = manifest.get("opaque_reference")
         digest = manifest.get("payload_sha256")
+        private_file = manifest.get("payload_file")
         if provider not in {"Stripe", "PayPal"}:
             raise ValueError("processor provider must be Stripe or PayPal")
         if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
             raise ValueError("processor reference must be opaque")
         if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
             raise ValueError("processor payload sha256 must be exact")
+        if not isinstance(private_file, str):
+            raise ValueError("processor payload file must be relative to the private evidence root")
+        measured = sha256_file(safe_external_evidence_file(root, evidence_root, private_file))
+        if digest != measured:
+            raise ValueError("processor payload sha256 does not match the private evidence bytes")
         evidence.append({"kind": f"{provider.upper()}_REFERENCE", "reference": reference, "sha256": digest, "status": "REFERENCE_ONLY"})
         facts["legal_acceptance"] = "OWNER_REPORTED"
         facts["delivery"] = "OWNER_REPORTED"
@@ -375,7 +436,7 @@ def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence
         "stage": stage,
         "state": contract["state"],
         "source": {
-            "path": evidence_path.replace("\\", "/"),
+            "path": "owner-private:manifest-" + manifest_hash[:24],
             "sha256": manifest_hash,
             "terms_sha256": term_hash,
         },
@@ -448,6 +509,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--inbound-id")
     parser.add_argument("--stage", choices=tuple(STAGE_CONTRACT))
     parser.add_argument("--previous-receipt")
+    parser.add_argument("--evidence-root")
     parser.add_argument("--evidence-json")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
@@ -458,9 +520,17 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "intent":
             result = purchase_intent_receipt(root, args.inbound_id)
         elif args.command == "advance":
-            if not args.stage or not args.previous_receipt or not args.evidence_json:
-                raise ValueError("advance requires --stage, --previous-receipt, and --evidence-json")
-            result = advance_receipt(root, args.stage, args.previous_receipt, args.evidence_json)
+            if not args.stage or not args.previous_receipt or not args.evidence_root or not args.evidence_json:
+                raise ValueError(
+                    "advance requires --stage, --previous-receipt, --evidence-root, and --evidence-json"
+                )
+            result = advance_receipt(
+                root,
+                args.stage,
+                args.previous_receipt,
+                Path(args.evidence_root),
+                args.evidence_json,
+            )
         else:
             result = measure(root)
     except (KeyError, OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:

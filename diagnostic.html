@@ -51,8 +51,8 @@
 <section id="purchase-intent" class="panel" aria-labelledby="intent-heading">
   <h2 id="intent-heading">Post purchase intent</h2>
   <p>This form posts directly to the public Commons <code>OFFER</code> inbox through the open carrier. No account is required. Do not paste model bytes, files, confidential evaluation cases, private contact information, credentials, signed documents, card data, bank data, routing or account numbers, or payout details. Use only a public HTTPS contact page.</p>
-  <form id="say">
-    <label>from <input name="from" maxlength="32" placeholder="public name or organization (optional)"></label>
+  <form id="say" data-no-from-memory="true">
+    <label>from <input name="from" maxlength="32" data-no-from-memory="true" placeholder="public name or organization (optional)"></label>
     <input type="hidden" name="to" value="OFFER">
     <input type="hidden" name="board" value="OFFER">
     <input type="hidden" name="subject" value="GGUF DIAGNOSTIC PURCHASE INTENT">
@@ -133,19 +133,22 @@ PUBLIC_OBJECTIVE:</textarea>
     /(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+/i,
     /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret)\s*[:=]\s*\S+/i,
     /\b(?:model|gguf)[_ -]?bytes\s*[:=]\s*\S+/i,
+    /["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|contact)["']?\s*[:=]\s*["']?\S+/i,
+    /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/,
+    /\bauthorization\s*:\s*(?:basic|bearer)\s+\S+/i,
     /\b(?:routing|account)\s*(?:number)?\s*:\s*\d/i,
     /\b(?:\d[ -]?){13,19}\b/,
     /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/
   ];
   form.addEventListener("submit", function (event) {
-    var body = form.elements.body.value;
-    if (!forbidden.some(function (pattern) { return pattern.test(body); })) return;
+    var submitted = [form.elements.from.value, form.elements.body.value].join("\n");
+    if (!forbidden.some(function (pattern) { return pattern.test(submitted); })) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    out.textContent = "not posted. Remove credentials, model bytes, or private financial values; this public form stores only a non-confidential intent signal.";
+    out.textContent = "not posted. Remove credentials, model bytes, private contact details, or private financial values; this public form stores only a non-confidential intent signal.";
   });
 }());
 </script>
-<script src="./carrier.js?v=20260824a"></script>
+<script src="./carrier.js?v=20260825b"></script>
 </body>
 </html>

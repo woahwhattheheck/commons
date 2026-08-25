@@ -14,3 +14,5 @@ __pycache__/
 .landed_receipt
 .push_fail_receipt
 _git_ok.py
+/owner-private/
+/.private-revenue-evidence/

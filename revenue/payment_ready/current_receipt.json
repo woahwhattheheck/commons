@@ -4,7 +4,7 @@
     {
       "kind": "OFFER_SOURCE",
       "reference": "revenue/payment_ready/pack.json",
-      "sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+      "sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36",
       "status": "VERIFIED"
     }
   ],

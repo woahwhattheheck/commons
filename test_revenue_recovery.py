@@ -20,14 +20,28 @@ class RevenueRecoveryTests(unittest.TestCase):
 
     def make_root(self, post=None):
         temp = tempfile.TemporaryDirectory()
-        root = Path(temp.name)
+        base = Path(temp.name)
+        root = base / "commons"
+        private = base / "private-evidence"
         (root / "revenue/payment_ready").mkdir(parents=True)
         (root / "p").mkdir()
+        private.mkdir()
         for relative in (rr.PACK_PATH, rr.RECOVERY_PATH):
             shutil.copyfile(ROOT / relative, root / relative)
         if post is not None:
             (root / "p/buyer-signal.md").write_text(post, encoding="utf-8")
-        return temp, root
+        return temp, root, private
+
+    def write_private_artifact(self, private, relative, value):
+        path = private / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(value)
+        return rr.sha256_file(path)
+
+    def write_private_json(self, private, relative, value):
+        path = private / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(value, sort_keys=True), encoding="utf-8")
 
     def valid_post(self, extra=""):
         return "\n".join([
@@ -80,7 +94,7 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertFalse(receipt["cash_claimed"])
 
     def test_valid_signal_is_deterministic_and_redacted(self):
-        temp, root = self.make_root(self.valid_post())
+        temp, root, _ = self.make_root(self.valid_post())
         self.addCleanup(temp.cleanup)
         one = rr.purchase_intent_receipt(root, "buyer-signal")
         two = rr.purchase_intent_receipt(root, "buyer-signal")
@@ -102,7 +116,7 @@ class RevenueRecoveryTests(unittest.TestCase):
         )
         for index, post in enumerate(cases):
             with self.subTest(index=index):
-                temp, root = self.make_root(post)
+                temp, root, _ = self.make_root(post)
                 try:
                     receipt = rr.purchase_intent_receipt(root, "buyer-signal")
                     self.assertEqual(receipt["state"], "INCOMPLETE")
@@ -111,7 +125,7 @@ class RevenueRecoveryTests(unittest.TestCase):
                     temp.cleanup()
 
     def assert_sensitive_signal_is_incomplete(self, extra):
-        temp, root = self.make_root(self.valid_post(extra))
+        temp, root, _ = self.make_root(self.valid_post(extra))
         try:
             receipt = rr.purchase_intent_receipt(root, "buyer-signal")
             self.assertEqual(receipt["state"], "INCOMPLETE")
@@ -130,6 +144,22 @@ class RevenueRecoveryTests(unittest.TestCase):
     def test_z_model_bytes_are_incomplete(self):
         self.assert_sensitive_signal_is_incomplete("MODEL_BYTES: payload")
 
+    def test_private_contact_fields_are_incomplete(self):
+        for value in (
+            "CUSTOMER_EMAIL: private@example.com",
+            "PRIVATE_CONTACT: private@example.com",
+            "CUSTOMER_PHONE: +1-212-555-0199",
+            "CUSTOMER_NAME: Jane Doe",
+            "STREET_ADDRESS: 123 Main Street",
+            "CONTACT: private@example.com",
+            '\"CUSTOMER_EMAIL\": \"private@example.com\"',
+        ):
+            with self.subTest(value=value):
+                self.assert_sensitive_signal_is_incomplete(value)
+
+    def test_public_contact_url_is_not_a_private_contact_field(self):
+        self.assertFalse(rr.contains_sensitive_value("PUBLIC_CONTACT_URL: https://example.com/contact"))
+
     def test_public_surface_is_open_and_exact(self):
         page = (ROOT / "diagnostic.html").read_text(encoding="utf-8")
         self.assertIn('id="say"', page)
@@ -143,6 +173,8 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertNotIn("before customer file exchange, after NDA and SOW signing", page)
         self.assertIn("event.stopImmediatePropagation()", page)
         self.assertIn("(?:model|gguf)[_ -]?bytes", page)
+        self.assertIn("private[_ -]?contact", page)
+        self.assertIn('data-no-from-memory="true"', page)
         self.assertLess(page.index("event.stopImmediatePropagation()"), page.index('src="./carrier.js?'))
         self.assertIn("No login or approval gate", page)
         lower = page.lower()
@@ -197,10 +229,9 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(schema["properties"]["facts"]["properties"]["collected_cash_usd"]["const"], 0)
 
     def test_false_cash_claim_rejects_positive_previous_cash(self):
-        temp, root = self.make_root()
+        temp, root, private = self.make_root()
         self.addCleanup(temp.cleanup)
         (root / "receipts").mkdir()
-        (root / "evidence").mkdir()
         prior = rr.purchase_intent_receipt(root, None)
         prior["stage"] = "PURCHASE_INTENT"
         prior["state"] = "RECORDED"
@@ -209,11 +240,16 @@ class RevenueRecoveryTests(unittest.TestCase):
         manifest = {
             "schema_version": "revenue-recovery-evidence/v1",
             "stage": "QUOTE",
-            "artifact": {"kind": "QUOTE_ARTIFACT", "reference": "owner-private:quote-example", "sha256": "a" * 64},
+            "artifact": {
+                "kind": "QUOTE_ARTIFACT",
+                "reference": "owner-private:quote-example",
+                "file": "quote.bin",
+                "sha256": self.write_private_artifact(private, "quote.bin", b"quote"),
+            },
         }
-        (root / "evidence/quote.json").write_text(json.dumps(manifest), encoding="utf-8")
+        self.write_private_json(private, "quote.json", manifest)
         with self.assertRaisesRegex(ValueError, "collected_cash_usd"):
-            rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json")
+            rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json")
 
     def test_public_current_receipt_is_deterministic(self):
         committed = json.loads((ROOT / "revenue/payment_ready/current_receipt.json").read_text(encoding="utf-8"))
@@ -229,59 +265,81 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertEqual(inventory["first_revenue_result"]["collected_cash_usd"], 0)
 
     def test_full_stage_chain_is_deterministic_and_stops_before_cash(self):
-        temp, root = self.make_root(self.valid_post())
+        temp, root, private = self.make_root(self.valid_post())
         self.addCleanup(temp.cleanup)
         (root / "receipts").mkdir()
-        (root / "evidence").mkdir()
 
         def write_json(relative, value):
             (root / relative).write_text(json.dumps(value, sort_keys=True), encoding="utf-8")
 
         intent = rr.purchase_intent_receipt(root, "buyer-signal")
         write_json("receipts/intent.json", intent)
+        quote_digest = self.write_private_artifact(private, "quote.bin", b"private quote bytes")
         quote_manifest = {
             "schema_version": "revenue-recovery-evidence/v1",
             "stage": "QUOTE",
-            "artifact": {"kind": "QUOTE_ARTIFACT", "reference": "owner-private:quote-example", "sha256": "a" * 64},
+            "artifact": {
+                "kind": "QUOTE_ARTIFACT",
+                "reference": "owner-private:quote-example",
+                "file": "quote.bin",
+                "sha256": quote_digest,
+            },
         }
-        write_json("evidence/quote.json", quote_manifest)
-        quote = rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json")
-        self.assertEqual(quote, rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json"))
+        self.write_private_json(private, "quote.json", quote_manifest)
+        quote = rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json")
+        self.assertEqual(quote, rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json"))
+        self.assertNotIn(str(private), json.dumps(quote))
+        self.assertNotIn("quote.json", json.dumps(quote))
         write_json("receipts/quote.json", quote)
 
+        acceptance_digest = self.write_private_artifact(private, "signed-acceptance.bin", b"signed acceptance")
         acceptance_manifest = {
             "schema_version": "revenue-recovery-evidence/v1",
             "stage": "ACCEPTANCE",
-            "artifact": {"kind": "SIGNED_ACCEPTANCE", "reference": "owner-private:acceptance-example", "sha256": "b" * 64},
+            "artifact": {
+                "kind": "SIGNED_ACCEPTANCE",
+                "reference": "owner-private:acceptance-example",
+                "file": "signed-acceptance.bin",
+                "sha256": acceptance_digest,
+            },
         }
-        write_json("evidence/acceptance.json", acceptance_manifest)
-        acceptance = rr.advance_receipt(root, "ACCEPTANCE", "receipts/quote.json", "evidence/acceptance.json")
+        self.write_private_json(private, "acceptance.json", acceptance_manifest)
+        acceptance = rr.advance_receipt(root, "ACCEPTANCE", "receipts/quote.json", private, "acceptance.json")
         self.assertEqual(acceptance["facts"]["legal_acceptance"], "OWNER_REPORTED")
         write_json("receipts/acceptance.json", acceptance)
 
+        test_rows = []
+        for i in range(1, 7):
+            relative = f"at{i}.bin"
+            test_rows.append({
+                "id": f"AT{i}",
+                "status": "PASS",
+                "reference": f"owner-private:at{i}-evidence",
+                "file": relative,
+                "sha256": self.write_private_artifact(private, relative, f"AT{i}".encode("ascii")),
+            })
         delivery_manifest = {
             "schema_version": "revenue-recovery-evidence/v1",
             "stage": "DELIVERY",
-            "acceptance_tests": [
-                {"id": f"AT{i}", "status": "PASS", "reference": f"owner-private:at{i}-evidence", "sha256": f"{i:x}" * 64}
-                for i in range(1, 7)
-            ],
+            "acceptance_tests": test_rows,
         }
-        write_json("evidence/delivery.json", delivery_manifest)
-        delivery = rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", "evidence/delivery.json")
+        self.write_private_json(private, "delivery.json", delivery_manifest)
+        delivery = rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", private, "delivery.json")
         self.assertEqual(delivery["facts"]["delivery"], "OWNER_REPORTED")
         self.assertEqual([row["kind"] for row in delivery["evidence"][1:]], [f"AT{i}" for i in range(1, 7)])
         write_json("receipts/delivery.json", delivery)
 
+        processor_digest = self.write_private_artifact(private, "processor.json", b"private processor payload")
         processor_manifest = {
             "schema_version": "revenue-recovery-evidence/v1",
             "stage": "PROCESSOR_REFERENCE",
             "provider": "Stripe",
             "opaque_reference": "stripe:event-example",
-            "payload_sha256": "c" * 64,
+            "payload_file": "processor.json",
+            "payload_sha256": processor_digest,
         }
-        write_json("evidence/processor.json", processor_manifest)
-        processor = rr.advance_receipt(root, "PROCESSOR_REFERENCE", "receipts/delivery.json", "evidence/processor.json")
+        self.write_private_json(private, "processor-manifest.json", processor_manifest)
+        processor = rr.advance_receipt(root, "PROCESSOR_REFERENCE", "receipts/delivery.json", private, "processor-manifest.json")
         self.assertEqual(processor["state"], "REFERENCE_RECORDED")
         self.assertEqual(processor["facts"]["processor_payment"], "NOT_LANDED")
         self.assertEqual(processor["facts"]["bank_available"], "NOT_LANDED")
@@ -289,10 +347,9 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertFalse(processor["cash_claimed"])
 
     def test_delivery_rejects_incomplete_acceptance_tests(self):
-        temp, root = self.make_root()
+        temp, root, private = self.make_root()
         self.addCleanup(temp.cleanup)
         (root / "receipts").mkdir()
-        (root / "evidence").mkdir()
         prior = rr.purchase_intent_receipt(root, None)
         prior["stage"] = "ACCEPTANCE"
         prior["state"] = "ACCEPTED"
@@ -302,9 +359,43 @@ class RevenueRecoveryTests(unittest.TestCase):
             "stage": "DELIVERY",
             "acceptance_tests": [],
         }
-        (root / "evidence/delivery.json").write_text(json.dumps(manifest), encoding="utf-8")
+        self.write_private_json(private, "delivery.json", manifest)
         with self.assertRaisesRegex(ValueError, "AT1-AT6"):
-            rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", "evidence/delivery.json")
+            rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", private, "delivery.json")
+
+    def test_private_evidence_root_is_disjoint_and_paths_cannot_escape(self):
+        temp, root, private = self.make_root()
+        self.addCleanup(temp.cleanup)
+        (root / "owner-private").mkdir()
+        (root / "owner-private/manifest.json").write_text("{}", encoding="utf-8")
+        (private / "manifest.json").write_text("{}", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "outside the Commons root"):
+            rr.safe_external_evidence_file(root, root / "owner-private", "manifest.json")
+        with self.assertRaisesRegex(ValueError, "may not contain"):
+            rr.safe_external_evidence_file(root, root.parent, "private-evidence/manifest.json")
+        with self.assertRaisesRegex(ValueError, "stay inside"):
+            rr.safe_external_evidence_file(root, private, "../escape.json")
+
+    def test_private_artifact_digest_is_measured_not_trusted(self):
+        temp, root, private = self.make_root(self.valid_post())
+        self.addCleanup(temp.cleanup)
+        (root / "receipts").mkdir()
+        intent = rr.purchase_intent_receipt(root, "buyer-signal")
+        (root / "receipts/intent.json").write_text(json.dumps(intent), encoding="utf-8")
+        self.write_private_artifact(private, "quote.bin", b"real bytes")
+        manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "QUOTE",
+            "artifact": {
+                "kind": "QUOTE_ARTIFACT",
+                "reference": "owner-private:quote-example",
+                "file": "quote.bin",
+                "sha256": "a" * 64,
+            },
+        }
+        self.write_private_json(private, "quote.json", manifest)
+        with self.assertRaisesRegex(ValueError, "does not match"):
+            rr.advance_receipt(root, "QUOTE", "receipts/intent.json", private, "quote.json")
 
 
 if __name__ == "__main__":

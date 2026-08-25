@@ -5,7 +5,7 @@
   "offer": {
     "offer_id": "gguf-diagnostic-10d-12k",
     "source": "revenue/payment_ready/pack.json",
-    "source_sha256": "8d1c2870a4bb1dd1b5a371d0f450e5f59b37d6be6f8dd394cf43b94721e0a9de",
+    "source_sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36",
     "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
     "currency": "USD",
     "fixed_amount": 12000,
