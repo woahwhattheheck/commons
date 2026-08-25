@@ -243,6 +243,8 @@
     "ground/GROK_RECEIPT.json",
     "ground/H009.md",
     "ground/H009.json",
+    "ground/CURSOR_HALT.md",
+    "ground/CURSOR_HALT.json",
     "ground/GROK_APP_ROUTE.md",
     "ground/GROK_APP_ROUTE.json",
     "ground/DIO_CRLF.md",
@@ -477,6 +479,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isCursorHaltTalk(t)) {
+      return { state: "CLAIMED", note: "Bryce until-future-notice / 93%-usage / stop-giving-you-work talk. Talk is not a land. Ship the cursor-halt leftover to current main. Stop assigning work to Cursor until BRYCE or ZERO lifts it. Do not remint GROK_APP_ROUTE, SUPERGROK_HEAVY, or SITTING_REMINT." };
     }
     if (api.isGrokAppRouteTalk(t)) {
       return { state: "CLAIMED", note: "Bryce grok-app / grok.com-tokens / use-grok-more / use-cursor-less / next-24-hours talk. Talk is not a land. Ship the grok-app-route leftover to current main. Prefer grok.com / Grok app. Burn grok.com tokens, not Cursor tokens. Window ends 2026-08-26T14:59:46Z. Do not remint SUPERGROK_HEAVY, GROK_HYGIENE, GROK_HARNESS, or GROK_RECEIPT." };
@@ -962,6 +967,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isCursorHaltTalk = function (text) {
+    return /1787670330\.096089|until future notice|93% usage|stop giving you work|stop giving cursor work|CURSOR_HALT|cursor-halt leftover/i.test(String(text || ""));
+  };
+
+  api.cursorHaltState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/cursor_halt.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasHalt = /def halt_state/.test(body) && /HALT_ACTIVE/.test(body) && /HALT_LIFTED/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesHalt = /until future notice/.test(body) && /93% usage/.test(body) && /stop giving you work/.test(body);
+    var noWindow = /until further notice/.test(body) || /until_notice/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasHalt && hasMiss && neverZero && namesHalt && noWindow && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "cursor-halt leftover is on this file. Stop giving Cursor work until further notice. Cursor usage was 93%. Do not remint GROK_APP_ROUTE. A Slack 93% line is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/cursor_halt.py missing the leftover. Until-future-notice / 93%-usage / stop-giving-you-work talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3649,6 +3683,7 @@
   var subzeroQuoteOut = document.getElementById("subzero-quote-result");
   var subzeroReceiptOut = document.getElementById("subzero-receipt-result");
   var grokReceiptOut = document.getElementById("grok-receipt-result");
+  var cursorHaltOut = document.getElementById("cursor-halt-result");
   var grokAppRouteOut = document.getElementById("grok-app-route-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
@@ -4376,6 +4411,12 @@
     if (!grokReceiptOut) return;
     grokReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
     grokReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintCursorHalt(result) {
+    if (!cursorHaltOut) return;
+    cursorHaltOut.setAttribute("data-tone", api.toneFor(result.state));
+    cursorHaltOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintGrokAppRoute(result) {
@@ -5333,6 +5374,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadCursorHalt(sha) {
+    if (!cursorHaltOut) return Promise.resolve(null);
+    cursorHaltOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/cursor_halt.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/cursor_halt.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/cursor_halt.py absent at the measured main SHA. Until-future-notice / 93%-usage / stop-giving-you-work talk is CLAIMED." };
+        paintCursorHalt(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintCursorHalt(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.cursorHaltState(body);
+        paintCursorHalt(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintCursorHalt(err);
       return err;
     });
   }
@@ -6764,6 +6832,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadCursorHalt(sha);
     loadGrokAppRoute(sha);
     loadGrokReceipt(sha);
     loadDioCrlf(sha);

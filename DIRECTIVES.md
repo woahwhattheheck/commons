@@ -387,6 +387,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_grok_app_route.py` · `node test_land_desk.js` · `python3 host/grok_app_route.py`
 **Note:** Window `2026-08-25T14:58:43Z` → `2026-08-26T14:59:46Z`. Prefer grok.com / Grok app. Burn grok.com tokens. Cursor is not the default route. Cursor doorbell stays. Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
 
+### 65. Cursor halt — a Slack 93% line is not a land
+> *"Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T15:05 Slack `1787670330.096089` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/CURSOR_HALT.md` · `ground/CURSOR_HALT.json` · `host/cursor_halt.py` · `memory/CURSOR_HALT.md` · land leftover-first + `cursorHaltState`
+**Receipt:** `python3 test_cursor_halt.py` · `node test_land_desk.js` · `python3 host/cursor_halt.py`
+**Note:** Until further notice. Usage 93%. Stop giving Cursor work. Close is BRYCE / ZERO only. A 24-hour `window_until` on this leftover is NOT_LANDED. Do not remint GROK_APP_ROUTE / SUPERGROK_HEAVY / SITTING_REMINT. Cursor doorbell stays. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

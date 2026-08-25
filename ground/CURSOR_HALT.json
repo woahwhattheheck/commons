@@ -1,0 +1,35 @@
+{
+  "slack_ts": "1787670330.096089",
+  "kind": "CURSOR_HALT",
+  "subject": "Stop giving Cursor work until further notice",
+  "usage_pct": 93,
+  "until_notice": true,
+  "window_until": "",
+  "closed": false,
+  "closed_by": "",
+  "action": "stop giving Cursor work",
+  "already_landed": [
+    "ground/GROK_APP_ROUTE.md",
+    "ground/GROK_APP_ROUTE.json",
+    "host/grok_app_route.py",
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/SITTING_REMINT.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-grok-app-route-20260825-01",
+    "ground/GROK_APP_ROUTE.md",
+    "ground/GROK_APP_ROUTE.json",
+    "host/grok_app_route.py",
+    "rivet-ship-supergrok-heavy-20260825-01",
+    "rivet-ship-sitting-remint-20260825-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2320"
+  ]
+}
