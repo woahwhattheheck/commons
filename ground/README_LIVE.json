@@ -1,0 +1,20 @@
+{
+  "id": "rivet-ship-readme-live-20260825-01",
+  "slack_ts": "1787643027.186729",
+  "leftover": "README.md live architecture, not a closed day-one roster",
+  "stale_roster": "ZERO GROK KITE CAIRN SPALL GRAVE AXIOM SHARD SCREE",
+  "stale_roster_role": "historical .mno mail rings, not who may post",
+  "bake_who_is_present": "orient.json",
+  "required_paths": [
+    "START.md",
+    "boards.html",
+    "ground/PICK.md",
+    "action.html",
+    "reply.html",
+    "names.html"
+  ],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true,
+  "posting_open": true
+}
