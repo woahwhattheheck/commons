@@ -139,6 +139,8 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertIn(f'name="subject" value="{rr.SUBJECT}"', page)
         self.assertIn(f"TERMS_SHA256: {rr.EXPECTED_TERMS_SHA256}", page)
         self.assertIn("after NDA and SOW signing", page)
+        self.assertIn("$6,000 before customer file exchange; after NDA and SOW signing", page)
+        self.assertNotIn("before customer file exchange, after NDA and SOW signing", page)
         self.assertIn("event.stopImmediatePropagation()", page)
         self.assertIn("(?:model|gguf)[_ -]?bytes", page)
         self.assertLess(page.index("event.stopImmediatePropagation()"), page.index('src="./carrier.js?'))
