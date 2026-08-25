@@ -1,0 +1,46 @@
+{
+  "schema": "grok-claude-hygiene-receipt/v1",
+  "date": "2026-08-25",
+  "grok": {
+    "version": "1.0.5",
+    "commit": "5115b46bc9",
+    "model": "grok-4.6",
+    "authenticated": true,
+    "direct_cli_state": "BLOCKED_BY_HYGIENE_GATE",
+    "clean_fallback": "Cursor Grok 4.6 xhigh"
+  },
+  "claude_surface": {
+    "compat_cells_enabled": 0,
+    "instructions_enabled": 0,
+    "skills_enabled": 0,
+    "resume_claude_enabled": 0,
+    "mcp_servers": 0,
+    "lsp_servers": 0,
+    "plugins_enabled": [
+      "frontend-design@claude-plugins-official",
+      "mcp-server-dev@claude-plugins-official",
+      "mcp-tunnels@claude-plugins-official"
+    ]
+  },
+  "utilization": {
+    "parsed_sessions": 274,
+    "subagent_sessions": 254,
+    "successful_inference_completions": 1991,
+    "prompt_tokens": 206554303,
+    "cached_prompt_tokens": 166971392,
+    "completion_tokens": 3060821,
+    "reasoning_tokens": 1560862,
+    "retries": {
+      "total": 781,
+      "transport_send": 744,
+      "decode": 32,
+      "http_503": 4,
+      "empty": 1,
+      "observed_quota_429": 0
+    }
+  },
+  "gate": "host/grok_claude_hygiene.py",
+  "gate_policy": "FAIL_CLOSED",
+  "secrets_published": false,
+  "titan": "NOT_WRITTEN_BY_THIS_AUDIT"
+}

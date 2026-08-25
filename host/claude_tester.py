@@ -53,6 +53,8 @@ REQUIRED_PHRASES = (
     "github actions",
     "codex",
     "cursor / grok",
+    "claude_intermediate_untrusted",
+    "non-claude",
 )
 LEDGER_PHRASES = (
     "claude_tester",
