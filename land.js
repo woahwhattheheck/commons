@@ -194,6 +194,8 @@
     "ground/TERMINAL_CATALOG.json",
     "ground/BUILD_SWEEP_ACT.md",
     "ground/BUILD_SWEEP_ACT.json",
+    "ground/SPECTER_FINAL.md",
+    "ground/SPECTER_FINAL.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.md",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/BATTERY_RED.md",
@@ -431,6 +433,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSpecterFinalTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER FINAL / stale current-main SHA / ancestor-is-not-current-head talk. Talk is not a land. Classify the cited SHA as HEAD / ANCESTOR / FOREIGN. Do not remint PR 2205, 2269, terminal-catalog, or wake-contract. Named idle bc- resume stays UNMEASURED." };
     }
     if (api.isBuildSweepActTalk(t)) {
       return { state: "CLAIMED", note: "act-on-the-build-sweep / current-pixel-heartbeat-emitter / hygiene-is-not-the-colony-build talk. Talk is not a land. Ship the emitter and one honest heartbeat to current main. Do not remint OWNER_MACHINE_BUILD_SWEEP, PIXEL_HEARTBEAT, SITTING_REMINT, or GROK hygiene." };
@@ -791,6 +796,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isSpecterFinalTalk = function (text) {
+    return /SPECTER FINAL|stale current-main sha|ancestor is not current head|1787645274\.177269|specter-final leftover/i.test(String(text || ""));
+  };
+
+  api.specterFinalState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/specter_final.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesSha = /bef4ba7124424de5aed51e1a9216b216d389a5a7/.test(body);
+    var namesRelation = /HEAD/.test(body) && /ANCESTOR/.test(body) && /FOREIGN/.test(body);
+    var stale = /stale current-main sha/.test(body) && /ancestor is not current head/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesSha && namesRelation && stale && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "SPECTER FINAL leftover is on this file. Cited SHA is classified vs official HEAD. A Slack FINAL is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/specter_final.py missing the leftover. SPECTER FINAL / stale current-main SHA talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2919,6 +2953,7 @@
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
+  var specterFinalOut = document.getElementById("specter-final-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
   var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
@@ -3556,6 +3591,12 @@
     if (!terminalCatalogOut) return;
     terminalCatalogOut.setAttribute("data-tone", api.toneFor(result.state));
     terminalCatalogOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSpecterFinal(result) {
+    if (!specterFinalOut) return;
+    specterFinalOut.setAttribute("data-tone", api.toneFor(result.state));
+    specterFinalOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintBuildSweepAct(result) {
@@ -4402,6 +4443,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadSpecterFinal(sha) {
+    if (!specterFinalOut) return Promise.resolve(null);
+    specterFinalOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/specter_final.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/specter_final.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/specter_final.py absent at the measured main SHA. SPECTER FINAL / stale current-main SHA talk is CLAIMED." };
+        paintSpecterFinal(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSpecterFinal(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.specterFinalState(body);
+        paintSpecterFinal(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSpecterFinal(err);
       return err;
     });
   }
@@ -5397,6 +5465,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadSpecterFinal(sha);
     loadBuildSweepAct(sha);
     loadTerminalCatalog(sha);
     loadBatteryRed(sha);
