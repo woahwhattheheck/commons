@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""H-008 leftover: quote-draft → buyer-bound receipt, not cash."""
+"""H-009 leftover: H-008 binder is not buyer-bound until acceptance."""
 
 from __future__ import annotations
 
@@ -13,10 +13,13 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from subzero_receipt import (
     ALREADY_LANDED,
+    AUDITED_TREE,
+    AUDIT_SLACK_TS,
     CALIBRATION,
     CELL,
     GRBN_REL,
     GRBN_SHA,
+    HDVS_REL,
     HUMAN_RECEIPT,
     P01_ID,
     QUOTE_PRICE,
@@ -25,11 +28,14 @@ from subzero_receipt import (
     SEARCH_SPACE,
     SKU_ID,
     SLACK_TS,
+    acceptance_fixture,
     bind_validation_receipt,
     classify,
     classify_binding,
+    inbound_rel,
     measure_from_rows,
     measure_root,
+    present_int,
     receipt_schema_ok,
     source_index,
 )
@@ -50,6 +56,9 @@ def _complete(**extra):
         "sku_id": SKU_ID,
         "quote_class": "QUOTE_DRAFT",
         "quote_price": QUOTE_PRICE,
+        "quote_price_state": "PRESENT",
+        "quote_hash": "a" * 64,
+        "catalog_row_hash": "b" * 64,
         "p01_id": P01_ID,
         "arch_status": "CANDIDATE",
         "arch_implements": P01_ID,
@@ -57,16 +66,21 @@ def _complete(**extra):
         "schema_no_auth": True,
         "schema_no_gate": True,
         "binding_state": "UNBOUND",
+        "legal_state": "DRAFT",
         "live_bound_receipts": 0,
         "bind_works": True,
         "grbn_sha": GRBN_SHA,
         "collected_cash_usd": 0,
+        "collected_cash_state": "PRESENT",
         "cash_state": "NOT_LANDED",
         "demand": "UNKNOWN",
         "runtime_proof": False,
         "structural_only": 31,
+        "structural_only_state": "PRESENT",
         "runtime_measured": 0,
+        "runtime_measured_state": "PRESENT",
         "customer_ready": 0,
+        "customer_ready_state": "PRESENT",
         "claims_cash": False,
         "claims_runtime": False,
         "claims_demand": False,
@@ -131,6 +145,57 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(verdict["state"], "NOT_LANDED")
         self.assertIn("invented", verdict["note"].lower())
 
+    def test_missing_numeric_field_is_unresolved_not_zero(self):
+        self.assertIsNone(present_int({}, "price_usd"))
+        self.assertIsNone(present_int({"price_usd": None}, "price_usd"))
+        self.assertIsNone(present_int({"price_usd": ""}, "price_usd"))
+        self.assertIsNone(present_int({"price_usd": "nope"}, "price_usd"))
+        self.assertEqual(present_int({"price_usd": 0}, "price_usd"), 0)
+        self.assertEqual(present_int({"price_usd": 2500}, "price_usd"), 2500)
+        verdict = classify_binding(
+            {
+                "measured": True,
+                "sku_id": SKU_ID,
+                "quote_price": None,
+                "quote_price_state": "UNRESOLVED",
+                "collected_cash_state": "PRESENT",
+                "structural_only_state": "PRESENT",
+                "runtime_measured_state": "PRESENT",
+                "customer_ready_state": "PRESENT",
+                "p01_id": P01_ID,
+                "schema_has_buyer": True,
+                "bind_works": True,
+                "binding_state": "UNBOUND",
+                "legal_state": "DRAFT",
+            }
+        )
+        self.assertEqual(verdict["state"], "FINDER-FAILED")
+        self.assertIn("unresolved", verdict["note"].lower())
+
+    def test_windows_traversal_stays_unbound(self):
+        got = bind_validation_receipt(ROOT, "..\\ground\\EXECUTE", GRBN_REL)
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE", root=ROOT), "")
+        self.assertFalse(got["inbound_path_ok"])
+        self.assertEqual(got["binding_state"], "UNBOUND")
+        self.assertEqual(got["bind_reason"], "INVALID_INBOUND_ID")
+        self.assertEqual(got["receipt"]["buyer_id"], "")
+        self.assertEqual(got["legal_state"], "DRAFT")
+
+    def test_forward_slash_traversal_stays_unbound(self):
+        got = bind_validation_receipt(ROOT, "../ground/EXECUTE", GRBN_REL)
+        self.assertEqual(got["binding_state"], "UNBOUND")
+        self.assertEqual(got["bind_reason"], "INVALID_INBOUND_ID")
+
+    def test_project_quote_receipt_is_not_a_buyer(self):
+        got = bind_validation_receipt(ROOT, QUOTE_RECEIPT, GRBN_REL, status="PASS")
+        self.assertEqual(got["binding_state"], "UNBOUND")
+        self.assertEqual(got["bind_reason"], "PROJECT_RECEIPT_NOT_BUYER")
+        self.assertEqual(got["receipt"]["buyer_id"], "")
+        self.assertEqual(got["receipt"]["status"], "UNKNOWN")
+        self.assertEqual(got["evidence_class"], "STRUCTURAL_ONLY")
+        self.assertEqual(got["cash_state"], "NOT_LANDED")
+        self.assertEqual(got["demand"], "UNKNOWN")
+
     def test_missing_inbound_stays_unbound(self):
         got = bind_validation_receipt(
             ROOT, "missing-inbound-does-not-exist-20260825-01", GRBN_REL
@@ -142,13 +207,34 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(got["cash_state"], "NOT_LANDED")
         self.assertEqual(got["demand"], "UNKNOWN")
 
-    def test_public_inbound_can_bind_without_claiming_cash(self):
-        got = bind_validation_receipt(ROOT, QUOTE_RECEIPT, GRBN_REL, status="PASS")
+    def test_existing_post_without_acceptance_is_not_buyer_bound(self):
+        got = bind_validation_receipt(ROOT, HUMAN_RECEIPT, GRBN_REL)
+        self.assertEqual(got["binding_state"], "UNBOUND")
+        self.assertIn(got["bind_reason"], {"PROJECT_RECEIPT_NOT_BUYER", "FILE_IS_NOT_ACCEPTANCE"})
+
+    def test_pass_refused_on_grbn_and_other_excerpt(self):
+        grbn = bind_validation_receipt(ROOT, QUOTE_RECEIPT, GRBN_REL, status="PASS")
+        hdvs = bind_validation_receipt(ROOT, QUOTE_RECEIPT, HDVS_REL, status="PASS")
+        self.assertEqual(grbn["receipt"]["status"], "UNKNOWN")
+        self.assertEqual(hdvs["receipt"]["status"], "UNKNOWN")
+        self.assertTrue(hdvs["excerpt_ok"])
+
+    def test_acceptance_fixture_can_bind_without_claiming_cash(self):
+        quote_hash = source_index(ROOT)["quote_hash"]
+        got = bind_validation_receipt(
+            ROOT,
+            "fixture-buyer-accept-20260825-01",
+            GRBN_REL,
+            status="PASS",
+            post_text=acceptance_fixture(quote_hash),
+        )
         self.assertEqual(got["binding_state"], "BUYER_BOUND")
         self.assertTrue(got["receipt"]["bound"])
-        self.assertEqual(got["receipt"]["buyer_id"], QUOTE_RECEIPT)
+        self.assertEqual(got["receipt"]["buyer_id"], "fixture-buyer-accept-20260825-01")
         self.assertEqual(got["receipt"]["status"], "UNKNOWN")
+        self.assertEqual(got["legal_state"], "ACCEPTED")
         self.assertEqual(got["receipt"]["sha256"], GRBN_SHA)
+        self.assertEqual(got["receipt"]["source_tree"], AUDITED_TREE)
         self.assertTrue(receipt_schema_ok(got["receipt"]))
         self.assertEqual(got["evidence_class"], "STRUCTURAL_ONLY")
         self.assertEqual(got["cash_state"], "NOT_LANDED")
@@ -177,6 +263,7 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(row["landed_missing"], [])
         self.assertEqual(row["sku_id"], SKU_ID)
         self.assertEqual(row["quote_price"], QUOTE_PRICE)
+        self.assertEqual(row["quote_price_state"], "PRESENT")
         self.assertEqual(row["quote_class"], "QUOTE_DRAFT")
         self.assertEqual(row["p01_id"], P01_ID)
         self.assertEqual(row["arch_implements"], P01_ID)
@@ -184,13 +271,16 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertTrue(row["schema_has_buyer"])
         self.assertTrue(row["bind_works"])
         self.assertEqual(row["binding_state"], "UNBOUND")
+        self.assertEqual(row["legal_state"], "DRAFT")
         self.assertEqual(row["live_bound_receipts"], 0)
         self.assertEqual(row["collected_cash_usd"], 0)
+        self.assertEqual(row["collected_cash_state"], "PRESENT")
         self.assertEqual(row["demand"], "UNKNOWN")
         self.assertFalse(row["runtime_proof"])
         self.assertEqual(row["structural_only"], 31)
-        self.assertEqual(row["titan"], "NOT_WRITTEN")
+        self.assertNotIn("titan", row)
         self.assertEqual(SLACK_TS, "1787650230.035359")
+        self.assertEqual(AUDIT_SLACK_TS, "1787651030.360809")
         self.assertEqual(CELL, "H-008")
         self.assertEqual(QUOTE_RECEIPT, "rivet-ship-subzero-quote-20260825-01")
         self.assertEqual(HUMAN_RECEIPT, "rivet-ship-human-outcomes-20260825-01")
@@ -203,6 +293,7 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(indexed["arch_implements"], P01_ID)
         self.assertTrue(indexed["schema_has_buyer"])
         self.assertEqual(indexed["collected_cash_usd"], 0)
+        self.assertEqual(indexed["quote_price_state"], "PRESENT")
         self.assertFalse(indexed["runtime_proof"])
         self.assertTrue(os.path.isfile(os.path.join(ROOT, "p", HUMAN_RECEIPT + ".md")))
         self.assertEqual(classify(row)["state"], "INTEGRATED")

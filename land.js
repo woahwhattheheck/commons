@@ -472,6 +472,9 @@
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
     }
+    if (api.isSubzeroReceiptAuditTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO H-009 / #2329 second-pass / binder-not-buyer-bound talk. Talk is not a land. Ship the inbound-id / missing-field / hash-bind leftover to current main. File existence is not a buyer. Live bind stays UNBOUND. Cash stays $0 / NOT_LANDED. Do not remint H-008, SUBZERO_RECEIPT, quote, or grok-receipt PR 2320." };
+    }
     if (api.isDioCrlfTalk(t)) {
       return { state: "CLAIMED", note: "JOJO DIO CHECKPOINT / Windows autocrlf / 798-vs-773 / e4cc1524-vs-15c2a25 / leave-unmerged-PR talk. Talk is not a land. Ship the .gitattributes -text leftover to current main. Canonical blobs still match receipts. Do not remint DIO revenue, Titan containment, SUBZERO quote, or SUBZERO receipt." };
     }
@@ -947,6 +950,10 @@
     };
   };
 
+  api.isSubzeroReceiptAuditTalk = function (text) {
+    return /1787651030\.360809|1787650970\.236559|SECOND PASS|BINDER IS NOT BUYER-BOUND|H-009|0509da3e5be25020433bfdeb8883fc6fc97e8986|COLLISION RECONCILIATION — H-008/i.test(String(text || ""));
+  };
+
   api.isDioCrlfTalk = function (text) {
     return /1787650704\.417459|JOJO DIO CHECKPOINT|REGRESSION ROOT CAUSE MEASURED|798 vs 773|e4cc1524|core\.autocrlf=true expands three receipt-bound|leave-unmerged for independent review/i.test(String(text || ""));
   };
@@ -987,21 +994,24 @@
     var hasMeasure = /def measure_from_rows/.test(body);
     var hasClassify = /def classify/.test(body);
     var hasBind = /def bind_validation_receipt/.test(body);
+    var hasInbound = /def inbound_rel/.test(body) && /POST_ID_RE/.test(body);
     var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
     var neverZero = /Never 0/.test(body);
     var namesSku = /sz-paid-validation/.test(body) && /P01_catalog_receipt/.test(body);
     var namesBind = /UNBOUND/.test(body) && /BUYER_BOUND/.test(body);
     var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var namesAudit = /UNRESOLVED/.test(body) && /PROJECT_RECEIPT_NOT_BUYER/.test(body) && /NEEDS_BUYER/.test(body);
+    var namesHash = /quote_hash/.test(body) && /0509da3e5be25020433bfdeb8883fc6fc97e8986/.test(body);
     var noGate = /no auth/.test(body) && /no gate/.test(body);
-    if (hasMeasure && hasClassify && hasBind && hasMiss && neverZero && namesSku && namesBind && namesCash && noGate) {
+    if (hasMeasure && hasClassify && hasBind && hasInbound && hasMiss && neverZero && namesSku && namesBind && namesCash && namesAudit && namesHash && noGate) {
       return {
         state: "INTEGRATED",
-        note: "SUBZERO receipt leftover is on this file. quote-draft → buyer-bound is implemented. Live bind stays UNBOUND. A Slack H-008 body is still not the file."
+        note: "SUBZERO receipt leftover is on this file. inbound-id / missing-field / hash-bind hardening is implemented. Live bind stays UNBOUND. A Slack H-008 / H-009 body is still not the file."
       };
     }
     return {
       state: "NOT_LANDED",
-      note: "host/subzero_receipt.py missing the leftover. JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk is CLAIMED until the leftover ships."
+      note: "host/subzero_receipt.py missing the leftover. JOJO H-009 / #2329 second-pass / binder-not-buyer-bound talk is CLAIMED until the leftover ships."
     };
   };
 

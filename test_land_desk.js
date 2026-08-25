@@ -794,8 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bx/.test(html), "desk must share the current-main/Titan cache key after DIO CRLF leftover");
-assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
+assert.ok(/20260825by/.test(html), "desk must share the current-main/Titan cache key after H-009 receipt-audit leftover");assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
 assert.ok(/No Muhlnickel, organ, titan, or device path/i.test(html), "desk must name the exclusion line");
@@ -1596,9 +1595,14 @@ assert.ok(html.indexOf("1787650704.417459") >= 0, "desk must cite the JOJO DIO c
 assert.ok(api.CANARY_PATHS.indexOf("ground/DIO_CRLF.md") >= 0, "DIO CRLF card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/DIO_CRLF.json") >= 0, "DIO CRLF catalog must stay a canary");
 assert.ok(api.isSubzeroReceiptTalk, "land.js must classify SUBZERO receipt leftover talk");
+assert.ok(api.isSubzeroReceiptAuditTalk, "land.js must classify SUBZERO receipt-audit leftover talk");
 assert.ok(api.subzeroReceiptState, "land.js must classify the SUBZERO receipt leftover");
 assert.ok(api.isSubzeroReceiptTalk("JOJO BACKEND CELL H-008 — READ-ONLY / NO LANDING CLAIM\nquote-draft → buyer-bound validation receipt\n1787650230.035359"), "JOJO H-008 is leftover talk");
+assert.ok(api.isSubzeroReceiptAuditTalk("JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET\n1787651030.360809\nH-009\n0509da3e5be25020433bfdeb8883fc6fc97e8986"), "JOJO second-pass is audit leftover talk");
+assert.ok(api.isSubzeroReceiptAuditTalk("JOJO COLLISION RECONCILIATION — H-008 CODE ALREADY LANDED\nClean headless H-009\n1787650970.236559"), "JOJO collision reconciliation is audit leftover talk");
 assert.ok(!api.isSubzeroReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the receipt leftover");
+assert.ok(!api.isSubzeroReceiptAuditTalk("make sure people do more than talk about shit"), "generic ship-talk is not the receipt-audit leftover");
+assert.ok(!api.isSubzeroReceiptAuditTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\n798 vs 773 e4cc1524 1787650704.417459"), "DIO CRLF leftover is not the H-009 audit leftover");
 assert.ok(!api.isSubzeroReceiptTalk("Commercial consequence: sz-paid-validation remains a $2,500 quote draft over STRUCTURAL_ONLY evidence—not runtime, demand, or cash proof. 1787649732.551439"), "quote leftover is not the H-008 receipt leftover");
 assert.ok(!api.isSubzeroQuoteTalk("JOJO BACKEND CELL H-008 buyer-bound validation receipt 1787650230.035359"), "H-008 receipt leftover is not the quote leftover");
 var subzeroReceiptTalk = api.completionStateFromText(
@@ -1606,6 +1610,11 @@ var subzeroReceiptTalk = api.completionStateFromText(
 );
 assert.strictEqual(subzeroReceiptTalk.state, "CLAIMED");
 assert.ok(/H-008|buyer-bound|validation-receipt/i.test(subzeroReceiptTalk.note), "H-008 leftover without SHA must stay CLAIMED and beat ship-talk");
+var subzeroReceiptAuditTalk = api.completionStateFromText(
+  "JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET\n1787651030.360809\nH-009"
+);
+assert.strictEqual(subzeroReceiptAuditTalk.state, "CLAIMED");
+assert.ok(/H-009|second-pass|binder-not-buyer-bound/i.test(subzeroReceiptAuditTalk.note), "H-009 leftover without SHA must stay CLAIMED and beat H-008 talk");
 var subzeroReceiptDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nsubzero receipt leftover landed"
 );
@@ -1614,7 +1623,7 @@ var subzeroReceiptEmpty = api.subzeroReceiptState("");
 assert.strictEqual(subzeroReceiptEmpty.state, "UNMEASURED");
 var subzeroReceiptMissing = api.subzeroReceiptState("# empty stub\nno leftover");
 assert.strictEqual(subzeroReceiptMissing.state, "NOT_LANDED");
-var subzeroReceiptOk = api.subzeroReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef bind_validation_receipt(root, inbound_id, excerpt_rel):\n    return {}\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nP01_catalog_receipt\nUNBOUND\nBUYER_BOUND\n$0 / NOT_LANDED\nno auth\nno gate\n");
+var subzeroReceiptOk = api.subzeroReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef bind_validation_receipt(root, inbound_id, excerpt_rel):\n    return {}\ndef inbound_rel(inbound_id):\n    return ''\nPOST_ID_RE\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nsz-paid-validation\nP01_catalog_receipt\nUNBOUND\nBUYER_BOUND\n$0 / NOT_LANDED\nUNRESOLVED\nPROJECT_RECEIPT_NOT_BUYER\nNEEDS_BUYER\nquote_hash\n0509da3e5be25020433bfdeb8883fc6fc97e8986\nno auth\nno gate\n");
 assert.strictEqual(subzeroReceiptOk.state, "INTEGRATED");
 assert.ok(/still not the file/i.test(subzeroReceiptOk.note), "landed leftover must name Slack as not the file");
 assert.ok(html.indexOf('id="subzero-receipt-result"') >= 0, "desk must name the SUBZERO receipt leftover");
@@ -1622,6 +1631,7 @@ assert.ok(html.indexOf("host/subzero_receipt.py") >= 0, "desk must name the rece
 assert.ok(html.indexOf("ground/SUBZERO_RECEIPT.md") >= 0, "desk must link the receipt card");
 assert.ok(html.indexOf("ground/SUBZERO_RECEIPT.json") >= 0, "desk must link the receipt catalog");
 assert.ok(html.indexOf("1787650230.035359") >= 0, "desk must cite the JOJO H-008 Slack ts");
+assert.ok(html.indexOf("1787651030.360809") >= 0, "desk must cite the JOJO second-pass Slack ts");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_RECEIPT.md") >= 0, "receipt card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_RECEIPT.json") >= 0, "receipt catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("subzero-receipt.html") >= 0, "receipt door must stay a canary");
