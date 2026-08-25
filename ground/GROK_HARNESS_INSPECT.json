@@ -1,0 +1,16 @@
+{
+  "source": "slack-claim",
+  "slack_ts": "1787634541.520949",
+  "binary": "~/.grok/bin/grok.exe",
+  "version": "1.0.5",
+  "mcp_count": 0,
+  "lsp_count": 0,
+  "permissions_policy": 0,
+  "skills_count": 30,
+  "hooks_count": 14,
+  "home_present": false,
+  "inspect_ran": false,
+  "source_sha": "",
+  "live_session": "",
+  "note": "DEMON read-only Slack report. Local config is evidence until source/generator/SHA/live-session agree. Quarantine until grok inspect on the owner PC. Do not mutate or restart Grok."
+}

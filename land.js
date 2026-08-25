@@ -111,6 +111,19 @@
     "ground/PFC_BAKE_CENSUS.md",
     "docs/PFC_BAKE_CENSUS.md",
     "ground/NAMED_BUILDER.md",
+    "ground/FLEET.md",
+    "ground/FLEET_IDS.json",
+    "ground/UNUSED_INVOKE.md",
+    "ground/TAKING_TRACE.md",
+    "ground/TAKING_TRACE.json",
+    "ground/GROK_HARNESS.md",
+    "ground/GROK_HARNESS_GAP.json",
+    "ground/GROK_HARNESS_INSPECT.json",
+    "ground/GROK_HARNESS_PATCH.json",
+    "ground/VERIFY_CITE.md",
+    "ground/VERIFY_CITE.json",
+    "ground/RENDER_CHECK.md",
+    ".github/workflows/render-check.yml",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -342,6 +355,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isRenderCheckTalk(t)) {
+      return { state: "CLAIMED", note: "visual-diff / Chromium-receipt talk. Talk is not a land. Wire render_check.py 8bit.html 8walk.html pixel.html visual.html onto current-main CI." };
+    }
     if (api.isVisualPraise(t)) {
       return { state: "CLAIMED", note: "visual-commons praise. Talk is not a land. Ship a path on current main." };
     }
@@ -369,6 +385,15 @@
     if (api.isBrowserDownTalk(t)) {
       return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
     }
+    if (api.isVerifyCiteTalk(t)) {
+      return { state: "CLAIMED", note: "independent-verification / first-numbers talk. Talk is not a land. Measure the cited SHA and paths on current main. A Slack readout is not the file." };
+    }
+    if (api.isUtilizationTalk(t)) {
+      return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
+    }
+    if (api.isFleetTalk(t)) {
+      return { state: "CLAIMED", note: "fleet-live / isolated-lanes talk. Talk is not a land. A Slack lane list is CLAIMED until each id is p/{id}.md on current main." };
+    }
     if (api.isHoardTalk(t)) {
       return { state: "CLAIMED", note: "session-hoard / commit-push talk. Talk is not a land. Commit, push, and merge the leftover onto current main." };
     }
@@ -386,6 +411,12 @@
     }
     if (api.isNamedBuilderTalk(t)) {
       return { state: "CLAIMED", note: "named-builder / DIO-JOJO-use-your-names talk. Talk is not a land. Ship names.html DIO and JOJO rows to current main. from= stays optional display context, never a gate." };
+    }
+    if (api.isResourceSweepTalk(t)) {
+      return { state: "CLAIMED", note: "resource-sweep / act-on-the-reports talk. Talk is not a land. Measure unused host instruments and provisioned CI, then ship the leftover to current main." };
+    }
+    if (api.isGrokHarnessTalk(t)) {
+      return { state: "CLAIMED", note: "grok-harness-gap / 0-MCP / 0-LSP talk. Talk is not a land. Compare ~/.grok to canonical sources, quarantine until SHA/session agree, and ship the leftover. Do not mutate Grok." };
     }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
@@ -453,6 +484,39 @@
     return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
   };
 
+  api.isFleetTalk = function (text) {
+    return /revenue\/substrate fleet|fleet live|isolated lanes|grok46-revenue|grok 4\.6 workflows|claude verifier|jojo-revenue-fleet|background fleet live|exact-128 revenue/i.test(String(text || ""));
+  };
+
+  api.fleetState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "fleet catalog / p/{id}.md listing not read. Absence was not measured." };
+    }
+    var ids = row.ids || [];
+    var present = row.present || [];
+    if (!ids.length) {
+      return { state: "NOT_LANDED", note: "fleet catalog has no ids. A Slack fleet list is CLAIMED until the ids are named on current main." };
+    }
+    var missing = ids.filter(function (id) { return present.indexOf(id) < 0; });
+    if (!missing.length) {
+      return {
+        state: "INTEGRATED",
+        note: "all " + ids.length + " claimed fleet ids are p/{id}.md on this SHA. A Slack announcement is still not the file."
+      };
+    }
+    if (present.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + ids.length + " fleet ids durable. Missing: " + missing.join(", ") + ". A Slack lane list is not current main."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "0/" + ids.length + " claimed fleet ids are p/{id}.md. Fleet-live / isolated-lanes talk is CLAIMED. Do not remint. Ship the exact id or a unique leftover."
+    };
+  };
+
   api.isAccessIncidentTalk = function (text) {
     return /slack access incident|slack access canary|claude slack access canary|independent connector read\/write is alive|connector can read and write|#commons; bryce, github, cursor, claude|chatgpt connector can read and write|still channel members|tracing the separate commons relay/i.test(String(text || ""));
   };
@@ -463,6 +527,178 @@
 
   api.isNamedBuilderTalk = function (text) {
     return /bryce directive.{0,80}dio|start using your names|do not collapse the author|generic gpt\/agent\/session label|from=\/display metadata|keep them in `from=`|named builder/i.test(String(text || ""));
+  };
+
+  api.isResourceSweepTalk = function (text) {
+    return /resource utilization sweep|act on the reports|unused local\/provider compute|already-provisioned free compute|whether anything invokes it|stranded machine-only work|owner-directed resource/i.test(String(text || ""));
+  };
+
+  api.isVerifyCiteTalk = function (text) {
+    return /independent verification of the open-access revenue|first numbers this window|one evidence message when i have a verdict|open-access revenue instrument|one_byte_per_bit_lsb|host\/muhl_revenue\.py.{0,80}host\/test_muhl_revenue\.py/i.test(String(text || ""));
+  };
+
+  api.verifyCiteState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "cite catalog / tree listing not read. Absence was not measured." };
+    }
+    var paths = row.cited_paths || row.paths || [];
+    var present = row.present || [];
+    var sha = String(row.cited_sha || row.sha || "").trim();
+    var shaKnown = row.sha_known;
+    if (!paths.length && !sha) {
+      return { state: "NOT_LANDED", note: "cite catalog has no SHA or paths. A Slack first-numbers taking is CLAIMED until the cite is named on current main." };
+    }
+    var missing = paths.filter(function (path) { return present.indexOf(path) < 0; });
+    if (sha && shaKnown === false) {
+      return {
+        state: "NOT_LANDED",
+        note: "cited SHA is not a Commons object. Slack first-numbers / independent-verification talk is CLAIMED. Do not copy private LDA bytes onto Commons. Do not remint."
+      };
+    }
+    if (paths.length && missing.length && !present.length) {
+      return {
+        state: "NOT_LANDED",
+        note: "0/" + paths.length + " cited paths are on this Commons tree. Independent-verification / first-numbers talk is CLAIMED. Do not remint. Leave the titan audit to the taking."
+      };
+    }
+    if (paths.length && missing.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + paths.length + " cited paths on this tree. Missing: " + missing.join(", ") + ". A Slack readout is not current main."
+      };
+    }
+    if (paths.length && !missing.length) {
+      return {
+        state: "INTEGRATED",
+        note: "all " + paths.length + " cited paths are on this Commons tree. A Slack first-numbers readout is still not the file."
+      };
+    }
+    return {
+      state: "CANDIDATE",
+      note: "cite named a SHA with no paths. Measure the object on current main. A Slack taking is not the file."
+    };
+  };
+
+  api.isRenderCheckTalk = function (text) {
+    return /render_check\.py|visual-diff gate|chromium receipts|free-runner visual|not wired to current-main ci|8bit\.html 8walk\.html pixel\.html visual\.html/i.test(String(text || ""));
+  };
+
+  api.renderCheckState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: ".github/workflows/render-check.yml body not read. Absence was not measured." };
+    }
+    var hasTool = /render_check\.py/.test(body);
+    var hasPages = /8bit\.html/.test(body) && /8walk\.html/.test(body) && /pixel\.html/.test(body) && /visual\.html/.test(body);
+    var hasPlaywright = /playwright/.test(body);
+    var hasReceipt = /receipt/i.test(body) || /upload-artifact/.test(body);
+    if (hasTool && hasPages && hasPlaywright && hasReceipt) {
+      return {
+        state: "INTEGRATED",
+        note: "free-runner visual-diff gate names render_check.py plus the four visual doors and publishes Chromium receipts. A workflow file is not a run URL. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "render_check.py is not a current-main CI gate. Visual-diff / Chromium-receipt talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isUtilizationTalk = function (text) {
+    return /rolling utilization report|grok capacity is active|four responsive|grok\.exe|deep-research run lane|claim only missing verification|trace their taking\/receipt|do not duplicate these jobs/i.test(String(text || ""));
+  };
+
+  api.takingTraceState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "taking catalog / p/{id}.md listing not read. Absence was not measured." };
+    }
+    var ids = row.commons_ids || row.ids || [];
+    var present = row.commons_present || row.present || [];
+    if (!ids.length) {
+      return { state: "NOT_LANDED", note: "taking catalog has no Commons ids. A Slack utilization report is CLAIMED until the ids are named on current main." };
+    }
+    var missing = ids.filter(function (id) { return present.indexOf(id) < 0; });
+    var ldaNote = row.lda_measured
+      ? " LDA listing measured."
+      : " LDA is private/unlisted here — UNMEASURED, not stillness. Do not copy private bytes onto Commons.";
+    if (!missing.length) {
+      if (row.lda_measured) {
+        var ldaPaths = row.lda_claimed_paths || [];
+        var ldaPresent = row.lda_present || [];
+        var ldaMissing = ldaPaths.filter(function (path) { return ldaPresent.indexOf(path) < 0; });
+        if (ldaPaths.length && !ldaMissing.length) {
+          return {
+            state: "INTEGRATED",
+            note: "all " + ids.length + " claimed Commons taking ids are p/{id}.md and the supplied LDA listing has the claimed paths. A Slack capacity report is still not the file."
+          };
+        }
+        return {
+          state: "CANDIDATE",
+          note: "Commons taking ids are durable. LDA listing missing: " + (ldaMissing.join(", ") || "unnamed") + "."
+        };
+      }
+      return {
+        state: "CANDIDATE",
+        note: "all " + ids.length + " claimed Commons taking ids are p/{id}.md." + ldaNote
+      };
+    }
+    if (present.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + ids.length + " Commons taking ids durable. Missing: " + missing.join(", ") + ". A Slack utilization report is not current main." + ldaNote
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "0/" + ids.length + " claimed Commons taking ids are p/{id}.md. Rolling utilization / grok-capacity-active talk is CLAIMED. Do not remint. Claim only the verification leftover." + ldaNote
+    };
+  };
+
+  api.unusedInvokeState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/unused_invoke.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasUnused = /unused_count/.test(body);
+    if (hasMeasure && hasClassify && hasUnused) {
+      return {
+        state: "INTEGRATED",
+        note: "unused-invoke census is on this file. Unused is the finding. A config is not a run. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/unused_invoke.py missing the census. Resource-sweep talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokHarnessTalk = function (text) {
+    return /grok harness gap|harness parity|0 mcp servers|0 lsp servers|loaded permissions policy|~\/\.grok|do not mutate\/restart grok|do not mutate or restart grok/i.test(String(text || ""));
+  };
+
+  api.grokHarnessState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_harness_gap.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasQuarantine = /preconditions_agree/.test(body);
+    var noMutate = /mutate_grok/.test(body);
+    if (hasMeasure && hasClassify && hasQuarantine && noMutate) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-harness gap leftover is on this file. Local inspect is evidence until SHA/session agree. Do not mutate Grok. Never a gate."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_harness_gap.py missing the compare. Harness-gap talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.namedBuilderState = function (text) {
@@ -869,6 +1105,12 @@
   var titanOut = document.getElementById("titan-result");
   var censusOut = document.getElementById("census-result");
   var namedOut = document.getElementById("named-result");
+  var fleetOut = document.getElementById("fleet-result");
+  var unusedOut = document.getElementById("unused-result");
+  var takingOut = document.getElementById("taking-result");
+  var grokOut = document.getElementById("grok-harness-result");
+  var citeOut = document.getElementById("cite-result");
+  var renderOut = document.getElementById("render-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1252,6 +1494,36 @@
     namedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintUnused(result) {
+    if (!unusedOut) return;
+    unusedOut.setAttribute("data-tone", api.toneFor(result.state));
+    unusedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintTaking(result) {
+    if (!takingOut) return;
+    takingOut.setAttribute("data-tone", api.toneFor(result.state));
+    takingOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokHarness(result) {
+    if (!grokOut) return;
+    grokOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintCite(result) {
+    if (!citeOut) return;
+    citeOut.setAttribute("data-tone", api.toneFor(result.state));
+    citeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintRender(result) {
+    if (!renderOut) return;
+    renderOut.setAttribute("data-tone", api.toneFor(result.state));
+    renderOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1279,6 +1551,55 @@
     });
   }
 
+  function paintFleet(result) {
+    if (!fleetOut) return;
+    fleetOut.setAttribute("data-tone", api.toneFor(result.state));
+    fleetOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function loadFleet(sha) {
+    if (!fleetOut) return Promise.resolve(null);
+    fleetOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/FLEET_IDS.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/FLEET_IDS.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/FLEET_IDS.json absent at the measured main SHA. Fleet-live talk is CLAIMED." };
+        paintFleet(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintFleet(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var ids = catalog.ids || [];
+        return Promise.all(ids.map(function (id) {
+          return fetch(RAW + sha + "/p/" + encodeURIComponent(id) + ".md", { cache: "no-store" }).then(function (pr) {
+            return { id: id, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { id: id, present: false, error: e.message };
+          });
+        })).then(function (rows) {
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "p/{id}.md fetch failed. Absence was not measured." };
+            paintFleet(unread);
+            return unread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.id; });
+          var got = api.fleetState({ measured: true, ids: ids, present: present });
+          paintFleet(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintFleet(err);
+      return err;
+    });
+  }
+
   function loadNamedBuilder(sha) {
     if (!namedOut) return Promise.resolve(null);
     namedOut.innerHTML = "<b>UNMEASURED</b><p>Reading names.html at the official SHA…</p>";
@@ -1302,6 +1623,205 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintNamed(err);
+      return err;
+    });
+  }
+
+  function loadUnusedInvoke(sha) {
+    if (!unusedOut) return Promise.resolve(null);
+    unusedOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/unused_invoke.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/unused_invoke.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/unused_invoke.py absent at the measured main SHA. Resource-sweep talk is CLAIMED." };
+        paintUnused(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintUnused(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.unusedInvokeState(body);
+        paintUnused(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintUnused(err);
+      return err;
+    });
+  }
+
+  function loadRenderCheck(sha) {
+    if (!renderOut) return Promise.resolve(null);
+    renderOut.innerHTML = "<b>UNMEASURED</b><p>Reading .github/workflows/render-check.yml at the official SHA…</p>";
+    var url = RAW + sha + "/.github/workflows/render-check.yml";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: ".github/workflows/render-check.yml absent at the measured main SHA. Visual-diff talk is CLAIMED." };
+        paintRender(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintRender(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.renderCheckState(body);
+        paintRender(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintRender(err);
+      return err;
+    });
+  }
+
+  function loadTakingTrace(sha) {
+    if (!takingOut) return Promise.resolve(null);
+    takingOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/TAKING_TRACE.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/TAKING_TRACE.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/TAKING_TRACE.json absent at the measured main SHA. Rolling-utilization talk is CLAIMED." };
+        paintTaking(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintTaking(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var ids = catalog.commons_ids || catalog.ids || [];
+        return Promise.all(ids.map(function (id) {
+          return fetch(RAW + sha + "/p/" + encodeURIComponent(id) + ".md", { cache: "no-store" }).then(function (pr) {
+            return { id: id, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { id: id, present: false, error: e.message };
+          });
+        })).then(function (rows) {
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "p/{id}.md fetch failed. Absence was not measured." };
+            paintTaking(unread);
+            return unread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.id; });
+          var lda = catalog.lda || {};
+          var got = api.takingTraceState({
+            measured: true,
+            commons_ids: ids,
+            commons_present: present,
+            lda_measured: false,
+            lda_claimed_paths: lda.claimed_paths || [],
+            lda_visibility: lda.visibility || "private"
+          });
+          paintTaking(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintTaking(err);
+      return err;
+    });
+  }
+
+  function loadGrokHarness(sha) {
+    if (!grokOut) return Promise.resolve(null);
+    grokOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_harness_gap.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_harness_gap.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_harness_gap.py absent at the measured main SHA. Harness-gap talk is CLAIMED." };
+        paintGrokHarness(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokHarness(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokHarnessState(body);
+        paintGrokHarness(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokHarness(err);
+      return err;
+    });
+  }
+
+  function loadVerifyCite(sha) {
+    if (!citeOut) return Promise.resolve(null);
+    citeOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/VERIFY_CITE.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/VERIFY_CITE.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/VERIFY_CITE.json absent at the measured main SHA. Independent-verification talk is CLAIMED." };
+        paintCite(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintCite(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var paths = catalog.cited_paths || catalog.paths || [];
+        var citedSha = String(catalog.cited_sha || catalog.sha || "").trim();
+        var pathProbe = Promise.all(paths.map(function (path) {
+          return fetch(RAW + sha + "/" + path.split("/").map(encodeURIComponent).join("/"), { cache: "no-store" }).then(function (pr) {
+            return { path: path, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { path: path, present: false, error: e.message };
+          });
+        }));
+        var shaProbe = citedSha
+          ? fetch(API + "/commits/" + encodeURIComponent(citedSha), { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" }).then(function (cr) {
+            if (cr.status === 404) return { known: false, status: 404 };
+            if (!cr.ok) return { known: null, status: cr.status, error: "HTTP " + cr.status };
+            return { known: true, status: cr.status };
+          }).catch(function (e) {
+            return { known: null, error: e.message };
+          })
+          : Promise.resolve({ known: null });
+        return Promise.all([pathProbe, shaProbe]).then(function (parts) {
+          var rows = parts[0];
+          var shaRow = parts[1] || {};
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "cited-path fetch failed. Absence was not measured." };
+            paintCite(unread);
+            return unread;
+          }
+          if (shaRow.error && shaRow.known !== false) {
+            var shaUnread = { state: "UNMEASURED", note: "cited-SHA fetch failed. Absence was not measured." };
+            paintCite(shaUnread);
+            return shaUnread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.path; });
+          var got = api.verifyCiteState({
+            measured: true,
+            cited_sha: citedSha,
+            cited_paths: paths,
+            present: present,
+            sha_known: shaRow.known
+          });
+          paintCite(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintCite(err);
       return err;
     });
   }
@@ -1447,6 +1967,12 @@
     loadTitanPacket(sha);
     loadBakeCensus(sha);
     loadNamedBuilder(sha);
+    loadFleet(sha);
+    loadUnusedInvoke(sha);
+    loadTakingTrace(sha);
+    loadGrokHarness(sha);
+    loadVerifyCite(sha);
+    loadRenderCheck(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

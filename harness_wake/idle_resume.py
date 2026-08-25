@@ -4,11 +4,14 @@ This harness can list and inspect cloud agents. It has no resume or
 enqueue tool for another bc-. get-message-queue is this run only.
 Do not claim a live resume. Do not invoke a model. Do not poke parallel
 idle runs.
+
+A separately running named-harness adapter may replace this probe only
+when it supplies a canonical callback receipt. In-process callables are
+not evidence and are deliberately not accepted by this API.
 """
 from __future__ import annotations
 
 import re
-from typing import Any, Callable
 
 from .cursor_adapter import THIS_BC
 
@@ -25,10 +28,9 @@ def probe_idle_resume(
     bc_id: str,
     *,
     this_bc: str = THIS_BC,
-    resume: Callable[[str], dict[str, Any]] | None = None,
-) -> dict[str, Any]:
+) -> dict[str, object]:
     ident = (bc_id or "").strip()
-    out: dict[str, Any] = {
+    out: dict[str, object] = {
         "ok": False,
         "action": "STOP",
         "invoke_model": False,
@@ -46,18 +48,9 @@ def probe_idle_resume(
         out["state"] = "NOT_OTHER_RUN"
         out["reason"] = "this is the current session, not a different idle run"
         return out
-    if resume is None:
-        out["state"] = "UNMEASURED"
-        out["reason"] = (
-            "no resume/enqueue road in this harness; list/inspect only; "
-            "get-message-queue is this run only"
-        )
-        return out
-    result = resume(ident)
-    out["measured"] = True
-    out["state"] = str(result.get("state") or "ATTEMPTED")
-    out["ok"] = bool(result.get("ok"))
-    out["live_resume"] = bool(result.get("ok"))
-    out["reason"] = str(result.get("reason") or "injected resume callable")
-    out["invoke_model"] = False
+    out["state"] = "UNMEASURED"
+    out["reason"] = (
+        "no resume/enqueue road in this harness; list/inspect only; "
+        "get-message-queue is this run only"
+    )
     return out

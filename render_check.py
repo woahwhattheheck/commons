@@ -26,6 +26,7 @@ USAGE
     python3 render_check.py board.html visual.html
     python3 render_check.py --width 1280
     python3 render_check.py --perf    # also time the heaviest pages
+    python3 render_check.py 8bit.html 8walk.html pixel.html visual.html --receipt receipts/render
 
 Exit 0 clean, 1 if any page has a finding. Serves the working tree over
 127.0.0.1 so relative fetches behave like the real site; file:// would trip
@@ -36,10 +37,12 @@ broken for a reader.
 """
 import argparse
 import http.server
+import json
 import os
 import socketserver
 import sys
 import threading
+from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CHROME_CANDIDATES = (
@@ -137,12 +140,33 @@ PROBE = """() => {
 }"""
 
 
-def check(pages, width, perf, port):
+def write_receipt(path, pages, width, findings, chrome):
+    os.makedirs(path, exist_ok=True)
+    payload = {
+        "tool": "render_check.py",
+        "pages": list(pages),
+        "width": width,
+        "finding_count": len(findings),
+        "findings": [{"page": name, "issues": issues} for name, issues in findings],
+        "clean": not findings,
+        "chrome": chrome or "playwright-bundled",
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "titan": "NOT_WRITTEN",
+    }
+    with open(os.path.join(path, "receipt.json"), "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, sort_keys=True)
+        handle.write("\n")
+    return payload
+
+
+def check(pages, width, perf, port, receipt=None):
     from playwright.sync_api import sync_playwright
 
     exe = find_chrome()
     base = "http://127.0.0.1:%d" % port
     findings = []
+    if receipt:
+        os.makedirs(receipt, exist_ok=True)
     with sync_playwright() as p:
         kw = {"args": ["--no-proxy-server"]}
         if exe:
@@ -171,6 +195,12 @@ def check(pages, width, perf, port):
             except Exception as e:
                 findings.append((f, ["did not load: %s" % str(e)[:80]]))
                 continue
+            if receipt:
+                try:
+                    shot = os.path.join(receipt, os.path.basename(f).replace(".html", ".png"))
+                    pg.screenshot(path=shot, full_page=True)
+                except Exception:
+                    pass
             if d["sideways"]:
                 w = d["widest"]
                 issues.append("scrolls sideways (%dpx wide in %dpx)%s" % (
@@ -199,7 +229,7 @@ def check(pages, width, perf, port):
                                 "return Math.round(n.loadEventEnd)}")
                 print("  perf  %-20s %6dms  %6d nodes" % (f, t, d["nodes"]))
         b.close()
-    return findings
+    return findings, exe
 
 
 def main():
@@ -208,6 +238,7 @@ def main():
     ap.add_argument("--width", type=int, default=PHONE, help="viewport width (default %d)" % PHONE)
     ap.add_argument("--perf", action="store_true", help="also time heavy pages")
     ap.add_argument("--port", type=int, default=8973)
+    ap.add_argument("--receipt", help="write receipt.json plus page screenshots here")
     a = ap.parse_args()
 
     pages = a.pages or sorted(f for f in os.listdir(HERE) if f.endswith(".html"))
@@ -219,10 +250,14 @@ def main():
 
     httpd, port = serve(HERE, a.port)
     try:
-        findings = check(pages, a.width, a.perf, port)
+        findings, chrome = check(pages, a.width, a.perf, port, a.receipt)
     finally:
         httpd.shutdown()
         httpd.server_close()
+
+    if a.receipt:
+        write_receipt(a.receipt, pages, a.width, findings, chrome)
+        print("receipt %s/receipt.json" % a.receipt)
 
     print("rendered %d page(s) at %dpx" % (len(pages), a.width))
     if not findings:

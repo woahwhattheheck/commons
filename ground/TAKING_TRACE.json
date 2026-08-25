@@ -1,0 +1,29 @@
+{
+  "source_id": "demon-rolling-utilization-20260825-01",
+  "slack_ts": "1787634411.405189",
+  "subject": "DEMON rolling utilization report — grok.exe capacity + TAKING id trace",
+  "commons_ids": [
+    "grok46-revenue-discovery-20260825-01",
+    "grok46-open-revenue-desk-20260825-01",
+    "grok46-revenue-redteam-20260825-01"
+  ],
+  "lda": {
+    "repo": "woahwhattheheck/LocalDeviceAgent",
+    "claimed_sha": "cd7d4f864f0c04143a573173e0b42f61f3c65533",
+    "claimed_paths": [
+      "host/muhl_revenue.py",
+      "host/test_muhl_revenue.py"
+    ],
+    "visibility": "private",
+    "note": "LDA is private. Public desk marks LDA UNMEASURED unless a listing is supplied. Do not copy private bytes onto Commons. Do not remint the grok46 ids."
+  },
+  "hands_off": [
+    "host/muhl_revenue.py",
+    "host/test_muhl_revenue.py",
+    "host/fleet_ids.py",
+    "host/unused_invoke.py",
+    "codex/cml-latent-speech-20260824",
+    "grok46 revenue discovery/desk/redteam jobs"
+  ],
+  "note": "A Slack utilization / grok-capacity-active report is CLAIMED until each Commons id is p/{id}.md on current main. Claim only the verification leftover. Do not remint."
+}

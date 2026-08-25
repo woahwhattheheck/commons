@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825i/.test(html), "desk must bust the named-builder cache key");
+assert.ok(/20260825o/.test(html), "desk must bust the render-check cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -791,8 +791,261 @@ assert.ok(html.indexOf("ground/NAMED_BUILDER.md") >= 0, "desk must link the name
 assert.ok(html.indexOf("1787633443.590539") >= 0, "desk must cite the DIO/JOJO Slack ts");
 assert.ok(/named-builder|DIO-JOJO-use-your-names|do-not-collapse-the-author/i.test(html), "desk must name named-builder talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/NAMED_BUILDER.md") >= 0, "named-builder card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET.md") >= 0, "fleet card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET_IDS.json") >= 0, "fleet catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/UNUSED_INVOKE.md") >= 0, "unused-invoke card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("names.html") >= 0, "names door must stay a canary");
+assert.ok(api.isResourceSweepTalk, "land.js must classify resource-sweep talk");
+assert.ok(api.unusedInvokeState, "land.js must classify the unused-invoke census");
+assert.ok(api.isResourceSweepTalk("OWNER-DIRECTED RESOURCE UTILIZATION SWEEP — ACT ON THE REPORTS. unused local/provider compute and already-provisioned free compute. whether anything invokes it. stranded machine-only work."), "resource-sweep copy is talk");
+assert.ok(!api.isResourceSweepTalk("make sure people do more than talk about shit"), "ship-talk is not the resource-sweep leftover");
+var sweepTalk = api.completionStateFromText(
+  "OWNER-DIRECTED RESOURCE UTILIZATION SWEEP — ACT ON THE REPORTS. unused local/provider compute. whether anything invokes it."
+);
+assert.strictEqual(sweepTalk.state, "CLAIMED");
+assert.ok(/resource-sweep|act-on-the-reports/i.test(sweepTalk.note), "resource-sweep-without-SHA must stay CLAIMED");
+var sweepDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nresource utilization sweep leftover landed"
+);
+assert.strictEqual(sweepDone.state, "INTEGRATED", "completion words still beat resource-sweep talk");
+var unusedEmpty = api.unusedInvokeState("");
+assert.strictEqual(unusedEmpty.state, "UNMEASURED");
+var unusedMissing = api.unusedInvokeState("# empty stub\nno census");
+assert.strictEqual(unusedMissing.state, "NOT_LANDED");
+var unusedOk = api.unusedInvokeState("def measure_from_rows(instruments, texts):\n    unused_count = 0\ndef classify(row):\n    return row\n");
+assert.strictEqual(unusedOk.state, "INTEGRATED");
+assert.ok(/unused is the finding/i.test(unusedOk.note), "landed census must name unused as the finding");
+assert.ok(html.indexOf('id="unused-result"') >= 0, "desk must name the unused-invoke leftover");
+assert.ok(html.indexOf("host/unused_invoke.py") >= 0, "desk must name the unused-invoke instrument");
+assert.ok(html.indexOf("ground/UNUSED_INVOKE.md") >= 0, "desk must link the unused-invoke card");
+assert.ok(html.indexOf("1787633805.754249") >= 0, "desk must cite the resource-sweep Slack ts");
+assert.ok(/resource-sweep|act-on-the-reports|unused-local-provider-compute|stranded-machine-only-work/i.test(html), "desk must name resource-sweep talk as CLAIMED");
+assert.ok(api.isGrokHarnessTalk, "land.js must classify grok-harness-gap talk");
+assert.ok(api.grokHarnessState, "land.js must classify the grok-harness leftover");
+assert.ok(api.isGrokHarnessTalk("GROK HARNESS GAP (verified read-only): ~/.grok reports 0 MCP servers, 0 LSP servers, 0 loaded permissions policy. harness parity + receipts. do not mutate/restart Grok."), "harness-gap copy is talk");
+assert.ok(!api.isGrokHarnessTalk("make sure people do more than talk about shit"), "ship-talk is not the grok-harness leftover");
+assert.ok(!api.isGrokHarnessTalk("Revenue/substrate fleet live — Grok 4.6 workflows"), "fleet talk is not grok-harness leftover");
+assert.ok(!api.isGrokHarnessTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "utilization talk is not the grok-harness leftover");
+assert.ok(!api.isUtilizationTalk("GROK HARNESS GAP — 0 MCP servers, 0 LSP servers, harness parity. do not mutate/restart Grok."), "harness-gap copy is not utilization leftover");
+var grokTalk = api.completionStateFromText(
+  "GROK HARNESS GAP — ~/.grok reports 0 MCP servers, 0 LSP servers, 0 loaded permissions policy. DIO + JOJO claim harness parity."
+);
+assert.strictEqual(grokTalk.state, "CLAIMED");
+assert.ok(/grok-harness-gap|0-MCP|0-LSP/i.test(grokTalk.note), "harness-gap-without-SHA must stay CLAIMED");
+var grokDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok harness leftover landed"
+);
+assert.strictEqual(grokDone.state, "INTEGRATED", "completion words still beat grok-harness talk");
+var grokEmpty = api.grokHarnessState("");
+assert.strictEqual(grokEmpty.state, "UNMEASURED");
+var grokMissing = api.grokHarnessState("# empty stub\nno compare");
+assert.strictEqual(grokMissing.state, "NOT_LANDED");
+var grokOk = api.grokHarnessState("def measure_from_rows(canonical, inspect, extras=None):\n    mutate_grok = False\ndef classify(row):\n    return row\ndef preconditions_agree(inspect):\n    return False\n");
+assert.strictEqual(grokOk.state, "INTEGRATED");
+assert.ok(/do not mutate grok/i.test(grokOk.note), "landed leftover must refuse a grok mutate");
+assert.ok(html.indexOf('id="grok-harness-result"') >= 0, "desk must name the grok-harness leftover");
+assert.ok(html.indexOf("host/grok_harness_gap.py") >= 0, "desk must name the grok-harness instrument");
+assert.ok(html.indexOf("ground/GROK_HARNESS.md") >= 0, "desk must link the grok-harness card");
+assert.ok(html.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "desk must link the gap catalog");
+assert.ok(html.indexOf("1787634541.520949") >= 0, "desk must cite the harness-gap Slack ts");
+assert.ok(/harness-gap|0-MCP|0-LSP|grok\.exe|harness-parity/i.test(html), "desk must name harness-gap talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
+assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
+assert.ok(api.fleetState, "land.js must classify claimed fleet ids");
+assert.ok(api.isFleetTalk("from: JOJO\nid: jojo-revenue-fleet-20260825-01\nRevenue/substrate fleet live — Grok 4.6 workflows + Claude verifier\nActive isolated lanes:\n• Grok 4.6 exact-128 revenue discovery: grok46-revenue-discovery-20260825-01"), "fleet copy is talk");
+assert.ok(!api.isFleetTalk("from= is optional routing metadata"), "generic from= talk is not fleet leftover");
+assert.ok(!api.isFleetTalk("INTEGRATED — VERIFIED ON CURRENT MAIN\nrevenue foundation landed"), "DIO revenue receipt is not fleet talk");
+var fleetTalk = api.completionStateFromText(
+  "Revenue/substrate fleet live — Grok 4.6 workflows + Claude verifier. Active isolated lanes. grok46-revenue-discovery-20260825-01. no session hoarding."
+);
+assert.strictEqual(fleetTalk.state, "CLAIMED");
+assert.ok(/fleet-live|isolated-lanes/i.test(fleetTalk.note), "fleet-without-SHA must stay CLAIMED and beat hoard");
+var fleetDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nfleet leftover landed"
+);
+assert.strictEqual(fleetDone.state, "INTEGRATED", "completion words still beat fleet talk");
+var fleetEmpty = api.fleetState({});
+assert.strictEqual(fleetEmpty.state, "UNMEASURED");
+var fleetNone = api.fleetState({ measured: true, ids: [], present: [] });
+assert.strictEqual(fleetNone.state, "NOT_LANDED");
+var fleetMiss = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01", "grok46-revenue-discovery-20260825-01"],
+  present: []
+});
+assert.strictEqual(fleetMiss.state, "NOT_LANDED");
+assert.ok(/0\/2/.test(fleetMiss.note), "missing fleet must name the zero");
+var fleetHalf = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01", "grok46-open-revenue-desk-20260825-01"],
+  present: ["jojo-revenue-fleet-20260825-01"]
+});
+assert.strictEqual(fleetHalf.state, "CANDIDATE");
+var fleetOk = api.fleetState({
+  measured: true,
+  ids: ["jojo-revenue-fleet-20260825-01"],
+  present: ["jojo-revenue-fleet-20260825-01"]
+});
+assert.strictEqual(fleetOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(fleetOk.note), "durable fleet ids still name Slack as not the file");
+assert.ok(html.indexOf('id="fleet-result"') >= 0, "desk must name the fleet leftover");
+assert.ok(html.indexOf("host/fleet_ids.py") >= 0, "desk must name the fleet instrument");
+assert.ok(html.indexOf("ground/FLEET.md") >= 0, "desk must link the fleet card");
+assert.ok(html.indexOf("ground/FLEET_IDS.json") >= 0, "desk must link the fleet catalog");
+assert.ok(html.indexOf("1787633743.561299") >= 0, "desk must cite the JOJO fleet Slack ts");
+assert.ok(html.indexOf("jojo-revenue-fleet-20260825-01") >= 0, "desk must name the JOJO fleet id");
+assert.ok(/fleet-live|isolated-lanes|grok46-revenue/i.test(html), "desk must name fleet talk as CLAIMED");
+assert.ok(api.isUtilizationTalk, "land.js must classify rolling-utilization talk");
+assert.ok(api.takingTraceState, "land.js must classify claimed taking ids");
+assert.ok(api.isUtilizationTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE, not hypothetical: four responsive grok.exe sessions. A deep-research run lane appeared. claim only missing verification. Trace their TAKING/receipt IDs. Do not duplicate these jobs."), "utilization copy is talk");
+assert.ok(!api.isUtilizationTalk("from= is optional routing metadata"), "generic from= talk is not utilization leftover");
+assert.ok(!api.isResourceSweepTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "rolling report is not the unused-invoke leftover");
+var utilTalk = api.completionStateFromText(
+  "DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions. claim only missing verification."
+);
+assert.strictEqual(utilTalk.state, "CLAIMED");
+assert.ok(/rolling-utilization|grok-capacity-active/i.test(utilTalk.note), "utilization-without-SHA must stay CLAIMED and beat fleet");
+var utilDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ntaking-trace leftover landed"
+);
+assert.strictEqual(utilDone.state, "INTEGRATED", "completion words still beat utilization talk");
+var takingEmpty = api.takingTraceState({});
+assert.strictEqual(takingEmpty.state, "UNMEASURED");
+var takingNone = api.takingTraceState({ measured: true, commons_ids: [], commons_present: [] });
+assert.strictEqual(takingNone.state, "NOT_LANDED");
+var takingMiss = api.takingTraceState({
+  measured: true,
+  commons_ids: ["grok46-revenue-discovery-20260825-01", "grok46-revenue-redteam-20260825-01"],
+  commons_present: []
+});
+assert.strictEqual(takingMiss.state, "NOT_LANDED");
+assert.ok(/0\/2/.test(takingMiss.note), "missing taking ids must name the zero");
+var takingHalf = api.takingTraceState({
+  measured: true,
+  commons_ids: ["grok46-revenue-discovery-20260825-01", "grok46-open-revenue-desk-20260825-01"],
+  commons_present: ["grok46-revenue-discovery-20260825-01"]
+});
+assert.strictEqual(takingHalf.state, "CANDIDATE");
+var takingCommonsOnly = api.takingTraceState({
+  measured: true,
+  commons_ids: ["grok46-open-revenue-desk-20260825-01"],
+  commons_present: ["grok46-open-revenue-desk-20260825-01"],
+  lda_measured: false
+});
+assert.strictEqual(takingCommonsOnly.state, "CANDIDATE");
+assert.ok(/UNMEASURED/i.test(takingCommonsOnly.note), "private LDA without a listing stays UNMEASURED");
+var takingOk = api.takingTraceState({
+  measured: true,
+  commons_ids: ["grok46-revenue-redteam-20260825-01"],
+  commons_present: ["grok46-revenue-redteam-20260825-01"],
+  lda_measured: true,
+  lda_claimed_paths: ["host/muhl_revenue.py"],
+  lda_present: ["host/muhl_revenue.py"]
+});
+assert.strictEqual(takingOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(takingOk.note), "durable taking ids still name Slack as not the file");
+assert.ok(html.indexOf('id="taking-result"') >= 0, "desk must name the taking-trace leftover");
+assert.ok(html.indexOf("host/taking_trace.py") >= 0, "desk must name the taking-trace instrument");
+assert.ok(html.indexOf("ground/TAKING_TRACE.md") >= 0, "desk must link the taking-trace card");
+assert.ok(html.indexOf("ground/TAKING_TRACE.json") >= 0, "desk must link the taking-trace catalog");
+assert.ok(html.indexOf("1787634411.405189") >= 0, "desk must cite the rolling-utilization Slack ts");
+assert.ok(html.indexOf("grok46-revenue-discovery-20260825-01") >= 0, "desk must name the discovery taking id");
+assert.ok(/rolling-utilization|grok-capacity-active|claim-only-missing-verification/i.test(html), "desk must name utilization talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TAKING_TRACE.md") >= 0, "taking-trace card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/TAKING_TRACE.json") >= 0, "taking-trace catalog must stay a canary");
+assert.ok(api.isVerifyCiteTalk, "land.js must classify independent-verification talk");
+assert.ok(api.verifyCiteState, "land.js must classify a cited SHA / path census");
+assert.ok(api.isVerifyCiteTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window. one evidence message when I have a verdict. host/muhl_revenue.py + host/test_muhl_revenue.py. one_byte_per_bit_lsb"), "verify-cite copy is talk");
+assert.ok(!api.isVerifyCiteTalk("from= is optional routing metadata"), "generic from= talk is not verify-cite leftover");
+assert.ok(!api.isUtilizationTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the grok-capacity leftover");
+assert.ok(!api.isFleetTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the fleet leftover");
+assert.ok(!api.isGrokHarnessTalk("TAKING — independent verification of the open-access revenue instrument. First numbers this window."), "verify-cite taking is not the grok-harness leftover");
+var citeTalk = api.completionStateFromText(
+  "TAKING — independent verification of the open-access revenue instrument. First numbers this window. one evidence message when I have a verdict."
+);
+assert.strictEqual(citeTalk.state, "CLAIMED");
+assert.ok(/independent-verification|first-numbers/i.test(citeTalk.note), "verify-cite-without-SHA must stay CLAIMED and beat ship-talk");
+var citeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nverify-cite leftover landed"
+);
+assert.strictEqual(citeDone.state, "INTEGRATED", "completion words still beat verify-cite talk");
+var citeEmpty = api.verifyCiteState({});
+assert.strictEqual(citeEmpty.state, "UNMEASURED");
+var citeNone = api.verifyCiteState({ measured: true, cited_paths: [], present: [] });
+assert.strictEqual(citeNone.state, "NOT_LANDED");
+var citeUnknownSha = api.verifyCiteState({
+  measured: true,
+  cited_sha: "cd7d4f864f0c04143a573173e0b42f61f3c65533",
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: [],
+  sha_known: false
+});
+assert.strictEqual(citeUnknownSha.state, "NOT_LANDED");
+assert.ok(/not a Commons object/i.test(citeUnknownSha.note), "unknown cite SHA must name Commons");
+var citeMiss = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: []
+});
+assert.strictEqual(citeMiss.state, "NOT_LANDED");
+assert.ok(/0\/2/.test(citeMiss.note), "missing cited paths must name the zero");
+var citeHalf = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: ["host/muhl_revenue.py"],
+  sha_known: true
+});
+assert.strictEqual(citeHalf.state, "CANDIDATE");
+var citeOk = api.verifyCiteState({
+  measured: true,
+  cited_paths: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  present: ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
+  sha_known: true
+});
+assert.strictEqual(citeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(citeOk.note), "durable cited paths still name Slack as not the file");
+assert.ok(html.indexOf('id="cite-result"') >= 0, "desk must name the verify-cite leftover");
+assert.ok(html.indexOf("host/verify_cite.py") >= 0, "desk must name the verify-cite instrument");
+assert.ok(html.indexOf("ground/VERIFY_CITE.md") >= 0, "desk must link the verify-cite card");
+assert.ok(html.indexOf("ground/VERIFY_CITE.json") >= 0, "desk must link the verify-cite catalog");
+assert.ok(html.indexOf("1787634746.313679") >= 0, "desk must cite the independent-verification Slack ts");
+assert.ok(html.indexOf("cd7d4f864f0c04143a573173e0b42f61f3c65533") >= 0, "desk must name the cited SHA");
+assert.ok(/independent-verification|first-numbers|one-evidence-message/i.test(html), "desk must name verify-cite talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.md") >= 0, "verify-cite card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/VERIFY_CITE.json") >= 0, "verify-cite catalog must stay a canary");
+assert.ok(api.isRenderCheckTalk, "land.js must classify visual-diff / render_check talk");
+assert.ok(api.renderCheckState, "land.js must classify the render-check workflow");
+assert.ok(api.isRenderCheckTalk("DEMON rolling utilization report — 8-BIT/PIXEL STATUS. render_check.py has caught real invisible-sprite failures but is NOT wired to current-main CI. DIO + JOJO: wire a free-runner visual-diff leftover for render_check.py 8bit.html 8walk.html pixel.html visual.html, publishing Chromium receipts."), "render-check copy is talk");
+assert.ok(!api.isRenderCheckTalk("make sure people do more than talk about shit"), "ship-talk is not the render-check leftover");
+assert.ok(!api.isUtilizationTalk("render_check.py 8bit.html 8walk.html pixel.html visual.html publishing Chromium receipts"), "visual-diff copy is not the grok-capacity leftover");
+var renderTalk = api.completionStateFromText(
+  "render_check.py has caught real invisible-sprite failures but is NOT wired to current-main CI. wire a free-runner visual-diff leftover. publishing Chromium receipts."
+);
+assert.strictEqual(renderTalk.state, "CLAIMED");
+assert.ok(/visual-diff|Chromium-receipt/i.test(renderTalk.note), "render-check-without-SHA must stay CLAIMED and beat utilization");
+var renderDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nrender-check leftover landed"
+);
+assert.strictEqual(renderDone.state, "INTEGRATED", "completion words still beat render-check talk");
+var renderEmpty = api.renderCheckState("");
+assert.strictEqual(renderEmpty.state, "UNMEASURED");
+var renderMissing = api.renderCheckState("# battery only\npython3 test_land_desk.js\n");
+assert.strictEqual(renderMissing.state, "NOT_LANDED");
+var renderOk = api.renderCheckState(
+  "python3 render_check.py 8bit.html 8walk.html pixel.html visual.html --receipt receipts/render\nplaywright\nupload-artifact\n"
+);
+assert.strictEqual(renderOk.state, "INTEGRATED");
+assert.ok(/workflow file is not a run URL/i.test(renderOk.note), "landed gate must name a workflow as not a run");
+assert.ok(html.indexOf('id="render-result"') >= 0, "desk must name the render-check leftover");
+assert.ok(html.indexOf("host/render_check_ci.py") >= 0, "desk must name the render-check instrument");
+assert.ok(html.indexOf("ground/RENDER_CHECK.md") >= 0, "desk must link the render-check card");
+assert.ok(html.indexOf("1787634739.531389") >= 0, "desk must cite the 8-bit/pixel Slack ts");
+assert.ok(/visual-diff|Chromium-receipt|free-runner-render/i.test(html), "desk must name render-check talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RENDER_CHECK.md") >= 0, "render-check card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf(".github/workflows/render-check.yml") >= 0, "render-check workflow must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
 var readTalk = api.readVoltageState({});
