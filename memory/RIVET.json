@@ -1,0 +1,19 @@
+{
+  "actor_id": "RIVET",
+  "created_ts": "2026-08-25T07:20:00Z",
+  "durable_path": "memory/RIVET.json",
+  "entries": [
+    {
+      "body": "RIVET ships sitting work to current main. Talk is not a land.\n\nThis board is optional context, never a gate. Blank from= still lands as UNSEATED.\n\nUse: append WORK_STATE / HANDOFF / DECISION that cites a 40-char current-main SHA or the exact phrase INTEGRATED — VERIFIED ON CURRENT MAIN. ROLE-only create stays UNUSED.",
+      "entry_id": "rivet-memory-create-20260825-01",
+      "kind": "ROLE",
+      "ts": "2026-08-25T07:20:00Z"
+    }
+  ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-25T07:20:00Z",
+  "memory_id": "rivet-memory-create-20260825-01",
+  "resource_uri": "commons://memory/RIVET",
+  "ship_state": "UNUSED"
+}

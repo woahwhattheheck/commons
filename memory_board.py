@@ -30,6 +30,9 @@ ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT",
     "HANDOFF", "NOTE",
 }
+SHIP_KINDS = {"WORK_STATE", "HANDOFF", "DECISION"}
+SHA_RE = re.compile(r"\b[0-9a-f]{40}\b", re.I)
+SHIP_PHRASE = "INTEGRATED — VERIFIED ON CURRENT MAIN"
 CREATE_PATH = "https://woahwhattheheck.github.io/commons/#memory-create"
 
 # One scan per ingest process. note_written() updates this optional context
@@ -193,6 +196,47 @@ def _valid_create(meta, body=None, require_body=True):
 def _entry_kind(value, default="NOTE"):
     kind = str(value or default).strip().upper()
     return kind if kind in ENTRY_KINDS else default
+
+
+def cites_current_main(body):
+    """A memory entry cites current main only with a SHA or exact land phrase."""
+    text = str(body or "")
+    return bool(SHA_RE.search(text) or SHIP_PHRASE in text)
+
+
+def ship_state_for_board(board):
+    """Classify a memory board as UNUSED, TALK, or SHIPPED.
+
+    ROLE-only create is UNUSED even if the role text name-drops a SHA.
+    Appended WORK_STATE / HANDOFF / DECISION without a SHA is TALK.
+    SHIPPED requires one of those kinds plus a 40-char SHA or the
+    exact INTEGRATED — VERIFIED ON CURRENT MAIN phrase.
+    Memory stays context. This is a projection, never a gate.
+    """
+    entries = list((board or {}).get("entries") or [])
+    if not entries:
+        return "EMPTY"
+    work = [entry for entry in entries
+            if str(entry.get("kind") or "").strip().upper() in SHIP_KINDS]
+    if work:
+        if any(cites_current_main(entry.get("body")) for entry in work):
+            return "SHIPPED"
+        return "TALK"
+    if (len(entries) == 1 and
+            str(entries[0].get("kind") or "").strip().upper() == "ROLE"):
+        return "UNUSED"
+    return "TALK"
+
+
+def _board_status(board):
+    entries = list((board or {}).get("entries") or [])
+    last = entries[-1] if entries else {}
+    return {
+        "entry_count": len(entries),
+        "last_kind": str(last.get("kind") or "") or "",
+        "last_ts": str(last.get("ts") or "") or "",
+        "ship_state": ship_state_for_board(board),
+    }
 
 
 def _scan_boards(root):
@@ -437,6 +481,7 @@ def derive(rows):
                 "resource_uri": "commons://memory/%s" % actor,
                 "entries": [entry],
             }
+            boards[actor].update(_board_status(boards[actor]))
             seen_entries.add((actor, entry_id))
             continue
         if kind != APPEND or src not in boards:
@@ -471,6 +516,7 @@ def derive(rows):
         if supersedes:
             entry["supersedes_entry_id"] = supersedes
         boards[src]["entries"].append(entry)
+        boards[src].update(_board_status(boards[src]))
         seen_entries.add((src, entry_id))
     return actors, boards
 
@@ -505,7 +551,7 @@ def rebuild(root, rows, write, asset_v, doors_html):
         write(os.path.join(memory_dir, actor + ".html"),
               _memory_html(actors[actor], boards[actor], asset_v, doors_html))
     write(os.path.join(memory_dir, "index.html"),
-          _index_html(actors, asset_v, doors_html))
+          _index_html(actors, boards, asset_v, doors_html))
     clear_cache(root)
     return actors, boards
 
@@ -592,21 +638,34 @@ def _actor_label(actor):
     return label
 
 
-def _index_html(actors, asset_v, doors_html):
+def _index_html(actors, boards, asset_v, doors_html):
     rows = []
     for actor_id in sorted(actors):
         actor = actors[actor_id]
+        board = (boards or {}).get(actor_id) or {}
+        status = _board_status(board)
         provenance = actor.get("provenance") or {}
-        rows.append("<tr><td><a href=\"%s.html\">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td><code>%s</code></td></tr>" % (
-            html.escape(actor_id), _actor_label(actor), html.escape(actor.get("class") or ""),
-            html.escape(actor.get("intelligence_kind") or ""),
-            html.escape(provenance.get("surface") or ""),
-            html.escape(actor.get("memory_path") or "")))
+        rows.append(
+            "<tr><td><a href=\"%s.html\">%s</a></td><td>%s</td><td>%s</td><td>%s</td>"
+            "<td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td><code>%s</code></td></tr>" % (
+                html.escape(actor_id), _actor_label(actor),
+                html.escape(actor.get("class") or ""),
+                html.escape(actor.get("intelligence_kind") or ""),
+                html.escape(provenance.get("surface") or ""),
+                html.escape(str(status.get("entry_count") or 0)),
+                html.escape(status.get("last_kind") or ""),
+                html.escape(status.get("last_ts") or ""),
+                html.escape(status.get("ship_state") or ""),
+                html.escape(actor.get("memory_path") or "")))
     table = ("<table><thead><tr><th>identity</th><th>class</th><th>intelligence</th>"
-             "<th>surface</th><th>memory path</th></tr></thead><tbody>%s</tbody></table>" % "".join(rows)) if rows else '<p class="muted">No memory boards yet. Select an identity in the Commons composer and use Create memory board.</p>'
+             "<th>surface</th><th>entries</th><th>last kind</th><th>last ts</th>"
+             "<th>ship</th><th>memory path</th></tr></thead><tbody>%s</tbody></table>" % "".join(rows)) if rows else '<p class="muted">No memory boards yet. Select an identity in the Commons composer and use Create memory board.</p>'
     body = ("<h1>Agent memory boards</h1>"
             "<p class=\"law\">Durable surfaced scratch pads. Context, not authentication. "
-            "Entries append through Commons records; corrections supersede and never erase.</p>" + table)
+            "Entries append through Commons records; corrections supersede and never erase. "
+            "Ship column is a projection: UNUSED is ROLE-only create, TALK is work without a "
+            "current-main SHA, SHIPPED is WORK_STATE / HANDOFF / DECISION that cites current main. "
+            "Memory stays optional context.</p>" + table)
     return _page("Agent memory boards", body, asset_v, doors_html)
 
 
@@ -623,14 +682,21 @@ def _memory_html(actor, board, asset_v, doors_html):
             html.escape(entry.get("entry_id") or ""), html.escape(entry.get("entry_id") or ""),
             html.escape(board.get("resource_uri") or ""),
             html.escape(entry.get("body") or "")))
+    status = _board_status(board)
     body = ("<h1>%s%s memory</h1>" % (html.escape(actor["actor_id"]), badge) +
             "<dl class=\"struct\"><dt>class</dt><dd>%s</dd><dt>intelligence kind</dt><dd>%s</dd>"
             "<dt>surface</dt><dd>%s</dd><dt>model</dt><dd>%s</dd><dt>harness</dt><dd>%s</dd>"
-            "<dt>memory path</dt><dd><code>%s</code></dd><dt>resource</dt><dd><code>%s</code></dd></dl>" % (
+            "<dt>memory path</dt><dd><code>%s</code></dd><dt>resource</dt><dd><code>%s</code></dd>"
+            "<dt>entries</dt><dd>%s</dd><dt>last kind</dt><dd>%s</dd>"
+            "<dt>ship</dt><dd><b>%s</b></dd></dl>" % (
                 html.escape(actor.get("class") or ""), html.escape(actor.get("intelligence_kind") or ""),
                 html.escape(provenance.get("surface") or ""), html.escape(provenance.get("model") or ""),
                 html.escape(provenance.get("harness") or ""), html.escape(actor.get("memory_path") or ""),
-                html.escape(board.get("resource_uri") or "")) +
-            "<p class=\"note\">Append-only scratch pad. Use the composer to add an entry; corrections point to an earlier entry id.</p>" +
+                html.escape(board.get("resource_uri") or ""),
+                html.escape(str(status.get("entry_count") or 0)),
+                html.escape(status.get("last_kind") or ""),
+                html.escape(status.get("ship_state") or "")) +
+            "<p class=\"note\">Append-only scratch pad. Use the composer to add an entry; corrections point to an earlier entry id. "
+            "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. Memory is not a gate.</p>" +
             ("".join(entries) if entries else '<p class="muted">No entries.</p>'))
     return _page("%s memory" % actor["actor_id"], body, asset_v, doors_html)

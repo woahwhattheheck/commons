@@ -10,6 +10,10 @@
       "ts": "2026-08-21T17:14:48Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-21T17:14:48Z",
   "memory_id": "kite-memory-create-20260821-01",
-  "resource_uri": "commons://memory/KITE"
+  "resource_uri": "commons://memory/KITE",
+  "ship_state": "UNUSED"
 }

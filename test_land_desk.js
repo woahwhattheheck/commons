@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bc/.test(html), "desk must bust the foreign-main cache key");
+assert.ok(/20260825bd/.test(html), "desk must bust the memory-ship cache key after foreign-main");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1562,6 +1562,36 @@ assert.ok(html.indexOf("1787641769.186289") >= 0, "desk must cite the JOJO devic
 assert.ok(/first bounded read-only device canary|TAKING_LANDED_INPUT|does-not-claim-success/i.test(html), "desk must name device-canary talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.md") >= 0, "device-canary card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.json") >= 0, "device-canary catalog must stay a canary");
+assert.ok(api.isMemoryShipTalk, "land.js must classify use-the-memory-feature / unused-memory-board talk");
+assert.ok(api.memoryShipState, "land.js must classify the memory-ship leftover");
+assert.ok(api.isMemoryShipTalk("Use the memory feature i built and improve it while you work"), "Bryce memory ask is talk");
+assert.ok(api.isMemoryShipTalk("unused memory board. ROLE-only memory. memory-ship leftover."), "unused ROLE-only census is talk");
+assert.ok(!api.isMemoryShipTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land."), "sitting remint is not the memory leftover");
+assert.ok(!api.isMemoryShipTalk("make sure people do more than talk about shit"), "generic ship-talk is not the memory leftover");
+assert.ok(!api.isSittingRemintTalk("Use the memory feature i built and improve it while you work"), "memory ask is not sitting remint");
+var memoryTalk = api.completionStateFromText(
+  "Use the memory feature i built and improve it while you work"
+);
+assert.strictEqual(memoryTalk.state, "CLAIMED");
+assert.ok(/use-the-memory-feature|unused-memory-board|ROLE-only-memory/i.test(memoryTalk.note), "memory-without-SHA must stay CLAIMED and beat sitting remint / ship-talk");
+var memoryDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nmemory-ship leftover landed"
+);
+assert.strictEqual(memoryDone.state, "INTEGRATED", "completion words still beat memory-ship talk");
+var memoryEmpty = api.memoryShipState("");
+assert.strictEqual(memoryEmpty.state, "UNMEASURED");
+var memoryMissing = api.memoryShipState("# empty stub\nno leftover");
+assert.strictEqual(memoryMissing.state, "NOT_LANDED");
+var memoryOk = api.memoryShipState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nunused ROLE-only\nship_state\nMemory is context only\n");
+assert.strictEqual(memoryOk.state, "INTEGRATED");
+assert.ok(/still not the file|not the file/i.test(memoryOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="memory-ship-result"') >= 0, "desk must name the memory-ship leftover");
+assert.ok(html.indexOf("host/memory_ship.py") >= 0, "desk must name the memory-ship instrument");
+assert.ok(html.indexOf("ground/MEMORY_SHIP.md") >= 0, "desk must link the memory-ship card");
+assert.ok(html.indexOf("ground/MEMORY_SHIP.json") >= 0, "desk must link the memory-ship catalog");
+assert.ok(/use-the-memory-feature|unused-memory-board|ROLE-only-memory/i.test(html), "desk must name memory-ship talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MEMORY_SHIP.md") >= 0, "memory-ship card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MEMORY_SHIP.json") >= 0, "memory-ship catalog must stay a canary");
 assert.ok(api.isSittingRemintTalk, "land.js must classify sitting remint / already-landed leftover talk");
 assert.ok(api.sittingRemintState, "land.js must classify the sitting-remint leftover");
 assert.ok(api.isSittingRemintTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land. Do not remint an already-landed leftover."), "sitting remint census is talk");

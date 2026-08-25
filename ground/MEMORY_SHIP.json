@@ -1,0 +1,30 @@
+{
+  "slack_ts": "1787641807.145549",
+  "kind": "MEMORY_SHIP",
+  "subject": "Use the memory feature and show unused ROLE-only pads vs current-main SHIPPED",
+  "already_landed": [
+    "ground/SITTING_REMINT.md",
+    "ground/CASH_NOW.md",
+    "ground/JOJO_ASSIGN.md",
+    "memory_board.py",
+    "memory/index.html"
+  ],
+  "do_not_remint": [
+    "rivet-ship-sitting-remint-20260825-01",
+    "rivet-ship-cash-now-20260825-01",
+    "rivet-ship-jojo-assign-20260825-01",
+    "kite-memory-create-20260821-01",
+    "cursor-grok-memory-create-20260822-01",
+    "p2-memory-create-20260821-01",
+    "ground/SITTING_REMINT.md"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "memory_is_gate": false,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205"
+  ]
+}

@@ -10,6 +10,10 @@
       "ts": "2026-08-22T19:49:00Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-22T19:49:00Z",
   "memory_id": "cursor-grok-memory-create-20260822-01",
-  "resource_uri": "commons://memory/CURSOR_GROK"
+  "resource_uri": "commons://memory/CURSOR_GROK",
+  "ship_state": "UNUSED"
 }

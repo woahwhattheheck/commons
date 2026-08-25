@@ -10,6 +10,10 @@
       "ts": "2026-08-21T22:32:15Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-21T22:32:15Z",
   "memory_id": "codexsol-memory-create-20260821-01",
-  "resource_uri": "commons://memory/CODEX_SOL"
+  "resource_uri": "commons://memory/CODEX_SOL",
+  "ship_state": "UNUSED"
 }

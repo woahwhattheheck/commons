@@ -192,6 +192,8 @@
     "ground/FOREIGN_MAIN.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
+    "ground/MEMORY_SHIP.md",
+    "ground/MEMORY_SHIP.json",
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
@@ -422,6 +424,9 @@
     }
     if (api.isTitanTestQuarantineTalk(t)) {
       return { state: "CLAIMED", note: "live-Titan test quarantine / test_go_without_titan_is_absent / temp-synthetic-Titan talk. Talk is not a land. Isolate default discovery under tests. Require explicit --titan. Add payload-hash idempotence. Do not bind C:\\\\llm\\\\models\\\\titan.gguf from CI." };
+    }
+    if (api.isMemoryShipTalk(t)) {
+      return { state: "CLAIMED", note: "use-the-memory-feature / unused-memory-board / ROLE-only-memory talk. Talk is not a land. Use memory/ and ship WORK_STATE that cites current main. Do not remint sitting-remint leftovers." };
     }
     if (api.isCashNowTalk(t)) {
       return { state: "CLAIMED", note: "cash-now / collectable-USD / private-payout talk. Talk is not a land. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. Ship the leftover to current main." };
@@ -841,6 +846,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/device_canary.py missing the leftover. First bounded read-only device canary / TAKING_LANDED_INPUT talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isMemoryShipTalk = function (text) {
+    return /use the memory feature|improve it while you work|memory-ship leftover|unused memory board|role-only memory|memory boards.{0,40}ship/i.test(String(text || ""));
+  };
+
+  api.memoryShipState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/memory_ship.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesUnused = /unused ROLE-only/.test(body) && /ship_state/.test(body);
+    var refusesGate = /Memory stays optional context/.test(body) || /Memory is context only/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesUnused && refusesGate) {
+      return {
+        state: "INTEGRATED",
+        note: "memory-ship leftover is on this file. Unused ROLE-only boards are named. WORK_STATE must cite current main. A Slack ask is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/memory_ship.py missing the leftover. Use-the-memory-feature talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2447,6 +2479,7 @@
   var sittingRemintOut = document.getElementById("sitting-remint-result");
   var foreignMainOut = document.getElementById("foreign-main-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
+  var memoryShipOut = document.getElementById("memory-ship-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -3083,6 +3116,12 @@
     if (!deviceCanaryOut) return;
     deviceCanaryOut.setAttribute("data-tone", api.toneFor(result.state));
     deviceCanaryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMemoryShip(result) {
+    if (!memoryShipOut) return;
+    memoryShipOut.setAttribute("data-tone", api.toneFor(result.state));
+    memoryShipOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -3972,6 +4011,33 @@
     });
   }
 
+  function loadMemoryShip(sha) {
+    if (!memoryShipOut) return Promise.resolve(null);
+    memoryShipOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/memory_ship.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/memory_ship.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/memory_ship.py absent at the measured main SHA. Use-the-memory-feature talk is CLAIMED." };
+        paintMemoryShip(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMemoryShip(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.memoryShipState(body);
+        paintMemoryShip(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMemoryShip(err);
+      return err;
+    });
+  }
+
   function loadSittingRemint(sha) {
     if (!sittingRemintOut) return Promise.resolve(null);
     sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
@@ -4720,6 +4786,7 @@
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
     loadTitanTestQuarantine(sha);
+    loadMemoryShip(sha);
     loadSittingRemint(sha);
     loadForeignMain(sha);
     loadDeviceCanary(sha);
