@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825cc/.test(html), "desk must share the current-main/Titan cache key after grok-app-route leftover");
+assert.ok(/20260825cd/.test(html), "desk must share the current-main/Titan cache key after cursor-halt leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,36 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isCursorHaltTalk, "land.js must classify cursor-halt leftover talk leftover-first");
+assert.ok(api.cursorHaltState, "land.js must classify the cursor-halt leftover");
+assert.ok(api.isCursorHaltTalk("Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage.\n1787670330.096089"), "Bryce 93% halt line is leftover talk");
+assert.ok(!api.isCursorHaltTalk("make sure people do more than talk about shit"), "generic ship-talk is not the cursor-halt leftover");
+assert.ok(!api.isCursorHaltTalk("Cursor agent tell them I said use grok more use cursor less, for the next 24 hours\n1787669986.483149"), "24-hour grok-app-route leftover is not the cursor-halt leftover");
+assert.ok(!api.isGrokAppRouteTalk("Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage.\n1787670330.096089"), "93% halt leftover is not the 24-hour grok-app-route leftover");
+var cursorHaltTalk = api.completionStateFromText(
+  "Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage.\n1787670330.096089"
+);
+assert.strictEqual(cursorHaltTalk.state, "CLAIMED");
+assert.ok(/until-future-notice|93%-usage|stop-giving-you-work/i.test(cursorHaltTalk.note), "cursor-halt-without-SHA must stay CLAIMED leftover-first");
+var cursorHaltDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ncursor-halt leftover landed"
+);
+assert.strictEqual(cursorHaltDone.state, "INTEGRATED", "completion words still beat cursor-halt leftover talk");
+var cursorHaltEmpty = api.cursorHaltState("");
+assert.strictEqual(cursorHaltEmpty.state, "UNMEASURED");
+var cursorHaltMissing = api.cursorHaltState("# empty stub\nno leftover");
+assert.strictEqual(cursorHaltMissing.state, "NOT_LANDED");
+var cursorHaltOk = api.cursorHaltState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef halt_state(catalog=None):\n    return 'HALT_ACTIVE'\nHALT_ACTIVE\nHALT_LIFTED\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nuntil future notice\n93% usage\nstop giving you work\nuntil further notice\nno auth\nno gate\n");
+assert.strictEqual(cursorHaltOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(cursorHaltOk.note), "landed cursor-halt leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="cursor-halt-result"') >= 0, "desk must name the cursor-halt leftover");
+assert.ok(html.indexOf("host/cursor_halt.py") >= 0, "desk must name the cursor-halt instrument");
+assert.ok(html.indexOf("ground/CURSOR_HALT.md") >= 0, "desk must link the cursor-halt card");
+assert.ok(html.indexOf("ground/CURSOR_HALT.json") >= 0, "desk must link the cursor-halt catalog");
+assert.ok(html.indexOf("1787670330.096089") >= 0, "desk must cite the Bryce 93% halt Slack ts");
+assert.ok(/until further notice|93% usage|stop giving Cursor work/i.test(html), "desk must name cursor-halt talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CURSOR_HALT.md") >= 0, "cursor-halt card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CURSOR_HALT.json") >= 0, "cursor-halt catalog must stay a canary");
 assert.ok(api.isGrokAppRouteTalk, "land.js must classify grok-app-route leftover talk leftover-first");
 assert.ok(api.grokAppRouteState, "land.js must classify the grok-app-route leftover");
 assert.ok(api.isGrokAppRouteTalk("Guys stop routing away from grok app and to cursor I dont want to burn cursor tokens like I want to burn the grok.com tokens\n1787669923.780099"), "Bryce grok-app routing line is leftover talk");
