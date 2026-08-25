@@ -1,0 +1,75 @@
+{
+  "slack_ts": "1787647408.984179",
+  "kind": "REVIEW_LANE",
+  "subject": "A Slack SHIPPED (review lane, not merged) is not official main",
+  "foreign_repo": "woahwhattheheck/LocalDeviceAgent",
+  "official_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "already_landed": [
+    "ground/FOREIGN_MAIN.md",
+    "host/foreign_main.py",
+    "ground/MUHL_RECEIPT_LANE.md",
+    "host/muhl_receipt_lane.py",
+    "ground/LDA_RECEIPT.md",
+    "host/lda_receipt.py"
+  ],
+  "candidates": [
+    {
+      "number": "3",
+      "title": "Add byte-exact Muhlnickel subagent receipts",
+      "candidate_sha": "e9c863a1d945627ff75e0db997ce74dc9efa345f",
+      "official_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+      "pr_state": "OPEN",
+      "mergeable_state": "clean",
+      "land_state": "CANDIDATE",
+      "receipt_on_official_main": "ABSENT",
+      "ci": "SUCCESS",
+      "actions_run": "32827964418",
+      "actions_job": "97740082275",
+      "request_tests": "9/9",
+      "receipt_tests": "16/16",
+      "reviews": [],
+      "non_claude_review": "Cursor Grok 4.6 source-only fail-closed; unchanged bytes UNRESOLVED never 0",
+      "blobs": [
+        {
+          "path": "host/muhl_subagent_receipt.py",
+          "sha": "56daac03ae99d0dc2c6d0eeb9e9e17638253eaa8"
+        },
+        {
+          "path": "host/test_muhl_subagent_receipt.py",
+          "sha": "74b6eb49a0557de62c1ef62aa71a6897fa8e65aa"
+        },
+        {
+          "path": "docs/MUHL_SUBAGENT_RECEIPT.md",
+          "sha": "2edcdb258ba7bf04ad97d7700daee80ef8060f07"
+        },
+        {
+          "path": ".github/workflows/muhlnickel-subagent-protocol.yml",
+          "sha": "b9b0af5caffcdbb7341f0e988249cb990578358d"
+        }
+      ],
+      "note": "Slack SHIPPED (review lane, not merged) is CANDIDATE. Official LDA main still lacks the receipt path."
+    }
+  ],
+  "do_not_remint": [
+    "FOREIGN_MAIN",
+    "MUHL_RECEIPT_LANE",
+    "LDA_RECEIPT",
+    "jojo-muhlnickel-subagent-protocol-20260825-01",
+    "rivet-ship-foreign-main-20260825-01",
+    "rivet-ship-muhl-receipt-lane-20260825-01",
+    "rivet-ship-lda-receipt leftover files"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2286",
+    "SPECTER",
+    "titan.gguf",
+    "commons.mno",
+    "pfc_*",
+    "device mutation"
+  ]
+}

@@ -430,6 +430,16 @@ python3 -m unittest -v test_device_queue_cap.py</pre>
 <div id="device-queue-cap-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO COLLISION_RESOLVED / queue-cap copy without the leftover on current main is talk. Measure queue: single. Never print a silent 0.</p></div>
 </section>
 
+<section aria-labelledby="review-lane-heading">
+<h2 id="review-lane-heading">Review lane — a Slack SHIPPED (not merged) is not official main</h2>
+<p class="note">Slack <code>1787647408.984179</code> / JOJO <code>SHIPPED</code> (review lane, not merged). LDA PR <code>#3</code> <code>e9c863a1d945627ff75e0db997ce74dc9efa345f</code> / new receipt 16/16 / review-lane leftover talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Official LDA main is still <code>fb0b0b2f59f8ca81741371b6ddd8036b164e77e8</code>. Receipt path <code>ABSENT</code> there. Name the PR <code>CANDIDATE</code>. Actions job <code>97740082275</code> SUCCESS. Non-Claude review recorded. Do not remint <code>FOREIGN_MAIN</code>, <code>MUHL_RECEIPT_LANE</code>, or <code>LDA_RECEIPT</code>. Do not copy private LDA source. Instrument: <code>host/review_lane.py</code>. Card: <a href="./ground/REVIEW_LANE.md">ground/REVIEW_LANE.md</a>. Catalog: <a href="./ground/REVIEW_LANE.json">ground/REVIEW_LANE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/review_lane.py
+python3 host/review_lane.py --root .
+python3 host/review_lane.py --self-test
+python3 -m unittest -v test_review_lane.py</pre>
+<div id="review-lane-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO SHIPPED / review lane / LDA PR #3 copy without the leftover on current main is talk. Name the PR CANDIDATE. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="lda-receipt-heading">
 <h2 id="lda-receipt-heading">LDA receipt — a profitability handoff is not a validator</h2>
 <p class="note">Slack <code>1787646655.408039</code> / JOJO <code>PROFITABILITY_HANDOFF</code> <code>jojo-model-work-profitability-bridge-20260825-02</code>. PROFITABILITY_HANDOFF / LDA request protocol / receipt-validator / quote-ready-vs-proof-first talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Validate public receipts against pin <code>fb0b0b2f59f8ca81741371b6ddd8036b164e77e8</code>. Do not remint the JOJO profitability id or <code>jojo-muhlnickel-subagent-protocol-20260825-01</code>. Do not remint <code>FOREIGN_MAIN</code> or <code>MUHL_RECEIPT_LANE</code>. Do not copy private LDA source. Door: <a href="./lda-receipt.html">lda-receipt.html</a>. Instrument: <code>host/lda_receipt.py</code>. Card: <a href="./ground/LDA_RECEIPT.md">ground/LDA_RECEIPT.md</a>. Catalog: <a href="./ground/LDA_RECEIPT.json">ground/LDA_RECEIPT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>

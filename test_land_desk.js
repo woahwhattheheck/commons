@@ -1563,6 +1563,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isReviewLaneTalk, "land.js must classify review-lane leftover talk");
+assert.ok(api.reviewLaneState, "land.js must classify the review-lane leftover");
+assert.ok(api.isReviewLaneTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. GitHub Actions run 32827964418, job 97740082275: SUCCESS, existing request 9/9 + new receipt 16/16. 1787647408.984179"), "JOJO review-lane SHIPPED is leftover talk");
+assert.ok(!api.isReviewLaneTalk("make sure people do more than talk about shit"), "generic ship-talk is not the review-lane leftover");
+assert.ok(!api.isReviewLaneTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "receipt-lane taking is not the review-lane leftover");
+assert.ok(!api.isReviewLaneTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "profitability handoff is not the review-lane leftover");
+assert.ok(!api.isReviewLaneTalk("JOJO SHIP_RECEIPT jojo-muhlnickel-subagent-protocol-20260825-01 official main fb0b0b2"), "FOREIGN_MAIN SHIP_RECEIPT copy is not the review-lane leftover");
+assert.ok(!api.isLdaReceiptTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the LDA receipt leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the receipt-lane leftover");
+assert.ok(!api.isForeignMainTalk("JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"), "review-lane SHIPPED is not the foreign-main leftover");
+var reviewLaneTalk = api.completionStateFromText(
+  "JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1d945627ff75e0db997ce74dc9efa345f. new receipt 16/16. 1787647408.984179"
+);
+assert.strictEqual(reviewLaneTalk.state, "CLAIMED");
+assert.ok(/review lane|PR #3|not-merged|CANDIDATE/i.test(reviewLaneTalk.note), "review-lane-without-SHA must stay CLAIMED and beat receipt-lane / foreign-main / ship-talk");
+var reviewLaneDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nreview-lane leftover landed"
+);
+assert.strictEqual(reviewLaneDone.state, "INTEGRATED", "completion words still beat review-lane talk");
+var reviewLaneEmpty = api.reviewLaneState("");
+assert.strictEqual(reviewLaneEmpty.state, "UNMEASURED");
+var reviewLaneMissing = api.reviewLaneState("# empty stub\nno leftover");
+assert.strictEqual(reviewLaneMissing.state, "NOT_LANDED");
+var reviewLaneOk = api.reviewLaneState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nCANDIDATE\ne9c863a1d945627ff75e0db997ce74dc9efa345f\nfb0b0b2f59f8ca81741371b6ddd8036b164e77e8\nreceipt path absent\nDo not copy private LDA source\nno auth\nno gate\n");
+assert.strictEqual(reviewLaneOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(reviewLaneOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="review-lane-result"') >= 0, "desk must name the review-lane leftover");
+assert.ok(html.indexOf("host/review_lane.py") >= 0, "desk must name the review-lane instrument");
+assert.ok(html.indexOf("ground/REVIEW_LANE.md") >= 0, "desk must link the review-lane card");
+assert.ok(html.indexOf("ground/REVIEW_LANE.json") >= 0, "desk must link the review-lane catalog");
+assert.ok(html.indexOf("1787647408.984179") >= 0, "desk must cite the JOJO review-lane Slack ts");
+assert.ok(/review lane|LDA PR #3|not merged/i.test(html), "desk must name review-lane talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/REVIEW_LANE.md") >= 0, "review-lane card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/REVIEW_LANE.json") >= 0, "review-lane catalog must stay a canary");
 assert.ok(api.isLdaReceiptTalk, "land.js must classify LDA receipt leftover talk");
 assert.ok(api.ldaReceiptState, "land.js must classify the LDA receipt leftover");
 assert.ok(api.isLdaReceiptTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nsubject: QUOTE-READY VS PROOF-FIRST MODEL-WORK PORTFOLIO\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "JOJO profitability handoff is leftover talk");
