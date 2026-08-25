@@ -1563,6 +1563,41 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isSuperGrokHeavyTalk, "land.js must classify SuperGrok Heavy leftover talk");
+assert.ok(api.superGrokHeavyState, "land.js must classify the SuperGrok Heavy leftover");
+assert.ok(api.isSuperGrokHeavyTalk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nOwner correction confirmed by current xAI docs: SuperGrok paid usage is one shared weekly pool across Chat, Build, API, Imagine, and Voice. Grok Build is not a separate unavailable bucket. Do not use Cursor Grok as the substitute. utilization receipts. 1787645797.029719"), "DEMON SuperGrok Heavy Slack is leftover talk");
+assert.ok(!api.isSuperGrokHeavyTalk("make sure people do more than talk about shit"), "generic ship-talk is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. 1787645274.177269"), "SPECTER FINAL copy is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("frontend-design and then mcp-tunnels still enabled after compat.claude cells"), "grok-hygiene copy is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD"), "cash-now copy is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01"), "device-queue-cap copy is not the SuperGrok Heavy leftover");
+assert.ok(!api.isSpecterFinalTalk("SUPERGROK HEAVY RESET SPRINT. shared weekly pool. Do not use Cursor Grok as the substitute. 1787645797.029719"), "SuperGrok Heavy copy is not the SPECTER FINAL leftover");
+assert.ok(!api.isGrokHygieneTalk("SUPERGROK HEAVY RESET SPRINT. shared weekly pool. Do not use Cursor Grok as the substitute."), "SuperGrok Heavy copy is not grok-hygiene leftover");
+assert.ok(!api.isSittingRemintTalk("SUPERGROK HEAVY RESET SPRINT. shared weekly pool. utilization receipts."), "SuperGrok Heavy copy is not sitting remint");
+var superGrokTalk = api.completionStateFromText(
+  "DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nSuperGrok paid usage is one shared weekly pool. Do not use Cursor Grok as the substitute. utilization receipts. 1787645797.029719"
+);
+assert.strictEqual(superGrokTalk.state, "CLAIMED");
+assert.ok(/shared-weekly-pool|Cursor-Grok-as-substitute|utilization-receipt|SUPERGROK HEAVY/i.test(superGrokTalk.note), "SuperGrok Heavy without SHA must stay CLAIMED and beat ship-talk / SPECTER FINAL");
+var superGrokDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsupergrok-heavy leftover landed"
+);
+assert.strictEqual(superGrokDone.state, "INTEGRATED", "completion words still beat SuperGrok Heavy talk");
+var superGrokEmpty = api.superGrokHeavyState("");
+assert.strictEqual(superGrokEmpty.state, "UNMEASURED");
+var superGrokMissing = api.superGrokHeavyState("# empty stub\nno leftover");
+assert.strictEqual(superGrokMissing.state, "NOT_LANDED");
+var superGrokOk = api.superGrokHeavyState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nshared weekly pool\nCursor Grok is not the Heavy substitute\nheavy-dir9-read-mesh\nheavy-dir19-agent-swarm\nno auth\nno gate\n");
+assert.strictEqual(superGrokOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(superGrokOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="supergrok-heavy-result"') >= 0, "desk must name the SuperGrok Heavy leftover");
+assert.ok(html.indexOf("host/supergrok_heavy.py") >= 0, "desk must name the SuperGrok Heavy instrument");
+assert.ok(html.indexOf("ground/SUPERGROK_HEAVY.md") >= 0, "desk must link the SuperGrok Heavy card");
+assert.ok(html.indexOf("ground/SUPERGROK_HEAVY.json") >= 0, "desk must link the SuperGrok Heavy catalog");
+assert.ok(html.indexOf("1787645797.029719") >= 0, "desk must cite the SuperGrok Heavy Slack ts");
+assert.ok(/shared weekly pool|Cursor-Grok-as-substitute|SUPERGROK HEAVY/i.test(html), "desk must name SuperGrok Heavy talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUPERGROK_HEAVY.md") >= 0, "SuperGrok Heavy card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SUPERGROK_HEAVY.json") >= 0, "SuperGrok Heavy catalog must stay a canary");
 assert.ok(api.isDeviceQueueCapTalk, "land.js must classify device-queue-cap leftover talk");
 assert.ok(api.deviceQueueCapState, "land.js must classify the device-queue-cap leftover");
 assert.ok(api.isDeviceQueueCapTalk("from: JOJO\nkind: COLLISION_RESOLVED\nid: jojo-device-queue-collapse-20260825-01\nsubject: PEER #2264 LANDED THE QUEUE CAP; JOJO #2263 CLOSED\nthis forward cap does not claim the old backlog is cleared. 1787645425.769089"), "JOJO collision is leftover talk");

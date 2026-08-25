@@ -200,6 +200,8 @@
     "ground/SPECTER_FINAL.json",
     "ground/DEVICE_QUEUE_CAP.md",
     "ground/DEVICE_QUEUE_CAP.json",
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/SUPERGROK_HEAVY.json",
     "ground/OWNER_MACHINE_BUILD_SWEEP.md",
     "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/BATTERY_RED.md",
@@ -437,6 +439,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSuperGrokHeavyTalk(t)) {
+      return { state: "CLAIMED", note: "SUPERGROK HEAVY / shared-weekly-pool / Cursor-Grok-as-substitute / utilization-receipt talk. Talk is not a land. Name unfinished builds with source/commit, unresolved state, a deliverable, and a non-Grok verifier. Do not remint GROK_HYGIENE, SITTING_REMINT, BUILD_SWEEP_ACT, SPECTER_FINAL, SITTING_PR, or DEVICE_QUEUE_CAP." };
     }
     if (api.isDeviceQueueCapTalk(t)) {
       return { state: "CLAIMED", note: "JOJO COLLISION_RESOLVED / device-queue-cap / historical-backlog-not-cleared talk. Talk is not a land. Measure queue: single on current main. Do not remint PR 2264 or the JOJO taking. Historical backlog stays NOT_CLEARED." };
@@ -806,6 +811,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isSuperGrokHeavyTalk = function (text) {
+    return /SUPERGROK HEAVY|shared weekly pool|do not use Cursor Grok as the substitute|1787645797\.029719|utilization receipts|Grok Build is not a separate unavailable bucket|supergrok-heavy leftover/i.test(String(text || ""));
+  };
+
+  api.superGrokHeavyState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/supergrok_heavy.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPool = /shared weekly pool/.test(body) && /Cursor Grok is not the Heavy substitute/i.test(body);
+    var namesPackets = /heavy-dir9-read-mesh/.test(body) && /heavy-dir19-agent-swarm/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesPool && namesPackets && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "SuperGrok Heavy leftover is on this file. Shared weekly pool is named. Heavy packets cite unfinished builds. A Slack sprint is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/supergrok_heavy.py missing the leftover. SuperGrok Heavy / shared-weekly-pool talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3024,6 +3057,7 @@
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
+  var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
   var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
@@ -3679,6 +3713,12 @@
     if (!deviceQueueCapOut) return;
     deviceQueueCapOut.setAttribute("data-tone", api.toneFor(result.state));
     deviceQueueCapOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSuperGrokHeavy(result) {
+    if (!superGrokHeavyOut) return;
+    superGrokHeavyOut.setAttribute("data-tone", api.toneFor(result.state));
+    superGrokHeavyOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintBuildSweepAct(result) {
@@ -4525,6 +4565,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadSuperGrokHeavy(sha) {
+    if (!superGrokHeavyOut) return Promise.resolve(null);
+    superGrokHeavyOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/supergrok_heavy.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/supergrok_heavy.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/supergrok_heavy.py absent at the measured main SHA. SuperGrok Heavy / shared-weekly-pool talk is CLAIMED." };
+        paintSuperGrokHeavy(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSuperGrokHeavy(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.superGrokHeavyState(body);
+        paintSuperGrokHeavy(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSuperGrokHeavy(err);
       return err;
     });
   }
@@ -5602,6 +5669,7 @@
     loadMemoryShip(sha);
     loadSittingRemint(sha);
     loadSittingPr(sha);
+    loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);
     loadDeviceQueueCap(sha);
     loadBuildSweepAct(sha);

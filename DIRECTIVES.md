@@ -219,6 +219,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_device_queue_cap.py` · `python3 host/device_queue_cap.py` · `node test_land_desk.js`
 **Note:** Do not remint PR 2264 / JOJO taking `jojo-device-queue-collapse-20260825-01` / `rivet-ship-device-queue-single-20260825-01` / SPECTER FINAL / SITTING_PR. `queue: max` returning is a regression. Historical backlog stays NOT_CLEARED. Do not cancel historical runs. titan NOT_WRITTEN. Talk is not a land.
 
+### 44. SuperGrok Heavy — a Slack mapping sprint is not a land
+> *"Owner correction confirmed by current xAI docs: SuperGrok paid usage is one shared weekly pool … Do not use Cursor Grok as the substitute."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:16 Slack `1787645797.029719` / DEMON SUPERGROK HEAVY RESET SPRINT + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SUPERGROK_HEAVY.md` · `ground/SUPERGROK_HEAVY.json` · `host/supergrok_heavy.py` · land canary + `superGrokHeavyState`
+**Receipt:** `python3 test_supergrok_heavy.py` · `node test_land_desk.js` · `python3 host/supergrok_heavy.py`
+**Note:** Shared weekly pool is named. Heavy packets cite item 9 read-mesh leftover and item 19 Agent Swarm. Cursor Grok is not the Heavy substitute. Revenue ideation refused. Do not remint GROK_HYGIENE / SITTING_REMINT / BUILD_SWEEP_ACT / SPECTER_FINAL / CASH_NOW / SITTING_PR / DEVICE_QUEUE_CAP. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
