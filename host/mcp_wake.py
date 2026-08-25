@@ -13,8 +13,9 @@ JOJO has not posted that claim as p/{id}.md. This leftover ships it.
 
 It does not remint render-check / render-contract. It does not remint
 rivet-ship-mcp-wake-job-20260825-01 or host/mcp_wake_job.py. It does
-not write wake_jobs/{id}.json. It does not mutate ~/.grok. It does
-not claim a named idle bc- resume. titan: NOT_WRITTEN. No auth.
+recognize the separately claimed SPECTER production canary as the only
+canonical wake_jobs/{id}.json in this lane. It does not mutate ~/.grok.
+It does not claim a named idle bc- resume. titan: NOT_WRITTEN. No auth.
 
   python3 host/mcp_wake.py
   python3 host/mcp_wake.py --root .
@@ -67,6 +68,7 @@ ADAPTER_PATHS = (
     "wake_jobs",
 )
 WAKE_JOBS = "wake_jobs"
+PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
 
 
 def _exists(root, rel):
@@ -80,8 +82,45 @@ def _wake_job_json_count(root):
     return sum(
         1
         for name in os.listdir(folder)
-        if name.endswith(".json") and os.path.isfile(os.path.join(folder, name))
+        if name.endswith(".json")
+        and name != "_last_tick.json"
+        and os.path.isfile(os.path.join(folder, name))
     )
+
+
+def _wake_job_rows(root):
+    """Read status-only job rows. Invalid files stay visible, never silent."""
+    folder = os.path.join(root, WAKE_JOBS)
+    if not os.path.isdir(folder):
+        return []
+    rows = []
+    for name in sorted(os.listdir(folder)):
+        path = os.path.join(folder, name)
+        if (
+            not name.endswith(".json")
+            or name == "_last_tick.json"
+            or not os.path.isfile(path)
+        ):
+            continue
+        try:
+            with open(path, encoding="utf-8") as handle:
+                data = json.load(handle)
+        except (OSError, ValueError):
+            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            continue
+        if not isinstance(data, dict):
+            rows.append({"job_id": name[:-5], "status": "INVALID"})
+            continue
+        rows.append(
+            {
+                "job_id": str(data.get("job_id") or name[:-5]),
+                "status": str(data.get("status") or "UNKNOWN"),
+                "result_address": str(data.get("result_address") or ""),
+                "attempt_count": int(data.get("attempt_count") or 0),
+                "receipt_count": len(data.get("event_receipts") or []),
+            }
+        )
+    return rows
 
 
 def _surfaces_present(root):
@@ -243,6 +282,7 @@ def measure_from_rows(facts):
     inventory_surfaces = list(facts.get("inventory_surfaces") or [])
     tests = list(facts.get("tests") or [])
     wake_json = int(facts.get("wake_job_json") or 0)
+    wake_jobs = list(facts.get("wake_jobs") or [])
     inventory = bool(facts.get("inventory"))
     job_tools = bool(facts.get("job_tools"))
     job = dict(facts.get("job") or {})
@@ -254,7 +294,20 @@ def measure_from_rows(facts):
         mcp = "FRAGMENTED"
     else:
         mcp = "NOT_LANDED"
-    wake = "EMPTY" if wake_json <= 0 else "CANDIDATE"
+    canary = next(
+        (
+            item
+            for item in wake_jobs
+            if str(item.get("job_id") or "") == PRODUCTION_CANARY_ID
+        ),
+        None,
+    )
+    if wake_json <= 0:
+        wake = "EMPTY"
+    elif canary and str(canary.get("status") or "") == "DONE":
+        wake = "VERIFIED"
+    else:
+        wake = "CANDIDATE"
     return {
         "measured": True,
         "mcp": mcp,
@@ -266,6 +319,7 @@ def measure_from_rows(facts):
         "tests": tests,
         "wake": wake,
         "wake_job_json": wake_json,
+        "wake_jobs": wake_jobs,
         "job": job,
         "grok": grok,
         "idle": idle,
@@ -322,10 +376,13 @@ def classify(row):
             "note": (
                 "canonical MCP inventory is on this tree. Four surfaces "
                 "named. Cheap JobStore tick invoke_model=false. Named idle "
-                "bc- resume stays UNMEASURED. Grok smoke %s. wake_jobs JSON "
-                "stays EMPTY. A Slack collision hold is still not the file."
+                "bc- resume stays UNMEASURED. Grok smoke %s. wake_jobs state "
+                "is %s. A Slack collision hold is still not the file."
             )
-            % ((row.get("grok") or {}).get("state") or "UNMEASURED"),
+            % (
+                (row.get("grok") or {}).get("state") or "UNMEASURED",
+                row.get("wake") or "UNMEASURED",
+            ),
         }
     missing = []
     if int(row.get("surface_count") or 0) < 4:
@@ -365,6 +422,7 @@ def measure_root(root):
         "tests": _tests_present(root),
         "job_tools": _has_job_tools(root),
         "wake_job_json": _wake_job_json_count(root),
+        "wake_jobs": _wake_job_rows(root),
         "job": verify_job(),
         "grok_exists": os.path.exists(grok_home),
         "idle": probe_idle_resume(OTHER_BC),
@@ -393,6 +451,7 @@ def catalog_from_row(row):
         "job_tools": bool(row.get("job_tools")),
         "wake": row.get("wake"),
         "wake_job_json": int(row.get("wake_job_json") or 0),
+        "wake_jobs": list(row.get("wake_jobs") or []),
         "job": {
             "ok": bool(job.get("ok")),
             "state": job.get("state"),
@@ -417,7 +476,7 @@ def catalog_from_row(row):
             "jojo-visual-ci-20260825-01 remint",
             "named idle bc- resume of a different run",
             "~/.grok mutate/restart",
-            "wake_jobs/{id}.json invention",
+            "unscoped wake_jobs/{id}.json beyond the named SPECTER canary",
             "titan.gguf write",
             "DIO Android / White Box / Bazaar commercial",
             "DEMON flight recorder",

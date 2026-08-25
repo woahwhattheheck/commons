@@ -53,7 +53,9 @@ def _wake_job_json_count(root):
     return sum(
         1
         for name in os.listdir(folder)
-        if name.endswith(".json") and os.path.isfile(os.path.join(folder, name))
+        if name.endswith(".json")
+        and name != "_last_tick.json"
+        and os.path.isfile(os.path.join(folder, name))
     )
 
 
@@ -252,8 +254,9 @@ def classify(row):
         "note": (
             "six-item stranded map is measured on this tree. "
             "Android CI stays STRANDED until DIO places "
-            ".github/workflows/android.yml. wake_jobs JSON stays EMPTY "
-            "until JOJO measures idle-resume. MCP stays FRAGMENTED until "
+            ".github/workflows/android.yml. The first bounded wake_jobs "
+            "canary is CANDIDATE until its production receipt lands; named "
+            "idle resume remains unmeasured. MCP stays FRAGMENTED until "
             "one inventory lands. White Box stays PROPOSED. Bazaar "
             "copy-node stays UNFULFILLED. Titan posted size stays STALE. "
             "A Slack map is still not the file."

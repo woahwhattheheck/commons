@@ -100,7 +100,12 @@
     "jobs_dir": "wake_jobs/",
     "adapter": "harness_wake/",
     "idle_resume": "UNMEASURED",
-    "note": "wake_jobs/ has README + .gitignore only. Named idle bc- resume of a different run fail-closes. Do not invent a job JSON."
+    "production_canaries": [
+      "rivet-watchdog-canary-20260825-01",
+      "specter-watchdog-head-proof-20260825-01"
+    ],
+    "result_address": "ridge-cursor-wake-loop-20260822-01",
+    "note": "RIVET's current-main canary is DONE. SPECTER's bounded canary exercises the SHA-pinned watchdog STOP path and is OPEN in source until its production terminal receipt lands. Named idle bc- resume of a different run remains UNMEASURED."
   },
   "grok_smoke": {
     "state": "UNMEASURED",
@@ -112,7 +117,7 @@
     "jojo-visual-ci-20260825-01 remint",
     "named idle bc- resume of a different run",
     "~/.grok mutate/restart",
-    "wake_jobs/{id}.json invention",
+    "unscoped wake_jobs/{id}.json beyond the named SPECTER canary",
     "titan.gguf write"
   ]
 }

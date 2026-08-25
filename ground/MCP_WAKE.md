@@ -28,8 +28,12 @@ desk now ships:
 
 Instrument: `host/mcp_wake.py`. Stdlib + in-repo JobStore /
 `probe_idle_resume`. Catalog: `ground/MCP_INVENTORY.json` and
-`ground/MCP_WAKE.json`. It does not write `wake_jobs/{id}.json`.
-It does not mutate `~/.grok`. titan: **NOT_WRITTEN**.
+`ground/MCP_WAKE.json`. The named
+`rivet-watchdog-canary-20260825-01` current-main canary is DONE. The
+separately claimed `specter-watchdog-head-proof-20260825-01`
+production canary is OPEN in source until its terminal receipt lands.
+Neither mutates `~/.grok`.
+titan: **NOT_WRITTEN**.
 
 ```bash
 python3 host/mcp_wake.py
@@ -45,10 +49,13 @@ States:
   stays UNMEASURED, Grok smoke named (UNMEASURED if no `~/.grok`)
 - **FRAGMENTED** — surfaces exist, inventory missing
 - **EMPTY** — `wake_jobs/` has no `{id}.json`
+- **CANDIDATE** — the bounded production canary is OPEN on this tree
+- **VERIFIED** — the named bounded production canary is DONE; this
+  still does not claim named idle-session resume
 - **UNMEASURED** — census not read, or Grok/idle-resume honestly
   not exercised. Absence is not stillness
 - **NOT_LANDED** — leftover incomplete, or the probe invented a
-  live resume / wrote `wake_jobs/`
+  live resume / wrote an unscoped `wake_jobs/{id}.json`
 
 Talk that is a collision check, a hold, `jojo-visual-ci`, or
 MCP/wake real-job verification without this leftover is

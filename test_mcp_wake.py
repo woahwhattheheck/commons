@@ -3,8 +3,10 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
+import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 from mcp_wake import (
     JOB_ID,
     OTHER_BC,
+    PRODUCTION_CANARY_ID,
     SURFACES,
     TEST_FILES,
     catalog_from_row,
@@ -109,6 +112,38 @@ class TestMcpWake(unittest.TestCase):
         self.assertEqual(measured["mcp"], "FRAGMENTED")
         self.assertEqual(classify(measured)["state"], "NOT_LANDED")
 
+    def test_production_canary_open_then_done_states(self):
+        base = {
+            "surfaces": list(SURFACES),
+            "inventory": True,
+            "job_tools": True,
+            "wake_job_json": 1,
+            "job": {"ok": True, "invoke_model": False, "wrote_wake_jobs": False},
+            "idle": {"state": "UNMEASURED"},
+        }
+        candidate = measure_from_rows(
+            dict(base, wake_jobs=[{"job_id": PRODUCTION_CANARY_ID, "status": "OPEN"}])
+        )
+        self.assertEqual(candidate["wake"], "CANDIDATE")
+        verified = measure_from_rows(
+            dict(base, wake_jobs=[{"job_id": PRODUCTION_CANARY_ID, "status": "DONE"}])
+        )
+        self.assertEqual(verified["wake"], "VERIFIED")
+        self.assertEqual(classify(verified)["state"], "INTEGRATED")
+
+    def test_tick_receipt_is_not_counted_as_a_job(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder = os.path.join(root, "wake_jobs")
+            os.makedirs(folder)
+            with open(
+                os.path.join(folder, "_last_tick.json"), "w", encoding="utf-8"
+            ) as handle:
+                json.dump({"state": "TICKED", "wake_count": 0}, handle)
+            row = measure_root(root)
+        self.assertEqual(row["wake_job_json"], 0)
+        self.assertEqual(row["wake_jobs"], [])
+        self.assertEqual(row["wake"], "EMPTY")
+
     def test_real_job_tick_does_not_invoke_or_write_repo(self):
         job = verify_job()
         self.assertTrue(job["ok"])
@@ -146,7 +181,18 @@ class TestMcpWake(unittest.TestCase):
         self.assertTrue(row["inventory"])
         self.assertGreaterEqual(row["surface_count"], 4)
         self.assertTrue(row["job_tools"])
-        self.assertEqual(row["wake"], "CANDIDATE")
+        self.assertGreaterEqual(row["wake_job_json"], 1)
+        canary = next(
+            item
+            for item in row["wake_jobs"]
+            if item["job_id"] == PRODUCTION_CANARY_ID
+        )
+        self.assertEqual(canary["job_id"], PRODUCTION_CANARY_ID)
+        self.assertIn(canary["status"], {"OPEN", "DONE"})
+        self.assertEqual(
+            row["wake"],
+            "VERIFIED" if canary["status"] == "DONE" else "CANDIDATE",
+        )
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         catalog = catalog_from_row(row)
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")

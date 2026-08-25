@@ -19,8 +19,24 @@
     "checkpoint_job",
     "complete_job"
   ],
-  "wake": "EMPTY",
-  "wake_job_json": 0,
+  "wake": "CANDIDATE",
+  "wake_job_json": 2,
+  "production_canaries": [
+    {
+      "job_id": "rivet-watchdog-canary-20260825-01",
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "source_state": "DONE"
+    },
+    {
+      "job_id": "specter-watchdog-head-proof-20260825-01",
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "source_state": "OPEN",
+      "expected_terminal_state": "DONE",
+      "expected_wake_count": 0,
+      "expected_delivery_count": 0,
+      "expected_process_model_invocations": 0
+    }
+  ],
   "idle": {
     "state": "UNMEASURED",
     "live_resume": false,
@@ -37,7 +53,7 @@
     "jojo-visual-ci-20260825-01 remint",
     "named idle bc- resume of a different run",
     "~/.grok mutate/restart",
-    "wake_jobs/{id}.json invention",
+    "unscoped wake_jobs/{id}.json beyond the named SPECTER canary",
     "titan.gguf write",
     "DIO Android / White Box / Bazaar commercial",
     "DEMON flight recorder"
