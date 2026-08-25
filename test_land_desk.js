@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bu/.test(html), "desk must share the current-main/Titan cache key after H-002 leftover");
+assert.ok(/20260825bv/.test(html), "desk must share the current-main/Titan cache key after human-outcomes leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,36 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isHumanOutcomesTalk, "land.js must classify human-outcomes leftover talk");
+assert.ok(api.humanOutcomesState, "land.js must classify the human-outcomes leftover");
+assert.ok(api.isHumanOutcomesTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\nhuman value, not proof worship\naccessible public-meeting packet\nsecurity questionnaire completion\n8-bit/pixel agent pack\np/demon-human-outcomes-revenue-20260825-01.md\n1787648711.782309"), "DEMON human-outcomes taking is leftover talk");
+assert.ok(!api.isHumanOutcomesTalk("make sure people do more than talk about shit"), "generic ship-talk is not the human-outcomes leftover");
+assert.ok(!api.isHumanOutcomesTalk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace\n1787647999.742959"), "H-002 first-clean is not the human-outcomes leftover");
+assert.ok(!api.isH002Talk("TAKING revenue/human-outcomes package from current main\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the H-002 leftover");
+var humanOutcomesTalk = api.completionStateFromText(
+  "TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\nhuman value, not proof worship\n1787648711.782309"
+);
+assert.strictEqual(humanOutcomesTalk.state, "CLAIMED");
+assert.ok(/human-outcomes|humans\.html|human-value-not-proof-worship/i.test(humanOutcomesTalk.note), "human-outcomes taking without SHA must stay CLAIMED and beat ship-talk");
+var humanOutcomesDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nhuman-outcomes leftover landed"
+);
+assert.strictEqual(humanOutcomesDone.state, "INTEGRATED", "completion words still beat human-outcomes talk");
+var humanOutcomesEmpty = api.humanOutcomesState("");
+assert.strictEqual(humanOutcomesEmpty.state, "UNMEASURED");
+var humanOutcomesMissing = api.humanOutcomesState("# empty stub\nno leftover");
+assert.strictEqual(humanOutcomesMissing.state, "NOT_LANDED");
+var humanOutcomesOk = api.humanOutcomesState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nho-issue-to-pr\nho-meeting-packet\nho-security-questionnaire\nho-pixel-pack\nWhite Box remains\n$0 / NOT_LANDED\nno auth\nno gate\n");
+assert.strictEqual(humanOutcomesOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(humanOutcomesOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="human-outcomes-result"') >= 0, "desk must name the human-outcomes leftover");
+assert.ok(html.indexOf("host/human_outcomes.py") >= 0, "desk must name the human-outcomes instrument");
+assert.ok(html.indexOf("ground/HUMAN_OUTCOMES.md") >= 0, "desk must link the human-outcomes card");
+assert.ok(html.indexOf("ground/HUMAN_OUTCOMES.json") >= 0, "desk must link the human-outcomes catalog");
+assert.ok(html.indexOf("1787648711.782309") >= 0, "desk must cite the human-outcomes Slack ts");
+assert.ok(/human-outcomes|humans\.html|human-value-not-proof-worship/i.test(html), "desk must name human-outcomes talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HUMAN_OUTCOMES.md") >= 0, "human-outcomes card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HUMAN_OUTCOMES.json") >= 0, "human-outcomes catalog must stay a canary");
 assert.ok(api.isH002Talk, "land.js must classify H-002 leftover talk");
 assert.ok(api.h002State, "land.js must classify the H-002 leftover");
 assert.ok(api.isH002Talk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace: 32 Grok 4.6 Build calls\nMEASURED source finding: ~/.claude/plugins/installed_plugins.json\n[plugins].disabled means discover-but-don't-load\nDo not patch or file upstream yet.\n1787647999.742959"), "DEMON first-clean H-002 is leftover talk");

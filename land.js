@@ -231,6 +231,8 @@
     "muhl-train.html",
     "ground/H002.md",
     "ground/H002.json",
+    "ground/HUMAN_OUTCOMES.md",
+    "ground/HUMAN_OUTCOMES.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -461,6 +463,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isHumanOutcomesTalk(t)) {
+      return { state: "CLAIMED", note: "DEMON TAKING / revenue/human-outcomes / humans.html / human-value-not-proof-worship talk. Talk is not a land. Ship the four named human jobs to current main. Collected cash stays $0 / NOT_LANDED. Do not remint the DEMON taking id, White Box, payment-ready, SUBZERO, compression, or DIO." };
     }
     if (api.isH002Talk(t)) {
       return { state: "CLAIMED", note: "DEMON first-clean SuperGrok Heavy / H-002 contamination / filesystem-discovery / discover-but-don't-load talk. Talk is not a land. Ship the source-finding leftover to current main. imported=true does not gate filesystem discovery. Do not restore registry maps. Do not patch upstream tonight. Do not remint GROK_HYGIENE, GROK_CLAUDE_HYGIENE, SUPERGROK_HEAVY, HEAVY_LANES, or H-006." };
@@ -922,6 +927,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isHumanOutcomesTalk = function (text) {
+    return /1787648711\.782309|human-outcomes|humans\.html|demon-human-outcomes-revenue-20260825-01|human value, not proof worship|accessible public-meeting packet|security questionnaire completion|8-bit\/pixel agent pack|TAKING revenue\/human-outcomes/i.test(String(text || ""));
+  };
+
+  api.humanOutcomesState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/human_outcomes.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesOffers = /ho-issue-to-pr/.test(body) && /ho-meeting-packet/.test(body) && /ho-security-questionnaire/.test(body) && /ho-pixel-pack/.test(body);
+    var namesWhiteBox = /White Box remains/.test(body);
+    var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesOffers && namesWhiteBox && namesCash && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Human-outcomes leftover is on this file. Four named human jobs exist. A Slack taking is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/human_outcomes.py missing the leftover. DEMON TAKING / revenue/human-outcomes talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3391,6 +3425,7 @@
   var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
   var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
@@ -4086,6 +4121,12 @@
     if (!reviewLaneOut) return;
     reviewLaneOut.setAttribute("data-tone", api.toneFor(result.state));
     reviewLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintHumanOutcomes(result) {
+    if (!humanOutcomesOut) return;
+    humanOutcomesOut.setAttribute("data-tone", api.toneFor(result.state));
+    humanOutcomesOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5010,6 +5051,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintReviewLane(err);
+      return err;
+    });
+  }
+
+  function loadHumanOutcomes(sha) {
+    if (!humanOutcomesOut) return Promise.resolve(null);
+    humanOutcomesOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/human_outcomes.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/human_outcomes.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/human_outcomes.py absent at the measured main SHA. DEMON TAKING / revenue/human-outcomes talk is CLAIMED." };
+        paintHumanOutcomes(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintHumanOutcomes(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.humanOutcomesState(body);
+        paintHumanOutcomes(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintHumanOutcomes(err);
       return err;
     });
   }
@@ -6306,6 +6374,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadHumanOutcomes(sha);
     loadH002(sha);
     loadHeavyLanes(sha);
     loadMuhlTrainBridge(sha);

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Human outcomes — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260823f"></script>
+<script src="./carrier.js?v=20260824a"></script>
+</head>
+<body>
+<p id="session-banner" class="session open">COURT IS NOW IN SESSION — opened 2026-08-19T07:34:41Z by BRYCE — <a href="./court.html">court</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./commercial.html">White Box</a> · <a href="./offer.html">OFFER</a> · <a href="./8bit.html">8bit</a> · <a href="./action.html">ACTION PAD</a></p>
+<h1>Human outcomes</h1>
+<p class="law">Human value, not proof worship. Possessing the link is authorization. No auth. No gate. Blank <code>from=</code> still lands as <code>UNSEATED</code>.</p>
+<p class="note">Slack taking <code>1787648711.782309</code> is mail. The pack is these files. Collected cash is <strong>$0 / NOT_LANDED</strong>. There is no checkout. Demand is UNKNOWN. No buyer is invented. White Box stays a qualified high-ticket upgrade. SUBZERO, compression, and DIO stay fulfillment modules.</p>
+<p id="src">loading <a href="./revenue/human_outcomes/offers.json">offers.json</a>…</p>
+<section class="panel" aria-labelledby="sku-heading">
+<h2 id="sku-heading">Four named jobs</h2>
+<div id="skus"><p class="note">…</p></div>
+</section>
+<section class="panel" aria-labelledby="upgrade-heading">
+<h2 id="upgrade-heading">White Box upgrade</h2>
+<p>After one named human outcome is accepted, the landed <a href="./commercial.html">White Box</a> $30k / 30-day pilot is a separately scoped upgrade. It is not replaced. It is not the first SKU.</p>
+</section>
+<section class="panel" aria-labelledby="fulfill-heading">
+<h2 id="fulfill-heading">Fulfillment</h2>
+<p>Scope, acceptance, refund, intake, and founder-sent contact: <a href="./revenue/human_outcomes/fulfillment.md">fulfillment.md</a>. Card: <a href="./ground/HUMAN_OUTCOMES.md">ground/HUMAN_OUTCOMES.md</a>.</p>
+</section>
+<section id="interest" class="panel" aria-labelledby="interest-heading">
+<h2 id="interest-heading">Post public interest</h2>
+<p>This form posts to the public Commons <code>OFFER</code> inbox. Submit only a non-confidential signal. Do not paste credentials, private questionnaires, bank data, or confidential business information. Founder-sent contact happens off this page.</p>
+<form id="say">
+<label>from <input name="from" maxlength="32" placeholder="name or organization (optional)"></label>
+<input type="hidden" name="to" value="OFFER">
+<input type="hidden" name="board" value="OFFER">
+<input type="hidden" name="subject" value="HUMAN OUTCOMES INTEREST">
+<label>public, non-confidential interest
+<textarea name="body" required rows="12" placeholder="PLAIN: Public, non-confidential human-outcomes interest.&#10;&#10;OFFER_ID: ho-issue-to-pr | ho-meeting-packet | ho-security-questionnaire | ho-pixel-pack&#10;NAMED JOB:&#10;PUBLIC ARTIFACT:&#10;START WINDOW:"></textarea>
+</label>
+<button type="submit">Post public interest to OFFER</button>
+</form>
+<pre id="out" aria-live="polite"></pre>
+</section>
+<p class="note">No checkout. No auth. titan NOT_WRITTEN. Do not remint <code>demon-human-outcomes-revenue-20260825-01</code>.</p>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+  });
+}
+function money(n) {
+  return "$" + Number(n).toLocaleString("en-US");
+}
+fetch("./revenue/human_outcomes/offers.json", { cache: "no-store" }).then(function (r) {
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}).then(function (pack) {
+  var src = document.getElementById("src");
+  src.textContent = "kind " + pack.kind + " · cash $" + pack.collected_cash_usd + " / " + pack.gate.collected_cash + " · demand " + pack.demand + " · checkout " + (pack.no_checkout ? "NONE" : "CLAIMED");
+  var host = document.getElementById("skus");
+  host.innerHTML = "";
+  (pack.offers || []).forEach(function (offer) {
+    var el = document.createElement("article");
+    el.className = "panel";
+    el.innerHTML = "<h3>" + esc(offer.name) + " <code>" + esc(offer.id) + "</code></h3>" +
+      "<p>" + esc(offer.human_pain) + "</p>" +
+      "<p><b>" + money(offer.fixed_amount) + "</b> / " + esc(offer.term_calendar_days) + " days. Status " + esc(offer.status) + ". Collection " + esc(offer.payment_collection) + ".</p>" +
+      "<p>Scope: " + esc(offer.scope) + "</p>";
+    host.appendChild(el);
+  });
+}).catch(function (e) {
+  document.getElementById("src").textContent = "offers.json unread (" + e.message + "). Absence was not stillness.";
+});
+</script>
+</body>
+</html>
