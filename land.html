@@ -450,6 +450,16 @@ python3 -m unittest -v test_review_lane.py</pre>
 <div id="review-lane-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO SHIPPED / review lane / LDA PR #3 copy without the leftover on current main is talk. Name the PR CANDIDATE. Never print a silent 0.</p></div>
 </section>
 
+<section aria-labelledby="h002-heading">
+<h2 id="h002-heading">H-002 — filesystem discovery is not gated by compat flags</h2>
+<p class="note">Slack <code>1787647999.742959</code> / DEMON first-clean SuperGrok Heavy. H-002 contamination / filesystem-discovery / discover-but-don't-load / <code>installed_plugins.json</code> talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Grok Build <code>1.0.5</code> discovers Claude plugins through <code>~/.claude/settings.json</code>, <code>installed_plugins.json</code>, plugin directories, and marketplace metadata outside documented <code>compat.claude.*</code> cells. <code>[plugins].disabled</code> means discover-but-don't-load. <code>imported=true</code> gates the enabledPlugins merge only. Do not restore empty registry maps. Do not patch upstream tonight. Do not remint <code>GROK_HYGIENE</code>, <code>GROK_CLAUDE_HYGIENE</code>, <code>SUPERGROK_HEAVY</code>, or H-006. Instrument: <code>host/h002.py</code>. Card: <a href="./ground/H002.md">ground/H002.md</a>. Catalog: <a href="./ground/H002.json">ground/H002.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/h002.py
+python3 host/h002.py --root .
+python3 host/h002.py --self-test
+python3 -m unittest -v test_h002.py</pre>
+<div id="h002-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>DEMON first-clean / H-002 / filesystem-discovery copy without the leftover on current main is talk. Name discover-but-don't-load. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="muhl-train-bridge-heading">
 <h2 id="muhl-train-bridge-heading">Muhlnickel training bridge — a read-only backend swarm is not a land</h2>
 <p class="note">Slack <code>1787647412.543649</code> / JOJO <code>TAKING_BACKEND_SWARM</code> <code>jojo-clean-grok-modelwork-swarm-20260825-01</code>. TAKING_BACKEND_SWARM / CLEAN GROK / H-006 Muhlnickel training bridge / no-write-tools talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. H-006 is the unique leftover: source-indexed synthetic-only cross-process packets. H-005 Subzero artifacts and H-007 <code>LDA_RECEIPT</code> stay <code>NAMED</code>, not reminted. Cited Commons pin <code>6a934ed9d07c293296fead0f403fbbcb3afc15a9</code> is an <code>ANCESTOR</code>, not current HEAD. Do not remint the swarm id, <code>MUHL_RECEIPT_LANE</code>, <code>LDA_RECEIPT</code>, or <code>REVIEW_LANE</code>. Do not copy private LDA source. Door: <a href="./muhl-train.html">muhl-train.html</a>. Instrument: <code>host/muhl_train_bridge.py</code>. Card: <a href="./ground/MUHL_TRAIN_BRIDGE.md">ground/MUHL_TRAIN_BRIDGE.md</a>. Catalog: <a href="./ground/MUHL_TRAIN_BRIDGE.json">ground/MUHL_TRAIN_BRIDGE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -844,6 +854,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825bt"></script>
+<script src="./land.js?v=20260825bu"></script>
 </body>
 </html>
