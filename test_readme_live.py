@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""README live leftover refuses the day-one roster and requires the open door."""
+"""README live instrument refuses stale routing and requires the open device bridge."""
 
 from __future__ import annotations
 
