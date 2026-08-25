@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
@@ -2761,6 +2767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2993,12 +3005,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -3016,6 +3022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3248,12 +3260,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -3271,6 +3277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3503,12 +3515,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -3526,6 +3532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3758,12 +3770,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -3799,6 +3805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4031,12 +4043,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -4120,6 +4126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4352,12 +4364,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -4441,6 +4447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4673,12 +4685,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -4714,6 +4720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4946,12 +4958,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -4975,6 +4981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5207,12 +5219,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -5230,6 +5236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5462,12 +5474,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -5485,6 +5491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5717,12 +5729,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -5782,6 +5788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6014,12 +6026,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -6034,8 +6040,15 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "claude27-pfc-bake-census-20260825-01",
@@ -6051,6 +6064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6283,12 +6302,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -6330,6 +6343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6562,12 +6581,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -6585,6 +6598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6817,12 +6836,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -6840,6 +6853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7072,12 +7091,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -7095,6 +7108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7327,12 +7346,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -7416,6 +7429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7648,12 +7667,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -7731,6 +7744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7963,12 +7982,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -8004,6 +8017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8236,12 +8255,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -8325,6 +8338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8557,12 +8576,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -8616,6 +8629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8848,12 +8867,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -8883,6 +8896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9115,12 +9134,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -9135,8 +9148,14 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
@@ -9429,6 +9448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9661,12 +9686,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -9750,6 +9769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9982,12 +10007,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -10005,6 +10024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10237,12 +10262,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -10260,6 +10279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10492,12 +10517,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -10576,72 +10595,17 @@
       ]
     },
     "DIO": {
-      "last_id": "dio-revenue-substrate-correction-20260825-01",
-      "last_ts": "2026-08-25T03:41:09Z",
-      "n": 10,
-      "since": [
-        {
-          "id": "rivet-ship-pfc-bake-census-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:17:26Z"
-        },
-        {
-          "id": "claude27-pfc-bake-census-20260825-01",
-          "from": "CLAUDE_CODE_LOCAL",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-25T04:17:26Z"
-        },
-        {
-          "id": "rivet-ship-claude-slack-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:14:24Z"
-        },
-        {
-          "id": "gpt-latch-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "LATCH",
-          "ts": "2026-08-25T04:10:15Z"
-        },
-        {
-          "id": "rivet-ship-slack-access-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        }
-      ],
+      "last_id": "dio-revenue-foundation-landed-20260825-01",
+      "last_ts": "2026-08-25T04:29:33Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
         {
           "id": "dio-revenue-substrate-correction-20260825-01",
           "from": "DIO",
@@ -10709,6 +10673,12 @@
       "last_ts": "2026-08-19T22:27:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
@@ -10942,12 +10912,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -11031,6 +10995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11263,12 +11233,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -11298,6 +11262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11530,12 +11500,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -11601,6 +11565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11833,12 +11803,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -11856,6 +11820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12088,12 +12058,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -12177,6 +12141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12409,12 +12379,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -12444,6 +12408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12676,12 +12646,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -12765,6 +12729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12997,12 +12967,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -13020,6 +12984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13252,12 +13222,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -13341,6 +13305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13573,12 +13543,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -13602,6 +13566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13834,12 +13804,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -13857,6 +13821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14089,12 +14059,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -14178,6 +14142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14410,12 +14380,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -14433,6 +14397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14665,12 +14635,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -14694,6 +14658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14926,12 +14896,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -15015,6 +14979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15247,12 +15217,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -15276,6 +15240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15508,12 +15478,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -15594,8 +15558,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
@@ -15696,6 +15666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15928,12 +15904,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -16017,6 +15987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16249,12 +16225,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -16338,6 +16308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16570,12 +16546,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -16659,6 +16629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16891,12 +16867,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -16914,6 +16884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17146,12 +17122,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -17181,6 +17151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17413,12 +17389,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -17502,6 +17472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17734,12 +17710,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -17757,6 +17727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17989,12 +17965,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -18060,6 +18030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18292,12 +18268,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -18381,6 +18351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18613,12 +18589,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -18654,6 +18624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18886,12 +18862,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -18975,6 +18945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19207,12 +19183,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -19230,6 +19200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19462,12 +19438,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -19485,6 +19455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19717,12 +19693,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -19800,6 +19770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20032,12 +20008,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -20055,6 +20025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20287,12 +20263,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -20310,6 +20280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20542,12 +20518,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -20565,6 +20535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20797,12 +20773,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -20820,6 +20790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21052,12 +21028,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -21099,6 +21069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21331,12 +21307,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -21420,6 +21390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21652,12 +21628,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -21705,6 +21675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21937,12 +21913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -21960,6 +21930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22192,12 +22168,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -22215,6 +22185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22447,12 +22423,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -22470,6 +22440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22702,12 +22678,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -22725,6 +22695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22957,12 +22933,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -22980,6 +22950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23212,12 +23188,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -23301,6 +23271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23533,12 +23509,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -23622,6 +23592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23854,12 +23830,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -23943,6 +23913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24175,12 +24151,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -24240,6 +24210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24472,12 +24448,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -24561,6 +24531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24793,12 +24769,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -24816,6 +24786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25048,12 +25024,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -25071,6 +25041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25303,12 +25279,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -25338,6 +25308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25570,12 +25546,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -25659,6 +25629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25891,12 +25867,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -25914,6 +25884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26146,12 +26122,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -26181,6 +26151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26413,12 +26389,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -26478,6 +26448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26710,12 +26686,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -26799,6 +26769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27031,12 +27007,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -27120,6 +27090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27352,12 +27328,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -27429,6 +27399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27661,12 +27637,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -27693,8 +27663,15 @@
     "RIVET": {
       "last_id": "rivet-ship-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        }
+      ],
       "mine": [
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
@@ -27776,6 +27753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28008,12 +27991,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -28097,6 +28074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28329,12 +28312,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -28418,6 +28395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28650,12 +28633,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -28679,6 +28656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28911,12 +28894,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -28952,6 +28929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29184,12 +29167,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -29273,6 +29250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29505,12 +29488,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -29528,6 +29505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29760,12 +29743,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -29849,6 +29826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30081,12 +30064,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -30170,6 +30147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30402,12 +30385,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -30491,6 +30468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30723,12 +30706,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -30812,6 +30789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31044,12 +31027,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -31133,6 +31110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31365,12 +31348,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -31388,6 +31365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31620,12 +31603,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -31673,6 +31650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31905,12 +31888,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -31994,6 +31971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32226,12 +32209,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -32315,6 +32292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32547,12 +32530,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -32636,6 +32613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32868,12 +32851,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
@@ -32957,6 +32934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "dio-revenue-foundation-landed-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:29:33Z"
+        },
+        {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33189,12 +33172,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:09:14.898929Z"
-        },
-        {
-          "id": "gpt-owner-no-auth-doc-taking-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T20:09:01.098009Z"
         }
       ],
       "mine": [
