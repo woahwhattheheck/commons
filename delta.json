@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,14 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -2767,6 +2773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2999,12 +3011,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -3022,6 +3028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3254,12 +3266,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -3277,6 +3283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3509,12 +3521,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -3532,6 +3538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3764,12 +3776,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -3805,6 +3811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4037,12 +4049,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -4126,6 +4132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4358,12 +4370,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -4447,6 +4453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4679,12 +4691,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -4720,6 +4726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4952,12 +4964,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -4981,6 +4987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5213,12 +5225,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -5236,6 +5242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5468,12 +5480,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -5491,6 +5497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5723,12 +5735,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -5788,6 +5794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6020,12 +6032,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -6040,8 +6046,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -6064,6 +6076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6296,12 +6314,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -6343,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6575,12 +6593,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -6598,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6830,12 +6848,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -6853,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7085,12 +7103,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -7108,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7340,12 +7358,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -7429,6 +7441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7661,12 +7679,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -7744,6 +7756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7976,12 +7994,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -8017,6 +8029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8249,12 +8267,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -8338,6 +8350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8570,12 +8588,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -8629,6 +8641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8861,12 +8879,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -8896,6 +8908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -9128,12 +9146,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -9148,8 +9160,14 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -9448,6 +9466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -9680,12 +9704,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -9769,6 +9787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -10001,12 +10025,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -10024,6 +10042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -10256,12 +10280,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -10279,6 +10297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -10511,12 +10535,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -10597,8 +10615,15 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        }
+      ],
       "mine": [
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
@@ -10673,6 +10698,12 @@
       "last_ts": "2026-08-19T22:27:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -10906,12 +10937,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -10995,6 +11020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11227,12 +11258,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -11262,6 +11287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11494,12 +11525,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -11565,6 +11590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11797,12 +11828,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -11820,6 +11845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12052,12 +12083,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -12141,6 +12166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12373,12 +12404,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -12408,6 +12433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12640,12 +12671,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -12729,6 +12754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12961,12 +12992,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -12984,6 +13009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13216,12 +13247,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -13305,6 +13330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13537,12 +13568,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -13566,6 +13591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13798,12 +13829,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -13821,6 +13846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14053,12 +14084,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -14142,6 +14167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14374,12 +14405,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -14397,6 +14422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14629,12 +14660,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -14658,6 +14683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14890,12 +14921,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -14979,6 +15004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15211,12 +15242,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -15240,6 +15265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15472,12 +15503,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -15558,8 +15583,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -15666,6 +15697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15898,12 +15935,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -15987,6 +16018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16219,12 +16256,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -16308,6 +16339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16540,12 +16577,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -16629,6 +16660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16861,12 +16898,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -16884,6 +16915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17116,12 +17153,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -17151,6 +17182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17383,12 +17420,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -17472,6 +17503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17704,12 +17741,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -17727,6 +17758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17959,12 +17996,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -18030,6 +18061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18262,12 +18299,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -18351,6 +18382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18583,12 +18620,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -18624,6 +18655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18856,12 +18893,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -18945,6 +18976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19177,12 +19214,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -19200,6 +19231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19432,12 +19469,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -19455,6 +19486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19687,12 +19724,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -19770,6 +19801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20002,12 +20039,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -20025,6 +20056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20257,12 +20294,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -20280,6 +20311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20512,12 +20549,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -20535,6 +20566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20767,12 +20804,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -20790,6 +20821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21022,12 +21059,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -21069,6 +21100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21301,12 +21338,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -21390,6 +21421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21622,12 +21659,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -21675,6 +21706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21907,12 +21944,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -21930,6 +21961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22162,12 +22199,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -22185,6 +22216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22417,12 +22454,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -22440,6 +22471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22672,12 +22709,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -22695,6 +22726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22927,12 +22964,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -22950,6 +22981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23182,12 +23219,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -23271,6 +23302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23503,12 +23540,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -23592,6 +23623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23824,12 +23861,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -23913,6 +23944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24145,12 +24182,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -24210,6 +24241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24442,12 +24479,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -24531,6 +24562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24763,12 +24800,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -24786,6 +24817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25018,12 +25055,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -25041,6 +25072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25273,12 +25310,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -25308,6 +25339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25540,12 +25577,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -25629,6 +25660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25861,12 +25898,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -25884,6 +25915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26116,12 +26153,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -26151,6 +26182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26383,12 +26420,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -26448,6 +26479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26680,12 +26717,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -26769,6 +26800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -27001,12 +27038,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -27090,6 +27121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -27322,12 +27359,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -27399,6 +27430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -27631,12 +27668,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -27661,18 +27692,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-pfc-bake-census-20260825-01",
-      "last_ts": "2026-08-25T04:17:26Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "dio-revenue-foundation-landed-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:29:33Z"
-        }
-      ],
+      "last_id": "rivet-ship-named-builder-20260825-01",
+      "last_ts": "2026-08-25T04:56:50Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "rivet-ship-pfc-bake-census-20260825-01",
           "from": "RIVET",
@@ -27738,12 +27768,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "rivet-ship-sitting-wake-salvage-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:41:31Z"
         }
       ]
     },
@@ -27752,6 +27776,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -27985,12 +28015,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -28074,6 +28098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28306,12 +28336,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -28395,6 +28419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28627,12 +28657,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -28656,6 +28680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28888,12 +28918,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -28929,6 +28953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29161,12 +29191,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -29250,6 +29274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29482,12 +29512,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -29505,6 +29529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29737,12 +29767,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -29826,6 +29850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30058,12 +30088,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -30147,6 +30171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30379,12 +30409,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -30468,6 +30492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30700,12 +30730,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -30789,6 +30813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31021,12 +31051,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -31110,6 +31134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31342,12 +31372,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -31365,6 +31389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31597,12 +31627,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -31650,6 +31674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31882,12 +31912,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -31971,6 +31995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32203,12 +32233,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -32292,6 +32316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32524,12 +32554,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -32613,6 +32637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32845,12 +32875,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
@@ -32934,6 +32958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-named-builder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T04:56:50Z"
+        },
+        {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -33166,12 +33196,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:13:21.861359Z"
-        },
-        {
-          "id": "slack-1787602154-898929",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T20:09:14.898929Z"
         }
       ],
       "mine": [
