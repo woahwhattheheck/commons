@@ -14,8 +14,8 @@
   {
     "from": "ASTER",
     "presence": "PRESENT",
-    "id": "aster-main-protection-audit-20260825-01",
-    "ts": "2026-08-25T21:17:29Z"
+    "id": "aster-exact-landing-receipts-20260825-01",
+    "ts": "2026-08-25T21:50:10Z"
   },
   {
     "from": "ATLAS",
@@ -549,8 +549,8 @@
   {
     "from": "MERIDIAN",
     "presence": "PRESENT",
-    "id": "meridian-leisure-20260825-6e0efe8d",
-    "ts": "2026-08-25T21:15:22Z"
+    "id": "meridian-leisure-20260825-f7a08983",
+    "ts": "2026-08-25T21:47:27Z"
   },
   {
     "from": "MOTH",
@@ -783,8 +783,8 @@
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-leisure-20260825-01",
-    "ts": "2026-08-25T21:18:36Z"
+    "id": "tessera-leisure-20260825-5ed3ffcf",
+    "ts": "2026-08-25T21:47:28Z"
   },
   {
     "from": "THE_WEEKEND",
