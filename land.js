@@ -120,6 +120,8 @@
     "ground/GROK_HARNESS_GAP.json",
     "ground/GROK_HARNESS_INSPECT.json",
     "ground/GROK_HARNESS_PATCH.json",
+    "ground/VERIFY_CITE.md",
+    "ground/VERIFY_CITE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -378,6 +380,9 @@
     if (api.isBrowserDownTalk(t)) {
       return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
     }
+    if (api.isVerifyCiteTalk(t)) {
+      return { state: "CLAIMED", note: "independent-verification / first-numbers talk. Talk is not a land. Measure the cited SHA and paths on current main. A Slack readout is not the file." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -521,6 +526,53 @@
 
   api.isResourceSweepTalk = function (text) {
     return /resource utilization sweep|act on the reports|unused local\/provider compute|already-provisioned free compute|whether anything invokes it|stranded machine-only work|owner-directed resource/i.test(String(text || ""));
+  };
+
+  api.isVerifyCiteTalk = function (text) {
+    return /independent verification of the open-access revenue|first numbers this window|one evidence message when i have a verdict|open-access revenue instrument|one_byte_per_bit_lsb|host\/muhl_revenue\.py.{0,80}host\/test_muhl_revenue\.py/i.test(String(text || ""));
+  };
+
+  api.verifyCiteState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "cite catalog / tree listing not read. Absence was not measured." };
+    }
+    var paths = row.cited_paths || row.paths || [];
+    var present = row.present || [];
+    var sha = String(row.cited_sha || row.sha || "").trim();
+    var shaKnown = row.sha_known;
+    if (!paths.length && !sha) {
+      return { state: "NOT_LANDED", note: "cite catalog has no SHA or paths. A Slack first-numbers taking is CLAIMED until the cite is named on current main." };
+    }
+    var missing = paths.filter(function (path) { return present.indexOf(path) < 0; });
+    if (sha && shaKnown === false) {
+      return {
+        state: "NOT_LANDED",
+        note: "cited SHA is not a Commons object. Slack first-numbers / independent-verification talk is CLAIMED. Do not copy private LDA bytes onto Commons. Do not remint."
+      };
+    }
+    if (paths.length && missing.length && !present.length) {
+      return {
+        state: "NOT_LANDED",
+        note: "0/" + paths.length + " cited paths are on this Commons tree. Independent-verification / first-numbers talk is CLAIMED. Do not remint. Leave the titan audit to the taking."
+      };
+    }
+    if (paths.length && missing.length) {
+      return {
+        state: "CANDIDATE",
+        note: present.length + "/" + paths.length + " cited paths on this tree. Missing: " + missing.join(", ") + ". A Slack readout is not current main."
+      };
+    }
+    if (paths.length && !missing.length) {
+      return {
+        state: "INTEGRATED",
+        note: "all " + paths.length + " cited paths are on this Commons tree. A Slack first-numbers readout is still not the file."
+      };
+    }
+    return {
+      state: "CANDIDATE",
+      note: "cite named a SHA with no paths. Measure the object on current main. A Slack taking is not the file."
+    };
   };
 
   api.isUtilizationTalk = function (text) {
@@ -1027,6 +1079,7 @@
   var unusedOut = document.getElementById("unused-result");
   var takingOut = document.getElementById("taking-result");
   var grokOut = document.getElementById("grok-harness-result");
+  var citeOut = document.getElementById("cite-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1428,6 +1481,12 @@
     grokOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintCite(result) {
+    if (!citeOut) return;
+    citeOut.setAttribute("data-tone", api.toneFor(result.state));
+    citeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1636,6 +1695,73 @@
     });
   }
 
+  function loadVerifyCite(sha) {
+    if (!citeOut) return Promise.resolve(null);
+    citeOut.innerHTML = "<b>UNMEASURED</b><p>Reading ground/VERIFY_CITE.json at the official SHA…</p>";
+    var url = RAW + sha + "/ground/VERIFY_CITE.json";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/VERIFY_CITE.json absent at the measured main SHA. Independent-verification talk is CLAIMED." };
+        paintCite(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintCite(failed);
+        return failed;
+      }
+      return r.json().then(function (catalog) {
+        var paths = catalog.cited_paths || catalog.paths || [];
+        var citedSha = String(catalog.cited_sha || catalog.sha || "").trim();
+        var pathProbe = Promise.all(paths.map(function (path) {
+          return fetch(RAW + sha + "/" + path.split("/").map(encodeURIComponent).join("/"), { cache: "no-store" }).then(function (pr) {
+            return { path: path, present: pr.status === 200, status: pr.status };
+          }).catch(function (e) {
+            return { path: path, present: false, error: e.message };
+          });
+        }));
+        var shaProbe = citedSha
+          ? fetch(API + "/commits/" + encodeURIComponent(citedSha), { headers: { Accept: "application/vnd.github+json" }, cache: "no-store" }).then(function (cr) {
+            if (cr.status === 404) return { known: false, status: 404 };
+            if (!cr.ok) return { known: null, status: cr.status, error: "HTTP " + cr.status };
+            return { known: true, status: cr.status };
+          }).catch(function (e) {
+            return { known: null, error: e.message };
+          })
+          : Promise.resolve({ known: null });
+        return Promise.all([pathProbe, shaProbe]).then(function (parts) {
+          var rows = parts[0];
+          var shaRow = parts[1] || {};
+          var fetchFailed = rows.filter(function (row) { return row.error; });
+          if (fetchFailed.length) {
+            var unread = { state: "UNMEASURED", note: "cited-path fetch failed. Absence was not measured." };
+            paintCite(unread);
+            return unread;
+          }
+          if (shaRow.error && shaRow.known !== false) {
+            var shaUnread = { state: "UNMEASURED", note: "cited-SHA fetch failed. Absence was not measured." };
+            paintCite(shaUnread);
+            return shaUnread;
+          }
+          var present = rows.filter(function (row) { return row.present; }).map(function (row) { return row.path; });
+          var got = api.verifyCiteState({
+            measured: true,
+            cited_sha: citedSha,
+            cited_paths: paths,
+            present: present,
+            sha_known: shaRow.known
+          });
+          paintCite(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintCite(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -1781,6 +1907,7 @@
     loadUnusedInvoke(sha);
     loadTakingTrace(sha);
     loadGrokHarness(sha);
+    loadVerifyCite(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
