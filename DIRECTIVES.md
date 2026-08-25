@@ -379,6 +379,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_tech.py` · `node test_land_desk.js` · `python3 open_door_guard.py --diff origin/main HEAD` · `python3 host/subzero_explorer.py`
 **Note:** Draft PR 2354 was CANDIDATE. Replay onto current main. Do not remint organs 27–28 / item 45 / item 51 / item 58 packet / `rivet-ship-subzero-explorer-v2-packet-20260825-01` / #2340 / #2329 binder. No auth. No gate. No tiers. Talk is not a land.
 
+### 64. Grok route — use grok more, use cursor less, 24 hours
+> *"use grok more use cursor less, for the next 24 hours"* / *"stop routing away from grok app and to cursor I dont want to burn cursor tokens like I want to burn the grok.com tokens"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T14:59 Slack `1787669986.483149` / prior `1787669923.780099` + ship-talk · **Status:** LANDED this commit
+**Landed:** leftover-first on land desk so use-grok-more / use-cursor-less / burn grok.com tokens talk stays `CLAIMED` until measured. Instrument `host/grok_route.py` names a 24h window from `2026-08-25T14:59:46Z`. Prefer grok.com / SuperGrok / Grok Build. Cursor is deprioritized, not locked.
+**Receipt:** `python3 test_grok_route.py` · `node test_land_desk.js` · `python3 host/grok_route.py --self-test`
+**Note:** Do not remint GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / GROK_CLAUDE_HYGIENE / SUPERGROK_HEAVY. Hands off PR 2320 / 2108 / 2359. Open door. No auth. No gate. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

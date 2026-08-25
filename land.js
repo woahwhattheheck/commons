@@ -268,7 +268,9 @@
     "ground/JOJO_ASSIGN.json",
     "names.html",
     "robots.txt",
-    "slack/plugin.html"
+    "slack/plugin.html",
+    "ground/GROK_ROUTE.md",
+    "ground/GROK_ROUTE.json"
   ];
 
   api.bakeState = function (officialSha, bake) {
@@ -475,6 +477,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isGrokRouteTalk(t)) {
+      return { state: "CLAIMED", note: "BRYCE use-grok-more / use-cursor-less / burn grok.com tokens / 24-hour route talk. Talk is not a land. Ship the grok-route leftover to current main. Prefer grok.com / SuperGrok / Grok Build for 24 hours from Slack 1787669986.483149. Cursor is deprioritized, not locked. Do not remint GROK_HYGIENE, GROK_HARNESS, GROK_RECEIPT, or SUPERGROK_HEAVY." };
     }
     if (api.isExplorerFailClosedTalk(t)) {
       return { state: "CLAIMED", note: "JOJO INDEPENDENT REVIEW / #2325 EXACT HEAD BLOCKED / missing-card / stale-binding / invalid-receipt talk. Talk is not a land. Ship the explorer fail-closed leftover to current main. Missing cards and stale pins must not PASS. Invalid timestamps and list-shaped receipts must not escalate. Do not remint the explorer v2 packet, #2340, or #2329 binder." };
@@ -957,6 +962,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokRouteTalk = function (text) {
+    return /1787669986\.483149|1787669923\.780099|use grok more|use cursor less|stop routing away from grok|burn the grok\.com tokens|burn grok\.com tokens/i.test(String(text || ""));
+  };
+
+  api.grokRouteState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_route.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasWindow = /def window_state/.test(body) && /24 hours/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPrefer = /use grok more/.test(body) && /grok\.com/.test(body);
+    var namesLess = /use cursor less/.test(body);
+    var notLock = /not a lock/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasWindow && hasMiss && neverZero && namesPrefer && namesLess && notLock && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-route leftover is on this file. Prefer grok.com for the named 24 hours. Cursor is deprioritized, not locked. A Slack yell is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_route.py missing the leftover. Use-grok-more / use-cursor-less / burn grok.com tokens talk is CLAIMED until the leftover ships."
     };
   };
 

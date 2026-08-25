@@ -1563,6 +1563,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isGrokRouteTalk, "land.js must classify grok-route leftover talk leftover-first");
+assert.ok(api.grokRouteState, "land.js must classify the grok-route leftover");
+assert.ok(api.isGrokRouteTalk("Cursor agent tell them I said use grok more use cursor less, for the next 24 hours\n1787669986.483149"), "BRYCE 24h grok-route Slack is leftover talk");
+assert.ok(api.isGrokRouteTalk("Guys stop routing away from grok app and to cursor I dont want to burn cursor tokens like I want to burn the grok.com tokens\n1787669923.780099"), "prior grok.com burn Slack is leftover talk");
+assert.ok(!api.isGrokRouteTalk("make sure people do more than talk about shit"), "generic ship-talk is not the grok-route leftover");
+assert.ok(!api.isGrokRouteTalk("DEMON — GROK/CLAUDE HYGIENE BOUNDARY. enabledPlugins from ~/.claude/settings.json"), "hygiene copy is not the grok-route leftover");
+assert.ok(!api.isGrokRouteTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence Grok receipt normalizer\n1787650886.402809"), "exact-one-fence Slack is not the grok-route leftover");
+assert.ok(!api.isGrokHygieneTalk("use grok more use cursor less, for the next 24 hours\n1787669986.483149"), "grok-route copy is not the hygiene leftover");
+assert.ok(!api.isGrokReceiptTalk("use grok more use cursor less burn the grok.com tokens\n1787669986.483149"), "grok-route copy is not the exact-one-fence leftover");
+assert.ok(!api.isGrokHarnessTalk("use grok more use cursor less, for the next 24 hours"), "grok-route copy is not the harness leftover");
+var grokRouteTalk = api.completionStateFromText(
+  "Cursor agent tell them I said use grok more use cursor less, for the next 24 hours\n1787669986.483149"
+);
+assert.strictEqual(grokRouteTalk.state, "CLAIMED");
+assert.ok(/use-grok-more|use-cursor-less|grok\.com|24-hour route/i.test(grokRouteTalk.note), "grok-route-without-SHA must stay CLAIMED leftover-first");
+var grokRouteDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok-route leftover landed"
+);
+assert.strictEqual(grokRouteDone.state, "INTEGRATED", "completion words still beat grok-route leftover talk");
+var grokRouteEmpty = api.grokRouteState("");
+assert.strictEqual(grokRouteEmpty.state, "UNMEASURED");
+var grokRouteMissing = api.grokRouteState("# empty stub\nno leftover");
+assert.strictEqual(grokRouteMissing.state, "NOT_LANDED");
+var grokRouteOk = api.grokRouteState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef window_state(now_iso):\n    return now_iso\n24 hours\nuse grok more\ngrok.com\nuse cursor less\nnot a lock\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nno auth\nno gate\n");
+assert.strictEqual(grokRouteOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(grokRouteOk.note), "landed grok-route leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="grok-route-result"') >= 0, "desk must name the grok-route leftover");
+assert.ok(html.indexOf("host/grok_route.py") >= 0, "desk must name the grok-route instrument");
+assert.ok(html.indexOf("ground/GROK_ROUTE.md") >= 0, "desk must link the grok-route card");
+assert.ok(html.indexOf("ground/GROK_ROUTE.json") >= 0, "desk must link the grok-route catalog");
+assert.ok(html.indexOf("1787669986.483149") >= 0, "desk must cite the BRYCE grok-route Slack ts");
+assert.ok(/use grok more|use cursor less|burn the grok.com tokens/i.test(html), "desk must name grok-route talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_ROUTE.md") >= 0, "grok-route card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_ROUTE.json") >= 0, "grok-route catalog must stay a canary");
 assert.ok(api.isExplorerFailClosedTalk, "land.js must classify explorer fail-closed leftover talk");
 assert.ok(api.isExplorerFailClosedTalk("JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED / CURRENT-MAIN RESIDUALS\nSUBZERO_CHLS.md FINDER_FAILED\ninvalid runtime timestamp + FAIL check\nnonempty-list nested receipt fields crash AttributeError\n1787652792.439959"), "JOJO exact-head residual review is leftover talk");
 assert.ok(!api.isExplorerFailClosedTalk("make sure people do more than talk about shit"), "generic ship-talk is not the explorer fail-closed leftover");
