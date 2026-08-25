@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825z/.test(html), "desk must bust the resource-ledger cache key");
+assert.ok(/20260825aa/.test(html), "desk must bust the mcp-wake-job cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1147,6 +1147,42 @@ assert.ok(html.indexOf("demon-pixel-swarm-flight-recorder-landed-20260825-01") >
 assert.ok(/SHIP_RECEIPT|LANDED \+ CURRENT-MAIN VERIFIED|POST-PUSH CURRENT MAIN|flight-recorder-landed/i.test(html), "desk must name Slack SHIP_RECEIPT talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.md") >= 0, "Slack-receipt card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SLACK_RECEIPT.json") >= 0, "Slack-receipt catalog must stay a canary");
+assert.ok(api.isMcpWakeJobTalk, "land.js must classify SPECTER pivot / MCP-wake real-job talk");
+assert.ok(api.mcpWakeJobState, "land.js must classify the MCP/wake real-job leftover");
+assert.ok(api.isMcpWakeJobTalk("SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane."), "SPECTER pivot is MCP-wake real-job talk");
+assert.ok(!api.isMcpWakeJobTalk("make sure people do more than talk about shit"), "ship-talk is not the MCP-wake leftover");
+assert.ok(!api.isMcpWakeJobTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim."), "render taking is not the MCP-wake leftover");
+assert.ok(!api.isMcpWakeJobTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not the MCP-wake leftover");
+assert.ok(!api.isMcpWakeJobTalk("LIVE COMPUTE/CONNECTOR BOARD — USE THESE, DO NOT COUNT CACHE AS CAPACITY"), "resource-ledger copy is not the MCP-wake leftover");
+assert.ok(!api.isResourceLedgerTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the resource-ledger leftover");
+assert.ok(!api.isWorkingBuildTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the working-builds leftover");
+assert.ok(!api.isRenderContractTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the old workflow-contract leftover");
+var wakeTalk = api.completionStateFromText(
+  "SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane. I will not touch JOJO’s worktree."
+);
+assert.strictEqual(wakeTalk.state, "CLAIMED");
+assert.ok(/SPECTER pivot|MCP-wake real-job|no-render-duplication/i.test(wakeTalk.note), "SPECTER-pivot-without-SHA must stay CLAIMED and beat render-check");
+var wakeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nmcp-wake-job leftover landed"
+);
+assert.strictEqual(wakeDone.state, "INTEGRATED", "completion words still beat MCP-wake talk");
+var wakeEmpty = api.mcpWakeJobState("");
+assert.strictEqual(wakeEmpty.state, "UNMEASURED");
+var wakeMissing = api.mcpWakeJobState("# empty stub\nno census");
+assert.strictEqual(wakeMissing.state, "NOT_LANDED");
+var wakeOk = api.mcpWakeJobState("def measure_root(root):\n    return root\ndef classify(row):\n    return row\nresult_address_on_head\nTemporaryDirectory\nnever write wake_jobs/\nNOT_DURABLE\ninvoke_model\n");
+assert.strictEqual(wakeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(wakeOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="mcp-wake-job-result"') >= 0, "desk must name the MCP-wake leftover");
+assert.ok(html.indexOf("host/mcp_wake_job.py") >= 0, "desk must name the MCP-wake instrument");
+assert.ok(html.indexOf("ground/MCP_WAKE_JOB.md") >= 0, "desk must link the MCP-wake card");
+assert.ok(html.indexOf("ground/MCP_WAKE_JOB.json") >= 0, "desk must link the MCP-wake catalog");
+assert.ok(html.indexOf("1787637971.910749") >= 0, "desk must cite the SPECTER pivot Slack ts");
+assert.ok(/SPECTER pivot|MCP-wake real-job|no-render-duplication|real-job-verification/i.test(html), "desk must name SPECTER pivot talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE_JOB.md") >= 0, "MCP-wake card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE_JOB.json") >= 0, "MCP-wake catalog must stay a canary");
+assert.ok(!api.isMcpWakeJobTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the MCP-wake leftover");
+assert.ok(!api.isSlackReceiptTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the Slack-receipt leftover");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

@@ -146,6 +146,8 @@
     "ground/SLACK_RECEIPT.json",
     "ground/RESOURCE_LEDGER.md",
     "ground/RESOURCE_LEDGER.json",
+    "ground/MCP_WAKE_JOB.md",
+    "ground/MCP_WAKE_JOB.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -379,6 +381,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isMcpWakeJobTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER pivot / MCP-wake real-job / no-render-duplication talk. Talk is not a land. Run the job contract leftover on current main. Do not write wake_jobs/ or claim named idle bc- resume." };
     }
     if (api.isSlackReceiptTalk(t)) {
       return { state: "CLAIMED", note: "Slack SHIP_RECEIPT / LANDED + CURRENT-MAIN VERIFIED talk. Talk is not a land. Measure p/{id}.md on current main. A Slack brag is mail." };
@@ -776,6 +781,30 @@
       state: "INTEGRATED",
       note: "p/" + (sourceId || "id") + ".md and all " + paths.length + " source paths are on this tree. A Slack SHIP_RECEIPT is still not the file."
     };
+  };
+
+  api.isMcpWakeJobTalk = function (text) {
+    return /specter pivot|mcp\/wake real-job|real-job verification|no render duplication|adjacent.{0,40}mcp\/wake/i.test(String(text || ""));
+  };
+
+  api.mcpWakeJobState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/mcp_wake_job.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_root/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasPredicate = /result_address_on_head/.test(body);
+    var hasTemp = /TemporaryDirectory/.test(body) && /never write wake_jobs/i.test(body);
+    var hasRefuse = /NOT_DURABLE/.test(body);
+    var hasCheap = /invoke_model/.test(body);
+    if (hasMeasure && hasClassify && hasPredicate && hasTemp && hasRefuse && hasCheap) {
+      return {
+        state: "INTEGRATED",
+        note: "MCP/wake real-job leftover is on this file. Missing page is NOT_DURABLE. Present page is DONE. Cheap tick stays invoke_model false. A Slack pivot is still not the file."
+      };
+    }
+    return { state: "NOT_LANDED", note: "MCP/wake real-job instrument is missing the durable-page leftover. SPECTER pivot talk is CLAIMED." };
   };
 
   api.isRenderContractTalk = function (text) {
@@ -1495,6 +1524,7 @@
   var workingOut = document.getElementById("working-builds-result");
   var slackReceiptOut = document.getElementById("slack-receipt-result");
   var ledgerOut = document.getElementById("resource-ledger-result");
+  var mcpWakeOut = document.getElementById("mcp-wake-job-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1972,6 +2002,12 @@
     if (!ledgerOut) return;
     ledgerOut.setAttribute("data-tone", api.toneFor(result.state));
     ledgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMcpWakeJob(result) {
+    if (!mcpWakeOut) return;
+    mcpWakeOut.setAttribute("data-tone", api.toneFor(result.state));
+    mcpWakeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2550,6 +2586,33 @@
     });
   }
 
+  function loadMcpWakeJob(sha) {
+    if (!mcpWakeOut) return Promise.resolve(null);
+    mcpWakeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake_job.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/mcp_wake_job.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/mcp_wake_job.py absent at the measured main SHA. SPECTER pivot / MCP-wake real-job talk is CLAIMED." };
+        paintMcpWakeJob(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMcpWakeJob(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.mcpWakeJobState(body);
+        paintMcpWakeJob(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMcpWakeJob(err);
+      return err;
+    });
+  }
+
   function loadHostZero(sha) {
     if (!hostZeroOut) return Promise.resolve(null);
     hostZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/host_zero.py at the official SHA…</p>";
@@ -2789,6 +2852,7 @@
     loadWorkingBuilds(sha);
     loadSlackReceipt(sha);
     loadResourceLedger(sha);
+    loadMcpWakeJob(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
