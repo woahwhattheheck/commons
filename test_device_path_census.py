@@ -100,6 +100,7 @@ class TestDevicePathCensus(unittest.TestCase):
         )
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "INTEGRATED")
+        self.assertIn("reservations=0, batches=0", verdict["note"])
         self.assertIn("still not the file", verdict["note"])
 
     def test_canary_fixture_is_open_device_and_not_pending(self):
@@ -127,8 +128,22 @@ class TestDevicePathCensus(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertGreater(row["tree_count"], 0)
-        self.assertEqual(row["reservation_count"], 0)
-        self.assertEqual(row["batch_count"], 0)
+        tree = dpc.ls_tree(ROOT, "HEAD")
+        self.assertTrue(tree["ok"])
+        paths = tree["paths"]
+        reservations = sum(
+            name.startswith("actions/device-reservations/") and name.endswith(".json")
+            for name in paths
+        )
+        batches = sum(
+            name.startswith("actions/device-batches/") and name.endswith(".json")
+            for name in paths
+        )
+        self.assertEqual(row["reservation_count"], reservations)
+        self.assertEqual(row["batch_count"], batches)
+        self.assertIn(
+            "reservations=%s, batches=%s" % (reservations, batches), verdict["note"]
+        )
         self.assertGreaterEqual(row["result_count"], 48)
         self.assertEqual(row["scope_device"], 0)
         self.assertEqual(row["parse_failures"], 0)
