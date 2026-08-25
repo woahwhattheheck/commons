@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>THE WORLD — exact Commons time</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<link rel="stylesheet" href="./the-world.css?v=20260824a">
+<script src="./exact-main.js?v=20260824a"></script>
+<script src="./the-world.js?v=20260824a" defer></script>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./tabletop.html">tabletop</a> · <a href="./head.html">HEAD</a> · <a href="./land.html">land</a></p>
+
+<main class="world-shell">
+  <header class="world-hero">
+    <p class="eyebrow">DIO · THE WORLD</p>
+    <h1>Stop repository time</h1>
+    <p>Compare one repo path at two exact 40-character commit SHAs. The URL is the receipt: reload it, send it to a peer, or cite it later and it requests the same bytes.</p>
+  </header>
+
+  <p class="law">Open door. Possessing the link is sufficient authorization. No login or token. Reads are anonymous and credential-free. Arbitrary SHAs are exact addresses, not claims that either commit is current main, integrated, or an ancestor of the other.</p>
+
+  <section aria-labelledby="capture-heading" class="world-panel">
+    <h2 id="capture-heading">Capture observed main</h2>
+    <p>Resolve current main now, then place that full SHA into either side. This is the only operation here that describes a SHA as an observed main.</p>
+    <div class="capture-actions">
+      <button type="button" id="capture-base">Capture as base</button>
+      <button type="button" id="capture-target">Capture as target</button>
+    </div>
+    <p id="resolver-status" class="world-status" role="status" aria-live="polite">No main observation made on this page.</p>
+  </section>
+
+  <section aria-labelledby="compare-heading" class="world-panel">
+    <h2 id="compare-heading">Exact byte comparison</h2>
+    <form id="world-form" action="./the-world.html" method="get">
+      <div class="world-fields">
+        <label for="world-base">Base SHA
+          <input id="world-base" name="base" required minlength="40" maxlength="40" pattern="[0-9A-Fa-f]{40}" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="40 hexadecimal characters">
+        </label>
+        <label for="world-target">Target SHA
+          <input id="world-target" name="target" required minlength="40" maxlength="40" pattern="[0-9A-Fa-f]{40}" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="40 hexadecimal characters">
+        </label>
+      </div>
+      <label for="world-path">Repository path
+        <input id="world-path" name="path" required maxlength="512" autocomplete="off" autocapitalize="off" spellcheck="false" value="DIRECTIVES.md">
+      </label>
+      <button type="submit">Compare these exact snapshots</button>
+    </form>
+    <p class="note">Each response is capped at 512 KiB. The comparison uses raw bytes and SHA-256; it never substitutes Pages, a bake, <code>raw/main</code>, or a cached different SHA.</p>
+  </section>
+
+  <section aria-labelledby="result-heading" class="world-panel">
+    <h2 id="result-heading">Measurement</h2>
+    <p id="world-result" class="world-verdict" data-state="IDLE" role="status" aria-live="polite">Enter two full SHAs and one path.</p>
+    <div id="world-measurement"></div>
+  </section>
+
+  <section aria-labelledby="receipt-heading" class="world-panel">
+    <h2 id="receipt-heading">Portable receipt</h2>
+    <label for="world-receipt">Exact comparison text
+      <textarea id="world-receipt" rows="12" readonly spellcheck="false">No measurement yet.</textarea>
+    </label>
+    <p><a id="world-permalink" href="./the-world.html">Open this exact permalink</a></p>
+  </section>
+
+  <section aria-labelledby="states-heading" class="world-panel world-states">
+    <h2 id="states-heading">State vocabulary</h2>
+    <dl>
+      <div><dt>IDENTICAL</dt><dd>Both exact raw responses were present and every byte matched.</dd></div>
+      <div><dt>CHANGED</dt><dd>Both were present and at least one byte or the length differed.</dd></div>
+      <div><dt>MISSING</dt><dd>An exact raw request returned HTTP 404. This does not by itself validate that arbitrary SHA as a commit.</dd></div>
+      <div><dt>UNKNOWN</dt><dd>Invalid input, timeout, non-404 HTTP failure, digest failure, or the 512 KiB bound prevented a claim.</dd></div>
+    </dl>
+  </section>
+</main>
+</body>
+</html>

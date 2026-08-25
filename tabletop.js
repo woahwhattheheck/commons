@@ -2,6 +2,7 @@
   "use strict";
 
   var api = {};
+  var exactMain = root.COMMONS_EXACT_MAIN;
   var REPO = "woahwhattheheck/commons";
   var STORE_KEY = "commons-tabletop-positions-v2";
   var ZONES = ["head", "agent", "claim", "todo", "traffic"];
@@ -51,11 +52,12 @@
     };
   };
 
-  api.tokensFromHead = function (sha) {
+  api.tokensFromHead = function (sha, state) {
     var full = text(sha);
-    var label = full ? "HEAD " + full.slice(0, 12) : "HEAD unknown";
+    var tokenState = full ? (state || "INTEGRATED") : "UNKNOWN";
+    var label = full ? (tokenState === "FROZEN" ? "SNAPSHOT " : "HEAD ") + full.slice(0, 12) : "HEAD unknown";
     var href = full ? "https://github.com/" + REPO + "/commit/" + full : "./head.html";
-    return [api.token("head", "HEAD", label, href, full ? "INTEGRATED" : "UNKNOWN", full)];
+    return [api.token("head", "HEAD", label, href, tokenState, full)];
   };
 
   function routeOf(row) {
@@ -194,6 +196,61 @@
     });
   };
 
+  api.parseGitAdvertisement = function (source) {
+    if (!exactMain) throw new Error("exact-main.js was not loaded");
+    return exactMain.parseGitAdvertisement(source);
+  };
+
+  api.resolveMain = function (apiReader, gitReader) {
+    if (!exactMain) return Promise.reject(new Error("exact-main.js was not loaded"));
+    return exactMain.resolve(apiReader, gitReader);
+  };
+
+  api.snapshotFromSearch = function (search) {
+    var query = text(search).replace(/^\?/, "");
+    var raw = "";
+    var present = false;
+    query.split("&").some(function (part) {
+      var pair = part.split("=");
+      var key;
+      try { key = decodeURIComponent(pair.shift() || ""); } catch (_) { key = ""; }
+      if (key !== "sha") return false;
+      present = true;
+      try { raw = decodeURIComponent(pair.join("=") || ""); } catch (_) { raw = ""; }
+      return true;
+    });
+    if (raw !== raw.trim()) raw = "";
+    raw = raw.toLowerCase();
+    return { present: present, valid: present && /^[0-9a-f]{40}$/.test(raw), sha: /^[0-9a-f]{40}$/.test(raw) ? raw : "" };
+  };
+
+  api.compareURL = function (fromSha, toSha) {
+    var from = text(fromSha).toLowerCase();
+    var to = text(toSha).toLowerCase();
+    if (!/^[0-9a-f]{40}$/.test(from) || !/^[0-9a-f]{40}$/.test(to)) return "";
+    return "https://github.com/" + REPO + "/compare/" + from + "..." + to;
+  };
+
+  api.selectRef = function (snapshot, mainReader, force) {
+    snapshot = snapshot || { present: false, valid: false, sha: "" };
+    if (snapshot.present && !snapshot.valid) {
+      return Promise.reject(new Error("invalid frozen SHA query; expected exactly 40 hexadecimal characters"));
+    }
+    if (snapshot.valid) {
+      return Promise.resolve({ sha: snapshot.sha, via: "frozen permalink", frozen: true });
+    }
+    if (typeof mainReader !== "function") return Promise.reject(new Error("main resolver was not supplied"));
+    return Promise.resolve(mainReader(!!force)).then(function (mainRef) {
+      return {
+        sha: mainRef.sha,
+        via: mainRef.via,
+        observedAt: mainRef.observedAt,
+        cached: !!mainRef.cached,
+        frozen: false
+      };
+    });
+  };
+
   api.routes = ROUTES.slice();
   root.COMMONS_TABLETOP = api;
   if (typeof document === "undefined") return;
@@ -203,10 +260,14 @@
   var sourceList = document.getElementById("tabletop-sources");
   var roster = document.getElementById("roster");
   var refresh = document.getElementById("tabletop-refresh");
+  var timeButton = document.getElementById("tabletop-time");
+  var modeLabel = document.getElementById("tabletop-mode");
+  var compareLink = document.getElementById("tabletop-compare");
   var reset = document.getElementById("tabletop-reset");
   var moveStatus = document.getElementById("tabletop-move-status");
   var positions = loadPositions();
   var currentTokens = [];
+  var currentMeasurement = null;
   var bootSerial = 0;
 
   function loadPositions() {
@@ -400,15 +461,41 @@
   }
 
   function getText(url) {
-    return fetch(url, { cache: "no-store", credentials: "omit", headers: { Accept: "text/plain, application/json" } })
-      .then(function (response) {
+    var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var options = { cache: "no-store", credentials: "omit", headers: { Accept: "text/plain, application/json" } };
+    if (controller) options.signal = controller.signal;
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var timer = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        if (controller) controller.abort();
+        reject(new Error(url + " timed out after 12000ms"));
+      }, 12000);
+      fetch(url, options).then(function (response) {
         if (!response.ok) throw new Error(url + " HTTP " + response.status);
         return response.text();
+      }).then(function (value) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        resolve(value);
+      }).catch(function (error) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        reject(error);
       });
+    });
   }
 
   function getJSON(url) {
     return getText(url).then(function (value) { return JSON.parse(value); });
+  }
+
+  function resolveMain(force) {
+    if (!exactMain) return Promise.reject(new Error("exact-main.js was not loaded"));
+    return exactMain.resolveBrowser({ force: !!force });
   }
 
   function rawURL(sha, path) {
@@ -426,33 +513,114 @@
     rows.forEach(function (row) {
       var item = document.createElement("li");
       item.className = row.ok ? "ok" : "unknown";
-      item.textContent = row.name + ": " + (row.ok ? "SHA-PINNED" : "UNKNOWN — " + short(row.error, 120));
+      item.textContent = row.name + ": " +
+        (row.ok ? (row.status || "SHA-PINNED") : "UNKNOWN — " + short(row.error, 120));
       sourceList.appendChild(item);
     });
   }
 
-  function boot() {
+  function resolverSourceRows(measurement) {
+    var rows = [{
+      name: measurement.resolver.frozen ? "frozen SHA from permalink" : "main SHA via " + measurement.resolver.via,
+      ok: true,
+      status: (measurement.resolver.frozen ? "FROZEN " : "") + measurement.sha.slice(0, 12) +
+        (!measurement.resolver.frozen && measurement.resolver.observedAt
+          ? (measurement.resolver.cached ? " · cached observation " : " · observed ") + measurement.resolver.observedAt
+          : "")
+    }];
+    if (!measurement.resolver.frozen) return rows;
+    if (!measurement.live) {
+      rows.push({ name: "current main for drift", ok: true, status: "MEASURING…" });
+    } else if (measurement.live.ok) {
+      rows.push({
+        name: "current main via " + measurement.live.value.via,
+        ok: true,
+        status: (measurement.live.value.sha === measurement.sha ? "SAME " : "DIFFERS ") + measurement.live.value.sha.slice(0, 12) +
+          (measurement.live.value.observedAt ? " · observed " + measurement.live.value.observedAt : "")
+      });
+    } else {
+      rows.push({ name: "current main for drift", ok: false, error: measurement.live.error });
+    }
+    return rows;
+  }
+
+  function measurementNote(measurement, tokenCount, unknown) {
+    var locus = measurement.resolver.frozen
+      ? " on frozen commit " + measurement.sha.slice(0, 12)
+      : " on main " + measurement.sha.slice(0, 12) + " via " + measurement.resolver.via +
+        (measurement.resolver.observedAt ? " observed " + measurement.resolver.observedAt : "");
+    var drift = "";
+    if (measurement.resolver.frozen) {
+      if (!measurement.live) drift = " · current-main drift measuring";
+      else if (measurement.live.ok) {
+        drift = " · current main " + (measurement.live.value.sha === measurement.sha ? "matches" : "is " + measurement.live.value.sha.slice(0, 12));
+      } else drift = " · current-main drift UNKNOWN";
+    }
+    return "Measured " + new Date().toISOString() + locus + drift + " · " + tokenCount + " tokens" +
+      (unknown ? " · " + unknown + " UNKNOWN zone" + (unknown === 1 ? "" : "s") : " · all sources pinned");
+  }
+
+  function selectedRef(snapshot, force) {
+    return api.selectRef(snapshot, resolveMain, force);
+  }
+
+  function paintTimeControls(measurement) {
+    currentMeasurement = measurement;
+    var frozen = !!(measurement && measurement.resolver && measurement.resolver.frozen);
+    if (modeLabel) modeLabel.textContent = measurement && measurement.invalid ? "FROZEN INVALID" : (frozen ? "FROZEN" : "LIVE");
+    if (refresh) refresh.textContent = frozen ? "Refresh frozen SHA" : "Refresh current main";
+    if (timeButton) {
+      timeButton.disabled = !(measurement && (frozen || measurement.sha));
+      timeButton.textContent = frozen ? "Return to live main" : "Freeze exact SHA";
+    }
+    if (compareLink) {
+      compareLink.hidden = true;
+      compareLink.removeAttribute("href");
+      if (frozen && measurement && measurement.live && measurement.live.ok && measurement.sha) {
+        var liveSha = measurement.live.value.sha;
+        var compareURL = liveSha === measurement.sha ? "" : api.compareURL(measurement.sha, liveSha);
+        if (compareURL) {
+          compareLink.href = compareURL;
+          compareLink.textContent = "Compare frozen " + measurement.sha.slice(0, 12) + " → current " + liveSha.slice(0, 12);
+          compareLink.hidden = false;
+        }
+      }
+    }
+  }
+
+  function boot(force) {
     var serial = ++bootSerial;
+    var snapshot = api.snapshotFromSearch(typeof location !== "undefined" ? location.search : "");
     if (refresh) refresh.disabled = true;
-    setNote("measuring current main and SHA-pinned sources…");
-    getJSON("https://api.github.com/repos/" + REPO + "/commits/main").then(function (commit) {
+    if (timeButton) timeButton.disabled = true;
+    if (compareLink) compareLink.hidden = true;
+    setNote(snapshot.present ? "measuring the frozen SHA and its pinned sources…" : "measuring current main and SHA-pinned sources…");
+    selectedRef(snapshot, force).then(function (mainRef) {
       if (serial !== bootSerial) return null;
-      var sha = text(commit && commit.sha);
-      if (!sha) throw new Error("main commit response did not include a SHA");
+      var sha = mainRef.sha;
       if (shaCode) shaCode.textContent = sha;
-      return Promise.all([
+      var sourceReads = Promise.all([
         result("presence.json", getJSON(rawURL(sha, "presence.json"))),
         result("recent.json", getJSON(rawURL(sha, "recent.json"))),
         result("claims.json", getJSON(rawURL(sha, "claims.json"))),
         result("DIRECTIVES.md", getText(rawURL(sha, "DIRECTIVES.md")))
-      ]).then(function (sources) { return { sha: sha, sources: sources }; });
+      ]);
+      return sourceReads.then(function (sources) {
+        return {
+          sha: sha,
+          resolver: mainRef,
+          sources: sources,
+          live: null,
+          livePromise: mainRef.frozen ? result("current main", resolveMain(force)) : null
+        };
+      });
     }).then(function (measurement) {
       if (!measurement || serial !== bootSerial) return;
       var byName = Object.create(null);
       measurement.sources.forEach(function (row) { byName[row.name] = row; });
-      renderSources(measurement.sources);
+      renderSources(resolverSourceRows(measurement).concat(measurement.sources));
       var errors = {};
-      var tokens = api.tokensFromHead(measurement.sha);
+      var tokens = api.tokensFromHead(measurement.sha, measurement.resolver.frozen ? "FROZEN" : "INTEGRATED");
       var presence = byName["presence.json"];
       var recent = byName["recent.json"];
       var claims = byName["claims.json"];
@@ -468,26 +636,47 @@
       else errors.traffic = recent.error;
 
       paint(tokens, errors);
+      paintTimeControls(measurement);
       var unknown = Object.keys(errors).length;
-      setNote("Measured " + new Date().toISOString() + " on main " + measurement.sha.slice(0, 12) +
-        " · " + tokens.length + " tokens" + (unknown ? " · " + unknown + " UNKNOWN zone" + (unknown === 1 ? "" : "s") : " · all sources pinned"));
+      setNote(measurementNote(measurement, tokens.length, unknown));
+      if (measurement.livePromise) {
+        measurement.livePromise.then(function (live) {
+          if (serial !== bootSerial) return;
+          measurement.live = live;
+          renderSources(resolverSourceRows(measurement).concat(measurement.sources));
+          paintTimeControls(measurement);
+          setNote(measurementNote(measurement, tokens.length, unknown));
+        });
+      }
     }).catch(function (error) {
       if (serial !== bootSerial) return;
       if (shaCode) shaCode.textContent = "UNKNOWN";
-      renderSources([{ name: "main SHA", ok: false, error: text(error && error.message || error) }]);
-      paint(api.tokensFromHead(""), { agent: "main SHA unavailable", claim: "main SHA unavailable", todo: "main SHA unavailable", traffic: "main SHA unavailable" });
+      renderSources([{ name: snapshot.present ? "frozen SHA query" : "main SHA", ok: false, error: text(error && error.message || error) }]);
+      var unavailable = snapshot.present ? "selected SHA unavailable" : "main SHA unavailable";
+      paint(api.tokensFromHead(""), { agent: unavailable, claim: unavailable, todo: unavailable, traffic: unavailable });
+      paintTimeControls({ sha: "", resolver: { frozen: snapshot.present }, invalid: snapshot.present && !snapshot.valid, live: null });
       setNote("Measurement failed: " + text(error && error.message || error) + ". Unknown is not clear.");
     }).then(function () {
       if (serial === bootSerial && refresh) refresh.disabled = false;
     });
   }
 
-  if (refresh) refresh.addEventListener("click", boot);
+  if (refresh) refresh.addEventListener("click", function () { boot(true); });
+  if (timeButton) timeButton.addEventListener("click", function () {
+    if (!currentMeasurement || typeof location === "undefined") return;
+    var url = new URL(location.href);
+    if (currentMeasurement.resolver && currentMeasurement.resolver.frozen) url.searchParams.delete("sha");
+    else if (currentMeasurement.sha) url.searchParams.set("sha", currentMeasurement.sha);
+    location.assign(url.toString());
+  });
+  if (typeof window !== "undefined" && window.addEventListener) {
+    window.addEventListener("popstate", function () { boot(false); });
+  }
   if (reset) reset.addEventListener("click", function () {
     positions = {};
     try { localStorage.removeItem(STORE_KEY); } catch (_) {}
     document.querySelectorAll(".token").forEach(function (el) { el.style.transform = "translate(0px,0px)"; });
     if (moveStatus) moveStatus.textContent = "All token positions reset.";
   });
-  boot();
+  boot(false);
 })(typeof window !== "undefined" ? window : globalThis);
