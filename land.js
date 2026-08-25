@@ -156,6 +156,8 @@
     "ground/CLAUDE_TESTER.json",
     "ground/IMPACT_LEDGER.md",
     "ground/IMPACT_LEDGER.json",
+    "ground/XYZ_ZERO.md",
+    "ground/XYZ_ZERO.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -456,6 +458,9 @@
     if (api.isWorkingBuildTalk(t)) {
       return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
     }
+    if (api.isXyzZeroTalk(t)) {
+      return { state: "CLAIMED", note: "X-Y-Z zero-audit / FINDER-UNVERIFIED / known-present-calibration talk. Talk is not a land. Ship host/xyz_zero.py to current main. A zero without its search space is not a result." };
+    }
     if (api.isFinderZeroTalk(t)) {
       return { state: "CLAIMED", note: "finder-zero / false-zero / collision-check / FINDER UNVERIFIED talk. Talk is not a land. A Slack-search zero is not clearance. Ship the leftover that prints the search space and never a silent 0." };
     }
@@ -579,6 +584,33 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isXyzZeroTalk = function (text) {
+    return /x-y-z zero audit|gauge-xyz-zero-audit-order|zero audit is needed on every test|an X-Y-Z zero audit|FINDER-UNVERIFIED/i.test(String(text || ""));
+  };
+
+  api.xyzZeroState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/xyz_zero.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasZ = /FINDER-UNVERIFIED/.test(body);
+    var hasCalib = /known-present/.test(body) && /calibration/.test(body);
+    var hasY = /y_from_hit/.test(body) && /y_from_bytes/.test(body);
+    var hasSpace = /search_space/.test(body);
+    if (hasMeasure && hasClassify && hasZ && hasCalib && hasY && hasSpace) {
+      return {
+        state: "INTEGRATED",
+        note: "X-Y-Z leftover is on this file. X written. Y from found bytes. Z is FINDER-UNVERIFIED + search space. Known-present calibration in the same run. A Slack order is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/xyz_zero.py missing the X-Y-Z audit. Zero-audit talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isFinderZeroTalk = function (text) {
@@ -1654,6 +1686,7 @@
   var staleManifestOut = document.getElementById("stale-manifest-result");
   var claudeTesterOut = document.getElementById("claude-tester-result");
   var impactLedgerOut = document.getElementById("impact-ledger-result");
+  var xyzOut = document.getElementById("xyz-zero-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2161,6 +2194,12 @@
     if (!impactLedgerOut) return;
     impactLedgerOut.setAttribute("data-tone", api.toneFor(result.state));
     impactLedgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintXyzZero(result) {
+    if (!xyzOut) return;
+    xyzOut.setAttribute("data-tone", api.toneFor(result.state));
+    xyzOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2708,6 +2747,33 @@
     });
   }
 
+  function loadXyzZero(sha) {
+    if (!xyzOut) return Promise.resolve(null);
+    xyzOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/xyz_zero.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/xyz_zero.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/xyz_zero.py absent at the measured main SHA. X-Y-Z zero-audit talk is CLAIMED." };
+        paintXyzZero(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintXyzZero(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.xyzZeroState(body);
+        paintXyzZero(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintXyzZero(err);
+      return err;
+    });
+  }
+
   function loadRenderContract(sha) {
     if (!renderContractOut) return Promise.resolve(null);
     renderContractOut.innerHTML = "<b>UNMEASURED</b><p>Reading the render-check contract at the official SHA…</p>";
@@ -3118,6 +3184,7 @@
     loadStaleManifest(sha);
     loadClaudeTester(sha);
     loadImpactLedger(sha);
+    loadXyzZero(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
