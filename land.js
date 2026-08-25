@@ -165,6 +165,8 @@
     "ground/TITAN_APPEND_GUARD.json",
     "ground/MEASURE_ABUSE.md",
     "ground/MEASURE_ABUSE.json",
+    "ground/CLAUDE_ZERO.md",
+    "ground/CLAUDE_ZERO.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -398,6 +400,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isClaudeZeroTalk(t)) {
+      return { state: "CLAIMED", note: "Claude-reported-zeros / RETRACT-DO-NOT-DOWNGRADE talk. Talk is not a land. Retract the Claude zero. Re-run the search space with a non-Claude instrument. Miss is FINDER-FAILED / FINDER-UNVERIFIED, never 0." };
     }
     if (api.isMcpWakeTalk(t)) {
       return { state: "CLAIMED", note: "collision-hold / JOJO-visual-CI / canonical-inventory / idle-resume talk. Talk is not a land. Ship the canonical MCP inventory and honest idle-resume leftover to current main." };
@@ -980,6 +985,32 @@
     return {
       state: "INTEGRATED",
       note: "p/" + (sourceId || "id") + ".md and all " + paths.length + " source paths are on this tree. A Slack SHIP_RECEIPT is still not the file."
+    };
+  };
+
+  api.isClaudeZeroTalk = function (text) {
+    return /claude-reported zeros|retract, do not downgrade|every zero reported by claude|retract every claude/i.test(String(text || ""));
+  };
+
+  api.claudeZeroState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_zero.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasFailed = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var hasCalib = /known-present/.test(body) && /if find\(X\)/.test(body);
+    var neverZero = /never silently emit 0/.test(body) || /Never return 0/.test(body);
+    if (hasMeasure && hasClassify && hasFailed && hasCalib && neverZero) {
+      return {
+        state: "INTEGRATED",
+        note: "Claude-zero leftover is on this file. Claude-reported zeros are RETRACTED. Miss is FINDER-FAILED / FINDER-UNVERIFIED plus the search space, never 0. Same-run known-present calibration. A Slack correction is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_zero.py missing the retract leftover. Claude-reported-zero talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1781,6 +1812,7 @@
   var finderZeroOut = document.getElementById("finder-zero-result");
   var staleManifestOut = document.getElementById("stale-manifest-result");
   var claudeTesterOut = document.getElementById("claude-tester-result");
+  var claudeZeroOut = document.getElementById("claude-zero-result");
   var impactLedgerOut = document.getElementById("impact-ledger-result");
   var xyzOut = document.getElementById("xyz-zero-result");
   var appendGuardOut = document.getElementById("titan-append-guard-result");
@@ -2316,6 +2348,12 @@
     if (!measureAbuseOut) return;
     measureAbuseOut.setAttribute("data-tone", api.toneFor(result.state));
     measureAbuseOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeZero(result) {
+    if (!claudeZeroOut) return;
+    claudeZeroOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2917,6 +2955,33 @@
     });
   }
 
+  function loadClaudeZero(sha) {
+    if (!claudeZeroOut) return Promise.resolve(null);
+    claudeZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_zero.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_zero.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_zero.py absent at the measured main SHA. Claude-reported-zero / RETRACT-DO-NOT-DOWNGRADE talk is CLAIMED." };
+        paintClaudeZero(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeZero(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeZeroState(body);
+        paintClaudeZero(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeZero(err);
+      return err;
+    });
+  }
+
   function loadXyzZero(sha) {
     if (!xyzOut) return Promise.resolve(null);
     xyzOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/xyz_zero.py at the official SHA…</p>";
@@ -3381,6 +3446,7 @@
     loadFinderZero(sha);
     loadStaleManifest(sha);
     loadClaudeTester(sha);
+    loadClaudeZero(sha);
     loadImpactLedger(sha);
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
