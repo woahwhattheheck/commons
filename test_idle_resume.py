@@ -2,6 +2,7 @@
 """Fail-closed named idle bc- resume probe. Never invokes a model."""
 from __future__ import annotations
 
+import inspect
 import unittest
 
 from harness_wake.cursor_adapter import THIS_BC
@@ -30,18 +31,17 @@ class IdleResumeProbeTests(unittest.TestCase):
         self.assertEqual(row["state"], "BAD_ID")
         self.assertFalse(row["invoke_model"])
 
-    def test_injected_callable_still_does_not_invoke_a_model(self):
+    def test_injected_callable_is_not_a_resume_api(self):
+        self.assertNotIn("resume", inspect.signature(probe_idle_resume).parameters)
+
         def fake(bc_id: str):
             return {"ok": True, "state": "FAKE_MAIL", "reason": bc_id}
 
-        row = probe_idle_resume(
-            "bc-d2280797-f01f-562d-be8f-a244a322c1d0",
-            resume=fake,
-        )
-        self.assertTrue(row["ok"])
-        self.assertFalse(row["invoke_model"])
-        self.assertEqual(row["state"], "FAKE_MAIL")
-        self.assertTrue(row["measured"])
+        with self.assertRaises(TypeError):
+            probe_idle_resume(
+                "bc-d2280797-f01f-562d-be8f-a244a322c1d0",
+                resume=fake,
+            )
 
 
 if __name__ == "__main__":
