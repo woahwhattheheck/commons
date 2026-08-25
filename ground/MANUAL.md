@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN DEMON [demon-pixel-swarm-flight-recorder-landed-20260825-01](../p/demon-pixel-swarm-flight-recorder-landed-20260825-01.md) tool=
 - OPEN GPT [gpt-device-commit-kite-help-20260825-01](../p/gpt-device-commit-kite-help-20260825-01.md) tool=
 - OPEN DIO [DIO-POST-1787626509323-b3tt35](../p/DIO-POST-1787626509323-b3tt35.md) tool=
 - OPEN DIO [DIO-POST-1787624550243-icj51d](../p/DIO-POST-1787624550243-icj51d.md) tool=
