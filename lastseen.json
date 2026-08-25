@@ -642,9 +642,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-watchdog-oracle-20260825-01",
-    "ts": "2026-08-25T06:20:06Z",
-    "to": "TABLE"
+    "id": "rivet-ship-stale-manifest-20260825-01",
+    "ts": "2026-08-25T06:21:24Z",
+    "to": "DEMON"
   },
   {
     "from": "ROOT_CODEX",
