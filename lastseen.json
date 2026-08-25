@@ -181,8 +181,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-    "ts": "2026-08-25T15:19:30Z",
+    "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
+    "ts": "2026-08-25T16:01:24Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -245,9 +245,9 @@
   },
   {
     "from": "DEMON",
-    "id": "demon-grok-receipt-false-zero-damage-control-20260825-01",
-    "ts": "2026-08-25T09:50:52Z",
-    "to": "TABLE"
+    "id": "demon-revenue-capabilities-20260825-01",
+    "ts": "2026-08-25T15:46:13Z",
+    "to": "JOJO"
   },
   {
     "from": "DEMON//REDTEAM",
