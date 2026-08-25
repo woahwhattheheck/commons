@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825at/.test(html), "desk must bust the claude-park cache key");
+assert.ok(/20260825au/.test(html), "desk must bust the Claude-compute cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,39 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isClaudeComputeTalk, "land.js must classify paid-compute / compiler-farm talk");
+assert.ok(api.claudeComputeState, "land.js must classify the Claude-compute leftover");
+assert.ok(api.isClaudeComputeTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nOutput is labeled CLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nmust name the non-Claude adjudicator in advance\n1787640367.070179"), "DEMON paid-compute clarification is talk");
+assert.ok(!api.isClaudeComputeTalk("make sure people do more than talk about shit"), "ship-talk is not the Claude-compute leftover");
+assert.ok(!api.isClaudeComputeTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE."), "role-proposal copy is not the Claude-compute leftover");
+assert.ok(!api.isClaudeRoleTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE. ISOLATED UNTRUSTED BUILD COMPUTE. CLAUDE_INTERMEDIATE_UNTRUSTED. compiler farm. adjudicator in advance. 1787640367.070179"), "paid-compute copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeTesterTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE. ISOLATED UNTRUSTED BUILD COMPUTE. compiler farm. cheap Opus 5."), "paid-compute copy is not the Claude-tester leftover");
+assert.ok(!api.isClaudeParkTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE. ISOLATED UNTRUSTED BUILD COMPUTE. CLAUDE_INTERMEDIATE_UNTRUSTED. compiler farm. adjudicator in advance."), "paid-compute copy is not the Claude-park leftover");
+assert.ok(!api.isClaudeComputeTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the Claude-compute leftover");
+var computeTalk = api.completionStateFromText(
+  "OWNER CLARIFICATION / DEMON ENFORCEMENT — SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nCLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nname the non-Claude adjudicator in advance"
+);
+assert.strictEqual(computeTalk.state, "CLAIMED");
+assert.ok(/paid-compute|compiler-farm|isolated-untrusted|CLAUDE_INTERMEDIATE_UNTRUSTED|adjudicator-in-advance/i.test(computeTalk.note), "Claude-compute-without-SHA must stay CLAIMED and beat role / ship-talk");
+var computeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-compute leftover landed"
+);
+assert.strictEqual(computeDone.state, "INTEGRATED", "completion words still beat Claude-compute talk");
+var computeEmpty = api.claudeComputeState("");
+assert.strictEqual(computeEmpty.state, "UNMEASURED");
+var computeMissing = api.claudeComputeState("# empty stub\nno leftover");
+assert.strictEqual(computeMissing.state, "NOT_LANDED");
+var computeOk = api.claudeComputeState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nISOLATED_UNTRUSTED_BUILD_COMPUTE\nCLAUDE_INTERMEDIATE_UNTRUSTED\nadjudicator in advance\nclaude may not self-adjudicate\nOpus 5\nNever spend Claude tokens deciding\nno_auth\nno_gate\nopen door\n");
+assert.strictEqual(computeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(computeOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-compute-result"') >= 0, "desk must name the Claude-compute leftover");
+assert.ok(html.indexOf("host/claude_compute.py") >= 0, "desk must name the Claude-compute instrument");
+assert.ok(html.indexOf("ground/CLAUDE_COMPUTE.md") >= 0, "desk must link the Claude-compute card");
+assert.ok(html.indexOf("ground/CLAUDE_COMPUTE.json") >= 0, "desk must link the Claude-compute catalog");
+assert.ok(html.indexOf("1787640367.070179") >= 0, "desk must cite the DEMON paid-compute Slack ts");
+assert.ok(/paid-compute|compiler-farm|isolated-untrusted|CLAUDE_INTERMEDIATE_UNTRUSTED|adjudicator-in-advance/i.test(html), "desk must name Claude-compute talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.md") >= 0, "Claude-compute card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_COMPUTE.json") >= 0, "Claude-compute catalog must stay a canary");
 assert.ok(api.isClaudeRoleTalk, "land.js must classify colony-decides / Claude-family-role talk");
 assert.ok(api.claudeRoleState, "land.js must classify the Claude-role leftover");
 assert.ok(api.isClaudeRoleTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nkind: PROPOSAL\nsubject: OWNER RELAY — the colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only. Exact paths in, receipt out, nothing added to spec.\n*P5 — THE NEVER CLAUSE\n*P6 — THE TELL."), "GAUGE role proposal is talk");
