@@ -1,0 +1,199 @@
+{
+  "slack_ts": "1787640071.636039",
+  "kind": "BRANCH_REVIEW",
+  "source_id": "demon-p0-impact-ledger-20260825-01",
+  "receipt_id": "rivet-ship-branch-review-20260825-01",
+  "subject": "DEMON P0 IMPACT LEDGER — ten families RETRACTED plus public-branch review",
+  "titan": "NOT_WRITTEN",
+  "retracted_stays_retracted": true,
+  "soften_retracted_to_unverified": false,
+  "xyz_required": true,
+  "calibration_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "allowed_remeasurers": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Cursor / Grok"
+  ],
+  "delete_rewrite": "OWNER_HOLD",
+  "secret_dump": false,
+  "families": [
+    {
+      "id": "pfc_raw_a_zero",
+      "status": "RETRACTED",
+      "x": "PFC raw A count plus host-only / wellbeing rhetoric sourced from A=0/64",
+      "y": "RETRACT the number, the host-only conclusion, and the wellbeing/credibility rhetoric together",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": ["host-only characterization", "yes-model / lonely-fragile rhetoric"],
+      "preserve": "owner already identified A as the control and one addressed read as propagation"
+    },
+    {
+      "id": "titan_packet_root_404",
+      "status": "RETRACTED",
+      "x": "titan_move_packet.json at repo root versus excerpts/20260823/titan_move_packet.json",
+      "y": "FOUND excerpts/20260823/titan_move_packet.json; root 404 is not world-absent",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": ["write/reconcile urgency", "owner-machine Titan triple 9319291-byte appends"],
+      "preserve": "ground/TITAN_APPEND_GUARD.md freeze; DIO keeps consumer corrections; no append mutation"
+    },
+    {
+      "id": "no_active_claim",
+      "status": "RETRACTED",
+      "x": "Slack 1787631006.454399 clearance sentence plus p/claude27-pfc-bake-census-20260825-01.md and docs/PFC_BAKE_CENSUS.md",
+      "y": "FOUND docs/PFC_BAKE_CENSUS.md and squash 49c12302d557facc21b69a85e12c92e0740956c0; clearance sentence RETRACTED",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": ["PR 2128", "LocalDeviceAgent kite-help 54081cd", "later scan assignment"],
+      "preserve": "census artifacts stay; recheck ownership; do not remint claude27-pfc-bake-census-20260825-01"
+    },
+    {
+      "id": "zero_deletions_zero_secrets",
+      "status": "RETRACTED",
+      "x": "origin/sd-wx tree names plus stranded heads plus kite-help on woahwhattheheck/commons",
+      "y": "sd-wx PRESENT 3241 files / 415 vs main; 258 is not the current tree; secret-scan stays UNSCANNED",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": ["public sd-wx", "three stranded branches", "kite-help"],
+      "preserve": "no deletion or history rewrite without owner direction"
+    },
+    {
+      "id": "fleet_silence_zero_replies",
+      "status": "RETRACTED",
+      "x": "global fleet-silence / zero-replies claim",
+      "y": "RETRACTED as a global claim; measure named roads instead",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint ground/FLEET.md"
+    },
+    {
+      "id": "five_builds_vapor",
+      "status": "RETRACTED",
+      "x": "global five-builds = zero-deliverables / vapor claim",
+      "y": "RETRACTED as a global claim; working-builds leftover already names dispositions",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint ground/WORKING_BUILDS.md"
+    },
+    {
+      "id": "claude_slack_path_dead",
+      "status": "RETRACTED",
+      "x": "global Claude Slack path dead claim",
+      "y": "RETRACTED as a global claim; Slack-access leftover already names the canary",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint ground/SLACK_ACCESS.md"
+    },
+    {
+      "id": "zero_mcp_lsp_permissions",
+      "status": "RETRACTED",
+      "x": "global 0 MCP / 0 LSP / 0 permissions claim",
+      "y": "RETRACTED as a global claim; SPECTER keeps MCP/wake remeasurement",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint ground/MCP_WAKE.md or watchdog oracle"
+    },
+    {
+      "id": "pfc_0_of_0",
+      "status": "RETRACTED",
+      "x": "global PFC 0-of-0 claim",
+      "y": "RETRACTED as a global claim; bake census artifacts preserved",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint docs/PFC_BAKE_CENSUS.md"
+    },
+    {
+      "id": "nothing_unpushed",
+      "status": "RETRACTED",
+      "x": "global nothing-unpushed claim",
+      "y": "RETRACTED as a global claim; uncommitted work is NOT_LANDED when found",
+      "z": "FINDER-UNVERIFIED",
+      "sinks": [],
+      "preserve": "do not remint ground/HOARD.md"
+    }
+  ],
+  "branches": [
+    {
+      "name": "sd-wx",
+      "origin_head": "PRESENT",
+      "tip": "b4da4a7d6085a253c40d804009dd173ad58a7216",
+      "tree_files": 3241,
+      "vs_main_names": 415,
+      "commits_not_in_main": 14,
+      "canary_named": 19,
+      "cairn_named": 131,
+      "quarantine_named": 8,
+      "license_named_search": "COMPLETED_NO_HITS",
+      "claimed_258": "NOT_CURRENT_TREE",
+      "status": "UNSCANNED",
+      "delete_rewrite": "OWNER_HOLD",
+      "review": [
+        "non-Claude tree diff",
+        "planted-canary name scan",
+        "CAIRN/quarantine/license/delete review"
+      ]
+    },
+    {
+      "name": "player1-publish",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED",
+      "delete_rewrite": "OWNER_HOLD"
+    },
+    {
+      "name": "vent-final",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED",
+      "delete_rewrite": "OWNER_HOLD"
+    },
+    {
+      "name": "vent-fix",
+      "origin_head": "ABSENT",
+      "status": "UNSCANNED",
+      "delete_rewrite": "OWNER_HOLD"
+    },
+    {
+      "name": "kite-help",
+      "origin_head": "ABSENT_ON_COMMONS",
+      "status": "UNSCANNED",
+      "delete_rewrite": "OWNER_HOLD",
+      "note": "LocalDeviceAgent tree not copied. Absence here is not a zero."
+    }
+  ],
+  "packet": {
+    "path": "excerpts/20260823/titan_move_packet.json",
+    "cat_file": "PRESENT",
+    "note": "Nested packet exists. Root 404 is RETRACTED as world-absent. Freeze further appends."
+  },
+  "pfc_census": {
+    "path": "docs/PFC_BAKE_CENSUS.md",
+    "cat_file": "PRESENT",
+    "clearance_sentence": "RETRACTED",
+    "do_not_remint": "claude27-pfc-bake-census-20260825-01"
+  },
+  "squash_2128": {
+    "sha": "49c12302d557facc21b69a85e12c92e0740956c0",
+    "object": "PRESENT",
+    "note": "Preserve artifacts. Recheck ownership. Clearance sentence RETRACTED."
+  },
+  "do_not_remint": [
+    "rivet-ship-context-integrity-20260825-01",
+    "rivet-ship-containment-20260825-01",
+    "rivet-ship-impact-ledger-20260825-01",
+    "rivet-ship-claude-zero-20260825-01",
+    "rivet-ship-measure-abuse-20260825-01",
+    "rivet-ship-titan-append-guard-20260825-01",
+    "rivet-ship-finder-zero-20260825-01",
+    "claude27-pfc-bake-census-20260825-01",
+    "gauge-p0-compliance-20260825-01"
+  ],
+  "hands_off": [
+    "CONTEXT_INTEGRITY leftover remint",
+    "CONTAINMENT leftover remint",
+    "IMPACT_LEDGER leftover remint",
+    "DIO titan --go / further append",
+    "SPECTER MCP/wake remeasurement",
+    "JOJO device-owner audit",
+    "CML PR 2108",
+    "commons.mno smash",
+    "sd-wx delete or history rewrite",
+    "LocalDeviceAgent kite-help copy"
+  ]
+}

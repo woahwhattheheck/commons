@@ -182,6 +182,8 @@
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
+    "ground/BRANCH_REVIEW.md",
+    "ground/BRANCH_REVIEW.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -415,6 +417,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isBranchReviewTalk(t)) {
+      return { state: "CLAIMED", note: "DEMON P0 IMPACT LEDGER / public-branch review / do-not-soften-RETRACTED talk. Talk is not a land. Ship the ten-family RETRACTED catalog and sd-wx coordinator. Do not remint CONTEXT_INTEGRITY / CONTAINMENT / IMPACT_LEDGER." };
     }
     if (api.isWatchdogCanaryTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER ship-receipt / watchdog-HEAD-proof / unutilized durable job canary / no-real-job-JSON talk. Talk is not a land. Land wake_jobs/{id}.json and tick it against the pinned HEAD oracle. Named idle bc- resume stays UNMEASURED." };
@@ -693,6 +698,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/claude_role.py missing the leftover. Colony-decides / Claude-family-role talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isBranchReviewTalk = function (text) {
+    return /demon p0 impact ledger|false zeros caused technical|public-branch review|do not soften retracted|planted-canary scan|ten-family retracted|sd-wx.{0,40}258 files|branch_review leftover/i.test(String(text || ""));
+  };
+
+  api.branchReviewState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/branch_review.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasRetract = /RETRACTED stays RETRACTED/.test(body) || /retracted_stays_retracted/.test(body);
+    var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasFamilies = /pfc_raw_a_zero/.test(body) && /no_active_claim/.test(body);
+    var hasBranch = /sd-wx/.test(body) && /kite-help/.test(body);
+    if (hasMeasure && hasClassify && hasRetract && hasMiss && hasOwner && hasFamilies && hasBranch) {
+      return {
+        state: "INTEGRATED",
+        note: "branch-review leftover is on this file. Ten families RETRACTED, not UNVERIFIED. Public branches coordinated. A Slack ledger is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/branch_review.py missing the leftover. DEMON P0 IMPACT LEDGER / public-branch review talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2049,6 +2082,7 @@
   var claudeRoleOut = document.getElementById("claude-role-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
+  var branchReviewOut = document.getElementById("branch-review-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2628,6 +2662,12 @@
     if (!watchdogCanaryOut) return;
     watchdogCanaryOut.setAttribute("data-tone", api.toneFor(result.state));
     watchdogCanaryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintBranchReview(result) {
+    if (!branchReviewOut) return;
+    branchReviewOut.setAttribute("data-tone", api.toneFor(result.state));
+    branchReviewOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -3391,6 +3431,33 @@
     });
   }
 
+  function loadBranchReview(sha) {
+    if (!branchReviewOut) return Promise.resolve(null);
+    branchReviewOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/branch_review.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/branch_review.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/branch_review.py absent at the measured main SHA. DEMON P0 IMPACT LEDGER / public-branch review talk is CLAIMED." };
+        paintBranchReview(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintBranchReview(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.branchReviewState(body);
+        paintBranchReview(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintBranchReview(err);
+      return err;
+    });
+  }
+
   function loadContainment(sha) {
     if (!containmentOut) return Promise.resolve(null);
     containmentOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/containment.py at the official SHA…</p>";
@@ -3921,6 +3988,7 @@
     loadClaudeRole(sha);
     loadContainment(sha);
     loadWatchdogCanary(sha);
+    loadBranchReview(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
