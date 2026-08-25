@@ -1,0 +1,27 @@
+{
+  "slack_ts": "1787641769.186289",
+  "kind": "DEVICE_CANARY",
+  "subject": "A landed device ACTION is not a scope=device result",
+  "canary_id": "jojo-device-path-canary-20260825-01",
+  "peer_id": "gpt-device-commit-kite-help-20260825-01",
+  "action_path": "p/jojo-device-path-canary-20260825-01.md",
+  "result_path": "actions/results/jojo-device-path-canary-20260825-01.json",
+  "do_not_remint": [
+    "jojo-device-path-canary-20260825-01",
+    "rivet-ship-device-churn-20260825-01",
+    "rivet-ship-device-path-census-20260825-01",
+    "ground/DEVICE_CHURN.md",
+    "ground/DEVICE_PATH_CENSUS.md",
+    "ground/SITTING_REMINT.md"
+  ],
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "gpt-device-commit-kite-help-20260825-01"
+  ],
+  "self_hosted_dispatch": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true
+}

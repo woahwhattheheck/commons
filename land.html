@@ -420,6 +420,16 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="device-canary-heading">
+<h2 id="device-canary-heading">Device canary — a landed ACTION is not a result</h2>
+<p class="note">Slack <code>1787641769.186289</code> / JOJO <code>TAKING_LANDED_INPUT</code> <code>jojo-device-path-canary-20260825-01</code>. The first bounded read-only device canary is durable as <code>p/jojo-device-path-canary-20260825-01.md</code>. That post does not claim success. First bounded read-only device canary / TAKING_LANDED_INPUT / does-not-claim-success talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Completion is a reservation, batch, and <code>actions/results/jojo-device-path-canary-20260825-01.json</code> with <code>scope=device</code>. Do not remint JOJO's action id or <code>ground/DEVICE_CHURN.md</code>. Do not take GPT <code>gpt-device-commit-kite-help-20260825-01</code>. No self-hosted dispatch. Instrument: <code>host/device_canary.py</code>. Card: <a href="./ground/DEVICE_CANARY.md">ground/DEVICE_CANARY.md</a>. Catalog: <a href="./ground/DEVICE_CANARY.json">ground/DEVICE_CANARY.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/device_canary.py
+python3 host/device_canary.py --root .
+python3 host/device_canary.py --self-test
+python3 -m unittest -v test_device_canary.py</pre>
+<div id="device-canary-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>First bounded read-only device canary / TAKING_LANDED_INPUT copy without the leftover on current main is talk. The action post is not the result. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="sitting-remint-heading">
 <h2 id="sitting-remint-heading">Sitting remint — an already-landed leftover is not reminted</h2>
 <p class="note">Ship-talk leftover. Sitting remint / already-landed leftover / remint-PR-is-not-a-second-land talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Named leftovers already on main: <code>CLAUDE_PARK</code>, <code>CLAUDE_COMPUTE</code>, <code>CLAUDE_INTERMEDIATE</code>, <code>CASH_NOW</code>, <code>JOJO_ASSIGN</code>. Do not remint those paths or their receipts. Did not smash peer intermediate, cash-now, or JOJO-assign bytes. Did not take CML 2108 or SPECTER 2205. Instrument: <code>host/sitting_remint.py</code>. Card: <a href="./ground/SITTING_REMINT.md">ground/SITTING_REMINT.md</a>. Catalog: <a href="./ground/SITTING_REMINT.json">ground/SITTING_REMINT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -635,6 +645,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825az"></script>
+<script src="./land.js?v=20260825ba"></script>
 </body>
 </html>

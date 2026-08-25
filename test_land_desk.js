@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825az/.test(html), "desk must bust the device-path-census cache key");
+assert.ok(/20260825ba/.test(html), "desk must bust the device-canary cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,37 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isDeviceCanaryTalk, "land.js must classify first bounded read-only device canary talk");
+assert.ok(api.deviceCanaryState, "land.js must classify the device-canary leftover");
+assert.ok(api.isDeviceCanaryTalk("from: JOJO\nkind: TAKING_LANDED_INPUT\nid: jojo-device-path-canary-20260825-01\nsubject: FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN\nthis post does not claim success yet"), "JOJO device canary copy is talk");
+assert.ok(!api.isDeviceCanaryTalk("make sure people do more than talk about shit"), "ship-talk is not the device-canary leftover");
+assert.ok(!api.isDeviceCanaryTalk("DIO + JOJO claim a joint device-path utilization + no-op churn lane. zero reservations, zero batches, no scope=device result. commons-device-executor 511 runs."), "device-churn copy is not the device-canary leftover");
+assert.ok(!api.isDeviceCanaryTalk("from: JOJO\nkind: MEASURED_RECEIPT\nid: jojo-device-reservation-result-census-20260825-01\nsubject: CALIBRATED DEVICE PATH CENSUS ON PINNED COMMONS MAIN\nreservation blobs=0; lawful canary; no host inference"), "device-path-census copy is not the device-canary leftover");
+assert.ok(!api.isDevicePathCensusTalk("from: JOJO\nkind: TAKING_LANDED_INPUT\nid: jojo-device-path-canary-20260825-01\nsubject: FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN\nthis post does not claim success yet"), "live JOJO action canary is not the census leftover");
+var canaryTalk = api.completionStateFromText(
+  "from: JOJO\nkind: TAKING_LANDED_INPUT\nid: jojo-device-path-canary-20260825-01\nsubject: FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN\nCompletion requires actions/results/jojo-device-path-canary-20260825-01.json with scope=device; this post does not claim success yet."
+);
+assert.strictEqual(canaryTalk.state, "CLAIMED");
+assert.ok(/device canary|does-not-claim-success|TAKING_LANDED_INPUT/i.test(canaryTalk.note), "device-canary-without-SHA must stay CLAIMED and beat device-churn scope=device wording");
+var canaryDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ndevice-canary leftover landed"
+);
+assert.strictEqual(canaryDone.state, "INTEGRATED", "completion words still beat device-canary talk");
+var canaryEmpty = api.deviceCanaryState("");
+assert.strictEqual(canaryEmpty.state, "UNMEASURED");
+var canaryMissing = api.deviceCanaryState("# empty stub\nno leftover");
+assert.strictEqual(canaryMissing.state, "NOT_LANDED");
+var canaryOk = api.deviceCanaryState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nNever 0\njojo-device-path-canary-20260825-01\ndoes not claim success\nno self-hosted dispatch\nno auth\nno gate\n");
+assert.strictEqual(canaryOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(canaryOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="device-canary-result"') >= 0, "desk must name the device-canary leftover");
+assert.ok(html.indexOf("host/device_canary.py") >= 0, "desk must name the device-canary instrument");
+assert.ok(html.indexOf("ground/DEVICE_CANARY.md") >= 0, "desk must link the device-canary card");
+assert.ok(html.indexOf("ground/DEVICE_CANARY.json") >= 0, "desk must link the device-canary catalog");
+assert.ok(html.indexOf("1787641769.186289") >= 0, "desk must cite the JOJO device-canary Slack ts");
+assert.ok(/first bounded read-only device canary|TAKING_LANDED_INPUT|does-not-claim-success/i.test(html), "desk must name device-canary talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.md") >= 0, "device-canary card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_CANARY.json") >= 0, "device-canary catalog must stay a canary");
 assert.ok(api.isSittingRemintTalk, "land.js must classify sitting remint / already-landed leftover talk");
 assert.ok(api.sittingRemintState, "land.js must classify the sitting-remint leftover");
 assert.ok(api.isSittingRemintTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land. Do not remint an already-landed leftover."), "sitting remint census is talk");

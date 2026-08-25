@@ -186,6 +186,8 @@
     "ground/CLAUDE_COMPUTE.json",
     "ground/SITTING_REMINT.md",
     "ground/SITTING_REMINT.json",
+    "ground/DEVICE_CANARY.md",
+    "ground/DEVICE_CANARY.json",
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
@@ -413,6 +415,9 @@
     }
     if (api.isCashNowTalk(t)) {
       return { state: "CLAIMED", note: "cash-now / collectable-USD / private-payout talk. Talk is not a land. Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker. Ship the leftover to current main." };
+    }
+    if (api.isDeviceCanaryTalk(t)) {
+      return { state: "CLAIMED", note: "first bounded read-only device canary / TAKING_LANDED_INPUT / does-not-claim-success talk. Talk is not a land. The action post is not the result. Measure p/jojo-device-path-canary-20260825-01.md against actions/results/jojo-device-path-canary-20260825-01.json. Do not remint JOJO's action. Do not take GPT kite-help." };
     }
     if (api.isDevicePathCensusTalk(t)) {
       return { state: "CLAIMED", note: "calibrated device-path census / lawful-canary / reservation-blobs talk. Talk is not a land. Re-run X/Y/Z on the named git tree and ship the leftover. Do not remint DEVICE_CHURN or the JOJO id." };
@@ -743,6 +748,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isDeviceCanaryTalk = function (text) {
+    return /first bounded read-only device canary|jojo-device-path-canary-20260825-01|bounded read-only owner-device|device canary is on main|this post does not claim success yet/i.test(String(text || ""));
+  };
+
+  api.deviceCanaryState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/device_canary.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /Never 0/.test(body);
+    var namesCanary = /jojo-device-path-canary-20260825-01/.test(body) && /does not claim success/.test(body);
+    var noDispatch = /no self-hosted dispatch/i.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && namesCanary && noDispatch && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "device-canary leftover is on this file. Action is durable. Result is still a measured gap. A Slack TAKING_LANDED_INPUT is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/device_canary.py missing the leftover. First bounded read-only device canary / TAKING_LANDED_INPUT talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2346,6 +2378,7 @@
   var cashNowOut = document.getElementById("cash-now-result");
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var deviceCanaryOut = document.getElementById("device-canary-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -2964,6 +2997,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintDeviceCanary(result) {
+    if (!deviceCanaryOut) return;
+    deviceCanaryOut.setAttribute("data-tone", api.toneFor(result.state));
+    deviceCanaryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -3772,6 +3811,33 @@
     });
   }
 
+  function loadDeviceCanary(sha) {
+    if (!deviceCanaryOut) return Promise.resolve(null);
+    deviceCanaryOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/device_canary.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/device_canary.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/device_canary.py absent at the measured main SHA. First bounded read-only device canary / TAKING_LANDED_INPUT talk is CLAIMED." };
+        paintDeviceCanary(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintDeviceCanary(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.deviceCanaryState(body);
+        paintDeviceCanary(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintDeviceCanary(err);
+      return err;
+    });
+  }
+
   function loadSittingRemint(sha) {
     if (!sittingRemintOut) return Promise.resolve(null);
     sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
@@ -4520,6 +4586,7 @@
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
     loadSittingRemint(sha);
+    loadDeviceCanary(sha);
     loadClaudeCompute(sha);
     loadClaudeIntermediate(sha);
     loadCashNow(sha);

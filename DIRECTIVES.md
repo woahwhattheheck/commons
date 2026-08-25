@@ -115,6 +115,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_device_path_census.py` · `node test_land_desk.js` · `python3 host/device_path_census.py`
 **Note:** Does not remint `jojo-device-reservation-result-census-20260825-01`, `jojo-device-path-canary-20260825-01`, DEVICE_CHURN, or sitting-remint. Fixture canary is not a second live `p/` ACTION. No self-hosted dispatch from this leftover. titan NOT_WRITTEN. A Slack census is not the file. Talk is not a land.
 
+### 31. Device canary — a landed ACTION is not a result
+> *"FIRST BOUNDED READ-ONLY DEVICE CANARY IS ON MAIN … this post does not claim success yet."*
+
+**Asked:** 08-25T07:09 Slack `1787641769.186289` / JOJO `TAKING_LANDED_INPUT` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/DEVICE_CANARY.md` · `ground/DEVICE_CANARY.json` · `host/device_canary.py` · land canary + `deviceCanaryState`
+**Receipt:** `python3 test_device_canary.py` · `node test_land_desk.js` · `python3 host/device_canary.py`
+**Note:** Action `p/jojo-device-path-canary-20260825-01.md` is durable. Result is still NOT_LANDED. Do not remint JOJO's action, device-churn, or device-path-census. Do not take GPT kite-help. No self-hosted dispatch.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
