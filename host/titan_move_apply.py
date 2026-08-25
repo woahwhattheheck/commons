@@ -18,6 +18,7 @@ import os
 import sys
 import tempfile
 
+from titan_append_guard import refuse_further_append
 from titan_move_offsets import (
     CLAIMED_APPEND_BASE,
     CLAIMED_APPEND_SOURCE,
@@ -80,16 +81,19 @@ def persist_write_facts(
 def plan_from_packet(packet, live_size=None):
     """Rebuild claimed offsets. Reallocate if live titan size differs.
 
-    Fail closed when live size already equals claimed_append_end —
-    a second --go must not append another copy.
+    Fail closed when live size already equals claimed_append_end
+    or when the append guard sees an unexpected / incident size —
+    a later --go must not reallocate and append another copy.
     """
     packet = packet or {}
     organs = list(packet.get("organs") or [])
     base = int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
+    refused, reason = refuse_further_append(packet, live_size)
     if (
         live_size is not None
         and int(live_size) != base
         and not already_applied(packet, live_size)
+        and not refused
     ):
         base = int(live_size)
     allocated, end = allocate_rows(organs, base=base)
@@ -105,7 +109,10 @@ def plan_from_packet(packet, live_size=None):
         "organs": allocated,
         "reallocated": live_size is not None
         and int(live_size) != int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
-        and not already_applied(packet, live_size),
+        and not already_applied(packet, live_size)
+        and not refused,
+        "refused": refused,
+        "refuse_reason": reason if refused else "",
     }
 
 
@@ -355,6 +362,23 @@ def main(argv=None):
                 write_count,
                 reread_count,
             )
+        )
+        json.dump(payload, sys.stdout, indent=2, sort_keys=True)
+        sys.stdout.write("\n")
+        print("DIE")
+        return 0
+    refused, reason = refuse_further_append(packet, live_size, path=titan_path)
+    if refused:
+        payload["wrote"] = False
+        payload["reread"] = True
+        payload["live_size_before"] = int(live_size or 0)
+        payload["live_size_after"] = int(live_size or 0)
+        payload["written_bytes"] = 0
+        payload["state"] = "INTEGRATED"
+        payload["note"] = (
+            "append guard refuse-closed. %s. artifact preserved at live_size=%s. "
+            "no truncate/dedupe/overwrite. packet claimed_append_end stays %s."
+            % (reason, live_size, packet.get("claimed_append_end"))
         )
         json.dump(payload, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")

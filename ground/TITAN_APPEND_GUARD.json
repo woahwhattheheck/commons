@@ -1,0 +1,57 @@
+{
+  "source_id": "rivet-ship-titan-append-guard-20260825-01",
+  "slack_ts": "1787638151.184599",
+  "kind": "TITAN_APPEND_GUARD",
+  "titan": "NOT_WRITTEN",
+  "apply": false,
+  "preserve_exact": true,
+  "refuse_truncate": true,
+  "refuse_dedupe": true,
+  "refuse_overwrite": true,
+  "live_size": 103831308164,
+  "mtime": "2026-08-25T04:48:50.092Z",
+  "baseline": 103803350291,
+  "payload_len": 9319291,
+  "copy_count": 3,
+  "span_sha256": "3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c",
+  "spans": [
+    {
+      "copy": 1,
+      "start": 103803350291,
+      "end": 103812669582
+    },
+    {
+      "copy": 2,
+      "start": 103812669582,
+      "end": 103821988873
+    },
+    {
+      "copy": 3,
+      "start": 103821988873,
+      "end": 103831308164
+    }
+  ],
+  "packet_live_size_after": 103812669582,
+  "packet_state": "STALE",
+  "repair_plan": {
+    "apply": false,
+    "canonical_first_copy": "UNDECIDED",
+    "preserve_bytes": 103831308164,
+    "do_not": [
+      "truncate",
+      "dedupe",
+      "overwrite",
+      "rerun the append",
+      "label the first copy canonical without owner authorization"
+    ]
+  },
+  "hands_off": [
+    "DIO + JOJO owner-machine live hash / reread of C:\\llm\\models\\titan.gguf",
+    "owner-authorized repair actuation that picks a canonical size",
+    "titan.gguf write",
+    "truncate / dedupe / overwrite of the 103831308164-byte artifact",
+    "CML PR 2108",
+    "working-builds leftover",
+    "flight recorder"
+  ]
+}

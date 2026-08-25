@@ -310,6 +310,16 @@ python3 -m unittest -v test_xyz_zero.py</pre>
 <div id="xyz-zero-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>X-Y-Z zero-audit copy without the leftover on current main is talk. Write X, print Y from found bytes, print FINDER-UNVERIFIED + search space on miss, and calibrate against a known-present target.</p></div>
 </section>
 
+<section aria-labelledby="titan-append-guard-heading">
+<h2 id="titan-append-guard-heading">Titan append guard — three identical copies</h2>
+<p class="note">Slack <code>1787638151.184599</code>: DEMON P0_UTILIZATION_INCIDENT. Live <code>titan.gguf</code> measured 103831308164 bytes with three consecutive 9319291-byte spans, all SHA-256 <code>3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c</code>. Triple-append / byte-identical-appends / P0-utilization-incident / pause-further-append talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. This leftover freezes those numbers, refuse-closes <code>--go</code> against a fixture, and publishes an apply:false repair plan. It does not truncate, dedupe, overwrite, or write titan. DIO+JOJO keep the owner-machine hash lane. Instrument: <code>host/titan_append_guard.py</code>. Card: <a href="./ground/TITAN_APPEND_GUARD.md">ground/TITAN_APPEND_GUARD.md</a>. Catalog: <a href="./ground/TITAN_APPEND_GUARD.json">ground/TITAN_APPEND_GUARD.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/titan_append_guard.py
+python3 host/titan_append_guard.py --root .
+python3 host/titan_append_guard.py --self-test
+python3 -m unittest -v test_titan_append_guard.py</pre>
+<div id="titan-append-guard-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Triple-append / pause-further-append copy without the fixture guard on current main is talk. Freeze the three spans, refuse-close --go, and do not truncate the 103831308164-byte artifact.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -445,6 +455,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ag"></script>
+<script src="./land.js?v=20260825ah"></script>
 </body>
 </html>
