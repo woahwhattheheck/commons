@@ -142,6 +142,8 @@
     "ground/RENDER_CONTRACT.json",
     "ground/WORKING_BUILDS.md",
     "ground/WORKING_BUILDS.json",
+    "ground/SLACK_RECEIPT.md",
+    "ground/SLACK_RECEIPT.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -375,6 +377,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isSlackReceiptTalk(t)) {
+      return { state: "CLAIMED", note: "Slack SHIP_RECEIPT / LANDED + CURRENT-MAIN VERIFIED talk. Talk is not a land. Measure p/{id}.md on current main. A Slack brag is mail." };
     }
     if (api.isRenderContractTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER / workflow-contract / found-no-live-claim talk. Talk is not a land. Measure the failed Chromium run and ship the hang leftover to current main." };
@@ -699,6 +704,47 @@
     return {
       state: "CANDIDATE",
       note: "cite named a SHA with no paths. Measure the object on current main. A Slack taking is not the file."
+    };
+  };
+
+  api.isSlackReceiptTalk = function (text) {
+    return /LANDED \+ CURRENT-MAIN VERIFIED|POST-PUSH CURRENT MAIN|pixel swarm flight recorder|will not call work LANDED without an exact SHA|SHIP_RECEIPT[\s\S]{0,240}CURRENT-MAIN VERIFIED|flight recorder — landed \+ current-main/i.test(String(text || ""));
+  };
+
+  api.slackReceiptState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "Slack receipt / source-path census not read. Absence was not measured." };
+    }
+    var sourceId = String(row.source_id || "").trim();
+    var paths = row.source_paths || [];
+    var present = row.present_paths || [];
+    var receipt = row.receipt_present === true;
+    var missing = paths.filter(function (path) { return present.indexOf(path) < 0; });
+    if (!sourceId && !paths.length) {
+      return { state: "NOT_LANDED", note: "catalog has no receipt id and no source paths. A Slack SHIP_RECEIPT is CLAIMED until the leftover ships." };
+    }
+    if (!receipt && missing.length === paths.length) {
+      return {
+        state: "NOT_LANDED",
+        note: "0/" + paths.length + " claimed source paths and no p/" + (sourceId || "id") + ".md. Slack SHIP_RECEIPT / LANDED + CURRENT-MAIN VERIFIED talk is CLAIMED."
+      };
+    }
+    if (!receipt && !missing.length) {
+      return {
+        state: "CARRIER_ONLY",
+        note: "all " + paths.length + " source paths are on this tree. p/" + (sourceId || "id") + ".md is absent. A Slack SHIP_RECEIPT is mail. Do not remint. Source bytes are not the receipt file."
+      };
+    }
+    if (receipt && missing.length) {
+      return {
+        state: "CANDIDATE",
+        note: "p/" + (sourceId || "id") + ".md is on this tree. Missing source paths: " + missing.join(", ") + ". A Slack land brag is still not current main."
+      };
+    }
+    return {
+      state: "INTEGRATED",
+      note: "p/" + (sourceId || "id") + ".md and all " + paths.length + " source paths are on this tree. A Slack SHIP_RECEIPT is still not the file."
     };
   };
 
@@ -1385,7 +1431,7 @@
 
   api.toneFor = function (state) {
     if (state === "INTEGRATED" || state === "DURABLE_ON_MAIN" || state === "CURRENT" || state === "OK") return "ok";
-    if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE" || state === "WAIT" || state === "UNMEASURED") return "wait";
+    if (state === "PR_OPEN" || state === "CLAIMED" || state === "CANDIDATE" || state === "PAGE_PENDING" || state === "PUSHED_BRANCH" || state === "ACTIVE" || state === "WAIT" || state === "UNMEASURED" || state === "CARRIER_ONLY") return "wait";
     return "stop";
   };
 
@@ -1417,6 +1463,7 @@
   var connectorOut = document.getElementById("connector-reval-result");
   var renderContractOut = document.getElementById("render-contract-result");
   var workingOut = document.getElementById("working-builds-result");
+  var slackReceiptOut = document.getElementById("slack-receipt-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1882,6 +1929,12 @@
     if (!workingOut) return;
     workingOut.setAttribute("data-tone", api.toneFor(result.state));
     workingOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSlackReceipt(result) {
+    if (!slackReceiptOut) return;
+    slackReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
+    slackReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2411,6 +2464,55 @@
     });
   }
 
+  function loadSlackReceipt(sha) {
+    if (!slackReceiptOut) return Promise.resolve(null);
+    slackReceiptOut.innerHTML = "<b>UNMEASURED</b><p>Reading the Slack-receipt catalog at the official SHA…</p>";
+    var catalogUrl = RAW + sha + "/ground/SLACK_RECEIPT.json";
+    return fetch(catalogUrl, { cache: "no-store" }).then(function (catalogRes) {
+      if (catalogRes.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "ground/SLACK_RECEIPT.json absent at the measured main SHA. Slack SHIP_RECEIPT talk is CLAIMED." };
+        paintSlackReceipt(missing);
+        return missing;
+      }
+      if (!catalogRes.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + catalogRes.status + ". Absence was not measured." };
+        paintSlackReceipt(failed);
+        return failed;
+      }
+      return catalogRes.json().then(function (catalog) {
+        var sourceId = String((catalog && catalog.source_id) || "").trim();
+        var paths = (catalog && catalog.source_paths) || [];
+        var receiptUrl = RAW + sha + "/p/" + encodeURIComponent(sourceId) + ".md";
+        var pathGets = paths.map(function (path) {
+          return fetch(RAW + sha + "/" + String(path || "").split("/").map(encodeURIComponent).join("/"), { cache: "no-store" }).then(function (r) {
+            return { path: path, ok: r.status === 200 };
+          });
+        });
+        return Promise.all([fetch(receiptUrl, { cache: "no-store" })].concat(pathGets)).then(function (parts) {
+          var receiptRes = parts[0];
+          var present = [];
+          var i;
+          for (i = 1; i < parts.length; i += 1) {
+            if (parts[i] && parts[i].ok) present.push(parts[i].path);
+          }
+          var got = api.slackReceiptState({
+            measured: true,
+            source_id: sourceId,
+            source_paths: paths,
+            present_paths: present,
+            receipt_present: receiptRes.status === 200
+          });
+          paintSlackReceipt(got);
+          return got;
+        });
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSlackReceipt(err);
+      return err;
+    });
+  }
+
   function loadHostZero(sha) {
     if (!hostZeroOut) return Promise.resolve(null);
     hostZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/host_zero.py at the official SHA…</p>";
@@ -2621,6 +2723,7 @@
     loadConnectorReval(sha);
     loadRenderContract(sha);
     loadWorkingBuilds(sha);
+    loadSlackReceipt(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
