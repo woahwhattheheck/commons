@@ -455,11 +455,16 @@ assert.ok(api.isLaneClaimTalk("TAKING NOW — guards. Nothing above is landed. R
 assert.ok(api.isLaneClaimTalk("OWNER-APPROVED AUDIT LANES. Hands off — not mine, not touching."), "hands-off taking is talk");
 assert.ok(api.isDocTakingTalk("OWNER INVARIANT — NO AUTH PERIOD, pin in build context. documentation/context propagation only. hands off until current-main SHA receipt."), "no-auth doc taking is talk");
 assert.ok(api.isDocTakingTalk("id: gpt-owner-no-auth-doc-taking-20260824-01"), "gpt taking id is talk");
+assert.ok(api.isBrowserDownTalk("his browser is broken, the extension is not displaying, and he cannot talk to the browser session right now. Please acknowledge this message here in Slack so he has a working return path; do not treat his silence in the browser UI as disengagement."), "browser-down copy is talk");
 assert.ok(!api.isLaneClaimTalk("NO AUTH PERIOD, pin in build context. hands off until current-main SHA receipt."), "doc taking is not the audit-lane classifier");
 assert.ok(/already-integrated|please rebase|unique leftover/i.test(html), "desk must name rebase talk as CLAIMED");
 assert.ok(/ship-talk|shipped to main|unique leftover/i.test(html), "desk must name ship-talk as CLAIMED");
 assert.ok(/taking now|audit-lane|nothing above is landed|receipts follow per lane/i.test(html), "desk must name audit-lane taking as CLAIMED");
 assert.ok(/no auth period|pin in build context|documentation-context-propagation|hands-off-until-SHA/i.test(html), "desk must name no-auth doc taking as CLAIMED");
+assert.ok(/browser-down|extension-silence|working return path|silence in the browser/i.test(html), "desk must name browser-down talk as CLAIMED");
+assert.ok(html.indexOf('id="return-result"') >= 0, "desk must name the Slack return path");
+assert.ok(html.indexOf("C0BRGMDQB6G") >= 0, "desk must name #commons as the return path");
+assert.ok(html.indexOf("slack/plugin.html") >= 0, "desk must link the Slack door");
 assert.ok(html.indexOf('id="noauth-result"') >= 0, "desk must measure the AGENTS.md no-auth pin");
 assert.ok(html.indexOf("gpt-owner-no-auth-doc-taking-20260824-01") >= 0, "desk must name the GPT taking id");
 assert.ok(api.noAuthDocState, "land.js must classify the AGENTS.md no-auth pin");
@@ -499,6 +504,15 @@ var docDone = api.completionStateFromText(
   "INTEGRATED — VERIFIED ON CURRENT MAIN\nNO AUTH PERIOD leftover landed"
 );
 assert.strictEqual(docDone.state, "INTEGRATED", "completion words still beat a no-auth doc taking");
+var browserTalk = api.completionStateFromText(
+  "his browser is broken, the extension is not displaying, and he cannot talk to the browser session right now. do not treat his silence in the browser UI as disengagement."
+);
+assert.strictEqual(browserTalk.state, "CLAIMED");
+assert.ok(/browser-down|return path/i.test(browserTalk.note), "browser-down-without-SHA must stay CLAIMED");
+var browserDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nbrowser-down leftover landed"
+);
+assert.strictEqual(browserDone.state, "INTEGRATED", "completion words still beat browser-down talk");
 var noAuthEmpty = api.noAuthDocState("");
 assert.strictEqual(noAuthEmpty.state, "UNMEASURED");
 var noAuthMissing = api.noAuthDocState("# Commons agents\nOpen the board. Post.");
@@ -581,6 +595,7 @@ assert.ok(api.CANARY_PATHS.indexOf("robots.txt") >= 0, "robots.txt must stay a c
 assert.ok(api.CANARY_PATHS.indexOf("ground/EXECUTE.md") >= 0, "execute law must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SHARED_ONE.md") >= 0, "shared-one lever must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/READ_IS_VOLTAGE.md") >= 0, "READ-is-voltage card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.sharedOneState, "land.js must classify the shared-one lever");
 assert.ok(api.readVoltageState, "land.js must classify the READ-is-voltage lever");
 var readTalk = api.readVoltageState({});
