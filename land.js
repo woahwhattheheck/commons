@@ -154,6 +154,8 @@
     "ground/STALE_MANIFEST.json",
     "ground/CLAUDE_TESTER.md",
     "ground/CLAUDE_TESTER.json",
+    "ground/IMPACT_LEDGER.md",
+    "ground/IMPACT_LEDGER.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -457,6 +459,9 @@
     if (api.isFinderZeroTalk(t)) {
       return { state: "CLAIMED", note: "finder-zero / false-zero / collision-check / FINDER UNVERIFIED talk. Talk is not a land. A Slack-search zero is not clearance. Ship the leftover that prints the search space and never a silent 0." };
     }
+    if (api.isImpactLedgerTalk(t)) {
+      return { state: "CLAIMED", note: "P0 containment / TRACE CONSUMERS / Claude-cannot-certify talk. Talk is not a land. Ship the impact-ledger leftover. A Claude zero is QUARANTINED. Miss is FINDER-FAILED, never 0." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -601,6 +606,30 @@
       state: "NOT_LANDED",
       note: "host/finder_zero.py missing the miss-branch rule. Finder-zero talk is CLAIMED until the leftover ships."
     };
+  };
+
+  api.isImpactLedgerTalk = function (text) {
+    return /p0 containment|claude false-zero|trace consumers|claude cannot certify|impact-ledger|FINDER-FAILED|every claude-reported zero|downstream damage/i.test(String(text || ""));
+  };
+
+  api.impactLedgerState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/impact_ledger.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body) || /def measure_tree/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasSpace = /def search_space/.test(body);
+    var hasCalibrate = /def calibrate/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /never 0/.test(body);
+    var hasTrace = /TRACE CONSUMERS/.test(body) && /QUARANTINED/.test(body);
+    if (hasMeasure && hasClassify && hasSpace && hasCalibrate && hasMiss && hasTrace) {
+      return {
+        state: "INTEGRATED",
+        note: "impact-ledger leftover is on this file. Miss branch is FINDER-FAILED, never 0. Claude zeros stay QUARANTINED. A Slack containment alert is still not the file."
+      };
+    }
+    return { state: "NOT_LANDED", note: "host/impact_ledger.py missing the consumer-trace leftover. P0 containment talk is CLAIMED." };
   };
 
   api.workingBuildState = function (text) {
@@ -1624,6 +1653,7 @@
   var finderZeroOut = document.getElementById("finder-zero-result");
   var staleManifestOut = document.getElementById("stale-manifest-result");
   var claudeTesterOut = document.getElementById("claude-tester-result");
+  var impactLedgerOut = document.getElementById("impact-ledger-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2127,6 +2157,12 @@
     claudeTesterOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintImpactLedger(result) {
+    if (!impactLedgerOut) return;
+    impactLedgerOut.setAttribute("data-tone", api.toneFor(result.state));
+    impactLedgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2618,6 +2654,33 @@
     });
   }
 
+  function loadImpactLedger(sha) {
+    if (!impactLedgerOut) return Promise.resolve(null);
+    impactLedgerOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/impact_ledger.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/impact_ledger.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/impact_ledger.py absent at the measured main SHA. P0 containment / TRACE CONSUMERS talk is CLAIMED." };
+        paintImpactLedger(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintImpactLedger(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.impactLedgerState(body);
+        paintImpactLedger(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintImpactLedger(err);
+      return err;
+    });
+  }
+
   function loadFinderZero(sha) {
     if (!finderZeroOut) return Promise.resolve(null);
     finderZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/finder_zero.py at the official SHA…</p>";
@@ -3054,6 +3117,7 @@
     loadFinderZero(sha);
     loadStaleManifest(sha);
     loadClaudeTester(sha);
+    loadImpactLedger(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

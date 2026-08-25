@@ -280,6 +280,16 @@ python3 -m unittest -v test_claude_tester.py</pre>
 <div id="claude-tester-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Stop-using-Claude-testers copy without the leftover on current main is talk. Ship the resource-ledger row. Do not assign Claude a tester role.</p></div>
 </section>
 
+<section aria-labelledby="impact-ledger-heading">
+<h2 id="impact-ledger-heading">Impact ledger — TRACE CONSUMERS</h2>
+<p class="note">Slack <code>1787638509.277739</code>: OWNER P0 CONTAINMENT ALERT — Claude false-zero defect caused downstream damage. Finder logic was <code>if find(X): return Y</code> with no Z, so finder failures became authoritative zeros. P0 containment / TRACE CONSUMERS / Claude-cannot-certify / FINDER-FAILED / every-Claude-reported-zero talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Claude can implement; Claude cannot certify. Every Claude-reported <code>0</code> / <code>none</code> / <code>absent</code> / <code>no claim</code> is <code>QUARANTINED</code>. Miss prints <code>FINDER-FAILED</code> plus the search space, never <code>0</code>. High-risk first: collision, titan, mcp, device, wake, capacity, pr_absence. Did not remint <code>gauge-zero-audit-20260825-01</code> or <code>rivet-ship-finder-zero-20260825-01</code>. Did not take JOJO visual-ci, SPECTER MCP/wake, DIO titan <code>--go</code>, or CML 2108. Instrument: <code>host/impact_ledger.py</code>. Card: <a href="./ground/IMPACT_LEDGER.md">ground/IMPACT_LEDGER.md</a>. Catalog: <a href="./ground/IMPACT_LEDGER.json">ground/IMPACT_LEDGER.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/impact_ledger.py
+python3 host/impact_ledger.py --root .
+python3 host/impact_ledger.py --self-test
+python3 -m unittest -v test_impact_ledger.py</pre>
+<div id="impact-ledger-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>P0 containment / TRACE CONSUMERS copy without the leftover on current main is talk. Record source, X/Y/Z, owner, and repair. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -415,6 +425,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ad"></script>
+<script src="./land.js?v=20260825ae"></script>
 </body>
 </html>

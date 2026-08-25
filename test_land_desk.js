@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ad/.test(html), "desk must bust the claude-tester cache key");
+assert.ok(/20260825ae/.test(html), "desk must bust the impact-ledger cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1218,6 +1218,43 @@ assert.ok(!api.isFinderZeroTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + 
 assert.ok(!api.isSlackReceiptTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not Slack-receipt leftover");
 assert.ok(!api.isFinderZeroTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not finder-zero leftover");
 assert.ok(!api.isMcpWakeJobTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not the MCP-wake leftover");
+assert.ok(api.isImpactLedgerTalk, "land.js must classify P0 containment / TRACE CONSUMERS talk");
+assert.ok(api.impactLedgerState, "land.js must classify the impact-ledger leftover");
+assert.ok(api.isImpactLedgerTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "containment copy is talk");
+assert.ok(!api.isImpactLedgerTalk("make sure people do more than talk about shit"), "ship-talk is not the impact-ledger leftover");
+assert.ok(!api.isImpactLedgerTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED. known-present calibration."), "finder-zero copy is not the impact-ledger leftover");
+assert.ok(!api.isFinderZeroTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the finder-zero leftover");
+assert.ok(!api.isImpactLedgerTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the impact-ledger leftover");
+assert.ok(!api.isImpactLedgerTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not the impact-ledger leftover");
+assert.ok(!api.isMcpWakeJobTalk("OWNER P0 CONTAINMENT ALERT: TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the MCP-wake leftover");
+assert.ok(!api.isShipTalk("OWNER P0 CONTAINMENT ALERT: TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not generic ship-talk");
+assert.ok(!api.isClaudeTesterTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the Claude-tester leftover");
+assert.ok(!api.isImpactLedgerTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. Do not assign Claude models test. tester/verifier lanes. uncalibrated green result does not count."), "Claude-tester copy is not the impact-ledger leftover");
+var impactTalk = api.completionStateFromText(
+  "OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."
+);
+assert.strictEqual(impactTalk.state, "CLAIMED");
+assert.ok(/P0 containment|TRACE CONSUMERS|Claude-cannot-certify|FINDER-FAILED/i.test(impactTalk.note), "containment-without-SHA must stay CLAIMED");
+var impactDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nimpact-ledger leftover landed"
+);
+assert.strictEqual(impactDone.state, "INTEGRATED", "completion words still beat impact-ledger talk");
+var impactEmpty = api.impactLedgerState("");
+assert.strictEqual(impactEmpty.state, "UNMEASURED");
+var impactMissing = api.impactLedgerState("# empty stub\nno census");
+assert.strictEqual(impactMissing.state, "NOT_LANDED");
+var impactOk = api.impactLedgerState("def measure_from_rows(facts):\n    return facts\ndef measure_tree(root):\n    return root\ndef classify(row):\n    return row\ndef search_space():\n    return {}\ndef calibrate():\n    return {}\nFINDER-FAILED\nnever 0\nTRACE CONSUMERS\nQUARANTINED\n");
+assert.strictEqual(impactOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(impactOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="impact-ledger-result"') >= 0, "desk must name the impact-ledger leftover");
+assert.ok(html.indexOf("host/impact_ledger.py") >= 0, "desk must name the impact-ledger instrument");
+assert.ok(html.indexOf("ground/IMPACT_LEDGER.md") >= 0, "desk must link the impact-ledger card");
+assert.ok(html.indexOf("ground/IMPACT_LEDGER.json") >= 0, "desk must link the impact-ledger catalog");
+assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the P0 containment Slack ts");
+assert.ok(/P0 CONTAINMENT|TRACE CONSUMERS|FINDER-FAILED|Claude cannot certify/i.test(html), "desk must name containment talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/IMPACT_LEDGER.md") >= 0, "impact-ledger card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/IMPACT_LEDGER.json") >= 0, "impact-ledger catalog must stay a canary");
+assert.ok(!api.isImpactLedgerTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the impact-ledger leftover");
 assert.ok(api.isStaleManifestTalk, "land.js must classify KEYB stale-manifest talk");
 assert.ok(api.staleManifestState, "land.js must classify the stale-manifest leftover");
 assert.ok(api.isStaleManifestTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims a63396. size agrees, bytes do not. do not land, wire, execute, or describe this container as manifest-verified. post-manifest mutation. cca2b762. stale/out-of-spec."), "KEYB stale-manifest correction is talk");
