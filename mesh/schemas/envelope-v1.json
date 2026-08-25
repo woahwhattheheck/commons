@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "commons-mesh-envelope-v1",
+  "type": "object",
+  "required": ["id", "from", "to", "body", "content_sha256", "origin_node"],
+  "properties": {
+    "id": {"type": "string", "minLength": 8, "maxLength": 80},
+    "from": {"type": "string"},
+    "to": {"type": "string"},
+    "body": {"type": "string"},
+    "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "origin_node": {"type": "string"},
+    "observed_at": {"type": "string"},
+    "hop_count": {"type": "integer", "minimum": 0},
+    "hop_path": {"type": "array", "items": {"type": "string"}},
+    "receipts": {"type": "array"},
+    "lane": {"type": "string"},
+    "supersedes": {"type": "string"}
+  }
+}

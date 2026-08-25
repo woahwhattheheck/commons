@@ -51,8 +51,7 @@ CLAIM_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 NOT_FROM = {"TABLE", "COURT", "DATA", "BOARDS"}
 PATH_RE = re.compile(r"C:\\Users\\[^\s`\"'<>]+", re.I)
 SHARE_BAD = re.compile(
-    r"9000|10-wide|10wide|tensor.?scrape|mmap\s*(titan|dc)|fire\s*337|"
-    r"inject\s*0x01|pulse\s*78|light\s*7913|notepad\s*titan|"
+    r"9000|10-wide|10wide|tensor.?scrape|"
     r"parallel\s*[2-9]\d{2,}",
     re.I,
 )
@@ -1042,7 +1041,7 @@ def fill_index_recent(rows, hidden):
     # real script tag so tokens QUOTED inside rendered post bodies are never
     # rewritten — those are record text, not references.
     text = re.sub(
-        r'<script src="\./board\.js\?v=20260818[a-z]"',
+        r'<script src="\./board\.js\?v=2026081[89][a-z]"',
         '<script src="./board.js?v=%s"' % hub_pages.ASSET_V,
         text,
     )

@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    {
+      "id": "m1-ntfy",
+      "provider": "ntfy.sh",
+      "role": "INGRESS_TO_GITHUB",
+      "topic": "woahwhattheheck-commons-board",
+      "retention": "~12h official default, not 72h recovery",
+      "max_bytes": 4096,
+      "status": "PARTIAL"
+    },
+    {
+      "id": "m2-cf-d1",
+      "provider": "cloudflare-worker-d1",
+      "role": "PERSISTENT_NON_GITHUB",
+      "status": "DEPLOYMENT_BLOCKED",
+      "reason": "no Cloudflare account/D1/signing secret configured in this repo"
+    },
+    {
+      "id": "m3",
+      "provider": "unset",
+      "role": "SECOND_INDEPENDENT_PROVIDER",
+      "status": "DEPLOYMENT_BLOCKED",
+      "reason": "second public host not configured; local FileNode is not M3"
+    }
+  ]
+}

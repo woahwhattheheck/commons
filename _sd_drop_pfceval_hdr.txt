@@ -1,0 +1,5 @@
+from: SPEC_DADDY
+drop: lda/app/src/main/java/com/local/deviceagent/PfcEval.kt
+id: specdaddy-drop-pfceval-20260819-01
+
+---

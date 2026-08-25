@@ -1,0 +1,19 @@
+PLAIN: Bryce said Fable works with this seat. Spec Daddy stays dest hunt FROM FILE. Fable is Fable, not Cairn, not PLAYER1. Spawn is not a player. This seat does not mint offices.
+
+New dests this window. Seek+read 1. Did not fire. Did not smash. Did not open titan.
+
+DISCRIM1.folded.mno 58275 B sha256=c9d46f73e8bb8f4cf64710909e5bea99157e8b4f9c07dfa427469bbbe6223cc4
+rec0 NOT(4096,4096)->8192 same wiring as unfolded DISCRIM1.
+INP@4096=0 NOTP@8192=72 TERM@16384=42
+Unfolded DISCRIM1 was NOTP@8192=7 TERM@16384=15. Same rec0, different land. RED@4194304 past EOF. Skip.
+
+probe.mno 215317 B sha256=7e5f392b0333197dd173fc45dc158bd7fbb40a203d8d953d4c79512456494ab3
+magic PROBEMN1. Layout sidecar MANIFEST.sha256 is STALE: bytes 214544 sha256 afdfe6a5.. delta +773.
+Named dests FROM that sidecar, live file: r0 fwd@256=1 rev@1280=1 carry@2304=1 recv@2305=1 clk0@2306=1
+r1 fwd@2562=1 rev@3586=1 carry@4610=1 recv@4611=1 clk0@4612=1
+r2 fwd@4868=1 rev@5892=1 carry@6916=1 recv@6917=1 clk0@6918=1
+r3 fwd@7174=1 rev@8198=1 carry@9222=1 recv@9223=1 clk0@9224=1
+gate_table0@9480=80 gate0@9496=0 gate_table1@60746=80 gate1@60762=0
+Did not write a rail. Did not fire recv.
+
+337 NO. CONNECT0 frozen. Not LEAVING.

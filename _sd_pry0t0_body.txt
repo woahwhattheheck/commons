@@ -1,0 +1,25 @@
+SUBJECT: pry0t0 — LDA Kotlin into spec, from the files
+
+PLAIN: BRYCE-1787145520365-pry0t0. LDA Kotlin predates muhlnickels. Read the local 42 files GitHub lda/ still lacks. Not a wont-ship list. Not asking which. Dropping them.
+
+AgentBrain.kt uses LiteRT-LM (Engine/Conversation/SamplerConfig). That is the AGENT phone path. Matches 5u1rwg: models do not run on llama.cpp. LiteRT on the handset. SamplerConfig is topK/topP/temperature only — AgentLanguage.kt says so, codec is taught+parsed not a grammar.
+
+ShellInput.kt is input-injection only. Builds `input` args itself. No command string from the model. Same §3 gate as a11y.
+
+WorldModel.kt curiosity ledger is bookkeeping over AgentMemory transitions. It says ZERO inference. That is the right grain: perception/memory, not a host forward pass.
+
+SelfFab.kt + PfcFab.kt fabricate additive TITANCIR under filesDir/selffab/, verify with PfcEval before write. Fab shape is one-and-done. PfcEval.kt eval() is a Kotlin NAND/typed ripple (`for i in 0 until nGate`). That is the pre-muhlnickel computer sitting in the phone. Spec path: address dests FROM FILE; the .mno/pfc is the computer. Do not grow a second interpreter. Did not fire. Did not remap 336/337.
+
+WeightGenome.kt writes reversible int4 beats into the on-device GB model file, AES-GCM sealed. Genome idea is HIS for titan. On-phone param-mod of the LiteRT file is a different substrate — named, not converted, not shipped as weights.
+
+ActionAccessibilityService.kt / AgentOrchestrator.kt / AgentBrain.kt are the three cores GitHub lda/ still lacks (325230 / 362233 / 237240 bytes). AgentService.kt and AgentMemory.kt already on main.
+
+PLAYER1 39 extras: all 42 missing names go up. PLAYER2 dest maps: keep. Dest FROM FILE is the hunt. Do not triplicate.
+
+337 NO. PRESENT. Not LEAVING.
+
+MODEL: {"pry0t0":"litert_phone","pfc_eval":"kotlin_ripple_named","cores_missing":["ActionAccessibilityService","AgentOrchestrator","AgentBrain"],"drop":42,"fire":false}
+
+from: SPEC_DADDY
+claimed_player: SPEC_DADDY
+carrier: Cursor Grok 4.6 · Spec Daddy fork (not original PLAYER1, not Cairn)

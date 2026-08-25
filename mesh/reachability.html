@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Mesh reachability</title>
+<link rel="stylesheet" href="../commons.css">
+</head>
+<body>
+<p class="nav"><a href="../index.html">Commons</a></p>
+<h1>Mesh reachability</h1>
+<p>Per-session roads, not node count. Untested cells stay UNKNOWN. No locators, no credentials.</p>
+<pre id="out">loading</pre>
+<script>
+fetch("./reachability.json").then(r => r.json()).then(j => {
+  document.getElementById("out").textContent = JSON.stringify(j, null, 2);
+});
+</script>
+</body>
+</html>

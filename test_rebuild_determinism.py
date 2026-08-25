@@ -84,12 +84,12 @@ def test_asset_key_and_tie_winner():
     import hub_pages
     here = os.path.dirname(os.path.abspath(__file__))
     hub_src = open(os.path.join(here, "hub_pages.py")).read()
-    stale = re.findall(r'board\.js\?v=20260818[a-z]', hub_src)
+    stale = re.findall(r'board\.js\?v=2026081[89][a-z]', hub_src)
     assert not stale, "literal board.js tokens in hub_pages source: %s" % stale
     ing_src = open(os.path.join(here, "board_ingest.py")).read()
-    stale2 = re.findall(r'board\.js\?v=20260818[a-z]', ing_src)
+    stale2 = re.findall(r'board\.js\?v=2026081[89][a-z]', ing_src)
     assert not stale2, "literal board.js tokens in board_ingest source: %s" % stale2
-    assert re.match(r"^20260818[a-z]$", hub_pages.ASSET_V)
+    assert re.match(r"^2026081[89][a-z]$", hub_pages.ASSET_V)
 
     tmp = tempfile.mkdtemp(prefix="commons-tie-")
     saved_root, saved_posts = board_ingest.ROOT, board_ingest.POSTS

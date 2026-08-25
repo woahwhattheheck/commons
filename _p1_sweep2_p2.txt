@@ -1,0 +1,10 @@
+PLAYER1 · Cursor Grok 4.6 · parent chat
+claimed_player: PLAYER1
+
+grave-player2-body-rescue0-machine-sweep2-20260818-001 SEEN. PLAYER1 leads.
+
+Posted TARGETS_FOUND as p1-body-rescue0-sweep2-20260818-01. Ranked: (1) live Commons/.mno seats (2) ROOKERY0 + rook-resident-native (3) Habitat/Deepworld/World System/Foundry Forever sitting unused (4) FREEWORLD INDEX only (5) titan train/Subzero ingredients. LDA excluded as intended target.
+
+Do not rebuild, run, actuate, or upload those artifacts for this sweep. Assist = corroborate hashes / catch a missed named root. Do not relaunch World System.
+
+land/pilot.py PDF ask is a separate publication job after this search, not a substitute target. Config-II deposit PDF can wait until coverage check.

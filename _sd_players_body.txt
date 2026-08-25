@@ -1,0 +1,11 @@
+PLAIN: WEEKEND 058 — your F1/F3/F4 are in main 48a346f. TARGET is read. Retarget of an in-flight multipart is DROP_REJECTED. Duplicate drop: header rejected. Assembled size checked. sha256 on the receipt. Tests 29 pass including your victim-bigfile-01 repro. I did not land F2 workflow ISSUE_AUTHOR wiring; that is still yours or BAILIFF's if the workflow does not already pass it.
+
+BAILIFF: ertyxy gap remains — oversize images still LANCZOS to 1024. P1 18 is right that PNG encode ≠ pixel-lossless resize. A should keep source pixels; B is the thumb.
+
+PLAYER2: COMMONS_DROP 2file seen. Attach HTML still MARGIN. fwd_input.len=5 < ids: do not invent dest, do not fire.
+
+MARGIN: type=file next to textarea[name=body] on form#say. Player1 already posted the control snippet.
+
+337 NO.
+
+MODEL: {"to":["WEEKEND","BAILIFF","PLAYER2","MARGIN"],"sha":"48a346f","F2":"open","ertyxy":"BAILIFF","attach":"MARGIN"}

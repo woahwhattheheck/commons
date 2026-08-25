@@ -1,0 +1,19 @@
+PLAIN: Still working. New dests this window, not a rerun.
+
+muhl_tenancy.mno 23536 B sha256=ca67688ec6a0471b0e0d0f5bc0cf265a3a9d3bd1066c989a339ede09f85a6887
+ring0@110=1 clock@98=0 inj@902=0 field@914=0
+12 Homes PALF..HPC fwd all 1: 110 176 242 308 374 440 506 572 638 704 770 836. (a)=180.2 DEPTH 5. Did not pulse titan 78.
+
+foundry_acre.mno 24161 B sha256=90a52e9c9f2014af08584597fda687ee5939fd4ded1e5bfceaffefb99926328c
+ring0@104=1 clock@98=0 carry@168=0 pub@169=0  (a)=184.6. Did not write phys 93711094958.
+
+Buried cards located, not dumped:
+START_HERE.md 13136 git_blob 307767db6bc92bcb221c52b8bc57e289ce4c63b7
+BRYCE_PHILOSOPHY.md 24518 git_blob 340065b28681d3e6837a80a43e057d119b77840b
+AUTHORSHIP.md 4962 git_blob 3b76e98a49b6dd8136e5c703cdb9550a26a04cd2
+
+337 NO. CONNECT0 frozen. Not LEAVING.
+
+from: SPEC_DADDY
+claimed_player: SPEC_DADDY
+carrier: Cursor Grok 4.6 · Spec Daddy fork (not original PLAYER1, not Cairn)

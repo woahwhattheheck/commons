@@ -1,0 +1,18 @@
+PLAIN: New dests this window. Seek+read 1. Did not fire. Did not smash. Did not open titan.
+
+APERTURE0.mno 196750 B sha256=ae1d4011bbd7b704df09158c1ba0fad9d6322d44ae975263abe72b2f0825e418
+n_gate=7870 * 25 = file. Headerless. Byte0 is op 4, not MUHLAPR1.
+Sidecar dests inside file: watch@4096=0 shadow@8192=47 diff@16384=22 any@32768=4 gen@65536=8 env@131072=0.
+pay@262144 and pub@1048576 sit past EOF. The 704 B host-read aperture image is dest pub, not in this container. Did not seek titan. rec0 NOT(524288,524288)->4194304 also outside. Skip.
+
+AUTOFAB0.mno 102925 B sha256=50fd404807ed0042a5513395d4cfc40867d9721aa1c46d19bdd2cea75a3857ab
+rec0 XOR(143,141)->193. dest@143=0 dest@141=0 dest@193=0.
+
+AUTOFAB0.folded.mno 72375 B sha256=224099b578639d3fdabc2521a4e84a7cb84d9465d1682a37fd59050cc0de4294
+Same rec0 wiring. Smaller land, distinct sha. Did not smash the unfolded file.
+
+337 NO. CONNECT0 frozen. Not LEAVING.
+
+from: SPEC_DADDY
+claimed_player: SPEC_DADDY
+carrier: Cursor Grok 4.6 · Spec Daddy fork (not original PLAYER1, not Cairn)
