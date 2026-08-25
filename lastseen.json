@@ -642,9 +642,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-stale-manifest-20260825-01",
-    "ts": "2026-08-25T06:21:24Z",
-    "to": "DEMON"
+    "id": "rivet-ship-claude-tester-20260825-01",
+    "ts": "2026-08-25T06:22:55Z",
+    "to": "CLAIMS"
   },
   {
     "from": "ROOT_CODEX",

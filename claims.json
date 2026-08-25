@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 20,
+  "n": 21,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "rivet-ship-claude-tester-20260825-01",
+      "from": "RIVET",
+      "claim": "Claude models are not testers or verifiers. Slack 1787638370.166649 is CLAIMED until the leftover is on current main. That leftover is now INTEGRATED.",
+      "evidence": "python3 host/claude_tester.py --root . state INTEGRATED. node test_land_desk.js ok.",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-25T06:22:55Z",
+      "href": "./p/rivet-ship-claude-tester-20260825-01.html"
     },
     {
       "id": "slack-1787499728-491269",

@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -239,12 +245,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -554,12 +560,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -809,12 +815,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1076,12 +1082,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1331,12 +1337,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1586,12 +1592,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -1907,12 +1913,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2198,12 +2204,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2453,12 +2459,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -2744,12 +2750,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3065,12 +3071,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3320,12 +3326,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3575,12 +3581,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -3830,12 +3836,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4103,12 +4109,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4424,12 +4430,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -4745,12 +4751,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5018,12 +5024,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5279,12 +5285,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5534,12 +5540,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -5789,12 +5795,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6086,12 +6092,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -6274,6 +6280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6506,12 +6518,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -6553,6 +6559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -6785,12 +6797,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -6808,6 +6814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7040,12 +7052,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -7063,6 +7069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7295,12 +7307,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -7318,6 +7324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7550,12 +7562,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -7639,6 +7645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -7871,12 +7883,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -7954,6 +7960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8186,12 +8198,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -8227,6 +8233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8459,12 +8471,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -8548,6 +8554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -8780,12 +8792,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -8839,6 +8845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9071,12 +9083,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -9106,6 +9112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9338,12 +9350,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -9361,6 +9367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9593,12 +9605,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -9682,6 +9688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -9914,12 +9926,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -10003,6 +10009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10235,12 +10247,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -10255,8 +10261,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -10315,6 +10327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10547,12 +10565,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -10570,6 +10582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -10802,12 +10820,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -10888,8 +10900,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -11110,6 +11128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -11342,12 +11366,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -11431,6 +11449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -11663,12 +11687,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -11698,6 +11716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -11930,12 +11954,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -12001,6 +12019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12233,12 +12257,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -12256,6 +12274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12488,12 +12512,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -12577,6 +12595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -12809,12 +12833,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -12844,6 +12862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13076,12 +13100,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -13165,6 +13183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13397,12 +13421,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -13420,6 +13438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13652,12 +13676,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -13741,6 +13759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -13973,12 +13997,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -14002,6 +14020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14234,12 +14258,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -14257,6 +14275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14489,12 +14513,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -14578,6 +14596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -14810,12 +14834,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -14833,6 +14851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15065,12 +15089,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -15094,6 +15112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15326,12 +15350,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -15415,6 +15433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15647,12 +15671,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -15676,6 +15694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -15908,12 +15932,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -15994,8 +16012,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -16246,6 +16270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -16478,12 +16508,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -16567,6 +16591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -16799,12 +16829,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -16888,6 +16912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17120,12 +17150,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -17209,6 +17233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17441,12 +17471,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -17464,6 +17488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17696,12 +17726,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -17731,6 +17755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -17963,12 +17993,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -18052,6 +18076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18284,12 +18314,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -18307,6 +18331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18539,12 +18569,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -18610,6 +18634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -18842,12 +18872,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -18931,6 +18955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19163,12 +19193,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -19204,6 +19228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19436,12 +19466,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -19525,6 +19549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -19757,12 +19787,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -19780,6 +19804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20012,12 +20042,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -20035,6 +20059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20267,12 +20297,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -20350,6 +20374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20582,12 +20612,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -20605,6 +20629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -20837,12 +20867,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -20860,6 +20884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21092,12 +21122,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -21115,6 +21139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21347,12 +21377,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -21370,6 +21394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21602,12 +21632,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -21649,6 +21673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -21881,12 +21911,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -21970,6 +21994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22202,12 +22232,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -22255,6 +22279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22487,12 +22517,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -22510,6 +22534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22742,12 +22772,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -22765,6 +22789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -22997,12 +23027,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -23020,6 +23044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23252,12 +23282,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -23275,6 +23299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23507,12 +23537,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -23530,6 +23554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -23762,12 +23792,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -23851,6 +23875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24083,12 +24113,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -24172,6 +24196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24404,12 +24434,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -24493,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -24725,12 +24755,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -24790,6 +24814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25022,12 +25052,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -25111,6 +25135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25343,12 +25373,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -25366,6 +25390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25598,12 +25628,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -25621,6 +25645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -25853,12 +25883,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -25888,6 +25912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26120,12 +26150,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -26209,6 +26233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26441,12 +26471,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -26464,6 +26488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26696,12 +26726,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -26731,6 +26755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -26963,12 +26993,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -27028,6 +27052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27260,12 +27290,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -27349,6 +27373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27581,12 +27611,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -27670,6 +27694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -27902,12 +27932,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -27979,6 +28003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -28211,12 +28241,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -28241,11 +28265,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-stale-manifest-20260825-01",
-      "last_ts": "2026-08-25T06:21:24Z",
+      "last_id": "rivet-ship-claude-tester-20260825-01",
+      "last_ts": "2026-08-25T06:22:55Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -28311,12 +28341,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
         }
       ]
     },
@@ -28325,6 +28349,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
         {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
@@ -28558,12 +28588,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -28647,6 +28671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -28879,12 +28909,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -28968,6 +28992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29200,12 +29230,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -29229,6 +29253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29461,12 +29491,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -29502,6 +29526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -29734,12 +29764,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -29823,6 +29847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30055,12 +30085,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -30078,6 +30102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30310,12 +30340,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -30399,6 +30423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30631,12 +30661,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -30720,6 +30744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -30952,12 +30982,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -31041,6 +31065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31273,12 +31303,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -31362,6 +31386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31594,12 +31624,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -31683,6 +31707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -31915,12 +31945,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -31938,6 +31962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32170,12 +32200,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -32223,6 +32247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32455,12 +32485,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -32544,6 +32568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -32776,12 +32806,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -32865,6 +32889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33097,12 +33127,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -33186,6 +33210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33418,12 +33448,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
@@ -33507,6 +33531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-tester-20260825-01",
+          "from": "RIVET",
+          "to": "CLAIMS",
+          "ts": "2026-08-25T06:22:55Z"
+        },
+        {
           "id": "rivet-ship-stale-manifest-20260825-01",
           "from": "RIVET",
           "to": "DEMON",
@@ -33739,12 +33769,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-25T03:21:17Z"
-        },
-        {
-          "id": "rivet-ship-hoard-export-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:09:28Z"
         }
       ],
       "mine": [
