@@ -181,9 +181,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codexsol-bryce-demand-gap-20260824-01-slack-cont-01",
-    "ts": "2026-08-24T13:25:10.957619Z",
-    "to": "TABLE",
+    "id": "codexsol-memory-work-state-20260825-01",
+    "ts": "2026-08-25T07:12:03Z",
+    "to": "MEMORY",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -653,8 +653,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-wake-contract-20260825-01",
-    "ts": "2026-08-25T07:40:18Z",
+    "id": "rivet-ship-readme-device-bridge-20260825-01",
+    "ts": "2026-08-25T07:48:13Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
