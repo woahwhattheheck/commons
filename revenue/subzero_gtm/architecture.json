@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "kind": "SUBZERO_GTM_ARCHITECTURE",
+  "panel": "3/3",
+  "mandate": "demon-redteam-subzero-gtm-20260825-06",
+  "landing_owner": "cursor-grok-46-subzero-gtm-20260825",
+  "model": "Cursor Grok 4.6",
+  "model_slug": "cursor-grok-4.6-high-fast",
+  "requested_reasoning": "xhigh",
+  "actual_reasoning": "high-fast",
+  "harness": "Cursor Automation",
+  "agent": "https://cursor.com/agents/bc-82234e5b-818b-56b4-86ce-a362284637e2",
+  "run": "bc-82234e5b-818b-56b4-86ce-a362284637e2",
+  "slack_taking_id": "demon-redteam-subzero-gtm-20260825-06",
+  "slack_ts": "1787645951.270489",
+  "taking_state": "CARRIER_ONLY",
+  "base_main_sha_at_write": "f142ad57dc4b74a85cfac30abdfa9ca819dd1729",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "collectable_usd": "NOT_LANDED",
+  "collected_cash_usd": 0,
+  "banking_only_blocker": false,
+  "computer_is_the_product": false,
+  "runtime_intelligence_claimed": false,
+  "demand": "UNKNOWN",
+  "overwrites_commercial_json": false,
+  "overwrites_dio": false,
+  "overwrites_payment_ready": false,
+  "overwrites_portfolio_overdrive": false,
+  "overwrites_subzero_buyers": false,
+  "does_not_replace": [
+    "white-box-gguf-pilot-30d",
+    "gguf-diagnostic-10d-12k"
+  ],
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential",
+    "street address",
+    "private buyer identity",
+    "customer model bytes",
+    "titan offsets as a product"
+  ],
+  "product_definition": {
+    "what_subzero_is": "A portfolio of deterministic gate-fabric generators, measured standalone .mno excerpts, and structurally tested archetypes.",
+    "what_subzero_is_not": "Proven runtime intelligence, a language model, a live titan appliance on git copies, or a second White Box GGUF-edit SKU.",
+    "authority_split": {
+      "public_tree_excerpts": "ground/SUBZERO_EXCERPTS.md + excerpts/20260823/*.mno + ground/SUBZERO_*.md. 31/31 PLUMB excerpts present on later mains after 4cdf573f. Host here is not the owner PC. Git copies do not run. --dry is structural only.",
+      "live_twelve_in_titan": "ground/SUBZERO_CENSUS.md authority is owner-PC titan_circuits.json + titan.gguf, opened rb only on 2026-08-15. This cloud tree cannot re-seek those offsets. Treat as historically measured, not currently re-verified here.",
+      "titan_write": "NOT_WRITTEN on this leftover and on the cited organ receipts."
+    }
+  },
+  "evidence_classes": {
+    "STRUCTURAL_ARTIFACT": {
+      "meaning": "Byte-exact public files, header magics, LE n_gate/n_wires/depth, SHA-256, fabricator --dry, and unit tests that do not walk the organ.",
+      "status": "MEASURED_ON_PUBLIC_TREE",
+      "examples": [
+        "muhl_grbn excerpts/20260823/muhl_grbn.mno 228638 B MUHLGRBN 8704 gates depth 7 sha256 09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
+        "muhl_fab_grbn.py --dry is structural only; test_muhl_fab_grbn.py exists",
+        "31/31 PLUMB excerpts catalogued in ground/SUBZERO_EXCERPTS.md"
+      ]
+    },
+    "RUNTIME_BEHAVIOR": {
+      "meaning": "Cross-process settle, organ walk, host inference, or live titan reread after MOVE.",
+      "status": "UNMEASURED_ON_THIS_TREE",
+      "note": "Git copies do not run. Host computes zero inference. Census seek of titan.gguf is owner-PC history, not this cloud. Do not sell runtime intelligence from structural receipts."
+    },
+    "CUSTOMER_DEMAND": {
+      "meaning": "A named buyer who asked for a SUBZERO excerpt/fabricator/catalog, not a GGUF edit.",
+      "status": "UNKNOWN",
+      "search_space": [
+        "public OFFER posts",
+        "owner-private inbox (not measured here)"
+      ],
+      "failure_mode": "Treating no public buyer name as proof of no buyers, or treating White Box interest as SUBZERO demand."
+    }
+  },
+  "occupied_lanes_hands_off": [
+    "commercial.json white-box-gguf-pilot-30d $30000/30d PROPOSED",
+    "revenue/payment_ready/pack.json gguf-diagnostic-10d-12k $12000/10d CANDIDATE",
+    "revenue/portfolio_overdrive/ founder_slot.now_active=high-ticket-white-box",
+    "revenue/dio/",
+    "bazaar.json FREE_COLONY_COMPUTE USD offers=0",
+    "ground/CASH_NOW.md AUTH≠SETTLE≠BANK",
+    "revenue/subzero_buyers/pack.json panel 2/3 P01-P16 (landed f142ad57d)"
+  ],
+  "implements_buyers_paths": {
+    "sz-paid-validation": "P01_catalog_receipt",
+    "sz-failure-packet": "P05_honesty_failure_packet",
+    "sz-fabricator-audit": "P02_grbn_feasibility",
+    "sz-university-lab-kit": "P04_training_kit_materials"
+  },
+  "founder_slot": {
+    "scarce_resource": "Bryce calendar / closed-room delivery",
+    "collision_rule": "Only one HIGH founder-slot lane may be ACTIVE in a horizon. White Box already occupies NOW.",
+    "now_active_occupied_by": "high-ticket-white-box",
+    "subzero_now_active": "none",
+    "subzero_may_run_now": [
+      "sz-public-catalog",
+      "sz-paid-validation",
+      "sz-failure-packet"
+    ],
+    "do_not_activate_now": [
+      "sz-workshop-halfday",
+      "sz-rd-organ",
+      "sz-method-license"
+    ]
+  },
+  "gate": {
+    "pack": "READY",
+    "pack_meaning": "Architecture files exist. Not bank cash. Not a buyer.",
+    "owner_private": "NEEDS_OWNER_PRIVATE",
+    "buyer": "NEEDS_BUYER",
+    "collected_cash": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "banking_only_blocker": false,
+    "open": [
+      "NEEDS_OWNER_PRIVATE",
+      "NEEDS_BUYER",
+      "NOT_LANDED"
+    ],
+    "ready_does_not_mean_cash": true
+  },
+  "cash_collection_mechanics": {
+    "reuse": "revenue/payment_ready/rails.md and ground/CASH_NOW.json",
+    "rule": "AUTHORIZATION is not SETTLEMENT is not PAYOUT is not BANK_AVAILABLE",
+    "public_checkout": false,
+    "invoice_from_this_leftover": false,
+    "variable_cost_class": "founder hours + (optional) peer remeasure time; no COGS for public excerpts already on git",
+    "note": "SUBZERO LOW-founder SKUs can be invoiced on the same owner-private rail as the $12k diagnostic. Do not invent a second processor account."
+  },
+  "open_source_commercial_boundary": {
+    "stays_public": [
+      "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/ fabricators and tests",
+      "excerpts/20260823/*.mno",
+      "ground/SUBZERO_*.md receipts",
+      "SHA-256 catalogs"
+    ],
+    "commercial_only": [
+      "closed-room remeasure of a customer-named excerpt or customer-supplied .mno",
+      "SLA / office hours",
+      "workshop calendar",
+      "R&D of a new organ under SOW",
+      "method license that does not transfer the computer"
+    ],
+    "never_sold": [
+      "titan.gguf",
+      "foundry / allocator / live offsets",
+      "commons.mno smash",
+      "runtime intelligence claims",
+      "the computer"
+    ],
+    "defensibility": {
+      "public_tree_is_not_a_moat": true,
+      "moat": "closed-room measurement, owner-PC titan, White Box method (separate SKU), founder capacity, patent-provisional text as know-how not as a granted patent claim",
+      "patent_status": "provisional/text files exist in MUHL_SUBZERO_ARCHETYPES; grant/enforceability UNMEASURED; do not sell 'patented intelligence'"
+    }
+  },
+  "channel_strategy": {
+    "now": "Keep commercial.html + OFFER inbox. Add a public non-confidential subject line SUBZERO VALIDATION INTEREST that names a magic/excerpt, not a GGUF.",
+    "do_not": [
+      "outreach",
+      "buyer messaging",
+      "account creation",
+      "invoice issuance",
+      "defense/ITAR claims"
+    ],
+    "later_channels_ranked_not_activated": [
+      "EDA/verification vendor partnership (180d+)",
+      "university lab-kit page (30-90d after first inbound)",
+      "expert network (HIGH founder; blocked while White Box is active)"
+    ],
+    "scale_gate": "Do not scale a SUBZERO SKU until one inbound names a SUBZERO artifact AND one BANK_AVAILABLE event exists on that SKU."
+  },
+  "customer_evidence_before_scale": [
+    {
+      "id": "E1",
+      "need": "One public or owner-private inbound that names a SUBZERO magic/excerpt/fabricator, not a GGUF family",
+      "status": "ABSENT"
+    },
+    {
+      "id": "E2",
+      "need": "One $2500 validation with independently evidenced BANK_AVAILABLE",
+      "status": "ABSENT"
+    },
+    {
+      "id": "E3",
+      "need": "Second org or repeat buyer before activating workshop or retainer",
+      "status": "ABSENT"
+    },
+    {
+      "id": "E4",
+      "need": "Written buyer acceptance that the deliverable is structural measurement, not intelligence",
+      "status": "ABSENT"
+    }
+  ],
+  "price_ladder": [
+    {
+      "rung": 0,
+      "sku": "sz-public-catalog",
+      "price_usd": 0,
+      "conversion_next": "sz-paid-validation"
+    },
+    {
+      "rung": 1,
+      "sku": "sz-paid-validation",
+      "price_usd": 2500,
+      "conversion_next": "sz-fabricator-audit or sz-failure-packet or handoff to gguf-diagnostic-10d-12k if the buyer actually wants a GGUF edit"
+    },
+    {
+      "rung": 2,
+      "sku": "sz-fabricator-audit",
+      "price_usd": 8000,
+      "conversion_next": "sz-rd-organ or sz-catalog-sla"
+    },
+    {
+      "rung": 3,
+      "sku": "sz-university-lab-kit",
+      "price_usd": 4000,
+      "conversion_next": "sz-catalog-sla"
+    },
+    {
+      "rung": 4,
+      "sku": "sz-catalog-sla",
+      "price_usd_year": 15000,
+      "conversion_next": "sz-tooling-support"
+    },
+    {
+      "rung": 5,
+      "sku": "sz-rd-organ",
+      "price_usd": 40000,
+      "conversion_next": "sz-method-license"
+    },
+    {
+      "rung": 6,
+      "sku": "sz-method-license",
+      "price_usd_year_band": [50000, 120000],
+      "conversion_next": "none — still not the computer"
+    }
+  ],
+  "horizons": {
+    "now": {
+      "do": [
+        "Keep publishing measured SUBZERO receipts",
+        "Keep White Box / $12k diagnostic as the GGUF cash door",
+        "Land this architecture so Slack panel 3/3 is not the archive"
+      ],
+      "do_not": [
+        "List a USD checkout",
+        "Activate a HIGH SUBZERO founder SKU",
+        "Claim runtime intelligence",
+        "Remint White Box prices"
+      ]
+    },
+    "10d": {
+      "do": [
+        "One public OFFER subject for SUBZERO VALIDATION INTEREST",
+        "Keep sz-paid-validation as CANDIDATE",
+        "Reuse payment-ready D0 plumbing; do not open a second rail"
+      ],
+      "cash_expected": "NOT_LANDED unless an already-waiting buyer appears; demand UNKNOWN"
+    },
+    "30d": {
+      "do": [
+        "If E1 lands, run one $2500 validation",
+        "If the inbound is actually a GGUF edit, hand off to gguf-diagnostic-10d-12k — do not sell SUBZERO as White Box"
+      ],
+      "cash_expected": "possible authorization only after E1 + owner-private rail"
+    },
+    "90d": {
+      "do": [
+        "Price a failure-packet SKU only after payout dest exists",
+        "Consider sz-university-lab-kit if E2 exists",
+        "Workshop still blocked if White Box occupies the founder slot"
+      ]
+    },
+    "180d": {
+      "do": [
+        "sz-catalog-sla only after E2",
+        "sz-rd-organ only if founder slot is free or a separate calendar slice exists",
+        "EDA partnership talk only after E2 — still no defense claim"
+      ]
+    },
+    "365d": {
+      "do": [
+        "Method license conversation after one completed R&D or three paid validations",
+        "Support retainer only after E3"
+      ]
+    },
+    "730d": {
+      "do": [
+        "Keep SUBZERO as a catalog/measurement/R&D portfolio beside White Box",
+        "Do not collapse into one startup/app",
+        "Marketplace may list receipts, never titan/foundry"
+      ]
+    }
+  },
+  "rank_order": [
+    "sz-paid-validation",
+    "sz-failure-packet",
+    "sz-fabricator-audit",
+    "sz-handoff-whitebox",
+    "sz-university-lab-kit",
+    "sz-public-catalog",
+    "sz-catalog-sla",
+    "sz-rd-organ",
+    "sz-tooling-support",
+    "sz-workshop-halfday",
+    "sz-method-license",
+    "sz-partnership-eda",
+    "sz-patent-counsel-packet"
+  ],
+  "paths": [
+    {
+      "id": "sz-public-catalog",
+      "name": "public measured catalog",
+      "kind": "catalog",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "now",
+      "price_usd": 0,
+      "status": "LANDED_AS_PUBLIC_FILES",
+      "time_to_cash": 99,
+      "probability": 1,
+      "upside": 12,
+      "proof_burden": 1,
+      "buyer": "none — this is the free shelf",
+      "offer": "SHA-pinned excerpts and receipts already on main",
+      "prerequisites": [],
+      "variable_cost": "peer time to keep receipts honest",
+      "founder_time": "near zero if peers publish",
+      "cash_collection": "none",
+      "falsifier": "catalog that claims runtime or titan write",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-paid-validation",
+      "name": "paid excerpt validation",
+      "kind": "paid validation",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "now",
+      "price_usd": 2500,
+      "price_note": "point estimate inside panel 2/3 P01_catalog_receipt band $1500-$3000; does not remint that pack",
+      "implements": "P01_catalog_receipt",
+      "term_calendar_days": 5,
+      "status": "CANDIDATE",
+      "time_to_cash": 1,
+      "probability": 3,
+      "upside": 9,
+      "proof_burden": 2,
+      "buyer": "lab that wants an independent remeasure of a named public excerpt or a customer-supplied standalone .mno",
+      "offer": "header magic, LE fields, SHA-256, search space, FINDER-FAILED-never-0 miss report; no organ walk promised",
+      "acceptance": [
+        "named path or customer file hash recorded first",
+        "remeasure matches or names the exact mismatch",
+        "delivery receipt with hashes",
+        "written limit: STRUCTURAL_ONLY"
+      ],
+      "prerequisites": [
+        "legal payee + payout dest (owner-private)",
+        "buyer names a file",
+        "NDA if the file is not already public"
+      ],
+      "variable_cost": "2-8 peer hours",
+      "founder_time": "review only unless the file is non-public",
+      "cash_collection": "50/50 or 100% before file if customer-supplied; reuse payment-ready rail; AUTH≠SETTLE≠BANK",
+      "falsifier": [
+        "sold as intelligence",
+        "titan opened",
+        "no hash",
+        "silent zero"
+      ],
+      "evidence_class": "STRUCTURAL_ARTIFACT",
+      "does_not_compete_with": [
+        "white-box-gguf-pilot-30d",
+        "gguf-diagnostic-10d-12k"
+      ]
+    },
+    {
+      "id": "sz-failure-packet",
+      "name": "priced SUBZERO failure packet",
+      "kind": "productized service",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "30d",
+      "price_usd_band": [500, 2500],
+      "status": "CANDIDATE_AFTER_PAYOUT_DEST",
+      "time_to_cash": 2,
+      "probability": 4,
+      "upside": 10,
+      "proof_burden": 2,
+      "buyer": "operator who wants a keepable miss packet, not a computer",
+      "offer": "reuse portfolio failure-packets lane with SUBZERO hashes; FINDER-FAILED never 0",
+      "prerequisites": [
+        "payout dest",
+        "decision that a packet is a SKU"
+      ],
+      "variable_cost": "packaging already-landed measurements",
+      "founder_time": "low",
+      "cash_collection": "small fixed fee after USD offer exists",
+      "falsifier": "packet includes titan/factory bytes",
+      "evidence_class": "STRUCTURAL_ARTIFACT",
+      "collision": "portfolio_overdrive failure-packets rank 2 — extend, do not remint"
+    },
+    {
+      "id": "sz-fabricator-audit",
+      "name": "one-fabricator tooling audit",
+      "kind": "tooling",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "10d",
+      "price_usd": 8000,
+      "term_calendar_days": 10,
+      "status": "CANDIDATE",
+      "time_to_cash": 3,
+      "probability": 5,
+      "upside": 7,
+      "proof_burden": 4,
+      "buyer": "team that will run a public muhl_fab_*.py and wants a written structural audit + test map",
+      "offer": "inputs, --dry meaning, test coverage, what the test does not prove (no walk)",
+      "prerequisites": [
+        "buyer picks one public fabricator",
+        "owner-private rail"
+      ],
+      "variable_cost": "1-2 peer days",
+      "founder_time": "optional review",
+      "cash_collection": "50% start / 50% on written audit",
+      "falsifier": "audit claims the organ runs on git copies",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-handoff-whitebox",
+      "name": "handoff to existing White Box SKUs",
+      "kind": "conversion path",
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "horizon": "now",
+      "price_usd": 0,
+      "status": "ROUTE_NOT_SKU",
+      "time_to_cash": 4,
+      "probability": 2,
+      "upside": 2,
+      "proof_burden": 3,
+      "buyer": "anyone who arrived via SUBZERO talk but wants a GGUF ablation/edit/rollback",
+      "offer": "do not mint a third GGUF SKU; send them to gguf-diagnostic-10d-12k then white-box-gguf-pilot-30d",
+      "prerequisites": [
+        "legally controlled GGUF",
+        "runnable harness"
+      ],
+      "variable_cost": "none new",
+      "founder_time": "uses the already-occupied White Box slot",
+      "cash_collection": "existing payment-ready / commercial.json",
+      "falsifier": "selling SUBZERO fabric as a GGUF edit",
+      "evidence_class": "CUSTOMER_DEMAND"
+    },
+    {
+      "id": "sz-university-lab-kit",
+      "name": "university / lab measurement kit",
+      "kind": "workshops + catalog",
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "horizon": "90d",
+      "price_usd": 4000,
+      "status": "CANDIDATE",
+      "time_to_cash": 5,
+      "probability": 6,
+      "upside": 8,
+      "proof_burden": 5,
+      "buyer": "teaching lab that wants a pinned excerpt set + office hours, not a model",
+      "offer": "pointer to public files + two remote hours + a written STRUCTURAL_ONLY lab sheet",
+      "prerequisites": [
+        "E1 or a public course ask",
+        "no defense framing"
+      ],
+      "variable_cost": "prep once, then low",
+      "founder_time": "two hours or a designated peer",
+      "cash_collection": "invoice before office hours",
+      "falsifier": "kit promised as AI/runtime",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-catalog-sla",
+      "name": "annual catalog remeasure SLA",
+      "kind": "recurring support",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "180d",
+      "price_usd_year": 15000,
+      "status": "CANDIDATE",
+      "time_to_cash": 6,
+      "probability": 7,
+      "upside": 6,
+      "proof_burden": 3,
+      "buyer": "org that depends on pinned SHA catalogs staying honest",
+      "offer": "quarterly remeasure of a named excerpt list; miss is FINDER-FAILED",
+      "prerequisites": ["E2", "payout dest"],
+      "variable_cost": "quarterly peer hours",
+      "founder_time": "low",
+      "cash_collection": "annual or quarterly; each cycle AUTH≠SETTLE≠BANK",
+      "falsifier": "SLA that implies titan liveness",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-rd-organ",
+      "name": "R&D contract for one new measured organ",
+      "kind": "R&D contracts",
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "horizon": "90d",
+      "price_usd": 40000,
+      "term_calendar_days": 45,
+      "status": "CANDIDATE",
+      "time_to_cash": 7,
+      "probability": 8,
+      "upside": 4,
+      "proof_burden": 7,
+      "buyer": "research group that wants one new deterministic fabric + public or private excerpt",
+      "offer": "one organ, stdlib fab, standalone .mno, receipt page, titan NOT_WRITTEN unless owner-PC step is separately scoped",
+      "prerequisites": [
+        "founder slot free or separate slice",
+        "E2 preferred",
+        "SOW that forbids intelligence claims"
+      ],
+      "variable_cost": "high peer/founder engineering",
+      "founder_time": "high",
+      "cash_collection": "40% start / 60% on excerpt+receipt",
+      "falsifier": "R&D that writes titan from this cloud, or remints a landed organ",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-tooling-support",
+      "name": "recurring tooling support",
+      "kind": "recurring support",
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "horizon": "180d",
+      "price_usd_month": 3000,
+      "status": "CANDIDATE",
+      "time_to_cash": 8,
+      "probability": 8,
+      "upside": 5,
+      "proof_burden": 4,
+      "buyer": "team already running public fabricators",
+      "offer": "named-hour questions on public APIs; no hide-list; no titan",
+      "prerequisites": ["E3"],
+      "variable_cost": "hours",
+      "founder_time": "delegable",
+      "cash_collection": "monthly",
+      "falsifier": "support that transfers foundry",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    },
+    {
+      "id": "sz-workshop-halfday",
+      "name": "closed-room workshop",
+      "kind": "workshops",
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "horizon": "180d",
+      "price_usd": 6000,
+      "status": "RANKED_BLOCKED_NOW",
+      "time_to_cash": 9,
+      "probability": 7,
+      "upside": 8,
+      "proof_burden": 6,
+      "buyer": "team that wants a briefing on how measurement works",
+      "offer": "half-day STRUCTURAL_ONLY; no titan/foundry/offsets leave the room",
+      "prerequisites": [
+        "White Box slot free",
+        "NDA",
+        "E2"
+      ],
+      "variable_cost": "one founder day",
+      "founder_time": "HIGH — do not parallel with a live White Box pilot",
+      "cash_collection": "booking fee after USD offer exists",
+      "falsifier": "workshop dumps hide-list or claims intelligence",
+      "evidence_class": "STRUCTURAL_ARTIFACT",
+      "collision": "portfolio paid-briefings-training"
+    },
+    {
+      "id": "sz-method-license",
+      "name": "method / know-how license without factory",
+      "kind": "licensing",
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "horizon": "365d",
+      "price_usd_year_from": 50000,
+      "price_usd_year_to": 120000,
+      "status": "CANDIDATE",
+      "time_to_cash": 10,
+      "probability": 9,
+      "upside": 3,
+      "proof_burden": 8,
+      "buyer": "org that completed paid work and wants internal use of method notes, not the computer",
+      "offer": "separately scoped license; computer/foundry stay with Bryce",
+      "prerequisites": [
+        "completed paid delivery",
+        "owner contract terms"
+      ],
+      "variable_cost": "legal (owner-private)",
+      "founder_time": "medium",
+      "cash_collection": "on signed follow-on",
+      "falsifier": "license that transfers titan or foundry",
+      "evidence_class": "STRUCTURAL_ARTIFACT",
+      "collision": "commercial.json follow_on $100k-$175k is White Box, not this SKU"
+    },
+    {
+      "id": "sz-partnership-eda",
+      "name": "EDA / verification partnership",
+      "kind": "partnerships",
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "horizon": "180d",
+      "price_usd": null,
+      "status": "RANKED_NO_OUTREACH",
+      "time_to_cash": 11,
+      "probability": 10,
+      "upside": 1,
+      "proof_burden": 9,
+      "buyer": "verification/simulation vendor that wants a non-confidential measurement story",
+      "offer": "public association + optional paid validation; no factory transfer; no defense-readiness claim",
+      "prerequisites": ["E2", "owner chooses partner"],
+      "variable_cost": "unknown",
+      "founder_time": "medium",
+      "cash_collection": "only after a written scope",
+      "falsifier": "ITAR/defense readiness claimed without proof",
+      "evidence_class": "CUSTOMER_DEMAND"
+    },
+    {
+      "id": "sz-patent-counsel-packet",
+      "name": "owner-private patent counsel packet",
+      "kind": "R&D / IP hygiene",
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "horizon": "now",
+      "price_usd": 0,
+      "status": "NOT_A_REVENUE_SKU",
+      "time_to_cash": 12,
+      "probability": 11,
+      "upside": 11,
+      "proof_burden": 10,
+      "buyer": "none — this is owner hygiene",
+      "offer": "point counsel at existing provisional text; do not sell 'the patent'",
+      "prerequisites": ["owner chooses counsel"],
+      "variable_cost": "counsel fees owner-private",
+      "founder_time": "owner-private",
+      "cash_collection": "none from customers",
+      "falsifier": "public claim of granted patent or patented intelligence",
+      "evidence_class": "STRUCTURAL_ARTIFACT"
+    }
+  ],
+  "collisions": [
+    {
+      "this": "sz-handoff-whitebox",
+      "them": "gguf-diagnostic-10d-12k + white-box-gguf-pilot-30d",
+      "rule": "Never mint a third GGUF SKU. Conversion only."
+    },
+    {
+      "this": "sz-failure-packet",
+      "them": "portfolio_overdrive failure-packets",
+      "rule": "Extend the ranked lane; do not overwrite portfolio.json."
+    },
+    {
+      "this": "sz-workshop-halfday",
+      "them": "paid-briefings-training + live White Box slot",
+      "rule": "HIGH founder. Ranked, blocked NOW."
+    },
+    {
+      "this": "sz-method-license",
+      "them": "commercial.json follow_on $100k-$175k",
+      "rule": "White Box license is a different product. Do not reuse those numbers for SUBZERO fabric."
+    },
+    {
+      "this": "any SUBZERO HIGH lane",
+      "them": "founder_slot.now_active=high-ticket-white-box",
+      "rule": "White Box wins NOW. SUBZERO cash now is LOW-founder only."
+    }
+  ],
+  "red_flags": [
+    "Calling SUBZERO a proven mind, model, or runtime intelligence",
+    "Selling git copies as running computers",
+    "Claiming titan MOVE from this cloud",
+    "Reminting $12k or $30k as a SUBZERO price",
+    "Defense/ITAR readiness",
+    "Granted-patent or 'it is patented therefore it sells' without a buyer",
+    "Treating READY pack as BANK_AVAILABLE",
+    "Outreach from this leftover"
+  ],
+  "cold_eye": {
+    "best_now_cash_if_a_buyer_exists": "sz-paid-validation $2500 STRUCTURAL_ONLY",
+    "best_existing_cash_door_if_buyer_wants_gguf": "gguf-diagnostic-10d-12k — not this leftover",
+    "do_not_overclaim": "No path here has demonstrated demand. Probability ranks are relative, not frequencies.",
+    "largest_honest_upside": "sz-partnership-eda and sz-method-license — also the slowest and least evidenced",
+    "largest_proof_trap": "selling census titan rows as currently re-verified runtime"
+  }
+}
