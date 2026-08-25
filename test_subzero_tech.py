@@ -202,8 +202,7 @@ class TestSubzeroTech(unittest.TestCase):
             self.assertTrue(row["titan_presence_paths"])
         self.assertEqual(row["titan_write"], "NOT_WRITTEN")
         self.assertEqual(row["white_box_offer"], WHITE_BOX_OFFER)
-        self.assertIn("ground/SUBZERO_CHPR.md", row["missing_cards"])
-        self.assertIn("ground/SUBZERO_CHLS.md", row["missing_cards"])
+        self.assertEqual(row["missing_cards"], [])
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         names = [item["name"] for item in row["organs"]]
         self.assertEqual(names[6], "muhl_grbn")
