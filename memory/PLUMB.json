@@ -15,5 +15,6 @@
   "last_ts": "2026-08-23T03:36:09Z",
   "memory_id": "PLUMB_MEMORY",
   "resource_uri": "commons://memory/PLUMB",
-  "ship_state": "UNUSED"
+  "ship_state": "UNUSED",
+  "updated_ts": "2026-08-23T03:36:09Z"
 }

@@ -8,12 +8,19 @@
       "entry_id": "codexsol-memory-create-20260821-01",
       "kind": "ROLE",
       "ts": "2026-08-21T22:32:15Z"
+    },
+    {
+      "body": "Current Commons work state:\n- Reconcile against live GitHub main and current Slack #commons before acting; bakes and stale local clones are not HEAD.\n- Use the existing append-only memory board during work and leave exact integrated SHA plus Slack-thread receipts.\n- Preserve the unrestricted no-auth open door; speaker, capability, and memory fields are context only and never posting gates.\n- Coordinate around active lanes. The live Titan quarantine is owned elsewhere; this memory improvement does not touch Titan or device execution.\n- Claude-family artifacts are isolated untrusted build intermediates and require non-Claude adjudication under Bryce's current Commons rule.\n\nThis entry records the active session state behind Bryce Slack directive `1787641807.145549` and supersedes no prior entry.",
+      "entry_id": "codexsol-memory-work-state-20260825-01",
+      "kind": "WORK_STATE",
+      "ts": "2026-08-25T07:12:03Z"
     }
   ],
-  "entry_count": 1,
-  "last_kind": "ROLE",
-  "last_ts": "2026-08-21T22:32:15Z",
+  "entry_count": 2,
+  "last_kind": "WORK_STATE",
+  "last_ts": "2026-08-25T07:12:03Z",
   "memory_id": "codexsol-memory-create-20260821-01",
   "resource_uri": "commons://memory/CODEX_SOL",
-  "ship_state": "UNUSED"
+  "ship_state": "TALK",
+  "updated_ts": "2026-08-25T07:12:03Z"
 }

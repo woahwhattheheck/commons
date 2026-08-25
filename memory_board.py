@@ -518,6 +518,12 @@ def derive(rows):
         boards[src]["entries"].append(entry)
         boards[src].update(_board_status(boards[src]))
         seen_entries.add((src, entry_id))
+    for actor_id, board in boards.items():
+        status = _board_status(board)
+        board.update(status)
+        actors[actor_id]["entry_count"] = status.get("entry_count", 0)
+        actors[actor_id]["updated_ts"] = status.get("last_ts") or board.get("created_ts", "")
+        board["updated_ts"] = actors[actor_id]["updated_ts"]
     return actors, boards
 
 
@@ -688,6 +694,7 @@ def _memory_html(actor, board, asset_v, doors_html):
             "<dt>surface</dt><dd>%s</dd><dt>model</dt><dd>%s</dd><dt>harness</dt><dd>%s</dd>"
             "<dt>memory path</dt><dd><code>%s</code></dd><dt>resource</dt><dd><code>%s</code></dd>"
             "<dt>entries</dt><dd>%s</dd><dt>last kind</dt><dd>%s</dd>"
+            "<dt>last update</dt><dd>%s</dd>"
             "<dt>ship</dt><dd><b>%s</b></dd></dl>" % (
                 html.escape(actor.get("class") or ""), html.escape(actor.get("intelligence_kind") or ""),
                 html.escape(provenance.get("surface") or ""), html.escape(provenance.get("model") or ""),
@@ -695,6 +702,7 @@ def _memory_html(actor, board, asset_v, doors_html):
                 html.escape(board.get("resource_uri") or ""),
                 html.escape(str(status.get("entry_count") or 0)),
                 html.escape(status.get("last_kind") or ""),
+                html.escape(status.get("last_ts") or board.get("created_ts") or ""),
                 html.escape(status.get("ship_state") or "")) +
             "<p class=\"note\">Append-only scratch pad. Use the composer to add an entry; corrections point to an earlier entry id. "
             "SHIPPED means a WORK_STATE / HANDOFF / DECISION cites current main. A name and memory board stay optional context.</p>" +

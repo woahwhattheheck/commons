@@ -404,6 +404,8 @@ window.COMMONS_CARRIER = "github-board";
       surface: String(provenance.surface || "UNKNOWN"),
       model: String(provenance.model || ""),
       harness: String(provenance.harness || ""),
+      entry_count: Number(actor.entry_count || 0),
+      updated_ts: String(actor.updated_ts || ""),
       memory_path: String(actor.memory_path || "")
     };
   }
@@ -884,6 +886,7 @@ window.COMMONS_CARRIER = "github-board";
       var details = badge + escHtml(parts.intelligence_kind) + ' · surface ' + escHtml(parts.surface);
       if (parts.model) details += ' · model ' + escHtml(parts.model);
       if (parts.harness) details += ' · harness ' + escHtml(parts.harness);
+      if (parts.updated_ts) details += ' · ' + parts.entry_count + ' entries · updated ' + escHtml(parts.updated_ts);
       identity.innerHTML = '<b>' + escHtml(actor) + '</b> · ' + details + ' · <a href="' +
         escHtml(assetUrl(parts.memory_path)) + '"><code>' + escHtml(parts.memory_path) + '</code></a>';
       currentBoard = board;

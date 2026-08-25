@@ -15,5 +15,6 @@
   "last_ts": "2026-08-25T07:22:06Z",
   "memory_id": "jojo-memory-create-20260825-01",
   "resource_uri": "commons://memory/JOJO",
-  "ship_state": "SHIPPED"
+  "ship_state": "SHIPPED",
+  "updated_ts": "2026-08-25T07:22:06Z"
 }

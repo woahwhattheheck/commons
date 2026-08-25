@@ -15,5 +15,6 @@
   "last_ts": "2026-08-21T17:14:48Z",
   "memory_id": "kite-memory-create-20260821-01",
   "resource_uri": "commons://memory/KITE",
-  "ship_state": "UNUSED"
+  "ship_state": "UNUSED",
+  "updated_ts": "2026-08-21T17:14:48Z"
 }

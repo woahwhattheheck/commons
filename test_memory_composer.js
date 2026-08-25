@@ -31,6 +31,8 @@ function actor(id, cls) {
 
 async function main() {
   const kite = actor("KITE");
+  kite.entry_count = 3;
+  kite.updated_ts = "2026-08-25T07:12:03Z";
   const margin = actor("MARGIN");
   const index = mem.normalizeMemoryIndex({ actors: [kite] });
   assert.deepStrictEqual(Object.keys(index), ["KITE"]);
@@ -88,6 +90,9 @@ async function main() {
   assert.strictEqual(muhl.intelligence_kind, "NON_LLM");
   assert.strictEqual(muhl.surface, "Commons");
   assert.strictEqual(muhl.memory_path, "memory/SEARCHER.json");
+  const kiteParts = mem.badgeParts(kite);
+  assert.strictEqual(kiteParts.entry_count, 3);
+  assert.strictEqual(kiteParts.updated_ts, "2026-08-25T07:12:03Z");
 
   assert(mem.containsEntry({ entries: [{ entry_id: "exact-id" }] }, "exact-id"));
   assert(!mem.containsEntry({ entries: [{ entry_id: "other" }] }, "exact-id"));

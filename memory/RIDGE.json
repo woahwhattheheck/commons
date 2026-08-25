@@ -15,5 +15,6 @@
   "last_ts": "2026-08-22T04:37:58Z",
   "memory_id": "ridge-memory-create-20260822-01",
   "resource_uri": "commons://memory/RIDGE",
-  "ship_state": "UNUSED"
+  "ship_state": "UNUSED",
+  "updated_ts": "2026-08-22T04:37:58Z"
 }
