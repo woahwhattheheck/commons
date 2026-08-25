@@ -476,6 +476,9 @@
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
     }
+    if (api.isExplorerFailClosedTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO INDEPENDENT REVIEW / #2325 EXACT HEAD BLOCKED / missing-card / stale-binding / invalid-receipt talk. Talk is not a land. Ship the explorer fail-closed leftover to current main. Missing cards and stale pins must not PASS. Invalid timestamps and list-shaped receipts must not escalate. Do not remint the explorer v2 packet, #2340, or #2329 binder." };
+    }
     if (api.isGrokReceiptTalk(t)) {
       return { state: "CLAIMED", note: "HEAVY DAMAGE-CONTROL / exact-one-fence / PR 2320 COLLISION / last-fence talk. Talk is not a land. Last-fence is scratch-smuggling. Do not merge PR 2320. Do not remint rivet-ship-grok-receipt-20260825-01, PIXEL_HEARTBEAT leftover, or STRANDED_MAP leftover." };
     }
@@ -952,6 +955,10 @@
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
     };
+  };
+
+  api.isExplorerFailClosedTalk = function (text) {
+    return /1787652792\.439959|EXACT HEAD BLOCKED|#2325 EXACT HEAD|SUBZERO_CHLS\.md|missing-card, corruption\/stale-binding|nonempty-list nested receipt|invalid runtime timestamp/i.test(String(text || ""));
   };
 
   api.isGrokReceiptTalk = function (text) {

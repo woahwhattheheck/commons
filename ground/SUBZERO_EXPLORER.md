@@ -14,17 +14,25 @@ or mutate a live Titan, host, device, model, or container.
 The catalog uses exactly four exclusive classes:
 
 - `STRUCTURAL_ONLY`: artifact SHA-256 and stored header match the checked-in
-  packet, and the named fabricator, structural test, and sidecar are present in
-  the calibrated public-tree search space. Git copies do not run.
-- `RUNTIME_MEASURED`: structural evidence plus a bound receipt with a PASS
-  runtime measurement, runner/test/input/output hashes, process/run ids, and a
-  timestamp. Presence of Titan, a path, or a file never counts.
-- `CUSTOMER_READY`: structural evidence plus a bound delivery and buyer PASS
-  receipt whose acceptance checks include the artifact SHA-256. Payment alone
+  packet, and the named fabricator, structural test, sidecar, and card are the
+  exact Git blobs at the pinned commit. A missing or stale card is
+  `FINDER_FAILED` / `STALE_BINDING`, never PASS. Git copies do not run.
+- `RUNTIME_MEASURED`: structural evidence plus a bound receipt with every check
+  PASS, a PASS runtime measurement, runner/test/input/output hashes,
+  process/run ids, and a timezone-aware ISO-8601 timestamp. Invalid timestamps
+  and FAIL checks stay `STRUCTURAL_ONLY`. Presence of Titan, a path, or a file
   never counts.
-- `UNKNOWN`: calibration, hash, header, source, test, sidecar, or receipt
-  binding failed. Every miss names the explicit search space; a miss is not a
+- `CUSTOMER_READY`: structural evidence plus a bound delivery and buyer PASS
+  receipt whose acceptance checks include the artifact SHA-256 and valid
+  buyer/delivery timestamps. Payment alone never counts.
+- `UNKNOWN`: calibration, hash, header, source, test, sidecar, card, stale
+  pin, or receipt binding failed. Nested receipt fields that are not objects
+  fail closed. Every miss names the explicit search space; a miss is not a
   global absence claim.
+
+`source_commit` / `source_tree` must be present Git objects, and the tree must
+be exactly `commit^{tree}`. A 40-hex string that is not in the repository is
+rejected. Checkout bytes that differ from the pinned blob are `STALE_BINDING`.
 
 The legacy source token `CROSS_PROCESS/RUNTIME_MEASURED` normalizes only to the
 public v2 token `RUNTIME_MEASURED`; the raw token remains source context, not an

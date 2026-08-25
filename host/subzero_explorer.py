@@ -15,7 +15,9 @@ import json
 import os
 import re
 import struct
+import subprocess
 import sys
+from datetime import datetime
 from urllib.parse import quote
 
 
@@ -66,6 +68,13 @@ BASE_SEARCH_SPACE = (
 ) + CALIBRATION
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+STRUCTURAL_SOURCE_KEYS = (
+    "fabricator",
+    "structural_test",
+    "sidecar",
+    "card",
+    "packet",
+)
 
 
 def _norm(rel):
@@ -122,23 +131,115 @@ def _valid_sha(value):
     return bool(HEX64.fullmatch(str(value or "").strip().lower()))
 
 
+def _valid_timestamp(value):
+    """Require a timezone-aware ISO-8601 timestamp. Invalid is not empty."""
+    text = str(value or "").strip()
+    if not text:
+        return False
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return False
+    return parsed.tzinfo is not None
+
+
+def _as_dict(value):
+    return value if isinstance(value, dict) else None
+
+
+def _git_output(root, args):
+    try:
+        out = subprocess.check_output(
+            ["git", "-C", root] + list(args),
+            stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return ""
+    return out.decode("ascii", "replace").strip()
+
+
+def _git_object_kind(root, sha):
+    return _git_output(root, ["cat-file", "-t", sha])
+
+
+def _git_blob_at(root, source_commit, rel):
+    if not _valid_commit(source_commit):
+        return None
+    spec = "%s:%s" % (source_commit, _norm(rel))
+    try:
+        return subprocess.check_output(
+            ["git", "-C", root, "cat-file", "blob", spec],
+            stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def resolve_source_objects(root, source_commit, source_tree):
+    """Exact present Git commit + matching tree. Syntax-only pins fail closed."""
+    source_commit = str(source_commit or "").strip().lower()
+    source_tree = str(source_tree or "").strip().lower()
+    if not _valid_commit(source_commit) or not _valid_commit(source_tree):
+        raise ValueError("source commit and tree must be exact 40-hex Git objects")
+    if _git_object_kind(root, source_commit) != "commit":
+        raise ValueError("source commit is not a present Git commit object")
+    if _git_object_kind(root, source_tree) != "tree":
+        raise ValueError("source tree is not a present Git tree object")
+    commit_tree = _git_output(root, ["rev-parse", "--verify", source_commit + "^{tree}"])
+    if commit_tree != source_tree:
+        raise ValueError("source tree is not the tree of the source commit")
+    return source_commit, source_tree
+
+
 def canonical_json(data):
     """Canonical checked-in representation: sorted keys, UTF-8, LF, newline."""
     return json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
 
 
 def source_evidence(root, rel, source_commit):
-    """Hash one explicit public-tree path; named misses never become zeroes."""
+    """Bind checkout bytes to the pinned commit blob. Miss/stale never pass."""
     rel = _norm(rel)
-    blob = _read_bytes(root, rel)
-    present = _exists(root, rel)
+    url = _pinned_url(source_commit, rel)
+    git_blob = _git_blob_at(root, source_commit, rel)
+    checkout_present = _exists(root, rel)
+    checkout = _read_bytes(root, rel) if checkout_present else None
+    if git_blob is None:
+        return {
+            "path": rel,
+            "status": "FINDER_FAILED",
+            "bytes": None,
+            "sha256": None,
+            "git_blob_sha1": None,
+            "url": url,
+        }
+    git_sha1 = _git_blob_sha1(git_blob)
+    if checkout is None:
+        return {
+            "path": rel,
+            "status": "FINDER_FAILED",
+            "bytes": None,
+            "sha256": None,
+            "git_blob_sha1": git_sha1,
+            "url": url,
+        }
+    if checkout != git_blob:
+        return {
+            "path": rel,
+            "status": "STALE_BINDING",
+            "bytes": len(checkout),
+            "sha256": _sha256(checkout),
+            "git_blob_sha1": git_sha1,
+            "url": url,
+        }
     return {
         "path": rel,
-        "status": "PRESENT" if present else "FINDER_FAILED",
-        "bytes": len(blob) if present else None,
-        "sha256": _sha256(blob) if present else None,
-        "git_blob_sha1": _git_blob_sha1(blob) if present else None,
-        "url": _pinned_url(source_commit, rel),
+        "status": "PRESENT",
+        "bytes": len(git_blob),
+        "sha256": _sha256(git_blob),
+        "git_blob_sha1": git_sha1,
+        "url": url,
     }
 
 
@@ -238,31 +339,36 @@ def _binding(receipt, artifact, catalog):
     }
     if set(receipt) - allowed:
         reasons.append("additionalProperties")
+    for key in ("artifact", "catalog", "runtime_measurement", "buyer_acceptance"):
+        if key in receipt and receipt.get(key) is not None and not isinstance(receipt.get(key), dict):
+            reasons.append(key + ".properties")
     if receipt.get("schema_version") != RECEIPT_VERSION:
         reasons.append("schema_version")
     if receipt.get("kind") != "SUBZERO_VALIDATION_RECEIPT":
         reasons.append("kind")
     if not str(receipt.get("receipt_id") or "").strip():
         reasons.append("receipt_id")
-    bound_artifact = receipt.get("artifact") or {}
-    if not isinstance(bound_artifact, dict) or set(bound_artifact) != {
+    bound_artifact = _as_dict(receipt.get("artifact"))
+    if bound_artifact is None or set(bound_artifact) != {
         "name",
         "path",
         "sha256",
     }:
         reasons.append("artifact.properties")
+        bound_artifact = {}
     if bound_artifact.get("name") != artifact.get("name"):
         reasons.append("artifact.name")
     if _norm(bound_artifact.get("path")) != _norm(artifact.get("path")):
         reasons.append("artifact.path")
     if bound_artifact.get("sha256") != artifact.get("sha256"):
         reasons.append("artifact.sha256")
-    bound_catalog = receipt.get("catalog") or {}
-    if not isinstance(bound_catalog, dict) or set(bound_catalog) != {
+    bound_catalog = _as_dict(receipt.get("catalog"))
+    if bound_catalog is None or set(bound_catalog) != {
         "source_commit",
         "source_tree",
     }:
         reasons.append("catalog.properties")
+        bound_catalog = {}
     if bound_catalog.get("source_commit") != catalog.get("source_commit"):
         reasons.append("catalog.source_commit")
     if bound_catalog.get("source_tree") != catalog.get("source_tree"):
@@ -294,7 +400,7 @@ def _binding(receipt, artifact, catalog):
 
 def runtime_receipt_reasons(receipt, artifact, catalog):
     reasons = _binding(receipt, artifact, catalog)
-    runtime = receipt.get("runtime_measurement") or {}
+    runtime = _as_dict(receipt.get("runtime_measurement"))
     runtime_keys = {
         "status",
         "run_id",
@@ -307,42 +413,56 @@ def runtime_receipt_reasons(receipt, artifact, catalog):
         "input_sha256",
         "output_sha256",
     }
-    if not isinstance(runtime, dict) or set(runtime) != runtime_keys:
+    if runtime is None or set(runtime) != runtime_keys:
         reasons.append("runtime_measurement.properties")
+        runtime = {}
     for key in ("run_id", "process_id", "observed_at", "runner_path", "test_path"):
         if not str(runtime.get(key) or "").strip():
             reasons.append("runtime_measurement." + key)
+    if not _valid_timestamp(runtime.get("observed_at")):
+        reasons.append("runtime_measurement.observed_at")
     if runtime.get("status") != "PASS":
         reasons.append("runtime_measurement.status")
     for key in ("runner_sha256", "test_sha256", "input_sha256", "output_sha256"):
         if not _valid_sha(runtime.get(key)):
             reasons.append("runtime_measurement." + key)
+    checks = receipt.get("checks") if isinstance(receipt.get("checks"), list) else []
+    if not checks:
+        reasons.append("checks.empty")
+    for check in checks:
+        if not isinstance(check, dict) or check.get("status") != "PASS":
+            reasons.append("checks.status")
     return sorted(set(reasons))
 
 
 def customer_receipt_reasons(receipt, artifact, catalog):
     reasons = _binding(receipt, artifact, catalog)
-    acceptance = receipt.get("buyer_acceptance") or {}
-    if not isinstance(acceptance, dict) or set(acceptance) != {
+    acceptance = _as_dict(receipt.get("buyer_acceptance"))
+    if acceptance is None or set(acceptance) != {
         "status",
         "buyer_reference",
         "accepted_at",
     }:
         reasons.append("buyer_acceptance.properties")
+        acceptance = {}
     if acceptance.get("status") != "PASS":
         reasons.append("buyer_acceptance.status")
     for key in ("buyer_reference", "accepted_at"):
         if not str(acceptance.get(key) or "").strip():
             reasons.append("buyer_acceptance." + key)
+    if not _valid_timestamp(acceptance.get("accepted_at")):
+        reasons.append("buyer_acceptance.accepted_at")
     if not str(receipt.get("delivered_at") or "").strip():
+        reasons.append("delivered_at")
+    if not _valid_timestamp(receipt.get("delivered_at")):
         reasons.append("delivered_at")
     if not str(receipt.get("result_address") or "").strip():
         reasons.append("result_address")
-    checks = receipt.get("checks") or []
+    checks = receipt.get("checks") if isinstance(receipt.get("checks"), list) else []
     if not checks:
         reasons.append("checks.empty")
     artifact_check = False
-    for check in checks if isinstance(checks, list) else []:
+    for check in checks:
         if not isinstance(check, dict) or check.get("status") != "PASS":
             reasons.append("checks.status")
             continue
@@ -412,7 +532,7 @@ def build_artifact_row(root, expected, source_commit, source_tree, receipts=(), 
         "component_cards": _component_cards(root, name, source_commit),
         "packet": source_evidence(root, PACKET, source_commit),
     }
-    for key in ("fabricator", "structural_test", "sidecar", "packet"):
+    for key in STRUCTURAL_SOURCE_KEYS:
         checks[key] = sources[key]["status"] == "PRESENT"
     failures = sorted(key for key, passed in checks.items() if not passed)
     structural_ok = not failures
@@ -464,7 +584,8 @@ def build_artifact_row(root, expected, source_commit, source_tree, receipts=(), 
             "falsifiers": [
                 "artifact SHA-256 differs from the packet",
                 "stored header differs from the packet",
-                "fabricator, structural test, or sidecar evidence is missing",
+                "fabricator, structural test, sidecar, or card evidence is missing or stale",
+                "named source is not the Git blob at the pinned commit",
                 "runtime receipt is not bound to this artifact and source tree",
                 "buyer PASS receipt is not bound to this artifact and source tree",
             ],
@@ -499,10 +620,7 @@ def _load_receipts(paths):
 
 
 def build_catalog(root, source_commit, source_tree, receipts=()):
-    source_commit = str(source_commit or "").strip().lower()
-    source_tree = str(source_tree or "").strip().lower()
-    if not _valid_commit(source_commit) or not _valid_commit(source_tree):
-        raise ValueError("source commit and tree must be exact 40-hex Git objects")
+    source_commit, source_tree = resolve_source_objects(root, source_commit, source_tree)
     packet, organs = _load_packet(root)
     calibration_hits = [_norm(rel) for rel in CALIBRATION if _exists(root, rel)]
     calibration_misses = [_norm(rel) for rel in CALIBRATION if not _exists(root, rel)]

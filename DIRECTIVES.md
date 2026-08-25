@@ -363,6 +363,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py` · `python3 host/subzero_receipt.py`
 **Note:** H-009 quote leftover and #2329 bind leftover stay. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal state stays NEEDS_BUYER. Do not remint quote / first receipt / bind / H-009 leftovers. Hands off PR 2320 / 2108. No auth. No gate. Talk is not a land.
 
+### 62. Explorer fail-closed leftover — a review comment is not a land
+> *"missing cards must not pass; corrupt bundle bytes must fail; commit/tree pins must exist; invalid timestamps and FAIL receipts must not escalate; nested receipt types must fail closed"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T10:24 Slack `1787653458.350259` / JOJO #2325 exact-head residuals `1787652792.439959` · **Status:** LANDED this commit
+**Landed:** named cards `SUBZERO_CHPR.md` / `SUBZERO_CHLS.md`; explorer binds checkout to the pinned Git blob; missing/stale cards FAIL; syntax-only commit/tree pins rejected; invalid timestamps and FAIL checks stay STRUCTURAL_ONLY; list-shaped nested receipt fields fail closed
+**Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_tech.py` · `node test_land_desk.js` · `python3 open_door_guard.py --diff origin/main HEAD` · `python3 host/subzero_explorer.py`
+**Note:** Draft PR 2354 was CANDIDATE. Replay onto current main. Do not remint organs 27–28 / item 45 / item 51 / item 58 packet / `rivet-ship-subzero-explorer-v2-packet-20260825-01` / #2340 / #2329 binder. No auth. No gate. No tiers. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
