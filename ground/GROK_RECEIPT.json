@@ -1,0 +1,45 @@
+{
+  "slack_ts": "1787649265.015869",
+  "kind": "GROK_RECEIPT",
+  "subject": "Grok receipt normalizer + SKEPTIC catalog delta + H-009 plan",
+  "architect_rank_1": "REFUSED",
+  "envelope_rule": "last fenced JSON only; scratch/thought excluded; every envelope CANDIDATE",
+  "receipts": [
+    {"id": "H-001 ARCHITECT", "status": "CANDIDATE", "tokens": 2680000},
+    {"id": "SKEPTIC", "status": "CANDIDATE", "tokens": 2130000},
+    {"id": "H-004 FALSE-ZERO", "status": "CANDIDATE", "tokens": 2610000},
+    {"id": "H-003 integration", "status": "CANDIDATE", "tokens": 990000},
+    {"id": "H-005 frontier", "status": "CANDIDATE", "tokens": 910000},
+    {"id": "H-002 contamination", "status": "CANDIDATE", "tokens": 3130000}
+  ],
+  "already_landed": [
+    "ground/H002.md",
+    "ground/HEAVY_LANES.md",
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/PIXEL_HEARTBEAT.md",
+    "ground/STRANDED_MAP.md",
+    "ground/BUILD_SWEEP_ACT.md",
+    "ground/HUMAN_OUTCOMES.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-h002-20260825-01",
+    "rivet-ship-heavy-lanes-20260825-01",
+    "rivet-ship-supergrok-heavy-20260825-01",
+    "rivet-ship-pixel-heartbeat-20260825-01",
+    "rivet-ship-stranded-map-20260825-01",
+    "rivet-ship-build-sweep-act-20260825-01",
+    "demon-human-outcomes-revenue-20260825-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "DIO Titan containment / refuse_further_append assessment",
+    "JOJO LDA / Subzero lanes",
+    "device false-zero patch before H-009",
+    "ARCHITECT rank 1 swarm.js pixel consumer",
+    "titan.gguf",
+    "commons.mno"
+  ]
+}

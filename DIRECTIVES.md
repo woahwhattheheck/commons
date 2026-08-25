@@ -299,6 +299,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_human_outcomes.py` · `node test_land_desk.js` · `python3 host/human_outcomes.py`
 **Note:** Four named jobs (issue→PR $2500, meeting packet $1200, security questionnaire $3000, pixel pack $800). Cash $0 / NOT_LANDED. No checkout. White Box stays the high-ticket upgrade. SUBZERO / compression / DIO stay modules. Do not remint `demon-human-outcomes-revenue-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
 
+### 54. Grok receipt — a Slack reconciliation is not a land
+> *"DEMON — HEAVY RECEIPT RECONCILIATION … DEMON owns Grok receipt normalizer + current catalog delta reconciliation/land."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:14 Slack `1787649265.015869` / DEMON HEAVY RECEIPT RECONCILIATION + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/GROK_RECEIPT.md` · `ground/GROK_RECEIPT.json` · `host/grok_receipt.py` · `ground/H009.md` · `ground/H009.json` · SKEPTIC catalog deltas on PIXEL_HEARTBEAT / OWNER_MACHINE_BUILD_SWEEP / STRANDED_MAP / GEMMA / KEYB · land canary + `grokReceiptState`
+**Receipt:** `python3 test_grok_receipt.py` · `node test_land_desk.js` · `python3 host/grok_receipt.py`
+**Note:** Every Grok envelope stays CANDIDATE. Last fenced JSON only. Do not blindly act on ARCHITECT rank 1. H-009 plan lands; device false-zero patch does not. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / BUILD_SWEEP_ACT / HUMAN_OUTCOMES / JOJO LDA-Subzero. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

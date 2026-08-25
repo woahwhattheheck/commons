@@ -29,7 +29,7 @@
       "reason": "do not upload 430860 container bytes; WRITE/FIRE stay unexecuted; public SHA a63396 is STALE / NOT_VERIFIED",
       "canonical_equivalent": "excerpts/20260821/keyb01.manifest.json",
       "canonical_sha256": "14f52ffcf77487303e9b5f8f7d520ddcdd113dea2765c1a85fe52b71a9157d77",
-      "container_sha256": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+      "stale_container_sha256": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
       "hash_state": "STALE",
       "verified": false,
       "original_hash_claim": "verified container SHA a63396b59b0fb9f0",

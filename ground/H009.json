@@ -1,0 +1,49 @@
+{
+  "slack_ts": "1787649265.015869",
+  "kind": "H009_PLAN",
+  "subject": "Exact plan for device false-zero — plan only, not the patch",
+  "status": "PLAN_LANDED",
+  "patch": "NOT_LANDED",
+  "announce_collision_first": true,
+  "non_claude_only": true,
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true,
+  "bugs": [
+    {
+      "id": "device_ls_tree_collapse",
+      "path": "host/device_path_census.py",
+      "fn": "ls_tree"
+    },
+    {
+      "id": "device_missing_dir_zero",
+      "path": "host/device_churn.py",
+      "fn": "listing"
+    },
+    {
+      "id": "wake_missing_dir_empty",
+      "path": "host/mcp_wake.py",
+      "fn": "_wake_state / _wake_job_rows"
+    },
+    {
+      "id": "fleet_listing_zero",
+      "path": "host/fleet_ids.py",
+      "fn": "measure_paths listing"
+    },
+    {
+      "id": "taking_listing_zero",
+      "path": "host/taking_trace.py",
+      "fn": "measure_paths listing"
+    },
+    {
+      "id": "verify_listing_zero",
+      "path": "host/verify_cite.py",
+      "fn": "listing"
+    },
+    {
+      "id": "finder_zero_self_audit",
+      "path": "host/finder_zero.py",
+      "fn": "measure_tree"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Gemma 4 E4B tokenizer dests FROM FILE
 
-Read-only dump this window: `python host/muhl_dump_litertlm.py gemma-4-E4B-it.litertlm`
+Read-only dump this window: `python infra/host/muhl_dump_litertlm.py gemma-4-E4B-it.litertlm`
 
 - magic LITERTLM ver 1.5.0 header_end 1872 sections 12
 - tokmeta sec#0 type=5 @ 16384 size 12192

@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bv/.test(html), "desk must share the current-main/Titan cache key after human-outcomes leftover");
+assert.ok(/20260825bw/.test(html), "desk must share the current-main/Titan cache key after grok-receipt leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,42 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isGrokReceiptTalk, "land.js must classify grok-receipt leftover talk");
+assert.ok(api.grokReceiptState, "land.js must classify the grok-receipt leftover");
+assert.ok(api.isGrokReceiptTalk("DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nCompleted clean Build receipts so far: H-001 ARCHITECT. Do not blindly act on ARCHITECT rank 1. DEMON owns Grok receipt normalizer + current catalog delta reconciliation/land. H-009 exact plan. 1787649265.015869"), "DEMON heavy receipt reconciliation is leftover talk");
+assert.ok(!api.isGrokReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the grok-receipt leftover");
+assert.ok(!api.isGrokReceiptTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the grok-receipt leftover");
+assert.ok(!api.isGrokReceiptTalk("DEMON UPDATE — first clean SuperGrok Heavy receipt landed.\nH-002 contamination trace\n1787647999.742959"), "H-002 first-clean is not the grok-receipt leftover");
+assert.ok(!api.isGrokReceiptTalk("DEMON — CLEAN SUPERGROK HEAVY LANES LIVE\nH-001-ARCHITECT measured Commons build consumer graph\nH-002-CONTAMINATION official xai-org/grok-build\n1787646811.754939"), "Heavy lanes packet name is not the grok-receipt leftover");
+assert.ok(!api.isHumanOutcomesTalk("DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nGrok receipt normalizer + current catalog delta. 1787649265.015869"), "grok-receipt Slack is not the human-outcomes leftover");
+assert.ok(!api.isH002Talk("DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nGrok receipt normalizer. 1787649265.015869"), "grok-receipt Slack is not the H-002 leftover");
+assert.ok(!api.isHeavyLanesTalk("DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nDo not blindly act on ARCHITECT rank 1. 1787649265.015869"), "grok-receipt Slack is not the Heavy lanes leftover");
+assert.ok(!api.isBuildSweepActTalk("DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nGrok receipt normalizer + H-009 exact plan. 1787649265.015869"), "grok-receipt Slack without sweep words is not build-sweep leftover");
+var grokReceiptTalk = api.completionStateFromText(
+  "DEMON — HEAVY RECEIPT RECONCILIATION / ACT ON THIS\nCompleted clean Build receipts so far: H-001 ARCHITECT. OWNER_MACHINE_BUILD_SWEEP still says add emitter. Do not blindly act on ARCHITECT rank 1. DEMON owns Grok receipt normalizer + current catalog delta reconciliation/land. H-009 exact plan. 1787649265.015869"
+);
+assert.strictEqual(grokReceiptTalk.state, "CLAIMED");
+assert.ok(/receipt normalizer|catalog-delta|H-009|ARCHITECT rank 1/i.test(grokReceiptTalk.note), "grok-receipt-without-SHA must stay CLAIMED and beat build-sweep / human-outcomes / Heavy lanes");
+var grokReceiptDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ngrok-receipt leftover landed"
+);
+assert.strictEqual(grokReceiptDone.state, "INTEGRATED", "completion words still beat grok-receipt talk");
+var grokReceiptEmpty = api.grokReceiptState("");
+assert.strictEqual(grokReceiptEmpty.state, "UNMEASURED");
+var grokReceiptMissing = api.grokReceiptState("# empty stub\nno leftover");
+assert.strictEqual(grokReceiptMissing.state, "NOT_LANDED");
+var grokReceiptOk = api.grokReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef normalize_envelope(text):\n    return text\nlast fenced json\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nARCHITECT rank 1\nH-009\nEvery Grok envelope is CANDIDATE\nno auth\nno gate\n");
+assert.strictEqual(grokReceiptOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(grokReceiptOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="grok-receipt-result"') >= 0, "desk must name the grok-receipt leftover");
+assert.ok(html.indexOf("host/grok_receipt.py") >= 0, "desk must name the grok-receipt instrument");
+assert.ok(html.indexOf("ground/GROK_RECEIPT.md") >= 0, "desk must link the grok-receipt card");
+assert.ok(html.indexOf("ground/GROK_RECEIPT.json") >= 0, "desk must link the grok-receipt catalog");
+assert.ok(html.indexOf("1787649265.015869") >= 0, "desk must cite the DEMON reconciliation Slack ts");
+assert.ok(/HEAVY RECEIPT RECONCILIATION|catalog-delta|H-009/i.test(html), "desk must name grok-receipt talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECEIPT.md") >= 0, "grok-receipt card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECEIPT.json") >= 0, "grok-receipt catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/H009.md") >= 0, "H-009 plan must stay a canary");
 assert.ok(api.isHumanOutcomesTalk, "land.js must classify human-outcomes leftover talk");
 assert.ok(api.humanOutcomesState, "land.js must classify the human-outcomes leftover");
 assert.ok(api.isHumanOutcomesTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\nhuman value, not proof worship\naccessible public-meeting packet\nsecurity questionnaire completion\n8-bit/pixel agent pack\np/demon-human-outcomes-revenue-20260825-01.md\n1787648711.782309"), "DEMON human-outcomes taking is leftover talk");

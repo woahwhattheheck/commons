@@ -198,7 +198,12 @@ def measure_from_rows(facts):
     keyb = facts.get("keyb") or {}
     titan = facts.get("titan") or {}
     claude = facts.get("claude") or {}
-    keyb_sha = str(keyb.get("container_sha256") or keyb.get("canonical_sha256") or "")
+    keyb_sha = str(
+        keyb.get("stale_container_sha256")
+        or keyb.get("container_sha256")
+        or keyb.get("canonical_sha256")
+        or ""
+    )
     keyb_hash_state = str(keyb.get("hash_state") or "").upper()
     keyb_stale = keyb_hash_state == "STALE" or bool(keyb.get("stale"))
     titan_disp = str(titan.get("disposition") or "").upper()

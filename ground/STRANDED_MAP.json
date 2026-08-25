@@ -10,9 +10,9 @@
     {
       "id": "android_ci",
       "lda_workflow": "lda/workflows/android.yml",
-      "gh_workflow": ".github/workflows/android.yml",
+      "gh_workflow": ".github/workflows/lda-android.yml",
       "claim": "DIO",
-      "note": "lda workflow present; GitHub Actions only runs .github/workflows"
+      "note": "live Actions file is lda-android.yml; workflow-level success can hide failed assembleDebug (continue-on-error). Historical leftover still looks at android.yml."
     },
     {
       "id": "wake_jobs",
@@ -35,7 +35,7 @@
       ],
       "inventory": "ground/MCP_INVENTORY.json",
       "claim": "JOJO",
-      "note": "four surfaces exist; one canonical inventory is absent"
+      "note": "four surfaces exist; canonical inventory exists at ground/MCP_INVENTORY.json"
     },
     {
       "id": "whitebox",

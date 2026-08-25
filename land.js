@@ -233,6 +233,10 @@
     "ground/H002.json",
     "ground/HUMAN_OUTCOMES.md",
     "ground/HUMAN_OUTCOMES.json",
+    "ground/GROK_RECEIPT.md",
+    "ground/GROK_RECEIPT.json",
+    "ground/H009.md",
+    "ground/H009.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -463,6 +467,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isGrokReceiptTalk(t)) {
+      return { state: "CLAIMED", note: "HEAVY RECEIPT RECONCILIATION / Grok receipt normalizer / catalog-delta / H-009 exact plan talk. Talk is not a land. Last fenced JSON is authoritative. Do not blindly act on ARCHITECT rank 1. Do not remint H-002, HEAVY_LANES, PIXEL_HEARTBEAT, STRANDED_MAP, or BUILD_SWEEP_ACT." };
     }
     if (api.isHumanOutcomesTalk(t)) {
       return { state: "CLAIMED", note: "DEMON TAKING / revenue/human-outcomes / humans.html / human-value-not-proof-worship talk. Talk is not a land. Ship the four named human jobs to current main. Collected cash stays $0 / NOT_LANDED. Do not remint the DEMON taking id, White Box, payment-ready, SUBZERO, compression, or DIO." };
@@ -927,6 +934,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokReceiptTalk = function (text) {
+    return /1787649265\.015869|HEAVY RECEIPT RECONCILIATION|do not blindly act on ARCHITECT rank 1|Grok receipt normalizer|H-009 exact plan|catalog delta reconciliation|grok-receipt leftover/i.test(String(text || ""));
+  };
+
+  api.grokReceiptState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_receipt.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasNorm = /def normalize_envelope/.test(body) && /last fenced json/i.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesRank = /ARCHITECT rank 1/.test(body);
+    var namesPlan = /H-009/.test(body);
+    var namesCand = /Every Grok envelope is CANDIDATE/.test(body) || /every grok envelope is candidate/i.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasNorm && hasMiss && neverZero && namesRank && namesPlan && namesCand && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-receipt leftover is on this file. Last fenced JSON is authoritative. A Slack reconciliation is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_receipt.py missing the leftover. HEAVY RECEIPT RECONCILIATION / catalog-delta / H-009 talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3425,6 +3462,7 @@
   var heavyLanesOut = document.getElementById("heavy-lanes-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var grokReceiptOut = document.getElementById("grok-receipt-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4121,6 +4159,12 @@
     if (!reviewLaneOut) return;
     reviewLaneOut.setAttribute("data-tone", api.toneFor(result.state));
     reviewLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokReceipt(result) {
+    if (!grokReceiptOut) return;
+    grokReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintHumanOutcomes(result) {
@@ -5051,6 +5095,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintReviewLane(err);
+      return err;
+    });
+  }
+
+  function loadGrokReceipt(sha) {
+    if (!grokReceiptOut) return Promise.resolve(null);
+    grokReceiptOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_receipt.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_receipt.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_receipt.py absent at the measured main SHA. HEAVY RECEIPT RECONCILIATION / catalog-delta / H-009 talk is CLAIMED." };
+        paintGrokReceipt(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokReceipt(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokReceiptState(body);
+        paintGrokReceipt(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokReceipt(err);
       return err;
     });
   }
@@ -6374,6 +6445,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadGrokReceipt(sha);
     loadHumanOutcomes(sha);
     loadH002(sha);
     loadHeavyLanes(sha);

@@ -1,7 +1,8 @@
 {
   "fabricate": false,
   "files": [
-    "PLAYER2.json"
+    "PLAYER2.json",
+    "RIVET.json"
   ],
   "hands_off": [
     "host/render_check.py",
@@ -26,7 +27,8 @@
     }
   ],
   "index": [
-    "PLAYER2.json"
+    "PLAYER2.json",
+    "RIVET.json"
   ],
   "listed_missing": [],
   "note": "Do not remint the DEMON offer id. Do not invent a heartbeat. Local exact-SHA verification stays with DEMON. RIVET owns render CI.",
