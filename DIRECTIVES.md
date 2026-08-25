@@ -99,6 +99,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_jojo_assign.py` · `node test_land_desk.js` · `python3 host/jojo_assign.py`
 **Note:** Does not remint CLAUDE_COMPUTE / CLAUDE_INTERMEDIATE / CLAUDE_PARK / GROK_RECOVERY. A Slack ACK is not the file. Talk is not a land.
 
+### 29. Sitting remint — an already-landed leftover is not reminted
+> *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T06:44 Slack `1787640259.137569` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SITTING_REMINT.md` · `ground/SITTING_REMINT.json` · `host/sitting_remint.py` · land canary + `sittingRemintState`
+**Receipt:** `python3 test_sitting_remint.py` · `node test_land_desk.js` · `python3 host/sitting_remint.py`
+**Note:** Park, compute, intermediate, cash-now, and JOJO-assign leftovers are already on main. Name them. Do not remint them. A remint PR is not a second land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

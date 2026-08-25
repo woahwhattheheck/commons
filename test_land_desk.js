@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ax/.test(html), "desk must bust the JOJO-assign cache key");
+assert.ok(/20260825ay/.test(html), "desk must bust the sitting-remint cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,35 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isSittingRemintTalk, "land.js must classify sitting remint / already-landed leftover talk");
+assert.ok(api.sittingRemintState, "land.js must classify the sitting-remint leftover");
+assert.ok(api.isSittingRemintTalk("sitting remint leftover. already-landed leftover. A remint PR is not a second land. Do not remint an already-landed leftover."), "sitting remint census is talk");
+assert.ok(!api.isSittingRemintTalk("make sure people do more than talk about shit"), "ship-talk is not the sitting-remint leftover");
+assert.ok(!api.isSittingRemintTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\ncompiler farm\ncheap Opus 5\nadjudicator in advance\n1787640367.070179"), "paid-compute copy is not the sitting-remint leftover");
+assert.ok(!api.isSittingRemintTalk("DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER\nREHABILITATION GATE\n12 consecutive scoped"), "intermediate ruling copy is not the sitting-remint leftover");
+var remintTalk = api.completionStateFromText(
+  "sitting remint leftover. already-landed leftover. A remint PR is not a second land."
+);
+assert.strictEqual(remintTalk.state, "CLAIMED");
+assert.ok(/sitting remint|already-landed leftover|remint-PR-is-not-a-second-land/i.test(remintTalk.note), "sitting-remint-without-SHA must stay CLAIMED and beat ship-talk");
+var remintDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nsitting-remint leftover landed"
+);
+assert.strictEqual(remintDone.state, "INTEGRATED", "completion words still beat sitting-remint talk");
+var remintEmpty = api.sittingRemintState("");
+assert.strictEqual(remintEmpty.state, "UNMEASURED");
+var remintMissing = api.sittingRemintState("# empty stub\nno leftover");
+assert.strictEqual(remintMissing.state, "NOT_LANDED");
+var remintOk = api.sittingRemintState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nalready-landed leftover\nCLAUDE_COMPUTE\nA remint PR is not a second land\ndo not remint\n");
+assert.strictEqual(remintOk.state, "INTEGRATED");
+assert.ok(/still not the file|not the file/i.test(remintOk.note), "landed leftover must name a remint PR as not the file");
+assert.ok(html.indexOf('id="sitting-remint-result"') >= 0, "desk must name the sitting-remint leftover");
+assert.ok(html.indexOf("host/sitting_remint.py") >= 0, "desk must name the sitting-remint instrument");
+assert.ok(html.indexOf("ground/SITTING_REMINT.md") >= 0, "desk must link the sitting-remint card");
+assert.ok(html.indexOf("ground/SITTING_REMINT.json") >= 0, "desk must link the sitting-remint catalog");
+assert.ok(/sitting remint|already-landed leftover|remint-PR-is-not-a-second-land/i.test(html), "desk must name sitting-remint talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_REMINT.md") >= 0, "sitting-remint card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SITTING_REMINT.json") >= 0, "sitting-remint catalog must stay a canary");
 assert.ok(api.isClaudeComputeTalk, "land.js must classify paid-compute / compiler-farm talk");
 assert.ok(api.claudeComputeState, "land.js must classify the Claude-compute leftover");
 assert.ok(api.isClaudeComputeTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nOutput is labeled CLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nmust name the non-Claude adjudicator in advance\n1787640367.070179"), "DEMON paid-compute clarification is talk");
