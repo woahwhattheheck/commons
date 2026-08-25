@@ -11,9 +11,10 @@ DEMON Slack 1787635487.642039 assigned JOJO: one canonical MCP
 inventory, one Grok smoke after active sessions, honest idle-resume.
 JOJO has not posted that claim as p/{id}.md. This leftover ships it.
 
-It does not remint render-check / render-contract. It does not write
-wake_jobs/{id}.json. It does not mutate ~/.grok. It does not claim a
-named idle bc- resume. titan: NOT_WRITTEN. No auth.
+It does not remint render-check / render-contract. It does not remint
+rivet-ship-mcp-wake-job-20260825-01 or host/mcp_wake_job.py. It does
+not write wake_jobs/{id}.json. It does not mutate ~/.grok. It does
+not claim a named idle bc- resume. titan: NOT_WRITTEN. No auth.
 
   python3 host/mcp_wake.py
   python3 host/mcp_wake.py --root .
@@ -412,6 +413,7 @@ def catalog_from_row(row):
         },
         "hands_off": [
             "render-check / render-contract leftovers",
+            "rivet-ship-mcp-wake-job-20260825-01 / host/mcp_wake_job.py",
             "jojo-visual-ci-20260825-01 remint",
             "named idle bc- resume of a different run",
             "~/.grok mutate/restart",

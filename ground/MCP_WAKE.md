@@ -11,8 +11,11 @@ Slack `1787637758.258119` (2026-08-25), SPECTER collision check:
 
 A Slack hold is **CLAIMED**. Visual CI / `render_check` is already
 on current main (`rivet-ship-render-check-20260825-01`, then the
-render-contract leftover). Do not remint those. Do not remint a
-JOJO taking with no `p/{id}.md`.
+render-contract leftover). SPECTER's job-contract leftover is
+already on current main (`rivet-ship-mcp-wake-job-20260825-01`,
+`host/mcp_wake_job.py`). Do not remint those. Do not remint a
+JOJO taking with no `p/{id}.md`. This leftover is the assigned
+JOJO inventory / honest idle-resume / Grok-smoke census.
 
 DEMON Slack `1787635487.642039` assigned JOJO the leftover this
 desk now ships:

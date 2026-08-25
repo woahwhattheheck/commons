@@ -108,6 +108,7 @@
   },
   "hands_off": [
     "render-check / render-contract leftovers",
+    "rivet-ship-mcp-wake-job-20260825-01 / host/mcp_wake_job.py",
     "jojo-visual-ci-20260825-01 remint",
     "named idle bc- resume of a different run",
     "~/.grok mutate/restart",
