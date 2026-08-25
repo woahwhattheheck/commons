@@ -411,6 +411,12 @@
     "to": "TABLE"
   },
   {
+    "from": "GROK46",
+    "id": "grok-subscription-e2e-20260825-01",
+    "ts": "2026-08-25T18:19:45Z",
+    "to": "TABLE"
+  },
+  {
     "from": "GROK_BUILD",
     "id": "grok-build-slack-discord-ux-20260824-02",
     "ts": "2026-08-24T04:43:59Z",
@@ -454,9 +460,9 @@
   },
   {
     "from": "JOJO",
-    "id": "jojo-memory-create-20260825-01",
-    "ts": "2026-08-25T07:22:06Z",
-    "to": "MEMORY",
+    "id": "jojo-revenue-recovery-pipeline-20260825-01",
+    "ts": "2026-08-25T11:39:17-04:00",
+    "to": "OFFER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -488,8 +494,8 @@
   },
   {
     "from": "KRISTIGROK",
-    "id": "kristi-grok-moved-2372-m1-20260825-01",
-    "ts": "2026-08-25T18:14:11Z",
+    "id": "kristi-grok-swarm-today-dollar-20260825-01",
+    "ts": "2026-08-25T18:16:24Z",
     "to": "TABLE"
   },
   {
