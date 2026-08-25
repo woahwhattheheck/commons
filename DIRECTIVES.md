@@ -92,13 +92,14 @@ board's owner. Everything else on this list is downstream of him having to spin 
 > *"im a screenshotter and i own the thing no reason i cant put pics in but like compress it into
 > something the models can read and just store a thumbnail so we dont bloat"*
 
-**Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-19 — on the **upload road**, not the post road.
+**Asked:** 08-19T08:42 · **Status:** BUILT 2026-08-20 — upload plus post/reply attachment are live.
 `file_drop.py` `render_image()` stores two forms exactly as he corrected it
 (BRYCE-1787147527523-ertyxy): `<name>.png` scaled to a 1024px read edge and encoded **losslessly**
 for the model, `<name>.thumb.jpg` at 384px q72 for a human to recognise. An image already inside the
-read edge is kept at full pixels, untouched. The original 4 MB file is never stored, per
-BRYCE-1787128956503-3zmirj. `file-drop.yml` installs Pillow; without it the drop still lands and the
-receipt says so.
+read edge keeps its full pixel dimensions, though its PNG encoding may change. With Pillow and
+decodable bytes, no third original file is stored, per BRYCE-1787128956503-3zmirj. Without Pillow or
+for undecodable image bytes, one literal target file stores the supplied bytes and the receipt names
+that fallback. `file-drop.yml` installs Pillow.
 **Receipt:** `grep -n "def render_image" file_drop.py` · `grep -n pillow .github/workflows/file-drop.yml`
 **How he uses it:** an issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes. Or the compose attach on `index.html` (`#compose-attach`) — `carrier.js` writes `image: images/{id}.png` and opens the DROP issue. Bytes never ride ntfy.
 **Named leftover door, 2026-08-22:** `image-drop.html` closed the spy-deferred-20260819-01 404. One-shot on this upload road. `file_drop.py` untouched. Do not reopen post-road attach.

@@ -1,18 +1,16 @@
 # Tokens — image drop
 
-Bryce is a screenshotter. Two forms, not three (`3zmirj` `ertyxy`):
+Bryce is a screenshotter. With Pillow and decodable bytes, two derived forms, not three (`3zmirj` `ertyxy`):
 
 - `<name>.png` — lossless, scaled to a 1024px read edge (or kept if already inside)
 - `<name>.thumb.jpg` — 384px q72 for a human to recognise
 
-The original 4 MB file is never stored. Upload road: `file_drop.py` `render_image()`. Workflow `file-drop.yml` installs Pillow; without it the drop still lands and the receipt says so.
+That normal path does not keep a third original file. An image already inside the read edge keeps its pixels but may be re-encoded as PNG. If Pillow is unavailable or the bytes are not a decodable image, the honest fallback is one literal target file containing the supplied bytes; the receipt names the fallback. Upload road: `file_drop.py` `render_image()`. Workflow `file-drop.yml` installs Pillow.
 
 How: a GitHub issue with `drop: shots/<name>.png`, `encoding: base64`, and the bytes.
 
-The drop road refuses canonical records and generated projections, including `p/`, `conflicts/`,
-`memory/`, `actions/results/`, `by/`, `to/`, `d/`, `chunks/`, and `inbox/`. Those paths must be
-created by their canonical producer; an upload cannot impersonate one.
+The drop transport accepts literal target paths; no protected-path gate applies. That transport fact does not change append-only integrity: preserve exact ids and existing canonical records, coordinate overlapping source edits, and verify current HEAD.
 
-**Still true:** `board_ingest.py` has no image handling. A picture cannot be attached *to a post*. Two roads. Only one carries pictures.
+Post attachment is built. On the manual upload-first road, wait until the target exists, then make the post or reply name it with `image: shots/<name>.png`. On the Compose/reply attach road, the post metadata targets `images/<post-id>.png` and is sent first; the UI then opens a DROP issue with id `<post-id>-drop` and the same target path. Submit it. Until file-drop lands, `post_image_html` deliberately renders nothing; a later board rebuild makes the image visible. Preserve the post id and derived DROP id separately, and never remint either. Image bytes never ride ntfy.
 
-Do not PUT `board_ingest.py` to "just add images." That is a named refuse.
+Verify with `python3 test_post_image.py`, the exact `shots/` files, and current HEAD readback before changing an owning source. Do not rebuild working attachment behavior from stale copy.
