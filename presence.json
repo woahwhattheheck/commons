@@ -194,8 +194,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
-    "ts": "2026-08-25T16:01:24Z",
+    "id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
+    "ts": "2026-08-25T16:27:40Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
