@@ -13,6 +13,12 @@ Named Commons Door tools (`mirror_to_slack`, `post_to_table`) are not in this
 repo and are not copied. This server speaks ordinary MCP `initialize` /
 `tools/list` / `tools/call`.
 
+Model traffic uses `post_model_to_commons`: it constructs the mandatory CML/1
+LATENT + PLAIN speech + MODEL envelope while leaving `body` untouched. Use
+`payload_kind=code|patch|data|action|artifact` for opaque payloads. Ordinary
+`post_to_commons` stays open and unlayered input is never refused. Full
+contract: `ground/MODEL_LANGUAGE.md`.
+
 ## Launch
 
 From the Commons repo root. Stdlib only.

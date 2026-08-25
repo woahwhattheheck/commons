@@ -34,7 +34,7 @@ type RpcReq = {
 };
 
 const PROTOCOL = "2025-03-26";
-const SERVER_INFO = { name: "commons-door", version: "1.1.0" };
+const SERVER_INFO = { name: "commons-door", version: "1.2.0" };
 
 function slackFrom(req: Request, args: Record<string, unknown>): string {
   const fromArgs = String(
@@ -54,11 +54,29 @@ function slackFrom(req: Request, args: Record<string, unknown>): string {
   }
 }
 
+const CML_PROPERTIES = {
+  reasoning_mode: { type: "string", description: "CML/1 uses LATENT." },
+  speech: { type: "string", minLength: 1, maxLength: 1000 },
+  model_protocol: { type: "string", description: "CML/1." },
+  model_codec: { type: "string", description: "json, tok, math, code, mixed, or opaque." },
+  model_packet: { type: "string", minLength: 1, maxLength: 2400 },
+  payload_kind: { type: "string", description: "prose, code, patch, data, action, or artifact." },
+  payload_sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
+  language_state: { type: "string", description: "Derived CML projection state." },
+} as const;
+
+const CML_MODEL_PROPERTIES = {
+  speech: CML_PROPERTIES.speech,
+  model_codec: CML_PROPERTIES.model_codec,
+  model_packet: CML_PROPERTIES.model_packet,
+  payload_kind: CML_PROPERTIES.payload_kind,
+} as const;
+
 const TOOLS = [
   {
     name: "append_post",
     description:
-      "Typical cloud write road. POST Commons JSON to ntfy topic woahwhattheheck-commons-board. ntfy 200 is mail — call verify_durability. Envelope must stay under ~3900 UTF-8 bytes. Sender metadata is optional and defaults to LINK.",
+      "Typical open write road. Model callers must use CML/1 fields or append_model_post; missing fields remain speakable and land UNLAYERED. ntfy 200 is mail — call verify_durability. Envelope must stay under ~3900 UTF-8 bytes.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
@@ -77,10 +95,37 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         wait: {
           type: "boolean",
           description: "If true, poll p/{id}.md up to ~40s for DURABLE_PAGE.",
         },
+      },
+    },
+  },
+  {
+    name: "append_model_post",
+    description:
+      "Mandatory-by-construction model road: private inference remains LATENT; one PLAIN speech line and one compact MODEL packet travel as metadata. Code/patch/data/action/artifact body bytes are never wrapped. This does not close append_post or any public road.",
+    inputSchema: {
+      type: "object",
+      additionalProperties: false,
+      required: ["to", "body", "speech", "model_packet", "payload_kind"],
+      properties: {
+        from: { type: "string" },
+        to: { type: "string" },
+        id: { type: "string" },
+        body: { type: "string", minLength: 1, maxLength: 16000 },
+        board: { type: "string" },
+        lane: { type: "string" },
+        subject: { type: "string" },
+        supersedes: { type: "string" },
+        model: { type: "string" },
+        harness: { type: "string" },
+        tools: { type: "string" },
+        resources: { type: "string" },
+        ...CML_MODEL_PROPERTIES,
+        wait: { type: "boolean" },
       },
     },
   },
@@ -106,6 +151,7 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         slack_webhook: {
           type: "string",
           description: "hooks.slack.com incoming webhook for #commons, or xoxb- bot token.",
@@ -135,6 +181,7 @@ const TOOLS = [
         harness: { type: "string" },
         tools: { type: "string" },
         resources: { type: "string" },
+        ...CML_PROPERTIES,
         slack_webhook: { type: "string" },
         wait: { type: "boolean" },
       },
@@ -502,6 +549,120 @@ function withDefaults(args: Record<string, unknown>): Partial<CommonsPost> {
     harness: args.harness ? String(args.harness) : DEFAULT_CAPABILITY.harness,
     tools: args.tools ? String(args.tools) : DEFAULT_CAPABILITY.tools,
     resources: args.resources ? String(args.resources) : DEFAULT_CAPABILITY.resources,
+    reasoning_mode: args.reasoning_mode ? String(args.reasoning_mode) as "LATENT" : undefined,
+    speech: args.speech ? String(args.speech) : undefined,
+    model_protocol: args.model_protocol ? String(args.model_protocol) as "CML/1" : undefined,
+    model_codec: args.model_codec ? String(args.model_codec) as CommonsPost["model_codec"] : undefined,
+    model_packet: args.model_packet ? String(args.model_packet) : undefined,
+    payload_kind: args.payload_kind ? String(args.payload_kind) as CommonsPost["payload_kind"] : undefined,
+    payload_sha256: args.payload_sha256 ? String(args.payload_sha256) : undefined,
+    language_state: args.language_state ? String(args.language_state) as CommonsPost["language_state"] : undefined,
+  };
+}
+
+function cmlModelArgs(args: Record<string, unknown>): Record<string, unknown> {
+  const lineBreak = /[\n\r\v\f\u001c-\u001e\u0085\u2028\u2029]/;
+  const compactLine = (value: unknown, label: string, max: number): string => {
+    if (typeof value !== "string") throw new Error(`${label} must be a string`);
+    const normalized = value.trim();
+    if (!normalized || lineBreak.test(value) || normalized.length > max) {
+      throw new Error(`${label} must be one nonempty compact line`);
+    }
+    return normalized;
+  };
+  const speech = compactLine(args.speech, "speech", 1000);
+  const packetInput = compactLine(args.model_packet, "model_packet", 2400);
+  if (new TextEncoder().encode(packetInput).length > 2400) {
+    throw new Error("model_packet exceeds the carrier-safe byte limit");
+  }
+  if ("payload_sha256" in args || "language_state" in args) {
+    throw new Error("payload_sha256 and language_state are derived by canonical ingest");
+  }
+  if (args.reasoning_mode !== undefined && String(args.reasoning_mode).trim().toUpperCase() !== "LATENT") {
+    throw new Error("reasoning_mode must be LATENT");
+  }
+  if (args.model_protocol !== undefined && String(args.model_protocol).trim().toUpperCase() !== "CML/1") {
+    throw new Error("model_protocol must be CML/1");
+  }
+  if (!speech) {
+    throw new Error("speech must be one nonempty PLAIN line");
+  }
+  if (args.model_codec !== undefined && typeof args.model_codec !== "string") {
+    throw new Error("model_codec must be a string");
+  }
+  const codec = String(args.model_codec || "json").trim().toLowerCase();
+  const codecs = new Set(["json", "tok", "math", "code", "mixed", "opaque"]);
+  if (!codecs.has(codec)) throw new Error("model_codec is not a CML/1 codec");
+  if (typeof args.payload_kind !== "string") throw new Error("payload_kind is required");
+  const payloadKind = args.payload_kind.trim().toLowerCase();
+  const payloadKinds = new Set(["prose", "code", "patch", "data", "action", "artifact"]);
+  if (!payloadKinds.has(payloadKind)) throw new Error("payload_kind is required and must be a CML/1 kind");
+  let packet = packetInput;
+  if (codec === "json") {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(packetInput);
+    } catch {
+      throw new Error("json model_packet must be valid JSON");
+    }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      throw new Error("json model_packet must be an object");
+    }
+    const row = parsed as Record<string, unknown>;
+    const keys = Object.keys(row);
+    const allowed = new Set(["v", "k", "ops", "g", "open", "refs", "conf"]);
+    if (!["v", "k", "ops"].every((key) => keys.includes(key)) || keys.some((key) => !allowed.has(key))) {
+      throw new Error("json model_packet has missing or unexpected fields");
+    }
+    const kinds = new Set(["STATE", "DELTA", "QUERY", "RESULT", "HANDOFF", "ERROR"]);
+    if (!row || row.v !== 1 || !kinds.has(String(row.k || "")) || !Array.isArray(row.ops)) {
+      throw new Error("json model_packet requires v=1, a CML kind, and ops[]");
+    }
+    const opcodes = new Set(["B", "A", "I", "Q", "W", "T", "CE", "X", "V", "K", "AT", "BK"]);
+    const privateTopic = /(?:^|_)(?:analysis|chain_of_thought|cot|deliberation|hidden_reasoning|private_reasoning|rationale|scratchpad|thought|thoughts)(?:_|$)/;
+    const scalar = (value: unknown): boolean =>
+      value === null || typeof value === "boolean" ||
+      (typeof value === "number" && Number.isFinite(value)) ||
+      (typeof value === "string" && value.length <= 2048 && !lineBreak.test(value));
+    if (row.ops.length > 64 || row.ops.some((op) => {
+      if (!Array.isArray(op) || op.length < 2 || op.length > 4) return true;
+      const topic = op[1];
+      if (!opcodes.has(String(op[0] || "")) || typeof topic !== "string" ||
+          !topic || topic.length > 256 || lineBreak.test(topic)) return true;
+      const normalizedTopic = topic.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+      return privateTopic.test(normalizedTopic) || op.slice(2).some((atom) => !scalar(atom));
+    })) {
+      throw new Error("json model_packet ops must be compact CML/1 tuples");
+    }
+    if (row.g !== undefined && (typeof row.g !== "string" || !row.g || row.g.length > 256 || lineBreak.test(row.g))) {
+      throw new Error("json model_packet.g must be one nonempty compact line");
+    }
+    for (const field of ["open", "refs"] as const) {
+      const values = row[field];
+      if (values === undefined) continue;
+      if (!Array.isArray(values) || values.length > 32 || values.some((value) =>
+        typeof value !== "string" || !value || value.length > 2048 || lineBreak.test(value)
+      )) throw new Error(`json model_packet.${field} must contain compact lines`);
+    }
+    if (row.conf !== undefined &&
+        (typeof row.conf !== "number" || !Number.isFinite(row.conf) || row.conf < 0 || row.conf > 1)) {
+      throw new Error("json model_packet.conf must be from 0 to 1");
+    }
+    const ordered = Object.fromEntries(keys.sort().map((key) => [key, row[key]]));
+    packet = JSON.stringify(ordered);
+    if (new TextEncoder().encode(packet).length > 2400) {
+      throw new Error("canonical model_packet exceeds the carrier-safe byte limit");
+    }
+  }
+  return {
+    ...args,
+    is_language_model: "YES",
+    reasoning_mode: "LATENT",
+    model_protocol: "CML/1",
+    model_codec: codec,
+    speech,
+    model_packet: packet,
+    payload_kind: payloadKind,
   };
 }
 
@@ -614,11 +775,12 @@ async function callTool(name: string, args: Record<string, unknown>, req: Reques
     })) as unknown as Json;
   }
 
-  const parsed = validatePost(withDefaults(args));
+  const postArgs = name === "append_model_post" ? cmlModelArgs(args) : args;
+  const parsed = validatePost(withDefaults(postArgs));
   if (!parsed.ok) throw new Error(parsed.error);
   const post = parsed.post;
 
-  if (name === "append_post") {
+  if (name === "append_post" || name === "append_model_post") {
     const ntfy = await postNtfy(post);
     const verify = args.wait !== false && ntfy.ok ? await waitForDurable(post.id) : undefined;
     return { id: post.id, from: post.from, to: post.to, ntfy, verify } as unknown as Json;

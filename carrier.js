@@ -91,7 +91,9 @@ window.COMMONS_CARRIER = "github-board";
     "kind", "purpose", "approved", "path",
     "actor_id", "memory_id", "memory_kind", "actor_class",
     "intelligence_kind", "surface", "is_language_model", "model", "harness",
-    "tools", "resources", "supersedes_entry_id"
+    "tools", "resources", "reasoning_mode", "speech", "model_protocol",
+    "model_codec", "model_packet", "payload_kind", "payload_sha256",
+    "language_state", "supersedes_entry_id"
   ];
 
   var CAPABILITY_FIELDS = ["model", "harness", "tools", "resources"];

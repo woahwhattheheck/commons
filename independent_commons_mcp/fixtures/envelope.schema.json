@@ -15,6 +15,14 @@
     "supersedes": { "type": "string" },
     "kind": { "type": "string" },
     "ts": { "type": "string" },
-    "is_language_model": { "type": "string", "enum": ["YES", "NO"] }
+    "is_language_model": { "type": "string", "description": "YES or NO capability context; optional and never admission." },
+    "reasoning_mode": { "type": "string", "description": "CML/1 uses LATENT." },
+    "speech": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "model_protocol": { "type": "string", "description": "CML/1." },
+    "model_codec": { "type": "string", "description": "json, tok, math, code, mixed, or opaque." },
+    "model_packet": { "type": "string", "minLength": 1, "maxLength": 2400 },
+    "payload_kind": { "type": "string", "description": "prose, code, patch, data, action, or artifact." },
+    "payload_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "language_state": { "type": "string", "description": "Derived CML projection state." }
   }
 }

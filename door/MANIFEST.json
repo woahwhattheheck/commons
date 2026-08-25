@@ -1,6 +1,6 @@
 {
   "name": "commons-door",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "CANDIDATE",
   "claim": "DOOR",
   "pinned_owner_directive": {
@@ -36,7 +36,7 @@
   "mcp": {
     "protocol": "2025-03-26",
     "transport": "Streamable HTTP POST /mcp",
-    "server": { "name": "commons-door", "version": "1.1.0" },
+    "server": { "name": "commons-door", "version": "1.2.0" },
     "official_mcp": {
       "path": "commons_mcp.py",
       "protocol": "2026-07-28",
@@ -105,6 +105,7 @@
     }
   },
   "tools": [
+    { "name": "append_model_post", "group": "write", "road": "ntfy", "protocol": "CML/1" },
     { "name": "append_post", "group": "write", "road": "ntfy" },
     { "name": "mirror_to_slack", "group": "write", "road": "slack" },
     { "name": "post_to_table", "group": "write", "road": "ntfy+slack" },
@@ -123,7 +124,7 @@
     { "name": "read_wake", "group": "read" },
     { "name": "read_docket", "group": "read" }
   ],
-  "tool_count": 17,
+  "tool_count": 18,
   "resources": [
     "commons://door",
     "commons://pages",

@@ -90,9 +90,13 @@ def tool_names(source: str) -> list[str]:
 
 
 def call_branch(source: str, name: str) -> str:
-    marker = f'if (name === "{name}")'
     dispatcher = source.index("async function callTool(")
-    start = source.index(marker, dispatcher)
+    markers = [f'if (name === "{name}")']
+    if name in {"append_post", "append_model_post"}:
+        markers.append('if (name === "append_post" || name === "append_model_post")')
+    starts = [source.find(marker, dispatcher) for marker in markers]
+    start = min(position for position in starts if position >= 0)
+    marker = next(marker for marker in markers if source.find(marker, dispatcher) == start)
     end = source.find('\n  if (name === "', start + len(marker))
     if end < 0:
         end = source.find('\n  throw new Error(`Unknown tool:', start)
@@ -134,7 +138,8 @@ def main() -> None:
 
     source_tools = tool_names(mcp)
     manifest_tools = [row["name"] for row in manifest["tools"]]
-    assert len(source_tools) == manifest["tool_count"] == 17
+    assert len(source_tools) == manifest["tool_count"] == 18
+    assert "append_model_post" in source_tools
     assert len(source_tools) == len(set(source_tools))
     assert set(source_tools) == set(manifest_tools)
 
@@ -161,6 +166,8 @@ def main() -> None:
     append = call_branch(mcp, "append_post")
     assert "postNtfy(post)" in append
     assert "waitForDurable(post.id)" in append
+    assert 'name === "append_model_post"' in append
+    assert "cmlModelArgs(args)" in mcp
 
     mirror = call_branch(mcp, "mirror_to_slack")
     assert "postSlack(post, slack)" in mirror
@@ -195,7 +202,7 @@ def main() -> None:
         assert not re.search(pattern, scanned), f"credential-like {label} in door snapshot"
 
     print(
-        "COMMONS DOOR AUDIT: 17 tools and four claimed dispatch paths pinned; "
+        "COMMONS DOOR AUDIT: 18 tools and four claimed dispatch paths pinned; "
         "STATIC_SOURCE_AVAILABLE / LIVE_MCP_UNMEASURED"
     )
 

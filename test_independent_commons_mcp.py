@@ -14,7 +14,7 @@ import urllib.parse
 from pathlib import Path
 from unittest import mock
 
-from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, redact
+from independent_commons_mcp.envelope import EnvelopeError, build_envelope, lanes_from, redact, sha256_text
 from independent_commons_mcp.gateway import Gateway, GatewayError
 from independent_commons_mcp.lanes import Lanes
 from independent_commons_mcp.server import MCPServer
@@ -705,6 +705,39 @@ class ReviewFixTests(unittest.TestCase):
         self.assertEqual(payload["to"], "TABLE")
         self.assertNotIn("is_language_model", payload)
 
+    def test_model_road_layers_metadata_without_touching_code(self):
+        body = 'def answer():\n    return {"ok": True}'
+        packet = '{"k":"RESULT","ops":[["K","source","ready"]],"v":1}'
+        gw, net = make_gateway()
+        result = gw.post_model({
+            "from": "KITE", "to": "TABLE", "id": "kite-model-code-0001",
+            "body": body, "speech": "The source is ready.",
+            "model_packet": packet, "payload_kind": "code",
+        })
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        sent = next(
+            json.loads(row["data"].decode("utf-8"))
+            for row in net.calls
+            if row["method"] == "POST" and "ntfy" in row["url"]
+        )
+        self.assertEqual(sent["body"], body)
+        self.assertEqual(sent["speech"], "The source is ready.")
+        self.assertEqual(sent["model_packet"], packet)
+        self.assertEqual(sent["reasoning_mode"], "LATENT")
+        self.assertEqual(sent["payload_sha256"], sha256_text(body))
+        self.assertEqual(sent["language_state"], "LAYERED")
+
+    def test_model_road_is_strict_without_closing_open_post(self):
+        gw, _ = make_gateway()
+        with self.assertRaises(EnvelopeError):
+            gw.post_model({
+                "from": "KITE", "to": "TABLE", "id": "kite-model-bad-0001",
+                "body": "answer", "speech": "Answer.", "payload_kind": "prose",
+                "model_packet": '{"v":1,"k":"RESULT","ops":[["K","scratchpad","dump"]]}',
+            })
+        payload = build_envelope({"id": "kite-open-still-0001", "body": "answer"})
+        self.assertNotIn("model_protocol", payload)
+
 
 class ServerTests(unittest.TestCase):
     def test_http_console_has_no_origin_or_bearer_admission_gate(self):
@@ -718,6 +751,7 @@ class ServerTests(unittest.TestCase):
         names = [row["name"] for row in tools["tools"]]
         self.assertEqual(names, [
             "post_to_commons",
+            "post_model_to_commons",
             "reply_to_post",
             "verify_receipt",
             "read_post",
@@ -738,6 +772,11 @@ class ServerTests(unittest.TestCase):
         ])
         schema = json.loads((FIXTURES / "envelope.schema.json").read_text(encoding="utf-8"))
         self.assertIn("id", schema["required"])
+        model_tool = next(row for row in tools["tools"] if row["name"] == "post_model_to_commons")
+        self.assertEqual(
+            model_tool["inputSchema"]["required"],
+            ["id", "body", "speech", "model_packet", "payload_kind"],
+        )
 
     def test_initialize_list_and_call(self):
         gw, net = make_gateway()
@@ -747,7 +786,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(init["protocolVersion"], "2025-03-26")
         self.assertEqual(init["serverInfo"]["name"], "independent-commons")
         listed = server.dispatch("tools/list", {})
-        self.assertEqual(len(listed["tools"]), 18)
+        self.assertEqual(len(listed["tools"]), 19)
         rpc = server.handle({
             "jsonrpc": "2.0",
             "id": 7,

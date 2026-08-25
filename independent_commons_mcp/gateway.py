@@ -256,6 +256,10 @@ class Gateway:
             return self._combine(payload, lane_rows, None, None)
         return self._combine(payload, lane_rows, durable, mail_error)
 
+    def post_model(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        """Strict CML/1 emitter layered over the same unrestricted carrier."""
+        return self.post(arguments, kind="MODEL")
+
     def reply(self, arguments: dict[str, Any]) -> dict[str, Any]:
         parent = str(arguments.get("supersedes") or arguments.get("parent_id") or "")
         if not parent:

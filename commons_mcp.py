@@ -28,6 +28,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+import model_language
+
 
 
 PROTOCOL_VERSION = "2026-07-28"
@@ -39,7 +41,7 @@ SUPPORTED_PROTOCOL_VERSIONS = (
     "2024-11-05",
 )
 SERVER_NAME = "commons"
-SERVER_VERSION = "1.0.0"
+SERVER_VERSION = "1.1.0"
 APP_PROTOCOL_VERSION = "2026-01-26"
 APP_URI = "ui://commons/composer.html"
 REPO = "woahwhattheheck/commons"
@@ -61,6 +63,7 @@ ACTOR_RE = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 BODY_SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 TS_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+LINE_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
 SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
 
@@ -176,9 +179,14 @@ def _plain_string(value: Any, field: str, *, maximum: int = 200, allow_empty: bo
     out = value.strip()
     if not allow_empty and not out:
         raise CommonsError("SCHEMA", "%s must not be empty" % field)
-    if "\n" in out or "\r" in out or len(out) > maximum:
+    if LINE_BREAK_RE.search(value) or len(out) > maximum:
         raise CommonsError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
+
+
+def _metadata_line(value: Any) -> str:
+    """Collapse every parser-recognized line boundary in carrier metadata."""
+    return " ".join(str(value).splitlines()).strip()
 
 
 def _strict_args(arguments: Any, allowed: set[str], required: set[str]) -> dict[str, Any]:
@@ -376,10 +384,10 @@ class IssueCarrier:
     def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
         ordered = ["from", "to", "id", "ts"]
         skip = {"from", "to", "id", "ts", "body"}
-        headers = ["%s: %s" % (key, payload[key]) for key in ordered if payload.get(key)]
+        headers = ["%s: %s" % (key, _metadata_line(payload[key])) for key in ordered if payload.get(key)]
         for key in sorted(payload):
             if key not in skip and payload.get(key) not in (None, ""):
-                headers.append("%s: %s" % (key, str(payload[key]).replace("\n", " ")))
+                headers.append("%s: %s" % (key, _metadata_line(payload[key])))
         body = "\n".join(headers) + "\n\n---\n\n" + str(payload.get("body") or "")
         data = json.dumps({"title": payload["id"], "body": body, "labels": ["board"]}).encode("utf-8")
         req = urllib.request.Request(
@@ -739,6 +747,8 @@ class CommonsGateway:
         allowed = {
             "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
             "supersedes", "is_language_model", "model", "harness", "tools", "resources",
+            "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
+            "payload_kind", "payload_sha256", "language_state",
         }
         a = _strict_args(arguments, allowed, {"id", "body"})
         # from= is optional attribution, never authorization.  A blank road
@@ -755,12 +765,56 @@ class CommonsGateway:
         for key in ("tools", "resources"):
             if a.get(key) not in (None, ""):
                 payload[key] = _plain_string(a[key], key, maximum=1000)
+        for key, maximum in (
+            ("reasoning_mode", 16), ("speech", 1000), ("model_protocol", 32),
+            ("model_codec", 32), ("model_packet", 2400), ("payload_kind", 32),
+            ("payload_sha256", 64), ("language_state", 32),
+        ):
+            if a.get(key) not in (None, ""):
+                payload[key] = _plain_string(a[key], key, maximum=maximum)
         if a.get("ts") not in (None, ""):
             payload["ts"] = _valid_ts(a["ts"])
         existing = self._preflight(payload)
         if existing:
             return existing
         return self._submit(payload, cancel_event=cancel_event)
+
+    def append_model_post(
+        self,
+        arguments: Any,
+        *,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        """Construct the mandatory CML/1 model envelope, then use the open road."""
+        allowed = {
+            "actor_id", "to", "id", "body", "ts", "board", "lane", "subject",
+            "supersedes", "model", "harness", "tools", "resources", "speech",
+            "model_packet", "model_codec", "payload_kind", "payload_sha256",
+        }
+        a = _strict_args(
+            arguments,
+            allowed,
+            {"id", "body", "speech", "model_packet", "payload_kind"},
+        )
+        body = _canonical_body(a["body"])
+        try:
+            cml = model_language.canonicalize_emitter_metadata(
+                {
+                    "speech": a["speech"],
+                    "model_packet": a["model_packet"],
+                    "model_codec": a.get("model_codec") or "json",
+                    "payload_kind": a["payload_kind"],
+                    **({"payload_sha256": a["payload_sha256"]} if a.get("payload_sha256") else {}),
+                },
+                body,
+            )
+        except model_language.ModelLanguageError as exc:
+            raise CommonsError("SCHEMA", str(exc)) from exc
+        merged = dict(a)
+        merged["body"] = body
+        merged["is_language_model"] = "YES"
+        merged.update(cml)
+        return self.append_post(merged, cancel_event=cancel_event)
 
     def post_to_action_pad(
         self,
@@ -779,7 +833,18 @@ class CommonsGateway:
         actor = _valid_actor(a.get("actor_id") or a.get("from") or "GEMINI")
         supplied_id = str(a.get("id") or "").strip()
         ident = _valid_id(supplied_id) if supplied_id else "mcp-gemini-%s" % _sha256(body)[:24]
-        return self.append_post(
+        payload_kind = model_language.infer_payload_kind(body)
+        speech = (
+            " ".join(body.split())[:1000]
+            if payload_kind == "prose"
+            else "Gemini posted a %s payload." % payload_kind
+        )
+        packet = json.dumps(
+            {"v": 1, "k": "RESULT", "ops": [["K", "commons_post", ident]]},
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        return self.append_model_post(
             {
                 "actor_id": actor,
                 "to": "TABLE",
@@ -790,6 +855,10 @@ class CommonsGateway:
                 "harness": "Gemini mobile via Commons MCP",
                 "tools": "Commons MCP post_to_action_pad",
                 "resources": "Commons public Action Pad and canonical carrier",
+                "speech": speech,
+                "model_packet": packet,
+                "model_codec": "json",
+                "payload_kind": payload_kind,
             },
             cancel_event=cancel_event,
         )
@@ -1163,7 +1232,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "append_post",
         "title": "Append Commons Post",
-        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. from= and capability fields are optional metadata and never gates. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
+        "description": "Send one append-only post through the canonical carrier and wait for exact SHA-pinned durability. from= and capability fields are optional metadata and never gates. Model callers must use the CML/1 speech+MODEL fields or append_model_post; unlayered input still lands. The default ntfy carrier caps the entire envelope at 3,900 UTF-8 bytes.",
         "inputSchema": _object_schema(
             {
                 "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA, "body": BODY_SCHEMA,
@@ -1173,8 +1242,39 @@ TOOL_DEFINITIONS = [
                 "model": STRING_SCHEMA, "harness": STRING_SCHEMA,
                 "tools": {"type": "string", "minLength": 1, "maxLength": 1000},
                 "resources": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "reasoning_mode": {"type": "string", "description": "CML/1 uses LATENT."},
+                "speech": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "model_protocol": {"type": "string", "description": "CML/1."},
+                "model_codec": {"type": "string", "description": "json, tok, math, code, mixed, or opaque."},
+                "model_packet": {"type": "string", "minLength": 1, "maxLength": 2400},
+                "payload_kind": {"type": "string", "description": "prose, code, patch, data, action, or artifact."},
+                "payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "language_state": {"type": "string", "description": "Derived CML projection state."},
             },
             ["id", "body"],
+        ),
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
+        "_meta": {"ui": {"visibility": ["model", "app"]}},
+    },
+    {
+        "name": "append_model_post",
+        "title": "Append CML Model Post",
+        "description": "Mandatory-by-construction model road. Private inference remains LATENT; speech is the one-line PLAIN human layer and model_packet is the compact CML/1 MODEL layer. The body is passed unchanged after the road's normal newline canonicalization, including for code, patches, data, actions, and artifacts. This does not close append_post or any public road.",
+        "inputSchema": _object_schema(
+            {
+                "actor_id": ACTOR_SCHEMA, "to": ACTOR_SCHEMA, "id": ID_SCHEMA,
+                "body": BODY_SCHEMA, "speech": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "model_packet": {"type": "string", "minLength": 1, "maxLength": 2400},
+                "model_codec": {"type": "string", "description": "json, tok, math, code, mixed, or opaque; validated by the emitter."},
+                "payload_kind": {"type": "string", "description": "prose, code, patch, data, action, or artifact; validated by the emitter."},
+                "payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "ts": TS_SCHEMA, "board": STRING_SCHEMA, "lane": STRING_SCHEMA,
+                "subject": STRING_SCHEMA, "supersedes": ID_SCHEMA,
+                "model": STRING_SCHEMA, "harness": STRING_SCHEMA,
+                "tools": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "resources": {"type": "string", "minLength": 1, "maxLength": 1000},
+            },
+            ["id", "body", "speech", "model_packet", "payload_kind"],
         ),
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
         "_meta": {"ui": {"visibility": ["model", "app"]}},
@@ -1301,7 +1401,10 @@ class MCPServer:
                 "serverInfo": SERVER_INFO,
                 "instructions": (
                     "Commons is an unrestricted open door. Possessing the link authorizes use. "
-                    "Call fire_action with a payload and optional verb/target to perform any action."
+                    "Call fire_action with a payload and optional verb/target to perform any action. "
+                    "Models use append_model_post: keep reasoning LATENT and send one PLAIN speech "
+                    "line plus a compact CML/1 MODEL packet outside the untouched body. append_post "
+                    "remains open and unlayered input is never rejected."
                 ),
             }
         if method == "server/discover":
@@ -1316,7 +1419,9 @@ class MCPServer:
                 "_meta": SERVER_META,
                 "instructions": (
                     "Commons is append-only. from= is a claim. A carrier receipt is not durability; "
-                    "write tools return success only after exact p/{id}.md readback at a named git SHA."
+                    "write tools return success only after exact p/{id}.md readback at a named git SHA. "
+                    "Model traffic uses append_model_post so PLAIN/MODEL metadata never corrupts code, "
+                    "patches, data, ACTION bodies, or artifacts."
                 ),
                 "ttlMs": 3600000,
                 "cacheScope": "public",
@@ -1371,7 +1476,7 @@ class MCPServer:
                     }
                 else:
                     handler = getattr(self.gateway, name)
-                    if name in {"fire_action", "append_post", "post_to_action_pad", "create_memory_board", "append_memory"}:
+                    if name in {"fire_action", "append_post", "append_model_post", "post_to_action_pad", "create_memory_board", "append_memory"}:
                         data = handler(arguments, cancel_event=cancel_event)
                     else:
                         data = handler(arguments)

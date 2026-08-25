@@ -320,6 +320,11 @@ new file mode 100644
                     "id": "sol-action-0006", "from": "SOL", "is_language_model": "YES",
                     "model": "model-x", "harness": "harness-y", "tools": "git, shell",
                     "resources": "Commons repo, workspace",
+                    "reasoning_mode": "LATENT", "speech": "Run the request.",
+                    "model_protocol": "CML/1", "model_codec": "json",
+                    "model_packet": '{"k":"RESULT","ops":[],"v":1}',
+                    "payload_kind": "action", "payload_sha256": "0" * 64,
+                    "language_state": "LAYERED",
                 },
                 "verb": "POST", "target": "TABLE", "payload": "open",
             }
@@ -346,6 +351,11 @@ new file mode 100644
             self.assertEqual(sent_extra["tools"], "git, shell")
             self.assertEqual(sent_extra["resources"], "Commons repo, workspace")
             self.assertEqual(sent_extra["kind"], "ACTION")
+            for key in (
+                "reasoning_mode", "speech", "model_protocol", "model_codec",
+                "model_packet", "payload_kind", "payload_sha256", "language_state",
+            ):
+                self.assertNotIn(key, sent_extra)
             self.assertEqual(set(result["changed"]), {"p/sol-action-0006-post.md", "p/sol-action-0006-post.html"})
             for name, digest in result["canonical_records"].items():
                 self.assertEqual(digest, hashlib.sha256((root / name).read_bytes()).hexdigest())

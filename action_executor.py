@@ -329,7 +329,14 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
         for key in ("subject", "board", "lane"):
             if parsed.get(key):
                 extra[key] = parsed[key]
-    for key in ("is_language_model", "model", "harness", "tools", "resources"):
+    # Preserve capability provenance, but never copy a CML projection from the
+    # ACTION request onto this distinct output payload. Its speech/packet may
+    # describe the request and its hash necessarily binds different bytes.
+    # The non-model executor therefore emits this result as visible UNLAYERED
+    # data unless a model explicitly supplies a fresh, body-bound projection.
+    for key in (
+        "is_language_model", "model", "harness", "tools", "resources",
+    ):
         if meta.get(key):
             extra[key] = meta[key]
     durable = POSTS / f"{out_id}.md"

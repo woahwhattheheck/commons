@@ -9,6 +9,8 @@ import sys
 from datetime import datetime, timezone
 from typing import Any
 
+import model_language
+
 from . import MAX_BODY, NTFY_MAX
 
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
@@ -35,6 +37,7 @@ MEMORY_APPEND_KINDS = {"MEMORY_APPEND"}
 ENTRY_KINDS = {
     "ROLE", "CLAIM", "WORK_STATE", "DECISION", "CORRECTION", "DEBT", "HANDOFF", "NOTE",
 }
+LINE_BREAK_RE = re.compile(r"[\n\r\v\f\x1c-\x1e\x85\u2028\u2029]")
 
 
 class EnvelopeError(Exception):
@@ -93,9 +96,13 @@ def _plain(value: Any, field: str, maximum: int = 200) -> str:
     out = value.strip()
     if not out:
         raise EnvelopeError("SCHEMA", "%s must not be empty" % field)
-    if "\n" in out or "\r" in out or len(out) > maximum:
+    if LINE_BREAK_RE.search(out) or len(out) > maximum:
         raise EnvelopeError("SCHEMA", "%s must be one line of at most %d characters" % (field, maximum))
     return out
+
+
+def _metadata_line(value: Any) -> str:
+    return " ".join(str(value).splitlines()).strip()
 
 
 def _actor(value: Any, field: str) -> str:
@@ -161,6 +168,8 @@ PROJECTION_REQUIRED = ("from", "to", "id")
 PROJECTION_OPTIONAL = (
     "kind", "ts", "board", "lane", "subject", "supersedes",
     "is_language_model", "model", "harness", "tools", "resources",
+    "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
+    "payload_kind", "payload_sha256", "language_state",
 )
 
 
@@ -172,16 +181,16 @@ def projection_headers(payload: dict[str, Any], *, default_capability: str | Non
     lines = []
     seen = set()
     for key in PROJECTION_REQUIRED:
-        lines.append("%s: %s" % (key, row.get(key, "")))
+        lines.append("%s: %s" % (key, _metadata_line(row.get(key, ""))))
         seen.add(key)
     for key in PROJECTION_OPTIONAL:
         if row.get(key) not in (None, ""):
-            lines.append("%s: %s" % (key, row[key]))
+            lines.append("%s: %s" % (key, _metadata_line(row[key])))
             seen.add(key)
     for key in sorted(row):
         if key in seen or key == "body" or row.get(key) in (None, ""):
             continue
-        lines.append("%s: %s" % (key, str(row[key]).replace("\n", " ")))
+        lines.append("%s: %s" % (key, _metadata_line(row[key])))
     return lines
 
 
@@ -254,6 +263,33 @@ def build_envelope(arguments: dict[str, Any], *, kind: str = "POST") -> dict[str
     for key in ("tools", "resources"):
         if arguments.get(key) not in (None, ""):
             payload[key] = _plain(arguments[key], key, 1000)
+    for key, maximum in (
+        ("reasoning_mode", 16), ("speech", 1000), ("model_protocol", 32),
+        ("model_codec", 32), ("model_packet", 2400), ("payload_kind", 32),
+        ("payload_sha256", 64), ("language_state", 32),
+    ):
+        if arguments.get(key) not in (None, ""):
+            payload[key] = _plain(arguments[key], key, maximum)
+    if kind == "MODEL":
+        try:
+            cml = model_language.canonicalize_emitter_metadata(
+                {
+                    "speech": arguments.get("speech"),
+                    "model_packet": arguments.get("model_packet"),
+                    "model_codec": arguments.get("model_codec") or "json",
+                    "payload_kind": arguments.get("payload_kind"),
+                    **(
+                        {"payload_sha256": arguments["payload_sha256"]}
+                        if arguments.get("payload_sha256") not in (None, "")
+                        else {}
+                    ),
+                },
+                body,
+            )
+        except model_language.ModelLanguageError as exc:
+            raise EnvelopeError("SCHEMA", str(exc)) from exc
+        payload["is_language_model"] = "YES"
+        payload.update(cml)
     packed = canonical_json(payload)
     if len(packed.encode("utf-8")) > NTFY_MAX:
         raise EnvelopeError(
@@ -277,6 +313,8 @@ def public_summary(payload: dict[str, Any]) -> dict[str, Any]:
         "supersedes": payload.get("supersedes") or "",
         "body_sha256": sha256_text(str(payload.get("body") or "")),
         "is_language_model": payload.get("is_language_model") or "",
+        "language_state": payload.get("language_state") or "",
+        "payload_sha256": payload.get("payload_sha256") or "",
     }
 
 

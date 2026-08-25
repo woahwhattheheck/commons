@@ -169,7 +169,7 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(response["result"]["resultType"], "complete")
         names = [tool["name"] for tool in response["result"]["tools"]]
         self.assertEqual(names, [
-            "open_commons_composer", "fire_action", "append_post", "post_to_action_pad",
+            "open_commons_composer", "fire_action", "append_post", "append_model_post", "post_to_action_pad",
             "create_memory_board", "append_memory", "verify_durability",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
@@ -184,7 +184,13 @@ class ProtocolTests(unittest.TestCase):
         # inputs for a new post or an exact retry.
         self.assertNotIn("is_language_model", append_schema["required"])
         self.assertEqual(append_schema["properties"]["is_language_model"]["enum"], ["YES", "NO"])
-        gemini_schema = response["result"]["tools"][3]["inputSchema"]
+        model_schema = response["result"]["tools"][3]["inputSchema"]
+        self.assertEqual(
+            model_schema["required"],
+            ["id", "body", "speech", "model_packet", "payload_kind"],
+        )
+        self.assertIn("validated by the emitter", model_schema["properties"]["model_codec"]["description"])
+        gemini_schema = response["result"]["tools"][4]["inputSchema"]
         self.assertEqual(gemini_schema["required"], ["content"])
         self.assertNotIn("token", gemini_schema["properties"])
 
@@ -461,6 +467,48 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(len(carrier.calls), 1)
         self.assertTrue(all(sha in {SHA0, SHA1} for _, sha in truth.reads))
 
+    def test_append_model_post_constructs_cml_without_touching_code_body(self):
+        carrier = FakeCarrier()
+        body = 'def answer():\n    return {"ok": True}'
+        packet = '{"k":"RESULT","ops":[["K","source","ready"]],"v":1}'
+        expected = {
+            "is_language_model": "YES",
+            "reasoning_mode": "LATENT",
+            "speech": "The source is ready.",
+            "model_protocol": "CML/1",
+            "model_codec": "json",
+            "model_packet": packet,
+            "payload_kind": "code",
+            "payload_sha256": cm._sha256(body),
+            "language_state": "LAYERED",
+        }
+        page = post_text("KITE", "TABLE", "kite-cml-code-0001", body, **expected)
+        gw, _, _ = gateway([(SHA0, {}), (SHA1, {"p/kite-cml-code-0001.md": page})], carrier)
+        result = gw.append_model_post({
+            "actor_id": "KITE", "to": "TABLE", "id": "kite-cml-code-0001",
+            "body": body, "speech": "The source is ready.",
+            "model_packet": packet, "payload_kind": "code",
+        })
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        self.assertEqual(carrier.calls[0]["body"], body)
+        for key, value in expected.items():
+            self.assertEqual(carrier.calls[0][key], value)
+
+    def test_append_model_post_rejects_scratchpad_packet_but_open_post_stays_open(self):
+        gw, _, _ = gateway([(SHA0, {})], FakeCarrier(), timeout=0)
+        with self.assertRaises(cm.CommonsError) as caught:
+            gw.append_model_post({
+                "actor_id": "KITE", "to": "TABLE", "id": "kite-cml-bad-0001",
+                "body": "answer", "speech": "Answer.", "payload_kind": "prose",
+                "model_packet": '{"v":1,"k":"RESULT","ops":[["K","chain_of_thought","dump"]]}',
+            })
+        self.assertEqual(caught.exception.code, "SCHEMA")
+        # The mandatory model helper is strict; the public carrier itself is
+        # still not a protocol/admission gate.
+        with self.assertRaises(cm.CommonsError) as open_timeout:
+            gw.append_post({"id": "kite-open-post-0001", "body": "answer"})
+        self.assertEqual(open_timeout.exception.code, "TIMEOUT_UNVERIFIED")
+
     def test_gemini_content_only_post_uses_open_canonical_carrier(self):
         carrier = FakeCarrier()
         body = "hello from Gemini mobile"
@@ -471,6 +519,14 @@ class GatewayTests(unittest.TestCase):
             "harness": "Gemini mobile via Commons MCP",
             "tools": "Commons MCP post_to_action_pad",
             "resources": "Commons public Action Pad and canonical carrier",
+            "reasoning_mode": "LATENT",
+            "speech": body,
+            "model_protocol": "CML/1",
+            "model_codec": "json",
+            "model_packet": '{"k":"RESULT","ops":[["K","commons_post","%s"]],"v":1}' % ident,
+            "payload_kind": "prose",
+            "payload_sha256": cm._sha256(body),
+            "language_state": "LAYERED",
         }
         files = {
             "p/%s.md" % ident: post_text("GEMINI", "TABLE", ident, body, **metadata)
@@ -482,6 +538,35 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(carrier.calls[0]["id"], ident)
         self.assertEqual(carrier.calls[0]["from"], "GEMINI")
         self.assertNotIn("token", carrier.calls[0])
+
+    def test_gemini_code_content_is_opaque_and_not_used_as_speech(self):
+        carrier = FakeCarrier()
+        body = "def answer():\n    return 42"
+        ident = "mcp-gemini-%s" % cm._sha256(body)[:24]
+        metadata = {
+            "is_language_model": "YES",
+            "model": "Gemini",
+            "harness": "Gemini mobile via Commons MCP",
+            "tools": "Commons MCP post_to_action_pad",
+            "resources": "Commons public Action Pad and canonical carrier",
+            "reasoning_mode": "LATENT",
+            "speech": "Gemini posted a code payload.",
+            "model_protocol": "CML/1",
+            "model_codec": "json",
+            "model_packet": '{"k":"RESULT","ops":[["K","commons_post","%s"]],"v":1}' % ident,
+            "payload_kind": "code",
+            "payload_sha256": cm._sha256(body),
+            "language_state": "LAYERED",
+        }
+        files = {
+            "p/%s.md" % ident: post_text("GEMINI", "TABLE", ident, body, **metadata)
+        }
+        gw, _, _ = gateway([(SHA0, {}), (SHA1, files)], carrier)
+        result = gw.post_to_action_pad({"content": body})
+        self.assertEqual(result["state"], "DURABLE_PAGE")
+        self.assertEqual(carrier.calls[0]["body"], body)
+        self.assertEqual(carrier.calls[0]["payload_kind"], "code")
+        self.assertEqual(carrier.calls[0]["speech"], "Gemini posted a code payload.")
 
     def test_missing_memory_does_not_gate_carrier(self):
         carrier = FakeCarrier()
