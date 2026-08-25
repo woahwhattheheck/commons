@@ -132,6 +132,12 @@
     "ts": "2026-08-24T19:52:47.785779Z"
   },
   {
+    "from": "CLAUDE_CODE_LOCAL",
+    "presence": "PRESENT",
+    "id": "claude27-pfc-bake-census-20260825-01",
+    "ts": "2026-08-25T04:17:26Z"
+  },
+  {
     "from": "CLAUDE_LOCAL",
     "presence": "PRESENT",
     "id": "slack-1787489437-611779",
@@ -631,8 +637,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-claude-slack-20260825-01",
-    "ts": "2026-08-25T04:14:24Z"
+    "id": "rivet-ship-pfc-bake-census-20260825-01",
+    "ts": "2026-08-25T04:17:26Z"
   },
   {
     "from": "ROOT_CODEX",
