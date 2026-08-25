@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bi/.test(html), "desk must share the current-main/Titan cache key after terminal-catalog");
+assert.ok(/20260825bj/.test(html), "desk must share the current-main/Titan cache key after build-sweep-act");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isBuildSweepActTalk, "land.js must classify build-sweep leftover talk");
+assert.ok(api.buildSweepActState, "land.js must classify the build-sweep leftover");
+assert.ok(api.isBuildSweepActTalk("DEMON LANDED ON COMMONS MAIN. This hygiene arm is not the colony build. Act on the build sweep priorities. OWNER_MACHINE_BUILD_SWEEP. current pixel heartbeat emitter. 1787644673.314949"), "DEMON sweep ACT NOW is leftover talk");
+assert.ok(!api.isBuildSweepActTalk("make sure people do more than talk about shit"), "generic ship-talk is not the build-sweep leftover");
+assert.ok(!api.isBuildSweepActTalk("SPECTER LANDED + TERMINAL — stale MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "terminal-catalog copy is not the build-sweep leftover");
+assert.ok(!api.isBuildSweepActTalk("frontend-design and then mcp-tunnels still enabled after compat.claude cells"), "grok-hygiene copy is not the build-sweep leftover");
+assert.ok(!api.isSittingRemintTalk("Act on the build sweep priorities. current pixel heartbeat emitter. hygiene arm is not the colony build."), "build-sweep copy is not sitting remint");
+assert.ok(!api.isPixelHeartbeatTalk("Act on the build sweep priorities. current pixel heartbeat emitter."), "build-sweep emitter copy is not the old pixel-heartbeat offer");
+var buildSweepTalk = api.completionStateFromText(
+  "DEMON LANDED ON COMMONS MAIN. This hygiene arm is not the colony build. Act on the build sweep priorities. current pixel heartbeat emitter. 1787644673.314949"
+);
+assert.strictEqual(buildSweepTalk.state, "CLAIMED");
+assert.ok(/build-sweep|heartbeat-emitter|colony-build/i.test(buildSweepTalk.note), "build-sweep-without-SHA must stay CLAIMED and beat terminal-catalog / sitting remint");
+var buildSweepDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nbuild-sweep leftover landed"
+);
+assert.strictEqual(buildSweepDone.state, "INTEGRATED", "completion words still beat build-sweep talk");
+var buildSweepEmpty = api.buildSweepActState("");
+assert.strictEqual(buildSweepEmpty.state, "UNMEASURED");
+var buildSweepMissing = api.buildSweepActState("# empty stub\nno leftover");
+assert.strictEqual(buildSweepMissing.state, "NOT_LANDED");
+var buildSweepOk = api.buildSweepActState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\npixel_heartbeat_emit\nOWNER_MACHINE_BUILD_SWEEP\nhygiene is not the colony build\nno auth\nno gate\n");
+assert.strictEqual(buildSweepOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(buildSweepOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="build-sweep-act-result"') >= 0, "desk must name the build-sweep leftover");
+assert.ok(html.indexOf("host/build_sweep_act.py") >= 0, "desk must name the build-sweep instrument");
+assert.ok(html.indexOf("host/pixel_heartbeat_emit.py") >= 0, "desk must name the heartbeat emitter");
+assert.ok(html.indexOf("ground/BUILD_SWEEP_ACT.md") >= 0, "desk must link the build-sweep card");
+assert.ok(html.indexOf("ground/BUILD_SWEEP_ACT.json") >= 0, "desk must link the build-sweep catalog");
+assert.ok(html.indexOf("1787644673.314949") >= 0, "desk must cite the DEMON sweep Slack ts");
+assert.ok(/build sweep|pixel heartbeat emitter|colony build/i.test(html), "desk must name build-sweep talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BUILD_SWEEP_ACT.md") >= 0, "build-sweep card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BUILD_SWEEP_ACT.json") >= 0, "build-sweep catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/OWNER_MACHINE_BUILD_SWEEP.md") >= 0, "sweep report must stay a canary");
 assert.ok(api.isTerminalCatalogTalk, "land.js must classify SPECTER terminal-catalog talk");
 assert.ok(api.terminalCatalogState, "land.js must classify the terminal-catalog leftover");
 assert.ok(api.isTerminalCatalogTalk("SPECTER LANDED + TERMINAL — PR #2205 squash. SPECTER TAKING the bounded terminal-catalog reconciliation now: production mutation correctly changed the job JSON but left static MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "SPECTER terminal taking is leftover talk");

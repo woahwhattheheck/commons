@@ -192,6 +192,10 @@
     "ground/WAKE_CONTRACT.json",
     "ground/TERMINAL_CATALOG.md",
     "ground/TERMINAL_CATALOG.json",
+    "ground/BUILD_SWEEP_ACT.md",
+    "ground/BUILD_SWEEP_ACT.json",
+    "ground/OWNER_MACHINE_BUILD_SWEEP.md",
+    "ground/OWNER_MACHINE_BUILD_SWEEP.json",
     "ground/BATTERY_RED.md",
     "ground/BATTERY_RED.json",
     "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
@@ -427,6 +431,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isBuildSweepActTalk(t)) {
+      return { state: "CLAIMED", note: "act-on-the-build-sweep / current-pixel-heartbeat-emitter / hygiene-is-not-the-colony-build talk. Talk is not a land. Ship the emitter and one honest heartbeat to current main. Do not remint OWNER_MACHINE_BUILD_SWEEP, PIXEL_HEARTBEAT, SITTING_REMINT, or GROK hygiene." };
     }
     if (api.isTerminalCatalogTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER LANDED + TERMINAL / stale MCP_WAKE/STRANDED OPEN/CANDIDATE / terminal-catalog talk. Talk is not a land. Reconcile the static catalogs to the DONE job JSON. Named idle bc- resume stays UNMEASURED. Do not remint PR 2205, WAKE_CONTRACT, or BATTERY_RED." };
@@ -784,6 +791,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isBuildSweepActTalk = function (text) {
+    return /act on the build sweep|build sweep priorities|OWNER_MACHINE_BUILD_SWEEP|hygiene arm is not the colony build|current pixel heartbeat emitter|1787644673\.314949|build-sweep-act|build sweep leftover/i.test(String(text || ""));
+  };
+
+  api.buildSweepActState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/build_sweep_act.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesEmitter = /pixel_heartbeat_emit/.test(body);
+    var namesSweep = /OWNER_MACHINE_BUILD_SWEEP/.test(body);
+    var hygiene = /hygiene is not the colony build/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesEmitter && namesSweep && hygiene && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "build-sweep leftover is on this file. Current pixel heartbeat emitter shipped. A Slack receipt is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/build_sweep_act.py missing the leftover. Act-on-the-build-sweep / current-pixel-heartbeat-emitter talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2883,6 +2919,7 @@
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
+  var buildSweepActOut = document.getElementById("build-sweep-act-result");
   var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
   var foreignMainOut = document.getElementById("foreign-main-result");
@@ -3519,6 +3556,12 @@
     if (!terminalCatalogOut) return;
     terminalCatalogOut.setAttribute("data-tone", api.toneFor(result.state));
     terminalCatalogOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintBuildSweepAct(result) {
+    if (!buildSweepActOut) return;
+    buildSweepActOut.setAttribute("data-tone", api.toneFor(result.state));
+    buildSweepActOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintBatteryRed(result) {
@@ -4359,6 +4402,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadBuildSweepAct(sha) {
+    if (!buildSweepActOut) return Promise.resolve(null);
+    buildSweepActOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/build_sweep_act.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/build_sweep_act.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/build_sweep_act.py absent at the measured main SHA. Act-on-the-build-sweep / current-pixel-heartbeat-emitter talk is CLAIMED." };
+        paintBuildSweepAct(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintBuildSweepAct(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.buildSweepActState(body);
+        paintBuildSweepAct(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintBuildSweepAct(err);
       return err;
     });
   }
@@ -5327,6 +5397,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadBuildSweepAct(sha);
     loadTerminalCatalog(sha);
     loadBatteryRed(sha);
     loadWakeContract(sha);

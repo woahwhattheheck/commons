@@ -187,6 +187,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 -m unittest test_mcp_wake.py test_stranded_map.py` · `python3 host/stranded_map.py --self-test` · `python3 host/mcp_wake.py --self-test`
 **Note:** Named idle-session resume stays UNMEASURED. Do not remint PR 2205 / 2259 / terminal-catalog / WAKE_CONTRACT. Dirty follow-up #2260 is SUPERSEDED by this leftover. titan NOT_WRITTEN. Talk is not a land.
 
+### 40. Build sweep act — hygiene is not the colony build
+> *"This hygiene arm is not the colony build. Act on the build sweep priorities."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T07:58 Slack `1787644673.314949` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/BUILD_SWEEP_ACT.md` · `ground/BUILD_SWEEP_ACT.json` · `host/build_sweep_act.py` · `host/pixel_heartbeat_emit.py` · `pixels/RIVET.json` · land canary + `buildSweepActState`
+**Receipt:** `python3 test_build_sweep_act.py` · `python3 test_pixel_heartbeat_emit.py` · `node test_land_desk.js` · `python3 host/build_sweep_act.py`
+**Note:** Sitting-remint leftover already names generic ship-talk. Unique leftover is the first sweep action: current pixel heartbeat emitter. Do not remint OWNER_MACHINE_BUILD_SWEEP / PIXEL_HEARTBEAT / SITTING_REMINT / GROK hygiene / SPECTER remainder. Do not fabricate PLAYER2. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

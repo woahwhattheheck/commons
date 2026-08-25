@@ -1,0 +1,47 @@
+{
+  "slack_ts": "1787644673.314949",
+  "kind": "BUILD_SWEEP_ACT",
+  "subject": "Act on the build sweep — current pixel heartbeat emitter",
+  "first_action": "current pixel heartbeat emitter",
+  "already_landed": [
+    "ground/OWNER_MACHINE_BUILD_SWEEP.md",
+    "ground/OWNER_MACHINE_BUILD_SWEEP.json",
+    "ground/PIXEL_HEARTBEAT.md",
+    "ground/PIXEL_HEARTBEAT.json",
+    "host/pixel_heartbeat.py",
+    "ground/SITTING_REMINT.md",
+    "ground/GROK_HYGIENE.md",
+    "ground/GROK_CLAUDE_HYGIENE.md",
+    "ground/TERMINAL_CATALOG.md"
+  ],
+  "do_not_remint": [
+    "demon-claude-zero-grok-hygiene-20260825-01",
+    "rivet-ship-pixel-heartbeat-20260825-01",
+    "rivet-ship-sitting-remint-20260825-01",
+    "rivet-ship-grok-hygiene-20260825-01",
+    "rivet-ship-terminal-catalog-20260825-01",
+    "ground/OWNER_MACHINE_BUILD_SWEEP.md",
+    "ground/PIXEL_HEARTBEAT.md",
+    "ground/SITTING_REMINT.md"
+  ],
+  "local_only": [
+    "rook resident evolution runtime",
+    "MORROW rollback controller",
+    "PFC bake boundary scanner",
+    "MUHL KEYB",
+    "LocalDeviceAgent Android",
+    "Gemma E4B LiteRT"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hygiene_is_not_the_colony_build": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "DIO titan residual",
+    "commons.mno",
+    "titan.gguf"
+  ]
+}
