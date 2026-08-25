@@ -179,6 +179,9 @@
     "ground/REMEASURE.json",
     "ground/CLAUDE_ROLE.md",
     "ground/CLAUDE_ROLE.json",
+    "ground/WATCHDOG_CANARY.md",
+    "ground/WATCHDOG_CANARY.json",
+    "wake_jobs/rivet-watchdog-canary-20260825-01.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -412,6 +415,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isWatchdogCanaryTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER ship-receipt / watchdog-HEAD-proof / unutilized durable job canary / no-real-job-JSON talk. Talk is not a land. Land wake_jobs/{id}.json and tick it against the pinned HEAD oracle. Named idle bc- resume stays UNMEASURED." };
     }
     if (api.isClaudeRoleTalk(t)) {
       return { state: "CLAIMED", note: "colony-decides / Claude-family-role / P1-HANDS / NEVER-CLAUSE / THE-TELL talk. Talk is not a land. Ship the non-Claude charter leftover to current main. Posting stays OPEN. Do not remint the GAUGE proposal id." };
@@ -742,6 +748,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/measure_abuse.py missing the leftover. Measurement-abuse talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isWatchdogCanaryTalk = function (text) {
+    return /watchdog HEAD proof|durable job canary|unutilized by a durable job|no real job JSON|specter independent ship receipt/i.test(String(text || ""));
+  };
+
+  api.watchdogCanaryState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/watchdog_canary.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_root/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasPresent = /ridge-cursor-wake-loop-20260822-01/.test(body);
+    var hasAbsent = /rivet-watchdog-canary-absent-20260825-01/.test(body);
+    var hasOracle = /pinned_head_oracle/.test(body) || /RecordingTruth/.test(body);
+    var hasIdle = /named_idle_bc_resume/.test(body) && /UNMEASURED/.test(body);
+    if (hasMeasure && hasClassify && hasPresent && hasAbsent && hasOracle && hasIdle) {
+      return {
+        state: "INTEGRATED",
+        note: "watchdog-canary leftover is on this file. Durable job JSON utilizes the pinned HEAD oracle. Known-present DONE/STOP, known-absent runnable, named idle bc- resume UNMEASURED. A Slack receipt is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/watchdog_canary.py missing the leftover. SPECTER ship-receipt / unutilized-oracle talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2015,6 +2048,7 @@
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var claudeRoleOut = document.getElementById("claude-role-result");
   var containmentOut = document.getElementById("containment-result");
+  var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2590,6 +2624,12 @@
     containmentOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintWatchdogCanary(result) {
+    if (!watchdogCanaryOut) return;
+    watchdogCanaryOut.setAttribute("data-tone", api.toneFor(result.state));
+    watchdogCanaryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -3050,6 +3090,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStaleManifest(err);
+      return err;
+    });
+  }
+
+  function loadWatchdogCanary(sha) {
+    if (!watchdogCanaryOut) return Promise.resolve(null);
+    watchdogCanaryOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/watchdog_canary.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/watchdog_canary.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/watchdog_canary.py absent at the measured main SHA. SPECTER ship-receipt / unutilized-oracle talk is CLAIMED." };
+        paintWatchdogCanary(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintWatchdogCanary(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.watchdogCanaryState(body);
+        paintWatchdogCanary(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintWatchdogCanary(err);
       return err;
     });
   }
@@ -3853,6 +3920,7 @@
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
     loadContainment(sha);
+    loadWatchdogCanary(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
