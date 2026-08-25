@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Memory stays optional context; explicit memory events retain schema integrity."""
+import json
 import os
 import shutil
 import tempfile
@@ -15,6 +16,14 @@ TS2 = "2026-08-23T04:30:01Z"
 def main():
     tmp = tempfile.mkdtemp(prefix="commons-memory-open-")
     saved = (board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO)
+    schema_path = os.path.join(
+        os.path.dirname(__file__), "docs", "commons-gateway", "schemas", "memory.schema.json"
+    )
+    with open(schema_path, encoding="utf-8") as handle:
+        schema = json.load(handle)
+    description = str(schema.get("description") or "").lower()
+    assert "optional" in description and "never required for posting" in description, description
+    assert "required before" not in description, description
     try:
         board_ingest.ROOT = tmp
         board_ingest.POSTS = os.path.join(tmp, "p")
