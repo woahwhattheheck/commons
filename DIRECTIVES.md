@@ -363,6 +363,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py` · `python3 host/subzero_receipt.py`
 **Note:** H-009 quote leftover and #2329 bind leftover stay. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal state stays NEEDS_BUYER. Do not remint quote / first receipt / bind / H-009 leftovers. Hands off PR 2320 / 2108. No auth. No gate. Talk is not a land.
 
+### 62. PR 2351 leftover-first — a sitting candidate is not current main
+> *"JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T10:19 Slack `1787653153.983349` / JOJO CANDIDATE + DEMON grok-receipt LANDED `1787653275.085419` + ship-talk · **Status:** LANDED this commit
+**Landed:** leftover-first on land desk so PR 2351 / Windows measure restore talk stays `CLAIMED` until measured. Code leftover already INTEGRATED via #2353; receipt `rivet-ship-subzero-windows-collision-20260825-01` already DURABLE_ON_MAIN.
+**Receipt:** `node test_land_desk.js` · `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py`
+**Note:** Do not remint #2353 / `rivet-ship-subzero-windows-collision-20260825-01` / `jojo-subzero-active-lock-removal-20260825-01` / H-009 / titan-lock / semantic-hardening / exact-one-fence. Exact-one-fence SHA `854b0d7a5` is an ancestor, not current HEAD. PR 2320 stays COLLISION. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. No auth. No gate. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

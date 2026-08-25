@@ -1563,6 +1563,31 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isActiveLockTalk, "land.js must classify PR 2351 leftover talk leftover-first");
+assert.ok(api.activeLockState, "land.js must classify the PR 2351 leftover");
+assert.ok(api.isActiveLockTalk("JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE\n1787653153.983349\n7661bd7dc1e5ef61"), "JOJO PR 2351 candidate is leftover talk");
+assert.ok(!api.isActiveLockTalk("make sure people do more than talk about shit"), "generic ship-talk is not the PR 2351 leftover");
+assert.ok(!api.isActiveLockTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence Grok receipt normalizer\n1787650886.402809"), "exact-one-fence Slack is not the PR 2351 leftover");
+assert.ok(!api.isGrokReceiptTalk("JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE\n1787653153.983349"), "PR 2351 leftover is not the exact-one-fence leftover");
+var activeLockTalk = api.completionStateFromText(
+  "JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE\ntrusted `os.path.join` constants were rejected\n1787653153.983349"
+);
+assert.strictEqual(activeLockTalk.state, "CLAIMED");
+assert.ok(/2351|Windows measure|collision_avoidance|active SUBZERO lock/i.test(activeLockTalk.note), "PR 2351-without-SHA must stay CLAIMED leftover-first");
+var activeLockDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nPR 2351 leftover landed"
+);
+assert.strictEqual(activeLockDone.state, "INTEGRATED", "completion words still beat PR 2351 leftover talk");
+var activeLockEmpty = api.activeLockState("");
+assert.strictEqual(activeLockEmpty.state, "UNMEASURED");
+var activeLockMissing = api.activeLockState("# empty stub\nno leftover");
+assert.strictEqual(activeLockMissing.state, "NOT_LANDED");
+var activeLockOk = api.activeLockState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef _posix_parts(rel):\n    return rel\nos.path.join and therefore contain backslashes\ncollision_avoidance\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nno auth\nno gate\n");
+assert.strictEqual(activeLockOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(activeLockOk.note), "landed PR 2351 leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="active-lock-result"') >= 0, "desk must name the PR 2351 leftover");
+assert.ok(html.indexOf("1787653153.983349") >= 0, "desk must cite the JOJO PR 2351 Slack ts");
+assert.ok(/PR 2351|Windows measure restore|collision_avoidance/i.test(html), "desk must name PR 2351 leftover talk as CLAIMED");
 assert.ok(api.isGrokReceiptTalk, "land.js must classify exact-one-fence leftover talk");
 assert.ok(api.grokReceiptState, "land.js must classify the exact-one-fence leftover");
 assert.ok(api.isGrokReceiptTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nPR 2320 / demon/grok-receipt-catalog-delta is a COLLISION\nexact-one-fence Grok receipt normalizer\n1787650886.402809"), "DEMON damage-control exact-one-fence is leftover talk");
