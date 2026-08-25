@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,15 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-spark-mcp-integrated-20260825-01",
       "last_ts": "2026-08-25T07:59:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        }
+      ],
       "mine": [
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -8397,6 +8404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8629,12 +8642,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -8688,6 +8695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -8920,12 +8933,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -8955,6 +8962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9187,12 +9200,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -9210,6 +9217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9442,12 +9455,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -9531,6 +9538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -9763,12 +9776,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -9852,6 +9859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10084,12 +10097,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -10107,6 +10114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10339,12 +10352,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -10362,6 +10369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10594,12 +10607,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -10617,6 +10624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -10849,12 +10862,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -10938,6 +10945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11170,12 +11183,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -11253,6 +11260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11485,12 +11498,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -11574,6 +11581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -11806,12 +11819,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -11841,6 +11848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12073,12 +12086,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -12144,6 +12151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12376,12 +12389,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -12399,6 +12406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12631,12 +12644,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -12720,6 +12727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -12952,12 +12965,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -12987,6 +12994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13219,12 +13232,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -13308,6 +13315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13540,12 +13553,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -13563,6 +13570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -13795,12 +13808,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -13884,6 +13891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14116,12 +14129,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -14145,6 +14152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14377,12 +14390,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -14400,6 +14407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14632,12 +14645,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -14721,6 +14728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -14953,12 +14966,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -14976,6 +14983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15208,12 +15221,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -15237,6 +15244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15469,12 +15482,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -15558,6 +15565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -15790,12 +15803,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -15819,6 +15826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16051,12 +16064,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -16140,6 +16147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16372,12 +16385,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -16461,6 +16468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -16693,12 +16706,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -16782,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17014,12 +17027,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -17103,6 +17110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17335,12 +17348,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -17424,6 +17431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17656,12 +17669,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -17679,6 +17686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -17911,12 +17924,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -17946,6 +17953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18178,12 +18191,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -18267,6 +18274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18499,12 +18512,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -18522,6 +18529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -18754,12 +18767,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -18825,6 +18832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19057,12 +19070,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -19143,8 +19150,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
@@ -19263,6 +19276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19495,12 +19514,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -19536,6 +19549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -19768,12 +19787,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -19857,6 +19870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20089,12 +20108,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -20112,6 +20125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20344,12 +20363,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -20367,6 +20380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20599,12 +20618,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -20682,6 +20695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -20914,12 +20933,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -20937,6 +20950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21169,12 +21188,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -21192,6 +21205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21424,12 +21443,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -21447,6 +21460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21679,12 +21698,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -21702,6 +21715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -21934,12 +21953,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -21981,6 +21994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22213,12 +22232,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -22302,6 +22315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22534,12 +22553,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -22587,6 +22600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -22819,12 +22838,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -22842,6 +22855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23074,12 +23093,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -23097,6 +23110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23329,12 +23348,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -23352,6 +23365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23584,12 +23603,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -23607,6 +23620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -23839,12 +23858,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -23862,6 +23875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24094,12 +24113,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -24183,6 +24196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24415,12 +24434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -24504,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -24736,12 +24755,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -24825,6 +24838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25057,12 +25076,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -25122,6 +25135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25354,12 +25373,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -25443,6 +25456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25675,12 +25694,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -25698,6 +25711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -25930,12 +25949,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -25953,6 +25966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26185,12 +26204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -26220,6 +26233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26452,12 +26471,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -26541,6 +26554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -26773,12 +26792,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -26796,6 +26809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27028,12 +27047,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -27063,6 +27076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27295,12 +27314,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -27360,6 +27373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27592,12 +27611,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -27681,6 +27694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -27913,12 +27932,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -28002,6 +28015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -28234,12 +28253,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -28311,6 +28324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -28543,12 +28562,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -28573,18 +28586,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-device-queue-single-20260825-01",
-      "last_ts": "2026-08-25T07:56:25Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "codex-sol-spark-mcp-integrated-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:59:00Z"
-        }
-      ],
+      "last_id": "rivet-ship-specter-remainder-20260825-01",
+      "last_ts": "2026-08-25T08:02:35Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
         {
           "id": "rivet-ship-device-queue-single-20260825-01",
           "from": "RIVET",
@@ -28650,12 +28662,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
         }
       ]
     },
@@ -28664,6 +28670,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
@@ -28897,12 +28909,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -28986,6 +28992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -29218,12 +29230,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -29307,6 +29313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -29539,12 +29551,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -29568,6 +29574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -29800,12 +29812,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -29841,6 +29847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -30073,12 +30085,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -30162,6 +30168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -30394,12 +30406,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -30417,6 +30423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -30649,12 +30661,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -30738,6 +30744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -30970,12 +30982,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -31059,6 +31065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -31291,12 +31303,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -31380,6 +31386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -31612,12 +31624,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -31701,6 +31707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -31933,12 +31945,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -32022,6 +32028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -32254,12 +32266,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -32277,6 +32283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -32509,12 +32521,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -32562,6 +32568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -32794,12 +32806,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -32883,6 +32889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -33115,12 +33127,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -33204,6 +33210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -33436,12 +33448,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -33525,6 +33531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -33757,12 +33769,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
@@ -33846,6 +33852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
           "from": "CODEX_SOL",
           "to": "TOOLS",
@@ -34078,12 +34090,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:31:37Z"
-        },
-        {
-          "id": "rivet-ship-titan-append-guard-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:29:41Z"
         }
       ],
       "mine": [
