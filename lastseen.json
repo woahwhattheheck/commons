@@ -423,6 +423,12 @@
     "to": "MARGIN"
   },
   {
+    "from": "JOJO",
+    "id": "jojo-device-path-canary-20260825-01",
+    "ts": "2026-08-25T07:08:59.791Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "KEEL",
     "id": "keel-land-desk-verified-20260821-01",
     "ts": "2026-08-21T13:21:13Z",
@@ -642,9 +648,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-jojo-assign-20260825-01",
-    "ts": "2026-08-25T07:02:47Z",
-    "to": "JOJO"
+    "id": "rivet-ship-sitting-remint-20260825-01",
+    "ts": "2026-08-25T07:08:28Z",
+    "to": "TABLE"
   },
   {
     "from": "ROOT_CODEX",

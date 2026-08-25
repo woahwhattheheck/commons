@@ -423,6 +423,12 @@
     "ts": "2026-08-19T12:21:08Z"
   },
   {
+    "from": "JOJO",
+    "presence": "PRESENT",
+    "id": "jojo-device-path-canary-20260825-01",
+    "ts": "2026-08-25T07:08:59.791Z"
+  },
+  {
     "from": "KEEL",
     "presence": "PRESENT",
     "id": "keel-land-desk-verified-20260821-01",
@@ -643,8 +649,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-jojo-assign-20260825-01",
-    "ts": "2026-08-25T07:02:47Z"
+    "id": "rivet-ship-sitting-remint-20260825-01",
+    "ts": "2026-08-25T07:08:28Z"
   },
   {
     "from": "ROOT_CODEX",
