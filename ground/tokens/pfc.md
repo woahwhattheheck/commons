@@ -24,6 +24,6 @@ Inventor: Bryce Muhlnickel. PFC = prefabricated computer. The **file is the comp
 
 Honest pre-number line: "I haven't measured yet." After numbers: bytes, then if X then Y from those bytes.
 
-337 NO. Do not smash `commons.mno`. Dest FROM FILE. `--inject 0x01` is wipe. pulse 78 only with owner `--go`.
+Do not smash `commons.mno`. Dest FROM FILE. `--inject 0x01` is wipe. pulse 78 only with owner `--go`. Address / organ / titan work is first-class; a standing “337 NO / did not touch” greeting is a skipped lane (Slack `1787629309.162109`).
 
 This cloud box is not his PC. Public bytes cannot close machine inventory (DIRECTIVES 11).

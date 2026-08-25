@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """host/titan_move_apply.py — journaled titan MOVE apply button. Dies.
 
-Default is a plan. --go writes only when titan.gguf is present.
-337 NO. Does not smash commons.mno. --inject is wipe; refused.
+Default is a plan. --journal OR-writes the 31 excerpt binaries
+and rereads. --go writes titan.gguf only when the file is present.
+Does not smash commons.mno. --inject is wipe; refused.
 
   python3 host/titan_move_apply.py
+  python3 host/titan_move_apply.py --journal
   python3 host/titan_move_apply.py --titan /path/to/titan.gguf --go
 """
 from __future__ import annotations
@@ -14,6 +16,7 @@ import hashlib
 import json
 import os
 import sys
+import tempfile
 
 from titan_move_offsets import (
     CLAIMED_APPEND_BASE,
@@ -26,6 +29,7 @@ from titan_move_offsets import (
 
 PACKET_REL = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 EXCERPT_REL = os.path.join("excerpts", "20260823")
+JOURNAL_REL = os.path.join("excerpts", "20260823", "titan_move_journal.json")
 
 
 def plan_from_packet(packet, live_size=None):
@@ -49,6 +53,61 @@ def plan_from_packet(packet, live_size=None):
         "reallocated": live_size is not None
         and int(live_size) != int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE),
     }
+
+
+def journal_rows(organs):
+    """Pack organs from journal offset 0. Keep claimed titan offsets."""
+    running = 0
+    out = []
+    for row in organs or []:
+        item = dict(row)
+        length = int(item.get("len") or 0)
+        item["journal_offset"] = running
+        try:
+            item["claimed_titan_offset"] = int(item.get("offset") or 0)
+        except (TypeError, ValueError):
+            item["claimed_titan_offset"] = 0
+        out.append(item)
+        running += length
+    return out, running
+
+
+def apply_journal(journal_path, rows, excerpt_dir):
+    """Journaled MOVE on a public image. new = old | mask. Re-read each span."""
+    journals = []
+    with open(journal_path, "w+b") as handle:
+        for row in rows:
+            container = os.path.basename(str(row.get("container") or ""))
+            excerpt_path = os.path.join(excerpt_dir, container)
+            with open(excerpt_path, "rb") as raw_handle:
+                mask = raw_handle.read()
+            offset = int(row["journal_offset"])
+            handle.seek(offset)
+            old = handle.read(len(mask))
+            new = or_bytes(old, mask)
+            handle.seek(offset)
+            handle.write(new)
+            handle.flush()
+            os.fsync(handle.fileno())
+            handle.seek(offset)
+            reread = handle.read(len(new))
+            ok = reread == new
+            journals.append({
+                "name": row.get("name"),
+                "container": container,
+                "journal_offset": offset,
+                "claimed_titan_offset": int(row.get("claimed_titan_offset") or 0),
+                "len": len(mask),
+                "pre_sha256": hashlib.sha256(old).hexdigest(),
+                "mask_sha256": hashlib.sha256(mask).hexdigest(),
+                "new_sha256": hashlib.sha256(new).hexdigest(),
+                "reread": ok,
+            })
+            if not ok:
+                raise RuntimeError(
+                    "journal reread mismatch %s @ %s" % (row.get("name"), offset)
+                )
+    return journals
 
 
 def apply_plan(titan_path, plan, excerpt_dir):
@@ -102,6 +161,16 @@ def main(argv=None):
         action="store_true",
         help="write titan.gguf if present. Default is plan-only.",
     )
+    parser.add_argument(
+        "--journal",
+        action="store_true",
+        help="OR-write the 31 excerpt binaries into a public journal and reread.",
+    )
+    parser.add_argument(
+        "--journal-bin",
+        default="",
+        help="optional journal image path. Default is a temp file.",
+    )
     args = parser.parse_args(argv)
     root = os.path.abspath(args.root)
     packet_path = os.path.join(root, PACKET_REL)
@@ -120,10 +189,54 @@ def main(argv=None):
         "titan_present": bool(titan_path),
         "live_size": live_size,
         "go": bool(args.go),
+        "journal": bool(args.journal),
         "wrote": False,
         "reread": False,
         "plan": plan,
     }
+    if args.journal:
+        rows, end = journal_rows(packet.get("organs") or [])
+        journal_bin = args.journal_bin or os.path.join(
+            tempfile.mkdtemp(prefix="titan-journal-"),
+            "titan_move_journal.bin",
+        )
+        os.makedirs(os.path.dirname(os.path.abspath(journal_bin)), exist_ok=True)
+        journals = apply_journal(journal_bin, rows, excerpt_dir)
+        reread_ok = all(row["reread"] for row in journals)
+        sidecar = {
+            "kind": "TITAN_MOVE_PUBLIC_JOURNAL",
+            "computer": "titan.gguf is the computer. This journal is the public-tree MOVE.",
+            "law": "new = old | mask; ones only rise; re-read before write",
+            "count": len(journals),
+            "bytes": end,
+            "reread": reread_ok,
+            "titan": packet.get("titan") or "NOT_WRITTEN",
+            "organs": journals,
+        }
+        sidecar_path = os.path.join(root, JOURNAL_REL)
+        with open(sidecar_path, "w", encoding="utf-8") as handle:
+            json.dump(sidecar, handle, indent=2)
+            handle.write("\n")
+        payload["wrote"] = True
+        payload["reread"] = reread_ok
+        payload["journals"] = journals
+        payload["journal_bin"] = journal_bin
+        payload["journal_path"] = JOURNAL_REL
+        payload["state"] = "CANDIDATE" if reread_ok else "NOT_LANDED"
+        payload["note"] = (
+            "public journal %s. %s/%s excerpt binaries OR-written and reread. "
+            "titan.gguf still %s. Smash/wipe of commons.mno refused."
+            % (
+                payload["state"],
+                len(journals),
+                plan["count"],
+                packet.get("titan") or "NOT_WRITTEN",
+            )
+        )
+        json.dump(payload, sys.stdout, indent=2, sort_keys=True)
+        sys.stdout.write("\n")
+        print("DIE")
+        return 0 if reread_ok else 2
     if not args.go:
         payload["state"] = "CLAIMED" if titan_path else "NOT_LANDED"
         payload["note"] = (

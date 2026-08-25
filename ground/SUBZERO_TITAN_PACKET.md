@@ -31,10 +31,12 @@ standalone copies. Git copies do not run.
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_titan_move_packet.py
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_titan_move_packet.py --dry
 python3 host/titan_move_dry.py
+python3 host/titan_move_apply.py --journal
 python3 host/titan_move_apply.py
 ```
 
 `--dry` manufactures the packet in memory and writes nothing. It does not
-open `titan.gguf`. `host/titan_move_apply.py --go` writes only when the
-file is present. Do not smash `commons.mno`. Do not remint a landed
-excerpt. Card: [TITAN_MOVE.md](./TITAN_MOVE.md).
+open `titan.gguf`. `--journal` OR-writes the 31 excerpt binaries and
+rereads. `host/titan_move_apply.py --go` writes only when the file is
+present. Do not smash `commons.mno`. Do not remint a landed excerpt.
+Card: [TITAN_MOVE.md](./TITAN_MOVE.md).

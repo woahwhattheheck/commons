@@ -367,6 +367,9 @@
     if (api.isHoardTalk(t)) {
       return { state: "CLAIMED", note: "session-hoard / commit-push talk. Talk is not a land. Commit, push, and merge the leftover onto current main." };
     }
+    if (api.isOwnerCorrectionTalk(t)) {
+      return { state: "CLAIMED", note: "owner substrate correction. Talk is not a land. Work the actual .mno / titan / address artifact and ship it to current main. A receipt that brags titan or 337 was untouched is a skipped lane." };
+    }
     if (api.isSubstrateDodgeTalk(t)) {
       return { state: "CLAIMED", note: "substrate-dodge TAKING. Talk is not a land. Take the titan write lane or file NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER." };
     }
@@ -436,8 +439,12 @@
     return /committing and pushing all of your builds|do not hoard shit|hoard shit in your session|make me track it down|do not hoard.{0,40}in your session|session hoard|uncommitted.{0,20}unpushed/i.test(String(text || ""));
   };
 
+  api.isOwnerCorrectionTalk = function (text) {
+    return /direct owner correction from bryce|never created a rule to avoid muhlnickel|untouched is evidence of a skipped lane|do not invent standing .{0,20}never touch/i.test(String(text || ""));
+  };
+
   api.isSubstrateDodgeTalk = function (text) {
-    return /no muhlnickel,\s*organ,\s*titan,\s*or device path|no muhlnickel.{0,80}organ.{0,80}titan.{0,80}device path|stop dodging the substrate|not to be ignored and it is not to be deferred/i.test(String(text || ""));
+    return /no muhlnickel,\s*organ,\s*titan,\s*or device path|no muhlnickel.{0,80}organ.{0,80}titan.{0,80}device path|stop dodging the substrate|not to be ignored and it is not to be deferred|337\s*=\s*NO|did not touch titan|did not touch \.mno|did not fire 337|did not write titan\.gguf/i.test(String(text || ""));
   };
 
   api.titanMoveState = function (row) {
@@ -450,6 +457,8 @@
     var written = String(row.titan || "").toUpperCase();
     var nonzero = Number(row.nonzero_offsets || 0);
     var reread = row.reread === true;
+    var journalReread = row.journal_reread === true;
+    var journalCount = Number(row.journal_count || 0);
     if (written === "WRITTEN" && reread && nonzero === count && count >= 31) {
       return { state: "INTEGRATED", note: "titan write and reread measured for " + count + " organs." };
     }
@@ -459,10 +468,16 @@
         note: "only " + excerpts + "/31 excerpts on this tree. Fabricate the missing organ. Do not write titan yet."
       };
     }
+    if (written === "NOT_WRITTEN" && journalReread && journalCount >= 31 && nonzero === count && count >= 31) {
+      return {
+        state: "CANDIDATE",
+        note: journalCount + "/31 excerpt binaries journaled and reread on the public tree. titan.gguf still NOT_WRITTEN. Run host/titan_move_apply.py --go on the machine that has it."
+      };
+    }
     if (written === "NOT_WRITTEN" && nonzero === count && count >= 31) {
       return {
         state: "CLAIMED",
-        note: excerpts + "/31 claimed append offsets dest FROM FILE. titan write still NOT_WRITTEN. Run host/titan_move_apply.py --go on the machine that has titan.gguf."
+        note: excerpts + "/31 claimed append offsets dest FROM FILE. titan write still NOT_WRITTEN. Journal the excerpt binaries with host/titan_move_apply.py --journal, then --go on the machine that has titan.gguf."
       };
     }
     if (written === "NOT_WRITTEN" || nonzero === 0) {
@@ -1129,11 +1144,29 @@
           excerpt_count: organs.length,
           titan: (data && data.titan) || "NOT_WRITTEN",
           nonzero_offsets: nonzero,
-          reread: false
+          reread: false,
+          journal_reread: data && data.public_journal_reread === true,
+          journal_count: Number((data && data.public_journal_count) || 0)
         };
-        var got = api.titanMoveState(row);
-        paintTitan(got);
-        return got;
+        var journalUrl = RAW + sha + "/excerpts/20260823/titan_move_journal.json";
+        return fetch(journalUrl, { cache: "no-store" }).then(function (jr) {
+          if (jr.ok) {
+            return jr.json().then(function (journal) {
+              if (journal && journal.reread === true) row.journal_reread = true;
+              if (journal && journal.count) row.journal_count = Number(journal.count || 0);
+              var got = api.titanMoveState(row);
+              paintTitan(got);
+              return got;
+            });
+          }
+          var got = api.titanMoveState(row);
+          paintTitan(got);
+          return got;
+        }).catch(function () {
+          var got = api.titanMoveState(row);
+          paintTitan(got);
+          return got;
+        });
       });
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };

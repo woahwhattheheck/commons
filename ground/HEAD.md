@@ -12,6 +12,6 @@ Truth:
 
 If Pages looks smashed or stale: [redundancy-pages-raw.md](./redundancy-pages-raw.md) — pin raw to the HEAD sha.
 
-Do not remint an id that is already a file. Do not MCP-PUT `board_ingest.py`. 337 NO.
+Do not remint an id that is already a file. Do not MCP-PUT `board_ingest.py`. Smash/wipe of `commons.mno` is refused. Substrate / organ / titan / address work is first-class. A receipt that brags 337 or titan was untouched is a skipped lane, not a HEAD rule. Slack `1787629309.162109`.
 
 Browser door: [head.html](../head.html) — pin raw to the live sha when Pages 404s. Recipe: [redundancy-pages-raw.md](./redundancy-pages-raw.md). Cite PIN. Do not remint `pin-redundancy-pages-raw-20260819-01`.
