@@ -307,6 +307,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_quote.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py`
 **Note:** Presence leftover stays. `sz-paid-validation` is QUOTE_DRAFT, not cash / runtime / demand. GTM status stays CANDIDATE. Cash $0 / NOT_LANDED. Do not remint SUBZERO_TECH / GTM / BUYERS / EXPLORER / PROOF / White Box / human-outcomes / `rivet-ship-subzero-tech-presence-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
 
+### 55. SUBZERO receipt — a quote-draft bind is not a buyer
+> *"source-index the existing `sz-paid-validation` / P01 `$2,500` offer into the smallest honest quote-draft → buyer-bound validation receipt"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:30 Slack `1787650230.035359` / JOJO H-008 + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SUBZERO_RECEIPT.md` · `ground/SUBZERO_RECEIPT.json` · `host/subzero_receipt.py` · `subzero-receipt.html` · land canary + `subzeroReceiptState`
+**Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
+**Note:** Quote leftover stays QUOTE_DRAFT. Bind is implemented. Live bind stays UNBOUND. Cash $0 / NOT_LANDED. Demand UNKNOWN. Do not remint SUBZERO_QUOTE / BUYERS / EXPLORER / White Box / human-outcomes / grok-receipt PR 2320 / `rivet-ship-subzero-quote-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

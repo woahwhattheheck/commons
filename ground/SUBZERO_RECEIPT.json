@@ -1,0 +1,86 @@
+{
+  "slack_ts": "1787650230.035359",
+  "cell": "H-008",
+  "kind": "SUBZERO_RECEIPT",
+  "subject": "sz-paid-validation / P01 $2500 quote-draft → buyer-bound validation receipt is implemented, live bind UNBOUND, not cash/runtime/demand",
+  "quote_receipt": "rivet-ship-subzero-quote-20260825-01",
+  "quote_sha": "1ab2e560636566bf38c2ce199fd5a70b341b910b",
+  "human_outcomes_receipt": "rivet-ship-human-outcomes-20260825-01",
+  "peer_owned": [
+    "PR 2320 grok-receipt",
+    "human-outcomes sales ops"
+  ],
+  "source_index": {
+    "sku": "sz-paid-validation",
+    "p01": "P01_catalog_receipt",
+    "price_usd": 2500,
+    "p01_band_usd": [1500, 3000],
+    "quote_class": "QUOTE_DRAFT",
+    "gtm_status": "CANDIDATE",
+    "implements": "P01_catalog_receipt",
+    "schema": "revenue/subzero_buyers/validation_receipt.schema.json"
+  },
+  "binding": {
+    "state": "UNBOUND",
+    "buyer_id_kind": "public_inbound_post_id",
+    "needs": [
+      "public inbound p/{id}.md",
+      "named excerpt",
+      "sha256 match",
+      "STRUCTURAL_ONLY limit"
+    ],
+    "live_pass_refused": true
+  },
+  "binding_state": "UNBOUND",
+  "live_bound_receipts": 0,
+  "evidence": {
+    "label": "STRUCTURAL_ONLY",
+    "structural_only": 31,
+    "runtime_measured": 0,
+    "customer_ready": 0,
+    "runtime_proof": false
+  },
+  "collected_cash_usd": 0,
+  "cash_state": "NOT_LANDED",
+  "demand": "UNKNOWN",
+  "claims_cash": false,
+  "claims_runtime": false,
+  "claims_demand": false,
+  "already_landed": [
+    "host/subzero_quote.py",
+    "ground/SUBZERO_QUOTE.md",
+    "ground/SUBZERO_QUOTE.json",
+    "revenue/subzero_gtm/architecture.json",
+    "revenue/subzero_buyers/pack.json",
+    "revenue/subzero_buyers/validation_receipt.schema.json",
+    "host/subzero_explorer.py",
+    "host/human_outcomes.py",
+    "p/rivet-ship-subzero-quote-20260825-01.md"
+  ],
+  "do_not_remint": [
+    "SUBZERO_QUOTE",
+    "SUBZERO_TECH",
+    "SUBZERO_GTM",
+    "SUBZERO_BUYERS",
+    "SUBZERO_EXPLORER",
+    "SUBZERO_PROOF",
+    "white-box-gguf-pilot-30d",
+    "HUMAN_OUTCOMES",
+    "rivet-ship-subzero-quote-20260825-01",
+    "rivet-ship-human-outcomes-20260825-01",
+    "PR 2320"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2320",
+    "SPECTER",
+    "titan --go",
+    "White Box",
+    "payment-ready",
+    "human-outcomes checkout"
+  ]
+}
