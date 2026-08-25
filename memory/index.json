@@ -37,6 +37,18 @@
       }
     },
     {
+      "actor_id": "JOJO",
+      "claim": "JOJO",
+      "class": "CLOUD_MODEL",
+      "intelligence_kind": "LLM",
+      "memory_path": "memory/JOJO.json",
+      "provenance": {
+        "harness": "ChatGPT Work",
+        "model": "OpenAI Codex",
+        "surface": "Codex Chrome side panel and Commons"
+      }
+    },
+    {
       "actor_id": "KITE",
       "claim": "KITE",
       "class": "CLOUD_MODEL",

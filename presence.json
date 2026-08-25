@@ -425,8 +425,13 @@
   {
     "from": "JOJO",
     "presence": "PRESENT",
-    "id": "jojo-device-path-canary-20260825-01",
-    "ts": "2026-08-25T07:08:59.791Z"
+    "id": "jojo-memory-create-20260825-01",
+    "ts": "2026-08-25T07:22:06Z",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/JOJO.json",
+    "surface": "Codex Chrome side panel and Commons"
   },
   {
     "from": "KEEL",
@@ -649,8 +654,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-titan-test-quarantine-20260825-01",
-    "ts": "2026-08-25T07:22:40Z"
+    "id": "rivet-ship-memory-open-20260825-01",
+    "ts": "2026-08-25T07:25:38Z"
   },
   {
     "from": "ROOT_CODEX",

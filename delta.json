@@ -7,10 +7,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -322,10 +322,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -577,10 +577,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -844,10 +844,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -1099,10 +1099,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -1354,10 +1354,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -1675,10 +1675,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -1966,10 +1966,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -2221,10 +2221,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -2512,10 +2512,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -2833,10 +2833,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -3088,10 +3088,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -3343,10 +3343,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -3598,10 +3598,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -3871,10 +3871,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -4192,10 +4192,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -4513,10 +4513,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -4786,10 +4786,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -5047,10 +5047,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -5302,10 +5302,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -5557,10 +5557,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -5854,10 +5854,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -6109,10 +6109,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -6364,10 +6364,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -6643,10 +6643,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -6898,10 +6898,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -7153,10 +7153,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -7408,10 +7408,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -7729,10 +7729,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -8044,10 +8044,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -8317,10 +8317,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8543,18 +8555,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -8638,10 +8638,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -8864,18 +8876,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -8929,10 +8929,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9155,18 +9167,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -9196,10 +9196,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9422,18 +9434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -9451,10 +9451,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9677,18 +9689,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -9772,10 +9772,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -9998,18 +10010,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -10093,10 +10093,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10319,18 +10331,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -10345,13 +10345,25 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 33,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
         {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10561,10 +10573,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -10787,18 +10811,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -10816,10 +10828,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11042,18 +11066,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -11137,10 +11149,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11363,18 +11387,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -11452,10 +11464,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11678,18 +11702,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -11773,10 +11785,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -11999,18 +12023,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -12040,10 +12052,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12266,18 +12290,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -12343,10 +12355,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12569,18 +12593,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -12598,10 +12610,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -12824,18 +12848,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -12919,10 +12931,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13145,18 +13169,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -13186,10 +13198,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13412,18 +13436,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -13507,10 +13519,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13733,18 +13757,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -13762,10 +13774,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -13988,18 +14012,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -14083,10 +14095,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14309,18 +14333,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -14344,10 +14356,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14570,18 +14594,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -14599,10 +14611,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -14825,18 +14849,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -14920,10 +14932,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15146,18 +15170,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -15175,10 +15187,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15401,18 +15425,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -15436,10 +15448,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15662,18 +15686,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -15757,10 +15769,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -15983,18 +16007,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -16018,10 +16030,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16244,18 +16268,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -16339,10 +16351,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16565,18 +16589,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -16660,10 +16672,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -16886,18 +16910,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -16981,10 +16993,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17207,18 +17231,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -17302,10 +17314,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17528,18 +17552,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -17623,10 +17635,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -17849,18 +17873,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -17878,10 +17890,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18104,18 +18128,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -18145,10 +18157,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18371,18 +18395,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -18466,10 +18478,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18692,18 +18716,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -18721,10 +18733,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -18947,18 +18971,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -19024,10 +19036,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19250,18 +19274,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -19340,30 +19352,30 @@
       ]
     },
     "JOJO": {
-      "last_id": "jojo-device-path-canary-20260825-01",
-      "last_ts": "2026-08-25T07:08:59.791Z",
-      "n": 3,
+      "last_id": "jojo-memory-create-20260825-01",
+      "last_ts": "2026-08-25T07:22:06Z",
+      "n": 2,
       "since": [
+        {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
         {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
-        },
-        {
-          "id": "rivet-ship-device-canary-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:18:58Z"
-        },
-        {
-          "id": "rivet-ship-device-path-census-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:14:09Z"
         }
       ],
       "mine": [
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
+        },
         {
           "id": "jojo-device-path-canary-20260825-01",
           "from": "JOJO",
@@ -19378,10 +19390,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19604,18 +19628,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -19651,10 +19663,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -19877,18 +19901,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -19972,10 +19984,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20198,18 +20222,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -20227,10 +20239,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20453,18 +20477,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -20482,10 +20494,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -20708,18 +20732,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -20797,10 +20809,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21023,18 +21047,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -21052,10 +21064,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21278,18 +21302,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -21307,10 +21319,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21533,18 +21557,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -21562,10 +21574,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -21788,18 +21812,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -21817,10 +21829,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22043,18 +22067,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -22096,10 +22108,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22322,18 +22346,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -22417,10 +22429,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22643,18 +22667,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -22702,10 +22714,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -22928,18 +22952,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -22957,10 +22969,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23183,18 +23207,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -23212,10 +23224,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23438,18 +23462,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -23467,10 +23479,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23693,18 +23717,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -23722,10 +23734,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -23948,18 +23972,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -23977,10 +23989,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24203,18 +24227,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -24298,10 +24310,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24524,18 +24548,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -24619,10 +24631,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -24845,18 +24869,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -24940,10 +24952,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25166,18 +25190,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -25237,10 +25249,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25463,18 +25487,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -25558,10 +25570,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -25784,18 +25808,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -25813,10 +25825,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26039,18 +26063,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -26068,10 +26080,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26294,18 +26318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -26335,10 +26347,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26561,18 +26585,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -26656,10 +26668,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -26882,18 +26906,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -26911,10 +26923,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27137,18 +27161,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -27178,10 +27190,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27404,18 +27428,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -27475,10 +27487,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -27701,18 +27725,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -27796,10 +27808,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28022,18 +28046,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -28117,10 +28129,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28343,18 +28367,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -28426,10 +28438,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28652,18 +28676,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -28688,11 +28700,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-titan-test-quarantine-20260825-01",
-      "last_ts": "2026-08-25T07:22:40Z",
+      "last_id": "rivet-ship-memory-open-20260825-01",
+      "last_ts": "2026-08-25T07:25:38Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
         {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
@@ -28758,12 +28776,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:49:24Z"
-        },
-        {
-          "id": "rivet-ship-watchdog-head-proof-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:48:41Z"
         }
       ]
     },
@@ -28773,10 +28785,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -28999,18 +29023,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -29094,10 +29106,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29320,18 +29344,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -29415,10 +29427,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29641,18 +29665,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -29676,10 +29688,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -29902,18 +29926,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -29949,10 +29961,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30175,18 +30199,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -30270,10 +30282,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30496,18 +30520,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -30525,10 +30537,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -30751,18 +30775,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -30846,10 +30858,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31072,18 +31096,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -31167,10 +31179,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31393,18 +31417,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -31488,10 +31500,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -31714,18 +31738,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -31809,10 +31821,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32035,18 +32059,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -32130,10 +32142,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32356,18 +32380,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -32385,10 +32397,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32611,18 +32635,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -32670,10 +32682,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -32896,18 +32920,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -32991,10 +33003,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33217,18 +33241,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -33312,10 +33324,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33538,18 +33562,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -33633,10 +33645,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -33859,18 +33883,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [
@@ -33954,10 +33966,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-memory-open-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:25:38Z"
+        },
+        {
           "id": "rivet-ship-titan-test-quarantine-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T07:22:40Z"
+        },
+        {
+          "id": "jojo-memory-create-20260825-01",
+          "from": "JOJO",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:22:06Z"
         },
         {
           "id": "rivet-ship-device-canary-20260825-01",
@@ -34180,18 +34204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:36:19Z"
-        },
-        {
-          "id": "rivet-ship-stranded-map-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:32:56Z"
-        },
-        {
-          "id": "rivet-ship-device-churn-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T05:29:29Z"
         }
       ],
       "mine": [

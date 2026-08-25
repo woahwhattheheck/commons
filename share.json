@@ -627,6 +627,17 @@
       "share": "",
       "receipt": "",
       "status": "OPEN"
+    },
+    {
+      "id": "codex-sol-spark-mcp-taking-20260825-01",
+      "from": "CODEX_SOL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
     }
   ],
   "done": [
@@ -775,7 +786,7 @@
     "RIVET": 1,
     "CURSOR_GROK": 11,
     "DOOR": 2,
-    "CODEX_SOL": 11,
+    "CODEX_SOL": 12,
     "SPEC_DADDY": 3,
     "KITE": 2
   },
