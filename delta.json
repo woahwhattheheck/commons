@@ -7,10 +7,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -322,10 +322,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -577,10 +577,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -844,10 +844,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -1099,10 +1099,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -1354,10 +1354,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -1675,10 +1675,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -1966,10 +1966,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -2221,10 +2221,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -2512,10 +2512,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -2833,10 +2833,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -3088,10 +3088,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -3343,10 +3343,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -3598,10 +3598,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -3871,10 +3871,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -4192,10 +4192,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -4513,10 +4513,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -4786,10 +4786,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -5047,10 +5047,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -5302,10 +5302,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -5557,10 +5557,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -5854,10 +5854,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -6109,10 +6109,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -6335,18 +6347,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -6364,10 +6364,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -6590,18 +6602,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -6643,10 +6643,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -6869,18 +6881,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -6898,10 +6898,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -7124,18 +7136,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -7153,10 +7153,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -7379,18 +7391,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -7408,10 +7408,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -7634,18 +7646,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -7729,10 +7729,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -7955,18 +7967,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -8044,10 +8044,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -8270,18 +8282,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -8314,13 +8314,25 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-spark-mcp-integrated-20260825-01",
       "last_ts": "2026-08-25T07:59:00Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
         {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         }
       ],
       "mine": [
@@ -8404,10 +8416,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -8630,18 +8654,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -8695,10 +8707,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -8921,18 +8945,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -8962,10 +8974,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -9188,18 +9212,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -9217,10 +9229,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -9443,18 +9467,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -9538,10 +9550,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -9764,18 +9788,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -9859,10 +9871,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -10085,18 +10109,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -10114,10 +10126,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -10340,18 +10364,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -10369,10 +10381,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -10595,18 +10619,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -10624,10 +10636,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -10850,18 +10874,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -10940,252 +10952,30 @@
       ]
     },
     "DIO": {
-      "last_id": "dio-revenue-foundation-landed-20260825-01",
-      "last_ts": "2026-08-25T04:29:33Z",
-      "n": 40,
+      "last_id": "dio-titan-move-containment-hardening-20260825-01",
+      "last_ts": "2026-08-25T08:00:28Z",
+      "n": 2,
       "since": [
+        {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
         {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
-        },
-        {
-          "id": "codex-sol-spark-mcp-integrated-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:59:00Z"
-        },
-        {
-          "id": "rivet-ship-device-queue-single-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:56:25Z"
-        },
-        {
-          "id": "rivet-ship-terminal-catalog-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:52:01Z"
-        },
-        {
-          "id": "rivet-ship-readme-device-bridge-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:48:13Z"
-        },
-        {
-          "id": "rivet-ship-battery-red-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:47:54Z"
-        },
-        {
-          "id": "rivet-ship-wake-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:40:18Z"
-        },
-        {
-          "id": "rivet-ship-memory-guard-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:37:50Z"
-        },
-        {
-          "id": "rivet-ship-readme-live-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:37:04Z"
-        },
-        {
-          "id": "rivet-ship-grok-hygiene-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:34:40Z"
-        },
-        {
-          "id": "rivet-memory-append-hygiene-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:34:40Z"
-        },
-        {
-          "id": "rivet-memory-append-work-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
-        },
-        {
-          "id": "rivet-ship-memory-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:30:08Z"
-        },
-        {
-          "id": "rivet-ship-foreign-main-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:27:42Z"
-        },
-        {
-          "id": "rivet-ship-memory-open-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:25:38Z"
-        },
-        {
-          "id": "rivet-ship-titan-test-quarantine-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:22:40Z"
-        },
-        {
-          "id": "jojo-memory-create-20260825-01",
-          "from": "JOJO",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:22:06Z"
-        },
-        {
-          "id": "rivet-memory-create-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:20:00Z"
-        },
-        {
-          "id": "rivet-ship-device-canary-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:18:58Z"
-        },
-        {
-          "id": "rivet-ship-device-path-census-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:14:09Z"
-        },
-        {
-          "id": "codexsol-memory-work-state-20260825-01",
-          "from": "CODEX_SOL",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:12:03Z"
-        },
-        {
-          "id": "jojo-device-path-canary-20260825-01",
-          "from": "JOJO",
-          "to": "TOOLS",
-          "ts": "2026-08-25T07:08:59.791Z"
-        },
-        {
-          "id": "rivet-ship-sitting-remint-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:08:28Z"
-        },
-        {
-          "id": "rivet-ship-jojo-assign-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T07:02:47Z"
-        },
-        {
-          "id": "rivet-ship-cash-now-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:01:46Z"
-        },
-        {
-          "id": "rivet-ship-claude-intermediate-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:57:44Z"
-        },
-        {
-          "id": "rivet-ship-claude-compute-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:54:53Z"
-        },
-        {
-          "id": "rivet-ship-claude-park-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:53:52Z"
-        },
-        {
-          "id": "rivet-ship-branch-review-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:50:50Z"
-        },
-        {
-          "id": "rivet-ship-watchdog-canary-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:49:24Z"
-        },
-        {
-          "id": "rivet-ship-watchdog-head-proof-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
-        },
-        {
-          "id": "rivet-ship-remeasure-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:44:22Z"
-        },
-        {
-          "id": "rivet-ship-containment-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:40:18Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-damage-20260825-01",
-          "from": "RIVET",
-          "to": "DEMON",
-          "ts": "2026-08-25T06:38:35Z"
-        },
-        {
-          "id": "rivet-ship-context-integrity-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:37:28Z"
-        },
-        {
-          "id": "rivet-ship-grok-recovery-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
+        },
         {
           "id": "dio-revenue-foundation-landed-20260825-01",
           "from": "DIO",
@@ -11260,10 +11050,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -11486,18 +11288,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -11581,10 +11371,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -11807,18 +11609,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -11848,10 +11638,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -12074,18 +11876,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -12151,10 +11941,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -12377,18 +12179,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -12406,10 +12196,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -12632,18 +12434,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -12727,10 +12517,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -12953,18 +12755,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -12994,10 +12784,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -13220,18 +13022,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -13315,10 +13105,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -13541,18 +13343,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -13570,10 +13360,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -13796,18 +13598,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -13891,10 +13681,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -14117,18 +13919,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -14152,10 +13942,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -14378,18 +14180,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -14407,10 +14197,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -14633,18 +14435,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -14728,10 +14518,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -14954,18 +14756,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -14983,10 +14773,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -15209,18 +15011,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -15244,10 +15034,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -15470,18 +15272,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -15565,10 +15355,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -15791,18 +15593,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -15826,10 +15616,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -16052,18 +15854,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -16147,10 +15937,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -16373,18 +16175,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -16468,10 +16258,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -16694,18 +16496,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -16789,10 +16579,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -17015,18 +16817,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -17110,10 +16900,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -17336,18 +17138,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -17431,10 +17221,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -17657,18 +17459,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -17686,10 +17476,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -17912,18 +17714,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -17953,10 +17743,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -18179,18 +17981,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -18274,10 +18064,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -18500,18 +18302,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -18529,10 +18319,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -18755,18 +18557,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -18832,10 +18622,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -19058,18 +18860,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -19150,13 +18940,25 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 17,
+      "n": 19,
       "since": [
+        {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
         {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -19276,10 +19078,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -19502,18 +19316,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -19549,10 +19351,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -19775,18 +19589,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -19870,10 +19672,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -20096,18 +19910,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -20125,10 +19927,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -20351,18 +20165,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -20380,10 +20182,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -20606,18 +20420,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -20695,10 +20497,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -20921,18 +20735,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -20950,10 +20752,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -21176,18 +20990,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -21205,10 +21007,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -21431,18 +21245,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -21460,10 +21262,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -21686,18 +21500,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -21715,10 +21517,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -21941,18 +21755,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -21994,10 +21796,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -22220,18 +22034,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -22315,10 +22117,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -22541,18 +22355,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -22600,10 +22402,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -22826,18 +22640,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -22855,10 +22657,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -23081,18 +22895,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -23110,10 +22912,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -23336,18 +23150,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -23365,10 +23167,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -23591,18 +23405,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -23620,10 +23422,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -23846,18 +23660,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -23875,10 +23677,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -24101,18 +23915,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -24196,10 +23998,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -24422,18 +24236,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -24517,10 +24319,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -24743,18 +24557,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -24838,10 +24640,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -25064,18 +24878,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -25135,10 +24937,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -25361,18 +25175,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -25456,10 +25258,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -25682,18 +25496,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -25711,10 +25513,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -25937,18 +25751,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -25966,10 +25768,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -26192,18 +26006,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -26233,10 +26035,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -26459,18 +26273,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -26554,10 +26356,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -26780,18 +26594,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -26809,10 +26611,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -27035,18 +26849,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -27076,10 +26878,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -27302,18 +27116,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -27373,10 +27175,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -27599,18 +27413,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -27694,10 +27496,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -27920,18 +27734,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -28015,10 +27817,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -28241,18 +28055,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -28324,10 +28126,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -28550,18 +28364,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -28586,11 +28388,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-specter-remainder-20260825-01",
-      "last_ts": "2026-08-25T08:02:35Z",
+      "last_id": "rivet-ship-specter-census-20260825-01",
+      "last_ts": "2026-08-25T08:04:23Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
         {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
@@ -28656,12 +28464,6 @@
           "from": "RIVET",
           "to": "MEMORY",
           "ts": "2026-08-25T07:32:10Z"
-        },
-        {
-          "id": "rivet-memory-append-ship-20260825-01",
-          "from": "RIVET",
-          "to": "MEMORY",
-          "ts": "2026-08-25T07:30:14Z"
         }
       ]
     },
@@ -28671,10 +28473,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -28897,18 +28711,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -28992,10 +28794,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -29218,18 +29032,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -29313,10 +29115,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -29539,18 +29353,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -29574,10 +29376,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -29800,18 +29614,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -29847,10 +29649,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -30073,18 +29887,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -30168,10 +29970,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -30394,18 +30208,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -30423,10 +30225,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -30649,18 +30463,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -30744,10 +30546,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -30970,18 +30784,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -31065,10 +30867,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -31291,18 +31105,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -31386,10 +31188,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -31612,18 +31426,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -31707,10 +31509,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -31933,18 +31747,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -32028,10 +31830,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -32254,18 +32068,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -32283,10 +32085,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -32509,18 +32323,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -32568,10 +32370,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -32794,18 +32608,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -32889,10 +32691,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -33115,18 +32929,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -33210,10 +33012,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -33436,18 +33250,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -33531,10 +33333,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -33757,18 +33571,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
@@ -33852,10 +33654,22 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
           "id": "rivet-ship-specter-remainder-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
         },
         {
           "id": "codex-sol-spark-mcp-integrated-20260825-01",
@@ -34078,18 +33892,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T06:34:40Z"
-        },
-        {
-          "id": "rivet-ship-claude-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:33:00Z"
-        },
-        {
-          "id": "rivet-ship-measure-abuse-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:31:37Z"
         }
       ],
       "mine": [
