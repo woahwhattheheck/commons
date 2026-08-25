@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ay/.test(html), "desk must bust the sitting-remint cache key");
+assert.ok(/20260825az/.test(html), "desk must bust the device-path-census cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -2125,6 +2125,37 @@ assert.ok(html.indexOf("ground/DEVICE_CHURN.md") >= 0, "desk must link the devic
 assert.ok(html.indexOf("ground/DEVICE_CHURN.json") >= 0, "desk must link the device-churn catalog");
 assert.ok(html.indexOf("1787635008.594599") >= 0, "desk must cite the device-churn Slack ts");
 assert.ok(/device-path|no-op-churn|zero-reservations|511-runs/i.test(html), "desk must name device-churn talk as CLAIMED");
+assert.ok(api.isDevicePathCensusTalk, "land.js must classify calibrated device-path census / lawful-canary talk");
+assert.ok(api.devicePathCensusState, "land.js must classify the device-path-census leftover");
+assert.ok(api.isDevicePathCensusTalk("from: JOJO\nkind: MEASURED_RECEIPT\nid: jojo-device-reservation-result-census-20260825-01\nsubject: CALIBRATED DEVICE PATH CENSUS ON PINNED COMMONS MAIN\nreservation blobs=0; batch blobs=0; result blobs=48; lawful canary; no host inference; tree/blob enumeration. 1787641558.357319"), "JOJO census is talk");
+assert.ok(!api.isDevicePathCensusTalk("make sure people do more than talk about shit"), "ship-talk is not the device-path-census leftover");
+assert.ok(!api.isDevicePathCensusTalk("DIO + JOJO claim a joint device-path utilization + no-op churn lane. zero reservations, zero batches, no scope=device result. commons-device-executor 511 runs."), "device-churn copy is not the census leftover");
+var censusTalk = api.completionStateFromText(
+  "from: JOJO\nkind: MEASURED_RECEIPT\nid: jojo-device-reservation-result-census-20260825-01\nCALIBRATED DEVICE PATH CENSUS ON PINNED COMMONS MAIN\nreservation blobs=0; batch blobs=0; result blobs=48; all 48 have scope=github; scope=device rows=0. lawful canary. no host inference. tree/blob enumeration. 1787641558.357319"
+);
+assert.strictEqual(censusTalk.state, "CLAIMED");
+assert.ok(/calibrated device-path census|lawful-canary|reservation-blobs/i.test(censusTalk.note), "JOJO census-without-SHA must stay CLAIMED and beat device-churn");
+var censusDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ndevice-path census leftover landed"
+);
+assert.strictEqual(censusDone.state, "INTEGRATED", "completion words still beat device-path-census talk");
+var censusEmpty = api.devicePathCensusState("");
+assert.strictEqual(censusEmpty.state, "UNMEASURED");
+var censusMissing = api.devicePathCensusState("# empty stub\nno leftover");
+assert.strictEqual(censusMissing.state, "NOT_LANDED");
+var censusOk = api.devicePathCensusState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nNever 0\nlawful canary\nnot pending\nno host inference\ntitan NOT_WRITTEN\n");
+assert.strictEqual(censusOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(censusOk.note), "landed leftover must name a Slack census as not the file");
+assert.ok(html.indexOf('id="device-path-census-result"') >= 0, "desk must name the device-path-census leftover");
+assert.ok(html.indexOf("host/device_path_census.py") >= 0, "desk must name the device-path-census instrument");
+assert.ok(html.indexOf("ground/DEVICE_PATH_CENSUS.md") >= 0, "desk must link the device-path-census card");
+assert.ok(html.indexOf("ground/DEVICE_PATH_CENSUS.json") >= 0, "desk must link the device-path-census catalog");
+assert.ok(html.indexOf("ground/DEVICE_PATH_CANARY.md") >= 0, "desk must link the lawful canary fixture");
+assert.ok(html.indexOf("1787641558.357319") >= 0, "desk must cite the JOJO census Slack ts");
+assert.ok(/calibrated device path census|lawful canary|reservation blobs|no host inference/i.test(html), "desk must name device-path-census talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_PATH_CENSUS.md") >= 0, "device-path-census card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_PATH_CENSUS.json") >= 0, "device-path-census catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/DEVICE_PATH_CANARY.md") >= 0, "lawful canary fixture must stay a canary");
 assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
 assert.ok(api.fleetState, "land.js must classify claimed fleet ids");
 assert.ok(api.isFleetTalk("from: JOJO\nid: jojo-revenue-fleet-20260825-01\nRevenue/substrate fleet live — Grok 4.6 workflows + Claude verifier\nActive isolated lanes:\n• Grok 4.6 exact-128 revenue discovery: grok46-revenue-discovery-20260825-01"), "fleet copy is talk");

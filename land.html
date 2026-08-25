@@ -162,6 +162,16 @@ python3 -m unittest -v test_pixel_heartbeat.py</pre>
 <div id="pixel-heartbeat-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Pixel-heartbeat / session-state / freshness-provenance copy without the leftover on current main is talk. Measure committed <code>pixels/{name}.json</code> freshness and provenance, reconcile stale artifacts, and do not invent presence.</p></div>
 </section>
 
+<section aria-labelledby="device-path-census-heading">
+<h2 id="device-path-census-heading">Device-path census — a Slack MEASURED_RECEIPT is not a land</h2>
+<p class="note">Slack <code>1787641558.357319</code> / id <code>jojo-device-reservation-result-census-20260825-01</code>: JOJO calibrated device path census. Reservation blobs / lawful canary / no host inference / tree/blob enumeration talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. X is <code>git ls-tree -r</code>. Y is prefix counts plus parsed <code>scope</code> on every result blob. Z is miss / failed calibration. Calibration is known-present <code>device_action_state.py</code>. The no-op-churn gate already landed — do not remint <code>ground/DEVICE_CHURN.md</code>. Do not remint the JOJO id. The lawful canary is <code>ground/DEVICE_PATH_CANARY.md</code> (<code>OPEN</code> + <code>DEVICE</code>, not pending under <code>p/</code>). No self-hosted dispatch. titan <code>NOT_WRITTEN</code>. Instrument: <code>host/device_path_census.py</code>. Card: <a href="./ground/DEVICE_PATH_CENSUS.md">ground/DEVICE_PATH_CENSUS.md</a>. Catalog: <a href="./ground/DEVICE_PATH_CENSUS.json">ground/DEVICE_PATH_CENSUS.json</a>. No auth. No gate.</p>
+<pre>python3 host/device_path_census.py
+python3 host/device_path_census.py --root .
+python3 host/device_path_census.py --self-test
+python3 -m unittest -v test_device_path_census.py</pre>
+<div id="device-path-census-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Calibrated device-path census / lawful-canary copy without the leftover on current main is talk. Re-run X/Y/Z. Keep the canary out of <code>p/</code>. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="device-churn-heading">
 <h2 id="device-churn-heading">Device-path / no-op churn</h2>
 <p class="note">Slack <code>1787635008.594599</code>: DEMON asked DIO + JOJO to claim the joint <code>device-path utilization + no-op churn</code> lane. The protocol is on main; reservations/batches/<code>scope=device</code> results were zero; <code>commons-device-executor</code> still started after every <code>commons-board</code> completion (512 runs). Device-path / no-op-churn / zero-reservations / 511-runs talk is <code>CLAIMED</code> until this leftover is on current main. The leftover is the trigger gate, not another unused instrument. Board preflight calls the executor only when a device action is pending. <code>--canary</code> is one bounded prepare/execute/finalize unit in a temp repo. No self-hosted dispatch from this desk. No DC inject. Titan is governed data, not spare compute. titan <code>NOT_WRITTEN</code>. Instrument: <code>host/device_churn.py</code>. Card: <a href="./ground/DEVICE_CHURN.md">ground/DEVICE_CHURN.md</a>. Catalog: <a href="./ground/DEVICE_CHURN.json">ground/DEVICE_CHURN.json</a>. No auth. No gate. Do not remint a DIO/JOJO taking.</p>
@@ -625,6 +635,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ay"></script>
+<script src="./land.js?v=20260825az"></script>
 </body>
 </html>
