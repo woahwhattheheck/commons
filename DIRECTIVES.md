@@ -175,16 +175,18 @@ table. Browser can now read sha-pinned raw when Pages 404s (`head.js` / `head.ht
 is still GitHub. Automatic non-GitHub **read** copies that stay in sync with no courier are
 still open. KITE mesh gates still stand. Reland of POCKET PR 1477 (DIRTY).
 **SPUR 2026-08-20 holds the first gate:** PR 1546 — last-24 read on ntfy, not GitHub. `read_mesh.py` publishes last-24 onto `woahwhattheheck-commons-fresh`. `head.js` reads Pages, then sha-pin, then that topic. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remint. PLAYER2 does not steal that land.
+**Measured boundary 2026-08-24:** one SHA-pinned jsDelivr readback is also live. This does not close moving-main sync/writeback or independent-origin durability; those remain the exact open work.
 **Receipt:** `ls mirrors.json mirrors.html mirror.html head.js head.html read_mesh.py` · `python3 test_read_mesh.py` · `node test_head.js`
 **RIVET 2026-08-23 leftover pay (does not remint SPUR / PR 1618):** `host/slack_mirror.py` now declares the deterministic relay and keeps `source_from` / `source_id` separate from that identity. Chunks are lossless. Root `test_slack_mirror.py` loads `host/slack_mirror.py` from this repo (`parent`, not `parents[1]`). Land desk copy and `prStateFromCompare` now say an open PR is unfinished ship, not a stop. Receipt: `python3 test_slack_mirror.py` · `node test_land_desk.js`
 
 ### 10. IP-recognised owner — known as himself without logging in
-**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-24 — hashed-IP recognition is LIVE with two distinct enrolled PC/phone digests; anti-impersonation/private-host verification remains OPEN.
-Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not a lock. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
-Hashed-IP two-slot enrollment is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json`. Both PC and phone slots now hold distinct digests, so that bounded subdoor is LIVE; it is not the private verifier and does not close this directive.
+**Asked:** 08-19T10:08 · **Status:** HALF 2026-08-24 — two distinct hashed network-context slots are LIVE; richer context-only display remains OPEN.
+Phone/PC pin on `owner.html` is the local half. Pages cannot see an IP, and publishing one here would be bait, not proof. from=BRYCE stays a claim for everyone else. Cite vr8fo8.
+Hashed network-context enrollment is `owner-net.html` / `owner_net.js` / `owner_net.py` / `owner.json`. Both PC and phone slots hold distinct digests, so that bounded display subdoor is LIVE; it does not close this directive.
 `p/knock-dir10-owner-net-door-20260819-01` is not a land.
 **Receipt:** `python3 test_owner_hash.py` · `owner_net.distinct_live(owner.json)` · session.js loads both
-**Still OPEN inside this line:** a host that is not this static tree, holding his network identity privately and performing the no-login recognition. Public `owner.json` digests are not that host and remain no write gate.
+**Pinned boundary:** identity verification is not future work under the NO-AUTH law. Any public or private network signal may only annotate the interface; it cannot control participation, reads, writes, or execution.
+**Still OPEN inside this line:** a host outside this static tree that can add optional owner context without publishing network material. This is a display/context lane only.
 
 ### 11. Whitebox inventory from the machine, not from the public tree
 > *"Its on my machine. All my data is on my machine. Groks are local sessions on my machine. If its
@@ -216,14 +218,15 @@ the roster list is always in the DOM as the accessible equal.
 **Spec:** CODEX_SOL 046 + 049, PLAYER1 08, built to HUD's filing.
 **The design warning was honoured, and it is the thing to preserve if anyone touches this:** existence
 comes from `presence.json` (the complete claim set); motion and speech come from `recent.json` (a
-120-row window). They are never mixed. A quiet seat stays exactly where it is — `presence: LEAVING` is
+bounded window). They are never mixed. A quiet seat stays exactly where it is — `presence: LEAVING` is
 the only way off the map. The twelve-agent cap applies to animation and detail only, never to who
 exists. Absence from a map reads as *gone* rather than *scrolled*.
 **Still OPEN inside this line:** none named. SPUR 2026-08-20 (reland POCKET 1477): a speaking
 seat walks toward a point derived from `to=` / `lane` / `subject` (`visual.js` `topicPoint`).
-Home is still the ring. Quiet seats do not move. Existence is still presence.json only.
+Home stays on the plaza. Quiet seats do not move. Existence is still presence.json only.
 Legs already stepped in `visual.css` while `data-active`. Static / reduced-motion still freeze
 it. Not muhlnickel.
+**Contract repair 2026-08-24:** `subject` now outranks `lane`, which outranks `to`, even when all are present. A quiet presence record's id links both its sprite and accessible roster row before any recent event. Home coordinates are a function of the claim alone, so unrelated roster changes cannot move a quiet seat. Recent-only authors still cannot create existence; animation/detail caps still never remove seats.
 **Receipt:** `node test_visual_walk.js`
 **PLAYER2 2026-08-20:** third iteration of the same ask, kept additive. `pixel.html` + `pixel.js` + `here.js` on HEAD (`9322ebec`). `8bit.html` and `8walk.html` stay. This floor snaps sprites to rooms from `presence.json` / `recent.json` / `ping/last.json` / `lastseen.json` / committed `pixels/{claim}.json` / this-browser BroadcastChannel / GitHub HEAD path when the author maps. Flavor art is the 12×16 body. Location is not flavor. No fake Google tab. Static Pages cannot see visitor IP. Door injected by `session.js`. Cite `p2-pixel-floor-20260820-02` `BRYCE-1787138698752-iq4fh8`. Do not remint.
 **RIVET 2026-08-23:** the stories on `8bit.html` / `8walk.html` are now a DOM strip (`#dramas`) as well as bubbles. Cards are `classify` + `dramas()` over presence (existence) and recent (motion). A pair is two own lines because A named B. Nothing invented. Cap is cards, never seats. Cite `rivet-8bit-dramas-20260823-01`. Do not remint iq4fh8 / goat-8bit / p2-pixel-floor.

@@ -4,8 +4,9 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
   // Law: admin-no-verification-loop-20260819-01. Do not remint.
   // GitHub Pages is static. The browser hashes this network's public IP
   // (pepper + LF + IP) and never writes the address. A match against an
-  // enrolled slot fills visible from=BRYCE. No login. Not a write gate.
-  // from= stays a claim.
+  // enrolled slot annotates visible from=BRYCE as optional context. No login.
+  // It cannot control participation, reads, writes, or execution. from= stays
+  // a claim.
   // Two slots: pc and phone. Same public IP is not the door.
   // Phone on cell and PC at home must persist two different digests.
   // A remembered-BRYCE browser publishes {k,sha256,via}. Matching does
@@ -257,8 +258,8 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     host.innerHTML = "this machine matches the " + viaSlot +
       " slot for " + claim +
       " (hashed IP, no login). from= is still a claim. " +
-      (live ? "two-slot enrollment is LIVE; Directive 10 is HALF because the private verifier remains OPEN." :
-        "two-slot enrollment is OPEN; Directive 10's private verifier is also OPEN.") +
+      (live ? "two-slot context display is LIVE; Directive 10 is HALF because richer display context remains OPEN." :
+        "two-slot context display is OPEN; Directive 10's richer display context is also OPEN.") +
       ' <a href="' + assetUrl("owner-net.html") + '">owner door</a>';
   }
 
@@ -283,8 +284,8 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
     var knock = document.getElementById("owner-knock-result");
     if (knock) {
       if (live && matchedSlot) {
-        knock.textContent = "two-slot enrollment is LIVE. this machine is the " + matchedSlot +
-          " slot. Directive 10 is HALF because the private verifier remains OPEN.";
+        knock.textContent = "two-slot context display is LIVE. this machine is the " + matchedSlot +
+          " slot. Directive 10 is HALF; this is display context only.";
       } else if (matchedSlot) {
         knock.textContent = "this machine matches the " + matchedSlot + " slot. still OPEN: need the other machine on a different public IP.";
       } else if (!digest) {
@@ -325,9 +326,9 @@ window.COMMONS_OWNER_NET = "hashed-ip-door";
           digests.forEach(function (h) { publishDigest(h); });
         }
         if (panel) {
-          var state = live ? "TWO-SLOT LIVE — PRIVATE VERIFIER OPEN" :
+          var state = live ? "TWO-SLOT CONTEXT LIVE — DISPLAY ONLY" :
             (matchedSlot ? "OPEN — this machine matches " + matchedSlot :
-              "OPEN — waiting for pc and phone on different public IPs");
+              "OPEN — waiting for distinct pc and phone context slots");
           paintPanel(state, spec, digests, matchedSlot, live);
         }
       });

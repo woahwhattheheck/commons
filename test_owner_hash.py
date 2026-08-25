@@ -138,24 +138,33 @@ def main() -> int:
     case("owner-net.html cites the no-loop law", "admin-no-verification-loop-20260819-01" in html)
     case("owner-net.html does not remint vr8fo8", html.count("BRYCE-1787134106972-vr8fo8") >= 1)
     case("owner.html says same wifi is not the door", "Same wifi" in html or "same wifi" in html)
-    case("owner-net separates live enrollment from the half directive",
-         "Two-slot enrollment is LIVE only" in html and
+    case("owner-net keeps live slots as display context inside the half directive",
+         "Two-slot context is LIVE only" in html and
          "Directive 10 remains HALF" in html and
-         "private non-static verifier is OPEN" in html)
-    case("owner-net loads the state-contract script revision", "owner_net.js?v=20260824a" in html)
+         "does not verify ownership" in html and
+         "cannot control participation, reads, writes, or execution" in html)
+    case("owner-net runtime copy retires verifier routing",
+         "private verifier" not in js.lower() and
+         "two-slot context display is LIVE" in js and
+         "cannot control participation, reads, writes, or execution" in js)
+    case("owner-net loads the state-contract script revision", "owner_net.js?v=20260824b" in html)
 
     owner_html = open(os.path.join(HERE, "owner.html"), encoding="utf-8").read()
     case("owner.html pins both owner scripts before session boot",
-         owner_html.index("owner.js?v=20260824a") < owner_html.index("owner_net.js?v=20260824a") <
+         owner_html.index("owner.js?v=20260824a") < owner_html.index("owner_net.js?v=20260824b") <
          owner_html.index("session.js?v=20260820y"))
     case("owner.html waits for the pin API, not a truthy collision marker",
          'typeof window.COMMONS_OWNER.readPin === "function"' in owner_html)
 
     carrier = open(os.path.join(HERE, "carrier.js"), encoding="utf-8").read()
     session = open(os.path.join(HERE, "session.js"), encoding="utf-8").read()
+    active_owner_copy = "\n".join((html, owner_html, js, carrier, session)).lower()
+    case("active owner surfaces retire verifier routing case-insensitively",
+         "private verifier" not in active_owner_copy and
+         "private non-static" not in active_owner_copy)
     case("carrier.js loads current owner_net.js",
-         "loadOwnerDoor" in carrier and 'owner_net.js") + "?v=20260824a"' in carrier)
-    case("session.js loads current owner_net.js", "loadOwnerDoor" in session and "owner_net.js?v=20260824a" in session)
+         "loadOwnerDoor" in carrier and 'owner_net.js") + "?v=20260824b"' in carrier)
+    case("session.js loads current owner_net.js", "loadOwnerDoor" in session and "owner_net.js?v=20260824b" in session)
     case("bindFromMemory still exists (name memory, not IP)", "function bindFromMemory" in carrier)
 
     tmp = tempfile.mkdtemp(prefix="commons-owner-")
@@ -225,15 +234,18 @@ def main() -> int:
     directive10 = directive10_match.group(0) if directive10_match else ""
     case("DIRECTIVES item 10 exists", bool(directive10_match))
     case("DIRECTIVES item 10 is HALF", "**Status:** HALF 2026-08-24" in directive10)
-    case("DIRECTIVES records live slots without closing private verifier",
-         "hashed-IP recognition is LIVE" in directive10 and
-         "Still OPEN inside this line" in directive10 and
-         "private" in directive10)
+    case("DIRECTIVES keeps live context slots and retires identity verification",
+         "two distinct hashed network-context slots are LIVE" in directive10 and
+         "identity verification is not future work" in directive10 and
+         "display/context lane only" in directive10 and
+         "cannot control participation, reads, writes, or execution" in directive10)
     todo10_match = re.search(r"<tr><td>10</td>.*?</tr>", todo, re.S)
     todo10 = todo10_match.group(0) if todo10_match else ""
     case("todo row 10 exists", bool(todo10_match))
     case("todo row 10 is HALF", 'class="s-half">HALF</b>' in todo10)
-    case("todo row 10 records live hashed-IP recognition", "hashed-IP recognition is LIVE" in todo10)
+    case("todo row 10 records live context slots and display-only residual",
+         "two distinct hashed network-context slots are LIVE" in todo10 and
+         "richer context-only display remains OPEN" in todo10)
     case("knock receipt is not treated as a land in DIRECTIVES", "knock-dir10-owner-net-door-20260819-01` is not a land" in directive10)
 
     print("OWNER HASH TEST: %d passed, %d failed" % (ok, fail))

@@ -1318,11 +1318,11 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function loadOwnerDoor() {
-    // Directive 10. Cite BRYCE-1787134106972-vr8fo8. Hashed IP, no login.
-    // owner_net.js fills from=BRYCE on a hashed-IP match. Not a write gate.
+    // Directive 10. Cite BRYCE-1787134106972-vr8fo8.
+    // owner_net.js may annotate from=BRYCE as context; posting stays open.
     if (document.querySelector("script[data-commons-owner]")) return;
     var s = document.createElement("script");
-    s.src = assetUrl("owner_net.js") + "?v=20260824a";
+    s.src = assetUrl("owner_net.js") + "?v=20260824b";
     s.setAttribute("data-commons-owner", "1");
     document.head.appendChild(s);
   }

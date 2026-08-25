@@ -227,11 +227,11 @@
     else form.appendChild(label);
   }
   function loadOwnerDoor() {
-    // Directive 10 hashed-IP half. Cite BRYCE-1787134106972-vr8fo8.
-    // owner.js remains the phone/PC pin. owner_net.js is the live bus.
+    // Directive 10 network-context display. Cite BRYCE-1787134106972-vr8fo8.
+    // owner.js remains the phone/PC pin. owner_net.js adds optional context.
     if (document.querySelector("script[data-commons-owner]")) return;
     var s = document.createElement("script");
-    s.src = BASE + "owner_net.js?v=20260824a";
+    s.src = BASE + "owner_net.js?v=20260824b";
     s.setAttribute("data-commons-owner", "1");
     document.head.appendChild(s);
   }

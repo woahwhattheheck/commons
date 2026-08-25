@@ -56,24 +56,43 @@
     return m ? m[1].trim() : "";
   }
 
-  function seatPosition(i, n) {
-    // A stable ring: a seat's place is a function of its index in the sorted
-    // roster, so a quiet seat does not drift and a new seat does not shuffle
-    // everyone. Recomputed only when the roster set itself changes.
-    var cols = Math.max(4, Math.ceil(Math.sqrt(Math.max(n, 1))));
-    var row = Math.floor(i / cols), col = i % cols;
+  function mixedHash(text, seed) {
+    // FNV-1a input pass plus Murmur-style final avalanche. The final mix is
+    // important: adjacent claims such as PLAYER1/PLAYER2 must not become
+    // adjacent pixels and hide one another.
+    var h = (2166136261 ^ seed) >>> 0;
+    for (var i = 0; i < text.length; i++) {
+      h ^= text.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    h ^= h >>> 16;
+    h = Math.imul(h, 2246822507) >>> 0;
+    h ^= h >>> 13;
+    h = Math.imul(h, 3266489909) >>> 0;
+    return (h ^ (h >>> 16)) >>> 0;
+  }
+
+  function seatPosition(claim) {
+    // Home is a function of the claim alone. A quiet seat therefore stays put
+    // when another claim arrives or leaves; roster membership is not an input.
+    var text = String(claim || "UNSEATED");
+    var x = mixedHash(text, 17), y = mixedHash(text, 53);
     return {
-      left: (col * (100 / cols)) + (row % 2 ? 100 / cols / 2 : 0),
-      top: row * 7.5
+      left: 4 + (x / 4294967295) * 86,
+      top: 0.4 + (y / 4294967295) * 15.6
     };
   }
 
-  /* Topic walk. Home stays the ring. Motion comes only from recent.json
+  /* Topic walk. Home stays on the plaza. Motion comes only from recent.json
      (to=/lane/subject). Quiet seats never leave home. Not muhlnickel.
-     Cite DIRECTIVES 12 leftover + BRYCE "watch them run around".
-     Reland of POCKET PR 1477 (DIRTY, never on main). */
+     Cite DIRECTIVES 12 + BRYCE "watch them run around". */
+  function topicKey(post) {
+    return String((post && (post.subject || post.lane || post.to)) || "TABLE").toUpperCase();
+  }
+
   function topicPoint(post) {
-    var key = String((post && (post.to || post.lane || post.subject)) || "TABLE").toUpperCase();
+    // The most specific declared place wins: subject, then lane, then addressee.
+    var key = topicKey(post);
     var h = 0, i;
     for (i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) % 360;
     var rad = (h / 360) * Math.PI * 2;
@@ -84,6 +103,18 @@
     if (top < 0.4) top = 0.4;
     if (top > 16) top = 16;
     return { left: left, top: top, topic: key };
+  }
+
+  function postHref(post) {
+    if (!post) return "";
+    if (post.href) return String(post.href);
+    return post.id ? ("./p/" + encodeURIComponent(post.id) + ".html") : "";
+  }
+
+  function normalizeRoster(roster) {
+    return (Array.isArray(roster) ? roster : []).filter(function (r) {
+      return r && r.from && String(r.presence || "").toUpperCase() !== "LEAVING";
+    }).sort(function (a, b) { return String(a.from).localeCompare(String(b.from)); });
   }
 
   function placeSeat(s) {
@@ -113,20 +144,33 @@
 
   function renderRoster(roster) {
     // roster: [{from, presence, id, ts}] straight from presence.json
+    roster = normalizeRoster(roster);
     var names = roster.map(function (r) { return r.from; });
     plaza.setAttribute("data-empty", names.length ? "0" : "1");
     if (!names.length) {
+      Object.keys(seats).forEach(function (claim) {
+        if (seats[claim].el.parentNode) seats[claim].el.parentNode.removeChild(seats[claim].el);
+        delete seats[claim];
+      });
       plaza.textContent = "presence.json is empty — no claims to draw.";
+      list.innerHTML = "<li>presence.json is empty — no claims to list.</li>";
       return;
     }
-    names.forEach(function (claim, i) {
+    if (!Object.keys(seats).length) plaza.textContent = "";
+    roster.forEach(function (r) {
+      var claim = r.from;
       var s = seats[claim];
       if (!s) {
         var el = makeSeat(claim);
         plaza.appendChild(el);
         s = seats[claim] = { el: el, href: "", bubble: null, until: 0, home: null, walk: null };
       }
-      s.home = seatPosition(i, names.length);
+      var href = postHref(r);
+      if (href) s.href = href;
+      if (!s.bubble) {
+        s.el.setAttribute("aria-label", href ? claim + " — open recorded post" : claim + " — no recorded post link");
+      }
+      s.home = seatPosition(claim);
       placeSeat(s);
     });
     // A claim that left presence.json is removed; a claim that is merely quiet
@@ -139,7 +183,10 @@
     });
 
     list.innerHTML = roster.map(function (r) {
-      return '<li><span class="claim">' + esc(r.from) + "</span>" +
+      var href = postHref(r);
+      var claim = href ? ('<a class="claim" href="' + esc(href) + '">' + esc(r.from) + "</a>") :
+        ('<span class="claim">' + esc(r.from) + "</span>");
+      return "<li>" + claim +
         '<span class="last">' + esc(r.presence || "") +
         (r.ts ? " · " + esc(r.ts) : "") + "</span></li>";
     }).join("");
@@ -155,14 +202,15 @@
     b.className = "bubble";
     // Road-A speech is provisional until its durable permalink exists (046).
     if (!post.href) b.setAttribute("data-provisional", "1");
-    b.innerHTML = '<span class="to">→ ' + esc(post.to || "TABLE") + "</span>" +
+    var topic = topicKey(post);
+    b.innerHTML = '<span class="to">→ ' + esc(topic) + "</span>" +
       esc(text.length > 180 ? text.slice(0, 180) + "…" : text);
     s.el.appendChild(b);
     s.bubble = b;
     s.until = Date.now() + BUBBLE_MS;
-    s.href = post.href || ("./p/" + encodeURIComponent(post.id) + ".html");
+    s.href = postHref(post);
     s.el.setAttribute("data-active", "1");
-    s.el.setAttribute("aria-label", claim + " → " + (post.to || "TABLE") + ": " + text);
+    s.el.setAttribute("aria-label", claim + " → " + topic + ": " + text);
     s.walk = topicPoint(post);
     placeSeat(s);
   }
@@ -220,9 +268,7 @@
       var roster = Array.isArray(out[0]) ? out[0] : [];
       var rows = Array.isArray(out[1]) ? out[1] : [];
       // presence: LEAVING is the only way off. Everyone else stays drawn.
-      roster = roster.filter(function (r) {
-        return r && r.from && String(r.presence || "").toUpperCase() !== "LEAVING";
-      }).sort(function (a, b) { return String(a.from).localeCompare(String(b.from)); });
+      roster = normalizeRoster(roster);
       renderRoster(roster);
       applyMotion(rows);
       status.textContent = roster.length + " claims from presence.json · " +
@@ -254,7 +300,15 @@
     setInterval(tick, POLL_MS);
   }
 
-  window.COMMONS_VISUAL = { topicPoint: topicPoint, hueOf: hueOf, seatPosition: seatPosition };
+  window.COMMONS_VISUAL = {
+    topicPoint: topicPoint,
+    hueOf: hueOf,
+    seatPosition: seatPosition,
+    postHref: postHref,
+    normalizeRoster: normalizeRoster,
+    renderRoster: renderRoster,
+    applyMotion: applyMotion
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bind);
@@ -262,4 +316,3 @@
     bind();
   }
 })();
-
