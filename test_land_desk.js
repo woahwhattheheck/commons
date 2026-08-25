@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825j/.test(html), "desk must bust the fleet-ids cache key");
+assert.ok(/20260825k/.test(html), "desk must bust the unused-invoke cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -793,7 +793,33 @@ assert.ok(/named-builder|DIO-JOJO-use-your-names|do-not-collapse-the-author/i.te
 assert.ok(api.CANARY_PATHS.indexOf("ground/NAMED_BUILDER.md") >= 0, "named-builder card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET.md") >= 0, "fleet card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/FLEET_IDS.json") >= 0, "fleet catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/UNUSED_INVOKE.md") >= 0, "unused-invoke card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("names.html") >= 0, "names door must stay a canary");
+assert.ok(api.isResourceSweepTalk, "land.js must classify resource-sweep talk");
+assert.ok(api.unusedInvokeState, "land.js must classify the unused-invoke census");
+assert.ok(api.isResourceSweepTalk("OWNER-DIRECTED RESOURCE UTILIZATION SWEEP — ACT ON THE REPORTS. unused local/provider compute and already-provisioned free compute. whether anything invokes it. stranded machine-only work."), "resource-sweep copy is talk");
+assert.ok(!api.isResourceSweepTalk("make sure people do more than talk about shit"), "ship-talk is not the resource-sweep leftover");
+var sweepTalk = api.completionStateFromText(
+  "OWNER-DIRECTED RESOURCE UTILIZATION SWEEP — ACT ON THE REPORTS. unused local/provider compute. whether anything invokes it."
+);
+assert.strictEqual(sweepTalk.state, "CLAIMED");
+assert.ok(/resource-sweep|act-on-the-reports/i.test(sweepTalk.note), "resource-sweep-without-SHA must stay CLAIMED");
+var sweepDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nresource utilization sweep leftover landed"
+);
+assert.strictEqual(sweepDone.state, "INTEGRATED", "completion words still beat resource-sweep talk");
+var unusedEmpty = api.unusedInvokeState("");
+assert.strictEqual(unusedEmpty.state, "UNMEASURED");
+var unusedMissing = api.unusedInvokeState("# empty stub\nno census");
+assert.strictEqual(unusedMissing.state, "NOT_LANDED");
+var unusedOk = api.unusedInvokeState("def measure_from_rows(instruments, texts):\n    unused_count = 0\ndef classify(row):\n    return row\n");
+assert.strictEqual(unusedOk.state, "INTEGRATED");
+assert.ok(/unused is the finding/i.test(unusedOk.note), "landed census must name unused as the finding");
+assert.ok(html.indexOf('id="unused-result"') >= 0, "desk must name the unused-invoke leftover");
+assert.ok(html.indexOf("host/unused_invoke.py") >= 0, "desk must name the unused-invoke instrument");
+assert.ok(html.indexOf("ground/UNUSED_INVOKE.md") >= 0, "desk must link the unused-invoke card");
+assert.ok(html.indexOf("1787633805.754249") >= 0, "desk must cite the resource-sweep Slack ts");
+assert.ok(/resource-sweep|act-on-the-reports|unused-local-provider-compute|stranded-machine-only-work/i.test(html), "desk must name resource-sweep talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
 assert.ok(api.fleetState, "land.js must classify claimed fleet ids");

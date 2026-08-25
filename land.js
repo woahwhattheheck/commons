@@ -113,6 +113,7 @@
     "ground/NAMED_BUILDER.md",
     "ground/FLEET.md",
     "ground/FLEET_IDS.json",
+    "ground/UNUSED_INVOKE.md",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -392,6 +393,9 @@
     if (api.isNamedBuilderTalk(t)) {
       return { state: "CLAIMED", note: "named-builder / DIO-JOJO-use-your-names talk. Talk is not a land. Ship names.html DIO and JOJO rows to current main. from= stays optional display context, never a gate." };
     }
+    if (api.isResourceSweepTalk(t)) {
+      return { state: "CLAIMED", note: "resource-sweep / act-on-the-reports talk. Talk is not a land. Measure unused host instruments and provisioned CI, then ship the leftover to current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -501,6 +505,30 @@
 
   api.isNamedBuilderTalk = function (text) {
     return /bryce directive.{0,80}dio|start using your names|do not collapse the author|generic gpt\/agent\/session label|from=\/display metadata|keep them in `from=`|named builder/i.test(String(text || ""));
+  };
+
+  api.isResourceSweepTalk = function (text) {
+    return /resource utilization sweep|act on the reports|unused local\/provider compute|already-provisioned free compute|whether anything invokes it|stranded machine-only work|owner-directed resource/i.test(String(text || ""));
+  };
+
+  api.unusedInvokeState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/unused_invoke.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasUnused = /unused_count/.test(body);
+    if (hasMeasure && hasClassify && hasUnused) {
+      return {
+        state: "INTEGRATED",
+        note: "unused-invoke census is on this file. Unused is the finding. A config is not a run. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/unused_invoke.py missing the census. Resource-sweep talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.namedBuilderState = function (text) {
@@ -908,6 +936,7 @@
   var censusOut = document.getElementById("census-result");
   var namedOut = document.getElementById("named-result");
   var fleetOut = document.getElementById("fleet-result");
+  var unusedOut = document.getElementById("unused-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1291,6 +1320,12 @@
     namedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintUnused(result) {
+    if (!unusedOut) return;
+    unusedOut.setAttribute("data-tone", api.toneFor(result.state));
+    unusedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1390,6 +1425,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintNamed(err);
+      return err;
+    });
+  }
+
+  function loadUnusedInvoke(sha) {
+    if (!unusedOut) return Promise.resolve(null);
+    unusedOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/unused_invoke.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/unused_invoke.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/unused_invoke.py absent at the measured main SHA. Resource-sweep talk is CLAIMED." };
+        paintUnused(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintUnused(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.unusedInvokeState(body);
+        paintUnused(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintUnused(err);
       return err;
     });
   }
@@ -1536,6 +1598,7 @@
     loadBakeCensus(sha);
     loadNamedBuilder(sha);
     loadFleet(sha);
+    loadUnusedInvoke(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

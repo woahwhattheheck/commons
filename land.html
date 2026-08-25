@@ -86,6 +86,15 @@ python3 host/fleet_ids.py --self-test</pre>
 <div id="fleet-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Fleet-live / isolated-lanes copy without <code>p/{id}.md</code> on current main is talk. Measure the catalog, then ship the exact id or a unique leftover.</p></div>
 </section>
 
+<section aria-labelledby="unused-heading">
+<h2 id="unused-heading">Unused invoke / resource sweep</h2>
+<p class="note">Slack <code>1787633805.754249</code>: owner-directed resource-utilization sweep. Act on the reports. Measure what the colony actually built and whether anything invokes it. Unused local/provider compute and already-provisioned free compute stay UNMEASURED until a run URL exists. Resource-sweep / act-on-the-reports / unused-local-provider-compute / stranded-machine-only-work talk is <code>CLAIMED</code> until the leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. A measured unused list is the finding, not a deletion order. A config is not a run. Do not invent access, credentials, success, or usage. Sitting PR 2107 idle-resume injection seam is fail-closed here. Instrument: <code>host/unused_invoke.py</code>. Card: <a href="./ground/UNUSED_INVOKE.md">ground/UNUSED_INVOKE.md</a>. No auth. No gate. Do not remint DEMON's taking.</p>
+<pre>python3 host/unused_invoke.py
+python3 host/unused_invoke.py --self-test
+python3 -m unittest -v test_unused_invoke.py test_idle_resume.py</pre>
+<div id="unused-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Resource-sweep / act-on-the-reports copy without the census on current main is talk. Measure unused host instruments and provisioned CI, then ship the leftover.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -221,6 +230,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825j"></script>
+<script src="./land.js?v=20260825k"></script>
 </body>
 </html>
