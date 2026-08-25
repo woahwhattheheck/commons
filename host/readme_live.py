@@ -35,7 +35,7 @@ SEARCH_SPACE = (
     os.path.join("ground", "EXECUTE.md"),
     os.path.join("ground", "HEAD.md"),
     os.path.join("p", "bryce-action-pad-open-door-directive-20260822-01.md"),
-    os.path.join(".github", "workflows", "commons-device-cycle.yml"),
+    DEVICE_CYCLE_PATH,
 )
 CALIBRATION = (
     os.path.join("ground", "EXECUTE.md"),
@@ -57,7 +57,7 @@ REQUIRED_PHRASES = (
     "p/{id}.md",
     "ship to current main",
     "talk is not landed",
-    "http is not the computer",
+    "http transport is not itself the computer",
     "any nonblank read, write, or execute verb",
     "addressed device actions",
     "self-hosted",
@@ -71,6 +71,15 @@ FORBIDDEN_PHRASES = (
     "do not write the owner's pc",
 )
 BAKE_WHO = "orient.json"
+DEVICE_CYCLE_PATH = os.path.join(".github", "workflows", "commons-device-cycle.yml")
+DEVICE_CYCLE_TOKENS = (
+    "ref: main",
+    "device_action_state.py prepare",
+    "runs-on: [self-hosted, commons-device]",
+    "execute-batch",
+    "device_action_state.py finalize",
+    "device-receipts",
+)
 
 
 def _read(root, rel):
@@ -108,12 +117,24 @@ def load_catalog(text):
         "no_auth": bool(data.get("no_auth")),
         "no_gate": bool(data.get("no_gate")),
         "posting_open": bool(data.get("posting_open")),
-        "titan": str(data.get("titan") or "NOT_WRITTEN").strip() or "NOT_WRITTEN",
+        "device_bridge": str(data.get("device_bridge") or "").strip(),
+        "device_proof": str(data.get("device_proof") or "").strip(),
     }
 
 
 def _lower(text):
     return str(text or "").lower()
+
+
+def measure_device_cycle(text):
+    """Measure exact current-main prepare, self-host execution, and durable result roads."""
+    low = _lower(text)
+    found = [token for token in DEVICE_CYCLE_TOKENS if token in low]
+    return {
+        "found_device_tokens": found,
+        "missing_device_tokens": [token for token in DEVICE_CYCLE_TOKENS if token not in found],
+        "device_bridge_grounded": len(found) == len(DEVICE_CYCLE_TOKENS),
+    }
 
 
 def measure_readme(text):
@@ -164,11 +185,18 @@ def measure_root(root=DEFAULT_ROOT):
         or "a bake is not the board" in _lower(_read(root, rel))
     ]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+    catalog_required = list(catalog.get("required_paths") or [])
+    catalog_missing = [rel for rel in catalog_required if not _exists(root, rel)]
+    misses = list(dict.fromkeys(misses + catalog_missing))
     readme = measure_readme(_read(root, DEFAULT_README))
     card = _read(root, DEFAULT_CARD)
-    device_cycle = _lower(_read(root, os.path.join(".github", "workflows", "commons-device-cycle.yml")))
+    device_cycle = measure_device_cycle(_read(root, DEVICE_CYCLE_PATH))
+    bridge = _lower(catalog.get("device_bridge"))
+    proof = _lower(catalog.get("device_proof"))
     measured = measure_from_rows(
         {
+            **readme,
+            **device_cycle,
             "card_present": _exists(root, DEFAULT_CARD),
             "catalog_present": _exists(root, DEFAULT_CATALOG) and not catalog.get("error"),
             "readme_present": _exists(root, DEFAULT_README),
@@ -177,18 +205,20 @@ def measure_root(root=DEFAULT_ROOT):
             "calibration_hits": calibration_hits,
             "catalog_id": catalog.get("id") or "",
             "catalog_roster": catalog.get("stale_roster") or "",
+            "catalog_paths_ok": not catalog_missing,
+            "device_catalog_grounded": (
+                "current-main prepare" in bridge
+                and "self-hosted commons-device cycle" in bridge
+                and "durable result" in bridge
+                and "durable device result proves pc execution" in proof
+            ),
             "no_auth": bool(readme.get("no_auth") and catalog.get("no_auth")),
-            "no_gate": bool(catalog.get("no_gate")),
+            "no_gate": bool(readme.get("no_gate") and catalog.get("no_gate")),
             "posting_open": bool(readme.get("posting_open") and catalog.get("posting_open")),
             "card_names_slack": SLACK_TS in card,
-            "device_bridge_grounded": all(token in device_cycle for token in (
-                "runs-on: [self-hosted, commons-device]", "execute-batch", "prepared-commit",
-            )),
-            **readme,
         }
     )
     measured["search_space"] = list(SEARCH_SPACE)
-    measured["titan"] = catalog.get("titan") or "NOT_WRITTEN"
     return measured
 
 
@@ -222,6 +252,9 @@ def classify(row):
         or not data.get("readme_present")
         or not data.get("posting_open")
         or not data.get("no_auth")
+        or not data.get("no_gate")
+        or not data.get("catalog_paths_ok")
+        or not data.get("device_catalog_grounded")
         or not data.get("action_pad")
         or not data.get("device_bridge_grounded")
         or not data.get("head_truth")
@@ -249,7 +282,6 @@ def classify(row):
         "state": "INTEGRATED",
         "note": "README names the live open door. day-one roster absent. never 0.",
         "search_space": list(data.get("search_space") or SEARCH_SPACE),
-        "titan": data.get("titan") or "NOT_WRITTEN",
     }
 
 
