@@ -101,7 +101,7 @@ class TestRenderContract(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("99", verdict["note"])
 
-    def test_live_tree_measures_the_failed_main_run(self):
+    def test_live_tree_measures_the_green_main_run(self):
         row = measure_root(ROOT)
         self.assertTrue(row["measured"])
         self.assertTrue(row["workflow_present"])
@@ -113,19 +113,19 @@ class TestRenderContract(unittest.TestCase):
         self.assertTrue(row["swallows_broken_pipe"])
         last = last_main_run(row["runs"])
         self.assertIsNotNone(last)
-        self.assertEqual(last["id"], FAILED_MAIN_RUN)
-        self.assertEqual(last["conclusion"], "failure")
+        self.assertEqual(last["id"], 32815228177)
+        self.assertEqual(last["conclusion"], "success")
         verdict = classify(row)
-        self.assertEqual(verdict["state"], "CANDIDATE")
+        self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertIn("rivet-ship-render-check-20260825-01", row["hands_off"])
 
-    def test_catalog_names_the_three_failed_runs(self):
+    def test_catalog_names_the_green_run_first(self):
         catalog_path = os.path.join(ROOT, "ground", "RENDER_CONTRACT.json")
         with open(catalog_path, "r", encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
         ids = [row["id"] for row in catalog["runs"]]
-        self.assertEqual(ids, [32812516738, 32812503966, 32812350086])
+        self.assertEqual(ids, [32815228177, 32812516738, 32812503966, 32812350086])
         self.assertEqual(catalog["slack_ts"], "1787637223.298509")
 
     def test_live_workflow_keeps_the_exact_command(self):
