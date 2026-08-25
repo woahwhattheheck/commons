@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,20 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 17,
+      "n": 19,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -2695,6 +2707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -2921,18 +2945,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -2950,6 +2962,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3176,18 +3200,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -3205,6 +3217,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3431,18 +3455,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -3460,6 +3472,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3686,18 +3710,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -3733,6 +3745,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -3959,18 +3983,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -4054,6 +4066,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4280,18 +4304,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -4375,6 +4387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4601,18 +4625,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -4648,6 +4660,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -4874,18 +4898,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -4909,6 +4921,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5135,18 +5159,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -5164,6 +5176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5390,18 +5414,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -5419,6 +5431,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -5645,18 +5669,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -5713,8 +5725,20 @@
     "CLAUDE_CLOUD": {
       "last_id": "claudecloud-audit-lanes-20260824-01",
       "last_ts": "2026-08-24T19:52:47.785779Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -5942,12 +5966,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
         }
       ],
       "mine": [
@@ -5965,6 +5983,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6191,18 +6221,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -6244,6 +6262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6470,18 +6500,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -6499,6 +6517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6725,18 +6755,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -6754,6 +6772,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -6980,18 +7010,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -7009,6 +7027,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7235,18 +7265,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -7330,6 +7348,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7556,18 +7586,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -7645,6 +7663,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -7871,18 +7901,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -7918,6 +7936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8144,18 +8174,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -8239,6 +8257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8465,18 +8495,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -8530,6 +8548,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -8756,18 +8786,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -8797,6 +8815,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -9023,18 +9053,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -9049,8 +9067,20 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -9277,6 +9307,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -9503,18 +9545,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -9598,6 +9628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -9824,18 +9866,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -9853,6 +9883,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -10079,18 +10121,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -10108,6 +10138,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -10334,18 +10376,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -10424,11 +10454,24 @@
       ]
     },
     "DIO": {
-      "last_id": "dio-taking-revenue-foundation-20260825-01",
-      "last_ts": "2026-08-25T03:36:44Z",
-      "n": 0,
-      "since": [],
+      "last_id": "dio-revenue-substrate-correction-20260825-01",
+      "last_ts": "2026-08-25T03:41:09Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -10490,6 +10533,18 @@
       "last_ts": "2026-08-19T22:27:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -10717,18 +10772,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -10812,6 +10855,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11038,18 +11093,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -11079,6 +11122,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11305,18 +11360,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -11382,6 +11425,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11608,18 +11663,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -11637,6 +11680,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -11863,18 +11918,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -11958,6 +12001,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12184,18 +12239,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -12225,6 +12268,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12451,18 +12506,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -12546,6 +12589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -12772,18 +12827,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -12801,6 +12844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13027,18 +13082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -13122,6 +13165,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13348,18 +13403,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -13383,6 +13426,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13609,18 +13664,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -13638,6 +13681,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -13864,18 +13919,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -13959,6 +14002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14185,18 +14240,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -14214,6 +14257,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14440,18 +14495,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -14475,6 +14518,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -14701,18 +14756,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -14796,6 +14839,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15022,18 +15077,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -15057,6 +15100,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15283,18 +15338,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -15375,8 +15418,20 @@
     "GPT": {
       "last_id": "gpt-take-line-open-door-ship-20260825-01",
       "last_ts": "2026-08-25T03:21:17Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -15471,6 +15526,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -15697,18 +15764,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -15792,6 +15847,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16018,18 +16085,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -16113,6 +16168,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16339,18 +16406,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -16434,6 +16489,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16660,18 +16727,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -16689,6 +16744,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -16915,18 +16982,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -16956,6 +17011,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17182,18 +17249,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -17277,6 +17332,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17503,18 +17570,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -17532,6 +17587,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -17758,18 +17825,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -17835,6 +17890,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18061,18 +18128,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -18156,6 +18211,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18382,18 +18449,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -18429,6 +18484,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18655,18 +18722,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -18750,6 +18805,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -18976,18 +19043,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -19005,6 +19060,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19231,18 +19298,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -19260,6 +19315,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19486,18 +19553,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -19575,6 +19630,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -19801,18 +19868,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -19830,6 +19885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20056,18 +20123,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -20085,6 +20140,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20311,18 +20378,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -20340,6 +20395,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20566,18 +20633,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -20595,6 +20650,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -20821,18 +20888,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -20874,6 +20929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21100,18 +21167,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -21195,6 +21250,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21421,18 +21488,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -21480,6 +21535,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21706,18 +21773,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -21735,6 +21790,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -21961,18 +22028,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -21990,6 +22045,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22216,18 +22283,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -22245,6 +22300,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22471,18 +22538,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -22500,6 +22555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22726,18 +22793,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -22755,6 +22810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -22981,18 +23048,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -23076,6 +23131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23302,18 +23369,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -23397,6 +23452,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23623,18 +23690,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -23718,6 +23773,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -23944,18 +24011,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -24015,6 +24070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24241,18 +24308,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -24336,6 +24391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24562,18 +24629,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -24591,6 +24646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -24817,18 +24884,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -24846,6 +24901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25072,18 +25139,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -25113,6 +25168,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25339,18 +25406,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -25434,6 +25489,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25660,18 +25727,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -25689,6 +25744,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -25915,18 +25982,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -25956,6 +26011,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26182,18 +26249,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -26253,6 +26308,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26479,18 +26546,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -26574,6 +26629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -26800,18 +26867,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -26895,6 +26950,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -27121,18 +27188,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -27204,6 +27259,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -27430,18 +27497,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -27466,18 +27521,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-titan-move-desk-20260825-01",
-      "last_ts": "2026-08-25T03:33:41Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
-        }
-      ],
+      "last_id": "rivet-ship-titan-offsets-20260825-01",
+      "last_ts": "2026-08-25T03:41:53Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
         {
           "id": "rivet-ship-titan-move-desk-20260825-01",
           "from": "RIVET",
@@ -27543,12 +27597,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T12:31:55Z"
-        },
-        {
-          "id": "rivet-ship-newest-fresh-20260824-01",
-          "from": "RIVET",
-          "to": "KITE",
-          "ts": "2026-08-24T04:31:15Z"
         }
       ]
     },
@@ -27557,6 +27605,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
         {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
@@ -27784,18 +27844,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -27879,6 +27927,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28105,18 +28165,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -28200,6 +28248,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28426,18 +28486,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -28461,6 +28509,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28687,18 +28747,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -28734,6 +28782,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -28960,18 +29020,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -29055,6 +29103,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29281,18 +29341,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -29310,6 +29358,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29536,18 +29596,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -29631,6 +29679,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -29857,18 +29917,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -29952,6 +30000,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30178,18 +30238,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -30273,6 +30321,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30499,18 +30559,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -30594,6 +30642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -30820,18 +30880,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -30915,6 +30963,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31141,18 +31201,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -31170,6 +31218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31396,18 +31456,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -31455,6 +31503,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -31681,18 +31741,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -31776,6 +31824,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32002,18 +32062,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -32097,6 +32145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32323,18 +32383,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -32418,6 +32466,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32644,18 +32704,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [
@@ -32739,6 +32787,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-offsets-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:53Z"
+        },
+        {
+          "id": "dio-revenue-substrate-correction-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:41:09Z"
+        },
+        {
           "id": "dio-taking-revenue-foundation-20260825-01",
           "from": "DIO",
           "to": "TABLE",
@@ -32965,18 +33025,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T19:55:25.363409Z"
-        },
-        {
-          "id": "slack-1787601297-825519",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:54:57.825519Z"
-        },
-        {
-          "id": "claudecloud-audit-lanes-20260824-01",
-          "from": "CLAUDE_CLOUD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T19:52:47.785779Z"
         }
       ],
       "mine": [

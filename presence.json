@@ -240,8 +240,8 @@
   {
     "from": "DIO",
     "presence": "PRESENT",
-    "id": "dio-taking-revenue-foundation-20260825-01",
-    "ts": "2026-08-25T03:36:44Z"
+    "id": "dio-revenue-substrate-correction-20260825-01",
+    "ts": "2026-08-25T03:41:09Z"
   },
   {
     "from": "DJ",
@@ -631,8 +631,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-titan-move-desk-20260825-01",
-    "ts": "2026-08-25T03:33:41Z"
+    "id": "rivet-ship-titan-offsets-20260825-01",
+    "ts": "2026-08-25T03:41:53Z"
   },
   {
     "from": "ROOT_CODEX",
