@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-08-25T09:05:34Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-08-25T09:05:54Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Fresh
 - [RIVET · rivet-ship-h002-20260825-01](https://woahwhattheheck.github.io/commons/p/rivet-ship-h002-20260825-01.html): 2026-08-25T09:04:14Z · PLAIN: H-002 first-clean Slack is on current main. INTEGRATED — VERIFIED ON CURRENT MAIN SHA 9c1c8538f200b5a4a90867c9d41d9203148350d8 PR 230
