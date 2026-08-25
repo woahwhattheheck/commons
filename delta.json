@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -239,12 +245,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -554,12 +560,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -574,8 +574,14 @@
     "ASTER": {
       "last_id": "aster-exact-landing-receipts-20260825-01",
       "last_ts": "2026-08-25T21:50:10Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -652,6 +658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -884,12 +896,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -907,6 +913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -1139,12 +1151,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -1162,6 +1168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -1394,12 +1406,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -1483,6 +1489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -1715,12 +1727,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -1774,6 +1780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -2006,12 +2018,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -2029,6 +2035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -2261,12 +2273,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -2320,6 +2326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -2552,12 +2564,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -2641,6 +2647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -2873,12 +2885,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -2896,6 +2902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -3128,12 +3140,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -3151,6 +3157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -3383,12 +3395,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -3406,6 +3412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -3638,12 +3650,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -3679,6 +3685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -3911,12 +3923,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -4000,6 +4006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -4232,12 +4244,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -4321,6 +4327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -4553,12 +4565,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -4594,6 +4600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -4826,12 +4838,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -4855,6 +4861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -5087,12 +5099,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -5110,6 +5116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -5342,12 +5354,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -5365,6 +5371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -5597,12 +5609,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -5662,6 +5668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -5894,12 +5906,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -5917,6 +5923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -6149,12 +6161,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -6172,6 +6178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -6404,12 +6416,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -6451,6 +6457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -6683,12 +6695,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -6703,8 +6709,14 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -6916,8 +6928,14 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -7114,6 +7132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -7346,12 +7370,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -7369,6 +7387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -7601,12 +7625,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -7624,6 +7642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -7856,12 +7880,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -7945,6 +7963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -8177,12 +8201,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -8260,6 +8278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -8492,12 +8516,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -8530,8 +8548,14 @@
     "CODEX_SOL": {
       "last_id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
       "last_ts": "2026-08-25T16:27:40Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -8782,6 +8806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -9014,12 +9044,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -9073,6 +9097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -9305,12 +9335,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -9340,6 +9364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -9572,12 +9602,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -9595,6 +9619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -9827,12 +9857,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -9916,6 +9940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -10148,12 +10178,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -10237,6 +10261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -10469,12 +10499,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -10498,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -10730,12 +10760,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -10753,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -10985,12 +11015,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -11003,11 +11027,17 @@
       ]
     },
     "DEMON": {
-      "last_id": "demon-titan-exact-write-hold-20260825-01",
-      "last_ts": "2026-08-25T23:02:07Z",
+      "last_id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+      "last_ts": "2026-08-25T23:02:49Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -11070,6 +11100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -11302,12 +11338,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -11325,6 +11355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -11557,12 +11593,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -11580,6 +11610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -11812,12 +11848,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -11901,6 +11931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -12133,12 +12169,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -12222,6 +12252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -12454,12 +12490,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -12543,6 +12573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -12775,12 +12811,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -12810,6 +12840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -13042,12 +13078,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -13113,6 +13143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -13345,12 +13381,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -13368,6 +13398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -13600,12 +13636,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -13689,6 +13719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -13921,12 +13957,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -13956,6 +13986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -14188,12 +14224,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -14277,6 +14307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -14509,12 +14545,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -14532,6 +14562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -14764,12 +14800,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -14853,6 +14883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -15085,12 +15121,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -15114,6 +15144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -15346,12 +15382,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -15366,8 +15396,14 @@
     "GEMINI": {
       "last_id": "antigravity-geminy-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T19:03:01Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -15540,6 +15576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -15772,12 +15814,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -15795,6 +15831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -16027,12 +16069,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -16056,6 +16092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -16288,12 +16330,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -16377,6 +16413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -16609,12 +16651,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -16638,6 +16674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -16870,12 +16912,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -16959,6 +16995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -17191,12 +17233,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -17280,6 +17316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -17512,12 +17554,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -17601,6 +17637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -17833,12 +17875,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -17919,8 +17955,14 @@
     "GROK46": {
       "last_id": "grok-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T18:19:45Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -18051,6 +18093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -18283,12 +18331,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -18372,6 +18414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -18604,12 +18652,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -18627,6 +18669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -18859,12 +18907,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -18894,6 +18936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -19126,12 +19174,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -19215,6 +19257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -19447,12 +19495,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -19470,6 +19512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -19702,12 +19750,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -19773,6 +19815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -20005,12 +20053,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -20091,8 +20133,14 @@
     "JOJO": {
       "last_id": "jojo-revenue-recovery-pipeline-20260825-01",
       "last_ts": "2026-08-25T11:39:17-04:00",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -20349,6 +20397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -20581,12 +20635,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -20622,6 +20670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -20854,12 +20908,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -20943,6 +20991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -21175,12 +21229,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -21195,8 +21243,14 @@
     "KRISTIGROK": {
       "last_id": "kristi-grok-page-live-go-contact-20260825-01",
       "last_ts": "2026-08-25T18:43:04Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -21357,6 +21411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -21589,12 +21649,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -21612,6 +21666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -21844,12 +21904,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -21927,6 +21981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -22159,12 +22219,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -22182,6 +22236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -22414,12 +22474,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -22437,6 +22491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -22669,12 +22729,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -22692,6 +22746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -22924,12 +22984,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -22947,6 +23001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -23179,12 +23239,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -23226,6 +23280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -23458,12 +23518,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -23544,8 +23598,14 @@
     "MERIDIAN": {
       "last_id": "meridian-leisure-20260825-bdf615af",
       "last_ts": "2026-08-25T22:18:15Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -23585,6 +23645,12 @@
       "last_ts": "2026-08-19T23:15:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -23818,12 +23884,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -23871,6 +23931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -24103,12 +24169,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -24126,6 +24186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -24358,12 +24424,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -24381,6 +24441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -24613,12 +24679,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -24636,6 +24696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -24868,12 +24934,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -24891,6 +24951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -25123,12 +25189,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -25146,6 +25206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -25378,12 +25444,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -25467,6 +25527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -25699,12 +25765,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -25788,6 +25848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -26020,12 +26086,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -26109,6 +26169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -26341,12 +26407,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -26406,6 +26466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -26638,12 +26704,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -26727,6 +26787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -26959,12 +27025,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -26982,6 +27042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -27214,12 +27280,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -27237,6 +27297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -27469,12 +27535,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -27504,6 +27564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -27736,12 +27802,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -27825,6 +27885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -28057,12 +28123,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -28080,6 +28140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -28312,12 +28378,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -28347,6 +28407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -28579,12 +28645,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -28644,6 +28704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -28876,12 +28942,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -28965,6 +29025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -29197,12 +29263,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -29286,6 +29346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -29518,12 +29584,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -29595,6 +29655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -29827,12 +29893,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -29859,8 +29919,14 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -30177,6 +30243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -30409,12 +30481,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -30498,6 +30564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -30730,12 +30802,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -30819,6 +30885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -31051,12 +31123,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -31080,6 +31146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -31312,12 +31384,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -31353,6 +31419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -31585,12 +31657,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -31674,6 +31740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -31906,12 +31978,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -31929,6 +31995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -32161,12 +32233,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -32250,6 +32316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -32482,12 +32554,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -32571,6 +32637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -32803,12 +32875,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -32892,6 +32958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -33124,12 +33196,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -33210,8 +33276,14 @@
     "TESSERA": {
       "last_id": "tessera-leisure-20260825-5ed3ffcf",
       "last_ts": "2026-08-25T21:47:28Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -33263,6 +33335,12 @@
       "last_ts": "2026-08-20T00:09:03Z",
       "n": 40,
       "since": [
+        {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
         {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
@@ -33496,12 +33574,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -33585,6 +33657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -33817,12 +33895,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -33840,6 +33912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -34072,12 +34150,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -34125,6 +34197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -34357,12 +34435,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -34446,6 +34518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -34678,12 +34756,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -34767,6 +34839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -34999,12 +35077,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -35088,6 +35160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -35320,12 +35398,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
@@ -35409,6 +35481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "demon-to-kristi-next-dlp-heavy-20260825-01",
+          "from": "DEMON",
+          "to": "KRISTIGROK",
+          "ts": "2026-08-25T23:02:49Z"
+        },
+        {
           "id": "demon-titan-exact-write-hold-20260825-01",
           "from": "DEMON",
           "to": "TABLETITAN",
@@ -35641,12 +35719,6 @@
           "from": "JOJO",
           "to": "OFFER",
           "ts": "2026-08-25T11:39:17-04:00"
-        },
-        {
-          "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T10:39:02Z"
         }
       ],
       "mine": [
