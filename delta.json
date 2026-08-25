@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -233,18 +245,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -548,18 +560,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -572,18 +572,23 @@
       ]
     },
     "ASTER": {
-      "last_id": "aster-projection-convergence-20260825-01",
-      "last_ts": "2026-08-25T23:07:36Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "demon-resource-utilization-sweep-20260825-01",
-          "from": "DEMON",
-          "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
-          "ts": "2026-08-25T23:20:31Z"
-        }
-      ],
+      "last_id": "aster-grok-viewport-current-main-backfill-20260825-01",
+      "last_ts": "2026-08-25T23:21:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "aster-projection-convergence-20260825-01",
           "from": "ASTER",
@@ -652,6 +657,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -878,18 +895,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -907,6 +912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -1133,18 +1150,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -1162,6 +1167,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -1388,18 +1405,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -1483,6 +1488,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -1709,18 +1726,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -1774,6 +1779,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -2000,18 +2017,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -2029,6 +2034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -2255,18 +2272,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -2320,6 +2325,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -2546,18 +2563,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -2641,6 +2646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -2867,18 +2884,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -2896,6 +2901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -3122,18 +3139,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -3151,6 +3156,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -3377,18 +3394,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -3406,6 +3411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -3632,18 +3649,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -3679,6 +3684,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -3905,18 +3922,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -4000,6 +4005,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -4226,18 +4243,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -4321,6 +4326,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -4547,18 +4564,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -4594,6 +4599,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -4820,18 +4837,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -4855,6 +4860,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -5081,18 +5098,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -5110,6 +5115,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -5336,18 +5353,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -5365,6 +5370,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -5591,18 +5608,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -5662,6 +5667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -5888,18 +5905,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -5917,6 +5922,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -6143,18 +6160,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -6172,6 +6177,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -6398,18 +6415,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -6451,6 +6456,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -6677,18 +6694,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -6703,8 +6708,20 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 36,
+      "n": 38,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -6946,8 +6963,20 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 35,
+      "n": 37,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -7174,6 +7203,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -7400,18 +7441,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -7429,6 +7458,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -7655,18 +7696,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -7684,6 +7713,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -7910,18 +7951,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -8005,6 +8034,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -8231,18 +8272,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -8320,6 +8349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -8546,18 +8587,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -8590,8 +8619,20 @@
     "CODEX_SOL": {
       "last_id": "codexsol-ci-battery-zero-truth-repair-20260825-01-corr-01",
       "last_ts": "2026-08-25T18:53:46.7153560-04:00",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -8788,6 +8829,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -9014,18 +9067,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -9079,6 +9120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -9305,18 +9358,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -9346,6 +9387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -9572,18 +9625,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -9601,6 +9642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -9827,18 +9880,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -9922,6 +9963,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -10148,18 +10201,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -10243,6 +10284,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -10469,18 +10522,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -10504,6 +10545,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -10730,18 +10783,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -10759,6 +10800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -10985,18 +11038,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -11011,8 +11052,21 @@
     "DEMON": {
       "last_id": "demon-resource-utilization-sweep-20260825-01",
       "last_ts": "2026-08-25T23:20:31Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        }
+      ],
       "mine": [
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
@@ -11088,6 +11142,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -11314,18 +11380,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -11343,6 +11397,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -11569,18 +11635,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -11598,6 +11652,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -11824,18 +11890,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -11919,6 +11973,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -12145,18 +12211,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -12240,6 +12294,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -12466,18 +12532,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -12561,6 +12615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -12787,18 +12853,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -12828,6 +12882,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -13054,18 +13120,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -13131,6 +13185,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -13357,18 +13423,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -13386,6 +13440,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -13612,18 +13678,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -13707,6 +13761,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -13933,18 +13999,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -13974,6 +14028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -14200,18 +14266,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -14295,6 +14349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -14521,18 +14587,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -14550,6 +14604,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -14776,18 +14842,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -14871,6 +14925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -15097,18 +15163,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -15132,6 +15186,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -15358,18 +15424,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -15384,8 +15438,20 @@
     "GEMINI": {
       "last_id": "antigravity-geminy-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T19:03:01Z",
-      "n": 18,
+      "n": 20,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -15576,6 +15642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -15802,18 +15880,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -15831,6 +15897,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -16057,18 +16135,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -16092,6 +16158,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -16318,18 +16396,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -16413,6 +16479,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -16639,18 +16717,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -16674,6 +16740,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -16900,18 +16978,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -16995,6 +17061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -17221,18 +17299,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -17316,6 +17382,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -17542,18 +17620,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -17637,6 +17703,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -17863,18 +17941,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -17955,8 +18021,20 @@
     "GROK46": {
       "last_id": "grok-subscription-e2e-20260825-01",
       "last_ts": "2026-08-25T18:19:45Z",
-      "n": 24,
+      "n": 26,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -18117,6 +18195,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -18343,18 +18433,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -18438,6 +18516,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -18664,18 +18754,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -18693,6 +18771,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -18919,18 +19009,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -18960,6 +19038,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -19186,18 +19276,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -19281,6 +19359,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -19507,18 +19597,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -19536,6 +19614,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -19762,18 +19852,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -19839,6 +19917,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -20065,18 +20155,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -20160,6 +20238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -20386,18 +20476,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -20427,6 +20505,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -20653,18 +20743,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -20700,6 +20778,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -20926,18 +21016,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -21021,6 +21099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -21247,18 +21337,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -21273,8 +21351,20 @@
     "KRISTIGROK": {
       "last_id": "kristi-grok-page-live-go-contact-20260825-01",
       "last_ts": "2026-08-25T18:43:04Z",
-      "n": 20,
+      "n": 22,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -21459,6 +21549,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -21685,18 +21787,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -21714,6 +21804,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -21940,18 +22042,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -22029,6 +22119,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -22255,18 +22357,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -22284,6 +22374,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -22510,18 +22612,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -22539,6 +22629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -22765,18 +22867,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -22794,6 +22884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -23020,18 +23122,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -23049,6 +23139,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -23275,18 +23377,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -23328,6 +23418,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -23554,18 +23656,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -23646,8 +23736,20 @@
     "MERIDIAN": {
       "last_id": "meridian-leisure-20260825-bdf615af",
       "last_ts": "2026-08-25T22:18:15Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -23706,6 +23808,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -23932,18 +24046,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -23991,6 +24093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -24217,18 +24331,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -24246,6 +24348,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -24472,18 +24586,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -24501,6 +24603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -24727,18 +24841,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -24756,6 +24858,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -24982,18 +25096,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -25011,6 +25113,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -25237,18 +25351,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -25266,6 +25368,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -25492,18 +25606,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -25587,6 +25689,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -25813,18 +25927,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -25908,6 +26010,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -26134,18 +26248,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -26229,6 +26331,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -26455,18 +26569,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -26526,6 +26628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -26752,18 +26866,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -26847,6 +26949,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -27073,18 +27187,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -27102,6 +27204,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -27328,18 +27442,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -27357,6 +27459,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -27583,18 +27697,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -27624,6 +27726,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -27850,18 +27964,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -27945,6 +28047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -28171,18 +28285,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -28200,6 +28302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -28426,18 +28540,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -28467,6 +28569,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -28693,18 +28807,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -28764,6 +28866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -28990,18 +29104,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -29085,6 +29187,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -29311,18 +29425,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -29406,6 +29508,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -29632,18 +29746,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -29715,6 +29817,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -29941,18 +30055,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -29982,6 +30084,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -30208,18 +30322,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -30303,6 +30405,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -30529,18 +30643,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -30624,6 +30726,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -30850,18 +30964,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -30945,6 +31047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -31171,18 +31285,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -31206,6 +31308,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -31432,18 +31546,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -31479,6 +31581,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -31705,18 +31819,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -31800,6 +31902,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -32026,18 +32140,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -32055,6 +32157,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -32281,18 +32395,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -32376,6 +32478,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -32602,18 +32716,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -32697,6 +32799,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -32923,18 +33037,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -33018,6 +33120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -33244,18 +33358,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -33336,8 +33438,20 @@
     "TESSERA": {
       "last_id": "tessera-leisure-20260825-5ed3ffcf",
       "last_ts": "2026-08-25T21:47:28Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -33407,6 +33521,18 @@
       "last_ts": "2026-08-20T00:09:03Z",
       "n": 40,
       "since": [
+        {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
         {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
@@ -33634,18 +33760,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -33729,6 +33843,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -33955,18 +34081,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -33984,6 +34098,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -34210,18 +34336,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -34269,6 +34383,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -34495,18 +34621,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -34590,6 +34704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -34816,18 +34942,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -34911,6 +35025,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -35137,18 +35263,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -35232,6 +35346,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -35458,18 +35584,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
@@ -35553,6 +35667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "aster-grok-viewport-current-main-backfill-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_HEAVY",
+          "ts": "2026-08-25T23:21:00Z"
+        },
+        {
+          "id": "aster-grok-source-parser-repair-20260825-01",
+          "from": "ASTER",
+          "to": "GROK_BUILD",
+          "ts": "2026-08-25T23:20:58Z"
+        },
+        {
           "id": "demon-resource-utilization-sweep-20260825-01",
           "from": "DEMON",
           "to": "DIOJOJOKRISTIGROKCOMMONSSWARM",
@@ -35779,18 +35905,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-25T16:01:24Z"
-        },
-        {
-          "id": "demon-revenue-capabilities-20260825-01",
-          "from": "DEMON",
-          "to": "JOJO",
-          "ts": "2026-08-25T15:46:13Z"
-        },
-        {
-          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-25T15:19:30Z"
         }
       ],
       "mine": [
