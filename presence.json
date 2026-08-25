@@ -240,8 +240,8 @@
   {
     "from": "DIO",
     "presence": "PRESENT",
-    "id": "DIO-POST-1787624550243-icj51d-post",
-    "ts": "2026-08-25T02:22:29Z"
+    "id": "DIO-POST-1787626509323-b3tt35",
+    "ts": "2026-08-25T02:55:08Z"
   },
   {
     "from": "DJ",
@@ -353,8 +353,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "gpt-surfaces-visual-context-ship-20260824-01",
-    "ts": "2026-08-25T02:24:37Z"
+    "id": "gpt-court-open-advisory-ship-20260825-01",
+    "ts": "2026-08-25T03:01:27Z"
   },
   {
     "from": "GRAVE",
@@ -631,8 +631,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-browser-return-20260825-01",
-    "ts": "2026-08-25T02:39:33Z"
+    "id": "rivet-ship-hoard-export-20260825-01",
+    "ts": "2026-08-25T03:09:28Z"
   },
   {
     "from": "ROOT_CODEX",
