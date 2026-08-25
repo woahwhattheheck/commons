@@ -59,10 +59,33 @@ Exact 30-bit two-byte wrap facts:
 | `last_safe_start` | `1073741822` |
 | `steps_before_wrap` | `536870912` |
 | `required_bits` | `36` |
-| canonical hash | `2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc` |
+| `stride` | `2` |
+| `address-mode` | `RELATIVE` |
+| `data-start` | `24` |
+| canonical hash | `d5acf732c3bd72a10e42630654ec5b5cef43a5e11b8dcab7396fcf6f4ec33165` |
 
 Packet and leftover classify as **BLOCKED**, not `SYNTHETIC_OK`.
 Genuinely live allocated offsets stay **UNRESOLVED**. Never `0`.
+No named-default substitution.
+
+## Integrity follow-up
+
+Slack `1787651271.265499` TAKING
+`muhl-address-contract-integrity-followup-20260825-02` is **CLAIMED**.
+Do not remint it. Do not remint #2314, #2326, the first taking, or
+`p/rivet-ship-address-conflict-fail-closed-20260825-01.md`.
+
+Missing or malformed address facts stay **UNRESOLVED**. The validator
+does not substitute `PTR_BITS=30`, `50 GiB`, or wrap constants.
+Canonical payload binds `stride`, `address-mode`, `data-start`,
+`status`, `reasons`, and every derived field. Validator recomputes
+semantics and rejects **tampered** or **re-signed** records.
+
+- 50 GiB / 30-bit remains **BLOCKED**
+- 1 GiB / 30-bit relative is **OK**
+- absolute-base without a live offset stays **UNRESOLVED**
+- registry/header-disagreement is fail-closed **BLOCKED**
+- live allocated offsets remain **UNRESOLVED**
 
 ## What this leftover is not
 
@@ -89,11 +112,13 @@ these three leftover paths.
 Y from bytes, same run: named dests FROM FILE + deterministic
 50 GiB vs 30-bit source-space conflict fail-closed `BLOCKED` +
 exact `max_pointer` / `last_safe_start` / `steps_before_wrap` /
-`required_bits` + canonical hash + live offsets UNRESOLVED +
-H-006 CANDIDATE or UNRESOLVED.
+`required_bits` / `stride` / `address-mode` / `data-start` +
+canonical hash + live offsets UNRESOLVED + H-006 CANDIDATE or
+UNRESOLVED. Missing/malformed facts stay UNRESOLVED. Tampered
+or re-signed records are refused.
 Z = missing path / invented live offset `0` / trainer import /
 Titan write / SYNTHETIC_OK on a source-space conflict /
-FINDER-FAILED. Never `0`.
+named-default substitution / FINDER-FAILED. Never `0`.
 
 Calibration is known-present `ground/EXECUTE.md` + `ground/HEAD.md`
 + the Action Pad directive in the same run.

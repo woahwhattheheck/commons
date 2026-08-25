@@ -19,6 +19,16 @@ steps_before_wrap=536870912, required_bits=36, plus a
 canonical hash. A Slack TAKING is CLAIMED until these
 bytes are on current main. Do not remint.
 
+Follow-up Slack 1787651271.265499
+muhl-address-contract-integrity-followup-20260825-02:
+
+  Missing or malformed address facts stay UNRESOLVED. No named-default
+  substitution. Canonical payload binds stride, address-mode,
+  data-start, status, reasons, and every derived field. Validator
+  recomputes semantics and rejects tampered or re-signed records.
+  50 GiB / 30-bit stays BLOCKED. 1 GiB / 30-bit relative is OK.
+  Live allocated offsets stay UNRESOLVED. Do not remint.
+
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --root .
   python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_self_train_address_contract.py --self-test
@@ -66,6 +76,9 @@ DEFERRED = "DEFERRED"
 SOURCE_NAMED = "SOURCE_NAMED"
 SOURCE_CONFLICT = "SOURCE_CONFLICT"
 BLOCKED = "BLOCKED"
+OK = "OK"
+RELATIVE = "RELATIVE"
+ABSOLUTE = "ABSOLUTE"
 ONE_GIB = 1 << 30
 TWO_BYTE_STEP = 2
 NAMED_PTR_BITS = 30
@@ -75,6 +88,12 @@ LAST_SAFE_START = MAX_POINTER - 1
 STEPS_BEFORE_WRAP = (1 << NAMED_PTR_BITS) // TWO_BYTE_STEP
 REQUIRED_BITS = 36
 PTR_BITS_CAPACITY_CONFLICT = "ptr_bits_vs_capacity"
+ABSOLUTE_BASE_OVERFLOW = "absolute_base_overflow"
+REGISTRY_HEADER_DISAGREEMENT = "registry_header_disagreement"
+HEADER_LAYOUT_BYTES = 24
+HEADER_FIELD_SPAN = 8
+FOLLOWUP_SLACK_TS = "1787651271.265499"
+FOLLOWUP_ID = "muhl-address-contract-integrity-followup-20260825-02"
 SEARCH_SPACE = (
     DEFAULT_CARD,
     CONTRACT_REL,
@@ -109,6 +128,12 @@ REQUIRED_PHRASES = (
     "required_bits",
     "fail-closed",
     "blocked",
+    "no named-default",
+    "address-mode",
+    "data-start",
+    "stride",
+    "tampered",
+    "re-signed",
 )
 REQUIRED_PACKET_FIELDS = (
     "kind",
@@ -154,84 +179,395 @@ def required_bits_for(span):
     return bits
 
 
-def pointer_space(ptr_bits=None, capacity=None):
-    """30-bit two-byte wrap facts. Live allocated offsets stay UNRESOLVED."""
-    bits = ptr_bits if isinstance(ptr_bits, int) and ptr_bits > 0 else NAMED_PTR_BITS
-    max_pointer = (1 << bits) - 1
-    last_safe_start = max_pointer - 1 if max_pointer else 0
-    steps_before_wrap = (1 << bits) // TWO_BYTE_STEP
+def _valid_positive_int(value):
+    return isinstance(value, int) and not isinstance(value, bool) and value > 0
+
+
+def _mode_text(value):
+    if not isinstance(value, str):
+        return UNRESOLVED
+    mode = value.strip().upper()
+    if mode in (RELATIVE, ABSOLUTE):
+        return mode
+    if mode in ("", UNRESOLVED):
+        return UNRESOLVED
+    return UNRESOLVED
+
+
+def payload_digest(payload):
+    blob = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest()
+
+
+def registry_header_disagreement(dests, registry=None):
+    """Compare a presented registry row to dests FROM FILE. Missing is not 0."""
+    dests = dests or {}
+    if not isinstance(registry, dict) or not registry:
+        return {
+            "state": UNRESOLVED,
+            "id": REGISTRY_HEADER_DISAGREEMENT,
+            "reasons": ["missing_or_malformed_registry"],
+            "note": (
+                "registry row was not read. Absence is UNRESOLVED, never 0. "
+                "No named-default substitution."
+            ),
+        }
+    reasons = []
+    header = dests.get("intake_header")
+    capacity = dests.get("intake_capacity")
+    data_start = dests.get("data_start_rel")
+    if "header_len" in registry:
+        if not _valid_positive_int(registry.get("header_len")):
+            reasons.append("malformed_registry_header_len")
+        elif not _valid_positive_int(header):
+            reasons.append("missing_or_malformed_data_start")
+        elif registry.get("header_len") != header:
+            reasons.append("registry_header_len")
+    if "capacity" in registry:
+        if not _valid_positive_int(registry.get("capacity")):
+            reasons.append("malformed_registry_capacity")
+        elif not _valid_positive_int(capacity):
+            reasons.append("missing_or_malformed_capacity")
+        elif registry.get("capacity") != capacity:
+            reasons.append("registry_capacity")
+    if "data_start" in registry and _valid_positive_int(data_start):
+        offset = registry.get("offset")
+        header_len = registry.get("header_len")
+        presented = registry.get("data_start")
+        if not isinstance(presented, int) or isinstance(presented, bool):
+            reasons.append("malformed_registry_data_start")
+        elif isinstance(offset, int) and not isinstance(offset, bool) and _valid_positive_int(header_len):
+            expected = offset + header_len
+            if presented != expected or header_len != data_start:
+                reasons.append("registry_data_start")
+        elif presented != data_start:
+            reasons.append("registry_data_start")
+    if not reasons:
+        return None
+    return {
+        "state": SOURCE_CONFLICT,
+        "id": REGISTRY_HEADER_DISAGREEMENT,
+        "reasons": reasons,
+        "note": (
+            "registry/header-disagreement: %s. fail-closed BLOCKED. "
+            "Live allocated offsets stay UNRESOLVED. Never 0."
+            % ", ".join(reasons)
+        ),
+    }
+
+
+def pointer_space(ptr_bits=None, capacity=None, stride=None):
+    """Wrap facts only from presented ints. Missing stays UNRESOLVED."""
+    reasons = []
+    bits = ptr_bits if _valid_positive_int(ptr_bits) else UNRESOLVED
+    step = stride if _valid_positive_int(stride) else UNRESOLVED
+    if bits is UNRESOLVED:
+        reasons.append("missing_or_malformed_ptr_bits")
+    if not _valid_positive_int(capacity):
+        reasons.append("missing_or_malformed_capacity")
+    if step is UNRESOLVED:
+        reasons.append("missing_or_malformed_stride")
+    max_pointer = (1 << bits) - 1 if bits is not UNRESOLVED else UNRESOLVED
+    last_safe_start = (
+        max_pointer - 1 if isinstance(max_pointer, int) and max_pointer else UNRESOLVED
+    )
+    steps_before_wrap = (
+        (1 << bits) // step
+        if bits is not UNRESOLVED and step is not UNRESOLVED
+        else UNRESOLVED
+    )
     needed = required_bits_for(capacity)
     return {
         "max_pointer": max_pointer,
         "last_safe_start": last_safe_start,
         "steps_before_wrap": steps_before_wrap,
-        "required_bits": needed if needed is not None else REQUIRED_BITS,
+        "required_bits": needed if needed is not None else UNRESOLVED,
+        "stride": step,
+        "reasons": reasons,
     }
 
 
-def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None):
-    space = space or pointer_space(ptr_bits=ptr_bits, capacity=capacity)
+def bind_address_facts(dests=None, registry=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, absolute_base=None):
+    """Bind stride/address-mode/data-start/status/reasons plus derived fields.
+
+    Missing or malformed address facts stay UNRESOLVED. No named-default
+    substitution. Live allocated offsets stay UNRESOLVED.
+    """
+    dests = dict(dests or {})
+    if ptr_bits is None:
+        ptr_bits = dests.get("ptr_bits")
+    if capacity is None:
+        capacity = dests.get("intake_capacity")
+    if stride is None:
+        stride = dests.get("stride")
+    if address_mode is None:
+        address_mode = dests.get("address_mode")
+    if data_start is None:
+        data_start = dests.get("data_start_rel")
+    if absolute_base is None:
+        absolute_base = dests.get("absolute_base")
+    reasons = []
+    mode = _mode_text(address_mode)
+    if isinstance(address_mode, str) and address_mode.strip() and mode is UNRESOLVED:
+        reasons.append("malformed_address_mode")
+    if not _valid_positive_int(ptr_bits):
+        ptr_bits = UNRESOLVED
+        reasons.append("missing_or_malformed_ptr_bits")
+    if not _valid_positive_int(capacity):
+        capacity = UNRESOLVED
+        reasons.append("missing_or_malformed_capacity")
+    if not _valid_positive_int(stride):
+        stride = UNRESOLVED
+        reasons.append("missing_or_malformed_stride")
+    if not _valid_positive_int(data_start):
+        data_start = UNRESOLVED
+        reasons.append("missing_or_malformed_data_start")
+    base = absolute_base
+    if mode == ABSOLUTE and not (isinstance(base, int) and not isinstance(base, bool) and base >= 0):
+        base = UNRESOLVED
+        reasons.append("missing_or_malformed_absolute_base")
+    elif mode != ABSOLUTE:
+        base = UNRESOLVED if not (isinstance(base, int) and not isinstance(base, bool) and base >= 0) else base
+    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity, stride=stride)
+    if mode == ABSOLUTE and isinstance(base, int) and not isinstance(base, bool) and base >= 0 and _valid_positive_int(capacity):
+        needed = required_bits_for(base + capacity)
+        space["required_bits"] = needed if needed is not None else UNRESOLVED
+    status = OK
+    if ptr_bits is UNRESOLVED or capacity is UNRESOLVED:
+        status = UNRESOLVED
+    elif mode == ABSOLUTE and not (isinstance(base, int) and not isinstance(base, bool) and base >= 0):
+        status = UNRESOLVED
+    elif mode == ABSOLUTE and isinstance(base, int) and not isinstance(base, bool):
+        pointer_span = 1 << ptr_bits
+        if (base + capacity) > pointer_span:
+            status = BLOCKED
+            reasons.append(ABSOLUTE_BASE_OVERFLOW)
+    elif (1 << ptr_bits) != capacity:
+        status = BLOCKED
+        reasons.append(PTR_BITS_CAPACITY_CONFLICT)
+    elif mode is UNRESOLVED:
+        status = UNRESOLVED
+        reasons.append("missing_or_malformed_address_mode")
+    registry_row = registry_header_disagreement(dests, registry)
+    if registry_row and registry_row.get("state") == SOURCE_CONFLICT:
+        status = BLOCKED
+        reasons.extend(registry_row.get("reasons") or [])
+        reasons.append(REGISTRY_HEADER_DISAGREEMENT)
+    conflict_id = PTR_BITS_CAPACITY_CONFLICT
+    if ABSOLUTE_BASE_OVERFLOW in reasons:
+        conflict_id = ABSOLUTE_BASE_OVERFLOW
+    elif REGISTRY_HEADER_DISAGREEMENT in reasons:
+        conflict_id = REGISTRY_HEADER_DISAGREEMENT
+    payload = {
+        "id": conflict_id,
+        "address_mode": mode,
+        "data_start": data_start,
+        "last_safe_start": space["last_safe_start"],
+        "max_pointer": space["max_pointer"],
+        "named_capacity": capacity,
+        "ptr_bits": ptr_bits,
+        "reasons": list(reasons),
+        "required_bits": space["required_bits"],
+        "status": status,
+        "steps_before_wrap": space["steps_before_wrap"],
+        "stride": stride,
+    }
+    digest = payload_digest(payload)
     return {
-        "id": PTR_BITS_CAPACITY_CONFLICT,
-        "last_safe_start": int(space["last_safe_start"]),
-        "max_pointer": int(space["max_pointer"]),
-        "named_capacity": int(
-            capacity if isinstance(capacity, int) else NAMED_CAPACITY
-        ),
-        "ptr_bits": int(ptr_bits if isinstance(ptr_bits, int) else NAMED_PTR_BITS),
-        "required_bits": int(space["required_bits"]),
-        "steps_before_wrap": int(space["steps_before_wrap"]),
+        "max_pointer": space["max_pointer"],
+        "last_safe_start": space["last_safe_start"],
+        "steps_before_wrap": space["steps_before_wrap"],
+        "required_bits": space["required_bits"],
+        "stride": stride,
+        "address_mode": mode,
+        "data_start": data_start,
+        "absolute_base": base if mode == ABSOLUTE else UNRESOLVED,
+        "named_capacity": capacity,
+        "ptr_bits": ptr_bits,
+        "status": status,
+        "reasons": list(reasons),
+        "canonical_payload": payload,
+        "canonical_hash": digest,
+        "registry": registry_row,
     }
 
 
-def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None):
-    payload = canonical_conflict_payload(
-        space=space, ptr_bits=ptr_bits, capacity=capacity
+def canonical_conflict_payload(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None):
+    bound = bind_address_facts(
+        dests=dests,
+        registry=registry,
+        ptr_bits=ptr_bits,
+        capacity=capacity,
+        stride=stride,
+        address_mode=address_mode,
+        data_start=data_start,
     )
-    blob = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    return hashlib.sha256(blob).hexdigest()
+    if space:
+        payload = dict(bound["canonical_payload"])
+        for key in ("max_pointer", "last_safe_start", "steps_before_wrap", "required_bits"):
+            if key in space:
+                payload[key] = space[key]
+        if "stride" in space:
+            payload["stride"] = space["stride"]
+        bound["canonical_payload"] = payload
+        bound["canonical_hash"] = payload_digest(payload)
+    return bound["canonical_payload"]
 
 
-def source_space_conflicts(dests):
+def canonical_conflict_hash(space=None, ptr_bits=None, capacity=None, stride=None, address_mode=None, data_start=None, dests=None, registry=None):
+    payload = canonical_conflict_payload(
+        space=space,
+        ptr_bits=ptr_bits,
+        capacity=capacity,
+        stride=stride,
+        address_mode=address_mode,
+        data_start=data_start,
+        dests=dests,
+        registry=registry,
+    )
+    return payload_digest(payload)
+
+
+def validate_canonical_record(record, dests=None, registry=None):
+    """Recompute semantics. Reject tampered or re-signed records."""
+    expected = bind_address_facts(dests, registry=registry)
+    expected_payload = expected["canonical_payload"]
+    expected_hash = expected["canonical_hash"]
+    if not isinstance(record, dict) or not record:
+        return {
+            "state": UNRESOLVED,
+            "note": (
+                "canonical record missing. Absence is UNRESOLVED, never 0. "
+                "No named-default substitution."
+            ),
+            "z": "FINDER-FAILED",
+            "canonical_payload": expected_payload,
+            "canonical_hash": expected_hash,
+        }
+    presented_payload = record.get("canonical_payload")
+    presented_hash = record.get("canonical_hash")
+    if presented_payload is not None:
+        if not isinstance(presented_payload, dict):
+            return {
+                "state": "NOT_LANDED",
+                "note": (
+                    "tampered: malformed canonical_payload. Recomputed "
+                    "semantics win. FINDER-FAILED, never 0."
+                ),
+                "z": "FINDER-FAILED",
+                "canonical_payload": expected_payload,
+                "canonical_hash": expected_hash,
+            }
+        if presented_payload != expected_payload:
+            return {
+                "state": "NOT_LANDED",
+                "note": (
+                    "tampered: canonical payload does not match recomputed "
+                    "semantics. FINDER-FAILED, never 0."
+                ),
+                "z": "FINDER-FAILED",
+                "canonical_payload": expected_payload,
+                "canonical_hash": expected_hash,
+            }
+        resigned = payload_digest(presented_payload)
+        if presented_hash and presented_hash != resigned:
+            return {
+                "state": "NOT_LANDED",
+                "note": (
+                    "re-signed: presented hash does not bind the presented "
+                    "payload. FINDER-FAILED, never 0."
+                ),
+                "z": "FINDER-FAILED",
+                "canonical_payload": expected_payload,
+                "canonical_hash": expected_hash,
+            }
+        if resigned != expected_hash:
+            return {
+                "state": "NOT_LANDED",
+                "note": (
+                    "tampered: payload hash does not match recomputed hash. "
+                    "FINDER-FAILED, never 0."
+                ),
+                "z": "FINDER-FAILED",
+                "canonical_payload": expected_payload,
+                "canonical_hash": expected_hash,
+            }
+    if presented_hash is not None and presented_hash != expected_hash:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "re-signed or tampered: hash does not match recomputed "
+                "semantics. FINDER-FAILED, never 0."
+            ),
+            "z": "FINDER-FAILED",
+            "canonical_payload": expected_payload,
+            "canonical_hash": expected_hash,
+        }
+    state = expected["status"]
+    if state == OK:
+        state = "VALID"
+    return {
+        "state": state,
+        "note": (
+            "canonical record matches recomputed semantics. status=%s. "
+            "Live allocated offsets stay UNRESOLVED."
+            % expected["status"]
+        ),
+        "z": "" if expected["status"] != UNRESOLVED else "FINDER-FAILED",
+        "canonical_payload": expected_payload,
+        "canonical_hash": expected_hash,
+        "max_pointer": expected["max_pointer"],
+        "last_safe_start": expected["last_safe_start"],
+        "steps_before_wrap": expected["steps_before_wrap"],
+        "required_bits": expected["required_bits"],
+        "reasons": expected["reasons"],
+    }
+
+
+def source_space_conflicts(dests, registry=None):
     """Deterministic source-space conflicts. Never invent live offsets."""
     dests = dests or {}
-    capacity = dests.get("intake_capacity")
-    ptr_bits = dests.get("ptr_bits")
+    bound = bind_address_facts(dests, registry=registry)
     conflicts = []
-    if not (isinstance(capacity, int) and isinstance(ptr_bits, int)):
+    if bound["status"] != BLOCKED:
         return conflicts
-    if (1 << ptr_bits) == capacity:
-        return conflicts
-    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity)
-    payload = canonical_conflict_payload(
-        space=space, ptr_bits=ptr_bits, capacity=capacity
-    )
-    digest = canonical_conflict_hash(
-        space=space, ptr_bits=ptr_bits, capacity=capacity
-    )
+    digest = bound["canonical_hash"]
+    payload = bound["canonical_payload"]
+    conflict_id = payload.get("id") or PTR_BITS_CAPACITY_CONFLICT
     conflicts.append(
         {
-            "id": PTR_BITS_CAPACITY_CONFLICT,
+            "id": conflict_id,
             "state": SOURCE_CONFLICT,
-            "max_pointer": space["max_pointer"],
-            "last_safe_start": space["last_safe_start"],
-            "steps_before_wrap": space["steps_before_wrap"],
-            "required_bits": space["required_bits"],
+            "max_pointer": bound["max_pointer"],
+            "last_safe_start": bound["last_safe_start"],
+            "steps_before_wrap": bound["steps_before_wrap"],
+            "required_bits": bound["required_bits"],
+            "stride": bound["stride"],
+            "address_mode": bound["address_mode"],
+            "data_start": bound["data_start"],
+            "status": BLOCKED,
+            "reasons": bound["reasons"],
             "canonical_hash": digest,
             "canonical_payload": payload,
             "note": (
-                "PTR_BITS=%s addresses %s bytes; INTAKE_CAPACITY=%s. "
-                "fail-closed BLOCKED. max_pointer=%s last_safe_start=%s "
-                "steps_before_wrap=%s required_bits=%s canonical_hash=%s. "
-                "Live allocated offsets stay UNRESOLVED. Never 0."
+                "source-space integrity is fail-closed BLOCKED. "
+                "ptr_bits=%s capacity=%s stride=%s address-mode=%s "
+                "data-start=%s status=%s reasons=%s max_pointer=%s "
+                "last_safe_start=%s steps_before_wrap=%s required_bits=%s "
+                "canonical_hash=%s. Live allocated offsets stay UNRESOLVED. "
+                "Never 0. No named-default substitution."
                 % (
-                    ptr_bits,
-                    1 << ptr_bits,
-                    capacity,
-                    space["max_pointer"],
-                    space["last_safe_start"],
-                    space["steps_before_wrap"],
-                    space["required_bits"],
+                    bound["ptr_bits"],
+                    bound["named_capacity"],
+                    bound["stride"],
+                    bound["address_mode"],
+                    bound["data_start"],
+                    bound["status"],
+                    ",".join(bound["reasons"]),
+                    bound["max_pointer"],
+                    bound["last_safe_start"],
+                    bound["steps_before_wrap"],
+                    bound["required_bits"],
                     digest,
                 )
             ),
@@ -353,6 +689,12 @@ def parse_trainer_source(text):
             dests["ncls"] = number
         elif name == "PTR_BITS" and number is not None:
             dests["ptr_bits"] = number
+        elif name == "STRIDE" and number is not None:
+            dests["stride"] = number
+        elif name == "ADDRESS_MODE" and text_value:
+            dests["address_mode"] = text_value.strip().upper()
+        elif name == "ABSOLUTE_BASE" and number is not None:
+            dests["absolute_base"] = number
         elif name == "FILE_MARKER" and text_value:
             dests["file_marker"] = text_value
     for node in ast.walk(tree):
@@ -364,15 +706,40 @@ def parse_trainer_source(text):
                 if value:
                     receiver = value
     dests["receiver"] = receiver
+    lowered = text.lower()
+    if dests.get("stride") is None and (
+        "ptr_val + 2" in lowered or "ptr_val+2" in lowered.replace(" ", "")
+    ):
+        dests["stride"] = TWO_BYTE_STEP
+    if dests.get("address_mode") is None:
+        if "address 1 gb intake data area" in lowered:
+            dests["address_mode"] = RELATIVE
+        elif "address-mode" in lowered and "relative" in lowered:
+            dests["address_mode"] = RELATIVE
     header = dests.get("intake_header")
-    dests["write_ptr_rel"] = 0 if header is not None else UNRESOLVED
-    dests["size_rel"] = 8 if header is not None else UNRESOLVED
-    dests["capacity_rel"] = 16 if header is not None else UNRESOLVED
-    dests["data_start_rel"] = header if header is not None else UNRESOLVED
+    if header == HEADER_LAYOUT_BYTES:
+        dests["write_ptr_rel"] = 0
+        dests["size_rel"] = HEADER_FIELD_SPAN
+        dests["capacity_rel"] = HEADER_FIELD_SPAN * 2
+        dests["data_start_rel"] = HEADER_LAYOUT_BYTES
+    else:
+        dests["write_ptr_rel"] = UNRESOLVED
+        dests["size_rel"] = UNRESOLVED
+        dests["capacity_rel"] = UNRESOLVED
+        dests["data_start_rel"] = (
+            header if _valid_positive_int(header) else UNRESOLVED
+        )
+    if dests.get("stride") is None:
+        dests["stride"] = UNRESOLVED
+    if dests.get("address_mode") is None:
+        dests["address_mode"] = UNRESOLVED
     conflicts = []
     capacity = dests.get("intake_capacity")
-    ptr_bits = dests.get("ptr_bits")
-    space = pointer_space(ptr_bits=ptr_bits, capacity=capacity)
+    space = pointer_space(
+        ptr_bits=dests.get("ptr_bits"),
+        capacity=capacity,
+        stride=dests.get("stride"),
+    )
     if isinstance(capacity, int) and capacity != ONE_GIB and "1 GB" in text:
         conflicts.append(
             {
@@ -386,7 +753,8 @@ def parse_trainer_source(text):
                     "source names INTAKE_CAPACITY=%s while comments still "
                     "say 1 GB. fail-closed BLOCKED. max_pointer=%s "
                     "last_safe_start=%s steps_before_wrap=%s "
-                    "required_bits=%s. Live size stays UNRESOLVED. Never 0."
+                    "required_bits=%s. Live size stays UNRESOLVED. Never 0. "
+                    "No named-default substitution."
                     % (
                         capacity,
                         space["max_pointer"],
@@ -587,53 +955,111 @@ def validate_packet(obj, parsed=None):
                     ),
                     "z": "FINDER-FAILED",
                 }
+    registry = obj.get("registry")
+    if registry is None and parsed:
+        registry = parsed.get("registry")
+    bound = bind_address_facts(dests, registry=registry)
+    presented = {}
+    if "canonical_payload" in obj or "canonical_hash" in obj:
+        presented = {
+            "canonical_payload": obj.get("canonical_payload"),
+            "canonical_hash": obj.get("canonical_hash"),
+        }
+    elif isinstance(obj.get("integrity"), dict):
+        presented = obj.get("integrity") or {}
+    if presented:
+        checked = validate_canonical_record(presented, dests=dests, registry=registry)
+        if checked.get("state") == "NOT_LANDED":
+            return checked
     found = []
     for item in list((parsed or {}).get("conflicts") or []):
         if conflict_is_source_space(item):
             found.append(item)
-    for item in source_space_conflicts(dests):
+    for item in source_space_conflicts(dests, registry=registry):
         if item.get("id") not in {row.get("id") for row in found}:
             found.append(item)
-    if found:
+    if bound["status"] == UNRESOLVED and bound["reasons"]:
+        return {
+            "state": UNRESOLVED,
+            "note": (
+                "missing or malformed address facts stay UNRESOLVED: %s. "
+                "No named-default substitution. Live offsets stay "
+                "UNRESOLVED. Never 0."
+                % ",".join(bound["reasons"])
+            ),
+            "z": "FINDER-FAILED",
+            "max_pointer": bound["max_pointer"],
+            "last_safe_start": bound["last_safe_start"],
+            "steps_before_wrap": bound["steps_before_wrap"],
+            "required_bits": bound["required_bits"],
+            "stride": bound["stride"],
+            "address_mode": bound["address_mode"],
+            "data_start": bound["data_start"],
+            "status": UNRESOLVED,
+            "reasons": bound["reasons"],
+            "canonical_hash": bound["canonical_hash"],
+            "canonical_payload": bound["canonical_payload"],
+        }
+    if found or bound["status"] == BLOCKED:
         record = next(
             (item for item in found if item.get("id") == PTR_BITS_CAPACITY_CONFLICT),
-            found[0],
+            found[0] if found else bound,
         )
-        digest = record.get("canonical_hash") or canonical_conflict_hash(
-            ptr_bits=dests.get("ptr_bits"),
-            capacity=dests.get("intake_capacity"),
-        )
+        if presented:
+            checked = validate_canonical_record(record, dests=dests, registry=registry)
+            if checked.get("state") == "NOT_LANDED":
+                return checked
+        digest = bound["canonical_hash"]
         return {
             "state": BLOCKED,
             "note": (
                 "deterministic source-space conflict is fail-closed BLOCKED. "
                 "max_pointer=%s last_safe_start=%s steps_before_wrap=%s "
-                "required_bits=%s canonical_hash=%s. Live offsets stay "
-                "UNRESOLVED. Never 0."
+                "required_bits=%s stride=%s address-mode=%s data-start=%s "
+                "canonical_hash=%s. Live offsets stay UNRESOLVED. Never 0. "
+                "No named-default substitution."
                 % (
-                    record.get("max_pointer", MAX_POINTER),
-                    record.get("last_safe_start", LAST_SAFE_START),
-                    record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
-                    record.get("required_bits", REQUIRED_BITS),
+                    bound["max_pointer"],
+                    bound["last_safe_start"],
+                    bound["steps_before_wrap"],
+                    bound["required_bits"],
+                    bound["stride"],
+                    bound["address_mode"],
+                    bound["data_start"],
                     digest,
                 )
             ),
             "z": "FINDER-FAILED",
-            "max_pointer": record.get("max_pointer", MAX_POINTER),
-            "last_safe_start": record.get("last_safe_start", LAST_SAFE_START),
-            "steps_before_wrap": record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
-            "required_bits": record.get("required_bits", REQUIRED_BITS),
+            "max_pointer": bound["max_pointer"],
+            "last_safe_start": bound["last_safe_start"],
+            "steps_before_wrap": bound["steps_before_wrap"],
+            "required_bits": bound["required_bits"],
+            "stride": bound["stride"],
+            "address_mode": bound["address_mode"],
+            "data_start": bound["data_start"],
+            "status": BLOCKED,
+            "reasons": bound["reasons"],
             "canonical_hash": digest,
+            "canonical_payload": bound["canonical_payload"],
             "conflicts": found,
         }
     return {
         "state": "SYNTHETIC_OK",
         "note": (
-            "source-only address packet is well-formed. Live offsets stay "
-            "UNRESOLVED. H-006 stays candidate. xproc stays deferred. "
-            "This is not a live train."
+            "source-only address packet is well-formed. 1 GiB / 30-bit "
+            "relative is OK. Live offsets stay UNRESOLVED. H-006 stays "
+            "candidate. xproc stays deferred. This is not a live train."
         ),
         "z": "",
+        "max_pointer": bound["max_pointer"],
+        "last_safe_start": bound["last_safe_start"],
+        "steps_before_wrap": bound["steps_before_wrap"],
+        "required_bits": bound["required_bits"],
+        "stride": bound["stride"],
+        "address_mode": bound["address_mode"],
+        "data_start": bound["data_start"],
+        "canonical_hash": bound["canonical_hash"],
+        "canonical_payload": bound["canonical_payload"],
     }
 
 
@@ -649,11 +1075,16 @@ def measure_from_rows(facts):
         "dests": dict(facts.get("dests") or {}),
         "live_offsets": facts.get("live_offsets") or UNRESOLVED,
         "conflicts": list(facts.get("conflicts") or []),
-        "max_pointer": facts.get("max_pointer", MAX_POINTER),
-        "last_safe_start": facts.get("last_safe_start", LAST_SAFE_START),
-        "steps_before_wrap": facts.get("steps_before_wrap", STEPS_BEFORE_WRAP),
-        "required_bits": facts.get("required_bits", REQUIRED_BITS),
-        "canonical_hash": facts.get("canonical_hash") or "",
+        "max_pointer": facts.get("max_pointer", UNRESOLVED),
+        "last_safe_start": facts.get("last_safe_start", UNRESOLVED),
+        "steps_before_wrap": facts.get("steps_before_wrap", UNRESOLVED),
+        "required_bits": facts.get("required_bits", UNRESOLVED),
+        "stride": facts.get("stride", UNRESOLVED),
+        "address_mode": facts.get("address_mode", UNRESOLVED),
+        "data_start": facts.get("data_start", UNRESOLVED),
+        "reasons": list(facts.get("reasons") or []),
+        "canonical_payload": dict(facts.get("canonical_payload") or {}),
+        "canonical_hash": facts.get("canonical_hash") or UNRESOLVED,
         "found_phrases": list(facts.get("found_phrases") or []),
         "h006": dict(facts.get("h006") or {}),
         "xproc": str(facts.get("xproc") or DEFERRED),
@@ -735,29 +1166,47 @@ def classify(row):
             (item for item in conflicts if item.get("id") == PTR_BITS_CAPACITY_CONFLICT),
             conflicts[0],
         )
-        digest = record.get("canonical_hash") or row.get("canonical_hash") or canonical_conflict_hash()
+        bound = bind_address_facts(row.get("dests") or {})
+        presented = {
+            "canonical_payload": record.get("canonical_payload"),
+            "canonical_hash": record.get("canonical_hash"),
+        }
+        if presented.get("canonical_payload") or presented.get("canonical_hash"):
+            checked = validate_canonical_record(presented, dests=row.get("dests") or {})
+            if checked.get("state") == "NOT_LANDED":
+                return checked
+        digest = bound["canonical_hash"]
         return {
             "state": BLOCKED,
             "note": (
                 "deterministic source-space conflict is fail-closed BLOCKED. "
                 "max_pointer=%s last_safe_start=%s steps_before_wrap=%s "
-                "required_bits=%s canonical_hash=%s. Live allocated offsets "
-                "stay UNRESOLVED. Never 0."
+                "required_bits=%s stride=%s address-mode=%s data-start=%s "
+                "canonical_hash=%s. Live allocated offsets stay UNRESOLVED. "
+                "Never 0. No named-default substitution."
                 % (
-                    record.get("max_pointer", MAX_POINTER),
-                    record.get("last_safe_start", LAST_SAFE_START),
-                    record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
-                    record.get("required_bits", REQUIRED_BITS),
+                    bound["max_pointer"],
+                    bound["last_safe_start"],
+                    bound["steps_before_wrap"],
+                    bound["required_bits"],
+                    bound["stride"],
+                    bound["address_mode"],
+                    bound["data_start"],
                     digest,
                 )
             ),
             "z": "FINDER-FAILED",
             "taking_state": "CLAIMED",
-            "max_pointer": record.get("max_pointer", MAX_POINTER),
-            "last_safe_start": record.get("last_safe_start", LAST_SAFE_START),
-            "steps_before_wrap": record.get("steps_before_wrap", STEPS_BEFORE_WRAP),
-            "required_bits": record.get("required_bits", REQUIRED_BITS),
+            "max_pointer": bound["max_pointer"],
+            "last_safe_start": bound["last_safe_start"],
+            "steps_before_wrap": bound["steps_before_wrap"],
+            "required_bits": bound["required_bits"],
+            "stride": bound["stride"],
+            "address_mode": bound["address_mode"],
+            "data_start": bound["data_start"],
             "canonical_hash": digest,
+            "canonical_payload": bound["canonical_payload"],
+            "reasons": bound["reasons"],
         }
     needed = [phrase for phrase in REQUIRED_PHRASES if phrase not in (row.get("found_phrases") or [])]
     if (
@@ -823,6 +1272,7 @@ def measure_root(root):
                 trainer_text = handle.read()
     parsed = parse_trainer_source(trainer_text)
     packet = validate_packet(synthetic_packet(parsed), parsed=parsed)
+    bound = bind_address_facts(parsed.get("dests") or {})
     h006 = classify_h006(root)
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     calibration_ok = len(calibration_hits) == len(CALIBRATION)
@@ -856,14 +1306,16 @@ def measure_root(root):
         "titan": "NOT_WRITTEN",
         "slack_ts": SLACK_TS,
         "taking_id": TAKING_ID,
-        "max_pointer": MAX_POINTER,
-        "last_safe_start": LAST_SAFE_START,
-        "steps_before_wrap": STEPS_BEFORE_WRAP,
-        "required_bits": REQUIRED_BITS,
-        "canonical_hash": canonical_conflict_hash(
-            ptr_bits=(parsed.get("dests") or {}).get("ptr_bits"),
-            capacity=(parsed.get("dests") or {}).get("intake_capacity"),
-        ),
+        "max_pointer": bound["max_pointer"],
+        "last_safe_start": bound["last_safe_start"],
+        "steps_before_wrap": bound["steps_before_wrap"],
+        "required_bits": bound["required_bits"],
+        "stride": bound["stride"],
+        "address_mode": bound["address_mode"],
+        "data_start": bound["data_start"],
+        "reasons": bound["reasons"],
+        "canonical_payload": bound["canonical_payload"],
+        "canonical_hash": bound["canonical_hash"],
     }
     row = measure_from_rows(facts)
     row.update(
@@ -911,7 +1363,11 @@ def self_test():
     if missing.get("state") != UNRESOLVED or missing.get("z") != "FINDER-FAILED":
         return False
     conflicted = parse_trainer_source(
-        "INTAKE_CAPACITY = 50 * (1 << 30)  # 1 GB\nPTR_BITS = 30\n"
+        "INTAKE_CAPACITY = 50 * (1 << 30)  # 1 GB\n"
+        "PTR_BITS = 30\n"
+        "STRIDE = 2\n"
+        "ADDRESS_MODE = 'RELATIVE'\n"
+        "INTAKE_HEADER = 24\n"
     )
     blocked = validate_packet(synthetic_packet(conflicted), parsed=conflicted)
     if blocked.get("state") != BLOCKED:
@@ -926,6 +1382,48 @@ def self_test():
         return False
     if not blocked.get("canonical_hash"):
         return False
+    missing = validate_packet(
+        {
+            "kind": "MUHL_SELF_TRAIN_ADDRESS",
+            "source_index": TRAINER_REL,
+            "dests": {"name": "muhl_self_train"},
+            "live_offsets": UNRESOLVED,
+            "host_inference": False,
+            "titan": "NOT_WRITTEN",
+            "legacy_trainer_import": False,
+            "legacy_trainer_execute": False,
+            "xproc": DEFERRED,
+            "h006": CANDIDATE,
+        }
+    )
+    if missing.get("state") != UNRESOLVED:
+        return False
+    if missing.get("max_pointer") != UNRESOLVED:
+        return False
+    tampered = dict(blocked.get("canonical_payload") or {})
+    if tampered:
+        tampered["max_pointer"] = 1
+        forged = validate_packet(
+            {
+                "kind": "MUHL_SELF_TRAIN_ADDRESS",
+                "source_index": TRAINER_REL,
+                "dests": conflicted.get("dests") or {},
+                "live_offsets": UNRESOLVED,
+                "host_inference": False,
+                "titan": "NOT_WRITTEN",
+                "legacy_trainer_import": False,
+                "legacy_trainer_execute": False,
+                "xproc": DEFERRED,
+                "h006": CANDIDATE,
+                "canonical_payload": tampered,
+                "canonical_hash": blocked.get("canonical_hash"),
+            },
+            parsed=conflicted,
+        )
+        if forged.get("state") != "NOT_LANDED":
+            return False
+        if "tampered" not in forged.get("note", "").lower():
+            return False
     return trainer_imported() is False
 
 
