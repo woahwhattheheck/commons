@@ -1,0 +1,457 @@
+{
+  "schema_version": 1,
+  "kind": "REVENUE_PORTFOLIO",
+  "mandate": "55_portfolio_overdrive",
+  "landing_owner": "cursor-grok-46-demon-redteam-20260825",
+  "model": "Cursor Grok 4.6",
+  "harness": "Cursor Automation",
+  "slack_taking_id": "demon-redteam-revenue-readme-20260825-01",
+  "slack_ts": "1787643743.338469",
+  "taking_state": "CARRIER_ONLY",
+  "base_main_sha_at_write": "ed705e0f599f6a701130c352bfbf64a4057ec565",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "collectable_usd": "NOT_LANDED",
+  "banking_only_blocker": false,
+  "rank_but_do_not_erase": true,
+  "computer_is_the_product": false,
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential",
+    "private buyer identity",
+    "customer model bytes"
+  ],
+  "preserved_noncompeting_routes": [
+    "revenue/dio/",
+    "commercial.json",
+    "commercial.html",
+    "ground/CASH_NOW.md",
+    "ground/CASH_NOW.json",
+    "host/cash_now.py",
+    "bazaar.json"
+  ],
+  "horizons": ["now", "10d", "30d", "90d", "180d", "365d", "730d"],
+  "required_lanes": [
+    "high-ticket-white-box",
+    "failure-packets",
+    "paid-briefings-training",
+    "tools-receipts",
+    "licensing",
+    "retainers",
+    "expert-networks",
+    "grants",
+    "sponsorships-partners",
+    "later-marketplace"
+  ],
+  "collected_cash_gates": {
+    "AUTHORIZATION": "buyer charge approved or a public USD offer exists; not bank cash",
+    "SETTLEMENT": "processor balance available; Stripe US public default T+2 after capture",
+    "BANK_AVAILABLE": "funds left the processor for a privately connected payout destination",
+    "current_bazaar_usd_offers": 0,
+    "current_bazaar_currency": "FREE_COLONY_COMPUTE",
+    "needs_bryce": "payout destination connected inside an official provider UI; no financial data on public roads",
+    "note": "Authorization is not settlement is not bank-available cash. Banking setup is not the only blocker."
+  },
+  "founder_slot": {
+    "scarce_resource": "Bryce calendar / closed-room White Box delivery",
+    "collision_rule": "only one HIGH founder-slot lane may be ACTIVE in a horizon; others stay ranked and un-erased",
+    "now_active": "high-ticket-white-box",
+    "do_not_parallel_now": [
+      "paid-briefings-training",
+      "retainers",
+      "expert-networks"
+    ]
+  },
+  "rank_order": [
+    "high-ticket-white-box",
+    "failure-packets",
+    "paid-briefings-training",
+    "tools-receipts",
+    "licensing",
+    "retainers",
+    "expert-networks",
+    "grants",
+    "sponsorships-partners",
+    "later-marketplace"
+  ],
+  "lanes": [
+    {
+      "id": "high-ticket-white-box",
+      "name": "high-ticket White Box",
+      "rank": 1,
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "buyer": "organization with one legally controlled GGUF family and a runnable evaluation harness",
+      "channel": "commercial.html public interest form to OFFER; no payment on that page",
+      "acceptance": "listed deliverables supplied; ablation and edit reversible; rollback proof; customer harness ran baseline/ablation/edit/rollback",
+      "falsifier": "no NDA/SOW, or rollback check fails, or customer harness never runs",
+      "owner_private_blockers": [
+        "payout destination inside official provider UI",
+        "NDA/SOW signing",
+        "customer model stays off public roads"
+      ],
+      "cash_to_bank_timing": {
+        "now": "offer exists; collected cash NOT_LANDED",
+        "authorization": "possible on signing milestone once a rail exists",
+        "settlement": "processor T+2 after capture on public Stripe US default",
+        "bank_available": "only after privately connected destination plus settlement"
+      },
+      "collected_cash_gate": "NOT_LANDED until a USD offer is actually paid and BANK_AVAILABLE is measured",
+      "public_price_anchor": {
+        "currency": "USD",
+        "fixed_amount": 30000,
+        "term_calendar_days": 30,
+        "milestones": [15000, 15000],
+        "follow_on_12mo": [100000, 175000],
+        "source": "commercial.json"
+      },
+      "horizons": {
+        "now": "keep the landed $30k / 30d offer public; do not invent a checkout",
+        "10d": "one public non-confidential interest post is enough to start a quote; still no collected cash",
+        "30d": "one pilot term can complete if a buyer already signed; founder slot is full",
+        "90d": "convert a completed pilot into the separately scoped 12-month license conversation",
+        "180d": "second family or second org only after first BANK_AVAILABLE",
+        "365d": "license renewals; still do not sell the computer",
+        "730d": "White Box remains the high-ticket door; marketplace must not replace it"
+      },
+      "sources": [
+        "commercial.json",
+        "revenue/dio/foundation.json",
+        "muhl/lda-docs/muhl_revenue_add_20260813/FEE.md",
+        "muhl/lda-docs/muhl_revenue_add_20260813/PRODUCT_LAW.md"
+      ]
+    },
+    {
+      "id": "failure-packets",
+      "name": "failure packets",
+      "rank": 2,
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "buyer": "lab or operator who wants a measured failure packet, not a computer",
+      "channel": "public Commons receipts plus a later priced Bazaar offer after payout dest exists",
+      "acceptance": "named artifact, SHA-256, search space, and a miss that is FINDER-FAILED never 0",
+      "falsifier": "packet with no hash, or a silent zero, or titan/factory bytes included",
+      "owner_private_blockers": [
+        "payout destination",
+        "decision that a packet is a SKU and not a dump of the computer"
+      ],
+      "cash_to_bank_timing": {
+        "now": "packets exist as public measurements; no USD SKU",
+        "authorization": "possible on a small fixed fee after a USD offer exists",
+        "settlement": "same public rail clocks as cash-now leftover",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED — bazaar USD offers = 0",
+      "horizons": {
+        "now": "keep publishing measured packets; do not price them until payout dest exists",
+        "10d": "one public catalog of already-landed packets with hashes",
+        "30d": "first priced packet SKU only after #needs-bryce payout dest",
+        "90d": "repeatable packet series; still no titan",
+        "180d": "packet library as a paid shelf beside White Box",
+        "365d": "packets remain a lane even if White Box is the cash engine",
+        "730d": "packets can feed marketplace listings without selling the computer"
+      },
+      "sources": [
+        "p/dio-revenue-foundation-landed-20260825-01.md",
+        "revenue/dio/substrate_receipt.py",
+        "ground/CASH_NOW.md"
+      ]
+    },
+    {
+      "id": "paid-briefings-training",
+      "name": "paid briefings/training",
+      "rank": 3,
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "buyer": "team that wants a closed briefing on White Box method without receiving the factory",
+      "channel": "OFFER inbox after a public non-confidential ask; closed room under NDA",
+      "acceptance": "agenda delivered; no titan/foundry/offsets leave the room; attendee list stays off public roads",
+      "falsifier": "briefing that dumps hide-list internals, or no NDA, or founder double-booked with a pilot",
+      "owner_private_blockers": [
+        "founder calendar",
+        "NDA",
+        "payout destination"
+      ],
+      "cash_to_bank_timing": {
+        "now": "no public briefing SKU",
+        "authorization": "possible on booking after a USD offer exists",
+        "settlement": "same rail clocks",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED",
+      "horizons": {
+        "now": "do not schedule; founder slot is reserved for White Box",
+        "10d": "write a public non-confidential briefing outline only",
+        "30d": "one briefing only if no live White Box pilot occupies the slot",
+        "90d": "recorded training that does not include hide-list material",
+        "180d": "repeatable training SKU after first BANK_AVAILABLE",
+        "365d": "training can run without a new founder day if materials exist",
+        "730d": "training remains a lane; not erased by marketplace"
+      },
+      "sources": [
+        "muhl/lda-docs/muhl_revenue_add_20260813/DELIVERABLE.md",
+        "muhl/lda-docs/muhl_revenue_add_20260813/PRODUCT_LAW.md"
+      ]
+    },
+    {
+      "id": "tools-receipts",
+      "name": "tools/receipts",
+      "rank": 4,
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "buyer": "operator who pays for a named receipt or a hosted measurement, not a computer",
+      "channel": "existing public tools (commercial.html, bazaar.html, Action Pad) plus later USD offers",
+      "acceptance": "durable result path with SHA; payment reference never proves delivery",
+      "falsifier": "tool that claims PAID without a delivery receipt, or adds a login gate",
+      "owner_private_blockers": [
+        "payout destination",
+        "decision to list a USD-priced Bazaar offer"
+      ],
+      "cash_to_bank_timing": {
+        "now": "tools are public and FREE_COLONY_COMPUTE",
+        "authorization": "possible after first USD-priced offer",
+        "settlement": "same rail clocks",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED — current bazaar offers are price 0",
+      "horizons": {
+        "now": "keep tools open-door; do not add auth",
+        "10d": "one receipt SKU design that reuses DIO delivery_receipt schema",
+        "30d": "priced receipt only after payout dest",
+        "90d": "tools remain free to run; receipts can be paid",
+        "180d": "receipt shelf beside White Box",
+        "365d": "tools/receipts still a lane if marketplace exists",
+        "730d": "do not erase free tools when paid receipts exist"
+      },
+      "sources": [
+        "bazaar.json",
+        "revenue/dio/delivery_receipt.schema.json",
+        "action.html"
+      ]
+    },
+    {
+      "id": "licensing",
+      "name": "licensing",
+      "rank": 5,
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "buyer": "organization that completed a White Box pilot and wants 12-month internal use",
+      "channel": "separately scoped follow-on after a successful pilot; not the public interest form",
+      "acceptance": "scope, model-family count, and term written; computer and foundry stay with Bryce",
+      "falsifier": "license that transfers the computer, or a license sold before a completed pilot",
+      "owner_private_blockers": [
+        "completed pilot",
+        "owner contract terms",
+        "payout destination"
+      ],
+      "cash_to_bank_timing": {
+        "now": "range published ($100k–$175k / 12mo); no collected cash",
+        "authorization": "on signed follow-on",
+        "settlement": "same rail clocks; larger amount does not skip T+2",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED — follow-on is separately scoped and after-pilot",
+      "horizons": {
+        "now": "keep the published range; do not pretend it is collected",
+        "10d": "no license close expected",
+        "30d": "license talk only after a live pilot is accepted",
+        "90d": "first license window after one 30d pilot plus settlement",
+        "180d": "second license or multi-family upgrade",
+        "365d": "renewal clock",
+        "730d": "license remains the high-dollar follow-on; marketplace does not replace it"
+      },
+      "sources": [
+        "commercial.json",
+        "muhl/lda-docs/muhl_revenue_add_20260813/FEE.md"
+      ]
+    },
+    {
+      "id": "retainers",
+      "name": "retainers",
+      "rank": 6,
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "buyer": "org that wants reserved White Box capacity after first BANK_AVAILABLE",
+      "channel": "private follow-on; not a public checkout",
+      "acceptance": "hours or capacity named; hide list still hidden",
+      "falsifier": "retainer that sells unrestricted factory access, or retainer sold before first collected cash",
+      "owner_private_blockers": [
+        "founder capacity",
+        "first BANK_AVAILABLE",
+        "payout destination"
+      ],
+      "cash_to_bank_timing": {
+        "now": "no retainer SKU",
+        "authorization": "on signing after first collected cash exists",
+        "settlement": "recurring; each cycle still AUTH≠SETTLE≠BANK",
+        "bank_available": "same gate every cycle"
+      },
+      "collected_cash_gate": "NOT_LANDED",
+      "horizons": {
+        "now": "do not offer; collides with the only now-active founder slot",
+        "10d": "no retainer",
+        "30d": "no retainer unless a pilot already produced BANK_AVAILABLE",
+        "90d": "first retainer design after one collected-cash event",
+        "180d": "one retainer max; still HIGH founder collision",
+        "365d": "retainers only if White Box delivery is repeatable",
+        "730d": "keep ranked; do not erase if unused"
+      },
+      "sources": [
+        "muhl/lda-docs/muhl_revenue_add_20260813/SOW_OUTLINE.md",
+        "ground/CASH_NOW.md"
+      ]
+    },
+    {
+      "id": "expert-networks",
+      "name": "expert networks",
+      "rank": 7,
+      "erased": false,
+      "founder_slot_collision": "HIGH",
+      "buyer": "network that pays for a bounded expert hour, not the computer",
+      "channel": "later; owner-private intake only",
+      "acceptance": "hour delivered; no hide-list dump; no customer data on Commons",
+      "falsifier": "network listing that exposes private buyer data or factory internals",
+      "owner_private_blockers": [
+        "founder calendar",
+        "owner decision to appear on a network",
+        "payout destination"
+      ],
+      "cash_to_bank_timing": {
+        "now": "not a Commons offer",
+        "authorization": "network pays the expert after the hour",
+        "settlement": "network's rail, not Commons bazaar",
+        "bank_available": "owner-private; do not publish destination data"
+      },
+      "collected_cash_gate": "NOT_LANDED — no public expert-network offer",
+      "horizons": {
+        "now": "do not list Bryce on a network; slot reserved",
+        "10d": "no outreach from this leftover",
+        "30d": "still no outreach",
+        "90d": "optional owner-private decision only",
+        "180d": "possible after first BANK_AVAILABLE if calendar exists",
+        "365d": "keep ranked",
+        "730d": "do not erase"
+      },
+      "sources": [
+        "ground/CASH_NOW.md",
+        "muhl/lda-docs/muhl_revenue_add_20260813/CONSTRAINTS.md"
+      ]
+    },
+    {
+      "id": "grants",
+      "name": "grants",
+      "rank": 8,
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "buyer": "grantor / agency / foundation; not a product customer",
+      "channel": "owner-private application; no grant text invented here",
+      "acceptance": "award letter plus a public non-confidential receipt that names no bank data",
+      "falsifier": "grant story with no application, or an application that publishes hide-list material",
+      "owner_private_blockers": [
+        "owner chooses the grantor",
+        "application packet",
+        "payout destination for award disbursement"
+      ],
+      "cash_to_bank_timing": {
+        "now": "no application in this leftover",
+        "authorization": "award decision; often 90–180d after apply",
+        "settlement": "grantor disbursement clock, often 30–90d after award",
+        "bank_available": "owner-private; slower than Stripe T+2"
+      },
+      "collected_cash_gate": "NOT_LANDED",
+      "horizons": {
+        "now": "do not file from this session",
+        "10d": "optional owner-private shortlist only",
+        "30d": "still paper, not cash",
+        "90d": "earliest plausible apply window",
+        "180d": "earliest plausible award talk",
+        "365d": "first plausible BANK_AVAILABLE if an award exists",
+        "730d": "keep ranked; slow cash-to-bank is why this is not now"
+      },
+      "sources": [
+        "ground/CASH_NOW.md",
+        "ground/EXECUTE.md"
+      ]
+    },
+    {
+      "id": "sponsorships-partners",
+      "name": "sponsorships/partners",
+      "rank": 9,
+      "erased": false,
+      "founder_slot_collision": "MED",
+      "buyer": "partner who wants public association without receiving the computer",
+      "channel": "public non-confidential OFFER post; no outreach from this leftover",
+      "acceptance": "written scope that forbids factory transfer and private buyer data on Commons",
+      "falsifier": "partner deal that requires auth on Commons, or that publishes hide-list material",
+      "owner_private_blockers": [
+        "owner chooses partners",
+        "payout destination",
+        "no private buyer list on the board"
+      ],
+      "cash_to_bank_timing": {
+        "now": "no sponsor SKU",
+        "authorization": "on signed sponsor term",
+        "settlement": "same rail clocks if paid via a public processor",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED",
+      "horizons": {
+        "now": "do not solicit",
+        "10d": "no outreach",
+        "30d": "public page already states the offer; that is enough",
+        "90d": "partner talk only after first collected cash or a live pilot",
+        "180d": "possible co-branded briefing that still hides the factory",
+        "365d": "keep ranked",
+        "730d": "do not erase if unused"
+      },
+      "sources": [
+        "commercial.html",
+        "ground/OPEN_DOOR.md"
+      ]
+    },
+    {
+      "id": "later-marketplace",
+      "name": "later marketplace paths",
+      "rank": 10,
+      "erased": false,
+      "founder_slot_collision": "LOW",
+      "buyer": "later buyer of a mind/file/receipt that is not the computer",
+      "channel": "bazaar.html / later marketplace; first catalog currency is FREE_COLONY_COMPUTE",
+      "acceptance": "copy-the-file is not a sale of the computer; paid SKU must be a keepable mind/receipt/appliance-without-foundry",
+      "falsifier": "marketplace listing of titan, foundry, allocator, live offsets, or commons.mno smash",
+      "owner_private_blockers": [
+        "product law: computer is not the product",
+        "payout destination",
+        "first collected cash on an earlier lane"
+      ],
+      "cash_to_bank_timing": {
+        "now": "marketplace has no USD offers",
+        "authorization": "only after a real USD SKU exists",
+        "settlement": "same rail clocks",
+        "bank_available": "same BANK_AVAILABLE gate"
+      },
+      "collected_cash_gate": "NOT_LANDED — later on purpose",
+      "horizons": {
+        "now": "do not open a marketplace checkout",
+        "10d": "keep bazaar free-colony compute honest",
+        "30d": "still no USD marketplace",
+        "90d": "design a non-computer SKU only after payout dest exists",
+        "180d": "optional pocket-mind / receipt SKU, never the factory",
+        "365d": "marketplace may exist beside White Box",
+        "730d": "marketplace is a lane, not a replacement; do not erase"
+      },
+      "sources": [
+        "bazaar.json",
+        "ground/BAZAAR.md",
+        "muhl/lda-docs/muhl_revenue_add_20260813/PRODUCT_LAW.md",
+        "muhl/lda-docs/muhl_revenue_add_20260813/DELIVERABLE.md"
+      ]
+    }
+  ]
+}
