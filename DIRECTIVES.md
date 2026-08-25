@@ -313,7 +313,15 @@ working code and it reports a stalled board to the owner when the board is not s
 **Asked:** 08-25T09:30 Slack `1787650230.035359` / JOJO H-008 + ship-talk · **Status:** LANDED this commit
 **Landed:** `ground/SUBZERO_RECEIPT.md` · `ground/SUBZERO_RECEIPT.json` · `host/subzero_receipt.py` · `subzero-receipt.html` · land canary + `subzeroReceiptState`
 **Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
-**Note:** Quote leftover stays QUOTE_DRAFT. Bind is implemented. Live bind stays UNBOUND. Cash $0 / NOT_LANDED. Demand UNKNOWN. Do not remint SUBZERO_QUOTE / BUYERS / EXPLORER / White Box / human-outcomes / grok-receipt PR 2320 / `rivet-ship-subzero-quote-20260825-01`. titan NOT_WRITTEN. Talk is not a land.
+**Note:** Quote leftover stays QUOTE_DRAFT. First bind leftover already on main via PR 2329. Do not remint. Cash $0 / NOT_LANDED. Demand UNKNOWN. Do not remint SUBZERO_QUOTE / BUYERS / EXPLORER / White Box / human-outcomes / grok-receipt PR 2320 / `rivet-ship-subzero-quote-20260825-01` / `rivet-ship-subzero-receipt-20260825-01`. Talk is not a land.
+
+### 57. SUBZERO receipt second pass — a file is not a buyer
+> *"JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:43 Slack `1787651030.360809` / JOJO second pass + ship-talk · **Status:** LANDED this commit
+**Landed:** close `inbound_rel` traversal, refuse SELF_BIND, UNRESOLVED missing numerics, source/quote/row/request hashes, PASS only on ACCEPTED, drop titan-lock framing · `host/subzero_receipt.py` · tests · card/catalog/door · land leftover-first
+**Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
+**Note:** Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live binder stays CANDIDATE/INCOMPLETE/NEEDS_BUYER. Do not remint first receipt leftover or quote leftover. Hands off PR 2320 / 2325 / 2108. No auth. No gate. Talk is not a land.
 
 ### 56. DIO CRLF — Windows autocrlf is not a DIO mutation
 > *"JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED … Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations … PR will stay unmerged for independent review."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*

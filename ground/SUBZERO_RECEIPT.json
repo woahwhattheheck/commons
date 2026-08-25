@@ -1,10 +1,11 @@
 {
   "slack_ts": "1787650230.035359",
+  "second_pass_ts": "1787651030.360809",
   "cell": "H-008",
   "kind": "SUBZERO_RECEIPT",
-  "subject": "sz-paid-validation / P01 $2500 quote-draft → buyer-bound validation receipt is implemented, live bind UNBOUND, not cash/runtime/demand",
+  "subject": "sz-paid-validation / P01 $2500 quote-draft bind holes closed; live binder CANDIDATE/INCOMPLETE/NEEDS_BUYER, not buyer acceptance or cash",
   "quote_receipt": "rivet-ship-subzero-quote-20260825-01",
-  "quote_sha": "1ab2e560636566bf38c2ce199fd5a70b341b910b",
+  "first_receipt": "rivet-ship-subzero-receipt-20260825-01",
   "human_outcomes_receipt": "rivet-ship-human-outcomes-20260825-01",
   "peer_owned": [
     "PR 2320 grok-receipt",
@@ -21,17 +22,28 @@
     "schema": "revenue/subzero_buyers/validation_receipt.schema.json"
   },
   "binding": {
-    "state": "UNBOUND",
+    "state": "CANDIDATE",
+    "legal_state": "NEEDS_BUYER",
     "buyer_id_kind": "public_inbound_post_id",
     "needs": [
-      "public inbound p/{id}.md",
+      "canonical inbound post id",
+      "path stays under p/",
+      "distinct buyer claim",
+      "acceptance of this quote hash/sku",
       "named excerpt",
       "sha256 match",
       "STRUCTURAL_ONLY limit"
     ],
-    "live_pass_refused": true
+    "self_bind_refused": [
+      "rivet-ship-subzero-quote-20260825-01",
+      "rivet-ship-subzero-receipt-20260825-01",
+      "rivet-ship-human-outcomes-20260825-01"
+    ],
+    "live_pass_refused": true,
+    "pass_requires": "ACCEPTED"
   },
-  "binding_state": "UNBOUND",
+  "binding_state": "CANDIDATE",
+  "legal_state": "NEEDS_BUYER",
   "live_bound_receipts": 0,
   "evidence": {
     "label": "STRUCTURAL_ONLY",
@@ -55,7 +67,8 @@
     "revenue/subzero_buyers/validation_receipt.schema.json",
     "host/subzero_explorer.py",
     "host/human_outcomes.py",
-    "p/rivet-ship-subzero-quote-20260825-01.md"
+    "p/rivet-ship-subzero-quote-20260825-01.md",
+    "p/rivet-ship-subzero-receipt-20260825-01.md"
   ],
   "do_not_remint": [
     "SUBZERO_QUOTE",
@@ -67,10 +80,10 @@
     "white-box-gguf-pilot-30d",
     "HUMAN_OUTCOMES",
     "rivet-ship-subzero-quote-20260825-01",
+    "rivet-ship-subzero-receipt-20260825-01",
     "rivet-ship-human-outcomes-20260825-01",
     "PR 2320"
   ],
-  "titan": "NOT_WRITTEN",
   "posting": "OPEN",
   "no_auth": true,
   "no_gate": true,
@@ -78,7 +91,6 @@
     "PR 2108",
     "PR 2320",
     "SPECTER",
-    "titan --go",
     "White Box",
     "payment-ready",
     "human-outcomes checkout"

@@ -1,27 +1,32 @@
 #!/usr/bin/env python3
-"""host/subzero_receipt.py — quote-draft → buyer-bound receipt.
+"""host/subzero_receipt.py — quote-draft bind, not buyer acceptance.
 
-Slack 1787650230.035359 (JOJO BACKEND CELL H-008):
-source-index the existing sz-paid-validation / P01 $2500 offer
-into the smallest honest quote-draft → buyer-bound validation
-receipt implementation. Talk that restates H-008 is CLAIMED
-until this leftover measures the source index, the bind path,
-UNBOUND live state, $0 / NOT_LANDED cash, and no remint.
+Slack 1787650230.035359 (JOJO BACKEND CELL H-008) plus Slack
+1787651030.360809 (JOJO SECOND PASS on squash 5d796079):
+source-index sz-paid-validation / P01 $2500 into a bind that
+cannot mint BUYER_BOUND from file presence, self-bind, Windows
+backslash traversal, missing numerics, or caller PASS.
+
+Talk that restates H-008 / #2329 is CLAIMED until this leftover
+measures the source index, the bind path, CANDIDATE/INCOMPLETE
+live binder, $0 / NOT_LANDED cash, and no remint.
 
 Do not remint SUBZERO_QUOTE / SUBZERO_GTM / SUBZERO_BUYERS /
 SUBZERO_EXPLORER / SUBZERO_PROOF / White Box / payment-ready /
-human-outcomes / grok-receipt / PR 2320. Do not open accounts.
+human-outcomes / grok-receipt / PR 2320 /
+rivet-ship-subzero-receipt-20260825-01. Do not open accounts.
 Do not message buyers. Do not store bank, routing, card, tax,
-or private-buyer data. Do not write titan. Do not smash
-commons.mno. Do not add a gate.
+or private-buyer data. Do not smash commons.mno. Do not add a
+gate.
 
-A public inbound post id is a binding key, not a seat. Bound
-is still STRUCTURAL_ONLY. Bound is not cash, not runtime, not
-demand proof.
+A public inbound post id is a binding key, not a seat. File
+existence is not buyer acceptance. Bound is still
+STRUCTURAL_ONLY. Bound is not cash, not runtime, not demand
+proof. Live binder stays CANDIDATE / INCOMPLETE / NEEDS_BUYER.
 
-X = Slack H-008 + quote leftover + GTM sku + P01 + schema +
-    leftover paths.
-Y = those facts named on this tree + bind implementation.
+X = Slack H-008 + second pass + quote leftover + GTM sku + P01
+    + schema + leftover paths.
+Y = those facts named on this tree + closed bind holes.
 Z = missing leftover / invented buyer / cash-runtime-demand
     claim / FINDER-FAILED / FINDER-UNVERIFIED. Never 0.
 
@@ -35,7 +40,9 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import struct
+import subprocess
 import sys
 
 
@@ -50,14 +57,24 @@ DEFAULT_SCHEMA = os.path.join(
     "revenue", "subzero_buyers", "validation_receipt.schema.json"
 )
 SLACK_TS = "1787650230.035359"
+SECOND_PASS_TS = "1787651030.360809"
 CELL = "H-008"
 SKU_ID = "sz-paid-validation"
 P01_ID = "P01_catalog_receipt"
 QUOTE_PRICE = 2500
 QUOTE_RECEIPT = "rivet-ship-subzero-quote-20260825-01"
 HUMAN_RECEIPT = "rivet-ship-human-outcomes-20260825-01"
-GRBN_REL = os.path.join("excerpts", "20260823", "muhl_grbn.mno")
+FIRST_RECEIPT = "rivet-ship-subzero-receipt-20260825-01"
+GRBN_REL = "excerpts/20260823/muhl_grbn.mno"
+LVIN_REL = "excerpts/20260823/muhl_lvin.mno"
 GRBN_SHA = "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632"
+SELF_BIND_IDS = (QUOTE_RECEIPT, HUMAN_RECEIPT, FIRST_RECEIPT)
+LEGAL_STATES = ("DRAFT", "NEEDS_BUYER", "ACCEPTED", "DELIVERED")
+POST_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
+ACCEPT_RE = re.compile(
+    r"\b(buyer accept|accepted quote|i accept|acceptance of|ACCEPT:)\b",
+    re.I,
+)
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
@@ -95,12 +112,19 @@ REQUIRED_PHRASES = (
     "buyer-bound",
     "validation receipt",
     "1787650230.035359",
+    "1787651030.360809",
     "h-008",
     "structural_only",
     "not runtime",
     "not demand",
     "not cash",
     "unbound",
+    "candidate",
+    "incomplete",
+    "needs_buyer",
+    "unresolved",
+    "self_bind",
+    "inbound_rel",
     "finder-failed",
     "finder-unverified",
     "never 0",
@@ -111,10 +135,21 @@ REQUIRED_PHRASES = (
     "talk is not a land",
 )
 HEX64 = set("0123456789abcdef")
+HASHED_SOURCES = (
+    DEFAULT_QUOTE,
+    DEFAULT_CATALOG,
+    DEFAULT_CARD,
+    DEFAULT_DOOR,
+    os.path.join("host", "subzero_receipt.py"),
+    os.path.join("test_subzero_receipt.py"),
+    DEFAULT_ARCH,
+    DEFAULT_BUYERS,
+    DEFAULT_SCHEMA,
+)
 
 
 def _read(root, rel):
-    path = os.path.join(root, rel)
+    path = os.path.join(root, *_posix_parts(rel))
     try:
         with open(path, encoding="utf-8", errors="replace") as handle:
             return handle.read()
@@ -123,7 +158,7 @@ def _read(root, rel):
 
 
 def _read_bytes(root, rel):
-    path = os.path.join(root, rel)
+    path = os.path.join(root, *_posix_parts(rel))
     try:
         with open(path, "rb") as handle:
             return handle.read()
@@ -132,12 +167,66 @@ def _read_bytes(root, rel):
 
 
 def _exists(root, rel):
-    return os.path.isfile(os.path.join(root, rel))
+    return os.path.isfile(os.path.join(root, *_posix_parts(rel)))
 
 
-def _hex_sha(value):
+def _posix_parts(rel):
+    text = str(rel or "").replace("\\", "/")
+    return [part for part in text.split("/") if part and part not in {".", ".."}]
+
+
+def _hex_sha(value, sizes=(64,)):
     text = str(value or "").strip().lower()
-    return len(text) == 64 and set(text) <= HEX64
+    return len(text) in sizes and set(text) <= HEX64
+
+
+def _posix_rel(rel):
+    return str(rel or "").replace("\\", "/")
+
+
+def present_int(data, key):
+    """Missing/blank is UNRESOLVED. Bad type is FINDER-FAILED. Never coerce to 0."""
+    if not isinstance(data, dict) or key not in data:
+        return {"state": "UNRESOLVED", "value": None, "key": key}
+    value = data[key]
+    if value is None or value == "":
+        return {"state": "UNRESOLVED", "value": None, "key": key}
+    if isinstance(value, bool):
+        return {"state": "FINDER-FAILED", "value": None, "key": key}
+    try:
+        return {"state": "PRESENT", "value": int(value), "key": key}
+    except (TypeError, ValueError):
+        return {"state": "FINDER-FAILED", "value": None, "key": key}
+
+
+def measured_int(facts, key):
+    """Accept a present int or an explicit {state,value} field. Missing is UNRESOLVED."""
+    facts = facts or {}
+    state_key = key + "_state"
+    raw = facts.get(key)
+    if isinstance(raw, dict) and "state" in raw:
+        state = str(raw.get("state") or "").strip().upper()
+        if state != "PRESENT":
+            return None, state or "UNRESOLVED"
+        try:
+            return int(raw.get("value")), "PRESENT"
+        except (TypeError, ValueError):
+            return None, "FINDER-FAILED"
+    if state_key in facts:
+        state = str(facts.get(state_key) or "").strip().upper()
+        if state in {"UNRESOLVED", "FINDER-FAILED"}:
+            return None, state
+        if state == "PRESENT":
+            try:
+                return int(raw), "PRESENT"
+            except (TypeError, ValueError):
+                return None, "FINDER-FAILED"
+    if raw is None or raw == "":
+        return None, "UNRESOLVED"
+    try:
+        return int(raw), "PRESENT"
+    except (TypeError, ValueError):
+        return None, "FINDER-FAILED"
 
 
 def parse_excerpt(blob):
@@ -170,6 +259,86 @@ def load_json(text, label):
     return data
 
 
+def git_source(root):
+    """Name the catalog source commit/tree. Missing git is FINDER-FAILED."""
+
+    def run(args):
+        try:
+            out = subprocess.check_output(args, cwd=root, stderr=subprocess.DEVNULL)
+        except (OSError, subprocess.CalledProcessError):
+            return ""
+        return out.decode("ascii", "replace").strip()
+
+    commit = run(["git", "rev-parse", "HEAD"])
+    tree = run(["git", "rev-parse", "HEAD^{tree}"])
+    return {
+        "source_commit": commit if _hex_sha(commit, (40, 64)) else "FINDER-FAILED",
+        "source_tree": tree if _hex_sha(tree, (40, 64)) else "FINDER-FAILED",
+    }
+
+
+def sha256_rel(root, rel):
+    blob = _read_bytes(root, rel)
+    if not blob:
+        return "UNRESOLVED"
+    return hashlib.sha256(blob).hexdigest()
+
+
+def catalog_row_hash(indexed):
+    """Hash the named sku / P01 row facts. Missing identity is UNRESOLVED."""
+    sku = str((indexed or {}).get("sku_id") or "").strip()
+    p01 = str((indexed or {}).get("p01_id") or "").strip()
+    if not sku or not p01:
+        return "UNRESOLVED"
+    payload = json.dumps(
+        {
+            "sku_id": sku,
+            "p01_id": p01,
+            "quote_price": (indexed or {}).get("quote_price"),
+            "quote_price_state": (indexed or {}).get("quote_price_state"),
+            "quote_class": (indexed or {}).get("quote_class"),
+            "arch_id": (indexed or {}).get("arch_id"),
+            "arch_status": (indexed or {}).get("arch_status"),
+            "p01_from": (indexed or {}).get("p01_from"),
+            "p01_to": (indexed or {}).get("p01_to"),
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def request_hash(inbound_id, excerpt_rel, quote_hash):
+    payload = "|".join(
+        [
+            str(inbound_id or "").strip(),
+            _posix_rel(excerpt_rel),
+            str(quote_hash or "").strip(),
+        ]
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def source_hashes(root, indexed, inbound_id="", excerpt_rel=""):
+    src = git_source(root)
+    quote_hash = sha256_rel(root, DEFAULT_QUOTE)
+    hashes = {
+        "source_commit": src["source_commit"],
+        "source_tree": src["source_tree"],
+        "quote_hash": quote_hash,
+        "catalog_row_hash": catalog_row_hash(indexed),
+        "card_hash": sha256_rel(root, DEFAULT_CARD),
+        "sidecar_hash": sha256_rel(root, DEFAULT_CATALOG),
+        "fab_hash": sha256_rel(root, os.path.join("host", "subzero_receipt.py")),
+        "test_hash": sha256_rel(root, os.path.join("test_subzero_receipt.py")),
+        "request_hash": request_hash(inbound_id, excerpt_rel, quote_hash),
+        "delivery_hash": "UNRESOLVED",
+    }
+    for rel in HASHED_SOURCES:
+        hashes[_posix_rel(rel)] = sha256_rel(root, rel)
+    return hashes
+
+
 def source_index(root):
     """Read already-landed quote / GTM / P01 / schema. Do not remint."""
     quote = load_json(_read(root, DEFAULT_QUOTE), "quote")
@@ -189,6 +358,14 @@ def source_index(root):
             p01 = item
             break
     defs = schema.get("$defs") if isinstance(schema.get("$defs"), dict) else {}
+    quote_price = present_int(sku, "price_usd")
+    arch_price = present_int(arch_sku, "price_usd")
+    p01_from = present_int(p01, "price_usd_from")
+    p01_to = present_int(p01, "price_usd_to")
+    structural_only = present_int(evidence, "structural_only")
+    runtime_measured = present_int(evidence, "runtime_measured")
+    customer_ready = present_int(evidence, "customer_ready")
+    collected_cash = present_int(quote, "collected_cash_usd")
     return {
         "quote_error": str(quote.get("error") or ""),
         "arch_error": str(arch.get("error") or ""),
@@ -196,63 +373,225 @@ def source_index(root):
         "schema_error": str(schema.get("error") or ""),
         "sku_id": str(sku.get("id") or "").strip(),
         "quote_class": str(sku.get("class") or "").strip().upper(),
-        "quote_price": int(sku.get("price_usd") or 0),
+        "quote_price": quote_price["value"],
+        "quote_price_state": quote_price["state"],
         "quote_status": str(sku.get("status") or "").strip().upper(),
         "arch_id": str(arch_sku.get("id") or "").strip(),
-        "arch_price": int(arch_sku.get("price_usd") or 0),
+        "arch_price": arch_price["value"],
+        "arch_price_state": arch_price["state"],
         "arch_status": str(arch_sku.get("status") or "").strip().upper(),
         "arch_implements": str(arch_sku.get("implements") or "").strip(),
         "p01_id": str(p01.get("id") or "").strip(),
-        "p01_from": int(p01.get("price_usd_from") or 0),
-        "p01_to": int(p01.get("price_usd_to") or 0),
+        "p01_from": p01_from["value"],
+        "p01_from_state": p01_from["state"],
+        "p01_to": p01_to["value"],
+        "p01_to_state": p01_to["state"],
         "schema_has_buyer": "buyer_receipt" in defs,
         "schema_no_auth": schema.get("no_auth") is True,
         "schema_no_gate": schema.get("no_gate") is True,
-        "structural_only": int(evidence.get("structural_only") or 0),
-        "runtime_measured": int(evidence.get("runtime_measured") or 0),
-        "customer_ready": int(evidence.get("customer_ready") or 0),
-        "runtime_proof": bool(evidence.get("runtime_proof")),
-        "collected_cash_usd": int(quote.get("collected_cash_usd") or 0),
+        "structural_only": structural_only["value"],
+        "structural_only_state": structural_only["state"],
+        "runtime_measured": runtime_measured["value"],
+        "runtime_measured_state": runtime_measured["state"],
+        "customer_ready": customer_ready["value"],
+        "customer_ready_state": customer_ready["state"],
+        "runtime_proof": evidence.get("runtime_proof")
+        if "runtime_proof" in evidence
+        else "UNRESOLVED",
+        "collected_cash_usd": collected_cash["value"],
+        "collected_cash_state": collected_cash["state"],
         "cash_state": str(quote.get("cash_state") or "").strip().upper(),
         "demand": str(quote.get("demand") or "").strip().upper(),
     }
 
 
-def inbound_rel(inbound_id):
+def canonicalize_post_id(inbound_id):
+    """One post id. Forbid / \\ . .. and any traversal token."""
     name = str(inbound_id or "").strip()
-    if not name or "/" in name or name in {".", ".."}:
+    if not name:
         return ""
-    return os.path.join("p", name + ".md")
+    if "/" in name or "\\" in name:
+        return ""
+    if name in {".", ".."} or ".." in name:
+        return ""
+    if not POST_ID_RE.fullmatch(name):
+        return ""
+    return name
+
+
+def inbound_rel(inbound_id):
+    """Always posix p/{id}.md. Empty when the id is not canonical."""
+    name = canonicalize_post_id(inbound_id)
+    if not name:
+        return ""
+    return "p/" + name + ".md"
+
+
+def resolved_inbound(root, inbound_id):
+    """Prove the resolved path stays exactly under p/."""
+    name = canonicalize_post_id(inbound_id)
+    rel = inbound_rel(inbound_id)
+    if not name or not rel:
+        return {"ok": False, "rel": "", "reason": "INVALID_ID", "path": ""}
+    root_abs = os.path.abspath(root)
+    posts = os.path.abspath(os.path.join(root_abs, "p"))
+    resolved = os.path.abspath(os.path.join(root_abs, *rel.split("/")))
+    expected = os.path.abspath(os.path.join(posts, name + ".md"))
+    try:
+        common = os.path.commonpath([posts, resolved])
+    except ValueError:
+        return {"ok": False, "rel": "", "reason": "TRAVERSAL", "path": ""}
+    if common != posts or resolved != expected:
+        return {"ok": False, "rel": "", "reason": "TRAVERSAL", "path": ""}
+    return {"ok": True, "rel": rel, "reason": "", "path": resolved}
+
+
+def safe_excerpt_rel(excerpt_rel):
+    """Reject separators-as-escape. Keep posix excerpts/… paths only."""
+    raw = str(excerpt_rel or "").strip()
+    if not raw:
+        return ""
+    if raw.startswith("/") or raw.startswith("\\"):
+        return ""
+    text = raw.replace("\\", "/")
+    parts = [part for part in text.split("/") if part]
+    if not parts or any(part in {".", ".."} for part in parts):
+        return ""
+    if parts[0] != "excerpts":
+        return ""
+    return "/".join(parts)
+
+
+def parse_post(text):
+    raw = str(text or "")
+    headers = {}
+    body = raw
+    head = ""
+    if raw.startswith("---"):
+        rest = raw[3:].lstrip("\n")
+        if "\n---\n" in rest:
+            head, body = rest.split("\n---\n", 1)
+        else:
+            head = rest
+            body = ""
+    elif "\n---\n" in raw:
+        head, body = raw.split("\n---\n", 1)
+    for line in head.splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        headers[key.strip().lower()] = value.strip()
+    return {
+        "from": str(headers.get("from") or "").strip(),
+        "subject": str(headers.get("subject") or "").strip(),
+        "id": str(headers.get("id") or "").strip(),
+        "kind": str(headers.get("kind") or "").strip(),
+        "body": body,
+        "text": raw,
+    }
+
+
+def buyer_evidence(text, inbound_id, quote_hash):
+    """File existence is not acceptance. Need a distinct claim + quote bind."""
+    name = canonicalize_post_id(inbound_id)
+    if not name:
+        return {"ok": False, "reason": "INVALID_ID", "from": "", "subject": ""}
+    if name in SELF_BIND_IDS:
+        return {"ok": False, "reason": "SELF_BIND", "from": "", "subject": ""}
+    parsed = parse_post(text)
+    hay = parsed["subject"] + "\n" + parsed["body"]
+    if not ACCEPT_RE.search(hay):
+        return {
+            "ok": False,
+            "reason": "NO_ACCEPTANCE",
+            "from": parsed["from"],
+            "subject": parsed["subject"],
+        }
+    quote_named = SKU_ID in hay.lower() or (
+        _hex_sha(quote_hash) and str(quote_hash).lower() in hay.lower()
+    )
+    if not quote_named:
+        return {
+            "ok": False,
+            "reason": "QUOTE_NOT_NAMED",
+            "from": parsed["from"],
+            "subject": parsed["subject"],
+        }
+    if not parsed["from"]:
+        return {
+            "ok": False,
+            "reason": "NO_BUYER_CLAIM",
+            "from": "",
+            "subject": parsed["subject"],
+        }
+    return {
+        "ok": True,
+        "reason": "",
+        "from": parsed["from"],
+        "subject": parsed["subject"],
+    }
+
+
+def legal_state_for(bound, hashes):
+    """DRAFT → NEEDS_BUYER → ACCEPTED → DELIVERED. No skip."""
+    delivery = str((hashes or {}).get("delivery_hash") or "").strip()
+    if bound and _hex_sha(delivery):
+        return "DELIVERED"
+    if bound:
+        return "ACCEPTED"
+    quote_hash = str((hashes or {}).get("quote_hash") or "").strip()
+    if _hex_sha(quote_hash):
+        return "NEEDS_BUYER"
+    return "DRAFT"
 
 
 def bind_validation_receipt(root, inbound_id, excerpt_rel, status="UNKNOWN"):
-    """Bind a STRUCTURAL_ONLY receipt to a public inbound post id.
+    """Bind only on canonical inbound + distinct buyer acceptance.
 
     buyer_id is the public inbound id, not a private identity.
-    bound=True only when the inbound file and excerpt both exist
-    and the excerpt header/hash measure. PASS is refused on the
-    live tree unless the caller is an explicit fixture.
+    File presence is not BUYER_BOUND. PASS is refused unless the
+    legal state is ACCEPTED. That refusal is for every excerpt,
+    not a GRBN hard-code.
     """
-    rel = inbound_rel(inbound_id)
-    excerpt = str(excerpt_rel or "").strip()
-    parsed = parse_excerpt(_read_bytes(root, excerpt))
-    inbound_ok = bool(rel) and _exists(root, rel)
+    indexed = source_index(root)
+    hashes = source_hashes(root, indexed, inbound_id, excerpt_rel)
+    located = resolved_inbound(root, inbound_id)
+    excerpt = safe_excerpt_rel(excerpt_rel)
+    parsed = parse_excerpt(_read_bytes(root, excerpt)) if excerpt else {
+        "ok": False,
+        "reason": "unsafe excerpt",
+        "sha256": "",
+    }
+    inbound_ok = bool(located.get("ok")) and _exists(root, located.get("rel") or "")
     excerpt_ok = bool(parsed.get("ok")) and _hex_sha(parsed.get("sha256"))
-    bound = inbound_ok and excerpt_ok
+    evidence = {"ok": False, "reason": located.get("reason") or "NO_INBOUND", "from": "", "subject": ""}
+    if inbound_ok:
+        evidence = buyer_evidence(
+            _read(root, located["rel"]),
+            inbound_id,
+            hashes.get("quote_hash"),
+        )
+    bound = inbound_ok and excerpt_ok and bool(evidence.get("ok"))
     wanted = str(status or "UNKNOWN").strip().upper()
     if wanted not in {"PASS", "FAIL", "UNKNOWN"}:
         wanted = "UNKNOWN"
-    if bound and wanted == "PASS" and excerpt == GRBN_REL:
-        # Live GRBN remeasure is STRUCTURAL_ONLY. PASS would claim
-        # CUSTOMER_READY. Keep live binds UNKNOWN unless fixture.
+    legal = legal_state_for(bound, hashes)
+    refused = ""
+    if wanted == "PASS" and legal != "ACCEPTED":
+        refused = "PASS_WITHOUT_BUYER"
         wanted = "UNKNOWN"
+    binding_state = "BUYER_BOUND" if bound else (
+        "CANDIDATE" if inbound_ok else "UNBOUND"
+    )
+    if not bound and inbound_ok:
+        binding_state = "INCOMPLETE"
     receipt = {
         "kind": "SUBZERO_BUYER_VALIDATION",
         "artifact": excerpt,
         "sha256": str(parsed.get("sha256") or ""),
         "status": wanted if bound else "UNKNOWN",
         "bound": bound,
-        "buyer_id": str(inbound_id or "").strip() if bound else "",
+        "buyer_id": canonicalize_post_id(inbound_id) if bound else "",
         "no_auth": True,
         "no_gate": True,
         "login_required": False,
@@ -263,10 +602,15 @@ def bind_validation_receipt(root, inbound_id, excerpt_rel, status="UNKNOWN"):
         "inbound_ok": inbound_ok,
         "excerpt_ok": excerpt_ok,
         "header": parsed,
-        "binding_state": "BUYER_BOUND" if bound else "UNBOUND",
+        "binding_state": binding_state,
+        "legal_state": legal,
         "evidence_class": "STRUCTURAL_ONLY" if excerpt_ok else "UNKNOWN",
         "cash_state": "NOT_LANDED",
         "demand": "UNKNOWN",
+        "buyer_reason": evidence.get("reason") or "",
+        "status_refused": refused,
+        "hashes": hashes,
+        "inbound_rel": located.get("rel") or "",
     }
 
 
@@ -313,7 +657,20 @@ def classify_binding(row):
                 + " bind. UNKNOWN, never 0."
             ),
         }
-    if bool(row.get("claims_cash")) or int(row.get("collected_cash_usd") or 0) > 0:
+    cash_state = str(row.get("collected_cash_state") or "").strip().upper()
+    cash_value = row.get("collected_cash_usd")
+    if cash_state in {"UNRESOLVED", "FINDER-FAILED"}:
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "collected_cash_usd "
+                + (cash_state or "UNRESOLVED")
+                + ". Missing numeric is not measured $0. FINDER-FAILED, never 0."
+            ),
+        }
+    if bool(row.get("claims_cash")) or (
+        cash_state == "PRESENT" and cash_value not in (None, 0)
+    ):
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -321,7 +678,7 @@ def classify_binding(row):
                 "$0 / NOT_LANDED. FINDER-FAILED, never 0."
             ),
         }
-    if bool(row.get("claims_runtime")) or bool(row.get("runtime_proof")):
+    if bool(row.get("claims_runtime")) or row.get("runtime_proof") is True:
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -348,12 +705,22 @@ def classify_binding(row):
                 "UNKNOWN. FINDER-FAILED, never 0."
             ),
         }
-    if str(row.get("binding_state") or "").strip().upper() != "UNBOUND":
+    live_bind = str(row.get("binding_state") or "").strip().upper()
+    if live_bind not in {"UNBOUND", "CANDIDATE", "INCOMPLETE"}:
         return {
             "state": "NOT_LANDED",
             "note": (
-                "Live binding_state must stay UNBOUND until a public inbound "
-                "names a file. FINDER-FAILED, never 0."
+                "Live binding_state must stay CANDIDATE/INCOMPLETE/UNBOUND "
+                "until a distinct buyer accepts the quote. FINDER-FAILED, never 0."
+            ),
+        }
+    legal = str(row.get("legal_state") or "").strip().upper()
+    if legal and legal not in {"DRAFT", "NEEDS_BUYER"}:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "Live legal_state must stay DRAFT or NEEDS_BUYER. "
+                "FINDER-FAILED, never 0."
             ),
         }
     if str(row.get("sku_id") or "").strip() != SKU_ID:
@@ -367,13 +734,23 @@ def classify_binding(row):
                 + ". FINDER-FAILED, never 0."
             ),
         }
-    if int(row.get("quote_price") or 0) != QUOTE_PRICE:
+    price, price_state = measured_int(row, "quote_price")
+    if price_state != "PRESENT":
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "quote_price "
+                + price_state
+                + ". Missing numeric is not measured $0. FINDER-FAILED, never 0."
+            ),
+        }
+    if price != QUOTE_PRICE:
         return {
             "state": "NOT_LANDED",
             "note": (
                 SKU_ID
                 + " price is "
-                + str(row.get("quote_price"))
+                + str(price)
                 + ", not "
                 + str(QUOTE_PRICE)
                 + ". FINDER-FAILED, never 0."
@@ -393,18 +770,19 @@ def classify_binding(row):
         return {
             "state": "NOT_LANDED",
             "note": (
-                "quote-draft → buyer-bound bind did not implement. "
+                "quote-draft bind holes still open. "
                 "FINDER-FAILED, never 0."
             ),
         }
     return {
-        "state": "UNBOUND",
+        "state": "CANDIDATE",
         "note": (
             SKU_ID
             + " / "
             + P01_ID
-            + " quote-draft → buyer-bound receipt is implemented. "
-            "Live bind stays UNBOUND. Not runtime, not demand, not cash."
+            + " quote-draft bind is implemented. "
+            "Live binder stays CANDIDATE/INCOMPLETE. "
+            "Not buyer acceptance, not runtime, not demand, not cash."
         ),
     }
 
@@ -412,6 +790,14 @@ def classify_binding(row):
 def measure_from_rows(facts):
     """Classify measured file/phrase facts. Missing calibration is UNMEASURED."""
     facts = facts or {}
+    quote_price, quote_price_state = measured_int(facts, "quote_price")
+    collected_cash, collected_cash_state = measured_int(facts, "collected_cash_usd")
+    structural_only, structural_only_state = measured_int(facts, "structural_only")
+    runtime_measured, runtime_measured_state = measured_int(facts, "runtime_measured")
+    customer_ready, customer_ready_state = measured_int(facts, "customer_ready")
+    runtime_proof = facts.get("runtime_proof")
+    if runtime_proof not in {True, False, "UNRESOLVED"}:
+        runtime_proof = bool(runtime_proof)
     return {
         "measured": True,
         "card_present": bool(facts.get("card_present")),
@@ -426,7 +812,8 @@ def measure_from_rows(facts):
         "found_phrases": list(facts.get("found_phrases") or []),
         "sku_id": str(facts.get("sku_id") or ""),
         "quote_class": str(facts.get("quote_class") or ""),
-        "quote_price": int(facts.get("quote_price") or 0),
+        "quote_price": quote_price,
+        "quote_price_state": quote_price_state,
         "p01_id": str(facts.get("p01_id") or ""),
         "arch_status": str(facts.get("arch_status") or ""),
         "arch_implements": str(facts.get("arch_implements") or ""),
@@ -434,16 +821,23 @@ def measure_from_rows(facts):
         "schema_no_auth": bool(facts.get("schema_no_auth")),
         "schema_no_gate": bool(facts.get("schema_no_gate")),
         "binding_state": str(facts.get("binding_state") or ""),
-        "live_bound_receipts": int(facts.get("live_bound_receipts") or 0),
+        "legal_state": str(facts.get("legal_state") or "NEEDS_BUYER"),
+        "live_bound_receipts": facts.get("live_bound_receipts")
+        if facts.get("live_bound_receipts") not in (None, "")
+        else 0,
         "bind_works": bool(facts.get("bind_works")),
         "grbn_sha": str(facts.get("grbn_sha") or ""),
-        "collected_cash_usd": int(facts.get("collected_cash_usd") or 0),
+        "collected_cash_usd": collected_cash,
+        "collected_cash_state": collected_cash_state,
         "cash_state": str(facts.get("cash_state") or ""),
         "demand": str(facts.get("demand") or ""),
-        "runtime_proof": bool(facts.get("runtime_proof")),
-        "structural_only": int(facts.get("structural_only") or 0),
-        "runtime_measured": int(facts.get("runtime_measured") or 0),
-        "customer_ready": int(facts.get("customer_ready") or 0),
+        "runtime_proof": runtime_proof,
+        "structural_only": structural_only,
+        "structural_only_state": structural_only_state,
+        "runtime_measured": runtime_measured,
+        "runtime_measured_state": runtime_measured_state,
+        "customer_ready": customer_ready,
+        "customer_ready_state": customer_ready_state,
         "claims_cash": bool(facts.get("claims_cash")),
         "claims_runtime": bool(facts.get("claims_runtime")),
         "claims_demand": bool(facts.get("claims_demand")),
@@ -454,7 +848,7 @@ def measure_from_rows(facts):
         "calibration_hits": list(facts.get("calibration_hits") or []),
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
-        "titan": str(facts.get("titan") or "NOT_WRITTEN"),
+        "hashes": dict(facts.get("hashes") or {}),
     }
 
 
@@ -466,7 +860,8 @@ def classify(row):
             "state": "UNMEASURED",
             "note": (
                 "SUBZERO receipt leftover not read. Absence was not stillness. "
-                "A Slack H-008 body is not the file. FINDER-FAILED, never 0."
+                "A Slack H-008 / second-pass body is not the file. "
+                "FINDER-FAILED, never 0."
             ),
         }
     if row.get("calibration_ok") is False:
@@ -495,8 +890,8 @@ def classify(row):
             "note": (
                 "missing leftover path(s): "
                 + ", ".join(misses or ["card/catalog/door/source-index"])
-                + ". JOJO H-008 / quote-draft → buyer-bound / "
-                "validation-receipt talk is CLAIMED until the leftover ships. "
+                + ". JOJO H-008 / second-pass / quote-draft bind "
+                "talk is CLAIMED until the leftover ships. "
                 "FINDER-FAILED, never 0."
             ),
         }
@@ -510,9 +905,9 @@ def classify(row):
             ),
         }
     binding = classify_binding(row)
-    if binding["state"] != "UNBOUND":
+    if binding["state"] not in {"CANDIDATE"}:
         return {
-            "state": "NOT_LANDED",
+            "state": "NOT_LANDED" if binding["state"] != "UNMEASURED" else "UNMEASURED",
             "note": binding["note"],
         }
     needed = [
@@ -530,6 +925,37 @@ def classify(row):
                 "FINDER-FAILED, never 0."
             ),
         }
+    hashes = row.get("hashes") or {}
+    missing_hashes = []
+    if hashes:
+        for key in (
+            "source_commit",
+            "source_tree",
+        ):
+            if not _hex_sha(hashes.get(key), (40, 64)):
+                missing_hashes.append(key)
+        for key in (
+            "quote_hash",
+            "catalog_row_hash",
+            "fab_hash",
+            "test_hash",
+            "card_hash",
+            "sidecar_hash",
+            "request_hash",
+        ):
+            if not _hex_sha(hashes.get(key)):
+                missing_hashes.append(key)
+        if str(hashes.get("delivery_hash") or "") != "UNRESOLVED":
+            missing_hashes.append("delivery_hash")
+    if missing_hashes:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "missing bind hashes: "
+                + ", ".join(missing_hashes)
+                + ". FINDER-FAILED, never 0."
+            ),
+        }
     return {
         "state": "INTEGRATED",
         "note": (
@@ -537,11 +963,32 @@ def classify(row):
             + SKU_ID
             + " / "
             + P01_ID
-            + " quote-draft → buyer-bound bind is implemented. "
-            "Live bind stays UNBOUND. Not runtime, not demand, not cash. "
-            "A Slack H-008 body is still not the file."
+            + " quote-draft bind holes are closed. "
+            "Live binder stays CANDIDATE/INCOMPLETE. "
+            "Not buyer acceptance, not runtime, not demand, not cash. "
+            "A Slack H-008 / second-pass body is still not the file."
         ),
     }
+
+
+def _hashes_ok(hashes):
+    hashes = hashes or {}
+    if not _hex_sha(hashes.get("source_commit"), (40, 64)):
+        return False
+    if not _hex_sha(hashes.get("source_tree"), (40, 64)):
+        return False
+    for key in (
+        "quote_hash",
+        "catalog_row_hash",
+        "fab_hash",
+        "test_hash",
+        "card_hash",
+        "sidecar_hash",
+        "request_hash",
+    ):
+        if not _hex_sha(hashes.get(key)):
+            return False
+    return str(hashes.get("delivery_hash") or "") == "UNRESOLVED"
 
 
 def measure_root(root):
@@ -560,6 +1007,7 @@ def measure_root(root):
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_json(_read(root, DEFAULT_CATALOG), "catalog")
     indexed = source_index(root)
+    hashes = source_hashes(root, indexed)
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     calibration_ok = len(calibration_hits) == len(CALIBRATION)
     if not calibration_ok:
@@ -577,21 +1025,40 @@ def measure_root(root):
         GRBN_REL,
         status="UNKNOWN",
     )
-    # Prove the bind against an already-landed public post id + GRBN.
-    # That is a function test, not demand. Live catalog stays UNBOUND.
-    proved = bind_validation_receipt(root, QUOTE_RECEIPT, GRBN_REL, status="UNKNOWN")
+    escaped = bind_validation_receipt(root, "..\\ground\\EXECUTE", GRBN_REL, status="PASS")
+    self_bind = bind_validation_receipt(root, QUOTE_RECEIPT, GRBN_REL, status="PASS")
+    other_excerpt = bind_validation_receipt(root, QUOTE_RECEIPT, LVIN_REL, status="PASS")
     bind_works = (
         missing_inbound["binding_state"] == "UNBOUND"
         and missing_inbound["excerpt_ok"]
         and str((missing_inbound.get("header") or {}).get("sha256") or "") == GRBN_SHA
-        and proved["binding_state"] == "BUYER_BOUND"
-        and receipt_schema_ok(proved["receipt"])
-        and proved["receipt"]["status"] == "UNKNOWN"
-        and proved["receipt"]["buyer_id"] == QUOTE_RECEIPT
-        and proved["evidence_class"] == "STRUCTURAL_ONLY"
-        and str(proved["receipt"].get("sha256") or "") == GRBN_SHA
+        and not escaped["inbound_ok"]
+        and escaped["binding_state"] != "BUYER_BOUND"
+        and escaped["receipt"]["bound"] is False
+        and escaped["status_refused"] == "PASS_WITHOUT_BUYER"
+        and self_bind["buyer_reason"] == "SELF_BIND"
+        and self_bind["binding_state"] != "BUYER_BOUND"
+        and self_bind["receipt"]["bound"] is False
+        and self_bind["receipt"]["status"] == "UNKNOWN"
+        and other_excerpt["status_refused"] == "PASS_WITHOUT_BUYER"
+        and other_excerpt["receipt"]["status"] == "UNKNOWN"
+        and other_excerpt["receipt"]["bound"] is False
+        and _hashes_ok(self_bind.get("hashes"))
+        and indexed.get("quote_price_state") == "PRESENT"
+        and indexed.get("quote_price") == QUOTE_PRICE
+        and indexed.get("collected_cash_state") == "PRESENT"
+        and indexed.get("collected_cash_usd") == 0
+        and present_int({}, "price_usd")["state"] == "UNRESOLVED"
+        and present_int({"price_usd": None}, "price_usd")["state"] == "UNRESOLVED"
+        and present_int({"price_usd": True}, "price_usd")["state"] == "FINDER-FAILED"
     )
-    live_bound = int(catalog.get("live_bound_receipts") or 0)
+    live_bound = catalog.get("live_bound_receipts")
+    live_bound_value, live_bound_state = measured_int(
+        {"live_bound_receipts": live_bound, "live_bound_receipts_state": (
+            "UNRESOLVED" if "live_bound_receipts" not in catalog else "PRESENT"
+        )},
+        "live_bound_receipts",
+    )
     facts = {
         "card_present": _exists(root, DEFAULT_CARD),
         "catalog_present": _exists(root, DEFAULT_CATALOG) and not catalog.get("error"),
@@ -607,24 +1074,30 @@ def measure_root(root):
         "found_phrases": found,
         "sku_id": indexed.get("sku_id") or "",
         "quote_class": indexed.get("quote_class") or "",
-        "quote_price": indexed.get("quote_price") or 0,
+        "quote_price": indexed.get("quote_price"),
+        "quote_price_state": indexed.get("quote_price_state") or "UNRESOLVED",
         "p01_id": indexed.get("p01_id") or "",
         "arch_status": indexed.get("arch_status") or "",
         "arch_implements": indexed.get("arch_implements") or "",
         "schema_has_buyer": bool(indexed.get("schema_has_buyer")),
         "schema_no_auth": bool(indexed.get("schema_no_auth")),
         "schema_no_gate": bool(indexed.get("schema_no_gate")),
-        "binding_state": str(catalog.get("binding_state") or "UNBOUND").upper(),
-        "live_bound_receipts": live_bound,
+        "binding_state": str(catalog.get("binding_state") or "CANDIDATE").upper(),
+        "legal_state": str(catalog.get("legal_state") or "NEEDS_BUYER").upper(),
+        "live_bound_receipts": live_bound_value if live_bound_state == "PRESENT" else 0,
         "bind_works": bind_works,
-        "grbn_sha": str((proved.get("header") or {}).get("sha256") or ""),
-        "collected_cash_usd": indexed.get("collected_cash_usd") or 0,
+        "grbn_sha": str((missing_inbound.get("header") or {}).get("sha256") or ""),
+        "collected_cash_usd": indexed.get("collected_cash_usd"),
+        "collected_cash_state": indexed.get("collected_cash_state") or "UNRESOLVED",
         "cash_state": indexed.get("cash_state") or "",
         "demand": indexed.get("demand") or "",
-        "runtime_proof": bool(indexed.get("runtime_proof")),
-        "structural_only": indexed.get("structural_only") or 0,
-        "runtime_measured": indexed.get("runtime_measured") or 0,
-        "customer_ready": indexed.get("customer_ready") or 0,
+        "runtime_proof": indexed.get("runtime_proof"),
+        "structural_only": indexed.get("structural_only"),
+        "structural_only_state": indexed.get("structural_only_state") or "UNRESOLVED",
+        "runtime_measured": indexed.get("runtime_measured"),
+        "runtime_measured_state": indexed.get("runtime_measured_state") or "UNRESOLVED",
+        "customer_ready": indexed.get("customer_ready"),
+        "customer_ready_state": indexed.get("customer_ready_state") or "UNRESOLVED",
         "claims_cash": bool(catalog.get("claims_cash")),
         "claims_runtime": bool(catalog.get("claims_runtime")),
         "claims_demand": bool(catalog.get("claims_demand")),
@@ -635,14 +1108,16 @@ def measure_root(root):
         "calibration_hits": calibration_hits,
         "search_space": list(SEARCH_SPACE),
         "misses": misses,
-        "titan": str(catalog.get("titan") or "NOT_WRITTEN"),
+        "hashes": hashes,
         "slack_ts": str(catalog.get("slack_ts") or SLACK_TS),
+        "second_pass_ts": str(catalog.get("second_pass_ts") or SECOND_PASS_TS),
     }
     binding = classify_binding(measure_from_rows(facts))
     row = measure_from_rows(facts)
     row.update(
         {
             "slack_ts": facts["slack_ts"],
+            "second_pass_ts": facts["second_pass_ts"],
             "cell": CELL,
             "x": [rel for rel in SEARCH_SPACE if _exists(root, rel)],
             "y": {
@@ -651,11 +1126,20 @@ def measure_root(root):
                 "landed_present": landed_present,
                 "sku_id": facts["sku_id"],
                 "quote_price": facts["quote_price"],
+                "quote_price_state": facts["quote_price_state"],
                 "p01_id": facts["p01_id"],
                 "binding_state": facts["binding_state"],
+                "legal_state": facts["legal_state"],
                 "bind_works": facts["bind_works"],
                 "live_bound_receipts": facts["live_bound_receipts"],
                 "quote_receipt": QUOTE_RECEIPT,
+                "hashes": {
+                    "source_commit": hashes.get("source_commit"),
+                    "source_tree": hashes.get("source_tree"),
+                    "quote_hash": hashes.get("quote_hash"),
+                    "catalog_row_hash": hashes.get("catalog_row_hash"),
+                    "delivery_hash": hashes.get("delivery_hash"),
+                },
             },
             "z": (
                 "misses "
@@ -687,10 +1171,14 @@ def self_test():
             "measured": True,
             "sku_id": SKU_ID,
             "quote_price": QUOTE_PRICE,
+            "quote_price_state": "PRESENT",
             "p01_id": P01_ID,
             "schema_has_buyer": True,
             "bind_works": True,
-            "binding_state": "UNBOUND",
+            "binding_state": "CANDIDATE",
+            "legal_state": "NEEDS_BUYER",
+            "collected_cash_usd": 0,
+            "collected_cash_state": "PRESENT",
             "claims_cash": True,
         }
     )
@@ -700,15 +1188,37 @@ def self_test():
             "measured": True,
             "sku_id": SKU_ID,
             "quote_price": QUOTE_PRICE,
+            "quote_price_state": "PRESENT",
             "p01_id": P01_ID,
             "schema_has_buyer": True,
             "bind_works": True,
-            "binding_state": "UNBOUND",
+            "binding_state": "CANDIDATE",
+            "legal_state": "NEEDS_BUYER",
+            "collected_cash_usd": 0,
+            "collected_cash_state": "PRESENT",
             "live_bound_receipts": 1,
             "demand": "UNKNOWN",
         }
     )
     assert invented["state"] == "NOT_LANDED", invented
+    missing_price = classify_binding(
+        {
+            "measured": True,
+            "sku_id": SKU_ID,
+            "quote_price": None,
+            "quote_price_state": "UNRESOLVED",
+            "p01_id": P01_ID,
+            "schema_has_buyer": True,
+            "bind_works": True,
+            "binding_state": "CANDIDATE",
+            "collected_cash_usd": 0,
+            "collected_cash_state": "PRESENT",
+        }
+    )
+    assert missing_price["state"] == "FINDER-FAILED", missing_price
+    assert inbound_rel("..\\ground\\EXECUTE") == ""
+    assert inbound_rel("../ground/EXECUTE") == ""
+    assert canonicalize_post_id("rivet-ship-subzero-quote-20260825-01")
     return "ok"
 
 
