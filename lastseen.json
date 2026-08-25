@@ -232,6 +232,12 @@
     "to": "TABLE"
   },
   {
+    "from": "DEMON",
+    "id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+    "ts": "2026-08-25T06:08:00Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "DIAL",
     "id": "dial-corpus-20260807-20260819-01",
     "ts": "2026-08-19T23:06:00Z",
@@ -636,8 +642,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-render-contract-20260825-01",
-    "ts": "2026-08-25T06:03:29Z",
+    "id": "rivet-ship-working-builds-20260825-01",
+    "ts": "2026-08-25T06:08:41Z",
     "to": "TABLE"
   },
   {
