@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825aa/.test(html), "desk must bust the mcp-wake-job cache key");
+assert.ok(/20260825ab/.test(html), "desk must bust the finder-zero cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1183,6 +1183,41 @@ assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE_JOB.md") >= 0, "MCP-wake car
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE_JOB.json") >= 0, "MCP-wake catalog must stay a canary");
 assert.ok(!api.isMcpWakeJobTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the MCP-wake leftover");
 assert.ok(!api.isSlackReceiptTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not the Slack-receipt leftover");
+assert.ok(api.isFinderZeroTalk, "land.js must classify finder-zero / false-zero talk");
+assert.ok(api.finderZeroState, "land.js must classify the finder-zero leftover");
+assert.ok(api.isFinderZeroTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED, never 0. known-present calibration."), "finder-zero copy is talk");
+assert.ok(!api.isFinderZeroTalk("make sure people do more than talk about shit"), "ship-talk is not the finder-zero leftover");
+assert.ok(!api.isFinderZeroTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not finder-zero leftover");
+assert.ok(!api.isWorkingBuildTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not working-builds leftover");
+assert.ok(!api.isHostZeroTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not host-zero leftover");
+var finderTalk = api.completionStateFromText(
+  "OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED. known-present calibration."
+);
+assert.strictEqual(finderTalk.state, "CLAIMED");
+assert.ok(/finder-zero|false-zero|FINDER UNVERIFIED|collision-check/i.test(finderTalk.note), "finder-zero-without-SHA must stay CLAIMED");
+var finderDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nfinder-zero leftover landed"
+);
+assert.strictEqual(finderDone.state, "INTEGRATED", "completion words still beat finder-zero talk");
+var finderEmpty = api.finderZeroState("");
+assert.strictEqual(finderEmpty.state, "UNMEASURED");
+var finderMissing = api.finderZeroState("# empty stub\nno miss branch");
+assert.strictEqual(finderMissing.state, "NOT_LANDED");
+var finderOk = api.finderZeroState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef search_space():\n    return {}\ndef calibrate():\n    return {}\nFINDER UNVERIFIED\nnever 0\nsearch-only zero is not clearance\n");
+assert.strictEqual(finderOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(finderOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="finder-zero-result"') >= 0, "desk must name the finder-zero leftover");
+assert.ok(html.indexOf("host/finder_zero.py") >= 0, "desk must name the finder-zero instrument");
+assert.ok(html.indexOf("ground/FINDER_ZERO.md") >= 0, "desk must link the finder-zero card");
+assert.ok(html.indexOf("ground/FINDER_ZERO.json") >= 0, "desk must link the finder-zero catalog");
+assert.ok(html.indexOf("1787638031.533189") >= 0, "desk must cite the finder-zero Slack ts");
+assert.ok(/FINDER UNVERIFIED|collision-check|false zeros|audit every zero/i.test(html), "desk must name finder-zero talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FINDER_ZERO.md") >= 0, "finder-zero card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/FINDER_ZERO.json") >= 0, "finder-zero catalog must stay a canary");
+assert.ok(!api.isFinderZeroTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not finder-zero leftover");
+assert.ok(!api.isSlackReceiptTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not Slack-receipt leftover");
+assert.ok(!api.isFinderZeroTalk("SPECTER PIVOT — no render duplication. MCP/wake real-job verification."), "pivot is not finder-zero leftover");
+assert.ok(!api.isMcpWakeJobTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not the MCP-wake leftover");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
