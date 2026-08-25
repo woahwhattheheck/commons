@@ -190,6 +190,8 @@
     "ground/WATCHDOG_HEAD_PROOF.json",
     "ground/CLAUDE_PARK.md",
     "ground/CLAUDE_PARK.json",
+    "ground/CLAUDE_INTERMEDIATE.md",
+    "ground/CLAUDE_INTERMEDIATE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -423,6 +425,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isClaudeIntermediateTalk(t)) {
+      return { state: "CLAIMED", note: "DEMON ruling / quarantined-intermediate-worker / P1-rejected-for-now / P6-amended / rehabilitation-gate talk. Talk is not a land. Ship the amendment leftover. Do not remint the colony charter or the GAUGE proposal. No auth. No gate." };
     }
     if (api.isClaudeComputeTalk(t)) {
       return { state: "CLAIMED", note: "paid-compute / compiler-farm / isolated-untrusted / CLAUDE_INTERMEDIATE_UNTRUSTED / adjudicator-in-advance talk. Talk is not a land. Ship the quarantine farm leftover to current main. Claude still does not test or verdict. Do not remint CLAUDE_ROLE, CLAUDE_TESTER, or CLAUDE_PARK." };
@@ -717,8 +722,37 @@
     };
   };
 
+  api.isClaudeIntermediateTalk = function (text) {
+    return /quarantined intermediate worker|rehabilitation gate|rejected for now|p6 amended/i.test(String(text || ""));
+  };
+
+  api.claudeIntermediateState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_intermediate.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasLabel = /CLAUDE_INTERMEDIATE_UNTRUSTED/.test(body);
+    var hasClauses = /P2_SCRIBE/.test(body) && /P5_NEVER/.test(body) && /P1_HANDS/.test(body) && /REJECTED_FOR_NOW/.test(body);
+    var hasMiss = /FINDER-UNVERIFIED/.test(body) && /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    var noGate = /does not add a gate/.test(body) || /no_gate/.test(body);
+    var keepCharter = /CLAUDE_ROLE/.test(body) && /does not overwrite/.test(body);
+    if (hasMeasure && hasClassify && hasLabel && hasClauses && hasMiss && hasOwner && noGate && keepCharter) {
+      return {
+        state: "INTEGRATED",
+        note: "claude-intermediate leftover is on this file. P1 rejected-for-now. P6 amended. Peer charter preserved. A Slack ruling is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_intermediate.py missing the leftover. DEMON intermediate-lane ruling talk is CLAIMED until the leftover ships."
+    };
+  };
+
   api.isClaudeComputeTalk = function (text) {
-    return /isolated untrusted build compute|claude_intermediate_untrusted|compiler farm|use the paid compute|cheap opus 5|bounded implementation packets|adjudicator in advance|1787640367\.070179|suspend authority, use the paid compute/i.test(String(text || ""));
+    return /isolated untrusted build compute|compiler farm|use the paid compute|cheap opus 5|bounded implementation packets|adjudicator in advance|1787640367\.070179|suspend authority, use the paid compute/i.test(String(text || ""));
   };
 
   api.claudeComputeState = function (text) {
@@ -2176,6 +2210,7 @@
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var claudeRoleOut = document.getElementById("claude-role-result");
   var claudeComputeOut = document.getElementById("claude-compute-result");
+  var claudeIntermediateOut = document.getElementById("claude-intermediate-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -2752,6 +2787,12 @@
     if (!contextIntegrityOut) return;
     contextIntegrityOut.setAttribute("data-tone", api.toneFor(result.state));
     contextIntegrityOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeIntermediate(result) {
+    if (!claudeIntermediateOut) return;
+    claudeIntermediateOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeIntermediateOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintClaudeRole(result) {
@@ -3572,6 +3613,33 @@
     });
   }
 
+  function loadClaudeIntermediate(sha) {
+    if (!claudeIntermediateOut) return Promise.resolve(null);
+    claudeIntermediateOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_intermediate.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_intermediate.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_intermediate.py absent at the measured main SHA. DEMON intermediate-lane ruling talk is CLAIMED." };
+        paintClaudeIntermediate(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeIntermediate(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeIntermediateState(body);
+        paintClaudeIntermediate(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeIntermediate(err);
+      return err;
+    });
+  }
+
   function loadClaudeRole(sha) {
     if (!claudeRoleOut) return Promise.resolve(null);
     claudeRoleOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_role.py at the official SHA…</p>";
@@ -4184,6 +4252,7 @@
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
     loadClaudeCompute(sha);
+    loadClaudeIntermediate(sha);
     loadContainment(sha);
     loadWatchdogCanary(sha);
     loadBranchReview(sha);
