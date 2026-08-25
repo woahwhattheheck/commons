@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>SUBZERO Artifact Explorer</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260824a"></script>
+<style>
+body.subzero{max-width:56rem;margin:0 auto;padding:1rem 1.25rem 3rem}
+table.pack{width:100%;border-collapse:collapse;font-size:.9rem}
+table.pack th,table.pack td{border-bottom:1px solid #2a2a33;padding:.35rem .4rem;text-align:left;vertical-align:top}
+table.pack th{opacity:.75;font-weight:600}
+.tag{color:#c08a2e}
+.ok{color:#3fa45b}
+.sha{font-family:ui-monospace,monospace;font-size:.8em;word-break:break-all}
+</style>
+</head>
+<body class="subzero">
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./ground/SUBZERO_EXPLORER.md">card</a></p>
+<h1>SUBZERO Artifact Explorer</h1>
+<p class="law">Read-only validation packet over checked-in <code>.mno</code> excerpts. Git copies do not run. Every row is <code>STRUCTURAL_ONLY</code> until a cross-process/runtime receipt says otherwise. Host training is <code>NOT_SOLD</code>. Live Titan mutation is not a finished capability. LDA execution stays <code>BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT</code>. Possessing the link is authorization. No auth. No gate. titan <code>NOT_WRITTEN</code>.</p>
+<p class="note">Do not remint PANEL 1/3 <a href="./ground/SUBZERO_TECH.md">SUBZERO_TECH</a> or buyers 2/3 <a href="./ground/SUBZERO_BUYERS.md">SUBZERO_BUYERS</a>. Slack <code>1787646413.997539</code> JOJO handoff <code>jojo-model-work-profitability-bridge-20260825-01</code> is mail until this door + packet are on current main.</p>
+<pre>python3 host/subzero_explorer.py
+python3 host/subzero_explorer.py --self-test
+python3 -m unittest -v test_subzero_explorer.py</pre>
+<p id="sum" class="note">reading <a href="./ground/SUBZERO_EXPLORER.json">ground/SUBZERO_EXPLORER.json</a> …</p>
+<table class="pack" id="pack">
+<thead><tr><th>name</th><th>magic</th><th>bytes</th><th>n_gate</th><th>label</th><th>sha256</th></tr></thead>
+<tbody></tbody>
+</table>
+<script>
+(function(){
+  var sum=document.getElementById("sum");
+  var body=document.querySelector("#pack tbody");
+  function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}
+  fetch("./ground/SUBZERO_EXPLORER.json?b="+Date.now(),{cache:"no-store"}).then(function(r){
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return r.json();
+  }).then(function(pack){
+    var rows=pack.rows||[];
+    var match=0;
+    rows.forEach(function(row){
+      if(row.hash_match) match++;
+      var tr=document.createElement("tr");
+      tr.innerHTML="<td>"+esc(row.name)+"</td><td>"+esc(row.magic)+"</td><td>"+esc(row.bytes)+"</td><td>"+esc(row.n_gate)+"</td><td class=\"tag\">"+esc(row.label||"STRUCTURAL_ONLY")+"</td><td class=\"sha\">"+esc(row.sha256)+"</td>";
+      body.appendChild(tr);
+    });
+    sum.innerHTML="<b class=\"ok\">"+match+"/"+rows.length+" hash-match</b> · label "+esc(pack.label||"STRUCTURAL_ONLY")+" · host training "+esc(pack.host_training||"NOT_SOLD")+" · LDA "+esc((pack.lda_protocol&&pack.lda_protocol.state)||"BLOCKED")+" · titan "+esc(pack.titan||"NOT_WRITTEN")+". A Slack TECHNICAL_HANDOFF is still not the file.";
+  }).catch(function(err){
+    sum.textContent="packet unread: "+err.message+". Absence was not stillness. FINDER-FAILED, never 0.";
+  });
+})();
+</script>
+<p class="note">JS off: the packet is still <a href="./ground/SUBZERO_EXPLORER.json">ground/SUBZERO_EXPLORER.json</a>. Truth is git HEAD, not this bake.</p>
+</body>
+</html>

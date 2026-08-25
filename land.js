@@ -196,6 +196,9 @@
     "ground/SITTING_PR.json",
     "ground/SUBZERO_TECH.md",
     "ground/SUBZERO_TECH.json",
+    "ground/SUBZERO_EXPLORER.md",
+    "ground/SUBZERO_EXPLORER.json",
+    "subzero.html",
     "ground/BUILD_SWEEP_ACT.md",
     "ground/BUILD_SWEEP_ACT.json",
     "ground/SPECTER_FINAL.md",
@@ -441,6 +444,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSubzeroExplorerTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO TECHNICAL_HANDOFF / Subzero Artifact Explorer / STRUCTURAL_ONLY-vs-runtime / BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT talk. Talk is not a land. Ship the read-only explorer + validation packet. Do not remint SUBZERO_TECH, SUBZERO_BUYERS, or the three DEMON panel ids. Do not sell host training or live Titan mutation." };
     }
     if (api.isSuperGrokHeavyTalk(t)) {
       return { state: "CLAIMED", note: "SUPERGROK HEAVY / shared-weekly-pool / Cursor-Grok-as-substitute / utilization-receipt talk. Talk is not a land. Name unfinished builds with source/commit, unresolved state, a deliverable, and a non-Grok verifier. Do not remint GROK_HYGIENE, SITTING_REMINT, BUILD_SWEEP_ACT, SPECTER_FINAL, SITTING_PR, or DEVICE_QUEUE_CAP." };
@@ -1188,6 +1194,33 @@
 
   api.isSittingRemintTalk = function (text) {
     return /sitting remint leftover|already-landed leftover|remint pr is not a second land|do not remint an already-landed leftover/i.test(String(text || ""));
+  };
+
+  api.isSubzeroExplorerTalk = function (text) {
+    return /jojo-model-work-profitability-bridge|subzero artifact explorer|BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT|1787646413\.997539|custom model \/ muhlnickel training inventory|read-only subzero artifact/i.test(String(text || ""));
+  };
+
+  api.subzeroExplorerState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/subzero_explorer.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesClass = /STRUCTURAL_ONLY/.test(body) && /BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesClass && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Subzero Artifact Explorer leftover is on this file. 31 public excerpts stay STRUCTURAL_ONLY. A Slack TECHNICAL_HANDOFF is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/subzero_explorer.py missing the leftover. JOJO TECHNICAL_HANDOFF / Artifact Explorer talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isSubzeroTechTalk = function (text) {
@@ -3086,6 +3119,7 @@
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
   var subzeroTechOut = document.getElementById("subzero-tech-result");
+  var subzeroExplorerOut = document.getElementById("subzero-explorer-result");
   var sittingPrOut = document.getElementById("sitting-pr-result");
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
@@ -3728,6 +3762,12 @@
     if (!subzeroTechOut) return;
     subzeroTechOut.setAttribute("data-tone", api.toneFor(result.state));
     subzeroTechOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSubzeroExplorer(result) {
+    if (!subzeroExplorerOut) return;
+    subzeroExplorerOut.setAttribute("data-tone", api.toneFor(result.state));
+    subzeroExplorerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintSittingPr(result) {
@@ -4986,6 +5026,33 @@
     });
   }
 
+  function loadSubzeroExplorer(sha) {
+    if (!subzeroExplorerOut) return Promise.resolve(null);
+    subzeroExplorerOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/subzero_explorer.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/subzero_explorer.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/subzero_explorer.py absent at the measured main SHA. JOJO TECHNICAL_HANDOFF / Artifact Explorer talk is CLAIMED." };
+        paintSubzeroExplorer(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSubzeroExplorer(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.subzeroExplorerState(body);
+        paintSubzeroExplorer(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSubzeroExplorer(err);
+      return err;
+    });
+  }
+
   function loadSittingRemint(sha) {
     if (!sittingRemintOut) return Promise.resolve(null);
     sittingRemintOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/sitting_remint.py at the official SHA…</p>";
@@ -5735,6 +5802,7 @@
     loadMemoryShip(sha);
     loadSittingRemint(sha);
     loadSubzeroTech(sha);
+    loadSubzeroExplorer(sha);
     loadSittingPr(sha);
     loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);
