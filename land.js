@@ -476,7 +476,7 @@
       return { state: "CLAIMED", note: "JOJO DIO CHECKPOINT / Windows autocrlf / 798-vs-773 / e4cc1524-vs-15c2a25 / leave-unmerged-PR talk. Talk is not a land. Ship the .gitattributes -text leftover to current main. Canonical blobs still match receipts. Do not remint DIO revenue, Titan containment, SUBZERO quote, or SUBZERO receipt." };
     }
     if (api.isSubzeroReceiptTalk(t)) {
-      return { state: "CLAIMED", note: "JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk. Talk is not a land. Ship the receipt leftover to current main. Live bind stays UNBOUND. Cash stays $0 / NOT_LANDED. Do not remint SUBZERO_QUOTE, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320." };
+      return { state: "CLAIMED", note: "JOJO H-008 / second-pass / quote-draft bind / validation-receipt talk. Talk is not a land. Ship the receipt leftover to current main. Live binder stays CANDIDATE/INCOMPLETE/NEEDS_BUYER. Cash stays $0 / NOT_LANDED. Do not remint SUBZERO_QUOTE, first receipt leftover, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320." };
     }
     if (api.isSubzeroQuoteTalk(t)) {
       return { state: "CLAIMED", note: "JOJO commercial-consequence / sz-paid-validation / $2500 quote-draft / STRUCTURAL_ONLY-is-not-cash talk. Talk is not a land. Ship the quote leftover to current main. Presence stays PRESENT and not runtime. Do not remint SUBZERO_TECH, SUBZERO_GTM, SUBZERO_BUYERS, explorer, proof, White Box, or human-outcomes." };
@@ -976,7 +976,7 @@
   };
 
   api.isSubzeroReceiptTalk = function (text) {
-    return /1787650230\.035359|BACKEND CELL H-008|buyer-bound validation receipt|quote-draft . buyer-bound|quote draft . buyer-bound/i.test(String(text || ""));
+    return /1787650230\.035359|1787651030\.360809|BACKEND CELL H-008|buyer-bound validation receipt|quote-draft . buyer-bound|quote draft . buyer-bound|#2329 BINDER|BINDER IS NOT BUYER-BOUND|JOJO SECOND PASS/i.test(String(text || ""));
   };
 
   api.subzeroReceiptState = function (text) {
@@ -987,21 +987,23 @@
     var hasMeasure = /def measure_from_rows/.test(body);
     var hasClassify = /def classify/.test(body);
     var hasBind = /def bind_validation_receipt/.test(body);
+    var hasCanonical = /inbound_rel/.test(body) && /SELF_BIND/.test(body);
     var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
     var neverZero = /Never 0/.test(body);
     var namesSku = /sz-paid-validation/.test(body) && /P01_catalog_receipt/.test(body);
-    var namesBind = /UNBOUND/.test(body) && /BUYER_BOUND/.test(body);
+    var namesBind = /UNBOUND/.test(body) && /BUYER_BOUND/.test(body) && /CANDIDATE/.test(body) && /INCOMPLETE/.test(body) && /NEEDS_BUYER/.test(body);
     var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var namesUnresolved = /UNRESOLVED/.test(body);
     var noGate = /no auth/.test(body) && /no gate/.test(body);
-    if (hasMeasure && hasClassify && hasBind && hasMiss && neverZero && namesSku && namesBind && namesCash && noGate) {
+    if (hasMeasure && hasClassify && hasBind && hasCanonical && hasMiss && neverZero && namesSku && namesBind && namesCash && namesUnresolved && noGate) {
       return {
         state: "INTEGRATED",
-        note: "SUBZERO receipt leftover is on this file. quote-draft → buyer-bound is implemented. Live bind stays UNBOUND. A Slack H-008 body is still not the file."
+        note: "SUBZERO receipt leftover is on this file. JOJO second-pass bind holes are closed. Live binder stays CANDIDATE/INCOMPLETE. Not buyer acceptance. A Slack H-008 / second-pass body is still not the file."
       };
     }
     return {
       state: "NOT_LANDED",
-      note: "host/subzero_receipt.py missing the leftover. JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk is CLAIMED until the leftover ships."
+      note: "host/subzero_receipt.py missing the leftover. JOJO H-008 / second-pass / quote-draft bind / validation-receipt talk is CLAIMED until the leftover ships."
     };
   };
 

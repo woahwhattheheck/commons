@@ -463,12 +463,12 @@ python3 -m unittest -v test_titan_append_guard.py</pre>
 
 <section aria-labelledby="subzero-receipt-heading">
 <h2 id="subzero-receipt-heading">SUBZERO receipt — quote-draft → buyer-bound is not cash</h2>
-<p class="note">Slack <code>1787650230.035359</code> / JOJO BACKEND CELL H-008. quote-draft → buyer-bound / validation-receipt / <code>sz-paid-validation</code> / P01 $2500 talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Quote leftover stays: SKU is <code>QUOTE_DRAFT</code>. This leftover implements the bind. Live bind stays <code>UNBOUND</code>. Collected cash stays <code>$0 / NOT_LANDED</code>. Demand <code>UNKNOWN</code>. Do not remint <code>rivet-ship-subzero-quote-20260825-01</code>, SUBZERO_QUOTE, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320. Door: <a href="./subzero-receipt.html">subzero-receipt.html</a>. Instrument: <code>host/subzero_receipt.py</code>. Card: <a href="./ground/SUBZERO_RECEIPT.md">ground/SUBZERO_RECEIPT.md</a>. Catalog: <a href="./ground/SUBZERO_RECEIPT.json">ground/SUBZERO_RECEIPT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<p class="note">Slack <code>1787650230.035359</code> / JOJO H-008 plus Slack <code>1787651030.360809</code> SECOND PASS / #2329 BINDER. quote-draft bind / validation-receipt / <code>sz-paid-validation</code> / P01 $2500 talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Quote leftover stays: SKU is <code>QUOTE_DRAFT</code>. This leftover closes the bind holes. Live binder stays <code>CANDIDATE / INCOMPLETE / NEEDS_BUYER</code>. Collected cash stays <code>$0 / NOT_LANDED</code>. Demand <code>UNKNOWN</code>. Do not remint <code>rivet-ship-subzero-quote-20260825-01</code>, <code>rivet-ship-subzero-receipt-20260825-01</code>, SUBZERO_QUOTE, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320. Door: <a href="./subzero-receipt.html">subzero-receipt.html</a>. Instrument: <code>host/subzero_receipt.py</code>. Card: <a href="./ground/SUBZERO_RECEIPT.md">ground/SUBZERO_RECEIPT.md</a>. Catalog: <a href="./ground/SUBZERO_RECEIPT.json">ground/SUBZERO_RECEIPT.json</a>. No auth. No gate.</p>
 <pre>python3 host/subzero_receipt.py
 python3 host/subzero_receipt.py --root .
 python3 host/subzero_receipt.py --self-test
 python3 -m unittest -v test_subzero_receipt.py</pre>
-<div id="subzero-receipt-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO H-008 / quote-draft → buyer-bound / validation-receipt copy without the leftover on current main is talk. Implement the bind. Keep live UNBOUND. Never print a silent 0.</p></div>
+<div id="subzero-receipt-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO H-008 / second-pass / quote-draft bind / validation-receipt copy without the leftover on current main is talk. Close the bind holes. Keep live CANDIDATE/INCOMPLETE. Never print a silent 0.</p></div>
 </section>
 
 <section aria-labelledby="subzero-quote-heading">
@@ -905,6 +905,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825bx"></script>
+<script src="./land.js?v=20260825by"></script>
 </body>
 </html>

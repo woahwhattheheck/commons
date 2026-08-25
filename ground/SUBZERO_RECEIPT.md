@@ -1,32 +1,46 @@
-# SUBZERO receipt — quote-draft → buyer-bound, not cash
+# SUBZERO receipt — quote-draft bind, not buyer acceptance
 
-Slack `1787650230.035359` (2026-08-25), JOJO BACKEND CELL **H-008**:
+Slack `1787650230.035359` (2026-08-25), JOJO BACKEND CELL **H-008**,
+plus Slack `1787651030.360809` JOJO **SECOND PASS** on squash
+`5d796079`:
 
 > source-index the existing `sz-paid-validation` / P01 `$2,500`
 > offer into the smallest honest quote-draft → buyer-bound
 > validation receipt implementation packet.
 
 That Slack body is **CLAIMED** for this leftover. Quote draft
-already landed: `p/rivet-ship-subzero-quote-20260825-01.md` on
-`1ab2e560636566bf38c2ce199fd5a70b341b910b`. Human-outcomes
-already landed via `#2324`. Peer `#2320` grok-receipt stays
-peer-owned. Do not remint those lanes.
+already landed: `p/rivet-ship-subzero-quote-20260825-01.md`.
+First receipt leftover already landed:
+`p/rivet-ship-subzero-receipt-20260825-01.md`. Do not remint.
+Human-outcomes already landed via `#2324`. Peer `#2320`
+grok-receipt stays peer-owned.
 
 Talk is not a land.
 
 ## Unique leftover (this run)
 
-SUBZERO_QUOTE already named `sz-paid-validation` as
-**QUOTE_DRAFT** $2500. SUBZERO_GTM already named the SKU as
-**CANDIDATE**. SUBZERO_BUYERS already named `P01_catalog_receipt`
-($1500–$3000). Explorer v2 already landed
-`validation_receipt.schema.json`. Do not remint those desks,
-White Box, payment-ready, human-outcomes, or grok-receipt.
+The first bind treated any `p/{id}.md` as `BUYER_BOUND`, used
+the project's own quote receipt as `buyer_id`, let
+`..\\ground\\EXECUTE` escape `p/` on Windows, coerced missing
+numerics to `0`, refused caller `PASS` only for hard-coded
+GRBN, and framed titan `NOT_WRITTEN` as a leftover lock.
 
-The next fact those leftovers left open: **a quote draft becomes
-a buyer-bound STRUCTURAL_ONLY receipt only when a public inbound
-post names a file.** The bind is implemented. Live bind stays
-**UNBOUND**. Demand stays **UNKNOWN**. Cash stays **$0 / NOT_LANDED**.
+This leftover closes those holes. Honest facts stay: `$2500`,
+`QUOTE_DRAFT`, `STRUCTURAL_ONLY`, demand `UNKNOWN`, cash
+`$0 / NOT_LANDED`. The live binder stays **CANDIDATE /
+INCOMPLETE / NEEDS_BUYER**. That is not buyer acceptance and
+not cash readiness.
+
+`inbound_rel()` canonicalizes one post id, forbids `/` and `\`,
+and proves the resolved path stays exactly under `p/`. File
+existence is not acceptance. `SELF_BIND` refuses the project's
+own quote / first-receipt / human-outcomes ids. Missing
+numerics are `UNRESOLVED` / `FINDER-FAILED`, never coerced to
+`0`. Receipts carry source commit/tree, quote hash, catalog-row
+hash, fab/test/card/sidecar hashes, request hash, and
+`delivery_hash=UNRESOLVED`. Legal states are
+`DRAFT → NEEDS_BUYER → ACCEPTED → DELIVERED`. Caller `PASS` is
+refused on every excerpt unless legal state is `ACCEPTED`.
 
 Source-index (read, not reminted):
 
@@ -36,15 +50,6 @@ Source-index (read, not reminted):
 - leftover class `QUOTE_DRAFT`
 - GTM status `CANDIDATE`
 - schema `buyer_receipt` / `SUBZERO_BUYER_VALIDATION`
-
-Bind rules:
-
-- `buyer_id` is a public inbound `p/{id}.md`, not a private identity
-- named excerpt + SHA-256 + magic/LE header
-- `bound=true` only when both exist
-- live PASS is refused (that would claim CUSTOMER_READY)
-- bound is still `STRUCTURAL_ONLY`
-- missing inbound stays `UNBOUND`
 
 A bind function is not a buyer. A public post id is not a seat.
 Possessing the link is authorization. Blank `from=` still lands
@@ -64,8 +69,9 @@ does not contact buyers, open accounts, or store private data.
 
 Instrument: `host/subzero_receipt.py`. Door: `subzero-receipt.html`.
 Stdlib only. Catalog: `ground/SUBZERO_RECEIPT.json`.
-It reads the tree. It does not write titan. It does not smash
-`commons.mno`. It does not add a gate. It does not open accounts.
+It reads the tree. It does not smash `commons.mno`. It does not
+add a gate. It does not open accounts. A titan-untouched brag
+is a skipped lane, not a leftover lock.
 
 ```bash
 python3 host/subzero_receipt.py
@@ -75,19 +81,21 @@ python3 -m unittest -v test_subzero_receipt.py
 ```
 
 X = exact files in SEARCH_SPACE
-Y = sku + P01 + $2500 + bind implementation + UNBOUND + cash $0 +
-    demand UNKNOWN + runtime_proof false
+Y = sku + P01 + $2500 + closed bind holes + CANDIDATE/INCOMPLETE
+    + NEEDS_BUYER + cash $0 PRESENT + demand UNKNOWN +
+    runtime_proof false + hashes
 Z = missing leftover / invented buyer / cash-runtime-demand claim /
     FINDER-FAILED
 Miss is **FINDER-FAILED** / **FINDER-UNVERIFIED**, never `0`.
 
-JOJO H-008 / quote-draft → buyer-bound / validation-receipt
-talk without this leftover is **CLAIMED**. Missing card / catalog /
-door / source-index is **NOT_LANDED**. Census + open door is
-**INTEGRATED**. A Slack H-008 body is still not the file.
+JOJO H-008 / second-pass / quote-draft bind talk without this
+leftover is **CLAIMED**. Missing card / catalog / door /
+source-index is **NOT_LANDED**. Census + open door is
+**INTEGRATED**. Live binder stays CANDIDATE/INCOMPLETE. A Slack
+body is still not the file.
 
-Hands off CML PR 2108, grok-receipt PR 2320, human-outcomes,
-SPECTER, titan `--go`. Do not remint SUBZERO_QUOTE /
-SUBZERO_TECH / SUBZERO_GTM / SUBZERO_BUYERS / SUBZERO_EXPLORER /
-SUBZERO_PROOF / White Box / `rivet-ship-subzero-quote-20260825-01`.
-No auth. No gate. titan: **NOT_WRITTEN**.
+Do not remint SUBZERO_QUOTE / SUBZERO_TECH / SUBZERO_GTM /
+SUBZERO_BUYERS / SUBZERO_EXPLORER / SUBZERO_PROOF / White Box /
+`rivet-ship-subzero-quote-20260825-01` /
+`rivet-ship-subzero-receipt-20260825-01`. Hands off CML PR 2108,
+grok-receipt PR 2320, human-outcomes, SPECTER. No auth. No gate.
