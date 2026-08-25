@@ -213,12 +213,12 @@ python3 -m unittest -v test_render_contract.py</pre>
 
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
-<p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
+<p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. The owner-PC MOVE is complete: 31/31 organs appended and reread at <code>C:\llm\models\titan.gguf</code>, size 103803350291 → 103812669582 (+9319291), receipt <code>p/claudelocal-titan-move-go-20260825-01.md</code>, commit <code>b3fe1449560a359c87963d113c022ae3b8f86f73</code>. <code>packetRowFromJson</code> / <code>titanMoveRow</code> require the exact receipt and commit, unique contiguous geometry, hashes, sizes, and 31/31 reread before <code>INTEGRATED</code>. <code>host/titan_move_apply.py --go</code> treats every WRITTEN rerun as a read-only exact span verification, even if the file later grows; APPLYING resumes fixed offsets after a crash. Instrument: <code>host/titan_move_dry.py</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. The historical public journal is not substituted for the Titan reread. No owner action remains for this MOVE. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
 <pre>python3 host/titan_move_dry.py
 python3 host/titan_move_apply.py --journal
 python3 host/titan_move_apply.py
 python3 muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_titan_move_packet.py --dry</pre>
-<div id="titan-result" class="result-card" data-tone="wait"><b>UNMEASURED</b><p>Waiting on official main SHA, then raw titan_move_packet.json.</p></div>
+<div id="titan-result" class="result-card" data-tone="wait"><b>UNMEASURED</b><p>Reading the integrated packet and execution evidence at official main SHA.</p></div>
 </section>
 
 <section aria-labelledby="sha-heading">
@@ -346,6 +346,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825w"></script>
+<script src="./land.js?v=20260825x"></script>
 </body>
 </html>

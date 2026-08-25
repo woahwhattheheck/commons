@@ -30,67 +30,234 @@ from titan_move_offsets import (
 PACKET_REL = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 EXCERPT_REL = os.path.join("excerpts", "20260823")
 JOURNAL_REL = os.path.join("excerpts", "20260823", "titan_move_journal.json")
+CLOSED_WRITE_RECEIPT = "p/claudelocal-titan-move-go-20260825-01.md"
+CLOSED_WRITE_COMMIT = "b3fe1449560a359c87963d113c022ae3b8f86f73"
+CLOSED_RECEIPT_MARKERS = (
+    "id: claudelocal-titan-move-go-20260825-01",
+    "state INTEGRATED, wrote=true, reread=true",
+    "31/31 organs journaled, 31/31 reread true, 31/31 past_eof",
+    "titan.gguf after: 103812669582 bytes (+9319291",
+)
 
 
-def already_applied(packet, live_size):
-    """True when live titan already sits at the claimed append end."""
-    if live_size is None:
-        return False
+def atomic_write_json(path, payload):
+    """Replace a JSON state file atomically in its own directory."""
+    directory = os.path.dirname(os.path.abspath(path))
+    os.makedirs(directory, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".titan-move-", suffix=".json", dir=directory)
     try:
-        base = int((packet or {}).get("claimed_append_base") or 0)
-        end = int((packet or {}).get("claimed_append_end") or 0)
-        live = int(live_size)
-    except (TypeError, ValueError):
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def persisted_execution_complete(packet, root=None):
+    """Whether the public packet carries a complete apply+reread attestation."""
+    packet = packet or {}
+    count = int(packet.get("count") or 0)
+    organs = list(packet.get("organs") or [])
+    base = int(packet.get("claimed_append_base") or -1)
+    end = int(packet.get("claimed_append_end") or -1)
+    before = int(packet.get("titan_size_before") or 0)
+    after = int(packet.get("titan_size_after") or 0)
+    written_bytes = int(packet.get("written_bytes") or 0)
+    top_complete = (
+        str(packet.get("titan") or "").upper() == "WRITTEN"
+        and str(packet.get("state") or "").upper() == "INTEGRATED"
+        and packet.get("wrote") is True
+        and packet.get("reread") is True
+        and count == len(organs)
+        and count > 0
+        and int(packet.get("write_count") or 0) == count
+        and int(packet.get("reread_count") or 0) == count
+        and int(packet.get("past_eof_count") or 0) == count
+        and before == base
+        and after == end
+        and int(packet.get("live_size_before") or 0) == before
+        and int(packet.get("live_size_after") or 0) == after
+        and written_bytes == end - base
+        and written_bytes > 0
+        and packet.get("write_receipt") == CLOSED_WRITE_RECEIPT
+        and packet.get("integrated_commit") == CLOSED_WRITE_COMMIT
+    )
+    if not top_complete:
         return False
-    if end > base and live == end:
-        return True
-    written = str((packet or {}).get("titan") or "").upper() == "WRITTEN"
-    return written and end > 0 and live == end
+    if not root:
+        return False
+    receipt_path = os.path.join(os.path.abspath(root), CLOSED_WRITE_RECEIPT)
+    if not os.path.isfile(receipt_path):
+        return False
+    with open(receipt_path, encoding="utf-8") as handle:
+        receipt_body = handle.read()
+    if not all(marker in receipt_body for marker in CLOSED_RECEIPT_MARKERS):
+        return False
+    expected_offset = base
+    names = set()
+    containers = set()
+    excerpt_dir = os.path.join(os.path.abspath(root), EXCERPT_REL)
+    for row in organs:
+        name = str(row.get("name") or "")
+        declared_container = str(row.get("container") or "")
+        container = os.path.basename(declared_container)
+        source_digest = str(row.get("sha256") or "").lower()
+        digest = str(
+            row.get("written_sha256") or row.get("sha256") or ""
+        ).lower()
+        try:
+            offset = int(row.get("offset"))
+            length = int(row.get("len"))
+            int(digest, 16)
+            int(source_digest, 16)
+        except (TypeError, ValueError):
+            return False
+        if (
+            not name
+            or name in names
+            or not container
+            or declared_container != container
+            or container != name + ".mno"
+            or container in containers
+            or offset != expected_offset
+            or length <= 0
+            or len(digest) != 64
+            or len(source_digest) != 64
+            or str(row.get("titan") or "").upper() != "WRITTEN"
+        ):
+            return False
+        excerpt_path = os.path.join(excerpt_dir, container)
+        if not os.path.isfile(excerpt_path):
+            return False
+        with open(excerpt_path, "rb") as handle:
+            source = handle.read()
+        if (
+            len(source) != length
+            or hashlib.sha256(source).hexdigest() != source_digest
+        ):
+            return False
+        names.add(name)
+        containers.add(container)
+        expected_offset += length
+    return (
+        expected_offset == end
+        and len(names) == count
+        and len(containers) == count
+    )
 
 
-def persist_write_facts(
-    packet,
-    write_count,
-    reread_count,
-    live_size_before,
-    live_size_after,
-):
-    """Durable titan write/reread/size facts. Ones only rise."""
-    out = dict(packet or {})
-    write_count = int(write_count or 0)
-    reread_count = int(reread_count or 0)
-    before = int(live_size_before or 0)
-    after = int(live_size_after or 0)
-    out["titan"] = "WRITTEN"
-    out["reread"] = write_count > 0 and reread_count == write_count
-    out["write_count"] = write_count
-    out["reread_count"] = reread_count
-    out["live_size_before"] = before
-    out["live_size_after"] = after
-    out["written_bytes"] = after - before
-    organs = []
-    for row in list(out.get("organs") or []):
-        item = dict(row)
-        item["titan"] = "WRITTEN"
-        organs.append(item)
-    out["organs"] = organs
-    return out
+def validate_titan_context(titan_path):
+    """Measure GGUF format context without restricting the caller's path."""
+    with open(titan_path, "rb") as handle:
+        magic = handle.read(4)
+    if magic != b"GGUF":
+        raise RuntimeError("target is not a measured GGUF artifact")
+    return True
 
 
-def plan_from_packet(packet, live_size=None):
-    """Rebuild claimed offsets. Reallocate if live titan size differs.
+def verify_written_packet(titan_path, packet):
+    """Reread a packet already marked WRITTEN without allocating or writing.
 
-    Fail closed when live size already equals claimed_append_end —
-    a second --go must not append another copy.
+    The persisted digest is ``written_sha256`` when a MOVE overlaid existing
+    bytes, otherwise the excerpt ``sha256`` is also the written digest (the
+    current 31-organ MOVE was a pure append). Any missing or malformed span
+    fails closed. This is the idempotency guard for ``--go``.
     """
     packet = packet or {}
     organs = list(packet.get("organs") or [])
+    expected_count = int(packet.get("count") or len(organs))
+    titan_size = os.path.getsize(titan_path)
+    before = int(packet.get("titan_size_before") or 0)
+    claimed_base = int(packet.get("claimed_append_base") or -1)
+    claimed_end = int(packet.get("claimed_append_end") or -1)
+    rows = []
+    exact_count = 0
+    previous_end = claimed_base
+    names = set()
+    containers = set()
+    with open(titan_path, "rb") as handle:
+        for source in organs:
+            row = dict(source)
+            try:
+                offset = int(row.get("offset"))
+                length = int(row.get("len"))
+            except (TypeError, ValueError):
+                offset, length = -1, -1
+            expected = str(
+                row.get("written_sha256") or row.get("sha256") or ""
+            ).lower()
+            name = str(row.get("name") or "")
+            declared_container = str(row.get("container") or "")
+            container = os.path.basename(declared_container)
+            geometry_ok = (
+                offset >= 0
+                and length > 0
+                and offset == previous_end
+                and offset + length <= titan_size
+                and len(expected) == 64
+                and bool(name)
+                and name not in names
+                and bool(container)
+                and declared_container == container
+                and container == name + ".mno"
+                and container not in containers
+            )
+            actual = ""
+            if geometry_ok:
+                handle.seek(offset)
+                actual = hashlib.sha256(handle.read(length)).hexdigest()
+            exact = geometry_ok and actual == expected
+            if exact:
+                exact_count += 1
+            rows.append({
+                "name": name,
+                "container": container,
+                "offset": offset,
+                "len": length,
+                "expected_sha256": expected,
+                "actual_sha256": actual,
+                "reread": exact,
+                "past_eof": bool(before and offset >= before),
+            })
+            if geometry_ok:
+                previous_end = offset + length
+                names.add(name)
+                containers.add(container)
+    count_ok = expected_count == len(organs) and expected_count > 0
+    geometry_complete = (
+        claimed_base >= 0
+        and previous_end == claimed_end
+        and titan_size >= claimed_end
+        and len(names) == expected_count
+        and len(containers) == expected_count
+    )
+    reread = count_ok and geometry_complete and exact_count == expected_count
+    return {
+        "kind": "TITAN_MOVE_EXISTING_REREAD",
+        "count": expected_count,
+        "exact_count": exact_count,
+        "reread": reread,
+        "titan_size": titan_size,
+        "claimed_append_base": claimed_base,
+        "claimed_append_end": claimed_end,
+        "geometry_complete": geometry_complete,
+        "organs": rows,
+    }
+
+
+def plan_from_packet(packet, live_size=None):
+    """Rebuild claimed offsets. Reallocate if live titan size differs."""
+    packet = packet or {}
+    organs = list(packet.get("organs") or [])
     base = int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
-    if (
-        live_size is not None
-        and int(live_size) != base
-        and not already_applied(packet, live_size)
-    ):
+    if live_size is not None and int(live_size) != base:
         base = int(live_size)
     allocated, end = allocate_rows(organs, base=base)
     return {
@@ -104,8 +271,7 @@ def plan_from_packet(packet, live_size=None):
         "count": len(allocated),
         "organs": allocated,
         "reallocated": live_size is not None
-        and int(live_size) != int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE)
-        and not already_applied(packet, live_size),
+        and int(live_size) != int(packet.get("claimed_append_base") or CLAIMED_APPEND_BASE),
     }
 
 
@@ -164,16 +330,82 @@ def apply_journal(journal_path, rows, excerpt_dir):
     return journals
 
 
-def apply_plan(titan_path, plan, excerpt_dir):
-    """Journaled MOVE. new = old | mask. Re-read each span."""
+def preflight_plan(plan, excerpt_dir):
+    """Read and hash every source plus exact allocation before any write."""
+    organs = list((plan or {}).get("organs") or [])
+    count = int((plan or {}).get("count") or len(organs))
+    expected_offset = int((plan or {}).get("claimed_append_base") or -1)
+    expected_end = int((plan or {}).get("claimed_append_end") or -1)
+    names = set()
+    containers = set()
+    prepared = []
+    if count != len(organs) or count <= 0 or expected_offset < 0:
+        raise RuntimeError("invalid MOVE count/base")
+    for row in organs:
+        name = str(row.get("name") or "")
+        declared_container = str(row.get("container") or "")
+        container = os.path.basename(declared_container)
+        offset = int(row.get("offset") or -1)
+        length = int(row.get("len") or -1)
+        if not name or name in names:
+            raise RuntimeError("duplicate/empty organ name %r" % name)
+        if (
+            not container
+            or declared_container != container
+            or container != name + ".mno"
+            or container in containers
+        ):
+            raise RuntimeError(
+                "invalid/duplicate source container %r for %s"
+                % (declared_container, name)
+            )
+        if offset != expected_offset or length <= 0:
+            raise RuntimeError("non-contiguous MOVE geometry %s" % name)
+        excerpt_path = os.path.join(excerpt_dir, container)
+        with open(excerpt_path, "rb") as raw_handle:
+            mask = raw_handle.read()
+        digest = hashlib.sha256(mask).hexdigest()
+        if len(mask) != length or digest != str(row.get("sha256") or ""):
+            raise RuntimeError("excerpt len/sha mismatch %s" % name)
+        prepared.append((row, mask))
+        names.add(name)
+        containers.add(container)
+        expected_offset += length
+    if expected_offset != expected_end:
+        raise RuntimeError("claimed append end mismatch")
+    return prepared
+
+
+def verify_applying_prefix(titan_path, plan, prepared, original_size):
+    """An append retry may only continue an exact prefix at its fixed base."""
+    base = int((plan or {}).get("claimed_append_base") or -1)
+    end = int((plan or {}).get("claimed_append_end") or -1)
+    size = os.path.getsize(titan_path)
+    origin = int(original_size)
+    if origin != base:
+        raise RuntimeError("APPLYING original size/base mismatch")
+    if size < origin or size > end:
+        raise RuntimeError("APPLYING live size is outside fixed append span")
+    expected = b"".join(mask for _, mask in prepared)
+    prefix_len = size - base
+    with open(titan_path, "rb") as handle:
+        handle.seek(base)
+        actual = handle.read(prefix_len)
+    if actual != expected[:prefix_len]:
+        raise RuntimeError("APPLYING target tail is not the exact written prefix")
+    return {"live_size": size, "resume_bytes": prefix_len}
+
+
+def apply_plan(
+    titan_path, plan, excerpt_dir, original_size=None, prepared=None
+):
+    """Journaled MOVE. Preflight all sources, write, then re-read each span."""
+    prepared = prepared if prepared is not None else preflight_plan(plan, excerpt_dir)
     journals = []
     with open(titan_path, "r+b") as handle:
         size = os.path.getsize(titan_path)
-        for row in plan.get("organs") or []:
-            container = os.path.basename(str(row.get("container") or ""))
-            excerpt_path = os.path.join(excerpt_dir, container)
-            with open(excerpt_path, "rb") as raw_handle:
-                mask = raw_handle.read()
+        origin = int(size if original_size is None else original_size)
+        for row, mask in prepared:
             offset = int(row["offset"])
             handle.seek(offset)
             old = handle.read(len(mask))
@@ -189,10 +421,13 @@ def apply_plan(titan_path, plan, excerpt_dir):
                 "name": row.get("name"),
                 "offset": offset,
                 "len": len(mask),
-                "pre_sha256": hashlib.sha256(old).hexdigest(),
+                "pre_sha256": str(
+                    row.get("pre_sha256") or hashlib.sha256(old).hexdigest()
+                ),
+                "resume_pre_sha256": hashlib.sha256(old).hexdigest(),
                 "new_sha256": hashlib.sha256(new).hexdigest(),
                 "reread": ok,
-                "past_eof": offset >= size,
+                "past_eof": offset >= origin,
             })
             if not ok:
                 raise RuntimeError("reread mismatch %s @ %s" % (row.get("name"), offset))
@@ -236,7 +471,15 @@ def main(argv=None):
         env_path=os.environ.get("TITAN"),
     )
     live_size = os.path.getsize(titan_path) if titan_path else None
-    plan = plan_from_packet(packet, live_size=live_size)
+    packet_written = str(packet.get("titan") or "").upper() == "WRITTEN"
+    packet_applying = str(packet.get("state") or "").upper() == "APPLYING"
+    fixed_allocation = packet_written or packet_applying
+    # WRITTEN and APPLYING packets keep their original allocation. Reallocating
+    # from a now-larger live size would duplicate a completed or partial MOVE.
+    plan = plan_from_packet(
+        packet,
+        live_size=None if fixed_allocation else live_size,
+    )
     payload = {
         "measured": True,
         "titan_path": titan_path,
@@ -248,6 +491,21 @@ def main(argv=None):
         "reread": False,
         "plan": plan,
     }
+    if packet_written and args.journal:
+        complete = persisted_execution_complete(packet, root=root)
+        payload["already_written"] = True
+        payload["state"] = "INTEGRATED" if complete else "NOT_LANDED"
+        payload["reread"] = packet.get("reread") is True
+        payload["note"] = (
+            "Titan MOVE is already persisted as INTEGRATED; historical public "
+            "journal left unchanged."
+            if complete
+            else "packet says WRITTEN without a complete execution attestation; journal left unchanged."
+        )
+        json.dump(payload, sys.stdout, indent=2, sort_keys=True)
+        sys.stdout.write("\n")
+        print("DIE")
+        return 0 if complete else 2
     if args.journal:
         rows, end = journal_rows(packet.get("organs") or [])
         journal_bin = args.journal_bin or os.path.join(
@@ -292,111 +550,165 @@ def main(argv=None):
         print("DIE")
         return 0 if reread_ok else 2
     if not args.go:
-        payload["state"] = "CLAIMED" if titan_path else "NOT_LANDED"
-        payload["note"] = (
-            "plan-only. %s claimed append offsets FROM FILE. "
-            "titan %s. Pass --go on the machine that has titan.gguf."
-            % (
-                plan["count"],
-                "present (%s bytes)" % live_size if titan_path else "ABSENT",
+        complete = persisted_execution_complete(packet, root=root)
+        if packet_written:
+            payload["already_written"] = True
+            payload["reread"] = packet.get("reread") is True
+            payload["state"] = "INTEGRATED" if complete else "NOT_LANDED"
+            payload["note"] = (
+                "persisted Titan MOVE execution is INTEGRATED; no new plan "
+                "allocated. Use --go with titan present for a fresh read-only reread."
+                if complete
+                else "packet says WRITTEN without complete execution evidence; no new plan allocated."
             )
-        )
+        else:
+            payload["state"] = "CLAIMED" if titan_path else "NOT_LANDED"
+            payload["note"] = (
+                "plan-only. %s fixed append offsets FROM FILE. "
+                "titan %s. Pass --go on the machine that has titan.gguf."
+                % (
+                    plan["count"],
+                    "present (%s bytes)" % live_size if titan_path else "ABSENT",
+                )
+            )
         json.dump(payload, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")
         print("DIE")
         return 0
     if not titan_path:
-        payload["state"] = "NOT_LANDED"
-        payload["note"] = (
-            "titan.gguf ABSENT. dest FROM FILE is %s. "
-            "Offsets stay claimed. No write."
-            % r"C:\llm\models\titan.gguf"
-        )
+        complete = persisted_execution_complete(packet, root=root)
+        if packet_written and complete:
+            payload["already_written"] = True
+            payload["reread"] = True
+            payload["state"] = "INTEGRATED"
+            payload["note"] = (
+                "persisted Titan MOVE execution is INTEGRATED; titan.gguf is "
+                "absent here, so no fresh reread was attempted and no write is needed."
+            )
+        else:
+            payload["state"] = "NOT_LANDED"
+            payload["note"] = (
+                "titan.gguf ABSENT. dest FROM FILE is %s. "
+                "Offsets stay fixed. No write."
+                % r"C:\llm\models\titan.gguf"
+            )
         json.dump(payload, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")
         print("DIE")
-        return 2
-    if already_applied(packet, live_size):
-        write_count = int(
-            packet.get("write_count")
-            or packet.get("count")
-            or len(packet.get("organs") or [])
-            or 0
+        return 0 if packet_written and complete else 2
+    validate_titan_context(titan_path)
+    if packet_written:
+        verification = verify_written_packet(titan_path, packet)
+        durable_complete = persisted_execution_complete(packet, root=root)
+        payload["already_written"] = True
+        payload["verification"] = verification
+        payload["journals"] = verification["organs"]
+        payload["reread"] = verification["reread"]
+        payload["state"] = (
+            "INTEGRATED"
+            if verification["reread"] and durable_complete
+            else "NOT_LANDED"
         )
-        reread_count = int(packet.get("reread_count") or write_count)
-        packet = persist_write_facts(
-            packet,
-            write_count=write_count,
-            reread_count=reread_count,
-            live_size_before=int(
-                packet.get("live_size_before")
-                or packet.get("claimed_append_base")
-                or 0
-            ),
-            live_size_after=int(live_size),
-        )
-        with open(packet_path, "w", encoding="utf-8") as handle:
-            json.dump(packet, handle, indent=2)
-            handle.write("\n")
-        payload["wrote"] = False
-        payload["reread"] = True
-        payload["write_count"] = write_count
-        payload["reread_count"] = reread_count
-        payload["live_size_before"] = packet["live_size_before"]
-        payload["live_size_after"] = packet["live_size_after"]
-        payload["written_bytes"] = packet["written_bytes"]
-        payload["state"] = "INTEGRATED"
         payload["note"] = (
-            "already written. fail-closed against duplicate append. "
-            "live_size=%s claimed_append_end=%s write_count=%s reread_count=%s"
+            "packet already WRITTEN; performed read-only exact reread of "
+            "%s/%s spans. No allocation and no write.%s"
             % (
-                live_size,
-                packet.get("claimed_append_end"),
-                write_count,
-                reread_count,
+                verification["exact_count"],
+                verification["count"],
+                ""
+                if durable_complete
+                else " Durable closure evidence is still missing.",
             )
         )
         json.dump(payload, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")
         print("DIE")
-        return 0
-    journals = apply_plan(titan_path, plan, excerpt_dir)
-    after_size = os.path.getsize(titan_path)
-    write_count = len(journals)
-    reread_count = sum(1 for row in journals if row.get("reread"))
+        return 0 if verification["reread"] else 2
+    # Validate every source and exact fixed geometry before changing packet or
+    # titan. Then persist APPLYING atomically so a crash retries these offsets.
+    prepared = preflight_plan(plan, excerpt_dir)
+    original_size = int(packet.get("titan_size_before") or live_size)
+    if packet_applying:
+        empty_sha256 = hashlib.sha256(b"").hexdigest()
+        for row in plan["organs"]:
+            try:
+                pre_len = int(row.get("pre_len"))
+            except (TypeError, ValueError):
+                pre_len = -1
+            if (
+                pre_len != 0
+                or str(row.get("pre_sha256") or "").lower() != empty_sha256
+            ):
+                raise RuntimeError("APPLYING packet lacks original preimage evidence")
+    else:
+        # Every first MOVE allocation starts at the live EOF, so each original
+        # preimage is the empty byte string. Persist that before any target byte.
+        if int(live_size) != int(plan["claimed_append_base"]):
+            raise RuntimeError("first MOVE base is not live EOF")
+        for row in plan["organs"]:
+            row["pre_len"] = 0
+            row["pre_sha256"] = hashlib.sha256(b"").hexdigest()
+    resume = verify_applying_prefix(
+        titan_path, plan, prepared, original_size=original_size
+    )
+    payload["resume"] = resume
+    if not packet_applying:
+        packet["state"] = "APPLYING"
+        packet["wrote"] = False
+        packet["reread"] = False
+        packet["write_count"] = 0
+        packet["reread_count"] = 0
+        packet["past_eof_count"] = 0
+        packet["titan_size_before"] = int(live_size)
+        packet["titan_size_after"] = None
+        packet["live_size_before"] = int(live_size)
+        packet["live_size_after"] = None
+        packet["written_bytes"] = 0
+        packet["claimed_append_base"] = plan["claimed_append_base"]
+        packet["claimed_append_end"] = plan["claimed_append_end"]
+        packet["organs"] = plan["organs"]
+        atomic_write_json(packet_path, packet)
+    journals = apply_plan(
+        titan_path,
+        plan,
+        excerpt_dir,
+        original_size=original_size,
+        prepared=prepared,
+    )
+    payload["wrote"] = True
+    payload["reread"] = all(row["reread"] for row in journals)
+    payload["journals"] = journals
+    payload["state"] = "NOT_LANDED"
+    payload["execution_state"] = "WRITTEN"
+    payload["note"] = (
+        "journaled MOVE locally. new=old|mask. reread=%s. Target execution "
+        "is WRITTEN, but Commons integration remains NOT_LANDED until its "
+        "durable receipt and integrated main commit are attached."
+        % payload["reread"]
+    )
+    packet["titan"] = "WRITTEN"
+    packet["state"] = "WRITTEN"
+    packet["wrote"] = True
+    packet["reread"] = payload["reread"]
+    packet["write_count"] = len(journals)
+    packet["reread_count"] = sum(1 for row in journals if row["reread"])
+    packet["past_eof_count"] = sum(1 for row in journals if row["past_eof"])
+    packet["titan_size_before"] = original_size
+    packet["titan_size_after"] = os.path.getsize(titan_path)
+    packet["live_size_before"] = packet["titan_size_before"]
+    packet["live_size_after"] = packet["titan_size_after"]
+    packet["written_bytes"] = packet["titan_size_after"] - original_size
     packet["claimed_append_base"] = plan["claimed_append_base"]
     packet["claimed_append_end"] = plan["claimed_append_end"]
     packet["organs"] = plan["organs"]
-    packet = persist_write_facts(
-        packet,
-        write_count=write_count,
-        reread_count=reread_count,
-        live_size_before=int(live_size or 0),
-        live_size_after=after_size,
-    )
-    payload["wrote"] = True
-    payload["reread"] = packet["reread"]
-    payload["write_count"] = write_count
-    payload["reread_count"] = reread_count
-    payload["live_size_before"] = packet["live_size_before"]
-    payload["live_size_after"] = packet["live_size_after"]
-    payload["written_bytes"] = packet["written_bytes"]
-    payload["journals"] = journals
-    payload["state"] = "INTEGRATED" if payload["reread"] else "NOT_LANDED"
-    payload["note"] = (
-        "journaled MOVE. new=old|mask. reread=%s write_count=%s reread_count=%s "
-        "live_size %s -> %s"
-        % (
-            payload["reread"],
-            write_count,
-            reread_count,
-            live_size,
-            after_size,
-        )
-    )
-    with open(packet_path, "w", encoding="utf-8") as handle:
-        json.dump(packet, handle, indent=2)
-        handle.write("\n")
+    journal_by_name = {row.get("name"): row for row in journals}
+    for row in packet["organs"]:
+        journal = journal_by_name.get(row.get("name")) or {}
+        row["titan"] = "WRITTEN"
+        row["written_sha256"] = journal.get("new_sha256")
+        row["reread"] = journal.get("reread") is True
+        row["past_eof"] = journal.get("past_eof") is True
+    atomic_write_json(packet_path, packet)
     json.dump(payload, sys.stdout, indent=2, sort_keys=True)
     sys.stdout.write("\n")
     print("DIE")

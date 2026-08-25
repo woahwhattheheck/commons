@@ -1037,36 +1037,227 @@
     return /no muhlnickel,\s*organ,\s*titan,\s*or device path|no muhlnickel.{0,80}organ.{0,80}titan.{0,80}device path|stop dodging the substrate|not to be ignored and it is not to be deferred|337\s*=\s*NO|did not touch titan|did not touch \.mno|did not fire 337|did not write titan\.gguf/i.test(String(text || ""));
   };
 
-  api.packetRowFromJson = function (data, journal) {
+  api.titanReceiptJson = function (receiptText) {
+    var body = String(receiptText || "");
+    var marker = "FULL --go RECEIPT (untruncated):";
+    var markerAt = body.indexOf(marker);
+    if (markerAt < 0 || body.indexOf(marker, markerAt + marker.length) >= 0) return null;
+    var fenceAt = body.indexOf("```json", markerAt + marker.length);
+    if (fenceAt < 0) return null;
+    var openAt = body.indexOf("{", fenceAt + 7);
+    if (openAt < 0) return null;
+    var depth = 0;
+    var inString = false;
+    var escaped = false;
+    var closeAt = -1;
+    var i;
+    for (i = openAt; i < body.length; i += 1) {
+      var ch = body.charAt(i);
+      if (inString) {
+        if (escaped) {
+          escaped = false;
+        } else if (ch === "\\") {
+          escaped = true;
+        } else if (ch === '"') {
+          inString = false;
+        }
+      } else if (ch === '"') {
+        inString = true;
+      } else if (ch === "{") {
+        depth += 1;
+      } else if (ch === "}") {
+        depth -= 1;
+        if (depth === 0) {
+          closeAt = i + 1;
+          break;
+        }
+      }
+    }
+    if (closeAt < 0 || inString || depth !== 0) return null;
+    try {
+      return JSON.parse(body.slice(openAt, closeAt));
+    } catch (error) {
+      return null;
+    }
+  };
+
+  function titanReceiptMatches(data, publicJournal, publicJournalPresent, evidence) {
+    var organs = Array.isArray(data.organs) ? data.organs : [];
+    var plan = evidence && evidence.plan;
+    var planOrgans = plan && Array.isArray(plan.organs) ? plan.organs : [];
+    var receiptJournals = evidence && Array.isArray(evidence.journals) ? evidence.journals : [];
+    var count = Number(data.count || 0);
+    var base = Number(data.claimed_append_base);
+    var end = Number(data.claimed_append_end);
+    var publicRows = publicJournalPresent && Array.isArray(publicJournal.organs) ? publicJournal.organs : [];
+    var publicOk = !publicJournalPresent || (
+      publicJournal.reread === true && Number(publicJournal.count) === 31 &&
+      Number(publicJournal.bytes) === end - base && publicRows.length === 31
+    );
+    if (!evidence || evidence.go !== true || evidence.journal !== false ||
+        evidence.measured !== true || evidence.reread !== true || evidence.wrote !== true ||
+        evidence.titan_present !== true || String(evidence.state || "").toUpperCase() !== "INTEGRATED" ||
+        Number(evidence.live_size) !== base || !plan || String(plan.kind || "") !== "TITAN_MOVE_PLAN" ||
+        Number(plan.count) !== 31 || Number(plan.claimed_append_base) !== base ||
+        Number(plan.claimed_append_end) !== end || plan.reallocated !== false ||
+        count !== 31 || organs.length !== 31 || planOrgans.length !== 31 ||
+        receiptJournals.length !== 31 || !publicOk) {
+      return { receipt: false, public_journal: publicOk };
+    }
+    var emptySha = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+    var journalOffset = 0;
+    var names = Object.create(null);
+    for (var i = 0; i < 31; i += 1) {
+      var packetRow = organs[i] || {};
+      var planRow = planOrgans[i] || {};
+      var receiptRow = receiptJournals[i] || {};
+      var publicRow = publicRows[i] || {};
+      var name = String(packetRow.name || "");
+      var container = String(packetRow.container || "");
+      var path = String(packetRow.path || "");
+      var sourceSha = String(packetRow.sha256 || "").toLowerCase();
+      var writtenSha = String(packetRow.written_sha256 || sourceSha).toLowerCase();
+      var offset = Number(packetRow.offset);
+      var length = Number(packetRow.len);
+      if (!name || names[name] || container !== name + ".mno" ||
+          path !== "excerpts/20260823/" + container ||
+          String(planRow.name || "") !== name || String(planRow.container || "") !== container ||
+          String(planRow.path || "") !== path || Number(planRow.offset) !== offset ||
+          Number(planRow.len) !== length || String(planRow.sha256 || "").toLowerCase() !== sourceSha ||
+          String(planRow.titan || "").toUpperCase() !== "WRITTEN" ||
+          String(receiptRow.name || "") !== name || Number(receiptRow.offset) !== offset ||
+          Number(receiptRow.len) !== length || String(receiptRow.new_sha256 || "").toLowerCase() !== writtenSha ||
+          String(receiptRow.pre_sha256 || "").toLowerCase() !== emptySha ||
+          receiptRow.reread !== true || receiptRow.past_eof !== true) {
+        return { receipt: false, public_journal: publicOk };
+      }
+      if (publicJournalPresent && (
+          String(publicRow.name || "") !== name || String(publicRow.container || "") !== container ||
+          Number(publicRow.journal_offset) !== journalOffset ||
+          Number(publicRow.claimed_titan_offset) !== offset || Number(publicRow.len) !== length ||
+          String(publicRow.mask_sha256 || "").toLowerCase() !== sourceSha ||
+          String(publicRow.new_sha256 || "").toLowerCase() !== writtenSha ||
+          String(publicRow.pre_sha256 || "").toLowerCase() !== emptySha || publicRow.reread !== true)) {
+        return { receipt: false, public_journal: false };
+      }
+      names[name] = true;
+      journalOffset += length;
+    }
+    return {
+      receipt: Object.keys(names).length === 31 && journalOffset === end - base,
+      public_journal: publicOk
+    };
+  }
+
+  api.titanMoveRow = function (data, journal, receiptText) {
     data = data || {};
-    var organs = data.organs || [];
+    var publicJournalPresent = Boolean(journal && typeof journal === "object" && Object.keys(journal).length);
+    journal = journal || {};
+    var organs = Array.isArray(data.organs) ? data.organs : [];
+    var count = Number(data.count || organs.length || 0);
+    var base = Number(data.claimed_append_base);
+    var end = Number(data.claimed_append_end);
+    var expectedOffset = base;
     var nonzero = 0;
+    var geometryComplete = count > 0 && organs.length === count &&
+      Number.isFinite(base) && Number.isInteger(base) && base > 0 &&
+      Number.isFinite(end) && Number.isInteger(end) && end > base;
+    var names = Object.create(null);
+    var containers = Object.create(null);
+    var paths = Object.create(null);
+    var membershipComplete = count === 31 && organs.length === 31;
+    var writtenStateCount = 0;
+    var planStateCount = 0;
     var i;
     for (i = 0; i < organs.length; i += 1) {
-      if (Number(organs[i] && organs[i].offset) !== 0) nonzero += 1;
+      var organ = organs[i] || {};
+      var name = String(organ.name || "");
+      var container = String(organ.container || "");
+      var path = String(organ.path || "");
+      var offset = Number(organ.offset);
+      var length = Number(organ.len);
+      var sourceDigest = String(organ.sha256 || "").toLowerCase();
+      var writtenDigest = String(organ.written_sha256 || sourceDigest).toLowerCase();
+      var organState = String(organ.titan || "").toUpperCase();
+      var offsetOk = Number.isFinite(offset) && Number.isInteger(offset) && offset > 0;
+      var lengthOk = Number.isFinite(length) && Number.isInteger(length) && length > 0;
+      var membershipOk = Boolean(name) && !names[name] && !containers[container] && !paths[path] &&
+        container === name + ".mno" && path === "excerpts/20260823/" + container;
+      if (offsetOk) nonzero += 1;
+      if (!membershipOk) membershipComplete = false;
+      if (!membershipOk || !offsetOk || !lengthOk || offset !== expectedOffset ||
+          !/^[0-9a-f]{64}$/.test(sourceDigest) || !/^[0-9a-f]{64}$/.test(writtenDigest)) {
+        geometryComplete = false;
+      }
+      if (organState === "WRITTEN") writtenStateCount += 1;
+      if (organState === "NOT_WRITTEN") planStateCount += 1;
+      if (name) names[name] = true;
+      if (container) containers[container] = true;
+      if (path) paths[path] = true;
+      if (lengthOk) expectedOffset += length;
     }
+    var canonicalMembership = membershipComplete &&
+      Object.keys(names).length === 31 && Object.keys(containers).length === 31 &&
+      Object.keys(paths).length === 31;
+    geometryComplete = geometryComplete && expectedOffset === end && canonicalMembership;
+    var receipt = String(data.write_receipt || "");
+    var commit = String(data.integrated_commit || "").toLowerCase();
+    var closedReceipt = "p/claudelocal-titan-move-go-20260825-01.md";
+    var closedCommit = "b3fe1449560a359c87963d113c022ae3b8f86f73";
+    var receiptBody = String(receiptText || "");
+    var receiptMarkers = [
+      "id: claudelocal-titan-move-go-20260825-01",
+      "state INTEGRATED, wrote=true, reread=true",
+      "31/31 organs journaled, 31/31 reread true, 31/31 past_eof",
+      "titan.gguf after: 103812669582 bytes (+9319291"
+    ];
+    var receiptMarkersOk = receipt === closedReceipt && receiptMarkers.every(function (marker) {
+      return receiptBody.indexOf(marker) >= 0;
+    });
+    var receiptJson = api.titanReceiptJson(receiptBody);
+    var evidenceMatch = titanReceiptMatches(data, journal, publicJournalPresent, receiptJson);
+    var receiptContentOk = receiptMarkersOk && evidenceMatch.receipt;
     var writeCount = Number(data.write_count || 0);
-    var rereadCount = Number(data.reread_count || 0);
-    var reread = data.reread === true || (writeCount >= 31 && rereadCount === writeCount);
-    var row = {
+    var titanSizeBefore = Number(data.titan_size_before || 0);
+    var titanSizeAfter = Number(data.titan_size_after || 0);
+    var liveSizeBefore = Number(data.live_size_before || 0);
+    var liveSizeAfter = Number(data.live_size_after || 0);
+    return {
       measured: true,
-      count: Number((data && data.count) || organs.length || 0),
+      count: count,
       excerpt_count: organs.length,
-      titan: (data && data.titan) || "NOT_WRITTEN",
+      titan: data.titan || "NOT_WRITTEN",
+      packet_state: data.state || "",
       nonzero_offsets: nonzero,
-      reread: reread,
+      claimed_append_base: base,
+      claimed_append_end: end,
+      canonical_membership: canonicalMembership,
+      structure_complete: geometryComplete && writtenStateCount === count,
+      plan_structure_complete: geometryComplete && planStateCount === count,
+      wrote: data.wrote === true,
+      reread: data.reread === true,
       write_count: writeCount,
-      reread_count: rereadCount,
-      live_size_before: Number(data.live_size_before || 0),
-      live_size_after: Number(data.live_size_after || 0),
+      reread_count: Number(data.reread_count || 0),
+      past_eof_count: Number(data.past_eof_count || 0),
+      titan_size_before: titanSizeBefore,
+      titan_size_after: titanSizeAfter,
+      live_size_before: liveSizeBefore,
+      live_size_after: liveSizeAfter,
+      legacy_aliases_ok: writeCount === count &&
+        liveSizeBefore === titanSizeBefore && liveSizeAfter === titanSizeAfter,
       written_bytes: Number(data.written_bytes || 0),
-      journal_reread: data.public_journal_reread === true,
-      journal_count: Number((data && data.public_journal_count) || 0)
+      write_receipt: receipt,
+      write_receipt_ref_ok: receipt === closedReceipt,
+      write_receipt_content_ok: receiptContentOk,
+      write_receipt_evidence_ok: evidenceMatch.receipt,
+      public_journal_evidence_ok: evidenceMatch.public_journal,
+      integrated_commit: commit,
+      integrated_commit_ok: commit === closedCommit,
+      journal_reread: journal.reread === true || data.public_journal_reread === true,
+      journal_count: Number(journal.count || data.public_journal_count || 0)
     };
-    if (journal && journal.reread === true) row.journal_reread = true;
-    if (journal && journal.count) row.journal_count = Number(journal.count || 0);
-    return row;
   };
+  api.packetRowFromJson = api.titanMoveRow;
 
   api.titanMoveState = function (row) {
     row = row || {};
@@ -1077,36 +1268,62 @@
     var excerpts = Number(row.excerpt_count || 0);
     var written = String(row.titan || "").toUpperCase();
     var nonzero = Number(row.nonzero_offsets || 0);
-    var writeCount = Number(row.write_count || 0);
+    var wrote = row.wrote === true;
+    var reread = row.reread === true;
     var rereadCount = Number(row.reread_count || 0);
-    var reread = row.reread === true || (writeCount >= 31 && rereadCount === writeCount);
+    var pastEofCount = Number(row.past_eof_count || 0);
+    var packetState = String(row.packet_state || "").toUpperCase();
+    var before = Number(row.titan_size_before || 0);
+    var after = Number(row.titan_size_after || 0);
+    var writtenBytes = Number(row.written_bytes || 0);
+    var receipt = String(row.write_receipt || "");
+    var base = Number(row.claimed_append_base || 0);
+    var end = Number(row.claimed_append_end || 0);
     var journalReread = row.journal_reread === true;
     var journalCount = Number(row.journal_count || 0);
-    if (written === "WRITTEN" && reread && nonzero === count && count >= 31) {
-      return { state: "INTEGRATED", note: "titan write and reread measured for " + count + " organs." };
+    var executionComplete = written === "WRITTEN" && packetState === "INTEGRATED" && wrote && reread &&
+      count === 31 && excerpts === count && nonzero === count && rereadCount === count &&
+      pastEofCount === count && row.canonical_membership === true && row.structure_complete === true &&
+      row.write_receipt_ref_ok === true && row.write_receipt_content_ok === true &&
+      row.write_receipt_evidence_ok === true && row.public_journal_evidence_ok === true &&
+      row.integrated_commit_ok === true && row.legacy_aliases_ok === true &&
+      Number(row.write_count || 0) === count && before === base && after === end &&
+      writtenBytes === end - base && writtenBytes > 0 && receipt !== "";
+    if (executionComplete) {
+      return {
+        state: "INTEGRATED",
+        note: "Titan write and reread measured for " + count + " organs; " + writtenBytes +
+          " bytes appended; receipt " + receipt + "."
+      };
     }
     if (excerpts < 31) {
       return {
         state: "NOT_LANDED",
-        note: "only " + excerpts + "/31 excerpts on this tree. Fabricate the missing organ. Do not write titan yet."
+        note: "only " + excerpts + "/31 excerpts on this tree. Pull/reconcile the landed owner receipt; this MOVE is closed, so do not append."
       };
     }
-    if (written === "NOT_WRITTEN" && journalReread && journalCount >= 31 && nonzero === count && count >= 31) {
+    if (written === "NOT_WRITTEN" && journalReread && journalCount >= 31 && nonzero === count && count >= 31 && row.plan_structure_complete === true) {
       return {
         state: "CANDIDATE",
-        note: journalCount + "/31 excerpt binaries journaled and reread on the public tree. titan.gguf still NOT_WRITTEN. Run host/titan_move_apply.py --go on the machine that has it."
+        note: journalCount + "/31 historical excerpt binaries are journaled, but this packet regressed to NOT_WRITTEN. Reconcile the landed WRITTEN packet; do not append or reopen owner action."
       };
     }
-    if (written === "NOT_WRITTEN" && nonzero === count && count >= 31) {
+    if (written === "NOT_WRITTEN" && nonzero === count && count >= 31 && row.plan_structure_complete === true) {
       return {
         state: "CLAIMED",
-        note: excerpts + "/31 claimed append offsets dest FROM FILE. titan write still NOT_WRITTEN. Journal the excerpt binaries with host/titan_move_apply.py --journal, then --go on the machine that has titan.gguf."
+        note: excerpts + "/31 historical claimed append offsets are structurally complete, but the MOVE is already closed. Reconcile the landed WRITTEN packet; do not append."
       };
     }
     if (written === "NOT_WRITTEN" || nonzero === 0) {
       return {
         state: "NOT_LANDED",
-        note: excerpts + "/31 excerpts on this tree. Packet still has zero offsets. Fill claimed append offsets dest FROM FILE (titan_size 103803350291), then apply."
+        note: excerpts + "/31 excerpts on this tree, but NOT_WRITTEN plan evidence is missing or inconsistent. Repair public evidence from the landed receipt; do not allocate or append a closed MOVE."
+      };
+    }
+    if (written === "WRITTEN") {
+      return {
+        state: "NOT_LANDED",
+        note: "packet says WRITTEN but complete write/reread evidence is missing or inconsistent. Refuse marker-only integration."
       };
     }
     return { state: "NOT_LANDED", note: "titan move not closed. Measure the packet and the reread." };
@@ -2416,19 +2633,16 @@
       }
       return r.json().then(function (data) {
         var journalUrl = RAW + sha + "/excerpts/20260823/titan_move_journal.json";
-        return fetch(journalUrl, { cache: "no-store" }).then(function (jr) {
-          if (jr.ok) {
-            return jr.json().then(function (journal) {
-              var got = api.titanMoveState(api.packetRowFromJson(data, journal));
-              paintTitan(got);
-              return got;
-            });
-          }
-          var got = api.titanMoveState(api.packetRowFromJson(data));
-          paintTitan(got);
-          return got;
-        }).catch(function () {
-          var got = api.titanMoveState(api.packetRowFromJson(data));
+        var receiptUrl = RAW + sha + "/p/claudelocal-titan-move-go-20260825-01.md";
+        return Promise.all([
+          fetch(journalUrl, { cache: "no-store" }).then(function (jr) {
+            return jr.ok ? jr.json() : null;
+          }).catch(function () { return null; }),
+          fetch(receiptUrl, { cache: "no-store" }).then(function (rr) {
+            return rr.ok ? rr.text() : "";
+          }).catch(function () { return ""; })
+        ]).then(function (evidence) {
+          var got = api.titanMoveState(api.packetRowFromJson(data, evidence[0], evidence[1]));
           paintTitan(got);
           return got;
         });
