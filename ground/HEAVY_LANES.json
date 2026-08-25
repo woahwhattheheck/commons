@@ -1,0 +1,67 @@
+{
+  "slack_ts": "1787646811.754939",
+  "kind": "HEAVY_LANES",
+  "subject": "Non-Grok consumer for live H-001/H-002 packets; a Slack lanes-live line is not a land",
+  "cursor_grok_is_not_heavy_substitute": true,
+  "do_not_duplicate_heavy_packets": true,
+  "consumer_gap": {
+    "id": "G-001",
+    "name": "SUPERGROK_HEAVY has no consumer for live H-001/H-002 packets",
+    "unresolved": "ground/SUPERGROK_HEAVY.json names dir9/dir19 only; leftover-first would swallow LANES LIVE into the already-INTEGRATED sprint leftover; H-001 five orphan-consumer integrations and H-002 loader graph have no Commons landing path",
+    "deliverable": "leftover-first live-lanes consumer plus expected-output contract; packet files stay CANDIDATE until they exist on official current main",
+    "verifier": "python3 test_heavy_lanes.py; node test_land_desk.js; Codex or GitHub Actions, not Grok Heavy"
+  },
+  "packets": [
+    {
+      "id": "H-001-ARCHITECT",
+      "lane": "heavy",
+      "state": "CANDIDATE",
+      "output_path": "ground/H001_ARCHITECT.json",
+      "unresolved": "measured Commons build-to-consumer graph, exact edge evidence, five orphan-to-consumer integrations are not a file on official current main",
+      "deliverable": "H-001 output JSON on official current main with edge evidence; this leftover only consumes it",
+      "verifier": "python3 host/heavy_lanes.py; Codex or Actions, not Grok Heavy",
+      "do_not_remint": [
+        "ground/SUPERGROK_HEAVY.md",
+        "heavy-dir9-read-mesh",
+        "heavy-dir19-agent-swarm"
+      ]
+    },
+    {
+      "id": "H-002-CONTAMINATION",
+      "lane": "heavy",
+      "state": "CANDIDATE",
+      "output_path": "ground/H002_CONTAMINATION.json",
+      "unresolved": "official xai-org/grok-build loader/precedence graph, reproduction matrix, source patch/tests, stable workaround, and upstream-ready issue are not a file on official current main",
+      "deliverable": "H-002 output JSON on official current main; this leftover only consumes it",
+      "verifier": "python3 host/heavy_lanes.py; Codex or Actions, not Grok Heavy",
+      "do_not_remint": [
+        "ground/GROK_HYGIENE.md",
+        "ground/SUPERGROK_HEAVY.md"
+      ]
+    }
+  ],
+  "queued": ["H-001-SKEPTIC", "H-004-FALSE-ZERO"],
+  "already_landed": [
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/GROK_HYGIENE.md",
+    "ground/MUHL_RECEIPT_LANE.md",
+    "ground/SUBZERO_EXPLORER.md",
+    "ground/SITTING_REMINT.md"
+  ],
+  "do_not_remint": [
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/GROK_HYGIENE.md",
+    "ground/MUHL_RECEIPT_LANE.md",
+    "ground/SUBZERO_EXPLORER.md",
+    "rivet-ship-supergrok-heavy-20260825-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2286"
+  ]
+}

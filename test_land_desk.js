@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825br/.test(html), "desk must share the current-main/Titan cache key after training-bridge leftover");
+assert.ok(/20260825bs/.test(html), "desk must share the current-main/Titan cache key after heavy-lanes leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1702,6 +1702,39 @@ assert.ok(html.indexOf("1787646761.038429") >= 0, "desk must cite the JOJO recei
 assert.ok(/subagent receipt lane|leave-unmerged|175-entry tree/i.test(html), "desk must name receipt-lane talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_RECEIPT_LANE.md") >= 0, "receipt-lane card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MUHL_RECEIPT_LANE.json") >= 0, "receipt-lane catalog must stay a canary");
+assert.ok(api.isHeavyLanesTalk, "land.js must classify Heavy lanes leftover talk");
+assert.ok(api.heavyLanesState, "land.js must classify the Heavy lanes leftover");
+assert.ok(api.isHeavyLanesTalk("DEMON — CLEAN SUPERGROK HEAVY LANES LIVE\nH-001-ARCHITECT measured Commons build consumer graph\nH-002-CONTAMINATION official xai-org/grok-build\nnon-Grok verification/implementation lanes\nH-001-SKEPTIC\n1787646811.754939"), "DEMON live-lanes Slack is leftover talk");
+assert.ok(!api.isHeavyLanesTalk("make sure people do more than talk about shit"), "generic ship-talk is not the Heavy lanes leftover");
+assert.ok(!api.isHeavyLanesTalk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nshared weekly pool. Do not use Cursor Grok as the substitute. 1787645797.029719"), "sprint copy is not the live-lanes leftover");
+assert.ok(!api.isHeavyLanesTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane. leave unmerged. 1787646761.038429"), "receipt-lane copy is not the Heavy lanes leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("DEMON — CLEAN SUPERGROK HEAVY LANES LIVE. H-001-ARCHITECT. H-002-CONTAMINATION. 1787646811.754939"), "live-lanes copy is not the receipt-lane leftover");
+assert.ok(!api.isSubzeroExplorerTalk("DEMON — CLEAN SUPERGROK HEAVY LANES LIVE. H-001-ARCHITECT. 1787646811.754939"), "live-lanes copy is not the explorer leftover");
+var heavyLanesTalk = api.completionStateFromText(
+  "DEMON — CLEAN SUPERGROK HEAVY LANES LIVE\nH-001-ARCHITECT measured Commons build consumer graph\nH-002-CONTAMINATION official xai-org/grok-build\nPrepare non-Grok verification/implementation lanes\n1787646811.754939"
+);
+assert.strictEqual(heavyLanesTalk.state, "CLAIMED");
+assert.ok(/H-001-ARCHITECT|H-002-CONTAMINATION|LANES LIVE|non-Grok/i.test(heavyLanesTalk.note), "live-lanes-without-SHA must stay CLAIMED and beat SuperGrok Heavy sprint leftover");
+assert.ok(!/shared-weekly-pool/i.test(heavyLanesTalk.note), "live-lanes leftover-first must not fall through to the sprint leftover");
+var heavyLanesDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nheavy-lanes leftover landed"
+);
+assert.strictEqual(heavyLanesDone.state, "INTEGRATED", "completion words still beat Heavy lanes talk");
+var heavyLanesEmpty = api.heavyLanesState("");
+assert.strictEqual(heavyLanesEmpty.state, "UNMEASURED");
+var heavyLanesMissing = api.heavyLanesState("# empty stub\nno leftover");
+assert.strictEqual(heavyLanesMissing.state, "NOT_LANDED");
+var heavyLanesOk = api.heavyLanesState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nH-001-ARCHITECT\nH-002-CONTAMINATION\nG-001\nCursor Grok is not the Heavy substitute\nno auth\nno gate\n");
+assert.strictEqual(heavyLanesOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(heavyLanesOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="heavy-lanes-result"') >= 0, "desk must name the Heavy lanes leftover");
+assert.ok(html.indexOf("host/heavy_lanes.py") >= 0, "desk must name the Heavy lanes instrument");
+assert.ok(html.indexOf("ground/HEAVY_LANES.md") >= 0, "desk must link the Heavy lanes card");
+assert.ok(html.indexOf("ground/HEAVY_LANES.json") >= 0, "desk must link the Heavy lanes catalog");
+assert.ok(html.indexOf("1787646811.754939") >= 0, "desk must cite the live-lanes Slack ts");
+assert.ok(/CLEAN SUPERGROK HEAVY LANES LIVE|H-001-ARCHITECT|H-002-CONTAMINATION/i.test(html), "desk must name live-lanes talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HEAVY_LANES.md") >= 0, "Heavy lanes card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/HEAVY_LANES.json") >= 0, "Heavy lanes catalog must stay a canary");
 assert.ok(api.isSuperGrokHeavyTalk, "land.js must classify SuperGrok Heavy leftover talk");
 assert.ok(api.superGrokHeavyState, "land.js must classify the SuperGrok Heavy leftover");
 assert.ok(api.isSuperGrokHeavyTalk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nOwner correction confirmed by current xAI docs: SuperGrok paid usage is one shared weekly pool across Chat, Build, API, Imagine, and Voice. Grok Build is not a separate unavailable bucket. Do not use Cursor Grok as the substitute. utilization receipts. 1787645797.029719"), "DEMON SuperGrok Heavy Slack is leftover talk");

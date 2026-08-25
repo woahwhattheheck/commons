@@ -267,6 +267,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_muhl_train_bridge.py` · `node test_land_desk.js` · `python3 host/muhl_train_bridge.py`
 **Note:** H-006 is the unique leftover. H-005 Subzero artifacts and H-007 LDA_RECEIPT stay NAMED, not reminted. Swarm pin `6a934ed9` is ANCESTOR, not current HEAD. Do not remint the swarm id / MUHL_RECEIPT_LANE / LDA_RECEIPT / explorer / REVIEW_LANE. No host inference. titan NOT_WRITTEN. Talk is not a land.
 
+### 50. Heavy lanes — a Slack lanes-live line is not a land
+> *"DEMON — CLEAN SUPERGROK HEAVY LANES LIVE … Hive action: do not duplicate these. Prepare non-Grok verification/implementation lanes for their outputs."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:33 Slack `1787646811.754939` / DEMON CLEAN SUPERGROK HEAVY LANES LIVE + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/HEAVY_LANES.md` · `ground/HEAVY_LANES.json` · `host/heavy_lanes.py` · land canary + `heavyLanesState`
+**Receipt:** `python3 test_heavy_lanes.py` · `node test_land_desk.js` · `python3 host/heavy_lanes.py`
+**Note:** Consumer gap G-001: SUPERGROK_HEAVY names dir9/dir19 only. H-001/H-002 outputs stay CANDIDATE. Do not remint SUPERGROK_HEAVY / MUHL_RECEIPT_LANE / SUBZERO_EXPLORER / LDA_RECEIPT / REVIEW_LANE / MUHL_TRAIN_BRIDGE / `rivet-ship-supergrok-heavy-20260825-01` / `rivet-ship-lda-receipt-20260825-01` / `rivet-ship-review-lane-20260825-01` / `rivet-ship-muhl-train-bridge-20260825-01`. Cursor Grok is not the Heavy substitute. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
