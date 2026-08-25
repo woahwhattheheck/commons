@@ -13,9 +13,11 @@ reads the bytes and rejects a caller-supplied digest that does not match them.
 Commons records only an opaque reference and the measured SHA-256; it never
 emits a private local path.
 
-Opaque references are labels, not filesystem locations. Drive prefixes,
-absolute paths, backslashes, and slash-containing references are rejected for
-both artifacts and processor events.
+Opaque references are labels, not filesystem locations. Artifact references
+must use `owner-private:<opaque-token>`; processor references must use the
+matching `stripe:<opaque-token>` or `paypal:<opaque-token>` label. Drive
+prefixes, absolute paths, backslashes, and slash-containing references are
+rejected.
 
 Every evidence file uses `schema_version: revenue-recovery-evidence/v1`.
 

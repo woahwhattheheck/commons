@@ -26,7 +26,7 @@ FIELD_RE = re.compile(r"^([A-Za-z][A-Za-z0-9_]{1,40}):\s*(.*)$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{7,159}$")
+OPAQUE_TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{6,143}$")
 PRIVATE_CONTACT_FIELD_RE = re.compile(
     r'''["']?\b(?:customer[_ -]?(?:email|phone|name)|private[_ -]?contact|street[_ -]?address|'''
     r'''bank[_ -]?account|routing[_ -]?number|account[_ -]?number|phone[_ -]?number|full[_ -]?name|'''
@@ -334,8 +334,12 @@ def _checked_artifact(
     private_file = artifact.get("file")
     if artifact.get("kind") != expected_kind:
         raise ValueError(f"artifact kind must be {expected_kind}")
-    if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
-        raise ValueError("artifact reference must be an opaque, secret-free reference")
+    if (
+        not isinstance(reference, str)
+        or not reference.startswith("owner-private:")
+        or not OPAQUE_TOKEN_RE.fullmatch(reference.removeprefix("owner-private:"))
+    ):
+        raise ValueError("artifact reference must be an owner-private opaque label, not a path")
     if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
         raise ValueError("artifact sha256 must be exact")
     if not isinstance(private_file, str):
@@ -419,8 +423,13 @@ def advance_receipt(
         private_file = manifest.get("payload_file")
         if provider not in {"Stripe", "PayPal"}:
             raise ValueError("processor provider must be Stripe or PayPal")
-        if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
-            raise ValueError("processor reference must be opaque")
+        prefix = provider.lower() + ":"
+        if (
+            not isinstance(reference, str)
+            or not reference.startswith(prefix)
+            or not OPAQUE_TOKEN_RE.fullmatch(reference.removeprefix(prefix))
+        ):
+            raise ValueError("processor reference must be a provider-scoped opaque label, not a path")
         if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
             raise ValueError("processor payload sha256 must be exact")
         if not isinstance(private_file, str):

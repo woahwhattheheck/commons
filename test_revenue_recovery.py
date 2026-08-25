@@ -414,6 +414,7 @@ class RevenueRecoveryTests(unittest.TestCase):
         for reference in (
             "C:/private-evidence/quote.bin",
             "C:\\private-evidence\\quote.bin",
+            "C:private-evidence-quote.bin",
             "/private-evidence/quote.bin",
             "owner-private:folder/quote.bin",
         ):

@@ -1128,7 +1128,7 @@ window.COMMONS_CARRIER = "github-board";
           var extra = "";
           if (payload.act === "SESSION_OPEN" || payload.act === "SESSION_CLOSE") {
             extra = paintSessionLive(payload);
-          } else if (payload.from) {
+          } else if (payload.from && form.getAttribute("data-no-from-memory") !== "true") {
             try { sessionStorage.setItem("commons-from-session-v1", payload.from); } catch (e2) {}
           }
           if (idField) idField.value = payload.id || "";

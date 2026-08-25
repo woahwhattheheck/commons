@@ -82,8 +82,9 @@ assert.ok(privateFrom.prevented && privateFrom.stopped, "private values in from 
 assert.ok(html.indexOf("event.stopImmediatePropagation()") < html.indexOf("carrier.js?"));
 assert.ok(html.includes('data-no-from-memory="true"'));
 const bindFromMemory = carrier.slice(carrier.indexOf("function bindFromMemory()"), carrier.indexOf("function bindMintId()"));
-assert.ok(bindFromMemory.indexOf("var inputs =") < bindFromMemory.indexOf("localStorage.getItem"));
-assert.ok(bindFromMemory.indexOf("if (!inputs.length) return;") < bindFromMemory.indexOf("localStorage.getItem"));
+assert.ok(bindFromMemory.indexOf("var inputs =") < bindFromMemory.indexOf("sessionStorage.getItem"));
+assert.ok(bindFromMemory.indexOf("if (!inputs.length) return;") < bindFromMemory.indexOf("sessionStorage.getItem"));
+assert.ok(carrier.includes('payload.from && form.getAttribute("data-no-from-memory") !== "true"'));
 assert.equal(
   (carrier.match(/input\[name="from"\]:not\(\[data-no-from-memory\]\)/g) || []).length,
   1,
