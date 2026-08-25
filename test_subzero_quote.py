@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import unittest
@@ -33,6 +34,7 @@ from subzero_quote import (
     present_int,
     public_inbound,
     safe_rel,
+    titan_lock_fields,
 )
 
 
@@ -204,6 +206,28 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(fused["state"], "NOT_LANDED")
         self.assertIn("NEEDS_BUYER", fused["note"])
 
+    def test_titan_lock_fields_are_not_health(self):
+        self.assertEqual(
+            titan_lock_fields({"titan": "NOT_WRITTEN"}, ""),
+            ["catalog.titan=NOT_WRITTEN"],
+        )
+        self.assertIn(
+            "catalog.hands_off:titan --go",
+            titan_lock_fields({"hands_off": ["PR 2108", "titan --go"]}, ""),
+        )
+        self.assertEqual(
+            titan_lock_fields({}, "Hands off CML PR 2108, SPECTER, titan `--go`."),
+            ["card:hands-off-titan"],
+        )
+        self.assertEqual(titan_lock_fields({}, "Titan skip is not health."), [])
+        locked = classify(
+            measure_from_rows(
+                _complete(titan_lock_fields=["catalog.titan=NOT_WRITTEN"])
+            )
+        )
+        self.assertEqual(locked["state"], "NOT_LANDED")
+        self.assertIn("titan lock/health", locked["note"].lower())
+
     def test_complete_leftover_is_integrated(self):
         verdict = classify(measure_from_rows(_complete()))
         self.assertEqual(verdict["state"], "INTEGRATED")
@@ -232,6 +256,8 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertIn(row["legal_state"], ("DRAFT", "NEEDS_BUYER"))
         self.assertEqual(row["inbound_state"], "EMPTY")
         self.assertTrue(row["holes_closed"])
+        self.assertEqual(row.get("titan_lock_fields"), [])
+        self.assertNotIn("titan", row)
         self.assertEqual(row["hashes"].get("delivery_hash"), "UNRESOLVED")
         self.assertEqual(len(row["hashes"].get("source_commit") or ""), 40)
         self.assertEqual(SLACK_TS, "1787649732.551439")
@@ -246,6 +272,14 @@ class TestSubzeroQuote(unittest.TestCase):
         self.assertEqual(catalog["collected_cash_usd"], 0)
         self.assertEqual(catalog["price_usd_state"], "PRESENT")
         self.assertFalse(catalog["runtime_proof"])
+        self.assertNotIn("titan", catalog)
+        with open(os.path.join(ROOT, "ground", "SUBZERO_QUOTE.json"), encoding="utf-8") as handle:
+            raw_catalog = json.loads(handle.read())
+        with open(os.path.join(ROOT, "ground", "SUBZERO_QUOTE.md"), encoding="utf-8") as handle:
+            raw_card = handle.read()
+        self.assertNotIn("titan", raw_catalog)
+        self.assertNotIn("titan --go", raw_catalog.get("hands_off") or [])
+        self.assertEqual(titan_lock_fields(raw_catalog, raw_card), [])
         with open(
             os.path.join(ROOT, "revenue", "subzero_gtm", "architecture.json"),
             encoding="utf-8",

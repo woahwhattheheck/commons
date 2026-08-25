@@ -122,6 +122,7 @@ REQUIRED_PHRASES = (
     "no auth",
     "no gate",
     "talk is not a land",
+    "titan skip is not health",
 )
 HEX64 = set("0123456789abcdef")
 HASHED_SOURCES = (
@@ -428,12 +429,10 @@ def load_catalog(text):
     runtime_measured = present_int(evidence, "runtime_measured")
     customer_ready = present_int(evidence, "customer_ready")
     runtime_proof = evidence.get("runtime_proof") if "runtime_proof" in evidence else "UNRESOLVED"
-    titan = str(data.get("titan") or "").strip().upper() or "UNRESOLVED"
     return {
         "error": "",
         "slack_ts": str(data.get("slack_ts") or "").strip() or SLACK_TS,
         "h009_ts": str(data.get("h009_ts") or "").strip() or H009_TS,
-        "titan": titan,
         "posting": str(data.get("posting") or "").strip(),
         "no_auth": bool(data.get("no_auth", True)),
         "no_gate": bool(data.get("no_gate", True)),
@@ -458,6 +457,41 @@ def load_catalog(text):
         "claims_runtime": bool(data.get("claims_runtime")),
         "claims_demand": bool(data.get("claims_demand")),
     }
+
+
+def titan_lock_fields(catalog=None, card=""):
+    """Name active Titan lock/health framing on quote surfaces.
+
+    Substrate / Titan work is first-class. Skipped actuation is
+    not health. A catalog that publishes titan=NOT_WRITTEN or
+    hands_off titan --go is still a lock field.
+    """
+    hits = []
+    data = catalog
+    if isinstance(catalog, str):
+        try:
+            parsed = json.loads(catalog or "{}")
+        except ValueError:
+            parsed = {}
+        data = parsed if isinstance(parsed, dict) else {}
+    if not isinstance(data, dict):
+        data = {}
+    if "titan" in data:
+        value = str(data.get("titan") or "").strip().upper()
+        hits.append("catalog.titan=" + (value or "EMPTY"))
+    hands = data.get("hands_off") if isinstance(data.get("hands_off"), list) else []
+    for item in hands:
+        text = str(item or "").strip().lower()
+        if "titan" in text:
+            hits.append("catalog.hands_off:" + str(item).strip())
+    for line in str(card or "").splitlines():
+        line_l = line.lower()
+        if "hands off" in line_l and "titan" in line_l:
+            hits.append("card:hands-off-titan")
+            break
+    if "titan: **not_written**" in str(card or "").lower():
+        hits.append("card:titan-not-written")
+    return hits
 
 
 def load_arch_sku(text):
@@ -658,7 +692,6 @@ def measure_from_rows(facts):
     runtime_proof = facts.get("runtime_proof")
     if runtime_proof not in {True, False, "UNRESOLVED"}:
         runtime_proof = bool(runtime_proof)
-    titan = str(facts.get("titan") or "").strip().upper() or "UNRESOLVED"
     legal = str(facts.get("legal_state") or "NEEDS_BUYER").strip().upper()
     if legal not in LEGAL_STATES:
         legal = "NEEDS_BUYER"
@@ -707,7 +740,7 @@ def measure_from_rows(facts):
         "calibration_hits": list(facts.get("calibration_hits") or []),
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
-        "titan": titan,
+        "titan_lock_fields": list(facts.get("titan_lock_fields") or []),
         "hashes": dict(facts.get("hashes") or {}),
     }
 
@@ -791,6 +824,16 @@ def classify(row):
                 "FINDER-FAILED, never 0."
             ),
         }
+    locks = list(row.get("titan_lock_fields") or [])
+    if locks:
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "quote surfaces still publish titan lock/health: "
+                + ", ".join(locks)
+                + ". Titan skip is not health. FINDER-FAILED, never 0."
+            ),
+        }
     quote = classify_quote(row)
     if quote["state"] != "QUOTE_DRAFT":
         return {
@@ -870,8 +913,11 @@ def measure_root(root):
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in hay]
     landed_present = [rel for rel in ALREADY_LANDED if _exists(root, rel)]
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
-    catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+    catalog_text = _read(root, DEFAULT_CATALOG)
+    card_text = _read(root, DEFAULT_CARD)
+    catalog = load_catalog(catalog_text)
     arch = load_arch_sku(_read(root, DEFAULT_ARCH))
+    locks = titan_lock_fields(catalog_text, card_text)
     indexed = {
         "sku_id": catalog.get("sku_id") or "",
         "price_usd": catalog.get("price_usd"),
@@ -955,7 +1001,7 @@ def measure_root(root):
         "calibration_hits": calibration_hits,
         "search_space": list(SEARCH_SPACE),
         "misses": misses,
-        "titan": catalog.get("titan") or "UNRESOLVED",
+        "titan_lock_fields": locks,
         "hashes": hashes,
         "slack_ts": catalog.get("slack_ts") or SLACK_TS,
         "h009_ts": catalog.get("h009_ts") or H009_TS,
@@ -1126,6 +1172,40 @@ def self_test():
         )
     )
     assert fused["state"] == "NOT_LANDED", fused
+    assert titan_lock_fields({"titan": "NOT_WRITTEN"}, "") == ["catalog.titan=NOT_WRITTEN"]
+    assert "catalog.hands_off:titan --go" in titan_lock_fields(
+        {"hands_off": ["titan --go"]}, ""
+    )
+    assert titan_lock_fields({}, "Hands off SPECTER, titan `--go`.") == [
+        "card:hands-off-titan"
+    ]
+    assert titan_lock_fields({}, "Titan skip is not health.") == []
+    locked = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "door_present": True,
+                "arch_present": True,
+                "sku_id": SKU_ID,
+                "price_usd": QUOTE_PRICE,
+                "sku_class": "QUOTE_DRAFT",
+                "collected_cash_usd": 0,
+                "structural_only": 31,
+                "runtime_measured": 0,
+                "customer_ready": 0,
+                "demand": "UNKNOWN",
+                "found_phrases": list(REQUIRED_PHRASES),
+                "posting_open": True,
+                "no_auth": True,
+                "no_gate": True,
+                "calibration_ok": True,
+                "legal_state": "NEEDS_BUYER",
+                "titan_lock_fields": ["catalog.titan=NOT_WRITTEN"],
+            }
+        )
+    )
+    assert locked["state"] == "NOT_LANDED", locked
     return "ok"
 
 

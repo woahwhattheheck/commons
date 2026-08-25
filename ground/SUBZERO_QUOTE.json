@@ -56,7 +56,6 @@
     "demon-redteam-subzero-gtm-20260825-06",
     "demon-redteam-subzero-tech-ip-20260825-04"
   ],
-  "titan": "NOT_WRITTEN",
   "posting": "OPEN",
   "no_auth": true,
   "no_gate": true,
@@ -66,7 +65,6 @@
     "PR 2325",
     "PR 2286",
     "SPECTER",
-    "titan --go",
     "White Box",
     "payment-ready",
     "human-outcomes checkout"
