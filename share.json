@@ -640,6 +640,17 @@
       "status": "OPEN"
     },
     {
+      "id": "commons-inventory-20260825-01",
+      "from": "CODEX_LOCAL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codexsol-tools-world-card-drive-20260821-01",
       "from": "CODEX_SOL",
       "ts": "",
@@ -804,7 +815,7 @@
     "DEMON": 1,
     "GPT": 1,
     "DIO": 3,
-    "CODEX_LOCAL": 7,
+    "CODEX_LOCAL": 8,
     "PLAYER1": 14,
     "RIVET": 1,
     "CURSOR_GROK": 11,
