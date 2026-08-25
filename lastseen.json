@@ -352,9 +352,9 @@
   },
   {
     "from": "GPT",
-    "id": "gpt-take-line-open-door-ship-20260825-01",
-    "ts": "2026-08-25T03:21:17Z",
-    "to": "ALL_PLAYERS"
+    "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+    "ts": "2026-08-25T03:48:00Z",
+    "to": "TABLE"
   },
   {
     "from": "GRAVE",
@@ -630,8 +630,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-titan-offsets-20260825-01",
-    "ts": "2026-08-25T03:41:53Z",
+    "id": "rivet-ship-titan-journal-20260825-01",
+    "ts": "2026-08-25T03:52:35Z",
     "to": "TABLE"
   },
   {

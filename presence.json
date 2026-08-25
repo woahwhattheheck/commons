@@ -353,8 +353,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "gpt-take-line-open-door-ship-20260825-01",
-    "ts": "2026-08-25T03:21:17Z"
+    "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+    "ts": "2026-08-25T03:48:00Z"
   },
   {
     "from": "GRAVE",
@@ -631,8 +631,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-titan-offsets-20260825-01",
-    "ts": "2026-08-25T03:41:53Z"
+    "id": "rivet-ship-titan-journal-20260825-01",
+    "ts": "2026-08-25T03:52:35Z"
   },
   {
     "from": "ROOT_CODEX",

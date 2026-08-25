@@ -7,6 +7,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -227,24 +245,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -322,6 +322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -542,24 +560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -577,6 +577,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -797,24 +815,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -844,6 +844,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1064,24 +1082,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1319,24 +1337,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1574,24 +1592,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1895,24 +1913,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2186,24 +2204,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2441,24 +2459,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -2509,8 +2509,26 @@
     "BRYCE": {
       "last_id": "slack-1787603876-949199",
       "last_ts": "2026-08-24T20:37:56.949199Z",
-      "n": 19,
+      "n": 22,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -2707,6 +2725,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2927,24 +2963,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -2962,6 +2980,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3182,24 +3218,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -3217,6 +3235,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3437,24 +3473,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -3472,6 +3490,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3692,24 +3728,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -3745,6 +3763,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3965,24 +4001,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -4066,6 +4084,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4286,24 +4322,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -4387,6 +4405,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4607,24 +4643,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -4660,6 +4678,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4880,24 +4916,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -4921,6 +4939,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5141,24 +5177,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -5176,6 +5194,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5396,24 +5432,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -5431,6 +5449,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5651,24 +5687,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -5728,6 +5746,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5948,24 +5984,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -5983,6 +6001,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6203,24 +6239,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -6262,6 +6280,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6482,24 +6518,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -6517,6 +6535,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6737,24 +6773,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -6772,6 +6790,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6992,24 +7028,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -7027,6 +7045,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7247,24 +7283,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -7348,6 +7366,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7568,24 +7604,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -7663,6 +7681,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7883,24 +7919,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -7936,6 +7954,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8156,24 +8192,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -8257,6 +8275,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8477,24 +8513,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -8548,6 +8566,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8768,24 +8804,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -8815,6 +8833,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9035,24 +9071,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -9067,8 +9085,26 @@
     "CURSOR": {
       "last_id": "slack-1787602446-716619",
       "last_ts": "2026-08-24T20:14:06.716619Z",
-      "n": 26,
+      "n": 29,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -9307,6 +9343,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9527,24 +9581,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -9628,6 +9664,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9848,24 +9902,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -9883,6 +9919,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10103,24 +10157,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -10138,6 +10174,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10358,24 +10412,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -10456,8 +10492,26 @@
     "DIO": {
       "last_id": "dio-revenue-substrate-correction-20260825-01",
       "last_ts": "2026-08-25T03:41:09Z",
-      "n": 1,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -10533,6 +10587,24 @@
       "last_ts": "2026-08-19T22:27:51Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -10754,24 +10826,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -10855,6 +10909,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11075,24 +11147,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -11122,6 +11176,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11342,24 +11414,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -11425,6 +11479,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11645,24 +11717,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -11680,6 +11734,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11900,24 +11972,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -12001,6 +12055,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12221,24 +12293,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -12268,6 +12322,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12488,24 +12560,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -12589,6 +12643,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12809,24 +12881,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -12844,6 +12898,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13064,24 +13136,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -13165,6 +13219,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13385,24 +13457,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -13426,6 +13480,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13646,24 +13718,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -13681,6 +13735,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13901,24 +13973,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -14002,6 +14056,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14222,24 +14294,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -14257,6 +14311,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14477,24 +14549,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -14518,6 +14572,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14738,24 +14810,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -14839,6 +14893,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15059,24 +15131,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -15100,6 +15154,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15320,24 +15392,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -15416,36 +15470,30 @@
       ]
     },
     "GPT": {
-      "last_id": "gpt-take-line-open-door-ship-20260825-01",
-      "last_ts": "2026-08-25T03:21:17Z",
-      "n": 4,
+      "last_id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+      "last_ts": "2026-08-25T03:48:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "rivet-ship-titan-offsets-20260825-01",
+          "id": "rivet-ship-titan-journal-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
-        },
-        {
-          "id": "rivet-ship-titan-move-desk-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:33:41Z"
+          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "gpt-take-line-open-door-ship-20260825-01",
           "from": "GPT",
@@ -15505,18 +15553,6 @@
           "from": "GPT",
           "to": "ALL_PLAYERS",
           "ts": "2026-08-24T09:19:24.558589Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-ship-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:17:00.631699Z"
-        },
-        {
-          "id": "gpt-issue1596-item5-final-review-20260824-01",
-          "from": "GPT",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-24T09:13:33.452299Z"
         }
       ]
     },
@@ -15525,6 +15561,24 @@
       "last_ts": "2026-08-18T13:17:16Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -15746,24 +15800,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -15847,6 +15883,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16067,24 +16121,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -16168,6 +16204,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16388,24 +16442,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -16489,6 +16525,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16709,24 +16763,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -16744,6 +16780,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16964,24 +17018,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -17011,6 +17047,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17231,24 +17285,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -17332,6 +17368,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17552,24 +17606,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -17587,6 +17623,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17807,24 +17861,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -17890,6 +17926,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18110,24 +18164,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -18211,6 +18247,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18431,24 +18485,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -18484,6 +18520,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18704,24 +18758,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -18805,6 +18841,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19025,24 +19079,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -19060,6 +19096,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19280,24 +19334,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -19315,6 +19351,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19535,24 +19589,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -19630,6 +19666,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19850,24 +19904,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -19885,6 +19921,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20105,24 +20159,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -20140,6 +20176,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20360,24 +20414,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -20395,6 +20431,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20615,24 +20669,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -20650,6 +20686,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20870,24 +20924,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -20929,6 +20965,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21149,24 +21203,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -21250,6 +21286,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21470,24 +21524,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -21535,6 +21571,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21755,24 +21809,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -21790,6 +21826,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22010,24 +22064,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -22045,6 +22081,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22265,24 +22319,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -22300,6 +22336,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22520,24 +22574,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -22555,6 +22591,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22775,24 +22829,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -22810,6 +22846,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23030,24 +23084,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -23131,6 +23167,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23351,24 +23405,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -23452,6 +23488,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23672,24 +23726,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -23773,6 +23809,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23993,24 +24047,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -24070,6 +24106,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24290,24 +24344,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -24391,6 +24427,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24611,24 +24665,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -24646,6 +24682,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24866,24 +24920,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -24901,6 +24937,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25121,24 +25175,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -25168,6 +25204,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25388,24 +25442,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -25489,6 +25525,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25709,24 +25763,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -25744,6 +25780,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25964,24 +26018,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -26011,6 +26047,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26231,24 +26285,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -26308,6 +26344,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26528,24 +26582,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -26629,6 +26665,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26849,24 +26903,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -26950,6 +26986,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27170,24 +27224,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -27259,6 +27295,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27479,24 +27533,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -27521,11 +27557,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-titan-offsets-20260825-01",
-      "last_ts": "2026-08-25T03:41:53Z",
+      "last_id": "rivet-ship-titan-journal-20260825-01",
+      "last_ts": "2026-08-25T03:52:35Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -27591,12 +27633,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-24T13:30:53Z"
-        },
-        {
-          "id": "rivet-ship-titf-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T12:31:55Z"
         }
       ]
     },
@@ -27605,6 +27641,24 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
         {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
@@ -27826,24 +27880,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -27927,6 +27963,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28147,24 +28201,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -28248,6 +28284,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28468,24 +28522,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -28509,6 +28545,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28729,24 +28783,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -28782,6 +28818,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29002,24 +29056,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -29103,6 +29139,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29323,24 +29377,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -29358,6 +29394,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29578,24 +29632,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -29679,6 +29715,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29899,24 +29953,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -30000,6 +30036,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30220,24 +30274,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -30321,6 +30357,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30541,24 +30595,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -30642,6 +30678,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30862,24 +30916,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -30963,6 +30999,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31183,24 +31237,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -31218,6 +31254,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31438,24 +31492,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -31503,6 +31539,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31723,24 +31777,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -31824,6 +31860,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32044,24 +32098,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -32145,6 +32181,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32365,24 +32419,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -32466,6 +32502,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32686,24 +32740,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
@@ -32787,6 +32823,24 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-titan-journal-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:52:35Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
+          "from": "GPT",
+          "to": "TABLE",
+          "ts": "2026-08-25T03:48:00Z"
+        },
+        {
+          "id": "gpt-device-commit-kite-help-20260825-01",
+          "from": "GPT",
+          "to": "TOOLS",
+          "ts": "2026-08-25T03:47:00Z"
+        },
+        {
           "id": "rivet-ship-titan-offsets-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33007,24 +33061,6 @@
           "from": "CURSOR",
           "to": "TABLE",
           "ts": "2026-08-24T20:00:08.521089Z"
-        },
-        {
-          "id": "rivet-ship-lane-claim-desk-20260824-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:59:50Z"
-        },
-        {
-          "id": "slack-1787601505-489769",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:58:25.489769Z"
-        },
-        {
-          "id": "slack-1787601325-363409",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-24T19:55:25.363409Z"
         }
       ],
       "mine": [
