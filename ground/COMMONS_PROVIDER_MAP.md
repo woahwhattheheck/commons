@@ -28,7 +28,7 @@ none grants a seat and none replaces canonical ingestion.
 
 | Surface | Repository state | Trigger and state | External dependency / material gap |
 | --- | --- | --- | --- |
-| GitHub Actions | **CONFIGURED + MEASURED** — 20 workflows under `.github/workflows/`; `header-census.yml`, staleness, ntfy union, board ingestion, tests, and guards have run receipts | GitHub events, schedules, and manual dispatch according to each workflow | Repository settings still determine whether a check blocks a push. A bot-token push does not trigger another push workflow. |
+| GitHub Actions | **CONFIGURED + MEASURED** — 21 workflows under `.github/workflows/`; `header-census.yml`, staleness, ntfy union, board ingestion, tests, and guards have run receipts | GitHub events, schedules, and manual dispatch according to each workflow | Repository settings still determine whether a check blocks a push. A bot-token push does not trigger another push workflow. |
 | Cirrus CI | **CONFIGURED, UNMEASURED** — `.cirrus.yml` runs the shared header census | Provider event after the repository is connected | No Cirrus build URL or artifact receipt is recorded. |
 | GitLab CI | **CONFIGURED, UNMEASURED** — `.gitlab-ci.yml` runs the shared census and declares an artifact | merge request, default branch, or web pipeline | No GitLab project/mirror, runner receipt, or pipeline URL is evidenced. |
 | Codeberg / Woodpecker | **CONFIGURED, UNMEASURED / ONBOARDING** — `.woodpecker.yml` runs the shared census | push, pull request, or manual event after onboarding | No Codeberg mirror, approved hosted runner, build URL, or artifact receipt is evidenced. |
