@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_PUBLIC_TARGET_LEDGER",
+  "as_of": "2026-08-25",
+  "research": {
+    "model": "Grok 4.6",
+    "reasoning": "xhigh",
+    "session_id": "01a03838-646f-7f60-b0d2-8a3d0b3590d1",
+    "total_tokens": 3256699,
+    "rule": "Public buyer-side evidence only. Seller listings and generic market size are not demand."
+  },
+  "truth": {
+    "collected_cash_usd": 0,
+    "cash_state": "NOT_LANDED",
+    "banking_only_blocker": false,
+    "buyer_authorizations_observed": 0,
+    "targets_supporting_current_catalog_price": 0,
+    "send_ready_without_founder_qualification": 0
+  },
+  "price_decision": {
+    "offer_id": "ho-issue-to-pr",
+    "current_catalog_price_usd": 2500,
+    "current_catalog_term_days": 7,
+    "conditional_narrow_quote_usd": 1500,
+    "conditional_narrow_quote_hours": 48,
+    "decision": "Do not quote either number against a bounty below it. Use the posted bounty amount or wait for a buyer-owned issue that supports the service price."
+  },
+  "targets": [
+    {
+      "rank": 1,
+      "id": "tinygrad-board-20260820",
+      "offer_id": "ho-issue-to-pr",
+      "buyer_or_notice": "the tiny corp / tinygrad bounty board",
+      "observed_budget": "Current four amounts unreadable; historical board ranges include $500+.",
+      "posted_or_due": "Program reopen reported 2026-08-20; board crawled 2026-08-24.",
+      "open_state": "INDEXED_OPEN_AMOUNT_UNVERIFIED",
+      "state": "QUALIFY_FIRST",
+      "send_ready": false,
+      "public_url": "https://bounties.tinygrad.org",
+      "public_route": "Confirm an open item and amount on its linked issue, comment publicly, then submit a merge-ready PR.",
+      "evidence": "INDEXED",
+      "fit": "Named issue to merged PR.",
+      "disqualifier": "Current amounts were not verified; hardware/kernel scope may exceed 48 hours.",
+      "founder_action": "Confirm one white/open issue and its posted amount before writing code. Never quote above it without written buyer agreement."
+    },
+    {
+      "rank": 2,
+      "id": "tinygrad-3039",
+      "offer_id": "ho-issue-to-pr",
+      "buyer_or_notice": "tinygrad/tinygrad issue #3039 — Fast parallel scan",
+      "observed_budget": "$500",
+      "posted_or_due": "Opened 2024-01-08; updated 2026-08-24.",
+      "open_state": "VERIFIED_OPEN_ACTIVE_BOUNTY",
+      "state": "POSTED_PRICE_ONLY",
+      "send_ready": false,
+      "public_url": "https://github.com/tinygrad/tinygrad/issues/3039",
+      "public_route": "Comment on the issue and lock only with a draft PR showing real progress.",
+      "evidence": "VERIFIED_PRIMARY",
+      "fit": "Named public issue and merge-gated payment.",
+      "disqualifier": "$500 is below both the $2,500 catalog and $1,500 narrow pilot; old and competitive.",
+      "founder_action": "Take only if $500 is rational or use it to reject the current code-service price for public bounties."
+    },
+    {
+      "rank": 3,
+      "id": "pixel-gothic-sol-20260816",
+      "offer_id": "ho-pixel-pack",
+      "buyer_or_notice": "Reddit r/gameDevClassifieds — paid gothic pixel-artist request",
+      "observed_budget": "$500–$600, negotiable, commercial rights (indexed).",
+      "posted_or_due": "2026-08-16",
+      "open_state": "INDEXED_LOGIN_GATED",
+      "state": "QUALIFY_FIRST",
+      "send_ready": false,
+      "public_url": "https://www.reddit.com/r/gameDevClassifieds/comments/1vq3jl9/paid_looking_for_pixel_artists_specialised_in/",
+      "public_route": "Public thread reply with original portfolio only; no personal-email harvest.",
+      "evidence": "INDEXED",
+      "fit": "Actual buyer request for original character work; later sprites/loops may fit the $800 pack.",
+      "disqualifier": "Thread body was not independently readable; may be filled; stated budget is below $800.",
+      "founder_action": "Verify the thread is still unpaid and attach an original pixel portfolio before any reply."
+    },
+    {
+      "rank": 4,
+      "id": "scaleup-security-questionnaire-402",
+      "offer_id": "ho-security-questionnaire",
+      "buyer_or_notice": "ScaleUp Recruiting — Vendor Security Questionnaire Specialist",
+      "observed_budget": "Long-term contractor; pay unpublished.",
+      "posted_or_due": "Application page live 2026-08-25.",
+      "open_state": "VERIFIED_APPLICATION_PAGE",
+      "state": "QUALIFY_GEOGRAPHY_AND_FORMAT",
+      "send_ready": false,
+      "public_url": "https://recruiterflow.com/scaleup-jobopportunities/jobs/402",
+      "public_route": "Official Recruiterflow application only.",
+      "evidence": "VERIFIED_PRIMARY_PAGE",
+      "fit": "Explicit SIG/CAIQ/custom questionnaire completion. A one-file evidence-only sprint can be an alternate.",
+      "disqualifier": "LATAM-only contractor seat, 2–4 years GRC requested, no one-shot budget published.",
+      "founder_action": "Apply only if geography and experience fit; offer the sprint only as a written alternate for an immediately due file."
+    },
+    {
+      "rank": 5,
+      "id": "lightning-primal-ios-206",
+      "offer_id": "ho-issue-to-pr",
+      "buyer_or_notice": "Lightning Bounties / PrimalHQ primal-ios-app #206",
+      "observed_budget": "50,010 sats",
+      "posted_or_due": "Issue 2026-06-23; feed row 2026-08-06.",
+      "open_state": "OPEN_WITH_COMPETING_PRS",
+      "state": "DO_NOT_PILE_ON",
+      "send_ready": false,
+      "public_url": "https://github.com/PrimalHQ/primal-ios-app/issues/206",
+      "public_route": "Lightning Bounties claim plus closing PR.",
+      "evidence": "VERIFIED",
+      "fit": "Funded merge path.",
+      "disqualifier": "Two PRs already linked and posted amount far below catalog price.",
+      "founder_action": "Stand down unless existing PRs fail and the maintainer publicly reopens the need."
+    },
+    {
+      "rank": 6,
+      "id": "lightning-primal-android-web",
+      "offer_id": "ho-issue-to-pr",
+      "buyer_or_notice": "Lightning Bounties feed — Primal Android #1055 and Web #133",
+      "observed_budget": "50,000 sats each",
+      "posted_or_due": "Feed items indexed 2026-06-23.",
+      "open_state": "LISTED_OPEN",
+      "state": "POSTED_PRICE_ONLY",
+      "send_ready": false,
+      "public_url": "https://app.lightningbounties.com/",
+      "public_route": "Use the public platform and linked GitHub issue.",
+      "evidence": "VERIFIED_FEED",
+      "fit": "Funded merge path.",
+      "disqualifier": "Micropayment-sized, outside preferred 45-day issue window, possible overlap.",
+      "founder_action": "Only take one unclaimed issue at the posted amount if its economics independently make sense."
+    },
+    {
+      "rank": 7,
+      "id": "tari-universe-3299",
+      "offer_id": "ho-issue-to-pr",
+      "buyer_or_notice": "tari-project/universe #3299 — Windows 64-thread cap",
+      "observed_budget": "60,000 XTM",
+      "posted_or_due": "Opened 2026-06-29; open on 2026-08-25.",
+      "open_state": "VERIFIED_OPEN",
+      "state": "DO_NOT_SEND",
+      "send_ready": false,
+      "public_url": "https://github.com/tari-project/universe/issues/3299",
+      "public_route": "Public issue comment then PR.",
+      "evidence": "VERIFIED_PRIMARY",
+      "fit": "Named issue with explicit acceptance.",
+      "disqualifier": "Requires real Windows hardware with >64 logical cores; competitive; non-USD reward below catalog economics.",
+      "founder_action": "Skip unless qualifying hardware is already available and the posted reward is independently acceptable."
+    },
+    {
+      "rank": 8,
+      "id": "fyreflight-pixel-animator-20260812",
+      "offer_id": "ho-pixel-pack",
+      "buyer_or_notice": "FyreFlight Games — Pixel Animator, Under the Flag",
+      "observed_budget": "Paid per milestone; rate unpublished.",
+      "posted_or_due": "Posted 2026-08-12.",
+      "open_state": "CLOSED",
+      "state": "DO_NOT_SEND",
+      "send_ready": false,
+      "public_url": "https://www.workwithindies.com/careers/fyreflight-games-pixel-animator",
+      "public_route": "Organization-published route only if the page reopens.",
+      "evidence": "VERIFIED_CLOSED",
+      "fit": "Would have matched sprite/loop work.",
+      "disqualifier": "Closed on 2026-08-25.",
+      "founder_action": "Do not contact while closed."
+    }
+  ],
+  "ten_day_sequence": [
+    {
+      "day": "D0",
+      "action": "Choose legal payee/rail privately and validate one live posted buyer amount.",
+      "success": "One target has open state, written amount, scope, and public route.",
+      "kill_or_revise": "If none supports at least $800, freeze catalog-price outbound."
+    },
+    {
+      "day": "D1",
+      "action": "Qualify tinygrad current board and the Reddit pixel thread before writing code or replying.",
+      "success": "One open target passes all disqualifiers.",
+      "kill_or_revise": "Closed, claimed, or sub-economic means stand down."
+    },
+    {
+      "day": "D2",
+      "action": "Founder reviews and sends exactly one platform-native response from outreach.json.",
+      "success": "Public reply/application exists and is truthful.",
+      "kill_or_revise": "No scraping, DM escape, or price mismatch."
+    },
+    {
+      "day": "D3-D5",
+      "action": "Only after written fit, issue private SOW/invoice or accept a funded platform milestone.",
+      "success": "SOW_ACCEPTED or AUTHORIZED is measured.",
+      "kill_or_revise": "No written yes means no work."
+    },
+    {
+      "day": "D6-D8",
+      "action": "Deliver against buyer-visible acceptance.",
+      "success": "DELIVERED then ACCEPTED is measured.",
+      "kill_or_revise": "Cure once or refund/withhold per SOW."
+    },
+    {
+      "day": "D9-D10",
+      "action": "Record authorization, settlement, payout, and bank availability separately.",
+      "success": "A real paid state or an honest $0 closeout.",
+      "kill_or_revise": "Do not rename interest or a PR as revenue."
+    }
+  ],
+  "research_gap": "Fewer than 20 targets were retained because current public evidence did not support 20 buyer-side opportunities. Many were closed, sub-$100, bot-hostile, agent-only, or misfit software RFPs. No paid public post named a failing local-model job."
+}
