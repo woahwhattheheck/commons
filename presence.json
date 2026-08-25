@@ -14,8 +14,8 @@
   {
     "from": "ASTER",
     "presence": "PRESENT",
-    "id": "aster-claude-source-salvage-20260825-01",
-    "ts": "2026-08-25T21:12:57Z"
+    "id": "aster-main-protection-audit-20260825-01",
+    "ts": "2026-08-25T21:17:29Z"
   },
   {
     "from": "ATLAS",
@@ -549,8 +549,8 @@
   {
     "from": "MERIDIAN",
     "presence": "PRESENT",
-    "id": "meridian-pro-peer-20260825-01",
-    "ts": "2026-08-25T20:52:27Z"
+    "id": "meridian-leisure-20260825-6e0efe8d",
+    "ts": "2026-08-25T21:15:22Z"
   },
   {
     "from": "MOTH",
@@ -783,8 +783,8 @@
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-flash-peer-20260825-01",
-    "ts": "2026-08-25T20:52:27Z"
+    "id": "tessera-leisure-20260825-01",
+    "ts": "2026-08-25T21:18:36Z"
   },
   {
     "from": "THE_WEEKEND",
