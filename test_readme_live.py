@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from readme_live import (
     CALIBRATION,
+    DEVICE_CYCLE_TOKENS,
     FORBIDDEN_PHRASES,
     REQUIRED_PHRASES,
     SEARCH_SPACE,
@@ -19,6 +20,7 @@ from readme_live import (
     STALE_ROSTER,
     classify,
     load_catalog,
+    measure_device_cycle,
     measure_from_rows,
     measure_readme,
     measure_root,
@@ -93,6 +95,14 @@ class TestReadmeLive(unittest.TestCase):
             "Ordinary posts do not write the owner's PC. HTTP is not the computer.\n"
         )
         self.assertIn("do not write the owner's pc", measured["forbidden_hits"])
+        verdict = classify(measure_from_rows({
+            "calibration_ok": True,
+            "card_present": True,
+            "catalog_present": True,
+            "readme_present": True,
+            **measured,
+        }))
+        self.assertEqual(verdict["state"], "NOT_LANDED")
 
     def test_missing_paths_are_not_landed(self):
         measured = measure_from_rows(
@@ -122,6 +132,8 @@ class TestReadmeLive(unittest.TestCase):
                 "no_gate": True,
                 "action_pad": True,
                 "device_bridge_grounded": True,
+                "device_catalog_grounded": True,
+                "catalog_paths_ok": True,
                 "head_truth": True,
                 "ship_main": True,
                 "catalog_roster": STALE_ROSTER,
@@ -132,6 +144,22 @@ class TestReadmeLive(unittest.TestCase):
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("never 0", verdict["note"])
+        for flag in (
+            "posting_open", "no_auth", "no_gate", "catalog_paths_ok",
+            "device_bridge_grounded", "device_catalog_grounded",
+        ):
+            broken = dict(measured)
+            broken[flag] = False
+            self.assertEqual(classify(broken)["state"], "NOT_LANDED", flag)
+
+    def test_device_cycle_requires_every_grounding_token(self):
+        complete = "\n".join(DEVICE_CYCLE_TOKENS)
+        self.assertTrue(measure_device_cycle(complete)["device_bridge_grounded"])
+        for token in DEVICE_CYCLE_TOKENS:
+            incomplete = complete.replace(token, "")
+            measured = measure_device_cycle(incomplete)
+            self.assertFalse(measured["device_bridge_grounded"], token)
+            self.assertIn(token, measured["missing_device_tokens"])
 
     def test_live_tree_is_integrated(self):
         measured = measure_root(ROOT)
@@ -142,7 +170,12 @@ class TestReadmeLive(unittest.TestCase):
         self.assertEqual(measured["forbidden_hits"], [])
         self.assertEqual(measured["missing_phrases"], [])
         self.assertTrue(measured["device_bridge_grounded"], measured)
+        self.assertTrue(measured["device_catalog_grounded"], measured)
+        self.assertTrue(measured["catalog_paths_ok"], measured)
+        self.assertEqual(measured["missing_device_tokens"], [])
+        self.assertNotIn("titan", measured)
         self.assertEqual(verdict["state"], "INTEGRATED", verdict)
+        self.assertNotIn("titan", verdict)
         with open(os.path.join(ROOT, "ground", "README_LIVE.json"), encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
         with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as handle:
@@ -152,6 +185,7 @@ class TestReadmeLive(unittest.TestCase):
         self.assertEqual(catalog["slack_ts"], SLACK_TS)
         self.assertEqual(catalog["stale_roster"], STALE_ROSTER)
         self.assertTrue(catalog["no_auth"])
+        self.assertNotIn("titan", catalog)
         self.assertNotIn(STALE_ROSTER, readme)
         for phrase in FORBIDDEN_PHRASES:
             self.assertNotIn(phrase.lower(), readme.lower())
