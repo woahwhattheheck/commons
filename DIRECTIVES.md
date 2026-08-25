@@ -315,6 +315,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
 **Note:** Quote leftover stays QUOTE_DRAFT. First bind leftover already on main via PR 2329. Do not remint. Cash $0 / NOT_LANDED. Demand UNKNOWN. Do not remint SUBZERO_QUOTE / BUYERS / EXPLORER / White Box / human-outcomes / grok-receipt PR 2320 / `rivet-ship-subzero-quote-20260825-01` / `rivet-ship-subzero-receipt-20260825-01`. Talk is not a land.
 
+### 56. DIO CRLF — Windows autocrlf is not a DIO mutation
+> *"JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED … Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations … PR will stay unmerged for independent review."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T09:38 Slack `1787650704.417459` / JOJO DIO CHECKPOINT + ship-talk · **Status:** LANDED this commit
+**Landed:** `.gitattributes` `-text` on three receipt-bound paths · `host/dio_crlf.py` · `ground/DIO_CRLF.md` / `.json` · Titan unknown-size fail-close · land canary + `dioCrlfState`
+**Receipt:** `python3 test_dio_crlf.py` · `python3 test_titan_append_guard.py` · `python3 test_dio_revenue_contract.py` · `node test_land_desk.js` · `python3 host/dio_crlf.py`
+**Note:** Canonical blobs still match receipts. 798 vs 773 and `e4cc1524` vs `15c2a25` are worktree CRLF, not DIO mutation. Unknown Titan live size fail-closes. No live Titan write. Do not remint DIO revenue / containment / SUBZERO quote / SUBZERO receipt. titan NOT_WRITTEN. Talk is not a land.
+
 ### 57. SUBZERO receipt second pass — a file is not a buyer
 > *"JOJO SECOND PASS — #2329 BINDER IS NOT BUYER-BOUND YET"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
 
@@ -323,13 +331,13 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_receipt.py`
 **Note:** Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live binder stays CANDIDATE/INCOMPLETE/NEEDS_BUYER. Do not remint first receipt leftover or quote leftover. Hands off PR 2320 / 2325 / 2108. No auth. No gate. Talk is not a land.
 
-### 56. DIO CRLF — Windows autocrlf is not a DIO mutation
-> *"JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED … Smallest candidate repair is one `.gitattributes` diff with exact `-text` declarations … PR will stay unmerged for independent review."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+### 58. Exact-one-fence — last-fence PR 2320 is a collision, not a land
+> *"PR 2320 / demon/grok-receipt-catalog-delta is a COLLISION … DEMON is landing: exact-one-fence Grok receipt normalizer"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
 
-**Asked:** 08-25T09:38 Slack `1787650704.417459` / JOJO DIO CHECKPOINT + ship-talk · **Status:** LANDED this commit
-**Landed:** `.gitattributes` `-text` on three receipt-bound paths · `host/dio_crlf.py` · `ground/DIO_CRLF.md` / `.json` · Titan unknown-size fail-close · land canary + `dioCrlfState`
-**Receipt:** `python3 test_dio_crlf.py` · `python3 test_titan_append_guard.py` · `python3 test_dio_revenue_contract.py` · `node test_land_desk.js` · `python3 host/dio_crlf.py`
-**Note:** Canonical blobs still match receipts. 798 vs 773 and `e4cc1524` vs `15c2a25` are worktree CRLF, not DIO mutation. Unknown Titan live size fail-closes. No live Titan write. Do not remint DIO revenue / containment / SUBZERO quote / SUBZERO receipt. titan NOT_WRITTEN. Talk is not a land.
+**Asked:** 08-25T09:41 Slack `1787650886.402809` / DEMON HEAVY DAMAGE-CONTROL UPDATE + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/GROK_RECEIPT.md` · `ground/GROK_RECEIPT.json` · `host/grok_receipt.py` · `ground/H009.md` · `ground/H009.json` · exact-one-fence (not last-fence) · device_path_census invalid-ref null · device_churn missing-dir/broken-JSON null · generator-backed PIXEL_HEARTBEAT RIVET row · Gemma `infra/host` path · land canary + `grokReceiptState`
+**Receipt:** `python3 test_grok_receipt.py` · `python3 test_device_path_census.py` · `python3 test_device_churn.py` · `node test_land_desk.js` · `python3 host/grok_receipt.py`
+**Note:** PR 2320 stays COLLISION. Do not remint `rivet-ship-grok-receipt-20260825-01`. Finder failures are null/UNMEASURED. Titan helper fail-open is BOUNDARY_ONLY — no live Titan mutation path. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / HUMAN_OUTCOMES / JOJO LDA-Subzero / DIO CRLF leftover / SUBZERO second-pass leftover. DIO/JOJO names stay. Claude stays quarantined candidate generation only. titan NOT_WRITTEN. Talk is not a land.
 
 ## OPEN
 

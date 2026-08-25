@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825by/.test(html), "desk must share the current-main/Titan cache key after H-008 second-pass leftover");
+assert.ok(/20260825ca/.test(html), "desk must share the current-main/Titan cache key after exact-one-fence leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,38 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isGrokReceiptTalk, "land.js must classify exact-one-fence leftover talk");
+assert.ok(api.grokReceiptState, "land.js must classify the exact-one-fence leftover");
+assert.ok(api.isGrokReceiptTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nPR 2320 / demon/grok-receipt-catalog-delta is a COLLISION\nexact-one-fence Grok receipt normalizer\n1787650886.402809"), "DEMON damage-control exact-one-fence is leftover talk");
+assert.ok(!api.isGrokReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the exact-one-fence leftover");
+assert.ok(!api.isGrokReceiptTalk("TAKING revenue/human-outcomes package from current main — DEMON//REDTEAM\nhumans.html\n1787648711.782309"), "human-outcomes taking is not the exact-one-fence leftover");
+assert.ok(!api.isSubzeroReceiptTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence Grok receipt normalizer. 1787650886.402809"), "exact-one-fence Slack is not the H-008 leftover");
+assert.ok(!api.isHumanOutcomesTalk("DEMON — HEAVY DAMAGE-CONTROL UPDATE\nexact-one-fence. 1787650886.402809"), "exact-one-fence Slack is not the human-outcomes leftover");
+var grokReceiptTalk = api.completionStateFromText(
+  "DEMON — HEAVY DAMAGE-CONTROL UPDATE\nPR 2320 / demon/grok-receipt-catalog-delta is a COLLISION\nexact-one-fence Grok receipt normalizer. 1787650886.402809"
+);
+assert.strictEqual(grokReceiptTalk.state, "CLAIMED");
+assert.ok(/exact-one-fence|PR 2320|last-fence/i.test(grokReceiptTalk.note), "exact-one-fence-without-SHA must stay CLAIMED and beat H-008 / human-outcomes");
+var grokReceiptDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nexact-one-fence leftover landed"
+);
+assert.strictEqual(grokReceiptDone.state, "INTEGRATED", "completion words still beat exact-one-fence talk");
+var grokReceiptEmpty = api.grokReceiptState("");
+assert.strictEqual(grokReceiptEmpty.state, "UNMEASURED");
+var grokReceiptMissing = api.grokReceiptState("# empty stub\nno leftover");
+assert.strictEqual(grokReceiptMissing.state, "NOT_LANDED");
+var grokReceiptOk = api.grokReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef normalize_envelope(text):\n    return text\nexact-one-fence\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nlast-fence is collision\nPR 2320\nEvery Grok envelope is CANDIDATE\nno auth\nno gate\n");
+assert.strictEqual(grokReceiptOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(grokReceiptOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="grok-receipt-result"') >= 0, "desk must name the exact-one-fence leftover");
+assert.ok(html.indexOf("host/grok_receipt.py") >= 0, "desk must name the exact-one-fence instrument");
+assert.ok(html.indexOf("ground/GROK_RECEIPT.md") >= 0, "desk must link the exact-one-fence card");
+assert.ok(html.indexOf("ground/GROK_RECEIPT.json") >= 0, "desk must link the exact-one-fence catalog");
+assert.ok(html.indexOf("1787650886.402809") >= 0, "desk must cite the DEMON damage-control Slack ts");
+assert.ok(/HEAVY DAMAGE-CONTROL|exact-one-fence|PR 2320/i.test(html), "desk must name exact-one-fence talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECEIPT.md") >= 0, "exact-one-fence card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECEIPT.json") >= 0, "exact-one-fence catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/H009.md") >= 0, "H-009 plan must stay a canary");
 assert.ok(api.isDioCrlfTalk, "land.js must classify DIO CRLF leftover talk");
 assert.ok(api.dioCrlfState, "land.js must classify the DIO CRLF leftover");
 assert.ok(api.isDioCrlfTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\nWindows core.autocrlf=true expands three receipt-bound text artifacts. 798 vs 773 and e4cc1524 vs 15c2a25. 1787650704.417459"), "JOJO DIO checkpoint is leftover talk");

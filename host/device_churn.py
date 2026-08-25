@@ -44,34 +44,85 @@ def _read_text(path):
         return ""
 
 
-def count_json_files(directory):
-    """Count regular *.json files in one directory. Missing dir is zero."""
+def list_json_files(directory):
+    """List regular *.json files. Missing dir is FINDER-FAILED, never 0."""
     if not os.path.isdir(directory):
-        return 0
-    total = 0
-    for name in os.listdir(directory):
+        return {
+            "ok": False,
+            "count": None,
+            "names": None,
+            "error": "missing dir. FINDER-FAILED, never 0.",
+        }
+    names = []
+    try:
+        listing = os.listdir(directory)
+    except OSError as exc:
+        return {
+            "ok": False,
+            "count": None,
+            "names": None,
+            "error": "listdir failed: %s. FINDER-FAILED, never 0." % exc,
+        }
+    for name in listing:
         path = os.path.join(directory, name)
         if name.endswith(".json") and os.path.isfile(path):
-            total += 1
-    return total
+            names.append(name)
+    return {"ok": True, "count": len(names), "names": names, "error": ""}
+
+
+def count_json_files(directory):
+    """Compat: present empty dir is 0. Missing dir is None."""
+    return list_json_files(directory)["count"]
 
 
 def count_scope_device(results_dir):
-    """Count result objects whose scope is device. Broken JSON is skipped."""
+    """Count result objects whose scope is device.
+
+    Missing dir is FINDER-FAILED. Broken JSON is a parse failure,
+    never skipped-as-zero.
+    """
     if not os.path.isdir(results_dir):
-        return 0
+        return {
+            "ok": False,
+            "count": None,
+            "parse_failures": None,
+            "error": "missing dir. FINDER-FAILED, never 0.",
+        }
     total = 0
-    for name in os.listdir(results_dir):
+    failures = 0
+    try:
+        listing = os.listdir(results_dir)
+    except OSError as exc:
+        return {
+            "ok": False,
+            "count": None,
+            "parse_failures": None,
+            "error": "listdir failed: %s. FINDER-FAILED, never 0." % exc,
+        }
+    for name in listing:
         path = os.path.join(results_dir, name)
         if not name.endswith(".json") or not os.path.isfile(path):
             continue
-        try:
-            row = json.loads(_read_text(path) or "{}")
-        except ValueError:
+        raw = _read_text(path)
+        if not raw:
+            failures += 1
             continue
-        if isinstance(row, dict) and row.get("scope") == "device":
+        try:
+            row = json.loads(raw)
+        except ValueError:
+            failures += 1
+            continue
+        if not isinstance(row, dict):
+            failures += 1
+            continue
+        if row.get("scope") == "device":
             total += 1
-    return total
+    return {
+        "ok": True,
+        "count": total,
+        "parse_failures": failures,
+        "error": "",
+    }
 
 
 def workflow_flags(executor_text, board_text):
@@ -156,13 +207,22 @@ def measure_from_rows(counts, flags, extras=None):
     counts = counts or {}
     flags = flags or {}
     canary = extras.get("canary") or {"ran": False, "ok": False}
+    def _maybe_int(key):
+        value = counts.get(key)
+        if value is None:
+            return None
+        return int(value)
+
     row = {
         "measured": True,
         "catalog": bool(extras.get("catalog")),
-        "reservation_count": int(counts.get("reservation_count") or 0),
-        "batch_count": int(counts.get("batch_count") or 0),
-        "result_count": int(counts.get("result_count") or 0),
-        "scope_device_count": int(counts.get("scope_device_count") or 0),
+        "reservation_count": _maybe_int("reservation_count"),
+        "batch_count": _maybe_int("batch_count"),
+        "result_count": _maybe_int("result_count"),
+        "scope_device_count": _maybe_int("scope_device_count"),
+        "parse_failures": _maybe_int("parse_failures"),
+        "listing_failed": bool(counts.get("listing_failed")),
+        "listing_error": str(counts.get("listing_error") or ""),
         "flags": dict(flags),
         "canary": dict(canary),
         "titan": "NOT_WRITTEN",
@@ -178,17 +238,40 @@ def measure_root(root, canary=None):
         _read_text(os.path.join(root, EXECUTOR)),
         _read_text(os.path.join(root, BOARD)),
     )
+    reservations = list_json_files(
+        os.path.join(root, "actions", "device-reservations")
+    )
+    batches = list_json_files(os.path.join(root, "actions", "device-batches"))
+    results = list_json_files(os.path.join(root, "actions", "results"))
+    scopes = count_scope_device(os.path.join(root, "actions", "results"))
+    listing_error = " ".join(
+        part
+        for part in (
+            reservations.get("error"),
+            batches.get("error"),
+            results.get("error"),
+            scopes.get("error") if isinstance(scopes, dict) else "",
+        )
+        if part
+    )
+    listing_failed = not (
+        reservations.get("ok")
+        and batches.get("ok")
+        and results.get("ok")
+        and (not isinstance(scopes, dict) or scopes.get("ok"))
+    )
     counts = {
-        "reservation_count": count_json_files(
-            os.path.join(root, "actions", "device-reservations")
+        "reservation_count": reservations.get("count"),
+        "batch_count": batches.get("count"),
+        "result_count": results.get("count"),
+        "scope_device_count": (
+            scopes.get("count") if isinstance(scopes, dict) else scopes
         ),
-        "batch_count": count_json_files(
-            os.path.join(root, "actions", "device-batches")
+        "parse_failures": (
+            scopes.get("parse_failures") if isinstance(scopes, dict) else 0
         ),
-        "result_count": count_json_files(os.path.join(root, "actions", "results")),
-        "scope_device_count": count_scope_device(
-            os.path.join(root, "actions", "results")
-        ),
+        "listing_failed": listing_failed,
+        "listing_error": listing_error,
     }
     extras = {
         "catalog": os.path.isfile(os.path.join(root, DEFAULT_CATALOG)),
@@ -309,7 +392,11 @@ def _self_test():
     assert classify(failed)["state"] == "CANDIDATE"
     missing = measure_from_rows({}, {}, {"catalog": False})
     assert classify(missing)["state"] == "NOT_LANDED"
-    assert count_json_files("/no/such/device-reservations") == 0
+    missing_dir = list_json_files("/no/such/device-reservations")
+    assert missing_dir["ok"] is False
+    assert missing_dir["count"] is None
+    assert "FINDER-FAILED" in missing_dir["error"]
+    assert count_json_files("/no/such/device-reservations") is None
     return True
 
 

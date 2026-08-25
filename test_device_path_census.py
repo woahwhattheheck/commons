@@ -149,6 +149,18 @@ class TestDevicePathCensus(unittest.TestCase):
         self.assertTrue(catalog["no_gate"])
         self.assertEqual(catalog["titan"], "NOT_WRITTEN")
 
+    def test_invalid_ref_is_unmeasured_never_zero(self):
+        row = measure_root(ROOT, "this-ref-does-not-exist-zzzz")
+        verdict = classify(row)
+        self.assertTrue(row["measured"])
+        self.assertTrue(row["calibration_ok"])
+        self.assertFalse(row["tree_ok"])
+        self.assertIsNone(row["tree_count"])
+        self.assertIsNone(row["reservation_count"])
+        self.assertEqual(verdict["state"], "UNMEASURED")
+        self.assertIn("never []", verdict["note"].lower())
+        self.assertIn("FINDER-FAILED", verdict["note"])
+
     def test_search_space_and_calibration_named(self):
         self.assertIn("ground/DEVICE_PATH_CENSUS.md", SEARCH_SPACE)
         self.assertIn("ground/DEVICE_PATH_CANARY.md", SEARCH_SPACE)
