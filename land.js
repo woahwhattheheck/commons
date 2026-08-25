@@ -194,6 +194,8 @@
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
     "ground/MEMORY_SHIP.json",
+    "ground/GROK_HYGIENE.md",
+    "ground/GROK_HYGIENE.json",
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
@@ -418,6 +420,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isGrokHygieneTalk(t)) {
+      return { state: "CLAIMED", note: "Grok/Claude hygiene-boundary / enabledPlugins / grok_hygiene_gate talk. Talk is not a land. Direct Grok Build stays fail-closed. Clean Cursor is the land lane. Do not disable Claude plugins. Do not remint GROK_HARNESS." };
     }
     if (api.isForeignMainTalk(t)) {
       return { state: "CLAIMED", note: "foreign official main / LocalDeviceAgent SHIP_RECEIPT / muhl_subagent_protocol talk. Talk is not a land. Measure official LDA main and the named blobs independently. Commons p/{id}.md is a separate fact. Do not remint the JOJO id. Do not copy private LDA source." };
@@ -846,6 +851,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/device_canary.py missing the leftover. First bounded read-only device canary / TAKING_LANDED_INPUT talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokHygieneTalk = function (text) {
+    return /grok\/claude hygiene|hygiene boundary|enabledplugins|grok_hygiene_gate|compat\.claude|frontend-design.{0,80}mcp-tunnels|do not disable those in claude/i.test(String(text || ""));
+  };
+
+  api.grokHygieneState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_hygiene.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesLeak = /enabledPlugins/.test(body) && /frontend-design/.test(body);
+    var keepsOpus = /do not disable/i.test(body) && /FAIL-CLOSED|fail-closed/.test(body);
+    var diligence = /diligence/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesLeak && keepsOpus && diligence) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-hygiene leftover is on this file. Three Claude plugin metadata surfaces stay named. Direct Grok Build is fail-closed. A Slack hygiene boundary is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_hygiene.py missing the leftover. Grok/Claude hygiene-boundary talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2480,6 +2513,7 @@
   var foreignMainOut = document.getElementById("foreign-main-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
   var memoryShipOut = document.getElementById("memory-ship-result");
+  var grokHygieneOut = document.getElementById("grok-hygiene-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -3122,6 +3156,12 @@
     if (!memoryShipOut) return;
     memoryShipOut.setAttribute("data-tone", api.toneFor(result.state));
     memoryShipOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokHygiene(result) {
+    if (!grokHygieneOut) return;
+    grokHygieneOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokHygieneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -4011,6 +4051,33 @@
     });
   }
 
+  function loadGrokHygiene(sha) {
+    if (!grokHygieneOut) return Promise.resolve(null);
+    grokHygieneOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_hygiene.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_hygiene.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_hygiene.py absent at the measured main SHA. Grok/Claude hygiene-boundary talk is CLAIMED." };
+        paintGrokHygiene(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokHygiene(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokHygieneState(body);
+        paintGrokHygiene(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokHygiene(err);
+      return err;
+    });
+  }
+
   function loadMemoryShip(sha) {
     if (!memoryShipOut) return Promise.resolve(null);
     memoryShipOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/memory_ship.py at the official SHA…</p>";
@@ -4786,6 +4853,7 @@
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
     loadTitanTestQuarantine(sha);
+    loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
     loadForeignMain(sha);
