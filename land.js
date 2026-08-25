@@ -126,6 +126,8 @@
     ".github/workflows/render-check.yml",
     "ground/STALE_SPEC.md",
     "ground/STALE_SPEC.json",
+    "ground/PIXEL_HEARTBEAT.md",
+    "ground/PIXEL_HEARTBEAT.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -423,6 +425,9 @@
     if (api.isStaleSpecTalk(t)) {
       return { state: "CLAIMED", note: "stale-spec / SESSION_GROUNDING-as-absolute-law talk. Talk is not a land. Treat the local file as historical input and ship the leftover to current main." };
     }
+    if (api.isPixelHeartbeatTalk(t)) {
+      return { state: "CLAIMED", note: "pixel-heartbeat / session-state / freshness-provenance talk. Talk is not a land. Measure pixels/{name}.json freshness and provenance, then ship the leftover. Do not invent presence." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -711,6 +716,10 @@
     };
   };
 
+  api.isPixelHeartbeatTalk = function (text) {
+    return /pixel-heartbeat|pixels\/\{name\}\.json|pixels\/\{claim\}\.json|session-state .{0,40}pixels|freshness\/provenance|stale-artifact reconciliation|no fabricated presence|demon-side-harness-offer/i.test(String(text || ""));
+  };
+
   api.grokHarnessState = function (text) {
     var body = String(text || "");
     if (!body.trim()) {
@@ -729,6 +738,27 @@
     return {
       state: "NOT_LANDED",
       note: "host/grok_harness_gap.py missing the compare. Harness-gap talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.pixelHeartbeatState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/pixel_heartbeat.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasReconcile = /def reconcile_index/.test(body);
+    var noFabricate = /fabricate/.test(body);
+    if (hasMeasure && hasClassify && hasReconcile && noFabricate) {
+      return {
+        state: "INTEGRATED",
+        note: "pixel-heartbeat contract leftover is on this file. Committed, not guessed. Do not invent presence. titan NOT_WRITTEN."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/pixel_heartbeat.py missing the contract. Pixel-heartbeat talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1143,6 +1173,7 @@
   var citeOut = document.getElementById("cite-result");
   var renderOut = document.getElementById("render-result");
   var staleOut = document.getElementById("stale-spec-result");
+  var pixelOut = document.getElementById("pixel-heartbeat-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1562,6 +1593,12 @@
     staleOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintPixelHeartbeat(result) {
+    if (!pixelOut) return;
+    pixelOut.setAttribute("data-tone", api.toneFor(result.state));
+    pixelOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1891,6 +1928,33 @@
     });
   }
 
+  function loadPixelHeartbeat(sha) {
+    if (!pixelOut) return Promise.resolve(null);
+    pixelOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/pixel_heartbeat.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/pixel_heartbeat.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/pixel_heartbeat.py absent at the measured main SHA. Pixel-heartbeat talk is CLAIMED." };
+        paintPixelHeartbeat(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintPixelHeartbeat(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.pixelHeartbeatState(body);
+        paintPixelHeartbeat(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintPixelHeartbeat(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -2039,6 +2103,7 @@
     loadVerifyCite(sha);
     loadRenderCheck(sha);
     loadStaleSpec(sha);
+    loadPixelHeartbeat(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

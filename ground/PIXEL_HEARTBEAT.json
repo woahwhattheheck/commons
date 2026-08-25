@@ -1,0 +1,41 @@
+{
+  "fabricate": false,
+  "files": [
+    "PLAYER2.json"
+  ],
+  "hands_off": [
+    "host/render_check.py",
+    "rivet-render-check-ci",
+    "codex/cml-latent-speech-20260824",
+    "dio titan",
+    "grok revenue",
+    "claude pfc",
+    "demon-side-harness-offer-20260825-01"
+  ],
+  "heartbeats": [
+    {
+      "age_seconds": 411180,
+      "fabricated": false,
+      "freshness": "STALE",
+      "from": "PLAYER2",
+      "name": "PLAYER2.json",
+      "path": "COMMONS_PUT/pixel.html",
+      "src": "Cursor side chat \u2014 PLAYER2. Not a guessed search. The session is writing pixel.html / pixel.js / here.js.",
+      "ts": "2026-08-20T11:05:00Z",
+      "valid": true
+    }
+  ],
+  "index": [
+    "PLAYER2.json"
+  ],
+  "listed_missing": [],
+  "note": "Do not remint the DEMON offer id. Do not invent a heartbeat. Local exact-SHA verification stays with DEMON. RIVET owns render CI.",
+  "slack_ts": "1787635078.168629",
+  "source_id": "demon-side-harness-offer-20260825-01",
+  "stale": [
+    "PLAYER2.json"
+  ],
+  "subject": "DEMON pixel-heartbeat contract \u2014 freshness/provenance, no fabricated presence",
+  "titan": "NOT_WRITTEN",
+  "unlisted": []
+}

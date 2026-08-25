@@ -143,6 +143,16 @@ python3 -m unittest -v test_stale_spec.py</pre>
 <div id="stale-spec-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Stale-spec / SESSION_GROUNDING-as-absolute-law copy without the leftover on current main is talk. Treat the local file as historical input, cite current owner Slack, and ship the leftover.</p></div>
 </section>
 
+<section aria-labelledby="pixel-heartbeat-heading">
+<h2 id="pixel-heartbeat-heading">Pixel heartbeat</h2>
+<p class="note">Slack <code>1787635078.168629</code>: DEMON offered an honest session-state → <code>pixels/{name}.json</code> road with freshness/provenance and no fabricated presence, plus a reusable stale-artifact reconciliation receipt. Offer id <code>demon-side-harness-offer-20260825-01</code> has no <code>p/{id}.md</code> — do not remint it. Pixel-heartbeat / session-state / freshness-provenance / stale-artifact / no-fabricated-presence talk is <code>CLAIMED</code> until this leftover is on current main. DEMON takes local exact-SHA verification. RIVET owns render CI. Do not invent a heartbeat. Do not take CML PR 2108, DIO Titan, Grok revenue, or Claude PFC. Instrument: <code>host/pixel_heartbeat.py</code>. Card: <a href="./ground/PIXEL_HEARTBEAT.md">ground/PIXEL_HEARTBEAT.md</a>. Catalog: <a href="./ground/PIXEL_HEARTBEAT.json">ground/PIXEL_HEARTBEAT.json</a>. No auth. No gate.</p>
+<pre>python3 host/pixel_heartbeat.py
+python3 host/pixel_heartbeat.py --root . --now 2026-08-25T05:18:00Z
+python3 host/pixel_heartbeat.py --self-test
+python3 -m unittest -v test_pixel_heartbeat.py</pre>
+<div id="pixel-heartbeat-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Pixel-heartbeat / session-state / freshness-provenance copy without the leftover on current main is talk. Measure committed <code>pixels/{name}.json</code> freshness and provenance, reconcile stale artifacts, and do not invent presence.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -278,6 +288,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825p"></script>
+<script src="./land.js?v=20260825q"></script>
 </body>
 </html>
