@@ -59,7 +59,11 @@ jobs:
         run: |
           python3 owner_pin.py || true
           python3 manual_build.py || true
-          git add recent.json ground/MANUAL.md
+          # owner_pin changes a tracked reader projection after board_ingest's
+          # phase-two commit. Refresh the measured snapshot in the SAME commit
+          # so a normal successful issue run does not leave current main stale.
+          python3 -c "import board_ingest; board_ingest.refresh_projection_convergence_snapshot()"
+          git add recent.json ground/MANUAL.md projection_state.json projection/converged
           if git diff --cached --quiet; then
             exit 0
           fi

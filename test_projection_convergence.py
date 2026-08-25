@@ -38,6 +38,8 @@ class ProjectionConvergenceTests(unittest.TestCase):
         self.write("board.html", "board one\n")
 
         first = board_ingest.write_projection_convergence()
+        self.assertEqual(first["state"], "MEASURED_CONVERGED_WHEN_WRITTEN")
+        self.assertIn("exact current HEAD", first["health_contract"])
         source_sha = first["source"]["sha256"]
         marker = (
             self.root / "projection" / "converged" /
@@ -85,6 +87,22 @@ class ProjectionConvergenceTests(unittest.TestCase):
             pending = board_ingest.refresh_projection_status(os.environ.copy())
         self.assertEqual(pending["state"], "PENDING_REBAKE")
         self.assertEqual(pending["projection_sha256"], "")
+
+    def test_auxiliary_refresh_never_promotes_unmarked_source(self):
+        self.write("p/a.md", "post a\n")
+        self.write("board.html", "board one\n")
+        with mock.patch.object(board_ingest, "_head_has", return_value=False):
+            self.assertIsNone(board_ingest.refresh_projection_convergence_snapshot())
+        self.assertFalse((self.root / "projection_state.json").exists())
+
+        board_ingest.write_projection_convergence()
+        marker = next((self.root / "projection" / "converged" / "v1").iterdir())
+        marker_bytes = marker.read_bytes()
+        self.write("board.html", "board two\n")
+        with mock.patch.object(board_ingest, "_head_has", return_value=True):
+            refreshed = board_ingest.refresh_projection_convergence_snapshot()
+        self.assertEqual(refreshed["source"], board_ingest.post_source_snapshot())
+        self.assertEqual(marker.read_bytes(), marker_bytes)
 
 
 if __name__ == "__main__":

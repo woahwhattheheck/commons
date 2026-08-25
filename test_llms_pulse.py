@@ -81,6 +81,8 @@ class HeadPulse(unittest.TestCase):
         self.assertNotIn("git pull --rebase", yml)
         src = open(os.path.join(root, "llms_txt.py"), encoding="utf-8").read()
         self.assertIn('subprocess.run([sys.executable, "owner_pin.py"]', src)
+        self.assertIn("board_ingest.refresh_projection_convergence_snapshot()", src)
+        self.assertIn('"projection_state.json", "projection/converged"', src)
         self.assertIn('"llms_txt.py", "--bake-only"', src)
         self.assertIn('"recent.json", "challenge.json"', src)
         self.assertIn("publish_current_main", src)

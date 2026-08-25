@@ -481,21 +481,29 @@ def _write_once_json(rel, row):
     return "wrote"
 
 
-def write_projection_convergence():
-    """Write deterministic phase-two proof for the exact p/*.md snapshot."""
-    source = post_source_snapshot()
+def _write_projection_state(source=None):
+    """Write a measured snapshot; current-HEAD health must recompute its digests."""
+    source = source or post_source_snapshot()
     surface = projection_surface_snapshot()
     row = {
         "schema": "commons-projection-v1",
         "protocol": PROJECTION_PROTOCOL,
-        "state": "CONVERGED_IN_GIT_AT_THIS_TREE",
+        "state": "MEASURED_CONVERGED_WHEN_WRITTEN",
         "source": source,
         "projection": surface,
         "scope": "p/*.md -> tracked Commons board surfaces",
+        "health_contract": "recompute source and projection digests at exact current HEAD",
         "pages_deployment": "UNVERIFIED",
     }
     _write(os.path.join(ROOT, "projection_state.json"),
            json.dumps(row, indent=2, sort_keys=True))
+    return row
+
+
+def write_projection_convergence():
+    """Write deterministic phase-two proof for the exact p/*.md snapshot."""
+    source = post_source_snapshot()
+    row = _write_projection_state(source)
     receipt = {
         "schema": "commons-projection-v1",
         "protocol": PROJECTION_PROTOCOL,
@@ -507,6 +515,27 @@ def write_projection_convergence():
     rel = _projection_receipt_rel(source["sha256"], "converged")
     _write_once_json(rel, receipt)
     return row
+
+
+def refresh_projection_convergence_snapshot(env=None):
+    """Refresh volatile projection bytes without ever promoting new source.
+
+    Auxiliary publishers may move reader feeds after board_ingest's phase two.
+    They may refresh the state snapshot only when HEAD already contains the
+    exact write-once convergence receipt for the current source corpus.
+    """
+    source = post_source_snapshot()
+    rel = _projection_receipt_rel(source["sha256"], "converged")
+    receipt = _load_json(os.path.join(ROOT, *rel.split("/")), {})
+    committed = _head_has(rel, git_env(env))
+    if not (
+        committed
+        and receipt.get("protocol") == PROJECTION_PROTOCOL
+        and receipt.get("source") == source
+        and receipt.get("state") == "CONVERGED_SOURCE_SNAPSHOT"
+    ):
+        return None
+    return _write_projection_state(source)
 
 
 def slug_id(mid: str):

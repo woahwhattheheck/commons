@@ -104,6 +104,8 @@ class LandingReceiptTests(unittest.TestCase):
         self.assertIn("receipt.git_head", workflow)
         self.assertIn("createDispatchEvent", workflow)
         self.assertIn("PENDING_REBAKE", workflow)
+        self.assertIn("board_ingest.refresh_projection_convergence_snapshot()", workflow)
+        self.assertIn("projection_state.json projection/converged", workflow)
         self.assertNotIn('body: ["LANDING DURABLE_PAGE."', workflow)
 
     def test_sweep_and_action_pad_do_not_overclaim_transport_or_pages(self):
