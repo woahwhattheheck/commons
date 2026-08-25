@@ -116,6 +116,10 @@
     "ground/UNUSED_INVOKE.md",
     "ground/TAKING_TRACE.md",
     "ground/TAKING_TRACE.json",
+    "ground/GROK_HARNESS.md",
+    "ground/GROK_HARNESS_GAP.json",
+    "ground/GROK_HARNESS_INSPECT.json",
+    "ground/GROK_HARNESS_PATCH.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -401,6 +405,9 @@
     if (api.isResourceSweepTalk(t)) {
       return { state: "CLAIMED", note: "resource-sweep / act-on-the-reports talk. Talk is not a land. Measure unused host instruments and provisioned CI, then ship the leftover to current main." };
     }
+    if (api.isGrokHarnessTalk(t)) {
+      return { state: "CLAIMED", note: "grok-harness-gap / 0-MCP / 0-LSP talk. Talk is not a land. Compare ~/.grok to canonical sources, quarantine until SHA/session agree, and ship the leftover. Do not mutate Grok." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -584,6 +591,31 @@
     return {
       state: "NOT_LANDED",
       note: "host/unused_invoke.py missing the census. Resource-sweep talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokHarnessTalk = function (text) {
+    return /grok harness gap|harness parity|0 mcp servers|0 lsp servers|loaded permissions policy|~\/\.grok|do not mutate\/restart grok|do not mutate or restart grok/i.test(String(text || ""));
+  };
+
+  api.grokHarnessState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_harness_gap.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasQuarantine = /preconditions_agree/.test(body);
+    var noMutate = /mutate_grok/.test(body);
+    if (hasMeasure && hasClassify && hasQuarantine && noMutate) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-harness gap leftover is on this file. Local inspect is evidence until SHA/session agree. Do not mutate Grok. Never a gate."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_harness_gap.py missing the compare. Harness-gap talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -994,6 +1026,7 @@
   var fleetOut = document.getElementById("fleet-result");
   var unusedOut = document.getElementById("unused-result");
   var takingOut = document.getElementById("taking-result");
+  var grokOut = document.getElementById("grok-harness-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1389,6 +1422,12 @@
     takingOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintGrokHarness(result) {
+    if (!grokOut) return;
+    grokOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1570,6 +1609,33 @@
     });
   }
 
+  function loadGrokHarness(sha) {
+    if (!grokOut) return Promise.resolve(null);
+    grokOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_harness_gap.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_harness_gap.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_harness_gap.py absent at the measured main SHA. Harness-gap talk is CLAIMED." };
+        paintGrokHarness(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokHarness(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokHarnessState(body);
+        paintGrokHarness(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokHarness(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -1714,6 +1780,7 @@
     loadFleet(sha);
     loadUnusedInvoke(sha);
     loadTakingTrace(sha);
+    loadGrokHarness(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

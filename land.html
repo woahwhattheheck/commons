@@ -105,6 +105,15 @@ python3 -m unittest -v test_taking_trace.py</pre>
 <div id="taking-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Rolling-utilization / grok-capacity-active copy without <code>p/{id}.md</code> on current main is talk. Measure the catalog, then ship only the verification leftover.</p></div>
 </section>
 
+<section aria-labelledby="grok-harness-heading">
+<h2 id="grok-harness-heading">Grok harness parity</h2>
+<p class="note">Slack <code>1787634541.520949</code>: DEMON reported <code>~/.grok</code> v1.0.5 with 30 skills / 14 hooks and <code>0 MCP servers</code>, <code>0 LSP servers</code>, <code>0 loaded permissions policy</code>. DIO + JOJO were asked to jointly claim the named harness-parity lane. Do not remint that taking. Harness-gap / 0-MCP / 0-LSP / harness-parity talk is <code>CLAIMED</code> until this leftover is on current main. Local inspect is evidence until source / generator / SHA / live-session agree; ambiguity is <code>QUARANTINED</code>. This leftover does not mutate Grok and does not restart it. A permissions-policy zero is not an order to add a lock. Never a gate. Relay MCP/LSP backlog to existing Grok coordinators (PLAYER1 / PLAYER2 / GROK_BUILD), not a new launch. Instrument: <code>host/grok_harness_gap.py</code>. Card: <a href="./ground/GROK_HARNESS.md">ground/GROK_HARNESS.md</a>. Catalog: <a href="./ground/GROK_HARNESS_GAP.json">ground/GROK_HARNESS_GAP.json</a>. Inspect: <a href="./ground/GROK_HARNESS_INSPECT.json">ground/GROK_HARNESS_INSPECT.json</a>. Candidate patch: <a href="./ground/GROK_HARNESS_PATCH.json">ground/GROK_HARNESS_PATCH.json</a> (<code>apply: false</code>). No auth. No gate.</p>
+<pre>python3 host/grok_harness_gap.py
+python3 host/grok_harness_gap.py --self-test
+python3 -m unittest -v test_grok_harness_gap.py</pre>
+<div id="grok-harness-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Grok-harness-gap / 0-MCP / 0-LSP copy without the leftover on current main is talk. Compare canonical Commons MCP examples to the inspect snapshot, quarantine until SHA/session agree, and do not mutate Grok.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -240,6 +249,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825l"></script>
+<script src="./land.js?v=20260825m"></script>
 </body>
 </html>
