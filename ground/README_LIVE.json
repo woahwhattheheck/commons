@@ -14,7 +14,6 @@
     "names.html",
     ".github/workflows/commons-device-cycle.yml"
   ],
-  "titan": "NOT_WRITTEN",
   "no_auth": true,
   "no_gate": true,
   "posting_open": true,
