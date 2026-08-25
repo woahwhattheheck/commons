@@ -129,8 +129,24 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self) -> None:
+        if self.path in {
+            "/.well-known/oauth-protected-resource",
+            "/.well-known/oauth-protected-resource/mcp",
+        }:
+            self.send_response(404)
+            self._common_headers()
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         self.send_response(405)
         self.send_header("Allow", "POST, OPTIONS, DELETE")
+        self._common_headers()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
+    def do_HEAD(self) -> None:
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
         self._common_headers()
         self.send_header("Content-Length", "0")
         self.end_headers()
@@ -181,4 +197,3 @@ class handler(BaseHTTPRequestHandler):
                     ),
                 ),
             )
-

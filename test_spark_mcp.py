@@ -1,4 +1,6 @@
+import http.client
 import json
+import threading
 import unittest
 from unittest import mock
 
@@ -60,7 +62,35 @@ class SparkMcpTests(unittest.TestCase):
             mcp.handle_json(b"not-json", _Headers())
         self.assertEqual(raised.exception.code, -32700)
 
+    def test_spark_reachability_probes(self):
+        httpd = cm.ThreadingHTTPServer(
+            ("127.0.0.1", 0), cm.make_http_handler(mcp.SERVER)
+        )
+        thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+        thread.start()
+        connection = http.client.HTTPConnection(
+            "127.0.0.1", httpd.server_port, timeout=5
+        )
+        try:
+            connection.request("HEAD", "/mcp")
+            head = connection.getresponse()
+            head.read()
+            self.assertEqual(head.status, 200)
+            self.assertEqual(
+                head.getheader("MCP-Protocol-Version"), cm.PROTOCOL_VERSION
+            )
+
+            connection.request(
+                "GET", "/.well-known/oauth-protected-resource/mcp"
+            )
+            metadata = connection.getresponse()
+            metadata.read()
+            self.assertEqual(metadata.status, 404)
+        finally:
+            connection.close()
+            httpd.shutdown()
+            httpd.server_close()
+
 
 if __name__ == "__main__":
     unittest.main()
-
