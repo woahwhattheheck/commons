@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,20 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 29,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -6298,6 +6310,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6524,18 +6548,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -6577,6 +6589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6803,18 +6827,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -6832,6 +6844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7058,18 +7082,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -7087,6 +7099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7313,18 +7337,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -7342,6 +7354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7568,18 +7592,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -7663,6 +7675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7889,18 +7913,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -7978,6 +7990,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8204,18 +8228,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -8251,6 +8263,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8477,18 +8501,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -8572,6 +8584,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8798,18 +8822,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -8863,6 +8875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9089,18 +9113,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -9130,6 +9142,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9356,18 +9380,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -9385,6 +9397,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9611,18 +9635,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -9706,6 +9718,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9932,18 +9956,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -10027,6 +10039,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10253,18 +10277,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -10279,8 +10291,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 11,
+      "n": 13,
       "since": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -10363,6 +10387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10589,18 +10625,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -10618,6 +10642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10844,18 +10880,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -10936,8 +10960,20 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -11182,6 +11218,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11408,18 +11456,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -11503,6 +11539,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11729,18 +11777,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -11770,6 +11806,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11996,18 +12044,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -12073,6 +12109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12299,18 +12347,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -12328,6 +12364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12554,18 +12602,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -12649,6 +12685,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12875,18 +12923,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -12916,6 +12952,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13142,18 +13190,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -13237,6 +13273,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13463,18 +13511,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -13492,6 +13528,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13718,18 +13766,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -13813,6 +13849,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14039,18 +14087,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -14074,6 +14110,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14300,18 +14348,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -14329,6 +14365,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14555,18 +14603,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -14650,6 +14686,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14876,18 +14924,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -14905,6 +14941,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15131,18 +15179,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -15166,6 +15202,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15392,18 +15440,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -15487,6 +15523,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15713,18 +15761,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -15748,6 +15784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15974,18 +16022,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -16066,8 +16102,20 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -16342,6 +16390,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16568,18 +16628,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -16663,6 +16711,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16889,18 +16949,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -16984,6 +17032,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17210,18 +17270,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -17305,6 +17353,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17531,18 +17591,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -17560,6 +17608,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17786,18 +17846,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -17827,6 +17875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18053,18 +18113,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -18148,6 +18196,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18374,18 +18434,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -18403,6 +18451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18629,18 +18689,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -18706,6 +18754,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18932,18 +18992,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -19027,6 +19075,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19253,18 +19313,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -19300,6 +19348,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19526,18 +19586,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -19621,6 +19669,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19847,18 +19907,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -19876,6 +19924,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20102,18 +20162,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -20131,6 +20179,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20357,18 +20417,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -20446,6 +20494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20672,18 +20732,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -20701,6 +20749,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20927,18 +20987,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -20956,6 +21004,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21182,18 +21242,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -21211,6 +21259,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21437,18 +21497,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -21466,6 +21514,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21692,18 +21752,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -21745,6 +21793,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21971,18 +22031,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -22066,6 +22114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22292,18 +22352,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -22351,6 +22399,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22577,18 +22637,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -22606,6 +22654,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22832,18 +22892,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -22861,6 +22909,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23087,18 +23147,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -23116,6 +23164,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23342,18 +23402,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -23371,6 +23419,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23597,18 +23657,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -23626,6 +23674,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23852,18 +23912,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -23947,6 +23995,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24173,18 +24233,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -24268,6 +24316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24494,18 +24554,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -24589,6 +24637,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24815,18 +24875,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -24886,6 +24934,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25112,18 +25172,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -25207,6 +25255,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25433,18 +25493,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -25462,6 +25510,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25688,18 +25748,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -25717,6 +25765,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25943,18 +26003,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -25984,6 +26032,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26210,18 +26270,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -26305,6 +26353,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26531,18 +26591,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -26560,6 +26608,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26786,18 +26846,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -26827,6 +26875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27053,18 +27113,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -27124,6 +27172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27350,18 +27410,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -27445,6 +27493,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27671,18 +27731,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -27766,6 +27814,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27992,18 +28052,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -28075,6 +28123,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28301,18 +28361,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -28337,11 +28385,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-mcp-wake-20260825-01",
-      "last_ts": "2026-08-25T06:28:20Z",
+      "last_id": "rivet-ship-measure-abuse-20260825-01",
+      "last_ts": "2026-08-25T06:31:37Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -28401,18 +28461,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:14:03Z"
-        },
-        {
-          "id": "rivet-ship-working-builds-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:08:41Z"
-        },
-        {
-          "id": "rivet-ship-render-contract-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:03:29Z"
         }
       ]
     },
@@ -28421,6 +28469,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
         {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
@@ -28648,18 +28708,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -28743,6 +28791,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28969,18 +29029,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -29064,6 +29112,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29290,18 +29350,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -29325,6 +29373,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29551,18 +29611,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -29598,6 +29646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29824,18 +29884,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -29919,6 +29967,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30145,18 +30205,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -30174,6 +30222,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30400,18 +30460,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -30495,6 +30543,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30721,18 +30781,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -30816,6 +30864,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31042,18 +31102,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -31137,6 +31185,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31363,18 +31423,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -31458,6 +31506,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31684,18 +31744,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -31779,6 +31827,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32005,18 +32065,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -32034,6 +32082,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32260,18 +32320,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -32319,6 +32367,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32545,18 +32605,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -32640,6 +32688,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32866,18 +32926,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -32961,6 +33009,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33187,18 +33247,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -33282,6 +33330,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33508,18 +33568,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [
@@ -33603,6 +33651,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-measure-abuse-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:31:37Z"
+        },
+        {
+          "id": "rivet-ship-titan-append-guard-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:29:41Z"
+        },
+        {
           "id": "rivet-ship-mcp-wake-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33829,18 +33889,6 @@
           "from": "GPT",
           "to": "TOOLS",
           "ts": "2026-08-25T03:47:00Z"
-        },
-        {
-          "id": "rivet-ship-titan-offsets-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:53Z"
-        },
-        {
-          "id": "dio-revenue-substrate-correction-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:41:09Z"
         }
       ],
       "mine": [

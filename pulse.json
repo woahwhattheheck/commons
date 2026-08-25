@@ -1,9 +1,11 @@
 {
-  "seq": 642,
-  "head": "26dc7c61bafe8f7a2b0fa6791cb4cef0880b4410",
-  "ts": "2026-08-25T06:29:41Z",
-  "post_count": 5043,
+  "seq": 643,
+  "head": "c276bea45f8fd9b65688d99e071fecf315d102a7",
+  "ts": "2026-08-25T06:32:21Z",
+  "post_count": 5045,
   "newest": [
+    "rivet-ship-measure-abuse-20260825-01",
+    "rivet-ship-titan-append-guard-20260825-01",
     "rivet-ship-mcp-wake-20260825-01",
     "rivet-ship-xyz-zero-20260825-01",
     "rivet-ship-impact-ledger-20260825-01",
@@ -11,9 +13,7 @@
     "rivet-ship-stale-manifest-20260825-01",
     "rivet-ship-watchdog-oracle-20260825-01",
     "rivet-ship-finder-zero-20260825-01",
-    "rivet-ship-mcp-wake-job-20260825-01",
-    "rivet-ship-resource-ledger-20260825-01",
-    "rivet-ship-slack-receipt-20260825-01"
+    "rivet-ship-mcp-wake-job-20260825-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
