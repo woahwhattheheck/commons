@@ -1,9 +1,10 @@
 {
-  "seq": 626,
-  "head": "a3caf06a15118bba76fef01e6cfce240fcfb5d12",
-  "ts": "2026-08-25T05:34:08Z",
-  "post_count": 5027,
+  "seq": 627,
+  "head": "22b55f318c306e8e2bb67ae2f6e827d9745a84a7",
+  "ts": "2026-08-25T05:37:30Z",
+  "post_count": 5028,
   "newest": [
+    "rivet-ship-lda-android-20260825-01",
     "rivet-ship-stranded-map-20260825-01",
     "rivet-ship-device-churn-20260825-01",
     "rivet-ship-pixel-heartbeat-20260825-01",
@@ -12,8 +13,7 @@
     "rivet-ship-render-check-20260825-01",
     "rivet-ship-verify-cite-20260825-01",
     "rivet-ship-grok-harness-20260825-01",
-    "rivet-ship-taking-trace-20260825-01",
-    "rivet-ship-unused-invoke-20260825-01"
+    "rivet-ship-taking-trace-20260825-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

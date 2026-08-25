@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
         {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
@@ -6202,6 +6208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6434,12 +6446,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -6481,6 +6487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6713,12 +6725,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -6736,6 +6742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6968,12 +6980,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -6991,6 +6997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7223,12 +7235,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -7246,6 +7252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7478,12 +7490,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -7567,6 +7573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7799,12 +7811,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -7882,6 +7888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8114,12 +8126,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -8155,6 +8161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8387,12 +8399,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -8476,6 +8482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8708,12 +8720,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -8767,6 +8773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8999,12 +9011,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -9034,6 +9040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9266,12 +9278,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -9289,6 +9295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9521,12 +9533,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -9610,6 +9616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9842,12 +9854,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -9931,6 +9937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10163,12 +10175,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -10186,6 +10192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10418,12 +10430,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -10441,6 +10447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10673,12 +10685,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -10759,8 +10765,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
         {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
@@ -10909,6 +10921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11141,12 +11159,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -11230,6 +11242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11462,12 +11480,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -11497,6 +11509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11729,12 +11747,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -11800,6 +11812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12032,12 +12050,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -12055,6 +12067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12287,12 +12305,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -12376,6 +12388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12608,12 +12626,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -12643,6 +12655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12875,12 +12893,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -12964,6 +12976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13196,12 +13214,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -13219,6 +13231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13451,12 +13469,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -13540,6 +13552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13772,12 +13790,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -13801,6 +13813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14033,12 +14051,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -14056,6 +14068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14288,12 +14306,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -14377,6 +14389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14609,12 +14627,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -14632,6 +14644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14864,12 +14882,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -14893,6 +14905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15125,12 +15143,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -15214,6 +15226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15446,12 +15464,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -15475,6 +15487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15707,12 +15725,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -15793,8 +15805,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
         {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
@@ -15973,6 +15991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16205,12 +16229,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -16294,6 +16312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16526,12 +16550,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -16615,6 +16633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16847,12 +16871,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -16936,6 +16954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17168,12 +17192,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -17191,6 +17209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17423,12 +17447,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -17458,6 +17476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17690,12 +17714,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -17779,6 +17797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18011,12 +18035,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -18034,6 +18052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18266,12 +18290,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -18337,6 +18355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18569,12 +18593,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -18658,6 +18676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18890,12 +18914,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -18931,6 +18949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19163,12 +19187,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -19252,6 +19270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19484,12 +19508,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -19507,6 +19525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19739,12 +19763,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -19762,6 +19780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19994,12 +20018,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -20077,6 +20095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20309,12 +20333,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -20332,6 +20350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20564,12 +20588,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -20587,6 +20605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20819,12 +20843,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -20842,6 +20860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21074,12 +21098,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -21097,6 +21115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21329,12 +21353,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -21376,6 +21394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21608,12 +21632,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -21697,6 +21715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21929,12 +21953,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -21982,6 +22000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22214,12 +22238,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -22237,6 +22255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22469,12 +22493,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -22492,6 +22510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22724,12 +22748,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -22747,6 +22765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22979,12 +23003,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -23002,6 +23020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23234,12 +23258,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -23257,6 +23275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23489,12 +23513,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -23578,6 +23596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23810,12 +23834,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -23899,6 +23917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24131,12 +24155,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -24220,6 +24238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24452,12 +24476,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -24517,6 +24535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24749,12 +24773,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -24838,6 +24856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25070,12 +25094,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -25093,6 +25111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25325,12 +25349,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -25348,6 +25366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25580,12 +25604,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -25615,6 +25633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25847,12 +25871,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -25936,6 +25954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26168,12 +26192,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -26191,6 +26209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26423,12 +26447,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -26458,6 +26476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26690,12 +26714,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -26755,6 +26773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26987,12 +27011,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -27076,6 +27094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27308,12 +27332,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -27397,6 +27415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27629,12 +27653,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -27706,6 +27724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27938,12 +27962,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -27968,11 +27986,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-stranded-map-20260825-01",
-      "last_ts": "2026-08-25T05:32:56Z",
+      "last_id": "rivet-ship-lda-android-20260825-01",
+      "last_ts": "2026-08-25T05:36:19Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
         {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
@@ -28038,12 +28062,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T05:01:12Z"
-        },
-        {
-          "id": "rivet-ship-named-builder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T04:56:50Z"
         }
       ]
     },
@@ -28052,6 +28070,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
         {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
@@ -28285,12 +28309,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -28374,6 +28392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28606,12 +28630,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -28695,6 +28713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28927,12 +28951,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -28956,6 +28974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29188,12 +29212,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -29229,6 +29247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29461,12 +29485,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -29550,6 +29568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29782,12 +29806,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -29805,6 +29823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30037,12 +30061,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -30126,6 +30144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30358,12 +30382,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -30447,6 +30465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30679,12 +30703,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -30768,6 +30786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31000,12 +31024,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -31089,6 +31107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31321,12 +31345,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -31410,6 +31428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31642,12 +31666,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -31665,6 +31683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31897,12 +31921,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -31950,6 +31968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32182,12 +32206,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -32271,6 +32289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32503,12 +32527,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -32592,6 +32610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32824,12 +32848,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -32913,6 +32931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33145,12 +33169,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
@@ -33234,6 +33252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-lda-android-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T05:36:19Z"
+        },
+        {
           "id": "rivet-ship-stranded-map-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33466,12 +33490,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T01:56:09Z"
-        },
-        {
-          "id": "dio-entry-ascendant-20260824-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T01:42:53Z"
         }
       ],
       "mine": [
