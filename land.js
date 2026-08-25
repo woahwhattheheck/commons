@@ -152,6 +152,8 @@
     "ground/FINDER_ZERO.json",
     "ground/STALE_MANIFEST.md",
     "ground/STALE_MANIFEST.json",
+    "ground/CLAUDE_TESTER.md",
+    "ground/CLAUDE_TESTER.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -385,6 +387,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isClaudeTesterTalk(t)) {
+      return { state: "CLAIMED", note: "stop-using-Claude-testers / OWNER_RULE_RELAY talk. Talk is not a land. Ship the resource-ledger leftover to current main. Do not assign Claude a tester role." };
     }
     if (api.isMcpWakeJobTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER pivot / MCP-wake real-job / no-render-duplication talk. Talk is not a land. Run the job contract leftover on current main. Do not write wake_jobs/ or claim named idle bc- resume." };
@@ -845,6 +850,32 @@
     return {
       state: "INTEGRATED",
       note: "p/" + (sourceId || "id") + ".md and all " + paths.length + " source paths are on this tree. A Slack SHIP_RECEIPT is still not the file."
+    };
+  };
+
+  api.isClaudeTesterTalk = function (text) {
+    return /stop using claude|claude models as testers|do not assign Claude models test|tester\/verifier lanes|search-zero testing is instrument failure|uncalibrated green result does not count|OWNER_RULE_RELAY[\s\S]{0,240}Claude/i.test(String(text || ""));
+  };
+
+  api.claudeTesterState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_tester.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasXyz = /xyz/i.test(body) && /known-present calibration/i.test(body);
+    var preserve = /preserve/.test(body) && /does not erase/.test(body);
+    var routes = /deterministic local/.test(body) && /GitHub Actions/.test(body) && /Codex/.test(body);
+    if (hasMeasure && hasClassify && hasXyz && preserve && routes) {
+      return {
+        state: "INTEGRATED",
+        note: "Claude-tester leftover is on this file. Resource ledger names the rule. XYZ + known-present calibration required. Claude artifacts preserved. A Slack OWNER_RULE_RELAY is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_tester.py missing the leftover. Stop-using-Claude-testers talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1592,6 +1623,7 @@
   var mcpWakeOut = document.getElementById("mcp-wake-job-result");
   var finderZeroOut = document.getElementById("finder-zero-result");
   var staleManifestOut = document.getElementById("stale-manifest-result");
+  var claudeTesterOut = document.getElementById("claude-tester-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2087,6 +2119,12 @@
     if (!staleManifestOut) return;
     staleManifestOut.setAttribute("data-tone", api.toneFor(result.state));
     staleManifestOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeTester(result) {
+    if (!claudeTesterOut) return;
+    claudeTesterOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeTesterOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2719,6 +2757,33 @@
     });
   }
 
+  function loadClaudeTester(sha) {
+    if (!claudeTesterOut) return Promise.resolve(null);
+    claudeTesterOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_tester.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_tester.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_tester.py absent at the measured main SHA. Stop-using-Claude-testers talk is CLAIMED." };
+        paintClaudeTester(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeTester(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeTesterState(body);
+        paintClaudeTester(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeTester(err);
+      return err;
+    });
+  }
+
   function loadMcpWakeJob(sha) {
     if (!mcpWakeOut) return Promise.resolve(null);
     mcpWakeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake_job.py at the official SHA…</p>";
@@ -2988,6 +3053,7 @@
     loadMcpWakeJob(sha);
     loadFinderZero(sha);
     loadStaleManifest(sha);
+    loadClaudeTester(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

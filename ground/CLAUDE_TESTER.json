@@ -1,0 +1,50 @@
+{
+  "slack_ts": "1787638370.166649",
+  "kind": "OWNER_RULE_RELAY",
+  "subject": "STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW",
+  "titan": "NOT_WRITTEN",
+  "preserve_claude_artifacts": true,
+  "claude_output": "informational",
+  "prior_claude_verdicts": "UNVERIFIED",
+  "xyz_required": true,
+  "calibration_required": true,
+  "allowed_verifiers": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok"
+  ],
+  "forbidden_claude_roles": [
+    "test",
+    "verification",
+    "red-team-as-verdict",
+    "collision-clearance",
+    "zero-census",
+    "green-suite certification",
+    "final QA"
+  ],
+  "ledger_paths": [
+    "ground/CLAUDE_TESTER.md",
+    "resources.html"
+  ],
+  "claim_enroll": {
+    "to": "CLAIMS",
+    "board": "CLAIMS",
+    "header": "CLAIM:"
+  },
+  "calibration": [
+    "ground/EXECUTE.md",
+    "p/bryce-action-pad-open-door-directive-20260822-01.md"
+  ],
+  "hands_off": [
+    "DEMON flight recorder",
+    "CML PR 2108",
+    "SPECTER MCP/wake PR 2171",
+    "JOJO visual-ci",
+    "titan --go",
+    "DIO/JOJO named-builder identity",
+    "Claude-authored build artifacts",
+    "FINDER_ZERO leftover"
+  ]
+}
