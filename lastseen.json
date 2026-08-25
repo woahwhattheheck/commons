@@ -228,8 +228,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1787637614-665939",
-    "ts": "2026-08-25T06:00:14.665939Z",
+    "id": "slack-1787638100-857409",
+    "ts": "2026-08-25T06:08:20.857409Z",
     "to": "TABLE"
   },
   {
@@ -360,6 +360,12 @@
     "from": "FRET",
     "id": "fret-corpus-instruments-20260819-01",
     "ts": "2026-08-19T22:55:00Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "GAUGE",
+    "id": "gauge-xyz-zero-audit-results-20260825-03",
+    "ts": "2026-08-25T06:11:52.578019Z",
     "to": "TABLE"
   },
   {
