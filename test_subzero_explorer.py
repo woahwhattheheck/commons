@@ -1,311 +1,306 @@
-#!/usr/bin/env python3
-"""Subzero Artifact Explorer leftover verifies hashes and refuses sold runtime."""
+"""Deterministic, synthetic tests for the Subzero Artifact Explorer v2."""
 
 from __future__ import annotations
 
+import hashlib
+import json
 import os
-import sys
+import shutil
+import tempfile
 import unittest
 
-
-ROOT = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(ROOT, "host"))
-
-from subzero_explorer import (
-    ALREADY_LANDED,
-    CALIBRATION,
+from host.subzero_explorer import (
     EVIDENCE_CLASSES,
-    EXPECTED_EXCERPTS,
-    HANDOFF_ID,
-    LDA_BLOCK,
-    LDA_SHA,
-    REQUIRED_PHRASES,
-    SCHEMA_REL,
-    SEARCH_SPACE,
-    SLACK_TS,
-    V2_SLACK_TS,
-    V2_SPEC_ID,
-    classify,
-    evidence_class,
+    PACKET,
+    RECEIPT_SCHEMA,
+    RECEIPT_VERSION,
+    SCHEMA_VERSION,
+    build_artifact_row,
+    build_catalog,
+    canonical_json,
+    classify_evidence,
     load_catalog,
-    load_schema,
-    measure_from_rows,
-    measure_root,
-    pinned_links,
-    receipt_ok,
+    parse_excerpt,
+    self_test,
 )
 
 
-class TestSubzeroExplorer(unittest.TestCase):
-    def test_unmeasured_is_not_stillness(self):
-        row = classify({})
-        self.assertEqual(row["state"], "UNMEASURED")
-        self.assertIn("not stillness", row["note"])
+ROOT = os.path.dirname(os.path.abspath(__file__))
+COMMIT = "a" * 40
+TREE = "b" * 40
 
-    def test_failed_calibration_is_instrument_failure(self):
-        verdict = classify(
+
+def _packet():
+    with open(os.path.join(ROOT, PACKET), encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def _grbn_expected():
+    return next(item for item in _packet()["organs"] if item["name"] == "muhl_grbn")
+
+
+def _binding(row):
+    return {
+        "name": row["name"],
+        "path": row["path"],
+        "sha256": row["sha256"],
+    }
+
+
+def _base_receipt(row):
+    return {
+        "schema_version": RECEIPT_VERSION,
+        "kind": "SUBZERO_VALIDATION_RECEIPT",
+        "receipt_id": "synthetic-receipt",
+        "catalog": {"source_commit": COMMIT, "source_tree": TREE},
+        "artifact": _binding(row),
+        "checks": [
             {
-                "measured": True,
-                "calibration_ok": False,
-                "calibration_hits": [],
-                "card_present": True,
-                "catalog_present": True,
-                "door_present": True,
+                "id": "artifact_sha256",
+                "status": "PASS",
+                "evidence_path": row["path"],
+                "evidence_sha256": row["sha256"],
+                "observation": "synthetic hash binding",
             }
-        )
-        self.assertEqual(verdict["state"], "UNMEASURED")
-        self.assertIn("instrument failure", verdict["note"])
-        self.assertIn("never 0", verdict["note"].lower())
+        ],
+    }
 
-    def test_missing_paths_are_not_landed(self):
-        measured = measure_from_rows(
-            {
-                "card_present": False,
-                "catalog_present": False,
-                "door_present": False,
-                "misses": ["ground/SUBZERO_EXPLORER.md"],
-                "calibration_ok": True,
-            }
-        )
-        self.assertEqual(classify(measured)["state"], "NOT_LANDED")
 
-    def test_sold_host_training_is_not_landed(self):
-        measured = measure_from_rows(
-            {
-                "card_present": True,
-                "catalog_present": True,
-                "door_present": True,
-                "landed_present": list(ALREADY_LANDED),
-                "landed_missing": [],
-                "found_phrases": list(REQUIRED_PHRASES),
-                "excerpt_count": EXPECTED_EXCERPTS,
-                "hash_match_count": EXPECTED_EXCERPTS,
-                "runtime_sold": False,
-                "host_training_sold": True,
-                "titan_mutation_sold": False,
-                "lda_blocked": True,
-                "copy_private_lda": False,
-                "structural_only": True,
-                "posting_open": True,
-                "no_auth": True,
-                "no_gate": True,
-                "calibration_ok": True,
-                "titan": "NOT_WRITTEN",
-                "schema_ok": True,
-                "v2_present": True,
-                "presence_never_escalates": True,
-                "evidence_classes_strict": True,
-            }
-        )
-        verdict = classify(measured)
-        self.assertEqual(verdict["state"], "NOT_LANDED")
-        self.assertIn("host training", verdict["note"].lower())
+def _valid_runtime(row):
+    receipt = _base_receipt(row)
+    receipt["runtime_measurement"] = {
+        "status": "PASS",
+        "run_id": "synthetic-run",
+        "process_id": "synthetic-process",
+        "observed_at": "2026-08-25T00:00:00Z",
+        "runner_path": "synthetic/runner.py",
+        "runner_sha256": "c" * 64,
+        "test_path": "synthetic/test_runner.py",
+        "test_sha256": "d" * 64,
+        "input_sha256": "e" * 64,
+        "output_sha256": "f" * 64,
+    }
+    return receipt
 
-    def test_complete_leftover_is_integrated(self):
-        measured = measure_from_rows(
-            {
-                "card_present": True,
-                "catalog_present": True,
-                "door_present": True,
-                "landed_present": list(ALREADY_LANDED),
-                "landed_missing": [],
-                "found_phrases": list(REQUIRED_PHRASES),
-                "excerpt_count": EXPECTED_EXCERPTS,
-                "hash_match_count": EXPECTED_EXCERPTS,
-                "runtime_sold": False,
-                "host_training_sold": False,
-                "titan_mutation_sold": False,
-                "lda_blocked": True,
-                "copy_private_lda": False,
-                "structural_only": True,
-                "posting_open": True,
-                "no_auth": True,
-                "no_gate": True,
-                "calibration_ok": True,
-                "titan": "NOT_WRITTEN",
-                "schema_ok": True,
-                "v2_present": True,
-                "presence_never_escalates": True,
-                "evidence_classes_strict": True,
-            }
-        )
-        verdict = classify(measured)
-        self.assertEqual(verdict["state"], "INTEGRATED")
-        self.assertIn("still not the file", verdict["note"])
 
-    def test_v2_gap_without_schema_is_not_landed(self):
-        measured = measure_from_rows(
-            {
-                "card_present": True,
-                "catalog_present": True,
-                "door_present": True,
-                "landed_present": list(ALREADY_LANDED),
-                "landed_missing": [],
-                "found_phrases": list(REQUIRED_PHRASES),
-                "excerpt_count": EXPECTED_EXCERPTS,
-                "hash_match_count": EXPECTED_EXCERPTS,
-                "runtime_sold": False,
-                "host_training_sold": False,
-                "titan_mutation_sold": False,
-                "lda_blocked": True,
-                "copy_private_lda": False,
-                "structural_only": True,
-                "posting_open": True,
-                "no_auth": True,
-                "no_gate": True,
-                "calibration_ok": True,
-                "titan": "NOT_WRITTEN",
-                "schema_ok": False,
-                "v2_present": False,
-                "presence_never_escalates": False,
-                "evidence_classes_strict": False,
-            }
-        )
-        verdict = classify(measured)
-        self.assertEqual(verdict["state"], "NOT_LANDED")
-        self.assertIn("v2 receipt-gap", verdict["note"])
+def _valid_customer(row):
+    receipt = _base_receipt(row)
+    receipt["receipt_id"] = "synthetic-customer-pass"
+    receipt["buyer_acceptance"] = {
+        "status": "PASS",
+        "buyer_reference": "synthetic-buyer-reference",
+        "accepted_at": "2026-08-25T00:01:00Z",
+    }
+    receipt["delivered_at"] = "2026-08-25T00:00:30Z"
+    receipt["result_address"] = "public://synthetic-delivery"
+    return receipt
 
-    def test_malformed_and_presence_never_escalate(self):
-        self.assertEqual(evidence_class({}), "UNKNOWN")
-        self.assertEqual(evidence_class({"malformed": True, "header_ok": True}), "UNKNOWN")
-        self.assertEqual(evidence_class({"missing": True}), "UNKNOWN")
+
+class SubzeroExplorerV2Tests(unittest.TestCase):
+    def test_header_parser_known_present_grbn(self):
+        rel = os.path.join("excerpts", "20260823", "muhl_grbn.mno")
+        with open(os.path.join(ROOT, rel), "rb") as handle:
+            parsed = parse_excerpt(handle.read())
+        self.assertTrue(parsed["ok"])
+        self.assertEqual(parsed["magic"], "MUHLGRBN")
+        self.assertEqual(parsed["n_gate"], 8704)
         self.assertEqual(
-            evidence_class(
-                {
-                    "presence_only": True,
-                    "header_ok": True,
-                    "hash_match": True,
-                    "path": "excerpts/20260823/muhl_grbn.mno",
-                }
-            ),
+            parsed["sha256"],
+            "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
+        )
+
+    def test_generator_is_deterministic_and_uses_exact_enum(self):
+        first = build_catalog(ROOT, COMMIT, TREE)
+        second = build_catalog(ROOT, COMMIT, TREE)
+        self.assertEqual(canonical_json(first), canonical_json(second))
+        self.assertEqual(first["schema_version"], SCHEMA_VERSION)
+        self.assertEqual(first["source_commit"], COMMIT)
+        self.assertEqual(first["source_tree"], TREE)
+        self.assertEqual(first["evidence_classes"], list(EVIDENCE_CLASSES))
+        self.assertEqual(first["v2"]["spec_id"], "jojo-subzero-explorer-v2-followup-20260825-01")
+        self.assertEqual(first["v2"]["source_commit"], COMMIT)
+        self.assertTrue(first["v2"]["presence_never_escalates"])
+        self.assertFalse(first["v2"]["login_required"])
+        self.assertFalse(first["v2"]["privileged_tier"])
+        self.assertEqual(len(first["rows"]), 31)
+        self.assertEqual(len({row["name"] for row in first["rows"]}), 31)
+        self.assertEqual(
+            {row["evidence_class"] for row in first["rows"]},
+            {"STRUCTURAL_ONLY"},
+        )
+
+    def test_every_row_has_hashed_pinned_source_test_card_and_sidecar(self):
+        catalog = build_catalog(ROOT, COMMIT, TREE)
+        for row in catalog["rows"]:
+            self.assertEqual(row["artifact"]["status"], "PRESENT")
+            self.assertEqual(len(row["artifact"]["sha256"]), 64)
+            self.assertEqual(len(row["artifact"]["git_blob_sha1"]), 40)
+            self.assertIn("/blob/%s/" % COMMIT, row["artifact"]["url"])
+            for key in ("fabricator", "structural_test", "sidecar", "packet"):
+                source = row["sources"][key]
+                self.assertEqual(source["status"], "PRESENT", (row["name"], key))
+                self.assertEqual(len(source["sha256"]), 64)
+                self.assertEqual(len(source["git_blob_sha1"]), 40)
+                self.assertIn("/blob/%s/" % COMMIT, source["url"])
+            card = row["sources"]["card"]
+            self.assertIn(card["status"], ("PRESENT", "FINDER_FAILED"))
+            self.assertIn("/blob/%s/" % COMMIT, card["url"])
+        grbn = next(row for row in catalog["rows"] if row["name"] == "muhl_grbn")
+        self.assertEqual(grbn["header"]["status"], "MATCH")
+        self.assertEqual(grbn["acceptance"]["status"], "PASS")
+
+    def test_corruption_fails_closed_to_unknown_with_named_falsifier(self):
+        expected = _grbn_expected()
+        with tempfile.TemporaryDirectory() as temp:
+            stem = "grbn"
+            paths = [
+                PACKET,
+                "excerpts/20260823/muhl_grbn.mno",
+                "excerpts/20260823/grbn_circuits.json",
+                "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_%s.py" % stem,
+                "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/test_muhl_fab_%s.py" % stem,
+                "ground/SUBZERO_GRBN.md",
+            ]
+            for rel in paths:
+                destination = os.path.join(temp, rel)
+                os.makedirs(os.path.dirname(destination), exist_ok=True)
+                shutil.copy2(os.path.join(ROOT, rel), destination)
+            artifact = os.path.join(temp, "excerpts/20260823/muhl_grbn.mno")
+            with open(artifact, "r+b") as handle:
+                handle.seek(-1, os.SEEK_END)
+                byte = handle.read(1)
+                handle.seek(-1, os.SEEK_END)
+                handle.write(bytes([byte[0] ^ 1]))
+            row = build_artifact_row(temp, expected, COMMIT, TREE, calibrated=True)
+        self.assertEqual(row["evidence_class"], "UNKNOWN")
+        self.assertIn("artifact_hash", row["acceptance"]["failures"])
+        self.assertIn("artifact SHA-256 differs", row["acceptance"]["falsifiers"][0])
+
+    def test_missing_structural_test_fails_closed_not_zero(self):
+        expected = _grbn_expected()
+        with tempfile.TemporaryDirectory() as temp:
+            for rel in (
+                PACKET,
+                "excerpts/20260823/muhl_grbn.mno",
+                "excerpts/20260823/grbn_circuits.json",
+                "muhl/desktop/MUHL_SUBZERO_ARCHETYPES/muhl_fab_grbn.py",
+                "ground/SUBZERO_GRBN.md",
+            ):
+                destination = os.path.join(temp, rel)
+                os.makedirs(os.path.dirname(destination), exist_ok=True)
+                shutil.copy2(os.path.join(ROOT, rel), destination)
+            row = build_artifact_row(temp, expected, COMMIT, TREE, calibrated=True)
+        self.assertEqual(row["evidence_class"], "UNKNOWN")
+        self.assertIn("structural_test", row["acceptance"]["failures"])
+        self.assertIsNone(row["sources"]["structural_test"]["bytes"])
+
+    def test_titan_presence_and_payment_alone_never_escalate(self):
+        row = build_artifact_row(ROOT, _grbn_expected(), COMMIT, TREE, calibrated=True)
+        receipt = _base_receipt(row)
+        receipt["titan"] = "PRESENT"
+        receipt["path"] = "synthetic/titan.gguf"
+        receipt["payment"] = {"status": "PAID", "reference": "synthetic"}
+        evidence_class, runtime_ids, customer_ids = classify_evidence(
+            True, [receipt], row["artifact"], {"source_commit": COMMIT, "source_tree": TREE}
+        )
+        self.assertEqual(evidence_class, "STRUCTURAL_ONLY")
+        self.assertEqual(runtime_ids, [])
+        self.assertEqual(customer_ids, [])
+
+        valid_runtime = _valid_runtime(row)
+        valid_runtime["titan"] = "PRESENT"
+        self.assertEqual(
+            classify_evidence(
+                True,
+                [valid_runtime],
+                row["artifact"],
+                {"source_commit": COMMIT, "source_tree": TREE},
+            )[0],
             "STRUCTURAL_ONLY",
         )
-        self.assertEqual(
-            evidence_class({"login_required": True, "header_ok": True, "hash_match": True}),
-            "UNKNOWN",
-        )
-        self.assertEqual(
-            evidence_class({"privileged_tier": True, "header_ok": True, "hash_match": True}),
-            "UNKNOWN",
-        )
-        bad_runtime = {
-            "path": "excerpts/20260823/muhl_grbn.mno",
-            "runtime_receipt": {"kind": "SUBZERO_RUNTIME_RECEIPT"},
-        }
-        self.assertEqual(evidence_class(bad_runtime), "UNKNOWN")
-        self.assertFalse(receipt_ok({"kind": "SUBZERO_RUNTIME_RECEIPT"}, "SUBZERO_RUNTIME_RECEIPT"))
-        runtime = {
-            "kind": "SUBZERO_RUNTIME_RECEIPT",
-            "artifact": "excerpts/20260823/muhl_grbn.mno",
-            "sha256": "a" * 64,
-            "cross_process": True,
-            "pid": os.getpid() + 17,
-            "host": "other-process",
-            "no_auth": True,
-            "no_gate": True,
-            "login_required": False,
-            "privileged_tier": False,
-        }
-        self.assertEqual(
-            evidence_class(
-                {
-                    "path": "excerpts/20260823/muhl_grbn.mno",
-                    "runtime_receipt": runtime,
-                }
-            ),
-            "RUNTIME_MEASURED",
-        )
-        same_pid = dict(runtime)
-        same_pid["pid"] = os.getpid()
-        self.assertEqual(
-            evidence_class(
-                {
-                    "path": "excerpts/20260823/muhl_grbn.mno",
-                    "runtime_receipt": same_pid,
-                }
-            ),
-            "UNKNOWN",
-        )
-        buyer = {
-            "kind": "SUBZERO_BUYER_VALIDATION",
-            "artifact": "excerpts/20260823/muhl_grbn.mno",
-            "sha256": "b" * 64,
-            "status": "PASS",
-            "bound": True,
-            "buyer_id": "P01_catalog_receipt",
-            "no_auth": True,
-            "no_gate": True,
-            "login_required": False,
-            "privileged_tier": False,
-        }
-        self.assertEqual(
-            evidence_class(
-                {
-                    "path": "excerpts/20260823/muhl_grbn.mno",
-                    "buyer_receipt": buyer,
-                }
-            ),
-            "CUSTOMER_READY",
-        )
-        unbound = dict(buyer)
-        unbound["bound"] = False
-        self.assertEqual(
-            evidence_class(
-                {
-                    "path": "excerpts/20260823/muhl_grbn.mno",
-                    "buyer_receipt": unbound,
-                }
-            ),
-            "UNKNOWN",
-        )
-        self.assertEqual(list(EVIDENCE_CLASSES), ["STRUCTURAL_ONLY", "RUNTIME_MEASURED", "CUSTOMER_READY", "UNKNOWN"])
 
-    def test_live_tree_has_the_leftover(self):
-        row = measure_root(ROOT)
-        self.assertTrue(row["measured"])
-        self.assertTrue(row["calibration_ok"])
-        self.assertEqual(row["landed_missing"], [])
-        self.assertEqual(row["excerpt_count"], EXPECTED_EXCERPTS)
-        self.assertEqual(row["hash_match_count"], EXPECTED_EXCERPTS)
-        self.assertTrue(row["structural_only"])
-        self.assertTrue(row["lda_blocked"])
-        self.assertFalse(row["host_training_sold"])
-        self.assertFalse(row["runtime_sold"])
-        self.assertEqual(row["titan"], "NOT_WRITTEN")
-        self.assertEqual(SLACK_TS, "1787646413.997539")
-        self.assertEqual(HANDOFF_ID, "jojo-model-work-profitability-bridge-20260825-01")
-        self.assertEqual(LDA_SHA, "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8")
-        self.assertEqual(LDA_BLOCK, "BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT")
-        self.assertEqual(len(CALIBRATION), 4)
-        self.assertGreaterEqual(len(SEARCH_SPACE), 8)
-        with open(os.path.join(ROOT, "ground", "SUBZERO_EXPLORER.json"), encoding="utf-8") as handle:
-            catalog = load_catalog(handle.read())
-        self.assertEqual(catalog["label"], "STRUCTURAL_ONLY")
-        self.assertEqual(catalog["host_training"], "NOT_SOLD")
-        self.assertEqual(catalog["lda_state"], LDA_BLOCK)
-        self.assertEqual(catalog["expected_excerpts"], EXPECTED_EXCERPTS)
-        self.assertEqual(catalog["evidence_classes"], list(EVIDENCE_CLASSES))
-        self.assertEqual(catalog["v2"]["spec_id"], V2_SPEC_ID)
-        self.assertEqual(catalog["v2"]["slack_ts"], V2_SLACK_TS)
-        self.assertTrue(catalog["v2"]["presence_never_escalates"])
-        self.assertEqual(classify(row)["state"], "INTEGRATED")
-        self.assertTrue(row["schema_ok"])
-        self.assertTrue(row["v2_present"])
-        self.assertTrue(row["presence_never_escalates"])
-        self.assertTrue(row["evidence_classes_strict"])
-        self.assertNotEqual(row["source_commit"], "FINDER-FAILED")
-        self.assertNotEqual(row["source_tree"], "FINDER-FAILED")
-        self.assertEqual(len(row["source_commit"]), 40)
-        pin = pinned_links(row["source_commit"])
-        self.assertIn(row["source_commit"], pin[SCHEMA_REL.replace("\\", "/")])
-        self.assertNotIn("/HEAD/", pin[SCHEMA_REL.replace("\\", "/")])
-        self.assertGreaterEqual(row["archetypes"]["fabricators"], 53)
-        self.assertGreaterEqual(row["archetypes"]["tests"], 32)
-        with open(os.path.join(ROOT, SCHEMA_REL), encoding="utf-8") as handle:
-            schema = load_schema(handle.read())
-        self.assertTrue(schema["ok"])
-        self.assertFalse(any(item.get("runtime_measured") for item in row["excerpts"]))
-        self.assertTrue(all(item.get("evidence_class") == "STRUCTURAL_ONLY" for item in row["excerpts"]))
+    def test_valid_bound_runtime_receipt_is_runtime_measured(self):
+        row = build_artifact_row(ROOT, _grbn_expected(), COMMIT, TREE, calibrated=True)
+        receipt = _valid_runtime(row)
+        evidence_class, runtime_ids, _ = classify_evidence(
+            True, [receipt], row["artifact"], {"source_commit": COMMIT, "source_tree": TREE}
+        )
+        self.assertEqual(evidence_class, "RUNTIME_MEASURED")
+        self.assertEqual(runtime_ids, ["synthetic-receipt"])
+        receipt["runtime_measurement"]["output_sha256"] = "wrong"
+        self.assertEqual(
+            classify_evidence(
+                True,
+                [receipt],
+                row["artifact"],
+                {"source_commit": COMMIT, "source_tree": TREE},
+            )[0],
+            "STRUCTURAL_ONLY",
+        )
+
+    def test_customer_ready_requires_bound_buyer_pass(self):
+        row = build_artifact_row(ROOT, _grbn_expected(), COMMIT, TREE, calibrated=True)
+        receipt = _valid_customer(row)
+        evidence_class, _, customer_ids = classify_evidence(
+            True, [receipt], row["artifact"], {"source_commit": COMMIT, "source_tree": TREE}
+        )
+        self.assertEqual(evidence_class, "CUSTOMER_READY")
+        self.assertEqual(customer_ids, ["synthetic-customer-pass"])
+        receipt["checks"][0]["evidence_sha256"] = "0" * 64
+        self.assertEqual(
+            classify_evidence(
+                True,
+                [receipt],
+                row["artifact"],
+                {"source_commit": COMMIT, "source_tree": TREE},
+            )[0],
+            "STRUCTURAL_ONLY",
+        )
+
+    def test_receipt_schema_is_strict_and_payment_is_non_classifying(self):
+        with open(os.path.join(ROOT, RECEIPT_SCHEMA), encoding="utf-8") as handle:
+            schema = json.load(handle)
+        self.assertFalse(schema["additionalProperties"])
+        self.assertTrue(schema["no_auth"])
+        self.assertTrue(schema["no_gate"])
+        self.assertFalse(schema["login_required"])
+        self.assertFalse(schema["privileged_tier"])
+        self.assertTrue(schema["presence_never_escalates"])
+        self.assertEqual(schema["evidence_classes"], list(EVIDENCE_CLASSES))
+        self.assertIn("runtimeMeasurement", schema["$defs"])
+        self.assertIn("buyerAcceptance", schema["$defs"])
+        self.assertIn("runtime_receipt", schema["$defs"])
+        self.assertIn("buyer_receipt", schema["$defs"])
+        self.assertFalse(schema["$defs"]["runtime_receipt"]["additionalProperties"])
+        self.assertFalse(schema["$defs"]["buyer_receipt"]["additionalProperties"])
+        self.assertIn("never changes an evidence class", schema["$defs"]["payment"]["description"])
+        self.assertNotIn("titan", schema["properties"])
+
+    def test_open_ui_has_receipt_download_without_admission_controls(self):
+        with open(os.path.join(ROOT, "subzero.html"), encoding="utf-8") as handle:
+            html = handle.read().lower()
+        self.assertIn("no auth. no gate.", html)
+        self.assertIn("validation receipt", html)
+        self.assertIn("download", html)
+        self.assertNotIn("<form", html)
+        self.assertNotIn('type="password"', html)
+        self.assertNotIn("login", html)
+        self.assertNotIn("signup", html)
+        self.assertNotIn("credential", html)
+        self.assertNotIn("privileged", html)
+        self.assertNotIn("action-tier", html)
+
+    def test_checked_in_catalog_is_exact_generator_output(self):
+        with open(os.path.join(ROOT, "ground/SUBZERO_EXPLORER.json"), encoding="utf-8") as handle:
+            text = handle.read()
+        catalog = load_catalog(text)
+        self.assertEqual(catalog.get("error"), "")
+        regenerated = build_catalog(ROOT, catalog["source_commit"], catalog["source_tree"])
+        catalog.pop("error", None)
+        self.assertEqual(text, canonical_json(regenerated))
+
+    def test_self_test(self):
+        self.assertTrue(self_test())
 
 
 if __name__ == "__main__":
