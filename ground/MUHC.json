@@ -1,0 +1,64 @@
+{
+  "kind": "MUHC_CONTAINER",
+  "version": 1,
+  "landing_owner": "cursor-grok-46-muhc-20260825",
+  "mandate": "demon-redteam-compression-productization-20260825-03",
+  "slack_taking": "1787645475.191099",
+  "receipt_id": "cursor-grok-46-muhc-roundtrip-20260825-01",
+  "base_main_at_measure": "eb529d8d4b49b1a2bffd5a939642cdc53079d658",
+  "rebased_onto": "adb680043fc54e33d91e242dc737dc191ec8cab3",
+  "pinned_lands": [
+    "170e3c87de12182ef0ae01ca0189967332105f27",
+    "7e16ccd7e608e9d75ad3918942b29c2a247705f9",
+    "c1bc133649e62dac859292a6fb57e1d64d738100"
+  ],
+  "does_not_remint": [
+    "demon-redteam-compression-productization-20260825-03",
+    "demon-redteam-payment-ready-20260825-02",
+    "cairn-folded-compression-and-the-breathing-budget-20260820-07"
+  ],
+  "untouched_organs": [
+    "foldpack.py",
+    "stackpack.py",
+    "evolve.py",
+    "test_compress_doors.py",
+    "commercial.json",
+    "revenue/payment_ready/"
+  ],
+  "calibration": {
+    "seed0_path": "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+    "seed0_bytes": 8192,
+    "seed0_sha256_16": "faa70efc328e9b59",
+    "test_compress_doors_tests": 9,
+    "stackpack_run_zlib_decompress": 0
+  },
+  "findings": {
+    "stackpack_reconstructs_from_cols": true,
+    "stackpack_drops_tails_and_prints_ok": true,
+    "foldpack_unfolds_memory_not_artifact": true,
+    "foldpack_lossless_vs_thresholded_1bpp_not_png": true,
+    "evolve_score_excludes_framing": true,
+    "evolve_pack_padding_alias_0xa0": true,
+    "published_program_loses_on_seed0": true
+  },
+  "seed0_width_200": {
+    "zlib_file_b": 1391,
+    "raw_zlib_payload_b": 1390,
+    "raw_zlib_container_b": 1458,
+    "stack_v1_payload_b": 2044,
+    "stack_v1_container_b": 2112,
+    "fold_v1_payload_b": 1745,
+    "fold_v1_container_b": 1813,
+    "evolve_v1_published_payload_b": 1548,
+    "evolve_v1_published_container_b": 1616,
+    "header_overhead_b": 68,
+    "stackpack_cli_total_b": 2020,
+    "note": "transform_delta on SEED0 is negative versus entropy-only"
+  },
+  "cash": {
+    "collected_usd": 0,
+    "state": "NOT_LANDED",
+    "does_not_replace": "gguf-diagnostic-10d-12k"
+  },
+  "titan": "NOT_WRITTEN"
+}
