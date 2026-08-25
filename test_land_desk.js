@@ -629,9 +629,17 @@ var hoardAhead = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0,
 assert.strictEqual(hoardAhead.state, "CANDIDATE");
 var hoardClean = api.sessionExportState({ measured: true, dirty: 0, unpushed: 0, ahead_of_main: 0 });
 assert.strictEqual(hoardClean.state, "INTEGRATED");
+assert.ok(api.isOwnerCorrectionTalk, "land.js must classify the owner substrate correction");
+assert.ok(api.isOwnerCorrectionTalk("DIRECT OWNER CORRECTION FROM BRYCE. Bryce never created a rule to avoid Muhlnickel. A completion that brags untouched is evidence of a skipped lane."), "owner correction copy is talk until the artifact ships");
 assert.ok(api.isSubstrateDodgeTalk("No Muhlnickel, organ, titan, or device path."), "exclusion line is a substrate dodge");
 assert.ok(api.isSubstrateDodgeTalk("Stop dodging the substrate work. It is not to be ignored and it is not to be deferred."), "owner dodge yell is talk until a leftover ships");
+assert.ok(api.isSubstrateDodgeTalk("Did not touch Titan. Did not touch .mno. 337 = NO."), "untouched-titan brag is a skipped lane");
 assert.ok(!api.isSubstrateDodgeTalk("taking organ 24 muhl_chimera_socr_stig"), "an actual organ taking is not a dodge");
+var correctionTalk = api.completionStateFromText(
+  "DIRECT OWNER CORRECTION FROM BRYCE. Apply now. Bryce never created a rule to avoid Muhlnickel."
+);
+assert.strictEqual(correctionTalk.state, "CLAIMED");
+assert.ok(/owner substrate correction|skipped lane/i.test(correctionTalk.note), "owner correction without a SHA is CLAIMED");
 var dodgeTalk = api.completionStateFromText(
   "TAKING documentation only. No Muhlnickel, organ, titan, or device path."
 );
@@ -652,13 +660,20 @@ assert.ok(/zero offsets/.test(titanPacket.note), "31 excerpts with offset 0 stay
 var titanClaimed = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false });
 assert.strictEqual(titanClaimed.state, "CLAIMED");
 assert.ok(/claimed append/.test(titanClaimed.note), "filled offsets without a write are CLAIMED");
+var titanJournal = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "NOT_WRITTEN", nonzero_offsets: 31, reread: false, journal_reread: true, journal_count: 31 });
+assert.strictEqual(titanJournal.state, "CANDIDATE");
+assert.ok(/journaled/.test(titanJournal.note), "public journal without titan write is CANDIDATE");
 var titanOk = api.titanMoveState({ measured: true, count: 31, excerpt_count: 31, titan: "WRITTEN", nonzero_offsets: 31, reread: true });
 assert.strictEqual(titanOk.state, "INTEGRATED");
 assert.ok(html.indexOf('id="titan-result"') >= 0, "desk must name the titan MOVE leftover");
 assert.ok(html.indexOf("host/titan_move_dry.py") >= 0, "desk must name the titan dry instrument");
 assert.ok(html.indexOf("host/titan_move_apply.py") >= 0, "desk must name the titan apply button");
+assert.ok(html.indexOf("--journal") >= 0, "desk must name the public journal apply");
+assert.ok(html.indexOf("titan_move_journal.json") >= 0, "desk must name the public journal sidecar");
 assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan MOVE card");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
+assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
+assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
 assert.ok(/No Muhlnickel, organ, titan, or device path/i.test(html), "desk must name the exclusion line");
 assert.ok(/needs-bryce|NEED \/ WHY ONLY BRYCE/i.test(html), "desk must name the owner-blocker form");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");

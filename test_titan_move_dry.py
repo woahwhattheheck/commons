@@ -46,6 +46,21 @@ class TestTitanMoveDry(unittest.TestCase):
         self.assertIn("zero", verdict["note"])
         self.assertIn("31/31", verdict["note"])
 
+    def test_journal_reread_without_titan_is_candidate(self):
+        measured = {
+            "measured": True,
+            "count": 31,
+            "excerpt_count": 31,
+            "titan": "NOT_WRITTEN",
+            "nonzero_offsets": 31,
+            "reread": False,
+            "journal_reread": True,
+            "journal_count": 31,
+        }
+        verdict = classify(measured)
+        self.assertEqual(verdict["state"], "CANDIDATE")
+        self.assertIn("journaled", verdict["note"])
+
     def test_claimed_offsets_without_write_are_claimed(self):
         measured = {
             "measured": True,
@@ -102,7 +117,12 @@ class TestTitanMoveDry(unittest.TestCase):
         self.assertEqual(row["nonzero_offsets"], 31)
         self.assertFalse(row["reread"])
         verdict = classify(row)
-        self.assertEqual(verdict["state"], "CLAIMED")
+        self.assertIn(verdict["state"], ("CLAIMED", "CANDIDATE"))
+        if row.get("journal_reread") and int(row.get("journal_count") or 0) >= 31:
+            self.assertEqual(verdict["state"], "CANDIDATE")
+            self.assertIn("journaled", verdict["note"])
+        else:
+            self.assertEqual(verdict["state"], "CLAIMED")
         blocker = owner_blocker(row, verdict)
         self.assertIn("titan.gguf is not on this cloud box", blocker["WHY_ONLY_BRYCE"])
         self.assertIn("titan.gguf", blocker["NEED"])

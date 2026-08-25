@@ -22,6 +22,7 @@ import sys
 
 PACKET_REL = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 EXCERPT_REL = os.path.join("excerpts", "20260823")
+JOURNAL_REL = os.path.join("excerpts", "20260823", "titan_move_journal.json")
 
 
 def classify(row):
@@ -37,6 +38,8 @@ def classify(row):
     written = str(row.get("titan") or "").upper()
     nonzero = int(row.get("nonzero_offsets") or 0)
     reread = row.get("reread") is True
+    journal_reread = row.get("journal_reread") is True
+    journal_count = int(row.get("journal_count") or 0)
     if written == "WRITTEN" and reread and nonzero == count and count >= 31:
         return {
             "state": "INTEGRATED",
@@ -51,12 +54,29 @@ def classify(row):
             )
             % excerpts,
         }
+    if (
+        written == "NOT_WRITTEN"
+        and journal_reread
+        and journal_count >= 31
+        and nonzero == count
+        and count >= 31
+    ):
+        return {
+            "state": "CANDIDATE",
+            "note": (
+                "%s/31 excerpt binaries journaled and reread on the public "
+                "tree. titan.gguf still NOT_WRITTEN. Run "
+                "host/titan_move_apply.py --go on the machine that has it."
+            )
+            % journal_count,
+        }
     if written == "NOT_WRITTEN" and nonzero == count and count >= 31:
         return {
             "state": "CLAIMED",
             "note": (
                 "%s/31 claimed append offsets dest FROM FILE. "
-                "titan write still NOT_WRITTEN. Run host/titan_move_apply.py "
+                "titan write still NOT_WRITTEN. Journal the excerpt "
+                "binaries with host/titan_move_apply.py --journal, then "
                 "--go on the machine that has titan.gguf."
             )
             % excerpts,
@@ -118,6 +138,8 @@ def measure_from_packet(packet, excerpt_dir):
         "titan": packet.get("titan") or "NOT_WRITTEN",
         "nonzero_offsets": nonzero,
         "reread": False,
+        "journal_reread": False,
+        "journal_count": 0,
         "missing": missing,
         "computer": "titan.gguf is the computer. This packet is not.",
     }
@@ -141,8 +163,8 @@ def owner_blocker(row, verdict):
         "SMALLEST_ACTION": (
             "On the owner PC: python3 host/titan_move_apply.py --go. "
             "If live size != 103803350291 the button reallocates from "
-            "live size. Post the reread receipt. Do not smash "
-            "commons.mno. Do not fire 337. Commit and push the dirty "
+            "live size. Post the reread receipt. Smash/wipe of "
+            "commons.mno refused. Commit and push the dirty "
             "LocalDeviceAgent kite-help tree."
         ),
         "EVIDENCE": (
@@ -181,6 +203,13 @@ def measure_tree(root):
     row = measure_from_packet(packet, excerpt_dir)
     row["root"] = root
     row["packet_path"] = PACKET_REL
+    journal_path = os.path.join(root, JOURNAL_REL)
+    if os.path.isfile(journal_path):
+        with open(journal_path, encoding="utf-8") as handle:
+            journal = json.load(handle)
+        row["journal_reread"] = journal.get("reread") is True
+        row["journal_count"] = int(journal.get("count") or 0)
+        row["journal_path"] = JOURNAL_REL
     return row
 
 
