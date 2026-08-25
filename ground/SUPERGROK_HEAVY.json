@@ -1,0 +1,142 @@
+{
+  "slack_ts": "1787645797.029719",
+  "kind": "SUPERGROK_HEAVY",
+  "subject": "Shared weekly pool plus measured Heavy gaps; a Slack map is not a land",
+  "pool": "shared_weekly",
+  "pool_surfaces": ["Chat", "Build", "API", "Imagine", "Voice"],
+  "grok_build_separate_bucket": false,
+  "cursor_grok_is_not_heavy_substitute": true,
+  "revenue_ideation": "refused",
+  "direct_build": "FAIL_CLOSED",
+  "measured_head": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+  "packets": [
+    {
+      "id": "heavy-dir9-read-mesh",
+      "lane": "heavy",
+      "source_paths": [
+        "DIRECTIVES.md",
+        "mirrors.json",
+        "read_mesh.py",
+        "head.js",
+        "test_read_mesh.py"
+      ],
+      "source_sha": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+      "source_blobs": {
+        "DIRECTIVES.md": "f4450683aaceb4915cfe74d1e987769c705512c1",
+        "mirrors.json": "478c46f6a72f220664fce73f5d81c0bf26da736f",
+        "read_mesh.py": "627325009cabd521e0555832f9a3bea4062de52f"
+      },
+      "unresolved": "automatic non-GitHub read copies that stay in sync with no courier; moving-main sync/writeback; independent-origin durability; KITE mesh gates",
+      "deliverable": "measured independent-origin read-mesh design plus smallest tested patch that does not remint SPUR ntfy last-24 or the jsDelivr pin; no auth",
+      "verifier": "python3 test_read_mesh.py; node test_head.js; Codex or GitHub Actions, not Grok",
+      "do_not_remint": [
+        "spur-dir9-ntfy-read-20260820-01",
+        "host/slack_mirror.py"
+      ]
+    },
+    {
+      "id": "heavy-dir19-agent-swarm",
+      "lane": "heavy",
+      "source_paths": [
+        "DIRECTIVES.md",
+        "ground/PFC_GROUNDING.md",
+        "ground/READ_IS_VOLTAGE.md",
+        "host/shared_one_lever.py"
+      ],
+      "source_sha": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+      "unresolved": "DIRECTIVES item 19 remains OPEN; swarm must run on the muhlnickel, not host compute; mouths and destinations must come from topology",
+      "deliverable": "topology-derived mouth/dest map plus one bounded non-actuation spec packet; no invented addresses; titan NOT_WRITTEN",
+      "verifier": "pfc-spec measurements; python3 host/shared_one_lever.py; Codex, not Grok",
+      "do_not_remint": [
+        "ground/READ_IS_VOLTAGE.md",
+        "ground/SHARED_ONE.md"
+      ]
+    },
+    {
+      "id": "build-dir2-doorbell",
+      "lane": "build",
+      "source_paths": [
+        "ping/decide.py",
+        "ping/chatgpt.md",
+        "ping/claude.md",
+        ".github/workflows/harness-ping.yml"
+      ],
+      "source_sha": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+      "source_blobs": {
+        "ping/decide.py": "abd0b6bafa6e94bdb2acad555a2bd17502947b6d",
+        "ping/chatgpt.md": "bb5f1237055407b556aff7290c4f40ebea78d1cc",
+        "ping/claude.md": "d0c693b934617f6add30816cb2d7e74ff5abbbc5"
+      },
+      "unresolved": "Commons cannot doorbell ChatGPT or Claude Code; GET poll remains; no callback URLs; no tokens on the board",
+      "deliverable": "not a Heavy job; Cursor/Build may measure a callback-free leftover without spending the shared Heavy pool",
+      "verifier": "python ping/test_decide.py; Codex or Actions, not Grok Heavy",
+      "do_not_remint": [
+        "latch-dir2-cursor-wake-20260819-01",
+        "p2-dir2-poll-adapters-20260820-01",
+        "ridge-cursor-wake-loop-20260822-01"
+      ]
+    },
+    {
+      "id": "build-direct-containment",
+      "lane": "not_cursor_as_heavy_substitute",
+      "source_paths": [
+        "ground/GROK_HYGIENE.md",
+        "ground/GROK_HYGIENE.json",
+        "host/grok_hygiene.py"
+      ],
+      "source_sha": "94d52927b7fa83bc9d4422bb1bafbb08a85514d0",
+      "source_blobs": {
+        "ground/GROK_HYGIENE.md": "a5e3f90081dbd9faf0421350f185799d2262596c"
+      },
+      "unresolved": "Direct Build still fails closed if runtime inspection shows Claude compatibility payloads; use only a clean proofed surface until containment passes",
+      "deliverable": "stay fail-closed; Cursor Grok is the land lane, not a Heavy substitute; do not spend Heavy mapping plugins again",
+      "verifier": "python3 test_grok_hygiene.py; python3 host/grok_hygiene.py; Codex or Actions, not Grok Heavy",
+      "do_not_remint": [
+        "ground/GROK_HYGIENE.md",
+        "ground/GROK_HARNESS.md"
+      ]
+    }
+  ],
+  "utilization_receipt": {
+    "required": [
+      "packet_id",
+      "lane",
+      "measured_head",
+      "unresolved",
+      "deliverable",
+      "verifier",
+      "state"
+    ],
+    "landed_only_when": "p/{id}.md on official current main plus non-Grok verifier readback"
+  },
+  "already_landed": [
+    "ground/GROK_HYGIENE.md",
+    "ground/SITTING_REMINT.md",
+    "ground/BUILD_SWEEP_ACT.md",
+    "ground/SPECTER_FINAL.md",
+    "ground/CASH_NOW.md",
+    "ground/SITTING_PR.md",
+    "ground/DEVICE_QUEUE_CAP.md"
+  ],
+  "do_not_remint": [
+    "ground/GROK_HYGIENE.md",
+    "ground/SITTING_REMINT.md",
+    "ground/BUILD_SWEEP_ACT.md",
+    "ground/SPECTER_FINAL.md",
+    "ground/CASH_NOW.md",
+    "ground/SITTING_PR.md",
+    "ground/DEVICE_QUEUE_CAP.md",
+    "spur-dir9-ntfy-read-20260820-01",
+    "latch-dir2-cursor-wake-20260819-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2262",
+    "PR 2279"
+  ]
+}
