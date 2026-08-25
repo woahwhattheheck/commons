@@ -251,6 +251,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_lda_receipt.py` · `node test_land_desk.js` · `python3 host/lda_receipt.py`
 **Note:** Public receipts classify `VALID_RECEIPT` / `CARRIER_ONLY` / `NOT_LANDED`. JOJO protocol id stays un-reminted. FOREIGN_MAIN stays. Do not remint item 45 explorer or item 46 receipt-lane. Do not copy private LDA source. Do not remint the profitability id / White Box / payment-ready / SUBZERO GTM/buyers. titan NOT_WRITTEN. Talk is not a land.
 
+### 48. Review lane — a Slack SHIPPED (not merged) is not official main
+> *"JOJO SHIPPED (review lane, not merged) — LDA PR #3 at e9c863a1…"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:43 Slack `1787647408.984179` / JOJO SHIPPED review-lane + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/REVIEW_LANE.md` · `ground/REVIEW_LANE.json` · `host/review_lane.py` · land canary + `reviewLaneState`
+**Receipt:** `python3 test_review_lane.py` · `node test_land_desk.js` · `python3 host/review_lane.py`
+**Note:** Official LDA main still `fb0b0b2f59f8ca81741371b6ddd8036b164e77e8`. Receipt path ABSENT there. PR #3 `e9c863a1d945627ff75e0db997ce74dc9efa345f` is CANDIDATE. CI job `97740082275` SUCCESS. Non-Claude review recorded. Do not remint FOREIGN_MAIN / MUHL_RECEIPT_LANE / LDA_RECEIPT or `jojo-muhlnickel-subagent-protocol-20260825-01`. Do not copy private LDA source. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

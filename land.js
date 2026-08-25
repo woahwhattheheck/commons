@@ -218,6 +218,8 @@
     "ground/FOREIGN_MAIN.json",
     "ground/LDA_RECEIPT.md",
     "ground/LDA_RECEIPT.json",
+    "ground/REVIEW_LANE.md",
+    "ground/REVIEW_LANE.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -448,6 +450,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isReviewLaneTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO SHIPPED / review lane / LDA PR #3 / not-merged talk. Talk is not a land. Official LDA main still lacks the receipt path. Name the PR CANDIDATE. Do not remint FOREIGN_MAIN, MUHL_RECEIPT_LANE, or LDA_RECEIPT. Do not copy private LDA source." };
     }
     if (api.isLdaReceiptTalk(t)) {
       return { state: "CLAIMED", note: "PROFITABILITY_HANDOFF / LDA request protocol / receipt-validator talk. Talk is not a land. Ship the receipt validator leftover to current main. Do not remint the JOJO profitability id or FOREIGN_MAIN. Do not copy private LDA source." };
@@ -832,6 +837,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isReviewLaneTalk = function (text) {
+    return /review lane, not merged|LDA PR #3|e9c863a1d945627ff75e0db997ce74dc9efa345f|1787647408\.984179|new receipt 16\/16|review-lane leftover|jojo shipped \(review lane/i.test(String(text || ""));
+  };
+
+  api.reviewLaneState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/review_lane.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesCandidate = /e9c863a1d945627ff75e0db997ce74dc9efa345f/.test(body) && /CANDIDATE/.test(body);
+    var namesOfficial = /fb0b0b2f59f8ca81741371b6ddd8036b164e77e8/.test(body);
+    var namesAbsent = /receipt path absent/i.test(body) || /Receipt path ABSENT/.test(body);
+    var noCopy = /Do not copy private LDA source/.test(body) || /Do not copy private LocalDeviceAgent source/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesCandidate && namesOfficial && namesAbsent && noCopy && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "review-lane leftover is on this file. Official LDA main still lacks the receipt path. PR #3 is CANDIDATE. A Slack SHIPPED (review lane, not merged) is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3194,6 +3229,7 @@
   var specterFinalOut = document.getElementById("specter-final-result");
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
+  var reviewLaneOut = document.getElementById("review-lane-result");
   var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
   var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
@@ -3869,6 +3905,12 @@
     if (!ldaReceiptOut) return;
     ldaReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
     ldaReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintReviewLane(result) {
+    if (!reviewLaneOut) return;
+    reviewLaneOut.setAttribute("data-tone", api.toneFor(result.state));
+    reviewLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintMuhlReceiptLane(result) {
@@ -4727,6 +4769,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadReviewLane(sha) {
+    if (!reviewLaneOut) return Promise.resolve(null);
+    reviewLaneOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/review_lane.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/review_lane.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/review_lane.py absent at the measured main SHA. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED." };
+        paintReviewLane(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintReviewLane(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.reviewLaneState(body);
+        paintReviewLane(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintReviewLane(err);
       return err;
     });
   }
@@ -5942,6 +6011,7 @@
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
     loadLdaReceipt(sha);
+    loadReviewLane(sha);
     loadMuhlReceiptLane(sha);
     loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);
