@@ -15,15 +15,21 @@ sys.path.insert(
 )
 
 from muhl_self_train_address_contract import (
+    BLOCKED,
     CANDIDATE,
     DEFERRED,
     FORBIDDEN_IMPORTS,
+    LAST_SAFE_START,
+    MAX_POINTER,
+    REQUIRED_BITS,
     SEARCH_SPACE,
     SLACK_TS,
     SOURCE_CONFLICT,
+    STEPS_BEFORE_WRAP,
     TAKING_ID,
     TRAINER_REL,
     UNRESOLVED,
+    canonical_conflict_hash,
     classify,
     classify_h006,
     measure_from_rows,
@@ -166,9 +172,29 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         conflict_ids = {item["id"] for item in parsed["conflicts"]}
         self.assertIn("intake_capacity_comment", conflict_ids)
         self.assertIn("ptr_bits_vs_capacity", conflict_ids)
+        digest = canonical_conflict_hash(ptr_bits=30, capacity=50 * (1 << 30))
+        self.assertEqual(
+            digest,
+            "2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc",
+        )
         for item in parsed["conflicts"]:
             self.assertEqual(item["state"], SOURCE_CONFLICT)
             self.assertIn("UNRESOLVED", item["note"])
+            self.assertIn("BLOCKED", item["note"])
+            self.assertEqual(item["max_pointer"], 1_073_741_823)
+            self.assertEqual(item["last_safe_start"], 1_073_741_822)
+            self.assertEqual(item["steps_before_wrap"], 536_870_912)
+            self.assertEqual(item["required_bits"], 36)
+        pointer = next(
+            item
+            for item in parsed["conflicts"]
+            if item["id"] == "ptr_bits_vs_capacity"
+        )
+        self.assertEqual(pointer["canonical_hash"], digest)
+        self.assertEqual(pointer["max_pointer"], MAX_POINTER)
+        self.assertEqual(pointer["last_safe_start"], LAST_SAFE_START)
+        self.assertEqual(pointer["steps_before_wrap"], STEPS_BEFORE_WRAP)
+        self.assertEqual(pointer["required_bits"], REQUIRED_BITS)
 
     def test_synthetic_packet_matches_source(self):
         path = os.path.join(ROOT, TRAINER_REL)
@@ -176,7 +202,77 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
             parsed = parse_trainer_source(handle.read())
         packet = synthetic_packet(parsed)
         verdict = validate_packet(packet, parsed=parsed)
+        self.assertEqual(verdict["state"], BLOCKED, verdict)
+        self.assertEqual(verdict["max_pointer"], 1_073_741_823)
+        self.assertEqual(verdict["last_safe_start"], 1_073_741_822)
+        self.assertEqual(verdict["steps_before_wrap"], 536_870_912)
+        self.assertEqual(verdict["required_bits"], 36)
+        self.assertEqual(
+            verdict["canonical_hash"],
+            "2681bb43c04f5b0189c692ec5dac7b83cd35b2eb1c54f38d6c450460354cf7dc",
+        )
+        self.assertIn("fail-closed", verdict["note"])
+        self.assertEqual(packet["live_offsets"], UNRESOLVED)
+
+    def test_source_space_conflict_is_fail_closed_blocked(self):
+        parsed = parse_trainer_source(
+            "NAME = 'muhl_self_train'\n"
+            "INTAKE_CAPACITY = 50 * (1 << 30)  # 1 GB\n"
+            "PTR_BITS = 30\n"
+        )
+        packet = synthetic_packet(parsed)
+        verdict = validate_packet(packet, parsed=parsed)
+        self.assertEqual(verdict["state"], BLOCKED, verdict)
+        self.assertEqual(verdict["max_pointer"], MAX_POINTER)
+        self.assertEqual(verdict["last_safe_start"], LAST_SAFE_START)
+        self.assertEqual(verdict["steps_before_wrap"], STEPS_BEFORE_WRAP)
+        self.assertEqual(verdict["required_bits"], REQUIRED_BITS)
+        self.assertTrue(verdict["canonical_hash"])
+        self.assertEqual(packet["live_offsets"], UNRESOLVED)
+        classified = classify(
+            measure_from_rows(
+                {
+                    "card_present": True,
+                    "contract_present": True,
+                    "test_present": True,
+                    "trainer_present": True,
+                    "parsed_ok": True,
+                    "calibration_ok": True,
+                    "conflicts": parsed["conflicts"],
+                    "live_offsets": parsed["live_offsets"],
+                    "dests": parsed["dests"],
+                    "packet_ok": False,
+                    "posting_open": True,
+                    "no_auth": True,
+                    "no_gate": True,
+                    "found_phrases": [],
+                }
+            )
+        )
+        self.assertEqual(classified["state"], BLOCKED, classified)
+        self.assertEqual(classified["max_pointer"], 1_073_741_823)
+
+    def test_matching_source_space_stays_synthetic_ok(self):
+        parsed = parse_trainer_source(
+            "NAME = 'muhl_self_train'\n"
+            "RESERVOIR_INPUT = 1\n"
+            "INTAKE_HEADER = 24\n"
+            "INTAKE_CAPACITY = 1 << 30\n"
+            "WEIGHT_BYTES = 214\n"
+            "NW = 107\n"
+            "NF = 9\n"
+            "H = 8\n"
+            "NCLS = 3\n"
+            "PTR_BITS = 30\n"
+            "FILE_MARKER = 'MUHLFILE'\n"
+            "build(receiver='muhl_reservoir')\n"
+        )
+        self.assertTrue(parsed["ok"], parsed)
+        self.assertEqual(parsed["conflicts"], [])
+        packet = synthetic_packet(parsed)
+        verdict = validate_packet(packet, parsed=parsed)
         self.assertEqual(verdict["state"], "SYNTHETIC_OK", verdict)
+        self.assertEqual(parsed["live_offsets"]["intake_off"], UNRESOLVED)
 
     def test_does_not_import_legacy_trainer(self):
         self.assertFalse(trainer_imported())
@@ -201,7 +297,13 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         self.assertFalse(row["legacy_import"])
         self.assertIn(os.path.join("ground", "EXECUTE.md"), SEARCH_SPACE)
         verdict = classify(row)
-        self.assertEqual(verdict["state"], "INTEGRATED", verdict)
+        self.assertEqual(verdict["state"], BLOCKED, verdict)
+        self.assertEqual(verdict["max_pointer"], 1_073_741_823)
+        self.assertEqual(verdict["last_safe_start"], 1_073_741_822)
+        self.assertEqual(verdict["steps_before_wrap"], 536_870_912)
+        self.assertEqual(verdict["required_bits"], 36)
+        self.assertIn("fail-closed", verdict["note"])
+        self.assertEqual(row["live_offsets"]["intake_off"], UNRESOLVED)
 
     def test_h006_missing_is_unresolved_not_zero(self):
         missing = classify_h006(os.path.join(ROOT, "does-not-exist"))
