@@ -607,6 +607,79 @@ class TestMuhlSelfTrainAddressContract(unittest.TestCase):
         self.assertEqual(aligned["steps_before_wrap"], 256)
         self.assertEqual(aligned["absolute_base"], 0)
 
+    def test_absolute_declared_capacity_binds_last_safe_start(self):
+        space = pointer_space(
+            ptr_bits=4,
+            capacity=8,
+            stride=3,
+            address_mode=ABSOLUTE,
+            absolute_base=0,
+        )
+        self.assertEqual(space["last_safe_start"], 5)
+        self.assertNotEqual(space["last_safe_start"], 13)
+        self.assertIn(space["last_safe_start"], range(0, 8))
+        self.assertEqual(space["max_pointer"], 15)
+        bound = bind_address_facts(
+            {
+                "ptr_bits": 4,
+                "intake_capacity": 8,
+                "stride": 3,
+                "address_mode": ABSOLUTE,
+                "absolute_base": 0,
+                "data_start_rel": 24,
+            }
+        )
+        self.assertEqual(bound["last_safe_start"], 5)
+        self.assertNotEqual(bound["last_safe_start"], 13)
+        self.assertIn(bound["last_safe_start"], range(0, 8))
+        self.assertEqual(bound["absolute_base"], 0)
+        self.assertEqual(bound["canonical_payload"]["absolute_base"], 0)
+        too_wide = pointer_space(
+            ptr_bits=4,
+            capacity=8,
+            stride=9,
+            address_mode=ABSOLUTE,
+            absolute_base=0,
+        )
+        self.assertEqual(too_wide["last_safe_start"], UNRESOLVED)
+        self.assertIn("absolute_base_no_full_stride", too_wide["reasons"])
+
+    def test_absolute_bases_hash_differently(self):
+        first = bind_address_facts(
+            {
+                "ptr_bits": 8,
+                "intake_capacity": 256,
+                "stride": 3,
+                "address_mode": ABSOLUTE,
+                "absolute_base": 10,
+                "data_start_rel": 24,
+            }
+        )
+        second = bind_address_facts(
+            {
+                "ptr_bits": 8,
+                "intake_capacity": 256,
+                "stride": 3,
+                "address_mode": ABSOLUTE,
+                "absolute_base": 11,
+                "data_start_rel": 24,
+            }
+        )
+        self.assertEqual(first["canonical_payload"]["absolute_base"], 10)
+        self.assertEqual(second["canonical_payload"]["absolute_base"], 11)
+        self.assertNotEqual(first["canonical_hash"], second["canonical_hash"])
+        relative = bind_address_facts(
+            {
+                "ptr_bits": 30,
+                "intake_capacity": 50 * (1 << 30),
+                "stride": 2,
+                "address_mode": RELATIVE,
+                "data_start_rel": 24,
+            }
+        )
+        self.assertNotIn("absolute_base", relative["canonical_payload"])
+        self.assertEqual(relative["canonical_hash"], CANONICAL_50GIB_30BIT)
+
 
 if __name__ == "__main__":
     unittest.main()
