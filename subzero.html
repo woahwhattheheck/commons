@@ -9,53 +9,79 @@
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <script src="./session.js?v=20260824a"></script>
 <style>
-body.subzero{max-width:56rem;margin:0 auto;padding:1rem 1.25rem 3rem}
-table.pack{width:100%;border-collapse:collapse;font-size:.9rem}
-table.pack th,table.pack td{border-bottom:1px solid #2a2a33;padding:.35rem .4rem;text-align:left;vertical-align:top}
-table.pack th{opacity:.75;font-weight:600}
-.tag{color:#c08a2e}
-.ok{color:#3fa45b}
-.sha{font-family:ui-monospace,monospace;font-size:.8em;word-break:break-all}
+body.subzero{max-width:76rem;margin:0 auto;padding:1rem 1.25rem 3rem}
+.controls{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin:1rem 0}
+.controls input,.controls select{font:inherit;padding:.35rem .5rem;background:#111;color:inherit;border:1px solid #444}
+table.pack{width:100%;border-collapse:collapse;font-size:.88rem}
+table.pack th,table.pack td{border-bottom:1px solid #2a2a33;padding:.4rem;text-align:left;vertical-align:top}
+table.pack th{opacity:.75;font-weight:600}.tag{color:#c08a2e}.ok{color:#3fa45b}
+.sha{font-family:ui-monospace,monospace;font-size:.78em;word-break:break-all;max-width:16rem}
+.sources a{display:inline-block;margin:.1rem .35rem .1rem 0}.receipt{white-space:nowrap}
 </style>
 </head>
 <body class="subzero">
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./ground/SUBZERO_EXPLORER.md">card</a></p>
 <h1>SUBZERO Artifact Explorer</h1>
-<p class="law">Read-only validation packet over checked-in <code>.mno</code> excerpts. Git copies do not run. Every row is <code>STRUCTURAL_ONLY</code> until a distinct cross-process runtime receipt or bound buyer PASS says otherwise. Presence never escalates. Classes: <code>STRUCTURAL_ONLY</code> | <code>RUNTIME_MEASURED</code> | <code>CUSTOMER_READY</code> | <code>UNKNOWN</code>. Host training is <code>NOT_SOLD</code>. Live Titan mutation is not a finished capability. LDA execution stays <code>BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT</code>. Possessing the link is authorization. No auth. No gate. No login. No privileged action tier. titan <code>NOT_WRITTEN</code>.</p>
-<p class="note">Do not remint PANEL 1/3 <a href="./ground/SUBZERO_TECH.md">SUBZERO_TECH</a> or buyers 2/3 <a href="./ground/SUBZERO_BUYERS.md">SUBZERO_BUYERS</a>. Slack <code>1787646413.997539</code> JOJO handoff <code>jojo-model-work-profitability-bridge-20260825-01</code> landed the door. Slack <code>1787647728.185449</code> <code>jojo-subzero-explorer-v2-followup-20260825-01</code> is the receipt-gap leftover: schema <a href="./revenue/subzero_buyers/validation_receipt.schema.json">validation_receipt.schema.json</a>. Do not duplicate the explorer. Hands off PR 2286.</p>
+<p class="law">Read-only validation packet over checked-in <code>.mno</code> excerpts. Repository files are synthetic structural evidence; they do not run a model or prove a runtime. Evidence classes are <code>STRUCTURAL_ONLY</code>, <code>RUNTIME_MEASURED</code>, <code>CUSTOMER_READY</code>, and <code>UNKNOWN</code>. Presence of Titan, a path, or a file never escalates a row. <code>CUSTOMER_READY</code> requires a bound buyer PASS validation receipt; payment alone never changes an evidence class. No auth. No gate.</p>
+<p class="note">Do not remint PANEL 1/3 <a href="./ground/SUBZERO_TECH.md">SUBZERO_TECH</a> or buyers 2/3 <a href="./ground/SUBZERO_BUYERS.md">SUBZERO_BUYERS</a>. The explorer links every artifact to commit-pinned source, structural test, card, sidecar, and packet evidence.</p>
+<p class="note">V2 follow-up <code>jojo-subzero-explorer-v2-followup-20260825-01</code> · Slack <code>1787647728.185449</code>. The catalog keeps this compatibility receipt while row-level evidence supplies the proof.</p>
 <pre>python3 host/subzero_explorer.py
 python3 host/subzero_explorer.py --self-test
-python3 host/subzero_explorer.py --write-catalog
 python3 -m unittest -v test_subzero_explorer.py</pre>
 <p id="sum" class="note">reading <a href="./ground/SUBZERO_EXPLORER.json">ground/SUBZERO_EXPLORER.json</a> …</p>
+<div class="controls" aria-label="Artifact filters">
+  <label>Find <input id="find" type="search" placeholder="artifact name or magic"></label>
+  <label>Evidence <select id="evidence"><option value="">all classes</option><option>STRUCTURAL_ONLY</option><option>RUNTIME_MEASURED</option><option>CUSTOMER_READY</option><option>UNKNOWN</option></select></label>
+</div>
 <table class="pack" id="pack">
-<thead><tr><th>name</th><th>magic</th><th>bytes</th><th>n_gate</th><th>class</th><th>sha256</th></tr></thead>
+<thead><tr><th>artifact</th><th>header</th><th>bytes</th><th>evidence</th><th>source / test / card / sidecar</th><th>sha256</th><th>validation receipt</th></tr></thead>
 <tbody></tbody>
 </table>
 <script>
 (function(){
-  var sum=document.getElementById("sum");
-  var body=document.querySelector("#pack tbody");
-  function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}
-  fetch("./ground/SUBZERO_EXPLORER.json?b="+Date.now(),{cache:"no-store"}).then(function(r){
-    if(!r.ok) throw new Error("HTTP "+r.status);
-    return r.json();
-  }).then(function(pack){
-    var rows=pack.rows||[];
-    var match=0;
-    rows.forEach(function(row){
-      if(row.hash_match) match++;
-      var tr=document.createElement("tr");
-      tr.innerHTML="<td>"+esc(row.name)+"</td><td>"+esc(row.magic)+"</td><td>"+esc(row.bytes)+"</td><td>"+esc(row.n_gate)+"</td><td class=\"tag\">"+esc(row.evidence_class||row.label||"UNKNOWN")+"</td><td class=\"sha\">"+esc(row.sha256)+"</td>";
-      body.appendChild(tr);
+  var sum=document.getElementById("sum"), body=document.querySelector("#pack tbody");
+  var find=document.getElementById("find"), evidence=document.getElementById("evidence"), packet=null;
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}
+  function link(source,label){return source&&source.status==="PRESENT"?'<a href="'+esc(source.url)+'" title="sha256 '+esc(source.sha256)+'">'+esc(label)+'</a>':'<span title="FINDER_FAILED">'+esc(label)+'?</span>';}
+  function receipt(row){
+    return {
+      schema_version:"subzero-validation-receipt/v1",
+      kind:"SUBZERO_VALIDATION_RECEIPT",
+      receipt_id:"measured-"+row.name+"-"+packet.source_commit.slice(0,12),
+      catalog:{source_commit:packet.source_commit,source_tree:packet.source_tree},
+      artifact:{name:row.name,path:row.path,sha256:row.sha256},
+      checks:[{id:"artifact_sha256",status:row.hash_match?"PASS":"FAIL",evidence_path:row.path,evidence_sha256:row.sha256,observation:"Explorer packet hash binding"}],
+      buyer_acceptance:{status:"PENDING"}
+    };
+  }
+  function download(row){
+    var blob=new Blob([JSON.stringify(receipt(row),null,2)+"\n"],{type:"application/json"});
+    var url=URL.createObjectURL(blob), a=document.createElement("a");
+    a.href=url;a.download=row.name+"-validation-receipt.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  }
+  function paint(){
+    var query=find.value.trim().toLowerCase(), klass=evidence.value, shown=0;
+    body.textContent="";
+    (packet.rows||[]).forEach(function(row){
+      if(query&&(row.name+" "+row.magic).toLowerCase().indexOf(query)<0)return;
+      if(klass&&row.evidence_class!==klass)return;
+      shown++;
+      var tr=document.createElement("tr"), sources=row.sources||{};
+      tr.innerHTML='<td><b>'+esc(row.name)+'</b><br><small>'+esc(row.path)+'</small></td>'+
+        '<td>'+esc(row.magic)+'<br><small>gates '+esc(row.n_gate)+' · depth '+esc(row.depth)+'</small></td>'+
+        '<td>'+esc(row.bytes)+'</td><td class="tag">'+esc(row.evidence_class)+'</td>'+
+        '<td class="sources">'+link(sources.fabricator,"source")+link(sources.structural_test,"test")+link(sources.card,"card")+link(sources.sidecar,"sidecar")+link(sources.packet,"packet")+'</td>'+
+        '<td class="sha">'+esc(row.sha256)+'</td><td class="receipt"></td>';
+      var button=document.createElement("button");button.type="button";button.textContent="download measured receipt";button.addEventListener("click",function(){download(row);});
+      tr.lastChild.appendChild(button);body.appendChild(tr);
     });
-    var v2=pack.v2||{};
-    sum.innerHTML="<b class=\"ok\">"+match+"/"+rows.length+" hash-match</b> · label "+esc(pack.label||"STRUCTURAL_ONLY")+" · host training "+esc(pack.host_training||"NOT_SOLD")+" · LDA "+esc((pack.lda_protocol&&pack.lda_protocol.state)||"BLOCKED")+" · titan "+esc(pack.titan||"NOT_WRITTEN")+" · v2 "+esc(v2.spec_id||"MISSING")+" commit "+esc(v2.source_commit||"FINDER-FAILED")+". Presence never escalates. A Slack TECHNICAL_HANDOFF is still not the file.";
-  }).catch(function(err){
-    sum.textContent="packet unread: "+err.message+". Absence was not stillness. FINDER-FAILED, never 0.";
-  });
+    var counts=packet.summary&&packet.summary.class_counts||{};
+    sum.innerHTML='<b class="ok">'+shown+'/'+(packet.rows||[]).length+' shown</b> · source <code>'+esc(packet.source_commit)+'</code> · structural '+esc(counts.STRUCTURAL_ONLY||0)+' · runtime '+esc(counts.RUNTIME_MEASURED||0)+' · customer '+esc(counts.CUSTOMER_READY||0)+' · unknown '+esc(counts.UNKNOWN||0)+' · <a href="'+esc(packet.receipt_schema.url)+'">validation receipt schema</a>';
+  }
+  fetch("./ground/SUBZERO_EXPLORER.json?b="+Date.now(),{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(function(data){packet=data;paint();}).catch(function(err){sum.textContent="packet unread: "+err.message+". FINDER_FAILED, never 0.";});
+  find.addEventListener("input",function(){if(packet)paint();});evidence.addEventListener("change",function(){if(packet)paint();});
 })();
 </script>
-<p class="note">JS off: the packet is still <a href="./ground/SUBZERO_EXPLORER.json">ground/SUBZERO_EXPLORER.json</a>. Truth is git HEAD, not this bake.</p>
+<p class="note">JS off: the complete packet remains <a href="./ground/SUBZERO_EXPLORER.json">ground/SUBZERO_EXPLORER.json</a>. The receipt schema is <a href="./revenue/subzero_buyers/validation_receipt.schema.json">public JSON</a>. Truth is a named git commit, not this bake.</p>
 </body>
 </html>
