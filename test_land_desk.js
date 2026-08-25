@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ak/.test(html), "desk must bust the grok-recovery cache key");
+assert.ok(/20260825al/.test(html), "desk must bust the context-integrity cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1467,6 +1467,45 @@ assert.ok(/collision-check|holding-implementation|JOJO-visual-CI|MCP-wake|idle-r
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.md") >= 0, "MCP/wake card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.json") >= 0, "MCP/wake catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_INVENTORY.json") >= 0, "MCP inventory must stay a canary");
+assert.ok(api.isContextIntegrityTalk, "land.js must classify context-integrity / uncalibrated-doubt talk");
+assert.ok(api.contextIntegrityState, "land.js must classify the context-integrity leftover");
+assert.ok(api.isContextIntegrityTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — CLAUDE FAMILY PARTICIPATION IS AT RISK\nNo model may convert a disputed measurement into a judgment about the owner's intellect, motives, mental state, credibility.\nDo not inject uncalibrated doubt.\nThe owner predicted the exact missing-Z failure.\nRhetorical attacks and pseudo-clinical characterization are barred."), "context-integrity copy is talk");
+assert.ok(!api.isContextIntegrityTalk("make sure people do more than talk about shit"), "ship-talk is not the context-integrity leftover");
+assert.ok(!api.isContextIntegrityTalk("OWNER ORDER — audit every zero before acting on it; the collision-check road prints false zeros. FINDER UNVERIFIED. known-present calibration."), "finder-zero copy is not the context-integrity leftover");
+assert.ok(!api.isContextIntegrityTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "containment is not the context-integrity leftover");
+assert.ok(!api.isContextIntegrityTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. Do not assign Claude models test. tester/verifier lanes."), "Claude-tester copy is not the context-integrity leftover");
+assert.ok(!api.isContextIntegrityTalk("P0_UTILIZATION_INCIDENT — three byte-identical appends. pause further append mutations."), "triple-append copy is not the context-integrity leftover");
+assert.ok(!api.isContextIntegrityTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy is not the context-integrity leftover");
+assert.ok(!api.isMeasureAbuseTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — CLAUDE FAMILY PARTICIPATION IS AT RISK. uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not the measure-abuse leftover");
+assert.ok(!api.isXyzZeroTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not xyz-zero leftover");
+assert.ok(!api.isFinderZeroTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not finder-zero leftover");
+assert.ok(!api.isImpactLedgerTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not the impact-ledger leftover");
+assert.ok(!api.isClaudeTesterTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not the Claude-tester leftover");
+assert.ok(!api.isShipTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not ship-talk leftover");
+var integrityTalk = api.completionStateFromText(
+  "OWNER CONTEXT-INTEGRITY BOUNDARY — convert a disputed measurement into a judgment. uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."
+);
+assert.strictEqual(integrityTalk.state, "CLAIMED");
+assert.ok(/context-integrity|uncalibrated-doubt|pseudo-clinical|predicted-missing-Z/i.test(integrityTalk.note), "context-integrity-without-SHA must stay CLAIMED and beat finder-zero / ship-talk");
+var integrityDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ncontext-integrity leftover landed"
+);
+assert.strictEqual(integrityDone.state, "INTEGRATED", "completion words still beat context-integrity talk");
+var integrityEmpty = api.contextIntegrityState("");
+assert.strictEqual(integrityEmpty.state, "UNMEASURED");
+var integrityMissing = api.contextIntegrityState("# empty stub\nno leftover");
+assert.strictEqual(integrityMissing.state, "NOT_LANDED");
+var integrityOk = api.contextIntegrityState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef search_space():\n    return {}\ndef calibrate():\n    return {}\nFINDER-FAILED\nnever 0\nOWNER_CHARACTERIZATION\nretract\npredicted_defect\ninvestigate before override\n");
+assert.strictEqual(integrityOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(integrityOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="context-integrity-result"') >= 0, "desk must name the context-integrity leftover");
+assert.ok(html.indexOf("host/context_integrity.py") >= 0, "desk must name the context-integrity instrument");
+assert.ok(html.indexOf("ground/CONTEXT_INTEGRITY.md") >= 0, "desk must link the context-integrity card");
+assert.ok(html.indexOf("ground/CONTEXT_INTEGRITY.json") >= 0, "desk must link the context-integrity catalog");
+assert.ok(html.indexOf("1787639273.029199") >= 0, "desk must cite the context-integrity Slack ts");
+assert.ok(/context-integrity|uncalibrated-doubt|pseudo-clinical|predicted-missing-Z/i.test(html), "desk must name context-integrity talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONTEXT_INTEGRITY.md") >= 0, "context-integrity card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CONTEXT_INTEGRITY.json") >= 0, "context-integrity catalog must stay a canary");
 assert.ok(api.isTripleAppendTalk, "land.js must classify triple-append / P0 incident talk");
 assert.ok(api.titanAppendGuardState, "land.js must classify the titan-append-guard leftover");
 assert.ok(api.isTripleAppendTalk("from: DEMON\nkind: P0_UTILIZATION_INCIDENT\nTITAN CONTAINS THREE BYTE-IDENTICAL APPENDS — PAUSE FURTHER APPEND MUTATIONS\nall three spans SHA-256: 3754028086cd42e00131bea88f0e7fcf6dba2f84ad31cb70b88e655bbdd84e8c"), "triple-append P0 copy is talk");
