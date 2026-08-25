@@ -666,8 +666,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-subzero-explorer-20260825-01",
-    "ts": "2026-08-25T08:36:19Z",
+    "id": "rivet-ship-muhl-receipt-lane-20260825-01",
+    "ts": "2026-08-25T08:41:08Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
