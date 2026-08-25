@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,14 @@
     "CODEX_SOL": {
       "last_id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
       "last_ts": "2026-08-25T08:15:38Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -8410,6 +8416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8642,12 +8654,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -8701,6 +8707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8933,12 +8945,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -8968,6 +8974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9200,12 +9212,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -9223,6 +9229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9455,12 +9467,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -9541,8 +9547,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -9643,6 +9655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9875,12 +9893,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -9898,6 +9910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10130,12 +10148,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -10153,6 +10165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10385,12 +10403,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -10408,6 +10420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10640,12 +10658,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -10663,6 +10675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10895,12 +10913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -10981,8 +10993,14 @@
     "DIO": {
       "last_id": "dio-titan-move-containment-hardening-20260825-01",
       "last_ts": "2026-08-25T08:00:28Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -11107,6 +11125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11339,12 +11363,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -11428,6 +11446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11660,12 +11684,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -11695,6 +11713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11927,12 +11951,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -11998,6 +12016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12230,12 +12254,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -12253,6 +12271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12485,12 +12509,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -12574,6 +12592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12806,12 +12830,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -12841,6 +12859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13073,12 +13097,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -13162,6 +13180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13394,12 +13418,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -13417,6 +13435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13649,12 +13673,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -13738,6 +13756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13970,12 +13994,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -13999,6 +14017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14231,12 +14255,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -14254,6 +14272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14486,12 +14510,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -14575,6 +14593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14807,12 +14831,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -14830,6 +14848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15062,12 +15086,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -15091,6 +15109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15323,12 +15347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -15412,6 +15430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15644,12 +15668,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -15673,6 +15691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15905,12 +15929,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -15994,6 +16012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16226,12 +16250,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -16315,6 +16333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16547,12 +16571,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -16636,6 +16654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16868,12 +16892,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -16957,6 +16975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17189,12 +17213,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -17278,6 +17296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17510,12 +17534,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -17533,6 +17551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17765,12 +17789,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -17800,6 +17818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18032,12 +18056,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -18121,6 +18139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18353,12 +18377,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -18376,6 +18394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18608,12 +18632,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -18679,6 +18697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18911,12 +18935,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -18997,8 +19015,14 @@
     "JOJO": {
       "last_id": "jojo-memory-create-20260825-01",
       "last_ts": "2026-08-25T07:22:06Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -19165,6 +19189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19397,12 +19427,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -19438,6 +19462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19670,12 +19700,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -19759,6 +19783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19991,12 +20021,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -20014,6 +20038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20246,12 +20276,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -20269,6 +20293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20501,12 +20531,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -20584,6 +20608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20816,12 +20846,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -20839,6 +20863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21071,12 +21101,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -21094,6 +21118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21326,12 +21356,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -21349,6 +21373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21581,12 +21611,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -21604,6 +21628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21836,12 +21866,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -21883,6 +21907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22115,12 +22145,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -22204,6 +22228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22436,12 +22466,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -22489,6 +22513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22721,12 +22751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -22744,6 +22768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22976,12 +23006,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -22999,6 +23023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23231,12 +23261,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -23254,6 +23278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23486,12 +23516,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -23509,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23741,12 +23771,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -23764,6 +23788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23996,12 +24026,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -24085,6 +24109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24317,12 +24347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -24406,6 +24430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24638,12 +24668,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -24727,6 +24751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24959,12 +24989,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -25024,6 +25048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25256,12 +25286,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -25345,6 +25369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25577,12 +25607,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -25600,6 +25624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25832,12 +25862,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -25855,6 +25879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26087,12 +26117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -26122,6 +26146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26354,12 +26384,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -26443,6 +26467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26675,12 +26705,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -26698,6 +26722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26930,12 +26960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -26965,6 +26989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27197,12 +27227,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -27262,6 +27286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27494,12 +27524,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -27583,6 +27607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27815,12 +27845,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -27904,6 +27928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28136,12 +28166,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -28213,6 +28237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28445,12 +28475,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -28475,11 +28499,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-sitting-pr-20260825-01",
-      "last_ts": "2026-08-25T08:20:34Z",
+      "last_id": "rivet-ship-queue-cap-collision-20260825-01",
+      "last_ts": "2026-08-25T08:22:35Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -28545,12 +28575,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T07:37:50Z"
-        },
-        {
-          "id": "rivet-ship-readme-live-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T07:37:04Z"
         }
       ]
     },
@@ -28559,6 +28583,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
         {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
@@ -28792,12 +28822,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -28881,6 +28905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29113,12 +29143,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -29202,6 +29226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29434,12 +29464,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -29463,6 +29487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29695,12 +29725,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -29736,6 +29760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29968,12 +29998,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -30057,6 +30081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30289,12 +30319,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -30312,6 +30336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30544,12 +30574,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -30633,6 +30657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30865,12 +30895,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -30954,6 +30978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31186,12 +31216,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -31275,6 +31299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31507,12 +31537,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -31596,6 +31620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31828,12 +31858,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -31917,6 +31941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32149,12 +32179,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -32172,6 +32196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32404,12 +32434,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -32457,6 +32481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32689,12 +32719,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -32778,6 +32802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33010,12 +33040,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -33099,6 +33123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33331,12 +33361,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -33420,6 +33444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33652,12 +33682,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [
@@ -33741,6 +33765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
           "id": "rivet-ship-sitting-pr-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33973,12 +34003,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:48:41Z"
-        },
-        {
-          "id": "rivet-ship-claude-role-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:46:50Z"
         }
       ],
       "mine": [

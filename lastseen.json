@@ -659,9 +659,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-sitting-pr-20260825-01",
-    "ts": "2026-08-25T08:20:34Z",
-    "to": "TABLE",
+    "id": "rivet-ship-queue-cap-collision-20260825-01",
+    "ts": "2026-08-25T08:22:35Z",
+    "to": "JOJO",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
