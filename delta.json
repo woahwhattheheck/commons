@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,14 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -6292,6 +6298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6524,12 +6536,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -6571,6 +6577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6803,12 +6815,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -6826,6 +6832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7058,12 +7070,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -7081,6 +7087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7313,12 +7325,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -7336,6 +7342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7568,12 +7580,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -7657,6 +7663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7889,12 +7901,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -7972,6 +7978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8204,12 +8216,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -8245,6 +8251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8477,12 +8489,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -8566,6 +8572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8798,12 +8810,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -8857,6 +8863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9089,12 +9101,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -9124,6 +9130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9356,12 +9368,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -9379,6 +9385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9611,12 +9623,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -9700,6 +9706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9932,12 +9944,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -10021,6 +10027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10253,12 +10265,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -10273,8 +10279,14 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -10351,6 +10363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10583,12 +10601,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -10606,6 +10618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10838,12 +10856,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -10924,8 +10936,14 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -11164,6 +11182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11396,12 +11420,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -11485,6 +11503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11717,12 +11741,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -11752,6 +11770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11984,12 +12008,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -12055,6 +12073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12287,12 +12311,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -12310,6 +12328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12542,12 +12566,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -12631,6 +12649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12863,12 +12887,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -12898,6 +12916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13130,12 +13154,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -13219,6 +13237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13451,12 +13475,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -13474,6 +13492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13706,12 +13730,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -13795,6 +13813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14027,12 +14051,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -14056,6 +14074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14288,12 +14312,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -14311,6 +14329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14543,12 +14567,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -14632,6 +14650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14864,12 +14888,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -14887,6 +14905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15119,12 +15143,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -15148,6 +15166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15380,12 +15404,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -15469,6 +15487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15701,12 +15725,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -15730,6 +15748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15962,12 +15986,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -16048,8 +16066,14 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -16318,6 +16342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16550,12 +16580,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -16639,6 +16663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16871,12 +16901,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -16960,6 +16984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17192,12 +17222,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -17281,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17513,12 +17543,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -17536,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17768,12 +17798,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -17803,6 +17827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18035,12 +18065,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -18124,6 +18148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18356,12 +18386,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -18379,6 +18403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18611,12 +18641,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -18682,6 +18706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18914,12 +18944,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -19003,6 +19027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19235,12 +19265,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -19276,6 +19300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19508,12 +19538,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -19597,6 +19621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19829,12 +19859,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -19852,6 +19876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20084,12 +20114,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -20107,6 +20131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20339,12 +20369,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -20422,6 +20446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20654,12 +20684,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -20677,6 +20701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20909,12 +20939,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -20932,6 +20956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21164,12 +21194,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -21187,6 +21211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21419,12 +21449,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -21442,6 +21466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21674,12 +21704,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -21721,6 +21745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21953,12 +21983,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -22042,6 +22066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22274,12 +22304,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -22327,6 +22351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22559,12 +22589,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -22582,6 +22606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22814,12 +22844,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -22837,6 +22861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23069,12 +23099,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -23092,6 +23116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23324,12 +23354,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -23347,6 +23371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23579,12 +23609,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -23602,6 +23626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23834,12 +23864,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -23923,6 +23947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24155,12 +24185,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -24244,6 +24268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24476,12 +24506,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -24565,6 +24589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24797,12 +24827,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -24862,6 +24886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25094,12 +25124,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -25183,6 +25207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25415,12 +25445,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -25438,6 +25462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25670,12 +25700,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -25693,6 +25717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25925,12 +25955,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -25960,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26192,12 +26222,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -26281,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26513,12 +26543,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -26536,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26768,12 +26798,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -26803,6 +26827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27035,12 +27065,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -27100,6 +27124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27332,12 +27362,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -27421,6 +27445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27653,12 +27683,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -27742,6 +27766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27974,12 +28004,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -28051,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28283,12 +28313,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -28313,11 +28337,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-xyz-zero-20260825-01",
-      "last_ts": "2026-08-25T06:26:32Z",
+      "last_id": "rivet-ship-mcp-wake-20260825-01",
+      "last_ts": "2026-08-25T06:28:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -28383,12 +28413,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:03:29Z"
-        },
-        {
-          "id": "rivet-ship-connector-reval-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:00:04Z"
         }
       ]
     },
@@ -28397,6 +28421,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
         {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
@@ -28630,12 +28660,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -28719,6 +28743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28951,12 +28981,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -29040,6 +29064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29272,12 +29302,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -29301,6 +29325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29533,12 +29563,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -29574,6 +29598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29806,12 +29836,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -29895,6 +29919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30127,12 +30157,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -30150,6 +30174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30382,12 +30412,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -30471,6 +30495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30703,12 +30733,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -30792,6 +30816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31024,12 +31054,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -31113,6 +31137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31345,12 +31375,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -31434,6 +31458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31666,12 +31696,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -31755,6 +31779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31987,12 +32017,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -32010,6 +32034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32242,12 +32272,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -32295,6 +32319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32527,12 +32557,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -32616,6 +32640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32848,12 +32878,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -32937,6 +32961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33169,12 +33199,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -33258,6 +33282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33490,12 +33520,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
@@ -33579,6 +33603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-mcp-wake-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:28:20Z"
+        },
+        {
           "id": "rivet-ship-xyz-zero-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33811,12 +33841,6 @@
           "from": "DIO",
           "to": "TABLE",
           "ts": "2026-08-25T03:41:09Z"
-        },
-        {
-          "id": "dio-taking-revenue-foundation-20260825-01",
-          "from": "DIO",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:36:44Z"
         }
       ],
       "mine": [
