@@ -216,6 +216,8 @@
     "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
     "ground/FOREIGN_MAIN.md",
     "ground/FOREIGN_MAIN.json",
+    "ground/LDA_RECEIPT.md",
+    "ground/LDA_RECEIPT.json",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -446,6 +448,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isLdaReceiptTalk(t)) {
+      return { state: "CLAIMED", note: "PROFITABILITY_HANDOFF / LDA request protocol / receipt-validator talk. Talk is not a land. Ship the receipt validator leftover to current main. Do not remint the JOJO profitability id or FOREIGN_MAIN. Do not copy private LDA source." };
     }
     if (api.isMuhlReceiptLaneTalk(t)) {
       return { state: "CLAIMED", note: "JOJO TAKING / LocalDeviceAgent subagent receipt lane / request-receiver-result / 175-entry tree / leave-unmerged talk. Talk is not a land. Ship the source-only receipt validator to current main. Do not remint FOREIGN_MAIN, SUBZERO_EXPLORER, or the JOJO protocol id. Do not copy private LDA source." };
@@ -827,6 +832,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isLdaReceiptTalk = function (text) {
+    return /PROFITABILITY_HANDOFF|jojo-model-work-profitability-bridge-20260825-02|receipt validator for the landed LDA|LDA request protocol|1787646655\.408039|lda-receipt leftover|QUOTE-READY VS PROOF-FIRST/i.test(String(text || ""));
+  };
+
+  api.ldaReceiptState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/lda_receipt.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasValidate = /def validate_receipt/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPin = /fb0b0b2f59f8ca81741371b6ddd8036b164e77e8/.test(body);
+    var namesStates = /VALID_RECEIPT/.test(body) && /CARRIER_ONLY/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasValidate && hasMiss && neverZero && namesPin && namesStates && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "LDA receipt-validator leftover is on this file. Fixtures classify CARRIER_ONLY / VALID_RECEIPT / NOT_LANDED. A Slack profitability handoff is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/lda_receipt.py missing the leftover. PROFITABILITY_HANDOFF / LDA request protocol talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3159,6 +3193,7 @@
   var terminalCatalogOut = document.getElementById("terminal-catalog-result");
   var specterFinalOut = document.getElementById("specter-final-result");
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
+  var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
   var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
@@ -3828,6 +3863,12 @@
     if (!deviceQueueCapOut) return;
     deviceQueueCapOut.setAttribute("data-tone", api.toneFor(result.state));
     deviceQueueCapOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintLdaReceipt(result) {
+    if (!ldaReceiptOut) return;
+    ldaReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
+    ldaReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintMuhlReceiptLane(result) {
@@ -4686,6 +4727,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadLdaReceipt(sha) {
+    if (!ldaReceiptOut) return Promise.resolve(null);
+    ldaReceiptOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/lda_receipt.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/lda_receipt.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/lda_receipt.py absent at the measured main SHA. PROFITABILITY_HANDOFF / LDA request protocol talk is CLAIMED." };
+        paintLdaReceipt(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintLdaReceipt(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.ldaReceiptState(body);
+        paintLdaReceipt(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintLdaReceipt(err);
       return err;
     });
   }
@@ -5873,6 +5941,7 @@
     loadSubzeroTech(sha);
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
+    loadLdaReceipt(sha);
     loadMuhlReceiptLane(sha);
     loadSuperGrokHeavy(sha);
     loadSpecterFinal(sha);

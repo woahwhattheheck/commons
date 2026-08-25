@@ -243,6 +243,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_muhl_receipt_lane.py` · `node test_land_desk.js` · `python3 host/muhl_receipt_lane.py`
 **Note:** Synthetic request-receiver-result chain validates. Claimed 175-entry tree published 3 exact chains, not truncated (`FINDER-UNVERIFIED`). Leave-unmerged stays CLAIMED. Do not remint FOREIGN_MAIN / SUBZERO_EXPLORER or `jojo-muhlnickel-subagent-protocol-20260825-01`. Do not copy private LDA source. No host inference. Hands off CML 2108 and JOJO README 2286. titan NOT_WRITTEN. Talk is not a land.
 
+### 47. LDA receipt validator — a profitability handoff is not a land
+> *"receipt validator for the landed LDA request protocol"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:31 Slack `1787646655.408039` / JOJO `PROFITABILITY_HANDOFF` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/LDA_RECEIPT.md` · `ground/LDA_RECEIPT.json` · `host/lda_receipt.py` · `lda-receipt.html` · fixtures · land canary + `ldaReceiptState`
+**Receipt:** `python3 test_lda_receipt.py` · `node test_land_desk.js` · `python3 host/lda_receipt.py`
+**Note:** Public receipts classify `VALID_RECEIPT` / `CARRIER_ONLY` / `NOT_LANDED`. JOJO protocol id stays un-reminted. FOREIGN_MAIN stays. Do not remint item 45 explorer or item 46 receipt-lane. Do not copy private LDA source. Do not remint the profitability id / White Box / payment-ready / SUBZERO GTM/buyers. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

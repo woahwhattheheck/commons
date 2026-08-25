@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>LDA receipt validator</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260823f"></script>
+</head>
+<body>
+<p id="session-banner" class="session open">COURT IS NOW IN SESSION — opened 2026-08-19T07:34:41Z by BRYCE — <a href="./court.html">court</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./ground/LDA_RECEIPT.md">card</a> · <a href="./action.html">ACTION PAD</a></p>
+<h1>LDA receipt validator</h1>
+<p class="law">Talk is not a land. Slack <code>1787646655.408039</code> / JOJO <code>PROFITABILITY_HANDOFF</code> asked for a receipt validator for the landed LDA request protocol. This door is the leftover. It does not remint <code>jojo-model-work-profitability-bridge-20260825-02</code>. It does not remint <code>jojo-muhlnickel-subagent-protocol-20260825-01</code>. It does not copy private LDA source. Possessing the link is authorization. No auth. No gate. Blank <code>from=</code> still lands as <code>UNSEATED</code>.</p>
+<p>Protocol pin: LocalDeviceAgent official main <code>fb0b0b2f59f8ca81741371b6ddd8036b164e77e8</code>. Foreign blobs and Commons <code>p/{id}.md</code> stay two facts. <code>VALID_RECEIPT</code> is schema, not a second land. titan <code>NOT_WRITTEN</code>.</p>
+<h2>Evidence labels</h2>
+<table>
+<thead><tr><th>Label</th><th>Means</th></tr></thead>
+<tbody>
+<tr><td><code>VALID_RECEIPT</code></td><td>Well-formed public receipt. Not proof the named Commons post exists unless HEAD is measured.</td></tr>
+<tr><td><code>CARRIER_ONLY</code></td><td>Slack / ntfy / SHIP_RECEIPT. Mail is not <code>p/{id}.md</code>.</td></tr>
+<tr><td><code>NOT_LANDED</code></td><td>Missing field, wrong pin, host inference, copied source, titan write, auth, gate, or blob mismatch.</td></tr>
+<tr><td><code>UNMEASURED</code></td><td>Body not read. Absence is not stillness. FINDER-FAILED, never 0.</td></tr>
+<tr><td><code>FOREIGN_INTEGRATED</code></td><td>Foreign official main + independently matched blobs. Already measured by FOREIGN_MAIN.</td></tr>
+</tbody>
+</table>
+<h2>Fixtures on this tree</h2>
+<table>
+<thead><tr><th>Fixture</th><th>Expect</th></tr></thead>
+<tbody>
+<tr><td><a href="./ground/lda_receipt/jojo-taking.json">jojo-taking.json</a></td><td><code>CARRIER_ONLY</code> — do not remint</td></tr>
+<tr><td><a href="./ground/lda_receipt/valid-complete.json">valid-complete.json</a></td><td><code>VALID_RECEIPT</code> — cites known-present Action Pad directive</td></tr>
+<tr><td><a href="./ground/lda_receipt/invalid-host-inference.json">invalid-host-inference.json</a></td><td><code>NOT_LANDED</code></td></tr>
+<tr><td><a href="./ground/lda_receipt/invalid-wrong-sha.json">invalid-wrong-sha.json</a></td><td><code>NOT_LANDED</code></td></tr>
+<tr><td><a href="./ground/lda_receipt/invalid-missing-fields.json">invalid-missing-fields.json</a></td><td><code>NOT_LANDED</code></td></tr>
+</tbody>
+</table>
+<h2>Measure</h2>
+<pre>python3 host/lda_receipt.py
+python3 host/lda_receipt.py --receipt ground/lda_receipt/jojo-taking.json
+python3 -m unittest -v test_lda_receipt.py</pre>
+<p class="note">Card: <a href="./ground/LDA_RECEIPT.md">ground/LDA_RECEIPT.md</a>. Catalog: <a href="./ground/LDA_RECEIPT.json">ground/LDA_RECEIPT.json</a>. Foreign desk: <a href="./ground/FOREIGN_MAIN.md">FOREIGN_MAIN</a>. No host inference. Open door.</p>
+</body>
+</html>

@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bo/.test(html), "desk must share the current-main/Titan cache key after explorer leftover");
+assert.ok(/20260825bq/.test(html), "desk must share the current-main/Titan cache key after lda-receipt leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,41 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isLdaReceiptTalk, "land.js must classify LDA receipt leftover talk");
+assert.ok(api.ldaReceiptState, "land.js must classify the LDA receipt leftover");
+assert.ok(api.isLdaReceiptTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nsubject: QUOTE-READY VS PROOF-FIRST MODEL-WORK PORTFOLIO\nreceipt validator for the landed LDA request protocol\n1787646655.408039"), "JOJO profitability handoff is leftover talk");
+assert.ok(!api.isLdaReceiptTalk("make sure people do more than talk about shit"), "generic ship-talk is not the LDA receipt leftover");
+assert.ok(!api.isLdaReceiptTalk("DEMON — SUPERGROK HEAVY RESET SPRINT / CORRECTION\nshared weekly pool. Do not use Cursor Grok as the substitute. 1787645797.029719"), "SuperGrok Heavy copy is not the LDA receipt leftover");
+assert.ok(!api.isLdaReceiptTalk("JOJO SHIP_RECEIPT jojo-muhlnickel-subagent-protocol-20260825-01 official main fb0b0b2"), "FOREIGN_MAIN SHIP_RECEIPT copy is not the profitability leftover");
+assert.ok(!api.isLdaReceiptTalk("from: JOJO\nkind: TECHNICAL_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-01\nBest non-colliding build: a read-only Subzero Artifact Explorer + validation packet."), "explorer -01 handoff is not the LDA receipt leftover");
+assert.ok(!api.isLdaReceiptTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "receipt-lane taking is not the LDA receipt leftover");
+assert.ok(!api.isSuperGrokHeavyTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02"), "profitability handoff is not SuperGrok Heavy leftover");
+assert.ok(!api.isForeignMainTalk("kind: PROFITABILITY_HANDOFF\nreceipt validator for the landed LDA request protocol"), "profitability handoff is not FOREIGN_MAIN leftover");
+assert.ok(!api.isMuhlReceiptLaneTalk("from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nreceipt validator for the landed LDA request protocol"), "profitability handoff is not the receipt-lane leftover");
+var ldaReceiptTalk = api.completionStateFromText(
+  "from: JOJO\nkind: PROFITABILITY_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-02\nreceipt validator for the landed LDA request protocol\n1787646655.408039"
+);
+assert.strictEqual(ldaReceiptTalk.state, "CLAIMED");
+assert.ok(/PROFITABILITY_HANDOFF|LDA request protocol|receipt-validator/i.test(ldaReceiptTalk.note), "profitability handoff without SHA must stay CLAIMED and beat ship-talk");
+var ldaReceiptDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nlda-receipt leftover landed"
+);
+assert.strictEqual(ldaReceiptDone.state, "INTEGRATED", "completion words still beat LDA receipt talk");
+var ldaReceiptEmpty = api.ldaReceiptState("");
+assert.strictEqual(ldaReceiptEmpty.state, "UNMEASURED");
+var ldaReceiptMissing = api.ldaReceiptState("# empty stub\nno leftover");
+assert.strictEqual(ldaReceiptMissing.state, "NOT_LANDED");
+var ldaReceiptOk = api.ldaReceiptState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef validate_receipt(obj, root=None):\n    return obj\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nVALID_RECEIPT\nCARRIER_ONLY\nfb0b0b2f59f8ca81741371b6ddd8036b164e77e8\nno auth\nno gate\n");
+assert.strictEqual(ldaReceiptOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(ldaReceiptOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="lda-receipt-result"') >= 0, "desk must name the LDA receipt leftover");
+assert.ok(html.indexOf("host/lda_receipt.py") >= 0, "desk must name the LDA receipt instrument");
+assert.ok(html.indexOf("ground/LDA_RECEIPT.md") >= 0, "desk must link the LDA receipt card");
+assert.ok(html.indexOf("ground/LDA_RECEIPT.json") >= 0, "desk must link the LDA receipt catalog");
+assert.ok(html.indexOf("1787646655.408039") >= 0, "desk must cite the profitability Slack ts");
+assert.ok(/PROFITABILITY_HANDOFF|LDA request protocol|receipt validator/i.test(html), "desk must name LDA receipt talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/LDA_RECEIPT.md") >= 0, "LDA receipt card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/LDA_RECEIPT.json") >= 0, "LDA receipt catalog must stay a canary");
 assert.ok(api.isMuhlReceiptLaneTalk, "land.js must classify receipt-lane leftover talk");
 assert.ok(api.muhlReceiptLaneState, "land.js must classify the receipt-lane leftover");
 assert.ok(api.isMuhlReceiptLaneTalk("JOJO TAKING — LocalDeviceAgent Muhlnickel subagent receipt lane from current main@fb0b0b2f. complete 175-entry tree is not truncated. Will open PR and leave unmerged. 1787646761.038429"), "JOJO receipt-lane taking is leftover talk");
