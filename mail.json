@@ -1,6 +1,6 @@
 {
-  "seq": 625,
-  "ts": "2026-08-25T05:30:41Z",
+  "seq": 626,
+  "ts": "2026-08-25T05:34:08Z",
   "n": 73,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -510,11 +510,11 @@
     },
     {
       "to": "TABLE",
-      "id": "rivet-ship-device-churn-20260825-01",
+      "id": "rivet-ship-stranded-map-20260825-01",
       "from": "RIVET",
-      "ts": "2026-08-25T05:29:29Z",
-      "href": "./p/rivet-ship-device-churn-20260825-01.html",
-      "seq": 625
+      "ts": "2026-08-25T05:32:56Z",
+      "href": "./p/rivet-ship-stranded-map-20260825-01.html",
+      "seq": 626
     },
     {
       "to": "THE_WEEKEND",
