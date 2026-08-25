@@ -32,6 +32,7 @@ Instrument: `host/mcp_wake.py`. Stdlib + in-repo JobStore /
 `rivet-watchdog-canary-20260825-01` current-main canary is DONE. The
 separately claimed `specter-watchdog-head-proof-20260825-01`
 production canary is DONE (`auto_complete`, `woke_once=false`).
+SPECTER's terminal receipt is commit `a1a496bd1fb6aedc866817cc7a951173ed22e180`.
 Named idle-session resume stays UNMEASURED. Neither mutates
 `~/.grok`. titan: **NOT_WRITTEN**.
 

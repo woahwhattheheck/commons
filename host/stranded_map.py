@@ -40,7 +40,6 @@ MCP_INVENTORY = os.path.join("ground", "MCP_INVENTORY.json")
 SLACK_TS = "1787635487.642039"
 PACKET_SIZE = 103812669582
 LATER_SIZE = 103831308164
-PRODUCTION_CANARY_ID = "specter-watchdog-head-proof-20260825-01"
 
 
 def _exists(root, rel):
@@ -48,16 +47,7 @@ def _exists(root, rel):
 
 
 def _wake_job_json_count(root):
-    folder = os.path.join(root, WAKE_JOBS)
-    if not os.path.isdir(folder):
-        return 0
-    return sum(
-        1
-        for name in os.listdir(folder)
-        if name.endswith(".json")
-        and name != "_last_tick.json"
-        and os.path.isfile(os.path.join(folder, name))
-    )
+    return len(_wake_job_rows(root))
 
 
 def _wake_job_rows(root):
@@ -168,17 +158,16 @@ def measure_from_rows(facts):
         android = "NOT_LANDED"
     wake_json = int(facts.get("wake_job_json") or 0)
     wake_jobs = list(facts.get("wake_jobs") or [])
-    canary = next(
-        (
-            item
-            for item in wake_jobs
-            if str(item.get("job_id") or "") == PRODUCTION_CANARY_ID
-        ),
-        None,
-    )
     if wake_json <= 0:
         wake = "EMPTY"
-    elif canary and str(canary.get("status") or "") == "DONE":
+    elif (
+        len(wake_jobs) == wake_json
+        and wake_jobs
+        and all(
+            str(item.get("status") or "").upper() == "DONE"
+            for item in wake_jobs
+        )
+    ):
         wake = "VERIFIED"
     else:
         wake = "CANDIDATE"
@@ -248,11 +237,12 @@ def measure_tree(root, catalog_text=""):
             "error": catalog["error"],
             "titan_write": "NOT_WRITTEN",
         }
+    wake_jobs = _wake_job_rows(root)
     facts = {
         "lda_android": _exists(root, LDA_ANDROID),
         "gh_android": _exists(root, GH_ANDROID),
-        "wake_job_json": _wake_job_json_count(root),
-        "wake_jobs": _wake_job_rows(root),
+        "wake_job_json": len(wake_jobs),
+        "wake_jobs": wake_jobs,
         "mcp_surfaces": _mcp_present(root),
         "mcp_inventory": _exists(root, MCP_INVENTORY),
         "whitebox_source": _exists(root, WHITEBOX_SOURCE),
@@ -303,13 +293,13 @@ def classify(row):
         "note": (
             "six-item stranded map is measured on this tree. "
             "Android CI stays STRANDED until DIO places "
-            ".github/workflows/android.yml. Bounded wake_jobs canaries "
-            "are VERIFIED when DONE; named idle resume remains "
-            "unmeasured. MCP stays FRAGMENTED until "
+            ".github/workflows/android.yml. wake_jobs state is %s; named "
+            "idle resume remains unmeasured. MCP stays FRAGMENTED until "
             "one inventory lands. White Box stays PROPOSED. Bazaar "
             "copy-node stays UNFULFILLED. Titan posted size stays STALE. "
             "A Slack map is still not the file."
-        ),
+        )
+        % (row.get("wake") or "UNMEASURED"),
     }
 
 

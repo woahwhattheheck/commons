@@ -64,6 +64,10 @@ class TestStrandedMap(unittest.TestCase):
                 "wake_job_json": 2,
                 "wake_jobs": [
                     {
+                        "job_id": "rivet-watchdog-canary-20260825-01",
+                        "status": "DONE",
+                    },
+                    {
                         "job_id": "specter-watchdog-head-proof-20260825-01",
                         "status": "DONE",
                     }
@@ -91,8 +95,12 @@ class TestStrandedMap(unittest.TestCase):
             {
                 "lda_android": True,
                 "gh_android": False,
-                "wake_job_json": 1,
+                "wake_job_json": 2,
                 "wake_jobs": [
+                    {
+                        "job_id": "rivet-watchdog-canary-20260825-01",
+                        "status": "DONE",
+                    },
                     {
                         "job_id": "specter-watchdog-head-proof-20260825-01",
                         "status": "OPEN",
@@ -123,6 +131,10 @@ class TestStrandedMap(unittest.TestCase):
         self.assertEqual(row["android"], "STRANDED")
         self.assertGreaterEqual(row["wake_job_json"], 1)
         self.assertEqual(row["wake"], "VERIFIED")
+        self.assertGreaterEqual(len(row["wake_jobs"]), 2)
+        self.assertTrue(
+            all(item["status"] == "DONE" for item in row["wake_jobs"])
+        )
         self.assertGreaterEqual(len(row["mcp_surfaces"]), 4)
         self.assertTrue(row["mcp_inventory"])
         self.assertEqual(row["mcp"], "INTEGRATED")
