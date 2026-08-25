@@ -2,8 +2,11 @@
   "kind": "TITAN_MOVE_PACKET",
   "computer": "titan.gguf is the computer. This packet is not.",
   "titan": "NOT_WRITTEN",
-  "rule": "offset request goes in the claim. Do not choose a public band.",
+  "rule": "claimed append offsets dest FROM FILE titan_size=103803350291. Apply reallocates if live size differs.",
   "journal": "every pre-image. new = old | mask. ones only rise.",
+  "claimed_append_base": 103803350291,
+  "claimed_append_end": 103812669582,
+  "claimed_append_source": "dest FROM FILE: p/goat-titan-inject-20260820-01.md titan.gguf 103803350291; muhl/lda-docs/HANDOFF.md titan_size 103803350291",
   "count": 31,
   "organs": [
     {
@@ -18,9 +21,9 @@
       "depth": 30,
       "len": 387189,
       "sha256": "83c3299088ae56b871af6e14443d3d63c5a9b8a9a123cc4aa9f98ed63fb30b7e",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803350291,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -35,9 +38,9 @@
       "depth": 2,
       "len": 570,
       "sha256": "20a4a399e7c13216d029604da1f30e043bbdc44e2ea11491987c332309042aba",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803737480,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -52,9 +55,9 @@
       "depth": 2,
       "len": 630,
       "sha256": "521a23200c1731ee1e775ab70236569b713cdfca12ca3f921863d3cf68d36fcb",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803738050,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -69,9 +72,9 @@
       "depth": 2,
       "len": 690,
       "sha256": "c8301c2345e67dfe6f9b1f91127fab896224347a72ba8ac044313275fe948ee7",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803738680,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -86,9 +89,9 @@
       "depth": 2,
       "len": 630,
       "sha256": "54418132f3c610b5cd5cfd6332a74928c3b19e52ca081569e18abc0ea8142445",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803739370,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -103,9 +106,9 @@
       "depth": 2,
       "len": 690,
       "sha256": "43781849e21f4df0ff523966d47c0d9b2643e0c0abdaf0dd8f32b02fded71cae",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803740000,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -120,9 +123,9 @@
       "depth": 2,
       "len": 630,
       "sha256": "997c53127e555de004862e602089bc19bf5d2a1d0eb4b853a875aef467b6da82",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803740690,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -137,9 +140,9 @@
       "depth": 2,
       "len": 750,
       "sha256": "189a2f3a68304a14622b6a08d4e7020f5f41d8d27052e3622d9482c9d80d63c9",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803741320,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -154,9 +157,9 @@
       "depth": 2,
       "len": 570,
       "sha256": "262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803742070,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -171,9 +174,9 @@
       "depth": 2,
       "len": 750,
       "sha256": "f972b8c960fb0e338b003b35bf6052775fc527e5879b048a9a050ce643c6e0d7",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803742640,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -188,9 +191,9 @@
       "depth": 16,
       "len": 1125830,
       "sha256": "d842726a5ddfa7d82bb1026cd0d199140b168e882013fe6d23e6abe0624b39e1",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103803743390,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -205,9 +208,9 @@
       "depth": 16,
       "len": 617502,
       "sha256": "8530b99896e8ec35d74d462f600448aa60e64f9f4cd8833b561666d50eb1e97d",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103804869220,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -222,9 +225,9 @@
       "depth": 7,
       "len": 228638,
       "sha256": "09214540b3f3117ab93a4c509017a5e7b9c5f12d86545069af4ffcdae99c6632",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103805486722,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -239,9 +242,9 @@
       "depth": 34,
       "len": 328734,
       "sha256": "1f392a877594a9a81d28cca02e3f204355aba1e02c4c11b5cb94370ded7309bd",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103805715360,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -256,9 +259,9 @@
       "depth": 24,
       "len": 973150,
       "sha256": "f080051b9f1b44bcf1923d7a61049a61affb7d49a652774b9ed9c8956ee9036d",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103806044094,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -273,9 +276,9 @@
       "depth": 27,
       "len": 782892,
       "sha256": "9aaa8c738f9c2e8a0eaa24f419da83ef7e3125897e80a1f732067db02fdac827",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103807017244,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -290,9 +293,9 @@
       "depth": 12,
       "len": 230734,
       "sha256": "9930ee8299abb029e5ec1c7c20c9f905e22f3d2d7801719e75cb8739cf75244f",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103807800136,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -307,9 +310,9 @@
       "depth": 30,
       "len": 62250,
       "sha256": "a4d019d59035be2ff3300a18bf71bf4c880fdbc7b66ed21c8fe8844073d5496a",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103808030870,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -324,9 +327,9 @@
       "depth": 192,
       "len": 69374,
       "sha256": "874b08be34ba5263ef9ece0217c213aa14d9d9fa0e673c74c0d12a8b8799f4b4",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103808093120,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -341,9 +344,9 @@
       "depth": 14,
       "len": 94686,
       "sha256": "55a52541c1bbee1c4b7115d4ca745b6c04f71eec2832307f2b5d19c398148f44",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103808162494,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -358,9 +361,9 @@
       "depth": 20,
       "len": 901150,
       "sha256": "ac8e7473739af617f3231d027d679aceb4ed809f2cf0b5f2900add38e85aae71",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103808257180,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -375,9 +378,9 @@
       "depth": 42,
       "len": 462750,
       "sha256": "be5ba528497b2cc2c8f14cfb433d8fdc2a49d1bf6477159ca92e844b6f665658",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103809158330,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -392,9 +395,9 @@
       "depth": 32,
       "len": 204406,
       "sha256": "fcd359538d3568018c650db7384fa1c1dffc982a4eecded47d716a645a15cd21",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103809621080,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -409,9 +412,9 @@
       "depth": 25,
       "len": 645214,
       "sha256": "f07d86557d8c3b51414242639500082d8224a5e0473502a5fed0acd043fb003a",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103809825486,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -426,9 +429,9 @@
       "depth": 14,
       "len": 419614,
       "sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103810470700,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -443,9 +446,9 @@
       "depth": 18,
       "len": 406302,
       "sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103810890314,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -460,9 +463,9 @@
       "depth": 45,
       "len": 717854,
       "sha256": "302a242ebd483d25b4b5e3f62943a4e21e090d741fa431132a520316e4b5840d",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103811296616,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -477,9 +480,9 @@
       "depth": 2,
       "len": 18030,
       "sha256": "20e48ea737c37cca5c4bb4afe782eb9f945f429cdd5ad5949c0b6f5a31678e43",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103812014470,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -494,9 +497,9 @@
       "depth": 2,
       "len": 5430,
       "sha256": "29fb6ee200b645c990e60b98ff61e060b7fe347e11229a746dc26ccbbdacf788",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103812032500,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -511,9 +514,9 @@
       "depth": 2,
       "len": 7230,
       "sha256": "29c513c77efad8155541e8b80c70c51ba5cc61ea5168d41df6c182a133113ed3",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103812037930,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     },
     {
@@ -528,9 +531,9 @@
       "depth": 23,
       "len": 624422,
       "sha256": "f526cdbf6307df52bfa87fdc806f17f75f04e47b7ae3d0adaceb8bfabae28c4b",
-      "offset": 0,
-      "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
       "titan": "NOT_WRITTEN",
+      "offset": 103812045160,
+      "requested_offset_band": "CLAIMED_APPEND dest FROM FILE titan_size=103803350291",
       "journal": "new = old | mask; ones only rise; re-read before write"
     }
   ]

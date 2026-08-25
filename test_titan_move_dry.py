@@ -43,8 +43,22 @@ class TestTitanMoveDry(unittest.TestCase):
         }
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "NOT_LANDED")
-        self.assertIn("OWNER_LOCAL_ALLOCATOR", verdict["note"])
+        self.assertIn("zero", verdict["note"])
         self.assertIn("31/31", verdict["note"])
+
+    def test_claimed_offsets_without_write_are_claimed(self):
+        measured = {
+            "measured": True,
+            "count": 31,
+            "excerpt_count": 31,
+            "titan": "NOT_WRITTEN",
+            "nonzero_offsets": 31,
+            "reread": False,
+        }
+        verdict = classify(measured)
+        self.assertEqual(verdict["state"], "CLAIMED")
+        self.assertIn("claimed append", verdict["note"])
+        self.assertIn("titan_move_apply.py", verdict["note"])
 
     def test_written_and_reread_is_integrated(self):
         measured = {
@@ -85,13 +99,14 @@ class TestTitanMoveDry(unittest.TestCase):
         self.assertTrue(row["measured"], row)
         self.assertGreaterEqual(row["excerpt_count"], 31)
         self.assertEqual(row["titan"], "NOT_WRITTEN")
-        self.assertEqual(row["nonzero_offsets"], 0)
+        self.assertEqual(row["nonzero_offsets"], 31)
         self.assertFalse(row["reread"])
         verdict = classify(row)
-        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["state"], "CLAIMED")
         blocker = owner_blocker(row, verdict)
-        self.assertIn("OWNER_LOCAL_ALLOCATOR", blocker["WHY_ONLY_BRYCE"])
+        self.assertIn("titan.gguf is not on this cloud box", blocker["WHY_ONLY_BRYCE"])
         self.assertIn("titan.gguf", blocker["NEED"])
+        self.assertIn("titan_move_apply.py", blocker["NEED"])
 
 
 if __name__ == "__main__":

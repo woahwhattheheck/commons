@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build the journaled titan MOVE packet from public excerpt sidecars.
 
-Does not open titan.gguf. Does not choose an offset band.
-new = old | mask. Ones only rise. Re-read before every owner-PC write.
+Claimed append offsets are dest FROM FILE (titan.gguf size
+103803350291). This does not write titan.gguf. Apply reallocates
+if live size differs. new = old | mask. Ones only rise.
 
   python3 muhl_titan_move_packet.py          # write packet JSON
   python3 muhl_titan_move_packet.py --dry    # print, write nothing
@@ -16,6 +17,13 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+sys.path.insert(0, os.path.join(REPO_ROOT, "host"))
+from titan_move_offsets import (
+    CLAIMED_APPEND_BASE,
+    CLAIMED_APPEND_SOURCE,
+    allocate_rows,
+)
+
 EXCERPT_DIR = os.path.join(REPO_ROOT, "excerpts", "20260823")
 PACKET_PATH = os.path.join(EXCERPT_DIR, "titan_move_packet.json")
 
@@ -51,20 +59,25 @@ def build_packet():
                 "depth": row.get("depth"),
                 "len": len(raw),
                 "sha256": digest,
-                "offset": 0,
-                "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
                 "titan": "NOT_WRITTEN",
-                "journal": "new = old | mask; ones only rise; re-read before write",
             })
     rows.sort(key=lambda row: row["name"])
+    allocated, end = allocate_rows(rows, base=CLAIMED_APPEND_BASE)
     return {
         "kind": "TITAN_MOVE_PACKET",
         "computer": "titan.gguf is the computer. This packet is not.",
         "titan": "NOT_WRITTEN",
-        "rule": "offset request goes in the claim. Do not choose a public band.",
+        "rule": (
+            "claimed append offsets dest FROM FILE titan_size="
+            "%d. Apply reallocates if live size differs."
+            % CLAIMED_APPEND_BASE
+        ),
         "journal": "every pre-image. new = old | mask. ones only rise.",
-        "count": len(rows),
-        "organs": rows,
+        "claimed_append_base": CLAIMED_APPEND_BASE,
+        "claimed_append_end": end,
+        "claimed_append_source": CLAIMED_APPEND_SOURCE,
+        "count": len(allocated),
+        "organs": allocated,
     }
 
 
@@ -73,9 +86,15 @@ def main(argv=None):
     dry = "--dry" in argv
     packet = build_packet()
     print("TITAN_MOVE_PACKET structural receipt")
-    print("  count=%d titan=NOT_WRITTEN" % packet["count"])
+    print(
+        "  count=%d titan=NOT_WRITTEN base=%s end=%s"
+        % (packet["count"], packet["claimed_append_base"], packet["claimed_append_end"])
+    )
     for row in packet["organs"]:
-        print("  %s %s g sha256=%s" % (row["name"], row["n_gate"], row["sha256"][:12]))
+        print(
+            "  %s %s g off=%s sha256=%s"
+            % (row["name"], row["n_gate"], row["offset"], row["sha256"][:12])
+        )
     if dry:
         print("  --dry: no files written")
         return 0
