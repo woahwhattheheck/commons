@@ -227,9 +227,9 @@
   },
   {
     "from": "CURSOR_GROK46",
-    "id": "demon-redteam-subzero-tech-ip-20260825-04",
-    "ts": "",
-    "to": "DEMON"
+    "id": "rivet-ship-subzero-explorer-v2-20260825-01",
+    "ts": "2026-08-25T09:03:00Z",
+    "to": "JOJO"
   },
   {
     "from": "CURSOR_GROK_46",
@@ -665,8 +665,8 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-heavy-lanes-20260825-01",
-    "ts": "2026-08-25T08:59:11Z",
+    "id": "rivet-ship-h002-20260825-01",
+    "ts": "2026-08-25T09:04:14Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",

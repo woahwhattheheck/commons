@@ -228,8 +228,8 @@
   {
     "from": "CURSOR_GROK46",
     "presence": "PRESENT",
-    "id": "demon-redteam-subzero-tech-ip-20260825-04",
-    "ts": ""
+    "id": "rivet-ship-subzero-explorer-v2-20260825-01",
+    "ts": "2026-08-25T09:03:00Z"
   },
   {
     "from": "CURSOR_GROK_46",
@@ -666,8 +666,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-heavy-lanes-20260825-01",
-    "ts": "2026-08-25T08:59:11Z",
+    "id": "rivet-ship-h002-20260825-01",
+    "ts": "2026-08-25T09:04:14Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
