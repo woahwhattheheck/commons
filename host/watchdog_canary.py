@@ -139,12 +139,26 @@ def parse_watchdog(text):
 
 
 def tick_copy(job, present, worker_id="rivet-canary"):
-    """Tick one job in a temp store against a SHA-pinned recording oracle."""
+    """Replay one job OPEN in a temp store against a pinned recording oracle.
+
+    Production mutates the durable source to DONE. A verifier must reopen its
+    isolated copy or a successful terminal receipt prevents all oracle reads
+    and makes the next verification run falsely fail.
+    """
     tmp = tempfile.mkdtemp(prefix="watchdog-canary-")
     try:
         store = JobStore(tmp)
         payload = dict(job)
         payload["job_id"] = JOB_ID
+        payload["status"] = "OPEN"
+        payload["attempt_count"] = 0
+        payload["event_receipts"] = []
+        payload["lease"] = None
+        payload["in_backoff"] = False
+        payload["no_progress_count"] = 0
+        payload["next_wake_at"] = "2026-08-25T00:00:00Z"
+        payload["woke_once"] = False
+        payload.pop("completed_at", None)
         path = os.path.join(tmp, "%s.json" % JOB_ID)
         with open(path, "w", encoding="utf-8") as handle:
             json.dump(payload, handle, ensure_ascii=True, indent=2, sort_keys=True)

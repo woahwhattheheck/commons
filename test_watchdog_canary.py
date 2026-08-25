@@ -94,6 +94,7 @@ class TestWatchdogCanary(unittest.TestCase):
         self.assertGreaterEqual(wake_job_json_count(ROOT), 1)
         job = load_canary(ROOT)
         self.assertEqual(job.get("job_id"), JOB_ID)
+        self.assertEqual(job.get("status"), "DONE")
         self.assertEqual(job.get("result_address"), PRESENT_ID)
         self.assertEqual(
             (job.get("completion_predicate") or {}).get("type"),
@@ -116,8 +117,13 @@ class TestWatchdogCanary(unittest.TestCase):
         self.assertEqual(PIN_SHA, "4fc766f59e66999eb13e7f864594f5f698e1660b")
         with open(os.path.join(ROOT, CANARY_REL), encoding="utf-8") as handle:
             durable = json.load(handle)
-        self.assertEqual(durable["status"], "OPEN")
-        self.assertNotEqual(durable.get("status"), "DONE")
+        self.assertEqual(durable["status"], "DONE")
+        self.assertTrue(
+            any(
+                receipt.get("event") == "auto_complete"
+                for receipt in durable.get("event_receipts") or []
+            )
+        )
 
 
 if __name__ == "__main__":

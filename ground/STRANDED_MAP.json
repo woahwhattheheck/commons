@@ -17,8 +17,13 @@
     {
       "id": "wake_jobs",
       "path": "wake_jobs/",
-      "claim": "JOJO",
-      "note": "durable canary wake_jobs/rivet-watchdog-canary-20260825-01.json now present; named idle bc- resume stays UNMEASURED"
+      "claim": "JOJO/RIVET/SPECTER",
+      "production_canaries": [
+        "rivet-watchdog-canary-20260825-01",
+        "specter-watchdog-head-proof-20260825-01"
+      ],
+      "result_address": "ridge-cursor-wake-loop-20260822-01",
+      "note": "RIVET's durable current-main canary is DONE; SPECTER's bounded canary is OPEN in source and its PR workflow proved HEAD-proof auto-DONE with zero wake, delivery, and process model invocation; named idle resume remains UNMEASURED"
     },
     {
       "id": "mcp_surfaces",
