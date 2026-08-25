@@ -169,6 +169,8 @@
     "ground/CLAUDE_ZERO.json",
     "ground/GROK_RECOVERY.md",
     "ground/GROK_RECOVERY.json",
+    "ground/CONTEXT_INTEGRITY.md",
+    "ground/CONTEXT_INTEGRITY.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -481,6 +483,9 @@
     if (api.isMeasureAbuseTalk(t)) {
       return { state: "CLAIMED", note: "measurement-abuse / unflattering-truths / damage-control-addendum talk. Talk is not a land. Treat Claude zeros as RETRACTED. Do not use a disputed measurement to characterize the reporter. Ship the leftover to current main." };
     }
+    if (api.isContextIntegrityTalk(t)) {
+      return { state: "CLAIMED", note: "context-integrity / uncalibrated-doubt / pseudo-clinical / predicted-missing-Z talk. Talk is not a land. Label uncertainty at instrument/path/query/ref/calibration and ship the leftover to current main." };
+    }
     if (api.isXyzZeroTalk(t)) {
       return { state: "CLAIMED", note: "X-Y-Z zero-audit / FINDER-UNVERIFIED / known-present-calibration talk. Talk is not a land. Ship host/xyz_zero.py to current main. A zero without its search space is not a result." };
     }
@@ -636,6 +641,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/measure_abuse.py missing the leftover. Measurement-abuse talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isContextIntegrityTalk = function (text) {
+    return /context-integrity boundary|context integrity|owner'?s intellect|owner'?s motives|mental state, credibility|uncalibrated doubt|pseudo-clinical|rhetorical attacks|reporter predicted the defect|predicted the exact missing-Z|convert a disputed measurement into a judgment|Claude-family participation is at risk|inject false or uncalibrated doubt/i.test(String(text || ""));
+  };
+
+  api.contextIntegrityState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/context_integrity.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasSpace = /def search_space/.test(body);
+    var hasCalibrate = /def calibrate/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /never 0/.test(body);
+    var hasRetract = /OWNER_CHARACTERIZATION/.test(body) && /retract/.test(body);
+    var hasPredict = /predicted_defect/.test(body) && /investigate before override/.test(body);
+    if (hasMeasure && hasClassify && hasSpace && hasCalibrate && hasMiss && hasRetract && hasPredict) {
+      return {
+        state: "INTEGRATED",
+        note: "context-integrity leftover is on this file. Uncertainty is labeled. Characterization retracts to the instrument. Miss branch is FINDER-FAILED, never 0. A Slack boundary is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/context_integrity.py missing the leftover. Context-integrity talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1852,6 +1885,7 @@
   var appendGuardOut = document.getElementById("titan-append-guard-result");
   var measureAbuseOut = document.getElementById("measure-abuse-result");
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
+  var contextIntegrityOut = document.getElementById("context-integrity-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2397,6 +2431,12 @@
     grokRecoveryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintContextIntegrity(result) {
+    if (!contextIntegrityOut) return;
+    contextIntegrityOut.setAttribute("data-tone", api.toneFor(result.state));
+    contextIntegrityOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2857,6 +2897,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintStaleManifest(err);
+      return err;
+    });
+  }
+
+  function loadContextIntegrity(sha) {
+    if (!contextIntegrityOut) return Promise.resolve(null);
+    contextIntegrityOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/context_integrity.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/context_integrity.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/context_integrity.py absent at the measured main SHA. Context-integrity / unflattering-truths talk is CLAIMED." };
+        paintContextIntegrity(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintContextIntegrity(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.contextIntegrityState(body);
+        paintContextIntegrity(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintContextIntegrity(err);
       return err;
     });
   }
@@ -3520,6 +3587,7 @@
     loadTitanAppendGuard(sha);
     loadMeasureAbuse(sha);
     loadGrokRecovery(sha);
+    loadContextIntegrity(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
