@@ -129,8 +129,8 @@ function fireAction(action,status,button){
   .then(function(r){
    if(!r.ok){fail(index,r.status===429?retryAfter(r):failureCooldown);return}
    state.active=index;delete state.cooldowns[host];saveRelayState(state);
-   status.textContent="RECORDED. Commons accepted "+action.id+". The GitHub executor will fire this exact addressed verb and surface its result.";
-   button.textContent="RECORDED";
+   status.textContent="CARRIER_ACCEPTED at "+host+". Git durability, execution, and result are still pending for "+action.id+". Verify the exact p/"+action.id+".md file on current main.";
+   button.textContent="SENT — GIT PENDING";
   })
   .catch(function(){fail(index,failureCooldown)});
  }

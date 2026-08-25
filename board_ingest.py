@@ -38,11 +38,23 @@ LAST_WROTE = []
 # _stage_board so the correction actually lands (many are not in ASSET_PATHS)
 ASSET_SYNCED = []
 ISSUE_TOUCHED = []
+# In-memory receipt detail for the current publisher run. This is never an
+# admission decision: it only distinguishes a durable source record from the
+# derived projection that may still be waiting on a race retry.
+PROJECTION_STATUS = {
+    "state": "UNKNOWN",
+    "source_sha256": "",
+}
+# Bump when renderer semantics or the set of projection inputs changes. The
+# protocol component prevents an old receipt for the same post corpus from
+# masquerading as proof for a new renderer.
+PROJECTION_PROTOCOL = "v1"
 SCRATCH_RESET = (
     ".ingest.lock",
     ".push_fail_receipt",
     ".landed_receipt",
     ".issue_reject_receipt",
+    "projection/pending",
     "_git_ok.py",
     "_cairn_posts.py",
     "_cairn_land.py",
@@ -290,6 +302,7 @@ ASSET_PATHS = [
     "mod.html", "hidden.json", "modlog.json", "archive.html", "d",
     "wake.html", "orient.json", "wake.json",
     "claims.html", "claims.json",
+    "projection_state.json", "projection/converged",
     "session.json", "session.js",
     "ENTRY.md", "entry.html", "vent.html", "salon.html", "salon.json",
     "lab.html", "annex.html", "unlisted.html", "lanes.json",
@@ -381,6 +394,119 @@ def _load_json(path: str, default):
     except json.JSONDecodeError:
         return default
     return data if data is not None else default
+
+
+def _snapshot(relpaths):
+    """Return a deterministic aggregate over regular files under ROOT."""
+    digest = hashlib.sha256()
+    digest.update(b"commons-file-snapshot-v1\0")
+    count = 0
+    size = 0
+    for rel in sorted(set(str(path).replace("\\", "/") for path in relpaths)):
+        path = os.path.join(ROOT, *rel.split("/"))
+        if not os.path.isfile(path):
+            continue
+        with open(path, "rb") as handle:
+            data = handle.read()
+        file_hash = hashlib.sha256(data).hexdigest()
+        digest.update(rel.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(str(len(data)).encode("ascii"))
+        digest.update(b"\0")
+        digest.update(file_hash.encode("ascii"))
+        digest.update(b"\n")
+        count += 1
+        size += len(data)
+    return {"sha256": digest.hexdigest(), "files": count, "bytes": size}
+
+
+def post_source_snapshot():
+    """Digest the canonical post corpus; tracked HTML is deliberately excluded."""
+    pdir = os.path.join(ROOT, "p")
+    names = []
+    if os.path.isdir(pdir):
+        names = ["p/" + name for name in os.listdir(pdir) if name.endswith(".md")]
+    return _snapshot(names)
+
+
+def _walk_rel(relroot, *, skip_prefixes=()):
+    root = os.path.join(ROOT, *relroot.split("/"))
+    if not os.path.exists(root):
+        return []
+    if os.path.isfile(root):
+        return [relroot]
+    out = []
+    for parent, dirs, files in os.walk(root):
+        dirs.sort()
+        files.sort()
+        for name in files:
+            rel = os.path.relpath(os.path.join(parent, name), ROOT).replace("\\", "/")
+            if any(rel == prefix or rel.startswith(prefix.rstrip("/") + "/")
+                   for prefix in skip_prefixes):
+                continue
+            out.append(rel)
+    return out
+
+
+def projection_surface_snapshot():
+    """Digest the tracked board surfaces emitted/staged by a full rebuild."""
+    paths = []
+    for rel in ASSET_PATHS:
+        if rel in ("land", "artifacts", "projection_state.json", "projection/converged"):
+            continue
+        if rel == "p":
+            pdir = os.path.join(ROOT, "p")
+            if os.path.isdir(pdir):
+                paths.extend("p/" + name for name in os.listdir(pdir) if name.endswith(".html"))
+            continue
+        if rel == "builds":
+            paths.extend(_walk_rel(rel, skip_prefixes=("builds/records",)))
+            continue
+        paths.extend(_walk_rel(rel))
+    return _snapshot(paths)
+
+
+def _projection_receipt_rel(source_sha256, state):
+    return "projection/%s/%s/%s.json" % (state, PROJECTION_PROTOCOL, source_sha256)
+
+
+def _write_once_json(rel, row):
+    text = json.dumps(row, indent=2, sort_keys=True) + "\n"
+    path = os.path.join(ROOT, *rel.split("/"))
+    if os.path.isfile(path):
+        if _read(path) == text:
+            return "unchanged"
+        raise RuntimeError("projection receipt path changed bytes: %s" % rel)
+    _write(path, text)
+    return "wrote"
+
+
+def write_projection_convergence():
+    """Write deterministic phase-two proof for the exact p/*.md snapshot."""
+    source = post_source_snapshot()
+    surface = projection_surface_snapshot()
+    row = {
+        "schema": "commons-projection-v1",
+        "protocol": PROJECTION_PROTOCOL,
+        "state": "CONVERGED_IN_GIT_AT_THIS_TREE",
+        "source": source,
+        "projection": surface,
+        "scope": "p/*.md -> tracked Commons board surfaces",
+        "pages_deployment": "UNVERIFIED",
+    }
+    _write(os.path.join(ROOT, "projection_state.json"),
+           json.dumps(row, indent=2, sort_keys=True))
+    receipt = {
+        "schema": "commons-projection-v1",
+        "protocol": PROJECTION_PROTOCOL,
+        "state": "CONVERGED_SOURCE_SNAPSHOT",
+        "source": source,
+        "scope": "p/*.md",
+        "pages_deployment": "UNVERIFIED",
+    }
+    rel = _projection_receipt_rel(source["sha256"], "converged")
+    _write_once_json(rel, receipt)
+    return row
 
 
 def slug_id(mid: str):
@@ -898,11 +1024,15 @@ def record_landed(st):
     # ISSUE_TOUCHED is deliberately scoped to the webhook envelope.
     posts = list(ISSUE_TOUCHED) if event_name == "issues" else list(LAST_WROTE)
     state = "DURABLE_PAGE" if posts else "NO_NEW_RECORD"
+    head_result = _git(["rev-parse", "HEAD"], git_env())
+    git_head = (head_result.stdout or "").strip() if head_result.returncode == 0 else ""
     row = {
         "state": state,
         "publish": st,
         "receipt_scope": "GIT_SOURCE",
         "public_page": "UNVERIFIED",
+        "git_head": git_head,
+        "projection": dict(PROJECTION_STATUS),
         "ts": now_ts(),
         "posts": posts,
     }
@@ -914,9 +1044,16 @@ def record_landed(st):
             f.write("landed=%s\n" % ("1" if ids else "0"))
             f.write("landed_ids=%s\n" % ",".join(ids)[:400])
             f.write("receipt_state=%s\n" % state)
+            f.write("projection_pending=%s\n" % (
+                "1" if PROJECTION_STATUS.get("state") == "PENDING_REBAKE" else "0"
+            ))
+            f.write("projection_source_sha256=%s\n" % (
+                PROJECTION_STATUS.get("source_sha256") or ""
+            ))
     print(
-        "LANDING %s publish=%s ids=%s ts=%s"
-        % (state, st, ",".join(ids) or "(none)", row["ts"]),
+        "LANDING %s publish=%s projection=%s ids=%s ts=%s"
+        % (state, st, PROJECTION_STATUS.get("state") or "UNKNOWN",
+           ",".join(ids) or "(none)", row["ts"]),
         flush=True,
     )
     return row
@@ -953,6 +1090,51 @@ def _git(args, env, timeout=90):
         errors="replace",
         timeout=timeout,
     )
+
+
+def _head_has(rel, env):
+    return _git(["cat-file", "-e", "HEAD:%s" % rel], env).returncode == 0
+
+
+def write_projection_pending():
+    """Create the write-once pending receipt for the current committed corpus."""
+    source = post_source_snapshot()
+    pending_rel = _projection_receipt_rel(source["sha256"], "pending")
+    row = {
+        "schema": "commons-projection-v1",
+        "protocol": PROJECTION_PROTOCOL,
+        "state": "PENDING_REBAKE",
+        "source": source,
+        "scope": "p/*.md",
+        "repair": "repository dispatch once after an issue run; five-minute schedule fallback",
+        "pages_deployment": "UNVERIFIED",
+    }
+    _write_once_json(pending_rel, row)
+    return source
+
+
+def refresh_projection_status(env):
+    """Measure local HEAD after publication; never infer Pages deployment."""
+    source = post_source_snapshot()
+    surface = projection_surface_snapshot()
+    state = _load_json(os.path.join(ROOT, "projection_state.json"), {})
+    converged_rel = _projection_receipt_rel(source["sha256"], "converged")
+    converged = (
+        _head_has(converged_rel, env)
+        and state.get("protocol") == PROJECTION_PROTOCOL
+        and state.get("source") == source
+        and state.get("projection") == surface
+    )
+    PROJECTION_STATUS.clear()
+    PROJECTION_STATUS.update({
+        "state": "CONVERGED_IN_GIT" if converged else "PENDING_REBAKE",
+        "source_sha256": source["sha256"],
+        "source_files": source["files"],
+        "projection_sha256": surface["sha256"] if converged else "",
+        "protocol": PROJECTION_PROTOCOL,
+        "pages_deployment": "UNVERIFIED",
+    })
+    return dict(PROJECTION_STATUS)
 
 
 class IngestLock:
@@ -1222,6 +1404,8 @@ def _record_paths(env):
 def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=False):
     with ingest_lock():
         env = git_env(env)
+        PROJECTION_STATUS.clear()
+        PROJECTION_STATUS.update({"state": "UNKNOWN", "source_sha256": ""})
         name = (
             env.get("GIT_COMMITTER_NAME")
             or env.get("GIT_AUTHOR_NAME")
@@ -1244,6 +1428,46 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
             if c.returncode != 0 and "nothing to commit" not in ((c.stderr or "") + (c.stdout or "")).lower():
                 sys.stderr.write((c.stderr or "") + (c.stdout or "") + "\n")
             return c
+
+        def land_pending_snapshot():
+            """CAS a pending marker only after source is durable on main.
+
+            A pending marker must be computed from the refreshed union. It is
+            deliberately a separate tiny commit: replaying a marker that was
+            computed before a non-fast-forward can label the wrong p/*.md
+            corpus when another runner added a post in the meantime.
+            """
+            refreshed = False
+            for attempt in range(1, 5):
+                fetched = _git(["fetch", "origin", "main"], env, timeout=90)
+                if fetched.returncode != 0:
+                    continue
+                local = (_git(["rev-parse", "HEAD"], env).stdout or "").strip()
+                remote = (_git(["rev-parse", "origin/main"], env).stdout or "").strip()
+                if remote and local != remote:
+                    reset = _git(["reset", "--hard", "origin/main"], env, timeout=90)
+                    if reset.returncode != 0:
+                        continue
+                    refreshed = True
+                source = post_source_snapshot()
+                converged_rel = _projection_receipt_rel(source["sha256"], "converged")
+                pending_rel = _projection_receipt_rel(source["sha256"], "pending")
+                if _head_has(converged_rel, env) or _head_has(pending_rel, env):
+                    return "exists", refreshed
+                write_projection_pending()
+                _git(["add", "--", pending_rel], env)
+                pending_commit = commit("projection pending: %s" % source["sha256"][:16])
+                output = ((pending_commit.stderr or "") + (pending_commit.stdout or "")).lower()
+                if pending_commit.returncode != 0:
+                    if "nothing to commit" in output:
+                        return "exists", refreshed
+                    continue
+                pushed = _git(["push", "origin", "HEAD:main"], env, timeout=90)
+                if pushed.returncode == 0:
+                    return "pushed", refreshed
+                print("projection pending CAS retry %s" % attempt, flush=True)
+            print("projection pending marker deferred; bake/dispatch/schedule remain", flush=True)
+            return "deferred", refreshed
 
         # Phase 1 — the record, alone (weekend-085: "push the record first").
         # Measured over 60 runs, 73% of whole-corpus pushes died because every
@@ -1268,7 +1492,13 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
                 recorded = push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta)
                 if recorded != "pushed":
                     return recorded
-                rebuild()
+
+        # The source commit is now on main (or it was already there). Refresh
+        # from origin, CAS the exact union digest, then rebuild from that same
+        # committed corpus. The pending marker never rides record replay.
+        _pending_outcome, pending_refreshed = land_pending_snapshot()
+        if recorded == "pushed" or pending_refreshed:
+            rebuild()
 
         # Phase 2 — the bake. Losing this race is harmless (the next run
         # rebuilds the same pages from the record), so once the record is
@@ -1278,7 +1508,9 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
         c = commit(msg)
         if c.returncode != 0:
             if "nothing to commit" in ((c.stderr or "") + (c.stdout or "")).lower():
+                refresh_projection_status(env)
                 return recorded if recorded == "pushed" else "unchanged"
+            refresh_projection_status(env)
             return "commit-fail" if recorded != "pushed" else "pushed"
         st = push_origin_main(env, extra_paths=extra_paths, fail_meta=fail_meta,
                               record_fail=(recorded != "pushed"), bake_phase=True)
@@ -1306,8 +1538,10 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
                 else:
                     if recorded == "pushed":
                         print("bake retry commit failed; record is durable, bake deferred", flush=True)
+                        refresh_projection_status(env)
                         return "pushed"
                     print("bake retry commit failed", flush=True)
+                    refresh_projection_status(env)
                     return "commit-fail"
             retry = push_origin_main(
                 env,
@@ -1319,15 +1553,20 @@ def commit_and_push(msg, env=None, extra_paths=None, fail_meta=None, add_all=Fal
             )
             if retry == "pushed":
                 print("bake retry pushed from refreshed origin", flush=True)
+                refresh_projection_status(env)
                 return "pushed"
             if recorded == "pushed":
                 print("bake retry deferred after one bounded attempt; record is durable", flush=True)
+                refresh_projection_status(env)
                 return "pushed"
             print("bake retry failed after one bounded attempt", flush=True)
+            refresh_projection_status(env)
             return "push-fail"
         if recorded == "pushed" and st != "pushed":
             print("bake push lost the race; record is durable, next run rebakes", flush=True)
+            refresh_projection_status(env)
             return "pushed"
+        refresh_projection_status(env)
         return st
 
 
@@ -2628,6 +2867,11 @@ def rebuild():
     write_mail(rows, write_pulse(rows))
     # last, so it also catches pages the passes above just re-emitted
     ASSET_SYNCED[:] = sync_asset_keys()
+    # Deterministic source->projection evidence is written after every other
+    # emitted surface. It lands only with phase two; a phase-one-only commit
+    # therefore leaves an explicit pending receipt and cannot impersonate a
+    # converged bake.
+    write_projection_convergence()
     return len(rows)
 
 
@@ -3320,6 +3564,8 @@ def sweep_finalize(planned):
     token = os.environ.get("GITHUB_TOKEN") or ""
     if not token or not planned:
         return
+    head_result = _git(["rev-parse", "HEAD"], git_env())
+    head = (head_result.stdout or "").strip() if head_result.returncode == 0 else "main"
     deadline = time.time() + SWEEP_DEADLINE_S
     for p in planned:
         if time.time() > deadline:
@@ -3347,7 +3593,14 @@ def sweep_finalize(planned):
         if p.get("create_path"):
             body += "\nCreate this identity's memory board: %s" % p.get("create_path")
         if p.get("action") == "close":
-            body += "\nDurable at https://woahwhattheheck.github.io/commons/p/%s.html (verified pushed before this receipt). Duplicate id stays the original." % p.get("id")
+            body += (
+                "\nSource durable at https://github.com/woahwhattheheck/commons/blob/%s/p/%s.md "
+                "(Git source push verified before this receipt)."
+                "\nProjection target (not independently deployed/verified here): "
+                "https://woahwhattheheck.github.io/commons/p/%s.html"
+                "\nGit projection state: %s. Duplicate id stays the original."
+            ) % (head, p.get("id"), p.get("id"),
+                 PROJECTION_STATUS.get("state") or "UNKNOWN")
         try:
             _gh_api(
                 "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/comments" % num,
