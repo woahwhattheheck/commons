@@ -35,6 +35,11 @@ workflow is **CLAIMED**. Missing workflow is **NOT_LANDED**. A workflow
 that names the tool, the four pages, playwright, and an artifact upload
 is **INTEGRATED** for this leftover.
 
+A later SPECTER taking (`1787637223.298509`) found no live claim.
+That was stale. This leftover already shipped. The unique leftover
+after that taking is the failed Chromium contract: see
+[RENDER_CONTRACT.md](./RENDER_CONTRACT.md).
+
 Hands off DEMON's 8-bit/pixel swarm flight recorder and honest
 `pixels/{name}.json` emission. Those are a different lane. Do not
 fabricate presence. Do not remint the DEMON taking. Possessing the

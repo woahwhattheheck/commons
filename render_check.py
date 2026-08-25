@@ -65,6 +65,12 @@ def find_chrome():
 
 
 def serve(directory, port):
+    # Single-thread TCPServer serializes CSS/JS/HTML. Chromium opens
+    # several connections at once; the first large send plus a reset
+    # left visual.html at Page.goto timeout 45000ms on every
+    # render-check run (32812516738 / 32812503966 / 32812350086).
+    # ThreadingMixIn serves those assets in parallel. BrokenPipe is
+    # Chromium closing a connection, not a page bug.
     class Handler(http.server.SimpleHTTPRequestHandler):
         def __init__(self, *a, **kw):
             super().__init__(*a, directory=directory, **kw)
@@ -72,8 +78,27 @@ def serve(directory, port):
         def log_message(self, *a):
             pass
 
-    class Server(socketserver.TCPServer):
+        def handle(self):
+            try:
+                super().handle()
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                return
+
+        def finish(self):
+            try:
+                super().finish()
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                return
+
+        def copyfile(self, source, outputfile):
+            try:
+                super().copyfile(source, outputfile)
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                return
+
+    class Server(socketserver.ThreadingMixIn, socketserver.TCPServer):
         allow_reuse_address = True   # else a back-to-back run hits TIME_WAIT
+        daemon_threads = True
 
     # walk a few ports so two windows can check at once, and so the previous
     # run's socket lingering does not look like a broken tool

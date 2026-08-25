@@ -138,6 +138,8 @@
     "ground/HOST_ZERO.json",
     "ground/CONNECTOR_REVAL.md",
     "ground/CONNECTOR_REVAL.json",
+    "ground/RENDER_CONTRACT.md",
+    "ground/RENDER_CONTRACT.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -371,6 +373,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isRenderContractTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER / workflow-contract / found-no-live-claim talk. Talk is not a land. Measure the failed Chromium run and ship the hang leftover to current main." };
     }
     if (api.isRenderCheckTalk(t)) {
       return { state: "CLAIMED", note: "visual-diff / Chromium-receipt talk. Talk is not a land. Wire render_check.py 8bit.html 8walk.html pixel.html visual.html onto current-main CI." };
@@ -663,6 +668,45 @@
       state: "CANDIDATE",
       note: "cite named a SHA with no paths. Measure the object on current main. A Slack taking is not the file."
     };
+  };
+
+  api.isRenderContractTalk = function (text) {
+    return /workflow-contract|found no live [`']?render_check|specter taking|render-qa execution|prove the actual workflow contract/i.test(String(text || ""));
+  };
+
+  api.renderContractState = function (row) {
+    row = row || {};
+    if (!row.measured) {
+      return { state: "UNMEASURED", note: "render-check contract / run catalog not read. Absence was not measured." };
+    }
+    if (!row.has_exact_command) {
+      return { state: "NOT_LANDED", note: "workflow contract is missing the exact free-runner command. SPECTER / workflow-contract talk is CLAIMED." };
+    }
+    var conclusion = String(row.last_conclusion || "").toLowerCase();
+    var runId = row.last_run_id || "32812516738";
+    var threaded = row.has_threading === true && row.swallows_broken_pipe === true;
+    if (conclusion === "failure" && !threaded) {
+      return {
+        state: "NOT_LANDED",
+        note: "last main render-check run " + runId + " failed. A workflow file is not a passing run. SPECTER taking is CLAIMED."
+      };
+    }
+    if (conclusion === "failure" && threaded) {
+      return {
+        state: "CANDIDATE",
+        note: "last main render-check run " + runId + " failed. ThreadingMixIn leftover shipped. A workflow file is not a passing run."
+      };
+    }
+    if (conclusion === "success") {
+      return {
+        state: "INTEGRATED",
+        note: "workflow contract names the exact command and last main run " + runId + " succeeded. A Slack taking is still not the file."
+      };
+    }
+    if (!threaded) {
+      return { state: "NOT_LANDED", note: "render_check.py still uses a single-thread HTTP server. SPECTER / workflow-contract talk is CLAIMED." };
+    }
+    return { state: "CANDIDATE", note: "workflow contract and threading leftover are on this tree. A workflow file is not a run URL." };
   };
 
   api.isRenderCheckTalk = function (text) {
@@ -1339,6 +1383,7 @@
   var strandedOut = document.getElementById("stranded-map-result");
   var hostZeroOut = document.getElementById("host-zero-result");
   var connectorOut = document.getElementById("connector-reval-result");
+  var renderContractOut = document.getElementById("render-contract-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1794,6 +1839,12 @@
     connectorOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintRenderContract(result) {
+    if (!renderContractOut) return;
+    renderContractOut.setAttribute("data-tone", api.toneFor(result.state));
+    renderContractOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2231,6 +2282,69 @@
     });
   }
 
+  function loadRenderContract(sha) {
+    if (!renderContractOut) return Promise.resolve(null);
+    renderContractOut.innerHTML = "<b>UNMEASURED</b><p>Reading the render-check contract at the official SHA…</p>";
+    var catalogUrl = RAW + sha + "/ground/RENDER_CONTRACT.json";
+    var workflowUrl = RAW + sha + "/.github/workflows/render-check.yml";
+    var toolUrl = RAW + sha + "/render_check.py";
+    return Promise.all([
+      fetch(catalogUrl, { cache: "no-store" }),
+      fetch(workflowUrl, { cache: "no-store" }),
+      fetch(toolUrl, { cache: "no-store" })
+    ]).then(function (parts) {
+      var catalogRes = parts[0];
+      var workflowRes = parts[1];
+      var toolRes = parts[2];
+      if (catalogRes.status === 404 || workflowRes.status === 404 || toolRes.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "render-check contract files absent at the measured main SHA. SPECTER / workflow-contract talk is CLAIMED." };
+        paintRenderContract(missing);
+        return missing;
+      }
+      if (!catalogRes.ok || !workflowRes.ok || !toolRes.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed. Absence was not measured." };
+        paintRenderContract(failed);
+        return failed;
+      }
+      return Promise.all([catalogRes.json(), workflowRes.text(), toolRes.text()]).then(function (bodies) {
+        var catalog = bodies[0] || {};
+        var workflow = bodies[1] || "";
+        var tool = bodies[2] || "";
+        var runs = catalog.runs || [];
+        var last = null;
+        var i;
+        for (i = 0; i < runs.length; i++) {
+          if (runs[i].head_branch === "main" && runs[i].event === "push") {
+            last = runs[i];
+            break;
+          }
+        }
+        if (!last) {
+          for (i = 0; i < runs.length; i++) {
+            if (runs[i].head_branch === "main") {
+              last = runs[i];
+              break;
+            }
+          }
+        }
+        var got = api.renderContractState({
+          measured: true,
+          has_exact_command: /python3 render_check\.py 8bit\.html 8walk\.html pixel\.html visual\.html[\s\\]+--receipt receipts\/render/.test(workflow),
+          has_threading: /ThreadingMixIn/.test(tool),
+          swallows_broken_pipe: /BrokenPipeError/.test(tool),
+          last_conclusion: last ? last.conclusion : "",
+          last_run_id: last ? last.id : ""
+        });
+        paintRenderContract(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintRenderContract(err);
+      return err;
+    });
+  }
+
   function loadHostZero(sha) {
     if (!hostZeroOut) return Promise.resolve(null);
     hostZeroOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/host_zero.py at the official SHA…</p>";
@@ -2439,6 +2553,7 @@
     loadStrandedMap(sha);
     loadHostZero(sha);
     loadConnectorReval(sha);
+    loadRenderContract(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
