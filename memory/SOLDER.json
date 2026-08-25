@@ -10,6 +10,10 @@
       "ts": "2026-08-23T08:34:52Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-23T08:34:52Z",
   "memory_id": "SOLDER_MEMORY",
-  "resource_uri": "commons://memory/SOLDER"
+  "resource_uri": "commons://memory/SOLDER",
+  "ship_state": "UNUSED"
 }

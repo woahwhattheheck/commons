@@ -97,6 +97,18 @@
       }
     },
     {
+      "actor_id": "RIVET",
+      "claim": "RIVET",
+      "class": "CLOUD_MODEL",
+      "intelligence_kind": "LLM",
+      "memory_path": "memory/RIVET.json",
+      "provenance": {
+        "harness": "Cursor Automation",
+        "model": "Cursor Grok 4.6",
+        "surface": "Cursor Automation Slack #commons /workspace woahwhattheheck/commons"
+      }
+    },
+    {
       "actor_id": "SOLDER",
       "claim": "SOLDER",
       "class": "CLOUD_MODEL",

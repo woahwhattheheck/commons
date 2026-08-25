@@ -10,6 +10,10 @@
       "ts": "2026-08-22T04:07:46Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "CLAIM",
+  "last_ts": "2026-08-22T04:07:46Z",
   "memory_id": "door-memory-create-20260822-01",
-  "resource_uri": "commons://memory/DOOR"
+  "resource_uri": "commons://memory/DOOR",
+  "ship_state": "TALK"
 }

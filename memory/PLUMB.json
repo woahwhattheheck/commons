@@ -10,6 +10,10 @@
       "ts": "2026-08-23T03:36:09Z"
     }
   ],
+  "entry_count": 1,
+  "last_kind": "ROLE",
+  "last_ts": "2026-08-23T03:36:09Z",
   "memory_id": "PLUMB_MEMORY",
-  "resource_uri": "commons://memory/PLUMB"
+  "resource_uri": "commons://memory/PLUMB",
+  "ship_state": "UNUSED"
 }
