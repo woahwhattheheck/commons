@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bj/.test(html), "desk must share the current-main/Titan cache key after build-sweep-act");
+assert.ok(/20260825bk/.test(html), "desk must share the current-main/Titan cache key after specter-final");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1563,6 +1563,37 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isSpecterFinalTalk, "land.js must classify SPECTER FINAL leftover talk");
+assert.ok(api.specterFinalState, "land.js must classify the SPECTER FINAL leftover");
+assert.ok(api.isSpecterFinalTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba7124424de5aed51e1a9216b216d389a5a7`. Named idle-session resume remains UNMEASURED. 1787645274.177269"), "SPECTER FINAL Slack is leftover talk");
+assert.ok(!api.isSpecterFinalTalk("make sure people do more than talk about shit"), "generic ship-talk is not the SPECTER FINAL leftover");
+assert.ok(!api.isSpecterFinalTalk("SPECTER LANDED + TERMINAL — stale MCP_WAKE/STRANDED prose at OPEN/CANDIDATE. 1787643878.878279"), "terminal-catalog copy is not the SPECTER FINAL leftover");
+assert.ok(!api.isSpecterFinalTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the SPECTER FINAL leftover");
+assert.ok(!api.isWakeContractTalk("SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712`. Collision hygiene. Named idle UNMEASURED. 1787645274.177269"), "SPECTER FINAL without rebase words is not the wake-contract leftover");
+var specterFinalTalk = api.completionStateFromText(
+  "SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba7124424de5aed51e1a9216b216d389a5a7`.\n#2205 squash. #2269 squash. Named idle-session resume remains UNMEASURED. 1787645274.177269"
+);
+assert.strictEqual(specterFinalTalk.state, "CLAIMED");
+assert.ok(/stale current-main|ancestor|SPECTER FINAL/i.test(specterFinalTalk.note), "SPECTER FINAL with #2205 must stay CLAIMED and beat wake-contract");
+var specterFinalDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nspecter-final leftover landed"
+);
+assert.strictEqual(specterFinalDone.state, "INTEGRATED", "completion words still beat SPECTER FINAL talk");
+var specterFinalEmpty = api.specterFinalState("");
+assert.strictEqual(specterFinalEmpty.state, "UNMEASURED");
+var specterFinalMissing = api.specterFinalState("# empty stub\nno leftover");
+assert.strictEqual(specterFinalMissing.state, "NOT_LANDED");
+var specterFinalOk = api.specterFinalState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nbef4ba7124424de5aed51e1a9216b216d389a5a7\nHEAD\nANCESTOR\nFOREIGN\nstale current-main sha\nancestor is not current head\nno auth\nno gate\n");
+assert.strictEqual(specterFinalOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(specterFinalOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="specter-final-result"') >= 0, "desk must name the SPECTER FINAL leftover");
+assert.ok(html.indexOf("host/specter_final.py") >= 0, "desk must name the SPECTER FINAL instrument");
+assert.ok(html.indexOf("ground/SPECTER_FINAL.md") >= 0, "desk must link the SPECTER FINAL card");
+assert.ok(html.indexOf("ground/SPECTER_FINAL.json") >= 0, "desk must link the SPECTER FINAL catalog");
+assert.ok(html.indexOf("1787645274.177269") >= 0, "desk must cite the SPECTER FINAL Slack ts");
+assert.ok(/stale current-main|ancestor is not current head|SPECTER FINAL/i.test(html), "desk must name SPECTER FINAL talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SPECTER_FINAL.md") >= 0, "SPECTER FINAL card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/SPECTER_FINAL.json") >= 0, "SPECTER FINAL catalog must stay a canary");
 assert.ok(api.isBuildSweepActTalk, "land.js must classify build-sweep leftover talk");
 assert.ok(api.buildSweepActState, "land.js must classify the build-sweep leftover");
 assert.ok(api.isBuildSweepActTalk("DEMON LANDED ON COMMONS MAIN. This hygiene arm is not the colony build. Act on the build sweep priorities. OWNER_MACHINE_BUILD_SWEEP. current pixel heartbeat emitter. 1787644673.314949"), "DEMON sweep ACT NOW is leftover talk");

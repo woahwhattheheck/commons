@@ -195,6 +195,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_build_sweep_act.py` · `python3 test_pixel_heartbeat_emit.py` · `node test_land_desk.js` · `python3 host/build_sweep_act.py`
 **Note:** Sitting-remint leftover already names generic ship-talk. Unique leftover is the first sweep action: current pixel heartbeat emitter. Do not remint OWNER_MACHINE_BUILD_SWEEP / PIXEL_HEARTBEAT / SITTING_REMINT / GROK hygiene / SPECTER remainder. Do not fabricate PLAYER2. titan NOT_WRITTEN. Talk is not a land.
 
+### 41. SPECTER FINAL — a Slack current-main SHA is not current main
+> *"SPECTER FINAL — INTEGRATED / VERIFIED ON CURRENT MAIN `bef4ba712…`"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T08:07 Slack `1787645274.177269` / SPECTER FINAL + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/SPECTER_FINAL.md` · `ground/SPECTER_FINAL.json` · `host/specter_final.py` · land canary + `specterFinalState`
+**Receipt:** `python3 test_specter_final.py` · `node test_land_desk.js` · `python3 host/specter_final.py`
+**Note:** Cited SHA is an ancestor, not current HEAD. Leftover-first so SPECTER FINAL talk is not the wake-contract leftover. Named idle-session resume stays UNMEASURED. Do not remint PR 2205 / 2259 / 2269 / terminal-catalog / census / wake-contract / build-sweep. Dirty #2260 stays CLOSED. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
