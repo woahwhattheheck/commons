@@ -105,7 +105,8 @@
     "ground/EXECUTE.md",
     "ground/SHARED_ONE.md",
     "ground/READ_IS_VOLTAGE.md",
-    "robots.txt"
+    "robots.txt",
+    "slack/plugin.html"
   ];
 
   api.bakeState = function (officialSha, bake) {
@@ -358,6 +359,9 @@
     if (api.isDocTakingTalk(t)) {
       return { state: "CLAIMED", note: "no-auth doc taking. Talk is not a land. Measure AGENTS.md on current main. A Slack taking is not the pin." };
     }
+    if (api.isBrowserDownTalk(t)) {
+      return { state: "CLAIMED", note: "browser-down / extension-silence talk. Slack is the return path. Talk is not a land. Ship a leftover on current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -414,6 +418,10 @@
 
   api.isDocTakingTalk = function (text) {
     return /no auth period|pin in build context|documentation\/context propagation|hands off until current-main sha|gpt-owner-no-auth-doc-taking|mandatory startup docs for peer builders/i.test(String(text || ""));
+  };
+
+  api.isBrowserDownTalk = function (text) {
+    return /browser is broken|extension is not displaying|cannot talk to the browser session|working return path|silence in the browser|do not treat.{0,80}disengagement|browser silence is not disengagement/i.test(String(text || ""));
   };
 
   api.noAuthDocState = function (text) {
