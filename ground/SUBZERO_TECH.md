@@ -77,8 +77,8 @@ says structural only / does not evaluate / does not walk the organ.
 | 24 | `muhl_chimera_socr_stig` | `MUHLCHSS` | 18 | yes | yes | yes | `SUBZERO_CHSS.md` | STRUCTURAL_ONLY |
 | 25 | `muhl_chimera_flow_stig` | `MUHLCHFS` | 18 | yes | yes | yes | `SUBZERO_CHFS.md` | STRUCTURAL_ONLY |
 | 26 | `muhl_chimera_pots_dmb` | `MUHLCHPD` | 20 | yes | yes | yes | `SUBZERO_CHPD.md` | STRUCTURAL_ONLY |
-| 27 | `muhl_chimera_pred_rgcg` | `MUHLCHPR` | 24 | yes | yes | yes | **FINDER-FAILED** `SUBZERO_CHPR.md` | STRUCTURAL_ONLY |
-| 28 | `muhl_chimera_lvin_synd` | `MUHLCHLS` | 22 | yes | yes | yes | **FINDER-FAILED** `SUBZERO_CHLS.md` | STRUCTURAL_ONLY |
+| 27 | `muhl_chimera_pred_rgcg` | `MUHLCHPR` | 24 | yes | yes | yes | `SUBZERO_CHPR.md` | STRUCTURAL_ONLY |
+| 28 | `muhl_chimera_lvin_synd` | `MUHLCHLS` | 22 | yes | yes | yes | `SUBZERO_CHLS.md` | STRUCTURAL_ONLY |
 | 29 | `muhl_titanx_forge` | `MUHLTITF` | 180 | yes | yes | yes | `SUBZERO_TITF.md` | STRUCTURAL_ONLY |
 | 30 | `muhl_titanx_mirror` | `MUHLTITM` | 240 | yes | yes | yes | `SUBZERO_TITM.md` | STRUCTURAL_ONLY |
 | 31 | `muhl_titanx_commons` | `MUHLTITX` | 600 | yes | yes | yes | `SUBZERO_TITX.md` | STRUCTURAL_ONLY |
@@ -160,7 +160,7 @@ Git copies do not run."
 | `titan.gguf` FINDER-FAILED here | Owner-PC or DIO/JOJO reread of one named offset + magic + n_gate + span SHA. Do not `--go`. |
 | Triple-append pause | Owner-only pick of canonical size. Already guarded. |
 | No organ customer | A `CUSTOMER_JOB` + `DELIVERY_RECEIPT` on a named excerpt SHA, not a remint of White Box. |
-| Missing `SUBZERO_CHPR.md` / `SUBZERO_CHLS.md` | Optional cards. Excerpts already exist. Do not remint organs 27–28. |
+| Named cards were FINDER-FAILED while rows said PASS | Cards now exist. Explorer fail-closes a missing/stale card. Do not remint organs 27–28. |
 
 ## 7. Top five sellable *now* (do not remint White Box)
 

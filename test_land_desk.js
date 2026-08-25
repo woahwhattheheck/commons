@@ -1563,6 +1563,21 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isExplorerFailClosedTalk, "land.js must classify explorer fail-closed leftover talk");
+assert.ok(api.isExplorerFailClosedTalk("JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED / CURRENT-MAIN RESIDUALS\nSUBZERO_CHLS.md FINDER_FAILED\ninvalid runtime timestamp + FAIL check\nnonempty-list nested receipt fields crash AttributeError\n1787652792.439959"), "JOJO exact-head residual review is leftover talk");
+assert.ok(!api.isExplorerFailClosedTalk("make sure people do more than talk about shit"), "generic ship-talk is not the explorer fail-closed leftover");
+assert.ok(!api.isExplorerFailClosedTalk("JOJO DIO CHECKPOINT — REGRESSION ROOT CAUSE MEASURED\n798 vs 773 e4cc1524 1787650704.417459"), "DIO CRLF leftover is not the explorer fail-closed leftover");
+assert.ok(!api.isGrokReceiptTalk("JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED\nSUBZERO_CHLS.md 1787652792.439959"), "exact-head residual is not the exact-one-fence leftover");
+assert.ok(!api.isActiveLockTalk("JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED\nSUBZERO_CHLS.md 1787652792.439959"), "exact-head residual is not the PR 2351 leftover");
+var explorerFailClosedTalk = api.completionStateFromText(
+  "JOJO INDEPENDENT REVIEW — #2325 EXACT HEAD BLOCKED / CURRENT-MAIN RESIDUALS\nSUBZERO_CHLS.md, SUBZERO_CHPR.md FINDER_FAILED\ninvalid runtime timestamp + FAIL check\n1787652792.439959"
+);
+assert.strictEqual(explorerFailClosedTalk.state, "CLAIMED");
+assert.ok(/fail-closed|missing-card|stale-binding|invalid-receipt/i.test(explorerFailClosedTalk.note), "exact-head residual without SHA must stay CLAIMED and beat explorer v2 / ship-talk");
+var explorerFailClosedDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nexplorer fail-closed leftover landed"
+);
+assert.strictEqual(explorerFailClosedDone.state, "INTEGRATED", "completion words still beat explorer fail-closed leftover talk");
 assert.ok(api.isActiveLockTalk, "land.js must classify PR 2351 leftover talk leftover-first");
 assert.ok(api.activeLockState, "land.js must classify the PR 2351 leftover");
 assert.ok(api.isActiveLockTalk("JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE\n1787653153.983349\n7661bd7dc1e5ef61"), "JOJO PR 2351 candidate is leftover talk");
