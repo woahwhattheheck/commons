@@ -257,6 +257,10 @@ class RevenueRecoveryTests(unittest.TestCase):
             "PUBLIC_CONTACT_URL: https://alice@127.0.0.1/contact",
             "PUBLIC_CONTACT_URL: https://alice%40example.com/contact",
             "PUBLIC_CONTACT_URL: https://alice%40127.0.0.1/contact",
+            "PUBLIC_CONTACT_URL: https://alice%2F@127.0.0.1/contact",
+            "PUBLIC_CONTACT_URL: https://alice%3F@127.0.0.1/contact",
+            "PUBLIC_CONTACT_URL: https://alice%23@127.0.0.1/contact",
+            "PUBLIC_CONTACT_URL: https://alice%0A@example.com/contact",
         ):
             with self.subTest(value=value):
                 self.assertTrue(rr.contains_sensitive_value(value))
@@ -278,6 +282,7 @@ class RevenueRecoveryTests(unittest.TestCase):
             "PUBLIC_OBJECTIVE: 100%",
             "PUBLIC_OBJECTIVE: 100%25",
             "PUBLIC_CONTACT_URL: https://example.com/contact#section",
+            "PUBLIC_CONTACT_URL: https://example.com/alice%2F@public",
         ):
             with self.subTest(value=value):
                 self.assertFalse(rr.contains_sensitive_value(value))

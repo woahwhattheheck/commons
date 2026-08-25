@@ -195,6 +195,8 @@ PUBLIC_OBJECTIVE:</textarea>
     }
   }
   function containsForbiddenAssignment(text) {
+    var raw = String(text || "");
+    if (/\bhttps:\/\/[^/?#\s@]+@[^/?#\s]+/i.test(raw)) return true;
     var source = decodePercentLayers(text);
     if (source === null) return true;
     try {

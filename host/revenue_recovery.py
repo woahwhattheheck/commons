@@ -120,6 +120,7 @@ FIELD_ASSIGNMENT_RE = re.compile(
 )
 PERCENT_ESCAPE_RE = re.compile(r"%[0-9A-Fa-f]{2}")
 HTTPS_TOKEN_RE = re.compile(r"\bhttps://[^\s]+", re.IGNORECASE)
+HTTPS_USERINFO_RE = re.compile(r"\bhttps://[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE)
 SENSITIVE_PATTERNS = (
     re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),
     re.compile(r"\b(?:\d[ -]?){13,19}\b"),
@@ -143,7 +144,7 @@ SENSITIVE_PATTERNS = (
         r"(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+",
         re.IGNORECASE,
     ),
-    re.compile(r"\bhttps://[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE),
+    HTTPS_USERINFO_RE,
     re.compile(
         r"\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret|token|bearer)"
         r"\s*[:=]\s*\S+",
@@ -351,6 +352,11 @@ def _has_sensitive_assignment(text: str) -> bool:
 
 
 def contains_sensitive_value(text: str) -> bool:
+    # Raw authority structure must be checked before percent decoding. Encoded
+    # delimiters such as %2F, %3F, %23, or %0A would otherwise become excluded
+    # delimiters/whitespace and hide a literal authority userinfo `@`.
+    if HTTPS_USERINFO_RE.search(str(text)):
+        return True
     source, decoding_overflow = decode_percent_layers(text)
     if decoding_overflow:
         return True
