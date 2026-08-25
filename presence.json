@@ -672,8 +672,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
-    "ts": "2026-08-25T10:29:44Z",
+    "id": "rivet-ship-explorer-fail-closed-20260825-01",
+    "ts": "2026-08-25T10:32:49Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

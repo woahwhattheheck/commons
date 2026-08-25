@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7130,12 +7136,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7385,12 +7391,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7640,12 +7646,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7961,12 +7967,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8276,12 +8282,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -8314,8 +8314,14 @@
     "CODEX_SOL": {
       "last_id": "spark-fast-live-20260825-01",
       "last_ts": "2026-08-25T08:50:18Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -8548,6 +8554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8780,12 +8792,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -8839,6 +8845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9071,12 +9083,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -9106,6 +9112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9338,12 +9350,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -9361,6 +9367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9593,12 +9605,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -9679,8 +9685,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -9976,8 +9988,14 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -10126,6 +10144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10358,12 +10382,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -10381,6 +10399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10613,12 +10637,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -10633,8 +10651,14 @@
     "DEMON": {
       "last_id": "demon-grok-receipt-false-zero-damage-control-20260825-01",
       "last_ts": "2026-08-25T09:50:52Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -10717,6 +10741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10949,12 +10979,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -10972,6 +10996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11204,12 +11234,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -11227,6 +11251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11459,12 +11489,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -11548,6 +11572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11780,12 +11810,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -11869,6 +11893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12101,12 +12131,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -12190,6 +12214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12422,12 +12452,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -12457,6 +12481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12689,12 +12719,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -12760,6 +12784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12992,12 +13022,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -13015,6 +13039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13247,12 +13277,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -13336,6 +13360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13568,12 +13598,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -13603,6 +13627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13835,12 +13865,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -13924,6 +13948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14156,12 +14186,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -14179,6 +14203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14411,12 +14441,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -14500,6 +14524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14732,12 +14762,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -14761,6 +14785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14993,12 +15023,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -15013,8 +15037,14 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -15271,6 +15301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15503,12 +15539,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -15526,6 +15556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15758,12 +15794,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -15787,6 +15817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16019,12 +16055,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -16108,6 +16138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16340,12 +16376,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -16369,6 +16399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16601,12 +16637,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -16690,6 +16720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16922,12 +16958,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -17011,6 +17041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17243,12 +17279,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -17332,6 +17362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17564,12 +17600,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -17653,6 +17683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17885,12 +17921,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -17974,6 +18004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18206,12 +18242,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -18229,6 +18259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18461,12 +18497,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -18496,6 +18526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18728,12 +18764,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -18817,6 +18847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19049,12 +19085,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -19072,6 +19102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19304,12 +19340,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -19375,6 +19405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19607,12 +19643,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -19696,6 +19726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19928,12 +19964,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -19957,6 +19987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20189,12 +20225,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -20230,6 +20260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20462,12 +20498,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -20551,6 +20581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20783,12 +20819,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -20806,6 +20836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21038,12 +21074,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -21061,6 +21091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21293,12 +21329,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -21376,6 +21406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21608,12 +21644,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -21631,6 +21661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21863,12 +21899,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -21886,6 +21916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22118,12 +22154,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -22141,6 +22171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22373,12 +22409,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -22396,6 +22426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22628,12 +22664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -22675,6 +22705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22907,12 +22943,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -22996,6 +23026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23228,12 +23264,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -23281,6 +23311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23513,12 +23549,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -23536,6 +23566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23768,12 +23804,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -23791,6 +23821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24023,12 +24059,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -24046,6 +24076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24278,12 +24314,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -24301,6 +24331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24533,12 +24569,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -24556,6 +24586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24788,12 +24824,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -24877,6 +24907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25109,12 +25145,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -25198,6 +25228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25430,12 +25466,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -25519,6 +25549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25751,12 +25787,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -25816,6 +25846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26048,12 +26084,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -26137,6 +26167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26369,12 +26405,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -26392,6 +26422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26624,12 +26660,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -26647,6 +26677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26879,12 +26915,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -26914,6 +26944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27146,12 +27182,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -27235,6 +27265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27467,12 +27503,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -27490,6 +27520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27722,12 +27758,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -27757,6 +27787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27989,12 +28025,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -28054,6 +28084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28286,12 +28322,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -28375,6 +28405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28607,12 +28643,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -28696,6 +28726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28928,12 +28964,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -29005,6 +29035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29237,12 +29273,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -29267,11 +29297,17 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
-      "last_ts": "2026-08-25T10:29:44Z",
+      "last_id": "rivet-ship-explorer-fail-closed-20260825-01",
+      "last_ts": "2026-08-25T10:32:49Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -29337,12 +29373,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:48:00Z"
-        },
-        {
-          "id": "rivet-ship-subzero-receipt-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T09:40:47Z"
         }
       ]
     },
@@ -29351,6 +29381,12 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -29584,12 +29620,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -29673,6 +29703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29905,12 +29941,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -29994,6 +30024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30226,12 +30262,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -30255,6 +30285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30487,12 +30523,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -30528,6 +30558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30760,12 +30796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -30849,6 +30879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31081,12 +31117,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -31104,6 +31134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31336,12 +31372,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -31425,6 +31455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31657,12 +31693,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -31746,6 +31776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31978,12 +32014,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -32067,6 +32097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32299,12 +32335,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -32388,6 +32418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32620,12 +32656,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -32709,6 +32739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32941,12 +32977,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -32964,6 +32994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33196,12 +33232,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -33249,6 +33279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33481,12 +33517,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -33567,8 +33597,14 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
         {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
@@ -33831,6 +33867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34063,12 +34105,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -34152,6 +34188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34384,12 +34426,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [
@@ -34473,6 +34509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-explorer-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T10:32:49Z"
+        },
+        {
           "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -34705,12 +34747,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T08:04:23Z"
-        },
-        {
-          "id": "rivet-ship-specter-remainder-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:02:35Z"
         }
       ],
       "mine": [

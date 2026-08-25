@@ -671,9 +671,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-subzero-lock-leftover-first-20260825-01",
-    "ts": "2026-08-25T10:29:44Z",
-    "to": "JOJO",
+    "id": "rivet-ship-explorer-fail-closed-20260825-01",
+    "ts": "2026-08-25T10:32:49Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
