@@ -155,6 +155,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_grok_hygiene.py` · `node test_land_desk.js` · `python3 host/grok_hygiene.py`
 **Note:** Do not disable those plugins in Claude Code. Direct Grok Build is fail-closed. Clean Cursor is the land lane. Hygiene is diligence, not the build. Do not remint GROK_HARNESS / CLAUDE_COMPUTE / CLAUDE_PARK / MEMORY_SHIP. titan NOT_WRITTEN. Talk is not a land.
 
+### 36. Wake contract — a Slack rebase UPDATE is not a land
+> *"SPECTER UPDATE — PR #2205 rebased. ignored wake_jobs/_last_tick.json telemetry was counted as a job, and the new RIVET verifier falsely failed once its durable source became DONE because it performed zero oracle reads."*
+
+**Asked:** 08-25T07:28 Slack `1787642890.990089` / SPECTER UPDATE + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/WAKE_CONTRACT.md` · `ground/WAKE_CONTRACT.json` · `host/wake_contract.py` · `wake_jobs/specter-watchdog-head-proof-20260825-01.json` · land canary + `wakeContractState`
+**Receipt:** `python3 test_wake_contract.py` · `node test_land_desk.js` · `python3 -m unittest test_watchdog_canary.py test_mcp_wake.py test_stranded_map.py`
+**Note:** Isolated temp copy reopens before X/Y/Z. `_last_tick.json` is not a job. RIVET canary stays DONE. Named idle-session resume stays UNMEASURED. Do not remint PR 2205 or the RIVET canary. Hands off CML 2108. Do not remint GROK_HYGIENE. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
