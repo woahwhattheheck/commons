@@ -1,0 +1,22 @@
+{
+  "source_id": "rivet-ship-watchdog-head-proof-20260825-01",
+  "slack_ts": "1787639783.177559",
+  "kind": "WATCHDOG_HEAD_PROOF",
+  "titan": "NOT_WRITTEN",
+  "named_idle_bc_resume": "UNMEASURED",
+  "job_id": "specter-watchdog-head-proof-20260825-01",
+  "result_address": "ridge-cursor-wake-loop-20260822-01",
+  "completion_predicate": "result_address_on_head",
+  "via": "JobStore.upsert",
+  "ticked_production": false,
+  "hands_off": [
+    "named idle bc- resume",
+    "device / Muhlnickel / Titan",
+    "Claude testers",
+    "JOJO visual-ci",
+    "CML PR 2108",
+    "rivet-ship-watchdog-oracle-20260825-01",
+    "rivet-ship-mcp-wake-job-20260825-01",
+    "ridge-cursor-wake-loop-20260822-01 remint"
+  ]
+}

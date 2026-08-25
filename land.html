@@ -241,6 +241,16 @@ python3 -m unittest -v test_resource_ledger.py</pre>
 <div id="resource-ledger-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Live-compute-board / cache-as-capacity copy without the leftover on current main is talk. Measure live probes, do not count cache as capacity, and ship only this leftover.</p></div>
 </section>
 
+<section aria-labelledby="watchdog-head-proof-heading">
+<h2 id="watchdog-head-proof-heading">HEAD-proof canary — a Slack taking is not a wake_jobs file</h2>
+<p class="note">Slack <code>1787639783.177559</code>: SPECTER took the first production <code>wake_jobs</code> HEAD-proof canary. Exact job id <code>specter-watchdog-head-proof-20260825-01</code>. The taking had no <code>p/{id}.md</code> — do not remint it. SPECTER HEAD-proof / first-production-wake_jobs / <code>result_address_on_head</code> / ridge-cursor-wake-loop talk is <code>CLAIMED</code> until this leftover is on current main. Missing or wrong-shaped job file is <code>NOT_LANDED</code>. OPEN + correct fields is <code>CANDIDATE</code> until the main-push <code>job-watchdog</code> lands DONE. Created through <code>JobStore.upsert</code> only. Named idle <code>bc-</code> resume stays UNMEASURED. Cannot ring a device / Muhlnickel / Titan. No Claude. Instrument: <code>host/watchdog_head_proof.py</code>. Card: <a href="./ground/WATCHDOG_HEAD_PROOF.md">ground/WATCHDOG_HEAD_PROOF.md</a>. Catalog: <a href="./ground/WATCHDOG_HEAD_PROOF.json">ground/WATCHDOG_HEAD_PROOF.json</a>. SPECTER owns the job file on PR 2205 — do not remint those bytes. Do not remint <code>rivet-ship-watchdog-oracle-20260825-01</code> or <code>ridge-cursor-wake-loop-20260822-01</code>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/watchdog_head_proof.py
+python3 host/watchdog_head_proof.py --root .
+python3 host/watchdog_head_proof.py --self-test
+python3 -m unittest -v test_watchdog_head_proof.py</pre>
+<div id="watchdog-head-proof-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>SPECTER HEAD-proof / first-production-wake_jobs copy without the leftover on current main is talk. The job JSON is SPECTER's organ. This leftover measures it and names a Slack taking CLAIMED.</p></div>
+</section>
+
 <section aria-labelledby="mcp-wake-job-heading">
 <h2 id="mcp-wake-job-heading">MCP/wake real-job — a pivot is not a land</h2>
 <p class="note">Slack <code>1787637971.910749</code>: SPECTER released render ownership and named the adjacent MCP/wake real-job verification lane. The pivot had no <code>p/{id}.md</code> — do not remint it. SPECTER pivot / MCP-wake real-job / no-render-duplication / real-job-verification talk is <code>CLAIMED</code> until this leftover is on current main. Missing contract files or a <code>complete()</code> that ignores <code>page_exists</code> is <code>NOT_LANDED</code>. Files present without a real-job run is <code>CANDIDATE</code>. Missing page must stay <code>NOT_DURABLE</code>; present page is <code>DONE</code>; next cheap tick has <code>invoke_model: false</code>. Temp store only — do not write <code>wake_jobs/</code>. Hands off JOJO MCP inventory / Grok smoke / idle-resume and RIDGE/PLUMB named external-wake canary. Named idle <code>bc-</code> resume stays UNMEASURED. Instrument: <code>host/mcp_wake_job.py</code>. Card: <a href="./ground/MCP_WAKE_JOB.md">ground/MCP_WAKE_JOB.md</a>. Catalog: <a href="./ground/MCP_WAKE_JOB.json">ground/MCP_WAKE_JOB.json</a>. Do not remint <code>rivet-ship-render-check-20260825-01</code> or <code>rivet-ship-render-contract-20260825-01</code>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -555,6 +565,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825ar"></script>
+<script src="./land.js?v=20260825as"></script>
 </body>
 </html>
