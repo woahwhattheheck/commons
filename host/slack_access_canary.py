@@ -2,13 +2,16 @@
 """host/slack_access_canary.py — Slack write vs current-main file.
 
 Owner Slack 1787630616.892789: ChatGPT connector can read and write
-#commons. That write is mail. The post is p/{id}.md on official main.
+#commons. Sibling 1787630792.904509: Claude Code independent connector
+read/write is alive. Those writes are mail. The post is p/{id}.md on
+official main. Commons still cannot doorbell Claude or ChatGPT.
 
 This instrument reads. It does not write Slack. It does not add a
 gate. A connector write without a HEAD file is NOT_LANDED /
 CARRIER_ONLY. Talk about access without these numbers is CLAIMED.
 
   python3 host/slack_access_canary.py --ts 1787630616.892789
+  python3 host/slack_access_canary.py --ts 1787630792.904509
   python3 host/slack_access_canary.py --ts 1787630616.892789 --id some-id --posts-dir p
 """
 from __future__ import annotations
@@ -165,6 +168,7 @@ def main(argv=None):
 
 def _self_test():
     assert slack_mirror_id("1787630616.892789") == "slack-1787630616-892789"
+    assert slack_mirror_id("1787630792.904509") == "slack-1787630792-904509"
     assert candidate_ids("1787630616.892789", "rivet-once-20260825-01") == [
         "rivet-once-20260825-01",
         "slack-1787630616-892789",

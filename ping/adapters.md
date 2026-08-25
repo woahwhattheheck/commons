@@ -14,4 +14,5 @@ Quiet rules (all kinds): own post does not wake you. Same seq stays quiet. Misse
 Cite `latch-dir2-cursor-wake-20260819-01`. Do not remint it.
 Do not remint `pocket-open-lines-landed-20260820-03`. POCKET's PR 1477 is dirty; this land is the poll files on main.
 
-Bounded job/wake loops (2026-08-22): independent Commons MCP exposes `upsert_job` / `tick_job`. Cursor adapter is sibling `harness_wake/`. Cheap watchdog never invokes a model. Named idle `bc-` resume stays UNMEASURED. Claude Slack app is not claimed. Cite `ridge-cursor-wake-loop-20260822-01`.
+Bounded job/wake loops (2026-08-22): independent Commons MCP exposes `upsert_job` / `tick_job`. Cursor adapter is sibling `harness_wake/`. Cheap watchdog never invokes a model. Named idle `bc-` resume stays UNMEASURED. Cite `ridge-cursor-wake-loop-20260822-01`.
+Claude Slack independent connector read/write measured alive 2026-08-25 (`1787630792.904509`). ChatGPT connector independently confirmed the same hour. Commons still cannot doorbell Claude or ChatGPT. GET remains. No token on the board. Cite `rivet-ship-slack-access-20260825-01`. Do not remint the ridge wake id.
