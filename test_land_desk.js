@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825af/.test(html), "desk must bust the xyz-zero + impact-ledger cache key");
+assert.ok(/20260825ag/.test(html), "desk must bust the MCP inventory cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1317,6 +1317,7 @@ assert.ok(html.indexOf("1787638370.166649") >= 0, "desk must cite the DEMON OWNE
 assert.ok(/stop using claude|tester\/verifier|search-zero|uncalibrated-green/i.test(html), "desk must name Claude-tester talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.md") >= 0, "Claude-tester card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.json") >= 0, "Claude-tester catalog must stay a canary");
+<<<<<<< HEAD
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
@@ -1352,6 +1353,45 @@ assert.ok(html.indexOf("1787638124.555469") >= 0, "desk must cite the xyz-zero S
 assert.ok(/FINDER-UNVERIFIED|known-present|X-Y-Z/i.test(html), "desk must name xyz-zero talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/XYZ_ZERO.md") >= 0, "xyz-zero card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/XYZ_ZERO.json") >= 0, "xyz-zero catalog must stay a canary");
+=======
+assert.ok(!api.isClaudeTesterTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. please post your named exact scope."), "collision-hold is not the Claude-tester leftover");
+assert.ok(api.isMcpWakeTalk, "land.js must classify collision-hold / MCP-wake talk");
+assert.ok(api.mcpWakeState, "land.js must classify the MCP/wake leftover");
+assert.ok(api.isMcpWakeTalk("SPECTER COLLISION CHECK — action required. isolated jojo-visual-ci-20260825-01 clone. I am holding implementation. If your lane is the same, I will switch to the adjacent MCP/wake real-job verification lane. please post your named exact scope"), "collision-hold copy is talk");
+assert.ok(!api.isMcpWakeTalk("make sure people do more than talk about shit"), "ship-talk is not the MCP/wake leftover");
+assert.ok(!api.isMcpWakeTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim and will prove the actual workflow contract."), "workflow-contract taking is not the MCP/wake leftover");
+assert.ok(!api.isMcpWakeTalk("SPECTER PIVOT — no render duplication. pivoting now to the adjacent MCP/wake real-job verification lane."), "job leftover is not the inventory leftover");
+assert.ok(!api.isMcpWakeTalk("OWNER ORDER — audit every zero. collision-check road prints false zeros. FINDER UNVERIFIED."), "finder-zero copy is not the inventory leftover");
+assert.ok(!api.isRenderContractTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. MCP/wake real-job verification."), "collision-hold is not the workflow-contract leftover");
+assert.ok(!api.isStrandedMapTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. MCP/wake real-job."), "collision-hold is not the six-item stranded map");
+assert.ok(!api.isFinderZeroTalk("SPECTER COLLISION CHECK — holding implementation. jojo-visual-ci. please post your named exact scope."), "collision-hold is not the finder-zero leftover");
+var mcpWakeTalk = api.completionStateFromText(
+  "SPECTER COLLISION CHECK — isolated jojo-visual-ci-20260825-01 clone. I am holding implementation. please post your named exact scope. adjacent MCP/wake real-job verification lane. canonical MCP inventory. idle-resume measurement."
+);
+assert.strictEqual(mcpWakeTalk.state, "CLAIMED");
+assert.ok(/collision-hold|canonical-inventory|idle-resume/i.test(mcpWakeTalk.note), "collision-without-SHA must stay CLAIMED and beat job leftover / stranded-map");
+var mcpWakeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nMCP/wake leftover landed"
+);
+assert.strictEqual(mcpWakeDone.state, "INTEGRATED", "completion words still beat collision-hold talk");
+var mcpWakeEmpty = api.mcpWakeState("");
+assert.strictEqual(mcpWakeEmpty.state, "UNMEASURED");
+var mcpWakeMissing = api.mcpWakeState("# empty stub\nno census");
+assert.strictEqual(mcpWakeMissing.state, "NOT_LANDED");
+var mcpWakeOk = api.mcpWakeState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef verify_job():\n    return {}\nidle_resume UNMEASURED\nwrote_wake_jobs\n");
+assert.strictEqual(mcpWakeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(mcpWakeOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="mcp-wake-result"') >= 0, "desk must name the MCP/wake leftover");
+assert.ok(html.indexOf("host/mcp_wake.py") >= 0, "desk must name the MCP/wake instrument");
+assert.ok(html.indexOf("ground/MCP_WAKE.md") >= 0, "desk must link the MCP/wake card");
+assert.ok(html.indexOf("ground/MCP_WAKE.json") >= 0, "desk must link the MCP/wake catalog");
+assert.ok(html.indexOf("ground/MCP_INVENTORY.json") >= 0, "desk must link the MCP inventory");
+assert.ok(html.indexOf("1787637758.258119") >= 0, "desk must cite the collision-check Slack ts");
+assert.ok(/collision-check|holding-implementation|JOJO-visual-CI|MCP-wake|idle-resume/i.test(html), "desk must name collision-hold talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.md") >= 0, "MCP/wake card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_WAKE.json") >= 0, "MCP/wake catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/MCP_INVENTORY.json") >= 0, "MCP inventory must stay a canary");
+>>>>>>> 35a29e88c (Ship MCP/wake leftover: collision hold is not a land)
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

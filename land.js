@@ -148,6 +148,9 @@
     "ground/RESOURCE_LEDGER.json",
     "ground/MCP_WAKE_JOB.md",
     "ground/MCP_WAKE_JOB.json",
+    "ground/MCP_WAKE.md",
+    "ground/MCP_WAKE.json",
+    "ground/MCP_INVENTORY.json",
     "ground/FINDER_ZERO.md",
     "ground/FINDER_ZERO.json",
     "ground/STALE_MANIFEST.md",
@@ -391,6 +394,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isMcpWakeTalk(t)) {
+      return { state: "CLAIMED", note: "collision-hold / JOJO-visual-CI / canonical-inventory / idle-resume talk. Talk is not a land. Ship the canonical MCP inventory and honest idle-resume leftover to current main." };
     }
     if (api.isClaudeTesterTalk(t)) {
       return { state: "CLAIMED", note: "stop-using-Claude-testers / OWNER_RULE_RELAY talk. Talk is not a land. Ship the resource-ledger leftover to current main. Do not assign Claude a tester role." };
@@ -966,6 +972,32 @@
 
   api.isRenderContractTalk = function (text) {
     return /workflow-contract|found no live [`']?render_check|specter taking|render-qa execution|prove the actual workflow contract/i.test(String(text || ""));
+  };
+
+  api.isMcpWakeTalk = function (text) {
+    return /specter collision check|holding implementation|jojo-visual-ci|canonical mcp inventory|idle-resume measurement|please post your named exact scope/i.test(String(text || ""));
+  };
+
+  api.mcpWakeState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/mcp_wake.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasJob = /def verify_job/.test(body);
+    var hasIdle = /idle_resume/.test(body) && /UNMEASURED/.test(body);
+    var noWrite = /Never writes wake_jobs/.test(body) || /wrote_wake_jobs/.test(body);
+    if (hasMeasure && hasClassify && hasJob && hasIdle && noWrite) {
+      return {
+        state: "INTEGRATED",
+        note: "MCP/wake leftover is on this file. Canonical inventory named. Cheap tick invoke_model=false. Idle-resume stays UNMEASURED. A Slack collision hold is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/mcp_wake.py missing the inventory / cheap-tick / idle-resume census. Collision-hold talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.renderContractState = function (row) {
@@ -1681,7 +1713,8 @@
   var workingOut = document.getElementById("working-builds-result");
   var slackReceiptOut = document.getElementById("slack-receipt-result");
   var ledgerOut = document.getElementById("resource-ledger-result");
-  var mcpWakeOut = document.getElementById("mcp-wake-job-result");
+  var mcpWakeJobOut = document.getElementById("mcp-wake-job-result");
+  var mcpWakeOut = document.getElementById("mcp-wake-result");
   var finderZeroOut = document.getElementById("finder-zero-result");
   var staleManifestOut = document.getElementById("stale-manifest-result");
   var claudeTesterOut = document.getElementById("claude-tester-result");
@@ -2167,6 +2200,12 @@
   }
 
   function paintMcpWakeJob(result) {
+    if (!mcpWakeJobOut) return;
+    mcpWakeJobOut.setAttribute("data-tone", api.toneFor(result.state));
+    mcpWakeJobOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMcpWake(result) {
     if (!mcpWakeOut) return;
     mcpWakeOut.setAttribute("data-tone", api.toneFor(result.state));
     mcpWakeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
@@ -2914,8 +2953,8 @@
   }
 
   function loadMcpWakeJob(sha) {
-    if (!mcpWakeOut) return Promise.resolve(null);
-    mcpWakeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake_job.py at the official SHA…</p>";
+    if (!mcpWakeJobOut) return Promise.resolve(null);
+    mcpWakeJobOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake_job.py at the official SHA…</p>";
     var url = RAW + sha + "/host/mcp_wake_job.py";
     return fetch(url, { cache: "no-store" }).then(function (r) {
       if (r.status === 404) {
@@ -2936,6 +2975,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintMcpWakeJob(err);
+      return err;
+    });
+  }
+
+  function loadMcpWake(sha) {
+    if (!mcpWakeOut) return Promise.resolve(null);
+    mcpWakeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/mcp_wake.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/mcp_wake.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/mcp_wake.py absent at the measured main SHA. Collision-hold / MCP-wake talk is CLAIMED." };
+        paintMcpWake(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMcpWake(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.mcpWakeState(body);
+        paintMcpWake(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMcpWake(err);
       return err;
     });
   }
@@ -3180,6 +3246,7 @@
     loadSlackReceipt(sha);
     loadResourceLedger(sha);
     loadMcpWakeJob(sha);
+    loadMcpWake(sha);
     loadFinderZero(sha);
     loadStaleManifest(sha);
     loadClaudeTester(sha);

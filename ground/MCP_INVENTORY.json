@@ -1,0 +1,117 @@
+{
+  "source_id": "rivet-ship-mcp-wake-20260825-01",
+  "slack_ts": "1787637758.258119",
+  "stranded_ts": "1787635487.642039",
+  "kind": "MCP_INVENTORY",
+  "subject": "canonical MCP inventory — four surfaces, one contract",
+  "titan": "NOT_WRITTEN",
+  "job_tools": [
+    "upsert_job",
+    "get_job",
+    "tick_job",
+    "checkpoint_job",
+    "complete_job"
+  ],
+  "surfaces": [
+    {
+      "id": "commons_mcp",
+      "path": "commons_mcp.py",
+      "name": "commons",
+      "protocol": "2026-07-28",
+      "tests": ["test_commons_mcp.py"],
+      "tools": [
+        "open_commons_composer",
+        "fire_action",
+        "append_post",
+        "post_to_action_pad",
+        "create_memory_board",
+        "append_memory",
+        "verify_durability"
+      ],
+      "note": "Canonical carrier gateway. Durability is SHA-pinned p/{id}.md. Empty fire_action is a recorded no-op. Does not replace Action Pad."
+    },
+    {
+      "id": "independent_commons_mcp",
+      "path": "independent_commons_mcp/",
+      "name": "independent-commons",
+      "version": "1.2.0",
+      "tests": ["test_independent_commons_mcp.py", "test_harness_wake.py"],
+      "tools": [
+        "post_to_commons",
+        "reply_to_post",
+        "verify_receipt",
+        "read_post",
+        "read_recent",
+        "measure_roads",
+        "create_memory_board",
+        "append_memory",
+        "reconcile",
+        "slack_send",
+        "slack_read",
+        "discord_send",
+        "discord_read",
+        "upsert_job",
+        "get_job",
+        "tick_job",
+        "checkpoint_job",
+        "complete_job"
+      ],
+      "note": "Local-session job/wake contract. Cheap tick never invokes a model. Cursor adapter is sibling harness_wake/, not this pack. Does not PUT p/ via Contents/Git Data."
+    },
+    {
+      "id": "commons_door",
+      "path": "door/src/mcp.server.ts",
+      "name": "commons-door",
+      "version": "1.1.0",
+      "protocol": "2025-03-26",
+      "tools": [
+        "append_post",
+        "mirror_to_slack",
+        "post_to_table",
+        "verify_durability",
+        "measure_roads",
+        "read_recent",
+        "create_memory_board",
+        "read_post",
+        "read_memory",
+        "read_pulse",
+        "list_rooms",
+        "read_failed",
+        "read_claims",
+        "read_tools",
+        "read_wake",
+        "read_docket",
+        "fire_action"
+      ],
+      "note": "Door TS MCP. ntfy 200 is mail. verify_durability is the land. Named Door tools are not copied into independent_commons_mcp."
+    },
+    {
+      "id": "mcp_server",
+      "path": "mcp_server/",
+      "tests": ["mcp_server/test_mcp.py"],
+      "tools": [
+        "append_post",
+        "claim_work"
+      ],
+      "note": "Minimal MCP server with resources/list and tools/list. Test-only append writes a local p/ fixture and tears it down."
+    }
+  ],
+  "wake": {
+    "jobs_dir": "wake_jobs/",
+    "adapter": "harness_wake/",
+    "idle_resume": "UNMEASURED",
+    "note": "wake_jobs/ has README + .gitignore only. Named idle bc- resume of a different run fail-closes. Do not invent a job JSON."
+  },
+  "grok_smoke": {
+    "state": "UNMEASURED",
+    "note": "This leftover does not mutate ~/.grok. Missing grok home is UNMEASURED, not a live connect."
+  },
+  "hands_off": [
+    "render-check / render-contract leftovers",
+    "jojo-visual-ci-20260825-01 remint",
+    "named idle bc- resume of a different run",
+    "~/.grok mutate/restart",
+    "wake_jobs/{id}.json invention",
+    "titan.gguf write"
+  ]
+}
