@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "kind": "COMMERCIAL_OFFER",
+  "canonical_source": "commercial.json",
+  "offer": {
+    "offer_id": "white-box-gguf-pilot-30d",
+    "status": "PROPOSED",
+    "provider": "Muhlnickel / Bryce Muhlnickel",
+    "public_product_name": "White Box",
+    "engagement_type": "professional service and evaluation engagement",
+    "target": "one customer-owned GGUF model family",
+    "term_calendar_days": 30,
+    "fee": {
+      "currency": "USD",
+      "fixed_amount": 30000,
+      "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+      "milestones": [
+        {
+          "amount": 15000,
+          "due": "on NDA and SOW signing"
+        },
+        {
+          "amount": 15000,
+          "due": "on delivery of the agreed pilot package"
+        }
+      ]
+    },
+    "pilot_work": [
+      "target-focused model mapping",
+      "one reversible ablation",
+      "one targeted edit",
+      "byte-exact rollback proof",
+      "results from the customer's evaluation harness"
+    ],
+    "deliverables": [
+      "a target-focused model map",
+      "one reversible ablation artifact and its evaluation results",
+      "one targeted-edit artifact and its evaluation results",
+      "one restored artifact plus rollback proof",
+      "a concise baseline, ablation, edit, and rollback comparison",
+      "a final technical review under NDA"
+    ],
+    "customer_supplies": [
+      "a legally controlled GGUF and permission for Muhlnickel to work on it",
+      "a runnable evaluation harness with representative test data",
+      "documented success measurements and protected behaviors",
+      "one technical owner"
+    ],
+    "acceptance": [
+      "each listed deliverable is supplied",
+      "the ablation and edit are demonstrated to be reversible",
+      "rollback integrity is shown using the agreed check",
+      "the agreed baseline, ablation, edit, and rollback evaluations run through the customer's harness"
+    ],
+    "follow_on": {
+      "kind": "organization license and continued private White Box service",
+      "term_months": 12,
+      "currency": "USD",
+      "amount_from": 100000,
+      "amount_to": 175000,
+      "timing": "after a successful pilot",
+      "separately_scoped": true
+    },
+    "commercial_boundary": {
+      "computer_is_the_product": false,
+      "computer_or_factory_transfer": false,
+      "customer_keeps": [
+        "contracted customer-owned model deliverables",
+        "agreed evaluation results and reports",
+        "agreed rollback evidence"
+      ],
+      "provider_keeps": [
+        "the computer",
+        "White Box machinery and internal tooling",
+        "targeting methods",
+        "the foundry and reproduction methods"
+      ]
+    }
+  },
+  "public_interest": {
+    "visibility": "PUBLIC",
+    "confidentiality": "NON_CONFIDENTIAL_ONLY",
+    "route": {
+      "transport": "Commons carrier",
+      "to": "OFFER",
+      "board": "OFFER",
+      "subject": "WHITE BOX COMMERCIAL INTEREST"
+    },
+    "suggested_fields": [
+      "organization",
+      "public contact route",
+      "model family",
+      "target behavior or capability",
+      "evaluation-harness readiness",
+      "desired start window"
+    ],
+    "never_include": [
+      "model files or model bytes",
+      "datasets or representative test cases",
+      "passwords, credentials, or private keys",
+      "signed agreements",
+      "confidential technical or business information"
+    ]
+  },
+  "source_docs": [
+    {
+      "path": "muhl/lda-docs/muhl_revenue_add_20260813/FEE.md",
+      "establishes": "pilot fee, payment milestones, and follow-on range"
+    },
+    {
+      "path": "muhl/lda-docs/muhl_revenue_add_20260813/SOW_OUTLINE.md",
+      "establishes": "term, scope, customer inputs, deliverables, and acceptance"
+    },
+    {
+      "path": "muhl/lda-docs/muhl_revenue_add_20260813/PRODUCT_LAW.md",
+      "establishes": "the computer and factory are not the product"
+    },
+    {
+      "path": "muhl/lda-docs/muhl_revenue_add_20260813/DELIVERABLE.md",
+      "establishes": "customer-retainable outputs and provider-retained machinery"
+    }
+  ]
+}
