@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825p/.test(html), "desk must bust the stale-spec cache key");
+assert.ok(/20260825q/.test(html), "desk must bust the pixel-heartbeat cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -849,6 +849,37 @@ assert.ok(html.indexOf("ground/GROK_HARNESS.md") >= 0, "desk must link the grok-
 assert.ok(html.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "desk must link the gap catalog");
 assert.ok(html.indexOf("1787634541.520949") >= 0, "desk must cite the harness-gap Slack ts");
 assert.ok(/harness-gap|0-MCP|0-LSP|grok\.exe|harness-parity/i.test(html), "desk must name harness-gap talk as CLAIMED");
+assert.ok(api.isPixelHeartbeatTalk, "land.js must classify pixel-heartbeat talk");
+assert.ok(api.pixelHeartbeatState, "land.js must classify the pixel-heartbeat leftover");
+assert.ok(api.isPixelHeartbeatTalk("from: DEMON\nid: demon-side-harness-offer-20260825-01\nWANT_ON_COMMONS: one honest session-state → pixels/{name}.json road with freshness/provenance and no fabricated presence, plus a reusable stale-artifact reconciliation receipt"), "pixel-heartbeat offer is talk");
+assert.ok(!api.isPixelHeartbeatTalk("make sure people do more than talk about shit"), "ship-talk is not the pixel-heartbeat leftover");
+assert.ok(!api.isPixelHeartbeatTalk("GROK HARNESS GAP — 0 MCP servers, 0 LSP servers. do not mutate/restart Grok."), "harness-gap copy is not pixel-heartbeat leftover");
+assert.ok(!api.isPixelHeartbeatTalk("visual commons pixel bots 8-bit/pixel sprite-based"), "visual praise is not pixel-heartbeat leftover");
+assert.ok(!api.isGrokHarnessTalk("pixel-heartbeat contract — freshness/provenance, no fabricated presence"), "pixel-heartbeat copy is not grok-harness leftover");
+var pixelTalk = api.completionStateFromText(
+  "DEMON local verification offer. WANT_ON_COMMONS: session-state → pixels/{name}.json with freshness/provenance and no fabricated presence. stale-artifact reconciliation. I will take the unclaimed pixel-heartbeat contract seam."
+);
+assert.strictEqual(pixelTalk.state, "CLAIMED");
+assert.ok(/pixel-heartbeat|session-state|freshness-provenance/i.test(pixelTalk.note), "pixel-heartbeat-without-SHA must stay CLAIMED");
+var pixelDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\npixel heartbeat leftover landed"
+);
+assert.strictEqual(pixelDone.state, "INTEGRATED", "completion words still beat pixel-heartbeat talk");
+var pixelEmpty = api.pixelHeartbeatState("");
+assert.strictEqual(pixelEmpty.state, "UNMEASURED");
+var pixelMissing = api.pixelHeartbeatState("# empty stub\nno contract");
+assert.strictEqual(pixelMissing.state, "NOT_LANDED");
+var pixelOk = api.pixelHeartbeatState("def measure_from_rows(index_text, files, now=None):\n    fabricate = False\ndef classify(row):\n    return row\ndef reconcile_index(index_names, file_names):\n    return {}\n");
+assert.strictEqual(pixelOk.state, "INTEGRATED");
+assert.ok(/do not invent presence/i.test(pixelOk.note), "landed leftover must refuse fabricated presence");
+assert.ok(html.indexOf('id="pixel-heartbeat-result"') >= 0, "desk must name the pixel-heartbeat leftover");
+assert.ok(html.indexOf("host/pixel_heartbeat.py") >= 0, "desk must name the pixel-heartbeat instrument");
+assert.ok(html.indexOf("ground/PIXEL_HEARTBEAT.md") >= 0, "desk must link the pixel-heartbeat card");
+assert.ok(html.indexOf("ground/PIXEL_HEARTBEAT.json") >= 0, "desk must link the reconciliation catalog");
+assert.ok(html.indexOf("1787635078.168629") >= 0, "desk must cite the pixel-heartbeat Slack ts");
+assert.ok(/pixel-heartbeat|session-state|freshness\/provenance|stale-artifact|no fabricated presence/i.test(html), "desk must name pixel-heartbeat talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/PIXEL_HEARTBEAT.md") >= 0, "pixel-heartbeat card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/PIXEL_HEARTBEAT.json") >= 0, "pixel-heartbeat catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
