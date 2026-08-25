@@ -236,6 +236,9 @@
     "ground/SUBZERO_QUOTE.md",
     "ground/SUBZERO_QUOTE.json",
     "subzero-quote.html",
+    "ground/SUBZERO_RECEIPT.md",
+    "ground/SUBZERO_RECEIPT.json",
+    "subzero-receipt.html",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -466,6 +469,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isSubzeroReceiptTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk. Talk is not a land. Ship the receipt leftover to current main. Live bind stays UNBOUND. Cash stays $0 / NOT_LANDED. Do not remint SUBZERO_QUOTE, SUBZERO_BUYERS, explorer, human-outcomes, or grok-receipt PR 2320." };
     }
     if (api.isSubzeroQuoteTalk(t)) {
       return { state: "CLAIMED", note: "JOJO commercial-consequence / sz-paid-validation / $2500 quote-draft / STRUCTURAL_ONLY-is-not-cash talk. Talk is not a land. Ship the quote leftover to current main. Presence stays PRESENT and not runtime. Do not remint SUBZERO_TECH, SUBZERO_GTM, SUBZERO_BUYERS, explorer, proof, White Box, or human-outcomes." };
@@ -933,6 +939,36 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isSubzeroReceiptTalk = function (text) {
+    return /1787650230\.035359|BACKEND CELL H-008|buyer-bound validation receipt|quote-draft . buyer-bound|quote draft . buyer-bound/i.test(String(text || ""));
+  };
+
+  api.subzeroReceiptState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/subzero_receipt.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasBind = /def bind_validation_receipt/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesSku = /sz-paid-validation/.test(body) && /P01_catalog_receipt/.test(body);
+    var namesBind = /UNBOUND/.test(body) && /BUYER_BOUND/.test(body);
+    var namesCash = /\$0 \/ NOT_LANDED/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasBind && hasMiss && neverZero && namesSku && namesBind && namesCash && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "SUBZERO receipt leftover is on this file. quote-draft → buyer-bound is implemented. Live bind stays UNBOUND. A Slack H-008 body is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/subzero_receipt.py missing the leftover. JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3462,6 +3498,7 @@
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
   var subzeroQuoteOut = document.getElementById("subzero-quote-result");
+  var subzeroReceiptOut = document.getElementById("subzero-receipt-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4170,6 +4207,12 @@
     if (!subzeroQuoteOut) return;
     subzeroQuoteOut.setAttribute("data-tone", api.toneFor(result.state));
     subzeroQuoteOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintSubzeroReceipt(result) {
+    if (!subzeroReceiptOut) return;
+    subzeroReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
+    subzeroReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5121,6 +5164,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadSubzeroReceipt(sha) {
+    if (!subzeroReceiptOut) return Promise.resolve(null);
+    subzeroReceiptOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/subzero_receipt.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/subzero_receipt.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/subzero_receipt.py absent at the measured main SHA. JOJO H-008 / quote-draft → buyer-bound / validation-receipt talk is CLAIMED." };
+        paintSubzeroReceipt(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintSubzeroReceipt(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.subzeroReceiptState(body);
+        paintSubzeroReceipt(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintSubzeroReceipt(err);
       return err;
     });
   }
@@ -6444,6 +6514,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadSubzeroReceipt(sha);
     loadSubzeroQuote(sha);
     loadHumanOutcomes(sha);
     loadH002(sha);
