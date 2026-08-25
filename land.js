@@ -144,6 +144,8 @@
     "ground/WORKING_BUILDS.json",
     "ground/SLACK_RECEIPT.md",
     "ground/SLACK_RECEIPT.json",
+    "ground/RESOURCE_LEDGER.md",
+    "ground/RESOURCE_LEDGER.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -426,6 +428,9 @@
     if (api.isStrandedMapTalk(t)) {
       return { state: "CLAIMED", note: "real-but-stranded-map talk. Talk is not a land. Measure the six items on current main. Do not take DIO Android CI, JOJO MCP/wake, White Box/Bazaar commercial, or titan write." };
     }
+    if (api.isResourceLedgerTalk(t)) {
+      return { state: "CLAIMED", note: "live-compute-board / cache-as-capacity / resource-ledger talk. Talk is not a land. Measure live probes, do not count cache as capacity, and ship the leftover." };
+    }
     if (api.isConnectorRevalTalk(t)) {
       return { state: "CLAIMED", note: "connector-utilization / provisioned-vs-live talk. Talk is not a land. Measure live probes against the Aug 21 cache and ship the leftover. Do not vacuum state.vscdb." };
     }
@@ -488,6 +493,31 @@
 
   api.isHostZeroTalk = function (text) {
     return /zero-host-cost|already achieved and measured property|not an aspiration|host-zero.{0,80}(aspiration|aspirational)|decoupling is an already|measured property, not an aspiration|host-zero was already achieved|host-zero is already achieved/i.test(String(text || ""));
+  };
+
+  api.isResourceLedgerTalk = function (text) {
+    return /live compute\/connector board|do not count cache as capacity|live resource ledger|five high-value surfaces|huggingface specifically is not verified|sites\/vercel|only github and slack among the cached 23|cache as capacity/i.test(String(text || ""));
+  };
+
+  api.resourceLedgerState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/resource_ledger.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasFields = /REQUIRED_FIELDS/.test(body) && /evidence_ts/.test(body);
+    var refusesCache = /cache is not capacity/.test(body) && /NOT_VERIFIED/.test(body);
+    if (hasMeasure && hasClassify && hasFields && refusesCache) {
+      return {
+        state: "INTEGRATED",
+        note: "resource-ledger leftover is on this file. Cache is not capacity. Hugging Face is NOT verified. Forbidden writes skipped. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/resource_ledger.py missing the live resource ledger. Cache-as-capacity talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isConnectorRevalTalk = function (text) {
@@ -1464,6 +1494,7 @@
   var renderContractOut = document.getElementById("render-contract-result");
   var workingOut = document.getElementById("working-builds-result");
   var slackReceiptOut = document.getElementById("slack-receipt-result");
+  var ledgerOut = document.getElementById("resource-ledger-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1935,6 +1966,12 @@
     if (!slackReceiptOut) return;
     slackReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
     slackReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintResourceLedger(result) {
+    if (!ledgerOut) return;
+    ledgerOut.setAttribute("data-tone", api.toneFor(result.state));
+    ledgerOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2567,6 +2604,33 @@
     });
   }
 
+  function loadResourceLedger(sha) {
+    if (!ledgerOut) return Promise.resolve(null);
+    ledgerOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/resource_ledger.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/resource_ledger.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/resource_ledger.py absent at the measured main SHA. Cache-as-capacity talk is CLAIMED." };
+        paintResourceLedger(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintResourceLedger(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.resourceLedgerState(body);
+        paintResourceLedger(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintResourceLedger(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -2724,6 +2788,7 @@
     loadRenderContract(sha);
     loadWorkingBuilds(sha);
     loadSlackReceipt(sha);
+    loadResourceLedger(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

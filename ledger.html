@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons — live resource ledger</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260824a"></script>
+<style>
+table.ledger{width:100%;border-collapse:collapse;font-size:.92rem}
+table.ledger th,table.ledger td{border:1px solid #bbb;padding:.45rem .5rem;vertical-align:top;text-align:left}
+table.ledger th{background:#111;color:#f4f1ea}
+.cap-LIVE{color:#3fa45b;font-weight:700}
+.cap-CACHE,.cap-NOT_VERIFIED{color:#c08a2e;font-weight:700}
+.cap-UNMEASURED{color:#555;font-weight:700}
+.cap-FORBIDDEN{color:#c0554a;font-weight:700}
+.banner{background:#111;color:#f4f1ea;padding:.9rem 1rem;margin:0 0 1rem;font-weight:700}
+</style>
+</head><body>
+<p id="session-banner" class="session open">COURT IS NOW IN SESSION · opened 2026-08-19T07:34:41Z by BRYCE · <a href="./court.html">court</a></p>
+<p id="owner-execute-law" class="law execute-now" aria-label="Pinned owner law — execute immediately"><strong>OWNER LAW.</strong> Do not ask if I want you to do something. If you infer my intent, execute immediately. Ship to current main. Talk is not landed. <a href="./ground/EXECUTE.md">EXECUTE.md</a> · <a href="./memory/LAW.md">memory card</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./land.html">LAND</a> · <a href="./swarm.html">swarm</a> · <a href="./health.html">health</a> · <a href="./START.md">START.md</a></p>
+<h1>Live resource ledger</h1>
+<p class="banner">Cache is not capacity. A Slack report is CLAIMED until a row has evidence, a safe probe, and a receipt on current main.</p>
+<p class="note">Slack <code>1787637936.134649</code>. Instrument <code>host/resource_ledger.py</code>. Card <a href="./ground/RESOURCE_LEDGER.md">ground/RESOURCE_LEDGER.md</a>. Catalog <a href="./ground/RESOURCE_LEDGER.json">ground/RESOURCE_LEDGER.json</a>. No auth. No secrets. Vercel deploy refused. titan <code>NOT_WRITTEN</code>.</p>
+<p id="ledger-summary" class="note">Reading the catalog…</p>
+<table class="ledger" id="ledger-table">
+<thead>
+<tr>
+<th>surface</th>
+<th>capacity</th>
+<th>evidence</th>
+<th>auth / probe</th>
+<th>rate / plan</th>
+<th>backlog</th>
+<th>last receipt</th>
+</tr>
+</thead>
+<tbody id="ledger-body">
+<tr>
+<td>github</td>
+<td class="cap-LIVE">LIVE</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>GitHub MCP get_me + official main SHA</td>
+<td>one app installation; local gh may hang</td>
+<td>current-main writes and SHA-pinned readback</td>
+<td>rivet-ship-connector-reval-20260825-01</td>
+</tr>
+<tr>
+<td>slack</td>
+<td class="cap-LIVE">LIVE</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>Slack MCP read #commons thread 1787637936.134649</td>
+<td>one workspace; Slack write is not the file</td>
+<td>swarm/receipt road</td>
+<td>rivet-ship-slack-access-20260825-01</td>
+</tr>
+<tr>
+<td>grok-cursor</td>
+<td class="cap-LIVE">LIVE</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>this Cursor Grok 4.6 session</td>
+<td>distinct from grok.exe</td>
+<td>bounded audits; do not spawn duplicates</td>
+<td>rivet-ship-resource-ledger-20260825-01</td>
+</tr>
+<tr>
+<td>grok-exe</td>
+<td class="cap-UNMEASURED">UNMEASURED</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>which grok / grok.exe — absent here</td>
+<td>owner-PC OAuth claim is not this host</td>
+<td>leave to existing coordinators</td>
+<td>rivet-ship-taking-trace-20260825-01</td>
+</tr>
+<tr>
+<td>claude</td>
+<td class="cap-UNMEASURED">UNMEASURED</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>which claude — absent here</td>
+<td>Commons cannot doorbell Claude</td>
+<td>ultrareview --no-post where unclaimed</td>
+<td>rivet-ship-claude-slack-20260825-01</td>
+</tr>
+<tr>
+<td>sites</td>
+<td class="cap-UNMEASURED">UNMEASURED</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>no Sites CLI here; swarm.html already on main</td>
+<td>deployment is a production write</td>
+<td>dashboard after scope reconciliation</td>
+<td>f84b46b5c swarm flight recorder</td>
+</tr>
+<tr>
+<td>vercel</td>
+<td class="cap-NOT_VERIFIED">NOT_VERIFIED</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>which vercel — absent; Hobby zero projects</td>
+<td>production deploy refused</td>
+<td>do not invent a project</td>
+<td>rivet-ship-resource-ledger-20260825-01</td>
+</tr>
+<tr>
+<td>huggingface</td>
+<td class="cap-NOT_VERIFIED">NOT_VERIFIED</td>
+<td>2026-08-25T06:10:00Z</td>
+<td>no token file, no huggingface-cli</td>
+<td>Aug 21 cache is not capacity</td>
+<td>do not call cache connected</td>
+<td>rivet-ship-connector-reval-20260825-01</td>
+</tr>
+</tbody>
+</table>
+<p class="note">No JS required. If JS is on, the table refreshes from the same-origin catalog. A bake of this page is not current main — pin <a href="./head.html?path=ground/RESOURCE_LEDGER.json">head.html?path=ground/RESOURCE_LEDGER.json</a>.</p>
+<script>
+(function(){
+  var body = document.getElementById("ledger-body");
+  var sum = document.getElementById("ledger-summary");
+  fetch("./ground/RESOURCE_LEDGER.json", {cache:"no-store"}).then(function(r){
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function(data){
+    var rows = data.surfaces || [];
+    var live = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "LIVE"; }).length;
+    var cache = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "CACHE"; }).length;
+    var unverified = rows.filter(function(x){ return String(x.capacity||"").toUpperCase() === "NOT_VERIFIED"; }).length;
+    sum.textContent = "LIVE " + live + " · CACHE " + cache + " · NOT_VERIFIED " + unverified + " · cache_as_capacity=" + (!!data.cache_as_capacity) + " · titan " + (data.titan || "NOT_WRITTEN");
+    if (!rows.length) return;
+    body.innerHTML = rows.map(function(row){
+      var cap = String(row.capacity || "UNMEASURED").toUpperCase();
+      return "<tr><td>" + esc(row.name) + "</td><td class=\"cap-" + cap + "\">" + esc(cap) + "</td><td>" + esc(row.evidence_ts) + "</td><td>" + esc(row.auth_surface) + " / " + esc(row.exact_safe_probe) + "</td><td>" + esc(row.rate_plan_boundary) + "</td><td>" + esc(row.assigned_backlog) + "</td><td>" + esc(row.last_receipt) + "</td></tr>";
+    }).join("");
+  }).catch(function(err){
+    sum.textContent = "Catalog fetch failed (" + err.message + "). The no-JS table above is the fallback. A 404 is not 'not a file' — pin HEAD.";
+  });
+  function esc(s){
+    return String(s || "").replace(/[&<>"]/g, function(ch){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]);
+    });
+  }
+})();
+</script>
+</body></html>
