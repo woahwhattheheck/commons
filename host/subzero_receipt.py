@@ -2,10 +2,11 @@
 """host/subzero_receipt.py — quote-draft bind, not buyer acceptance.
 
 Slack 1787650230.035359 (JOJO BACKEND CELL H-008) plus Slack
-1787651030.360809 (JOJO SECOND PASS on squash 5d796079):
+1787651030.360809 (JOJO SECOND PASS on squash 5d796079) plus
+Slack 1787651639.893089 (JOJO semantic-hardening follow-up):
 source-index sz-paid-validation / P01 $2500 into a bind that
-cannot mint BUYER_BOUND from file presence, self-bind, Windows
-backslash traversal, missing numerics, or caller PASS.
+cannot mint BUYER_BOUND from any existing file, self-bind,
+Windows path escape, missing numerics, or caller PASS.
 
 Talk that restates H-008 / #2329 is CLAIMED until this leftover
 measures the source index, the bind path, CANDIDATE/INCOMPLETE
@@ -19,10 +20,12 @@ Do not message buyers. Do not store bank, routing, card, tax,
 or private-buyer data. Do not smash commons.mno. Do not add a
 gate.
 
-A public inbound post id is a binding key, not a seat. File
-existence is not buyer acceptance. Bound is still
-STRUCTURAL_ONLY. Bound is not cash, not runtime, not demand
-proof. Live binder stays CANDIDATE / INCOMPLETE / NEEDS_BUYER.
+A semantically relevant public inbound is a binding key, not a
+seat. Any existing file or self receipt is IRRELEVANT_INBOUND /
+SELF_BIND, not inbound_ok. File existence is not buyer
+acceptance. Bound is still STRUCTURAL_ONLY. Bound is not cash,
+not runtime, not demand proof. Live binder stays CANDIDATE /
+INCOMPLETE / NEEDS_BUYER. Missing numeric never coerce.
 
 X = Slack H-008 + second pass + quote leftover + GTM sku + P01
     + schema + leftover paths.
@@ -58,6 +61,7 @@ DEFAULT_SCHEMA = os.path.join(
 )
 SLACK_TS = "1787650230.035359"
 SECOND_PASS_TS = "1787651030.360809"
+HARDENING_TS = "1787651639.893089"
 CELL = "H-008"
 SKU_ID = "sz-paid-validation"
 P01_ID = "P01_catalog_receipt"
@@ -113,7 +117,11 @@ REQUIRED_PHRASES = (
     "validation receipt",
     "1787650230.035359",
     "1787651030.360809",
+    "1787651639.893089",
     "h-008",
+    "irrelevant_inbound",
+    "semantically relevant",
+    "public inbound",
     "structural_only",
     "not runtime",
     "not demand",
@@ -170,9 +178,25 @@ def _exists(root, rel):
     return os.path.isfile(os.path.join(root, *_posix_parts(rel)))
 
 
+def safe_rel(rel):
+    """Reject Windows escape, drive letters, and .. . Keep posix only."""
+    raw = str(rel or "")
+    if not raw or raw.startswith("/") or raw.startswith("\\"):
+        return ""
+    if "\\" in raw:
+        return ""
+    head = raw.split("/", 1)[0]
+    if ":" in head:
+        return ""
+    parts = [part for part in raw.split("/") if part]
+    if not parts or any(part in {".", ".."} for part in parts):
+        return ""
+    return "/".join(parts)
+
+
 def _posix_parts(rel):
-    text = str(rel or "").replace("\\", "/")
-    return [part for part in text.split("/") if part and part not in {".", ".."}]
+    text = safe_rel(rel)
+    return text.split("/") if text else []
 
 
 def _hex_sha(value, sizes=(64,)):
@@ -491,13 +515,40 @@ def parse_post(text):
     }
 
 
-def buyer_evidence(text, inbound_id, quote_hash):
-    """File existence is not acceptance. Need a distinct claim + quote bind."""
+def inbound_semantic(text, inbound_id, quote_hash):
+    """Any existing file is not a public inbound. Self receipts are not buyers."""
     name = canonicalize_post_id(inbound_id)
     if not name:
         return {"ok": False, "reason": "INVALID_ID", "from": "", "subject": ""}
     if name in SELF_BIND_IDS:
         return {"ok": False, "reason": "SELF_BIND", "from": "", "subject": ""}
+    parsed = parse_post(text)
+    hay = (parsed["subject"] + "\n" + parsed["body"] + "\n" + parsed["id"]).lower()
+    named = (
+        SKU_ID.lower() in hay
+        or P01_ID.lower() in hay
+        or (_hex_sha(quote_hash) and str(quote_hash).lower() in hay)
+    )
+    if not named:
+        return {
+            "ok": False,
+            "reason": "IRRELEVANT_INBOUND",
+            "from": parsed["from"],
+            "subject": parsed["subject"],
+        }
+    return {
+        "ok": True,
+        "reason": "",
+        "from": parsed["from"],
+        "subject": parsed["subject"],
+    }
+
+
+def buyer_evidence(text, inbound_id, quote_hash):
+    """File existence is not acceptance. Need a distinct claim + quote bind."""
+    semantic = inbound_semantic(text, inbound_id, quote_hash)
+    if not semantic.get("ok"):
+        return semantic
     parsed = parse_post(text)
     hay = parsed["subject"] + "\n" + parsed["body"]
     if not ACCEPT_RE.search(hay):
@@ -562,9 +613,21 @@ def bind_validation_receipt(root, inbound_id, excerpt_rel, status="UNKNOWN"):
         "reason": "unsafe excerpt",
         "sha256": "",
     }
-    inbound_ok = bool(located.get("ok")) and _exists(root, located.get("rel") or "")
+    file_ok = bool(located.get("ok")) and _exists(root, located.get("rel") or "")
     excerpt_ok = bool(parsed.get("ok")) and _hex_sha(parsed.get("sha256"))
-    evidence = {"ok": False, "reason": located.get("reason") or "NO_INBOUND", "from": "", "subject": ""}
+    evidence = {
+        "ok": False,
+        "reason": located.get("reason") or "NO_INBOUND",
+        "from": "",
+        "subject": "",
+    }
+    if file_ok:
+        evidence = inbound_semantic(
+            _read(root, located["rel"]),
+            inbound_id,
+            hashes.get("quote_hash"),
+        )
+    inbound_ok = file_ok and bool(evidence.get("ok"))
     if inbound_ok:
         evidence = buyer_evidence(
             _read(root, located["rel"]),
@@ -697,7 +760,18 @@ def classify_binding(row):
                 "UNKNOWN. FINDER-FAILED, never 0."
             ),
         }
-    if int(row.get("live_bound_receipts") or 0) > 0:
+    live_bound, live_bound_state = measured_int(row, "live_bound_receipts")
+    if live_bound_state in {"UNRESOLVED", "FINDER-FAILED"}:
+        return {
+            "state": "FINDER-FAILED",
+            "note": (
+                "live_bound_receipts "
+                + live_bound_state
+                + ". Missing numeric is not measured 0. Never coerce. "
+                "FINDER-FAILED, never 0."
+            ),
+        }
+    if live_bound_state == "PRESENT" and live_bound not in (None, 0):
         return {
             "state": "NOT_LANDED",
             "note": (
@@ -795,6 +869,7 @@ def measure_from_rows(facts):
     structural_only, structural_only_state = measured_int(facts, "structural_only")
     runtime_measured, runtime_measured_state = measured_int(facts, "runtime_measured")
     customer_ready, customer_ready_state = measured_int(facts, "customer_ready")
+    live_bound, live_bound_state = measured_int(facts, "live_bound_receipts")
     runtime_proof = facts.get("runtime_proof")
     if runtime_proof not in {True, False, "UNRESOLVED"}:
         runtime_proof = bool(runtime_proof)
@@ -822,9 +897,8 @@ def measure_from_rows(facts):
         "schema_no_gate": bool(facts.get("schema_no_gate")),
         "binding_state": str(facts.get("binding_state") or ""),
         "legal_state": str(facts.get("legal_state") or "NEEDS_BUYER"),
-        "live_bound_receipts": facts.get("live_bound_receipts")
-        if facts.get("live_bound_receipts") not in (None, "")
-        else 0,
+        "live_bound_receipts": live_bound,
+        "live_bound_receipts_state": live_bound_state,
         "bind_works": bool(facts.get("bind_works")),
         "grbn_sha": str(facts.get("grbn_sha") or ""),
         "collected_cash_usd": collected_cash,
@@ -1028,6 +1102,12 @@ def measure_root(root):
     escaped = bind_validation_receipt(root, "..\\ground\\EXECUTE", GRBN_REL, status="PASS")
     self_bind = bind_validation_receipt(root, QUOTE_RECEIPT, GRBN_REL, status="PASS")
     other_excerpt = bind_validation_receipt(root, QUOTE_RECEIPT, LVIN_REL, status="PASS")
+    unrelated = bind_validation_receipt(
+        root,
+        "bryce-action-pad-open-door-directive-20260822-01",
+        GRBN_REL,
+        status="PASS",
+    )
     bind_works = (
         missing_inbound["binding_state"] == "UNBOUND"
         and missing_inbound["excerpt_ok"]
@@ -1037,12 +1117,17 @@ def measure_root(root):
         and escaped["receipt"]["bound"] is False
         and escaped["status_refused"] == "PASS_WITHOUT_BUYER"
         and self_bind["buyer_reason"] == "SELF_BIND"
+        and not self_bind["inbound_ok"]
+        and self_bind["binding_state"] == "UNBOUND"
         and self_bind["binding_state"] != "BUYER_BOUND"
         and self_bind["receipt"]["bound"] is False
         and self_bind["receipt"]["status"] == "UNKNOWN"
         and other_excerpt["status_refused"] == "PASS_WITHOUT_BUYER"
         and other_excerpt["receipt"]["status"] == "UNKNOWN"
         and other_excerpt["receipt"]["bound"] is False
+        and unrelated["buyer_reason"] == "IRRELEVANT_INBOUND"
+        and not unrelated["inbound_ok"]
+        and unrelated["binding_state"] == "UNBOUND"
         and _hashes_ok(self_bind.get("hashes"))
         and indexed.get("quote_price_state") == "PRESENT"
         and indexed.get("quote_price") == QUOTE_PRICE
@@ -1084,7 +1169,8 @@ def measure_root(root):
         "schema_no_gate": bool(indexed.get("schema_no_gate")),
         "binding_state": str(catalog.get("binding_state") or "CANDIDATE").upper(),
         "legal_state": str(catalog.get("legal_state") or "NEEDS_BUYER").upper(),
-        "live_bound_receipts": live_bound_value if live_bound_state == "PRESENT" else 0,
+        "live_bound_receipts": live_bound_value,
+        "live_bound_receipts_state": live_bound_state,
         "bind_works": bind_works,
         "grbn_sha": str((missing_inbound.get("header") or {}).get("sha256") or ""),
         "collected_cash_usd": indexed.get("collected_cash_usd"),
@@ -1111,6 +1197,7 @@ def measure_root(root):
         "hashes": hashes,
         "slack_ts": str(catalog.get("slack_ts") or SLACK_TS),
         "second_pass_ts": str(catalog.get("second_pass_ts") or SECOND_PASS_TS),
+        "hardening_ts": str(catalog.get("hardening_ts") or HARDENING_TS),
     }
     binding = classify_binding(measure_from_rows(facts))
     row = measure_from_rows(facts)
@@ -1118,6 +1205,7 @@ def measure_root(root):
         {
             "slack_ts": facts["slack_ts"],
             "second_pass_ts": facts["second_pass_ts"],
+            "hardening_ts": facts["hardening_ts"],
             "cell": CELL,
             "x": [rel for rel in SEARCH_SPACE if _exists(root, rel)],
             "y": {
@@ -1179,6 +1267,8 @@ def self_test():
             "legal_state": "NEEDS_BUYER",
             "collected_cash_usd": 0,
             "collected_cash_state": "PRESENT",
+            "live_bound_receipts": 0,
+            "live_bound_receipts_state": "PRESENT",
             "claims_cash": True,
         }
     )
@@ -1197,6 +1287,7 @@ def self_test():
             "collected_cash_usd": 0,
             "collected_cash_state": "PRESENT",
             "live_bound_receipts": 1,
+            "live_bound_receipts_state": "PRESENT",
             "demand": "UNKNOWN",
         }
     )
@@ -1213,6 +1304,8 @@ def self_test():
             "binding_state": "CANDIDATE",
             "collected_cash_usd": 0,
             "collected_cash_state": "PRESENT",
+            "live_bound_receipts": 0,
+            "live_bound_receipts_state": "PRESENT",
         }
     )
     assert missing_price["state"] == "FINDER-FAILED", missing_price

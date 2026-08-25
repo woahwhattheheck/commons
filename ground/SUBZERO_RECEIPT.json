@@ -1,6 +1,7 @@
 {
   "slack_ts": "1787650230.035359",
   "second_pass_ts": "1787651030.360809",
+  "hardening_ts": "1787651639.893089",
   "cell": "H-008",
   "kind": "SUBZERO_RECEIPT",
   "subject": "sz-paid-validation / P01 $2500 quote-draft bind holes closed; live binder CANDIDATE/INCOMPLETE/NEEDS_BUYER, not buyer acceptance or cash",
@@ -27,6 +28,7 @@
     "buyer_id_kind": "public_inbound_post_id",
     "needs": [
       "canonical inbound post id",
+      "semantically relevant public inbound",
       "path stays under p/",
       "distinct buyer claim",
       "acceptance of this quote hash/sku",
@@ -34,6 +36,7 @@
       "sha256 match",
       "STRUCTURAL_ONLY limit"
     ],
+    "irrelevant_inbound": "any existing file or self receipt is not a public inbound",
     "self_bind_refused": [
       "rivet-ship-subzero-quote-20260825-01",
       "rivet-ship-subzero-receipt-20260825-01",
