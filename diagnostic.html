@@ -212,6 +212,7 @@ PUBLIC_OBJECTIVE:</textarea>
     /\b\d{1,6}\s+[A-Za-z0-9.'-]+(?:\s+[A-Za-z0-9.'-]+){0,5}\s+(?:street|st|avenue|ave|road|rd|boulevard|blvd|lane|ln|drive|dr|court|ct|way|parkway|pkwy)\b/i,
     /\bauthorization\s*[:=]\s*["']?Bearer\s+\S+/i,
     /(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+/i,
+    /\bhttps:\/\/[^/?#\s@]*:[^/?#\s@]+@[^/?#\s]+/i,
     /\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret|token|bearer)\s*[:=]\s*\S+/i,
     /\b(?:tax[_ -]?id|taxpayer[_ -]?(?:id|identification)|ein|tin)\s*[:=]\s*\S+/i,
     /\b\d{2}-\d{7}\b/,

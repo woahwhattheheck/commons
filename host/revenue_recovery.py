@@ -141,6 +141,7 @@ SENSITIVE_PATTERNS = (
         r"(?:[?&](?:access[_-]?token|api[_-]?key|key|password|secret|token)=)[^&#\s]+",
         re.IGNORECASE,
     ),
+    re.compile(r"\bhttps://[^/?#\s@]*:[^/?#\s@]+@[^/?#\s]+", re.IGNORECASE),
     re.compile(
         r"\b(?:password|passwd|passphrase|api[_ -]?key|access[_ -]?token|auth[_ -]?token|client[_ -]?secret|secret|token|bearer)"
         r"\s*[:=]\s*\S+",

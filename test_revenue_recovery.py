@@ -248,6 +248,15 @@ class RevenueRecoveryTests(unittest.TestCase):
             "PUBLIC_CONTACT_URL: https://example.com/contact?token=sk_live_ABC123"
         )
 
+    def test_x_url_userinfo_credential_is_incomplete(self):
+        for value in (
+            "PUBLIC_CONTACT_URL: https://alice:secret@example.com/contact",
+            "PUBLIC_CONTACT_URL: https://alice%3Asecret%40example.com/contact",
+        ):
+            with self.subTest(value=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
     def test_y_plain_password_is_incomplete(self):
         self.assert_sensitive_signal_is_incomplete("PASSWORD: hunter2")
 
