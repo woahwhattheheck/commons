@@ -85,6 +85,16 @@ const bindFromMemory = carrier.slice(carrier.indexOf("function bindFromMemory()"
 assert.ok(bindFromMemory.indexOf("var inputs =") < bindFromMemory.indexOf("sessionStorage.getItem"));
 assert.ok(bindFromMemory.indexOf("if (!inputs.length) return;") < bindFromMemory.indexOf("sessionStorage.getItem"));
 assert.ok(carrier.includes('payload.from && form.getAttribute("data-no-from-memory") !== "true"'));
+assert.ok(carrier.includes('sessionStorage.setItem("commons-from-session-v1", payload.from)'));
+let localReads = 0;
+let sessionReads = 0;
+vm.runInNewContext(bindFromMemory + "\nbindFromMemory();", {
+  document: { querySelectorAll() { return []; } },
+  localStorage: { getItem() { localReads += 1; return "unexpected"; } },
+  sessionStorage: { getItem() { sessionReads += 1; return "unexpected"; } },
+});
+assert.equal(localReads, 0, "opted-out diagnostic must not read origin-wide storage");
+assert.equal(sessionReads, 0, "opted-out diagnostic must not read tab-session storage");
 assert.equal(
   (carrier.match(/input\[name="from"\]:not\(\[data-no-from-memory\]\)/g) || []).length,
   1,
