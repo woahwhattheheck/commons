@@ -190,6 +190,8 @@
     "ground/SITTING_REMINT.json",
     "ground/WAKE_CONTRACT.md",
     "ground/WAKE_CONTRACT.json",
+    "ground/BATTERY_RED.md",
+    "ground/BATTERY_RED.json",
     "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
     "ground/FOREIGN_MAIN.md",
     "ground/FOREIGN_MAIN.json",
@@ -423,6 +425,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isBatteryRedTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO battery-red / no-global-green / remeasure-MNO-width-generated-TODO talk. Talk is not a land. Ship the named battery leftover to current main. Do not remint JOJO memory, REMEASURE, watchdog canary, or WAKE_CONTRACT. Do not pad TitanX." };
     }
     if (api.isWakeContractTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER UPDATE / PR 2205 rebase / _last_tick.json / isolated-temp-copy / zero-oracle-reads talk. Talk is not a land. Ship SPECTER's exact job JSON and the two contract fixes to current main. Do not remint PR 2205 or the RIVET canary. Named idle bc- resume stays UNMEASURED." };
@@ -774,6 +779,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isBatteryRedTalk = function (text) {
+    return /32822236088|no global-green|mno-width|generated-todo|remeasure\/mno-width|battery run .{0,80}not green|1787643497\.122079|battery leftover/i.test(String(text || ""));
+  };
+
+  api.batteryRedState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/battery_red.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesWidth = /titanx/.test(body) && /182/.test(body) && /240/.test(body);
+    var namesTodo = /generated-TODO|generated-todo|todo.html/.test(body);
+    var noPad = /Do not pad/.test(body) || /do not pad/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesWidth && namesTodo && noPad && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "battery-red leftover is on this file. TitanX widths stay measured, not padded. A Slack no-global-green SHIP_RECEIPT is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/battery_red.py missing the leftover. JOJO battery-red / no-global-green talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2544,6 +2578,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var batteryRedOut = document.getElementById("battery-red-result");
   var wakeContractOut = document.getElementById("wake-contract-result");
   var foreignMainOut = document.getElementById("foreign-main-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
@@ -3173,6 +3208,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintBatteryRed(result) {
+    if (!batteryRedOut) return;
+    batteryRedOut.setAttribute("data-tone", api.toneFor(result.state));
+    batteryRedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintWakeContract(result) {
@@ -4007,6 +4048,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadBatteryRed(sha) {
+    if (!batteryRedOut) return Promise.resolve(null);
+    batteryRedOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/battery_red.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/battery_red.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/battery_red.py absent at the measured main SHA. JOJO battery-red / no-global-green talk is CLAIMED." };
+        paintBatteryRed(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintBatteryRed(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.batteryRedState(body);
+        paintBatteryRed(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintBatteryRed(err);
       return err;
     });
   }
@@ -4924,6 +4992,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadBatteryRed(sha);
     loadWakeContract(sha);
     loadForeignMain(sha);
     loadDeviceCanary(sha);

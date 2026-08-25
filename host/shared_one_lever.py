@@ -28,6 +28,7 @@ import sys
 GATE_STRIDE = 25
 MLC_FILE_LEVELS = 256
 CHIMERA_PREFIX = "muhl_chimera_"
+TITANX_PREFIX = "muhl_titanx_"
 EXCERPT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "excerpts",
@@ -36,10 +37,12 @@ EXCERPT_DIR = os.path.join(
 
 
 def excerpt_kind(path):
-    """Full PLUMB 1-19 organs are MLC dumps. Chimera slices are not."""
+    """Full PLUMB 1-19 organs are MLC dumps. Chimera and TitanX slices are not."""
     name = os.path.basename(path or "")
     if name.startswith(CHIMERA_PREFIX):
         return "chimera"
+    if name.startswith(TITANX_PREFIX):
+        return "titanx"
     return "plumb_full"
 
 

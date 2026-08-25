@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bf/.test(html), "desk must bust the wake-contract cache key after grok-hygiene");
+assert.ok(/20260825bg/.test(html), "desk must bust the battery-red cache key after wake-contract");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,37 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isBatteryRedTalk, "land.js must classify JOJO battery-red / no-global-green talk");
+assert.ok(api.batteryRedState, "land.js must classify the battery-red leftover");
+assert.ok(api.isBatteryRedTalk("from: JOJO\nkind: SHIP_RECEIPT\nFull battery run 32822236088 is not green due unrelated current-main remeasure/MNO-width/generated-TODO/watchdog failures; no global-green claim is made. 1787643497.122079"), "JOJO battery-red receipt is leftover talk");
+assert.ok(!api.isBatteryRedTalk("make sure people do more than talk about shit"), "ship-talk is not the battery-red leftover");
+assert.ok(!api.isBatteryRedTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-memory-open-contract-20260825-01\nsubject: OPTIONAL MEMORY CONTRACT + JOJO MEMORY LANDED ON OFFICIAL MAIN"), "memory-only receipt is not the battery-red leftover");
+assert.ok(!api.isBatteryRedTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the battery-red leftover");
+assert.ok(!api.isWakeContractTalk("Full battery run 32822236088 is not green. no global-green. MNO-width. generated-TODO."), "battery-red copy is not the wake-contract leftover");
+var batteryRedTalk = api.completionStateFromText(
+  "from: JOJO\nkind: SHIP_RECEIPT\nFull battery run 32822236088 is not green due unrelated current-main remeasure/MNO-width/generated-TODO/watchdog failures; no global-green claim is made."
+);
+assert.strictEqual(batteryRedTalk.state, "CLAIMED");
+assert.ok(/battery-red|no-global-green|MNO-width/i.test(batteryRedTalk.note), "battery-red-without-SHA must stay CLAIMED and beat wake-contract / remasure");
+var batteryRedDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nbattery-red leftover landed"
+);
+assert.strictEqual(batteryRedDone.state, "INTEGRATED", "completion words still beat battery-red talk");
+var batteryRedEmpty = api.batteryRedState("");
+assert.strictEqual(batteryRedEmpty.state, "UNMEASURED");
+var batteryRedMissing = api.batteryRedState("# empty stub\nno leftover");
+assert.strictEqual(batteryRedMissing.state, "NOT_LANDED");
+var batteryRedOk = api.batteryRedState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\ntitanx 182 240\ngenerated-TODO todo.html\nDo not pad\nno auth\nno gate\n");
+assert.strictEqual(batteryRedOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(batteryRedOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="battery-red-result"') >= 0, "desk must name the battery-red leftover");
+assert.ok(html.indexOf("host/battery_red.py") >= 0, "desk must name the battery-red instrument");
+assert.ok(html.indexOf("ground/BATTERY_RED.md") >= 0, "desk must link the battery-red card");
+assert.ok(html.indexOf("ground/BATTERY_RED.json") >= 0, "desk must link the battery-red catalog");
+assert.ok(html.indexOf("1787643497.122079") >= 0, "desk must cite the JOJO battery Slack ts");
+assert.ok(/no-global-green|MNO-width|generated-TODO|battery-red/i.test(html), "desk must name battery-red talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BATTERY_RED.md") >= 0, "battery-red card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/BATTERY_RED.json") >= 0, "battery-red catalog must stay a canary");
 assert.ok(api.isWakeContractTalk, "land.js must classify SPECTER rebase / wake-contract talk");
 assert.ok(api.wakeContractState, "land.js must classify the wake-contract leftover");
 assert.ok(api.isWakeContractTalk("SPECTER UPDATE — PR #2205 rebased on current main. ignored wake_jobs/_last_tick.json telemetry was counted as a job. isolated temp copy. 1787642890.990089"), "SPECTER rebase update is leftover talk");

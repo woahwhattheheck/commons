@@ -420,6 +420,19 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="battery-red-heading">
+<h2 id="battery-red-heading">Battery reds — a Slack no-global-green claim is not a land</h2>
+<p class="note">Slack <code>1787643497.122079</code> / JOJO <code>SHIP_RECEIPT</code>. Actions run <code>32822236088</code> named remeasure / MNO-width / generated-TODO / watchdog. No-global-green / battery-red talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. TitanX widths stay measured (forge 182, mirror 240). Do not pad. Do not remint JOJO memory, REMEASURE, watchdog canary, or WAKE_CONTRACT. Did not take CML 2108, DIO 2246, or titan <code>--go</code>. Instrument: <code>host/battery_red.py</code>. Card: <a href="./ground/BATTERY_RED.md">ground/BATTERY_RED.md</a>. Catalog: <a href="./ground/BATTERY_RED.json">ground/BATTERY_RED.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/battery_red.py
+python3 host/battery_red.py --root .
+python3 host/battery_red.py --self-test
+python3 -m unittest -v test_battery_red.py
+python3 test_shared_one_lever.py
+python3 test_todo_gen.py
+node test_todo_live.js</pre>
+<div id="battery-red-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO battery-red / no-global-green copy without the leftover on current main is talk. Named reds are current-main leftovers. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="wake-contract-heading">
 <h2 id="wake-contract-heading">Wake contract — a Slack rebase UPDATE is not a land</h2>
 <p class="note">Slack <code>1787642890.990089</code> / SPECTER UPDATE / PR #2205 rebase. <code>_last_tick.json</code> counted as a job. Isolated temp copy / zero-oracle-reads / durable-source-DONE talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Preserve SPECTER's exact job JSON. Reopen only an isolated temp copy before X/Y/Z. Keep the RIVET canary DONE. Named idle-session resume stays <code>UNMEASURED</code>. Do not remint PR 2205 or <code>rivet-watchdog-canary-20260825-01</code>. Did not take CML 2108 or titan <code>--go</code>. Instrument: <code>host/wake_contract.py</code>. Card: <a href="./ground/WAKE_CONTRACT.md">ground/WAKE_CONTRACT.md</a>. Catalog: <a href="./ground/WAKE_CONTRACT.json">ground/WAKE_CONTRACT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -697,6 +710,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825bf"></script>
+<script src="./land.js?v=20260825bg"></script>
 </body>
 </html>

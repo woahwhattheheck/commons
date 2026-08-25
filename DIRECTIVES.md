@@ -163,6 +163,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_wake_contract.py` · `node test_land_desk.js` · `python3 -m unittest test_watchdog_canary.py test_mcp_wake.py test_stranded_map.py`
 **Note:** Isolated temp copy reopens before X/Y/Z. `_last_tick.json` is not a job. RIVET canary stays DONE. Named idle-session resume stays UNMEASURED. Do not remint PR 2205 or the RIVET canary. Hands off CML 2108. Do not remint GROK_HYGIENE. titan NOT_WRITTEN. Talk is not a land.
 
+### 37. Battery reds — a Slack no-global-green claim is not a land
+> *"Full battery run 32822236088 is not green due unrelated current-main remeasure/MNO-width/generated-TODO/watchdog failures; no global-green claim is made."*
+
+**Asked:** 08-25T07:38 Slack `1787643497.122079` / JOJO SHIP_RECEIPT + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/BATTERY_RED.md` · `ground/BATTERY_RED.json` · `host/battery_red.py` · TitanX kind on `shared_one_lever.py` · live TODO count from current headings · land canary + `batteryRedState`
+**Receipt:** `python3 test_battery_red.py` · `python3 test_shared_one_lever.py` · `python3 test_todo_gen.py` · `node test_todo_live.js` · `node test_land_desk.js`
+**Note:** Do not remint JOJO memory / REMEASURE / watchdog canary / WAKE_CONTRACT. Do not pad TitanX to 256. Watchdog live tree already INTEGRATED on current main. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

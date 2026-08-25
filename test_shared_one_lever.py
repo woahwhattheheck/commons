@@ -37,6 +37,16 @@ CHIMERA_FILE_LEVELS = {
     "muhl_chimera_lvin_synd.mno": 34,
 }
 
+# TitanX slices 29-31 are not PLUMB 1-19 MLC dumps. Forge and mirror
+# sit below 256 unique bytes. Padding them would remint the organ.
+# Commons happens to be 256; that is a measurement, not a requirement.
+TITANX_FILE_LEVELS = {
+    "muhl_titanx_forge.mno": 182,
+    "muhl_titanx_mirror.mno": 240,
+    "muhl_titanx_commons.mno": 256,
+}
+TITANX_NOT_PADDED = ("muhl_titanx_forge.mno", "muhl_titanx_mirror.mno")
+
 
 class TestSharedOneLever(unittest.TestCase):
     def test_const1_is_a_written_one_on_every_excerpt(self):
@@ -63,6 +73,20 @@ class TestSharedOneLever(unittest.TestCase):
                         row["file_levels"],
                         CHIMERA_FILE_LEVELS[name],
                         "chimera %s was reminted or padded" % name,
+                    )
+            elif kind == "titanx":
+                self.assertGreater(row["file_levels"], 1, name)
+                if name in TITANX_FILE_LEVELS:
+                    self.assertEqual(
+                        row["file_levels"],
+                        TITANX_FILE_LEVELS[name],
+                        "titanx %s was reminted or padded" % name,
+                    )
+                if name in TITANX_NOT_PADDED:
+                    self.assertLess(
+                        row["file_levels"],
+                        MLC_FILE_LEVELS,
+                        "titanx %s must not be padded to 256" % name,
                     )
             else:
                 self.assertEqual(kind, "plumb_full", name)
