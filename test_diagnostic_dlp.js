@@ -91,4 +91,4 @@ assert.equal(
   "from-memory selection must exclude opted-out diagnostic inputs before storage access",
 );
 
-console.log("DIAGNOSTIC_DLP_OK " + blocked.length + " blocked vectors + clean/public/from-memory checks");
+console.log("DIAGNOSTIC_DLP_OK " + blocked.length + " blocked vectors + clean-signal and tab-store checks");
