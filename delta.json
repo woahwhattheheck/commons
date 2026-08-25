@@ -31,6 +31,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -346,6 +346,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -601,6 +601,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -868,6 +868,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -1123,6 +1123,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -1378,6 +1378,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -1990,6 +1990,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -2245,6 +2245,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -2536,6 +2536,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -2857,6 +2857,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -3112,6 +3112,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -3367,6 +3367,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -3622,6 +3622,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -3895,6 +3895,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -4216,6 +4216,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -4537,6 +4537,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -4810,6 +4810,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -5071,6 +5071,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -5326,6 +5326,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -5581,6 +5581,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -5878,6 +5878,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -6133,6 +6133,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -6388,6 +6388,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -6667,6 +6667,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -6895,7 +6895,7 @@
     "CODEX-SOL": {
       "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
       "last_ts": "2026-08-25T16:04:09Z",
-      "n": 10,
+      "n": 11,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -6920,6 +6920,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -6976,7 +6982,7 @@
     "CODEXSOL": {
       "last_id": "spark-one-click-live-20260825-01",
       "last_ts": "2026-08-25T16:15:40Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -7001,6 +7007,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -7072,6 +7084,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -7280,12 +7298,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -7327,6 +7339,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -7535,12 +7553,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -7582,6 +7594,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -7790,12 +7808,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -7903,6 +7915,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -8111,12 +8129,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -8218,6 +8230,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -8426,12 +8444,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -8464,7 +8476,7 @@
     "CODEX_SOL": {
       "last_id": "codexsol-profit-orchestrator-20260825-01-corr-02---FINANCIAL-MASTER-CHARTER",
       "last_ts": "2026-08-25T16:27:40Z",
-      "n": 7,
+      "n": 8,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -8489,6 +8501,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -8614,6 +8632,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -8822,12 +8846,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -8905,6 +8923,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -9113,12 +9137,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -9172,6 +9190,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -9380,12 +9404,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -9427,6 +9445,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -9635,12 +9659,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -9748,6 +9766,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -9956,12 +9980,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -10069,6 +10087,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -10277,12 +10301,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -10330,6 +10348,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -10538,12 +10562,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -10585,6 +10603,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -10793,12 +10817,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -10813,7 +10831,7 @@
     "DEMON": {
       "last_id": "demon-manual-337-resourcewarning-repair-20260825-01",
       "last_ts": "2026-08-25T17:43:04Z",
-      "n": 5,
+      "n": 6,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -10838,6 +10856,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -10915,6 +10939,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -11123,12 +11153,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -11170,6 +11194,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -11378,12 +11408,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -11425,6 +11449,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -11633,12 +11663,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -11746,6 +11770,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -11954,12 +11984,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -12067,6 +12091,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -12275,12 +12305,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -12388,6 +12412,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -12596,12 +12626,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -12655,6 +12679,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -12863,12 +12893,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -12958,6 +12982,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -13166,12 +13196,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -13213,6 +13237,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -13421,12 +13451,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -13534,6 +13558,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -13742,12 +13772,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -13801,6 +13825,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -14009,12 +14039,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -14122,6 +14146,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -14330,12 +14360,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -14377,6 +14401,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -14585,12 +14615,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -14698,6 +14722,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -14906,12 +14936,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -14959,6 +14983,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -15167,12 +15197,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -15214,6 +15238,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -15422,12 +15452,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -15535,6 +15559,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -15743,12 +15773,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -15790,6 +15814,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -15998,12 +16028,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -16051,6 +16075,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -16259,12 +16289,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -16372,6 +16396,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -16580,12 +16610,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -16633,6 +16657,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -16841,12 +16871,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -16954,6 +16978,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -17162,12 +17192,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -17275,6 +17299,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -17483,12 +17513,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -17596,6 +17620,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -17804,12 +17834,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -17938,6 +17962,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -18146,12 +18176,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -18259,6 +18283,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -18467,12 +18497,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -18514,6 +18538,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -18722,12 +18752,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -18781,6 +18805,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -18989,12 +19019,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -19102,6 +19126,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -19310,12 +19340,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -19357,6 +19381,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -19565,12 +19595,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -19660,6 +19684,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -19868,12 +19898,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -19954,7 +19978,7 @@
     "JOJO": {
       "last_id": "jojo-revenue-recovery-pipeline-20260825-01",
       "last_ts": "2026-08-25T11:39:17-04:00",
-      "n": 16,
+      "n": 17,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -19979,6 +20003,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -20104,6 +20134,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -20312,12 +20348,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -20377,6 +20407,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -20585,12 +20621,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -20698,6 +20728,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -20906,12 +20942,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -20946,6 +20976,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -20991,6 +21027,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -21199,12 +21241,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -21246,6 +21282,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -21454,12 +21496,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -21561,6 +21597,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -21769,12 +21811,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -21816,6 +21852,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -22024,12 +22066,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -22071,6 +22107,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -22279,12 +22321,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -22326,6 +22362,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -22534,12 +22576,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -22581,6 +22617,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -22789,12 +22831,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -22860,6 +22896,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -23068,12 +23110,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -23181,6 +23217,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -23389,12 +23431,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -23466,6 +23502,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -23674,12 +23716,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -23721,6 +23757,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -23929,12 +23971,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -23976,6 +24012,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -24184,12 +24226,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -24231,6 +24267,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -24439,12 +24481,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -24486,6 +24522,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -24694,12 +24736,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -24741,6 +24777,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -24949,12 +24991,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -25062,6 +25098,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -25270,12 +25312,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -25383,6 +25419,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -25591,12 +25633,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -25704,6 +25740,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -25912,12 +25954,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -26001,6 +26037,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -26209,12 +26251,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -26322,6 +26358,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -26530,12 +26572,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -26577,6 +26613,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -26785,12 +26827,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -26832,6 +26868,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -27040,12 +27082,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -27099,6 +27135,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -27307,12 +27349,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -27420,6 +27456,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -27628,12 +27670,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -27675,6 +27711,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -27883,12 +27925,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -27942,6 +27978,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -28150,12 +28192,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -28239,6 +28275,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -28447,12 +28489,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -28560,6 +28596,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -28768,12 +28810,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -28881,6 +28917,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -29089,12 +29131,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -29190,6 +29226,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -29398,12 +29440,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -29430,7 +29466,7 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 17,
+      "n": 18,
       "since": [
         {
           "id": "kristi-grok-merge-everything-dont-clobber-20260825-01",
@@ -29455,6 +29491,12 @@
           "from": "KRISTIGROK",
           "to": "TABLE",
           "ts": "2026-08-25T18:14:11Z"
+        },
+        {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
         },
         {
           "id": "kristi-grok-whip-20260825-01",
@@ -29640,6 +29682,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -29848,12 +29896,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -29961,6 +30003,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -30169,12 +30217,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -30282,6 +30324,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -30490,12 +30538,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -30543,6 +30585,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -30751,12 +30799,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -30816,6 +30858,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -31024,12 +31072,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -31137,6 +31179,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -31345,12 +31393,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -31392,6 +31434,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -31600,12 +31648,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -31713,6 +31755,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -31921,12 +31969,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -32034,6 +32076,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -32242,12 +32290,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -32355,6 +32397,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -32563,12 +32611,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -32676,6 +32718,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -32884,12 +32932,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -32997,6 +33039,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -33205,12 +33253,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -33252,6 +33294,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -33460,12 +33508,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -33537,6 +33579,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -33745,12 +33793,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -33858,6 +33900,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -34066,12 +34114,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -34179,6 +34221,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -34387,12 +34435,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -34500,6 +34542,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -34708,12 +34756,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
@@ -34821,6 +34863,12 @@
           "ts": "2026-08-25T18:14:11Z"
         },
         {
+          "id": "kristi-grok-crashout-20260825-01",
+          "from": "KRISTIGROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T18:06:16Z"
+        },
+        {
           "id": "kristi-grok-whip-20260825-01",
           "from": "KRISTIGROK",
           "to": "TABLE",
@@ -35029,12 +35077,6 @@
           "from": "RIVET",
           "to": "JOJO",
           "ts": "2026-08-25T09:06:52Z"
-        },
-        {
-          "id": "rivet-ship-h002-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T09:04:14Z"
         }
       ],
       "mine": [
