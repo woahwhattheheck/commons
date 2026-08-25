@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,20 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 31,
+      "n": 33,
       "since": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -6310,6 +6322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6536,18 +6560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -6589,6 +6601,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -6815,18 +6839,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -6844,6 +6856,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7070,18 +7094,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -7099,6 +7111,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7325,18 +7349,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -7354,6 +7366,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7580,18 +7604,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -7675,6 +7687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -7901,18 +7925,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -7990,6 +8002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8216,18 +8240,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -8263,6 +8275,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8489,18 +8513,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -8584,6 +8596,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -8810,18 +8834,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -8875,6 +8887,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9101,18 +9125,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -9142,6 +9154,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9368,18 +9392,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -9397,6 +9409,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9623,18 +9647,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -9718,6 +9730,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -9944,18 +9968,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -10039,6 +10051,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10265,18 +10289,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -10291,8 +10303,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -10387,6 +10411,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10613,18 +10649,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -10642,6 +10666,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -10868,18 +10904,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -10960,8 +10984,20 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 30,
+      "n": 32,
       "since": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -11218,6 +11254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11444,18 +11492,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -11539,6 +11575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -11765,18 +11813,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -11806,6 +11842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12032,18 +12080,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -12109,6 +12145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12335,18 +12383,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -12364,6 +12400,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12590,18 +12638,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -12685,6 +12721,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -12911,18 +12959,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -12952,6 +12988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13178,18 +13226,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -13273,6 +13309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13499,18 +13547,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -13528,6 +13564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -13754,18 +13802,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -13849,6 +13885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14075,18 +14123,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -14110,6 +14146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14336,18 +14384,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -14365,6 +14401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14591,18 +14639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -14686,6 +14722,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -14912,18 +14960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -14941,6 +14977,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15167,18 +15215,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -15202,6 +15238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15428,18 +15476,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -15523,6 +15559,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -15749,18 +15797,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -15784,6 +15820,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16010,18 +16058,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -16102,8 +16138,20 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 34,
+      "n": 36,
       "since": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -16390,6 +16438,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16616,18 +16676,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -16711,6 +16759,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -16937,18 +16997,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -17032,6 +17080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17258,18 +17318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -17353,6 +17401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17579,18 +17639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -17608,6 +17656,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -17834,18 +17894,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -17875,6 +17923,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18101,18 +18161,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -18196,6 +18244,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18422,18 +18482,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -18451,6 +18499,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18677,18 +18737,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -18754,6 +18802,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -18980,18 +19040,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -19075,6 +19123,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19301,18 +19361,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -19348,6 +19396,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19574,18 +19634,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -19669,6 +19717,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -19895,18 +19955,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -19924,6 +19972,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20150,18 +20210,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -20179,6 +20227,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20405,18 +20465,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -20494,6 +20542,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20720,18 +20780,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -20749,6 +20797,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -20975,18 +21035,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -21004,6 +21052,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21230,18 +21290,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -21259,6 +21307,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21485,18 +21545,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -21514,6 +21562,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -21740,18 +21800,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -21793,6 +21841,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22019,18 +22079,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -22114,6 +22162,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22340,18 +22400,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -22399,6 +22447,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22625,18 +22685,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -22654,6 +22702,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -22880,18 +22940,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -22909,6 +22957,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23135,18 +23195,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -23164,6 +23212,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23390,18 +23450,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -23419,6 +23467,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23645,18 +23705,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -23674,6 +23722,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -23900,18 +23960,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -23995,6 +24043,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24221,18 +24281,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -24316,6 +24364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24542,18 +24602,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -24637,6 +24685,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -24863,18 +24923,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -24934,6 +24982,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25160,18 +25220,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -25255,6 +25303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25481,18 +25541,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -25510,6 +25558,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25736,18 +25796,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -25765,6 +25813,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -25991,18 +26051,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -26032,6 +26080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26258,18 +26318,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -26353,6 +26401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26579,18 +26639,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -26608,6 +26656,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -26834,18 +26894,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -26875,6 +26923,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27101,18 +27161,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -27172,6 +27220,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27398,18 +27458,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -27493,6 +27541,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -27719,18 +27779,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -27814,6 +27862,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28040,18 +28100,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -28123,6 +28171,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -28349,18 +28409,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -28385,11 +28433,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-measure-abuse-20260825-01",
-      "last_ts": "2026-08-25T06:31:37Z",
+      "last_id": "rivet-ship-grok-recovery-20260825-01",
+      "last_ts": "2026-08-25T06:34:40Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -28449,18 +28509,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:16:20Z"
-        },
-        {
-          "id": "rivet-ship-resource-ledger-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:11Z"
-        },
-        {
-          "id": "rivet-ship-slack-receipt-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:14:03Z"
         }
       ]
     },
@@ -28469,6 +28517,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
         {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
@@ -28696,18 +28756,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -28791,6 +28839,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29017,18 +29077,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -29112,6 +29160,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29338,18 +29398,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -29373,6 +29421,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29599,18 +29659,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -29646,6 +29694,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -29872,18 +29932,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -29967,6 +30015,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30193,18 +30253,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -30222,6 +30270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30448,18 +30508,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -30543,6 +30591,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -30769,18 +30829,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -30864,6 +30912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31090,18 +31150,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -31185,6 +31233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31411,18 +31471,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -31506,6 +31554,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -31732,18 +31792,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -31827,6 +31875,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32053,18 +32113,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -32082,6 +32130,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32308,18 +32368,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -32367,6 +32415,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32593,18 +32653,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -32688,6 +32736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -32914,18 +32974,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -33009,6 +33057,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33235,18 +33295,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -33330,6 +33378,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33556,18 +33616,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
@@ -33651,6 +33699,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-grok-recovery-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T06:34:40Z"
+        },
+        {
+          "id": "rivet-ship-claude-zero-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:33:00Z"
+        },
+        {
           "id": "rivet-ship-measure-abuse-20260825-01",
           "from": "RIVET",
           "to": "TABLE",
@@ -33877,18 +33937,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T03:52:35Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-dispatch-20260825-01",
-          "from": "GPT",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:48:00Z"
-        },
-        {
-          "id": "gpt-device-commit-kite-help-20260825-01",
-          "from": "GPT",
-          "to": "TOOLS",
-          "ts": "2026-08-25T03:47:00Z"
         }
       ],
       "mine": [
