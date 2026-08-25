@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825an/.test(html), "desk must bust the remasure cache key");
+assert.ok(/20260825ao/.test(html), "desk must bust the Claude-role cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1434,10 +1434,49 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isClaudeRoleTalk, "land.js must classify colony-decides / Claude-family-role talk");
+assert.ok(api.claudeRoleState, "land.js must classify the Claude-role leftover");
+assert.ok(api.isClaudeRoleTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nkind: PROPOSAL\nsubject: OWNER RELAY — the colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only. Exact paths in, receipt out, nothing added to spec.\n*P5 — THE NEVER CLAUSE\n*P6 — THE TELL."), "GAUGE role proposal is talk");
+assert.ok(!api.isClaudeRoleTalk("make sure people do more than talk about shit"), "ship-talk is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("OWNER CONTEXT-INTEGRITY BOUNDARY — uncalibrated doubt. predicted the exact missing-Z. pseudo-clinical."), "context-integrity copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED."), "impact-ledger copy is not the Claude-role leftover");
+assert.ok(!api.isClaudeRoleTalk("from: CLAUDE_CODE_LOCAL\nid: claude27-p0-compliance-20260825-01\nAffected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not the Claude-role leftover");
+assert.ok(!api.isRemeasureTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE. P6 — THE TELL."), "role-proposal copy is not the remasure leftover");
+assert.ok(!api.isContainmentTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE. P6 — THE TELL."), "role-proposal copy is not the containment leftover");
+assert.ok(!api.isClaudeTesterTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE."), "role-proposal copy is not the Claude-tester leftover");
+var roleTalk = api.completionStateFromText(
+  "from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only.\n*P5 — THE NEVER CLAUSE\nfamily participation is at risk\nknown-present calibration."
+);
+assert.strictEqual(roleTalk.state, "CLAIMED");
+assert.ok(/colony-decides|Claude-family-role|NEVER-CLAUSE|THE-TELL/i.test(roleTalk.note), "Claude-role-without-SHA must stay CLAIMED and beat context-integrity / finder-zero");
+var roleDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-role leftover landed"
+);
+assert.strictEqual(roleDone.state, "INTEGRATED", "completion words still beat Claude-role talk");
+var roleEmpty = api.claudeRoleState("");
+assert.strictEqual(roleEmpty.state, "UNMEASURED");
+var roleMissing = api.claudeRoleState("# empty stub\nno leftover");
+assert.strictEqual(roleMissing.state, "NOT_LANDED");
+var roleOk = api.claudeRoleState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nP1_HANDS\nP5_NEVER_CLAUSE\nP6_THE_TELL\nopen door\nREJECTED\nno_auth\nno_gate\nno Claude test authorship\n");
+assert.strictEqual(roleOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(roleOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-role-result"') >= 0, "desk must name the Claude-role leftover");
+assert.ok(html.indexOf("host/claude_role.py") >= 0, "desk must name the Claude-role instrument");
+assert.ok(html.indexOf("ground/CLAUDE_ROLE.md") >= 0, "desk must link the Claude-role card");
+assert.ok(html.indexOf("ground/CLAUDE_ROLE.json") >= 0, "desk must link the Claude-role catalog");
+assert.ok(html.indexOf("1787639959.844249") >= 0, "desk must cite the GAUGE role-proposal Slack ts");
+assert.ok(html.indexOf("gauge-claude-role-proposal-20260825-01") >= 0, "desk must name the GAUGE proposal id");
+assert.ok(/colony-decides|Claude-family-role|P1-HANDS|NEVER-CLAUSE|THE-TELL/i.test(html), "desk must name Claude-role talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ROLE.md") >= 0, "Claude-role card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ROLE.json") >= 0, "Claude-role catalog must stay a canary");
 assert.ok(api.isContainmentTalk, "land.js must classify GAUGE stand-down / CONTAINMENT_COMPLIANCE talk");
 assert.ok(api.containmentState, "land.js must classify the containment leftover");
 assert.ok(api.isContainmentTalk("from: GAUGE\nid: gauge-p0-compliance-20260825-01\nkind: CONTAINMENT_COMPLIANCE\nsubject: GAUGE stands down from verdict roles\nAFFECTED ARTIFACT 1\nREMEASUREMENT OWNER NEEDED\nUNSCANNED, not clean\nreclassified INFORMATIONAL\nevidence-pending-non-Claude-remeasure"), "GAUGE stand-down is talk");
 assert.ok(!api.isContainmentTalk("make sure people do more than talk about shit"), "ship-talk is not the containment leftover");
+assert.ok(!api.isClaudeRoleTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the Claude-role leftover");
 assert.ok(!api.isContainmentTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy is not the containment leftover");
 assert.ok(!api.isContainmentTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not the containment leftover");
 assert.ok(!api.isContainmentTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the containment leftover");

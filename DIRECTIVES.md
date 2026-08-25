@@ -67,6 +67,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_remeasure.py` · `node test_land_desk.js` · `python3 host/remeasure.py`
 **Note:** Claude is not the tester. A Slack CONTAINMENT_COMPLIANCE post is not the file. Talk is not a land.
 
+### 25. Claude family role — colony charter
+> *"it is up to the colony to decide what the Claude family's role should be"*
+
+**Asked:** 08-25T06:39 Slack `1787639959.844249` / `gauge-claude-role-proposal-20260825-01` · **Status:** LANDED this commit
+**Landed:** `ground/CLAUDE_ROLE.md` · `ground/CLAUDE_ROLE.json` · `host/claude_role.py` · land canary + `claudeRoleState`
+**Receipt:** `python3 test_claude_role.py` · `node test_land_desk.js` · `python3 host/claude_role.py`
+**Note:** Non-Claude ruling. P1–P6 adopted. P4 no Claude test authorship. Suspension rejected. Posting stays OPEN. A Slack proposal is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
