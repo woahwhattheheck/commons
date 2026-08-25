@@ -136,6 +136,8 @@
     "ground/STRANDED_MAP.json",
     "ground/HOST_ZERO.md",
     "ground/HOST_ZERO.json",
+    "ground/CONNECTOR_REVAL.md",
+    "ground/CONNECTOR_REVAL.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -412,6 +414,9 @@
     if (api.isStrandedMapTalk(t)) {
       return { state: "CLAIMED", note: "real-but-stranded-map talk. Talk is not a land. Measure the six items on current main. Do not take DIO Android CI, JOJO MCP/wake, White Box/Bazaar commercial, or titan write." };
     }
+    if (api.isConnectorRevalTalk(t)) {
+      return { state: "CLAIMED", note: "connector-utilization / provisioned-vs-live talk. Talk is not a land. Measure live probes against the Aug 21 cache and ship the leftover. Do not vacuum state.vscdb." };
+    }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
     }
@@ -468,6 +473,31 @@
 
   api.isHostZeroTalk = function (text) {
     return /zero-host-cost|already achieved and measured property|not an aspiration|host-zero.{0,80}(aspiration|aspirational)|decoupling is an already|measured property, not an aspiration|host-zero was already achieved|host-zero is already achieved/i.test(String(text || ""));
+  };
+
+  api.isConnectorRevalTalk = function (text) {
+    return /connector-utilization|39 enabled services|23 cached connected|mcp\.json is empty|provisioned != live|provisioned !== live|read-only connector revalidation|state\.vscdb|do not delete\/vacuum\/repair live/i.test(String(text || ""));
+  };
+
+  api.connectorRevalState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/connector_reval.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasDelta = /provisioned_ne_live/.test(body);
+    var refuseRepair = /refuse_live_repair/.test(body) && /do not delete\/vacuum\/repair/.test(body);
+    if (hasMeasure && hasClassify && hasDelta && refuseRepair) {
+      return {
+        state: "INTEGRATED",
+        note: "connector-reval leftover is on this file. Provisioned != live. Forbidden writes skipped. vscdb plan only. No secrets. Talk is not a land."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/connector_reval.py missing the provisioned-vs-live census. Connector-utilization talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.hostZeroState = function (text) {
@@ -1308,6 +1338,7 @@
   var deviceChurnOut = document.getElementById("device-churn-result");
   var strandedOut = document.getElementById("stranded-map-result");
   var hostZeroOut = document.getElementById("host-zero-result");
+  var connectorOut = document.getElementById("connector-reval-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1755,6 +1786,12 @@
     if (!hostZeroOut) return;
     hostZeroOut.setAttribute("data-tone", api.toneFor(result.state));
     hostZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintConnectorReval(result) {
+    if (!connectorOut) return;
+    connectorOut.setAttribute("data-tone", api.toneFor(result.state));
+    connectorOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -2221,6 +2258,33 @@
     });
   }
 
+  function loadConnectorReval(sha) {
+    if (!connectorOut) return Promise.resolve(null);
+    connectorOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/connector_reval.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/connector_reval.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/connector_reval.py absent at the measured main SHA. Connector-utilization talk is CLAIMED." };
+        paintConnectorReval(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintConnectorReval(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.connectorRevalState(body);
+        paintConnectorReval(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintConnectorReval(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -2374,6 +2438,7 @@
     loadDeviceChurn(sha);
     loadStrandedMap(sha);
     loadHostZero(sha);
+    loadConnectorReval(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

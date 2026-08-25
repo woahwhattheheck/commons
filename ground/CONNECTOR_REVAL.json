@@ -1,0 +1,76 @@
+{
+  "cache_age_days_claim": 4,
+  "claimed_connected": [
+    "github",
+    "slack",
+    "gitbook",
+    "x",
+    "agentmail",
+    "huggingface",
+    "gmail",
+    "drive",
+    "calendar",
+    "zapier",
+    "heygen",
+    "cloudinary",
+    "stripe",
+    "revenuecat",
+    "airwallex"
+  ],
+  "claimed_unverified": [
+    "gitlab",
+    "mem0",
+    "browser-use",
+    "box",
+    "notion",
+    "roboflow",
+    "aws"
+  ],
+  "connected_claim": 23,
+  "enabled_claim": 39,
+  "forbidden": [
+    "x",
+    "agentmail",
+    "gmail",
+    "drive",
+    "calendar",
+    "stripe",
+    "revenuecat",
+    "airwallex"
+  ],
+  "hands_off": [
+    "stripe/revenuecat/airwallex writes",
+    "gmail/x/agentmail writes",
+    "drive/calendar account writes",
+    "state.vscdb delete/vacuum/repair",
+    "dio titan --go",
+    "jojo mcp/wake wiring",
+    "host-zero leftover",
+    "demon-connector-utilization-20260825-01"
+  ],
+  "live": [
+    "github",
+    "slack",
+    "gitbook",
+    "cursor-cloud"
+  ],
+  "mcp_empty": true,
+  "note": "Do not remint the DEMON taking. Cache count is not live. No secrets. Do not vacuum a live state.vscdb.",
+  "provisioned_ne_live": true,
+  "secrets": false,
+  "slack_ts": "1787637151.916759",
+  "source_id": "demon-connector-utilization-20260825-01",
+  "subject": "DEMON connector-utilization — provisioned != live",
+  "titan": "NOT_WRITTEN",
+  "vscdb": {
+    "actuate": false,
+    "plan": [
+      "backup",
+      "clean_shutdown",
+      "checkpoint",
+      "integrity"
+    ],
+    "present": false,
+    "refuse_live_repair": true
+  }
+}

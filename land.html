@@ -192,6 +192,16 @@ python3 -m unittest -v test_host_zero.py</pre>
 <div id="host-zero-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Host-zero / not-an-aspiration copy without the leftover on current main is talk. Measure live doors, then ship only this leftover.</p></div>
 </section>
 
+<section aria-labelledby="connector-reval-heading">
+<h2 id="connector-reval-heading">Connector reval — provisioned != live</h2>
+<p class="note">Slack <code>1787637151.916759</code>: DEMON connector-utilization report. Cursor cloud cache showed 39 enabled services and 23 cached connected as of Aug 21; <code>~/.cursor/mcp.json</code> is empty and cache age is four days, so provisioned != live. Connector-utilization / 39-enabled / 23-cached / mcp.json-empty / provisioned-vs-live / revalidation-campaign / state.vscdb talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Read-only probes only. No financial, messaging, account, permission, or destructive writes. Do not delete/vacuum/repair live <code>state.vscdb</code> — plan is backup, clean shutdown, checkpoint, integrity. Instrument: <code>host/connector_reval.py</code>. Card: <a href="./ground/CONNECTOR_REVAL.md">ground/CONNECTOR_REVAL.md</a>. Catalog: <a href="./ground/CONNECTOR_REVAL.json">ground/CONNECTOR_REVAL.json</a>. Do not remint a DIO/JOJO taking. Do not take host-zero, titan <code>--go</code>, or JOJO MCP/wake wiring. titan <code>NOT_WRITTEN</code>. No auth. No gate. No secrets.</p>
+<pre>python3 host/connector_reval.py
+python3 host/connector_reval.py --root .
+python3 host/connector_reval.py --self-test
+python3 -m unittest -v test_connector_reval.py</pre>
+<div id="connector-reval-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Connector-utilization / provisioned-vs-live copy without the leftover on current main is talk. Measure live probes against the Aug 21 cache, skip forbidden writes, and do not vacuum a live state.vscdb.</p></div>
+</section>
+
 <section aria-labelledby="titan-heading">
 <h2 id="titan-heading">Titan MOVE</h2>
 <p class="note">Owner Slack <code>1787628542.573719</code> / <code>1787628900.201179</code> / <code>1787629309.162109</code>: substrate work is first-class. “Did not touch Titan / .mno / 337 = NO” is a skipped lane, not completion. Owner-PC <code>--go</code> at <code>b3fe14495</code> wrote 31/31 and reread true; final size 103812669582. The leftover was the desk discarding packet reread. <code>packetRowFromJson</code> maps <code>titan</code> / <code>reread</code> / <code>write_count</code> / <code>reread_count</code> / size facts. A WRITTEN+reread packet is <code>INTEGRATED</code>. <code>--go</code> fail-closes when live size already equals <code>claimed_append_end</code>. Instrument: <code>host/titan_move_dry.py</code>. Public MOVE: <code>host/titan_move_apply.py --journal</code>. Titan write: <code>host/titan_move_apply.py --go</code>. Card: <a href="./ground/TITAN_MOVE.md">ground/TITAN_MOVE.md</a>. Packet: <code>excerpts/20260823/titan_move_packet.json</code>. Journal: <code>excerpts/20260823/titan_move_journal.json</code>. Owner-blocker form NEED / WHY ONLY BRYCE / SMALLEST ACTION / EVIDENCE / AFTER is closed for this MOVE — file it in <code>#needs-bryce</code> only if a later write is genuinely blocked. Smash/wipe of <code>commons.mno</code> refused. No auth. No gate. Do not remint <code>claudelocal-titan-move-go-20260825-01</code> or <code>dio-titan-move-truth-reconcile-20260825-01</code>.</p>
@@ -327,6 +337,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825u"></script>
+<script src="./land.js?v=20260825v"></script>
 </body>
 </html>
