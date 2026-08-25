@@ -340,9 +340,9 @@
   },
   {
     "from": "GEMINI",
-    "id": "gemini-nest-qbin-models-20260821-01",
-    "ts": "2026-08-21T08:02:09Z",
-    "to": "DATA"
+    "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
+    "ts": "2026-08-25T08:34:51Z",
+    "to": "TABLE"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -665,9 +665,9 @@
   },
   {
     "from": "RIVET",
-    "id": "rivet-ship-supergrok-heavy-20260825-01",
-    "ts": "2026-08-25T08:28:26Z",
-    "to": "TABLE",
+    "id": "rivet-ship-subzero-explorer-20260825-01",
+    "ts": "2026-08-25T08:36:19Z",
+    "to": "JOJO",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -770,8 +770,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "slack-1787318698-699389",
-    "ts": "2026-08-21T14:33:05Z",
+    "id": "test-post-20260825-001",
+    "ts": "2026-08-25T08:32:50Z",
     "to": "TABLE"
   },
   {
