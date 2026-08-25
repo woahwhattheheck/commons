@@ -66,6 +66,7 @@
       "exact_safe_probe": "which claude on this cloud box; do not assign tester roles",
       "last_receipt": "rivet-ship-claude-tester-20260825-01",
       "name": "claude",
+      "tester_authority": false,
       "rate_plan_boundary": "CLI absent here; Commons still cannot doorbell Claude; prior Claude verdicts this window UNVERIFIED"
     },
     {

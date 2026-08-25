@@ -1,0 +1,93 @@
+{
+  "source_id": "demon-claude-zero-damage-control-20260825",
+  "receipt_id": "rivet-ship-claude-zero-damage-20260825-01",
+  "slack_ts": "1787639239.069069",
+  "kind": "CLAUDE_ZERO_DAMAGE",
+  "titan": "NOT_WRITTEN",
+  "never_print_zero": true,
+  "preserve_originals": true,
+  "calibration": {
+    "x": "ground/HEAD.md on current main",
+    "y": "bytes-derived file present",
+    "z": "FINDER-FAILED"
+  },
+  "retracted": [
+    {
+      "id": "keyb-verified-sha-a63396",
+      "original_path": "ground/WORKING_BUILDS.json",
+      "original_field": "artifacts[keyb].container_sha256",
+      "original_value": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+      "retraction": "STALE / NOT_VERIFIED",
+      "reason": "public manifest SHA treated as verified container hash; size agrees, bytes do not (STALE_MANIFEST)",
+      "keep_original": true
+    },
+    {
+      "id": "titan-superseded-from-absence",
+      "original_path": "ground/WORKING_BUILDS.json",
+      "original_field": "artifacts[titan_census].disposition",
+      "original_value": "SUPERSEDED",
+      "retraction": "UNRECONCILED / FINDER-FAILED",
+      "reason": "absence of TRAIN_CIRCUITS_FROM_FILE.json is not a land; four scores on the surface post do not conclude the Desktop JSON is superseded",
+      "keep_original": true
+    }
+  ],
+  "incidents": [
+    {
+      "id": "keyb-stale-sha-frozen",
+      "lane": "technical",
+      "x": "host/working_builds.py KEYB_CONTAINER_SHA plus _keyb_manifest_row prefix_ok on current main",
+      "y": "FOUND a63396 prefix treated as verified ok; STALE_MANIFEST cites desktop cca2b762",
+      "z": "FINDER-FAILED",
+      "consumer": "host/working_builds.py + ground/WORKING_BUILDS.json keyb row",
+      "repair": "hash_state=STALE; do not treat a63396 as verified; keep QUARANTINE; do not rewrite the public manifest"
+    },
+    {
+      "id": "titan-kite-absence-superseded",
+      "lane": "technical",
+      "x": "host/working_builds.py measure_from_rows train_json=False train_post=True on current main",
+      "y": "FOUND titan_disposition SUPERSEDED derived from missing TRAIN_CIRCUITS_FROM_FILE.json",
+      "z": "FINDER-FAILED",
+      "consumer": "host/working_builds.py + ground/WORKING_BUILDS.json titan_census row",
+      "repair": "disposition UNRECONCILED; original SUPERSEDED kept as retracted; do not upload 386MB companion"
+    },
+    {
+      "id": "resource-ledger-claude-authority",
+      "lane": "technical",
+      "x": "ground/RESOURCE_LEDGER.json surfaces[claude].assigned_backlog on current main",
+      "y": "FOUND informational-only backlog; tester/verifier/review authority absent",
+      "z": "FINDER-FAILED",
+      "consumer": "host/resource_ledger.py + ledger.html Claude row",
+      "repair": "keep informational only; classify tester-authority backlog NOT_LANDED"
+    },
+    {
+      "id": "land-desk-working-builds-copy",
+      "lane": "rhetorical",
+      "x": "land.html working-builds-heading plus land.js workingBuildState on current main",
+      "y": "FOUND desk copy that still named integrate/superseded/quarantine without UNRECONCILED or STALE hash",
+      "z": "FINDER-FAILED",
+      "consumer": "land.html + land.js working-builds leftover",
+      "repair": "name STALE KEYB hash and UNRECONCILED titan; talk remains CLAIMED until this leftover"
+    },
+    {
+      "id": "impact-ledger-seven-consumers",
+      "lane": "rhetorical",
+      "x": "ground/IMPACT_LEDGER.json consumers on current main",
+      "y": "FOUND seven high-risk consumers already named; do not remint",
+      "z": "FINDER-FAILED",
+      "consumer": "ground/IMPACT_LEDGER.json",
+      "repair": "cite IMPACT_LEDGER; do not remint rivet-ship-impact-ledger-20260825-01"
+    }
+  ],
+  "hands_off": [
+    "DIO titan --go / titan guard paths",
+    "SPECTER watchdog / MCP-wake",
+    "JOJO machine byte repair / visual-ci",
+    "KEYB upload / WRITE / FIRE",
+    "pet / render lanes",
+    "CML PR 2108",
+    "rewrite excerpts/20260821/keyb01.manifest.json",
+    "remint IMPACT_LEDGER / CLAUDE_TESTER / FINDER_ZERO / STALE_MANIFEST / CLAUDE_ZERO",
+    "commons.mno smash"
+  ],
+  "note": "Preserve originals. Retract numbers and conclusions. Do not overwrite history. A Slack taking is still not the file."
+}

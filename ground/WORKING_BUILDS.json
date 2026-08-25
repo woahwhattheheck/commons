@@ -26,10 +26,13 @@
       "id": "keyb",
       "claimed_path": "Desktop\\\\MUHL_KEYB\\\\keyb01.mno",
       "disposition": "QUARANTINE",
-      "reason": "do not upload 430860 container bytes; WRITE/FIRE stay unexecuted",
+      "reason": "do not upload 430860 container bytes; WRITE/FIRE stay unexecuted; public SHA a63396 is STALE / NOT_VERIFIED",
       "canonical_equivalent": "excerpts/20260821/keyb01.manifest.json",
       "canonical_sha256": "14f52ffcf77487303e9b5f8f7d520ddcdd113dea2765c1a85fe52b71a9157d77",
       "container_sha256": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+      "hash_state": "STALE",
+      "verified": false,
+      "original_hash_claim": "verified container SHA a63396b59b0fb9f0",
       "n_bytes": 430860,
       "depth": 8,
       "n_pos": 16,
@@ -41,8 +44,9 @@
     {
       "id": "titan_census",
       "claimed_path": "Desktop\\\\MUHL_KITE1_SPIKE\\\\TRAIN_CIRCUITS_FROM_FILE.json",
-      "disposition": "SUPERSEDED",
-      "reason": "exact JSON name absent; four named scores already durable on the Aug 18 surface post; do not upload 386404832 companion bytes",
+      "disposition": "UNRECONCILED",
+      "original_disposition": "SUPERSEDED",
+      "reason": "exact JSON name absent is FINDER-FAILED, not SUPERSEDED; four named scores stay on the Aug 18 surface post; do not upload 386404832 companion bytes",
       "canonical_equivalent": "p/p1-train-subzero-surface-20260818-01.md",
       "canonical_sha256": "64d174069041d349d02fd5d7f4f3ba454898a00f19d75faa353e606c38c6a6f6",
       "claimed_bytes": 20076,
@@ -66,5 +70,17 @@
     "DEMON flight recorder",
     "SPECTER render-contract",
     "CML PR 2108"
+  ],
+  "retracted": [
+    {
+      "id": "keyb-verified-sha-a63396",
+      "original_value": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+      "retraction": "STALE / NOT_VERIFIED"
+    },
+    {
+      "id": "titan-superseded-from-absence",
+      "original_value": "SUPERSEDED",
+      "retraction": "UNRECONCILED / FINDER-FAILED"
+    }
   ]
 }

@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825al/.test(html), "desk must bust the context-integrity cache key");
+assert.ok(/20260825am/.test(html), "desk must bust the context-integrity cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1291,6 +1291,47 @@ assert.ok(html.indexOf("1787638974.401269") >= 0, "desk must cite the JOJO grok-
 assert.ok(/grok-recovery|muhlnickel-only|prompt-address|01a0373e|50_cross_synthesis/i.test(html), "desk must name grok-recovery talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECOVERY.md") >= 0, "grok-recovery card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_RECOVERY.json") >= 0, "grok-recovery catalog must stay a canary");
+assert.ok(api.isClaudeZeroDamageTalk, "land.js must classify Claude-zero damage-control talk");
+assert.ok(api.claudeZeroDamageState, "land.js must classify the claude-zero-damage leftover");
+assert.ok(api.isClaudeZeroDamageTalk("DEMON TAKING — CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE dispositions. rhetorical consumers of Claude false zeros."), "DEMON damage-control taking is talk");
+assert.ok(!api.isClaudeZeroDamageTalk("make sure people do more than talk about shit"), "ship-talk is not the damage-control leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "containment is not the damage-control leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. uncalibrated green result does not count."), "Claude-tester copy is not the damage-control leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("MACHINE-ONLY WORKING BUILDS — rook-resident-native keyb01.mno TRAIN_CIRCUITS_FROM_FILE"), "working-builds copy is not the damage-control leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json size agrees, bytes do not."), "stale-manifest copy is not the damage-control leftover");
+assert.ok(!api.isWorkingBuildTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE."), "damage-control copy is not working-builds leftover");
+assert.ok(!api.isClaudeTesterTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE."), "damage-control copy is not the Claude-tester leftover");
+assert.ok(!api.isImpactLedgerTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE. rhetorical consumers of Claude."), "damage-control copy without P0 phrases is not impact-ledger leftover");
+var damageTalk = api.completionStateFromText(
+  "DEMON TAKING — CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE. rhetorical consumers of Claude false zeros. FINDER-FAILED."
+);
+assert.strictEqual(damageTalk.state, "CLAIMED");
+assert.ok(/damage-control|absence-derived|stale KEYB/i.test(damageTalk.note), "damage-control-without-SHA must stay CLAIMED and beat impact-ledger");
+var damageDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-zero-damage leftover landed"
+);
+assert.strictEqual(damageDone.state, "INTEGRATED", "completion words still beat damage-control talk");
+var damageEmpty = api.claudeZeroDamageState("");
+assert.strictEqual(damageEmpty.state, "UNMEASURED");
+var damageMissing = api.claudeZeroDamageState("# empty stub\nno census");
+assert.strictEqual(damageMissing.state, "NOT_LANDED");
+var damageOk = api.claudeZeroDamageState("def measure_from_rows(facts):\n    return facts\ndef measure_tree(root):\n    return root\ndef classify(row):\n    return row\ndef search_space():\n    return {}\ndef calibrate():\n    return {}\nFINDER-FAILED\nnever 0\nUNRECONCILED\nSTALE\npreserve_originals\n");
+assert.strictEqual(damageOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(damageOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-zero-damage-result"') >= 0, "desk must name the damage-control leftover");
+assert.ok(html.indexOf("host/claude_zero_damage.py") >= 0, "desk must name the damage-control instrument");
+assert.ok(html.indexOf("ground/CLAUDE_ZERO_DAMAGE.md") >= 0, "desk must link the damage-control card");
+assert.ok(html.indexOf("ground/CLAUDE_ZERO_DAMAGE.json") >= 0, "desk must link the damage-control catalog");
+assert.ok(html.indexOf("1787639239.069069") >= 0, "desk must cite the DEMON damage-control Slack ts");
+assert.ok(/damage-control|absence-derived|stale KEYB/i.test(html), "desk must name damage-control talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ZERO_DAMAGE.md") >= 0, "damage-control card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_ZERO_DAMAGE.json") >= 0, "damage-control catalog must stay a canary");
+assert.ok(!api.isClaudeZeroDamageTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the damage-control leftover");
+assert.ok(!api.isShipTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE."), "damage-control is not generic ship-talk");
+assert.ok(!api.isClaudeZeroTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE."), "damage-control copy is not the Claude-zero leftover");
+assert.ok(!api.isMeasureAbuseTalk("CLAUDE ZERO DAMAGE-CONTROL DURABLE LEDGER. stale KEYB or absence-derived Titan/KITE."), "damage-control copy is not the measure-abuse leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("every zero reported by Claude was wrong. RETRACT, DO NOT DOWNGRADE. Claude-reported zeros."), "Claude-zero copy is not the damage-control leftover");
+assert.ok(!api.isClaudeZeroDamageTalk("measurement abuse, not just measurement error. unflattering truths. damage-control addendum."), "measure-abuse copy is not the damage-control leftover");
 assert.ok(api.isStaleManifestTalk, "land.js must classify KEYB stale-manifest talk");
 assert.ok(api.staleManifestState, "land.js must classify the stale-manifest leftover");
 assert.ok(api.isStaleManifestTalk("MUHL_KEYB MANIFEST IS STALE — DO NOT INTEGRATE AS VERIFIED. keyb01.manifest.json claims a63396. size agrees, bytes do not. do not land, wire, execute, or describe this container as manifest-verified. post-manifest mutation. cca2b762. stale/out-of-spec."), "KEYB stale-manifest correction is talk");

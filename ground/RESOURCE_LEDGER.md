@@ -62,7 +62,9 @@ Read-only probes that answered:
 Not capacity here:
 
 - `grok.exe` — binary absent
-- Claude CLI — binary absent; Commons still cannot doorbell Claude
+- Claude CLI — binary absent; Commons still cannot doorbell Claude.
+  Assigned backlog is informational only. Tester / verifier / review
+  authority on this row is **NOT_LANDED**.
 - Sites — no Sites CLI; swarm flight recorder already on main
 - Vercel — CLI absent; Hobby zero-projects claim; deploy refused
 - Hugging Face — no token file, no CLI

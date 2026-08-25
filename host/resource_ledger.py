@@ -36,6 +36,14 @@ REQUIRED_FIELDS = (
     "last_receipt",
 )
 CAPACITY_STATES = ("LIVE", "CACHE", "NOT_VERIFIED", "UNMEASURED", "FORBIDDEN")
+TESTER_AUTHORITY_NEEDLES = (
+    "tester",
+    "verifier",
+    "review authority",
+    "final-qa",
+    "final qa",
+    "red-team-as-verdict",
+)
 HF_TOKEN_REL = (
     os.path.join(".huggingface", "token"),
     os.path.join(".cache", "huggingface", "token"),
@@ -65,6 +73,7 @@ def load_catalog(text):
             row[field] = str(item.get(field) or "").strip()
         row["capacity"] = str(item.get("capacity") or "").strip().upper()
         row["cache_counted"] = bool(item.get("cache_counted"))
+        row["tester_authority"] = bool(item.get("tester_authority"))
         surfaces.append(row)
     return {
         "surfaces": surfaces,
@@ -104,6 +113,32 @@ def classify_surface(row, probes=None):
     name = str(row.get("name") or "").strip().lower()
     capacity = str(row.get("capacity") or "").strip().upper()
     missing = [field for field in REQUIRED_FIELDS if not str(row.get(field) or "").strip()]
+    if name == "claude":
+        backlog = str(row.get("assigned_backlog") or "").lower()
+        informational = "informational" in backlog
+        tester = any(needle in backlog for needle in TESTER_AUTHORITY_NEEDLES)
+        if tester and not informational:
+            return {
+                "name": name,
+                "capacity": "UNMEASURED",
+                "missing_fields": missing,
+                "tester_authority": True,
+                "note": (
+                    "Claude assigned_backlog still grants tester/verifier/"
+                    "review authority. Informational evidence only. "
+                    "Route verification to local/GHA/Codex/Grok/Cursor-Grok."
+                ),
+            }
+        return {
+            "name": name,
+            "capacity": capacity if capacity in CAPACITY_STATES else "UNMEASURED",
+            "missing_fields": missing,
+            "tester_authority": False,
+            "note": (
+                "claude is informational only; not tester/verifier/QA. "
+                "Prior Claude verdicts this window stay UNVERIFIED."
+            ),
+        }
     if name == "huggingface":
         if probes.get("hf_token_files") or probes.get("hf_cli"):
             pass
@@ -162,6 +197,7 @@ def measure_from_rows(facts):
     not_verified = [row["name"] for row in surfaces if row["capacity"] == "NOT_VERIFIED"]
     missing_fields = any(row.get("missing_fields") for row in surfaces if row["capacity"] == "LIVE")
     hf_live = "huggingface" in live
+    tester_authority = any(row.get("tester_authority") for row in surfaces)
     return {
         "measured": True,
         "surfaces": surfaces,
@@ -183,6 +219,7 @@ def measure_from_rows(facts):
             "mcp_exists": bool(probes.get("mcp_exists")),
         },
         "titan": "NOT_WRITTEN",
+        "claude_tester_authority": tester_authority,
     }
 
 
@@ -213,6 +250,15 @@ def classify(row):
             "note": (
                 "cache was counted as capacity. Hugging Face and the Aug 21 "
                 "connected-list are not live. Measure again."
+            ),
+        }
+    if row.get("claude_tester_authority"):
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "Claude still has tester/verifier/review authority on the "
+                "resource ledger. Informational only. Do not assign Claude "
+                "a tester role."
             ),
         }
     if row.get("missing_fields"):

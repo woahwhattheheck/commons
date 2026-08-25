@@ -56,6 +56,43 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(row["capacity"], "NOT_VERIFIED")
         self.assertIn("NOT verified", row["note"])
 
+    def test_claude_tester_authority_is_not_landed(self):
+        row = classify_surface(
+            {
+                "name": "claude",
+                "capacity": "UNMEASURED",
+                "assigned_backlog": "Claude is the review authority and tester",
+            },
+            {},
+        )
+        self.assertTrue(row["tester_authority"])
+        measured = measure_from_rows(
+            {
+                "surfaces": [
+                    dict(LIVE_FIELDS, name="github", capacity="LIVE"),
+                    {
+                        "name": "claude",
+                        "capacity": "UNMEASURED",
+                        "assigned_backlog": "Claude is the review authority and tester",
+                    },
+                ]
+            }
+        )
+        self.assertTrue(measured["claude_tester_authority"])
+        self.assertEqual(classify(measured)["state"], "NOT_LANDED")
+        self.assertIn("tester", classify(measured)["note"])
+
+    def test_claude_informational_row_is_not_authority(self):
+        row = classify_surface(
+            {
+                "name": "claude",
+                "capacity": "UNMEASURED",
+                "assigned_backlog": "informational evidence only; not tester",
+            },
+            {},
+        )
+        self.assertFalse(row["tester_authority"])
+
     def test_vercel_production_write_is_forbidden(self):
         row = classify_surface(
             {"name": "vercel", "capacity": "LIVE", "production_write": True},
