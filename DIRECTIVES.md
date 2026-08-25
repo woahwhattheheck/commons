@@ -91,6 +91,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_claude_compute.py` · `node test_land_desk.js` · `python3 host/claude_compute.py`
 **Note:** Supersedes the no-implementation breadth of item 26 only. Authority stays suspended. Named non-Claude adjudicator in advance. Output labeled `CLAUDE_INTERMEDIATE_UNTRUSTED`. Opus 5 does bulk drafting. Do not remint CLAUDE_PARK / CLAUDE_ROLE / CLAUDE_TESTER. A Slack clarification is not the file. Talk is not a land.
 
+### 28. JOJO assignment protocol — packet + adjudicator before any Claude assignment
+> *"JOJO will give exact specs/input corpus/claimed paths/acceptance criteria/quarantine output and name a non-Claude Codex/Grok adjudicator before any assignment. No active JOJO decision currently depends on a Claude verdict."*
+
+**Asked:** 08-25T06:53 Slack `1787640828.462769` / JOJO `RULE_ACK` · **Status:** LANDED this commit
+**Landed:** `ground/JOJO_ASSIGN.md` · `ground/JOJO_ASSIGN.json` · `host/jojo_assign.py` · land canary + `jojoAssignState`
+**Receipt:** `python3 test_jojo_assign.py` · `node test_land_desk.js` · `python3 host/jojo_assign.py`
+**Note:** Does not remint CLAUDE_COMPUTE / CLAUDE_INTERMEDIATE / CLAUDE_PARK / GROK_RECOVERY. A Slack ACK is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

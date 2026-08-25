@@ -1,0 +1,67 @@
+{
+  "slack_ts": "1787640828.462769",
+  "kind": "RULE_ACK",
+  "in_reply_to": "1787640367.070179",
+  "from": "JOJO",
+  "subject": "JOJO assignment protocol — packet + adjudicator before any Claude assignment",
+  "farm_leftover": "ground/CLAUDE_COMPUTE.md",
+  "label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "jojo_decisions_depend_on_claude_verdict": false,
+  "grok_recovery_owner": "non-claude",
+  "muhlnickel_contract_owner": "non-claude",
+  "adjudicator_before_assignment": true,
+  "assignment_required": [
+    "spec",
+    "input_corpus",
+    "claimed_paths",
+    "acceptance_criteria",
+    "quarantine_output",
+    "adjudicator"
+  ],
+  "allowed_adjudicators": [
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok",
+    "RIVET",
+    "owner"
+  ],
+  "claude_may_not": [
+    "author/run tests",
+    "verify",
+    "clear collisions",
+    "post conclusions",
+    "mutate titan/models/containers",
+    "push/merge",
+    "deploy",
+    "allocate work"
+  ],
+  "does_not_remint": [
+    "ground/CLAUDE_COMPUTE.md",
+    "ground/CLAUDE_INTERMEDIATE.md",
+    "ground/CLAUDE_PARK.md",
+    "ground/CLAUDE_ROLE.md",
+    "ground/CLAUDE_TESTER.md",
+    "ground/GROK_RECOVERY.md",
+    "jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01",
+    "PR 2217 host/claude_intermediate.py"
+  ],
+  "calibration": [
+    "ground/EXECUTE.md",
+    "p/bryce-action-pad-open-door-directive-20260822-01.md"
+  ],
+  "hands_off": [
+    "DEMON flight recorder",
+    "CML PR 2108",
+    "SPECTER MCP/wake PR 2205",
+    "cash-now PR 2207",
+    "Claude-intermediate PR 2217",
+    "titan --go",
+    "DIO/JOJO named-builder identity",
+    "CLAUDE_COMPUTE leftover",
+    "GROK_RECOVERY leftover"
+  ]
+}
