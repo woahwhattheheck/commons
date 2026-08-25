@@ -27,6 +27,7 @@ import hashlib
 import json
 import os
 import struct
+import subprocess
 import sys
 
 
@@ -37,16 +38,27 @@ DEFAULT_DOOR = "subzero.html"
 PACKET = os.path.join("excerpts", "20260823", "titan_move_packet.json")
 EXCERPT_DIR = os.path.join("excerpts", "20260823")
 ARCH = os.path.join("muhl", "desktop", "MUHL_SUBZERO_ARCHETYPES")
+SCHEMA_REL = os.path.join("revenue", "subzero_buyers", "validation_receipt.schema.json")
 SLACK_TS = "1787646413.997539"
 HANDOFF_ID = "jojo-model-work-profitability-bridge-20260825-01"
+V2_SLACK_TS = "1787647728.185449"
+V2_SPEC_ID = "jojo-subzero-explorer-v2-followup-20260825-01"
 LDA_SHA = "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8"
 LDA_BLOCK = "BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT"
 EXPECTED_EXCERPTS = 31
+EVIDENCE_CLASSES = (
+    "STRUCTURAL_ONLY",
+    "RUNTIME_MEASURED",
+    "CUSTOMER_READY",
+    "UNKNOWN",
+)
+HEX64 = set("0123456789abcdef")
 SEARCH_SPACE = (
     DEFAULT_CARD,
     DEFAULT_CATALOG,
     os.path.join("host", "subzero_explorer.py"),
     DEFAULT_DOOR,
+    SCHEMA_REL,
     PACKET,
     EXCERPT_DIR,
     ARCH,
@@ -55,6 +67,15 @@ SEARCH_SPACE = (
     os.path.join("ground", "EXECUTE.md"),
     os.path.join("ground", "HEAD.md"),
     os.path.join("p", "bryce-action-pad-open-door-directive-20260822-01.md"),
+)
+HASHED_SOURCES = (
+    DEFAULT_CARD,
+    DEFAULT_CATALOG,
+    os.path.join("host", "subzero_explorer.py"),
+    DEFAULT_DOOR,
+    os.path.join("test_subzero_explorer.py"),
+    SCHEMA_REL,
+    os.path.join("host", "subzero_tech.py"),
 )
 CALIBRATION = (
     os.path.join("ground", "EXECUTE.md"),
@@ -85,6 +106,12 @@ REQUIRED_PHRASES = (
     "talk is not a land",
     "do not remint",
     "1787646413.997539",
+    "validation_receipt",
+    "presence never escalates",
+    "runtime_measured",
+    "customer_ready",
+    "unknown",
+    "1787647728.185449",
 )
 
 
@@ -165,9 +192,207 @@ def load_catalog(text):
         "posting": str(data.get("posting") or "").strip(),
         "no_auth": bool(data.get("no_auth", True)),
         "no_gate": bool(data.get("no_gate", True)),
+        "evidence_classes": list(data.get("evidence_classes") or []),
+        "v2": data.get("v2") if isinstance(data.get("v2"), dict) else {},
         "rows": rows,
         "error": "",
     }
+
+
+def _hex_sha(value, sizes=(64,)):
+    text = str(value or "").strip().lower()
+    return len(text) in sizes and set(text) <= HEX64
+
+
+def _open_door_ok(payload):
+    payload = payload or {}
+    if payload.get("no_auth") is not True or payload.get("no_gate") is not True:
+        return False
+    if payload.get("login_required") or payload.get("privileged_tier"):
+        return False
+    return True
+
+
+def receipt_ok(receipt, kind):
+    """Malformed or missing evidence is not an escalation."""
+    if not isinstance(receipt, dict):
+        return False
+    if str(receipt.get("kind") or "") != kind:
+        return False
+    if not str(receipt.get("artifact") or "").strip():
+        return False
+    if not _hex_sha(receipt.get("sha256")):
+        return False
+    return _open_door_ok(receipt)
+
+
+def evidence_class(facts):
+    """Strict STRUCTURAL_ONLY|RUNTIME_MEASURED|CUSTOMER_READY|UNKNOWN.
+
+    Titan-file or excerpt presence never escalates. Runtime needs a
+    distinct cross-process receipt. Customer-ready needs a bound buyer
+    PASS. Login / credential / identity / privileged tiers are UNKNOWN.
+    """
+    facts = facts or {}
+    if facts.get("login_required") or facts.get("privileged_tier") or facts.get("identity_gate"):
+        return "UNKNOWN"
+    if facts.get("malformed") or facts.get("missing"):
+        return "UNKNOWN"
+    path = str(facts.get("path") or facts.get("name") or "").strip()
+    buyer = facts.get("buyer_receipt")
+    if buyer is not None:
+        if not receipt_ok(buyer, "SUBZERO_BUYER_VALIDATION"):
+            return "UNKNOWN"
+        if (
+            buyer.get("status") == "PASS"
+            and buyer.get("bound") is True
+            and str(buyer.get("artifact") or "").strip() == path
+        ):
+            return "CUSTOMER_READY"
+        return "UNKNOWN"
+    runtime = facts.get("runtime_receipt")
+    if runtime is not None:
+        if not receipt_ok(runtime, "SUBZERO_RUNTIME_RECEIPT"):
+            return "UNKNOWN"
+        pid = runtime.get("pid")
+        if (
+            runtime.get("cross_process") is True
+            and isinstance(pid, int)
+            and pid > 0
+            and pid != os.getpid()
+            and str(runtime.get("host") or "").strip()
+            and str(runtime.get("artifact") or "").strip() == path
+        ):
+            return "RUNTIME_MEASURED"
+        return "UNKNOWN"
+    if facts.get("presence_only"):
+        if facts.get("header_ok") and facts.get("hash_match"):
+            return "STRUCTURAL_ONLY"
+        return "UNKNOWN"
+    if facts.get("header_ok") and facts.get("hash_match"):
+        return "STRUCTURAL_ONLY"
+    return "UNKNOWN"
+
+
+def load_schema(text):
+    """Parse the buyer/runtime receipt schema. Invalid is measured empty."""
+    try:
+        data = json.loads(str(text or "") or "{}")
+    except ValueError:
+        return {"ok": False, "error": "schema is not JSON"}
+    if not isinstance(data, dict):
+        return {"ok": False, "error": "schema is not an object"}
+    defs = data.get("$defs") or {}
+    if not isinstance(defs, dict):
+        return {"ok": False, "error": "schema $defs missing"}
+    classes = data.get("evidence_classes") or []
+    if list(classes) != list(EVIDENCE_CLASSES):
+        return {"ok": False, "error": "schema evidence_classes are not strict"}
+    if "runtime_receipt" not in defs or "buyer_receipt" not in defs:
+        return {"ok": False, "error": "schema missing runtime/buyer defs"}
+    if not _open_door_ok(data) or data.get("presence_never_escalates") is not True:
+        return {"ok": False, "error": "schema closed the door or allows presence escalation"}
+    return {"ok": True, "error": "", "data": data}
+
+
+def git_source(root):
+    """Calibrated source commit/tree. Miss is FINDER-FAILED, never 0."""
+    def run(args):
+        try:
+            out = subprocess.check_output(args, cwd=root, stderr=subprocess.DEVNULL)
+        except (OSError, subprocess.CalledProcessError):
+            return ""
+        return out.decode("ascii", "replace").strip()
+
+    commit = run(["git", "rev-parse", "HEAD"])
+    tree = run(["git", "rev-parse", "HEAD^{tree}"])
+    return {
+        "commit": commit or "FINDER-FAILED",
+        "tree": tree or "FINDER-FAILED",
+    }
+
+
+def sha256_rel(root, rel):
+    blob = _read_bytes(root, rel)
+    if not blob:
+        return ""
+    return hashlib.sha256(blob).hexdigest()
+
+
+def source_hashes(root):
+    """Hash explorer + schema + tech writer. Missing path is empty sha."""
+    return {rel.replace("\\", "/"): sha256_rel(root, rel) for rel in HASHED_SOURCES}
+
+
+def pinned_links(commit):
+    sha = commit if _hex_sha(commit, (40, 64)) else "HEAD"
+    base = "https://raw.githubusercontent.com/woahwhattheheck/commons/" + sha + "/"
+    return {rel.replace("\\", "/"): base + rel.replace("\\", "/") for rel in HASHED_SOURCES}
+
+
+def build_v2(root):
+    """Deterministic v2 packet. Same inputs, same keys, same order."""
+    src = git_source(root)
+    hashes = source_hashes(root)
+    return {
+        "schema_version": 2,
+        "spec_id": V2_SPEC_ID,
+        "slack_ts": V2_SLACK_TS,
+        "source_commit": src["commit"],
+        "source_tree": src["tree"],
+        "writer": "host/subzero_explorer.py:build_v2",
+        "deterministic": True,
+        "evidence_classes": list(EVIDENCE_CLASSES),
+        "search_space": list(SEARCH_SPACE),
+        "hashes": hashes,
+        "pinned": pinned_links(src["commit"]),
+        "schema": SCHEMA_REL.replace("\\", "/"),
+        "runtime_requires": "distinct cross-process receipt",
+        "customer_requires": "bound buyer PASS",
+        "presence_never_escalates": True,
+        "no_auth": True,
+        "no_gate": True,
+        "login_required": False,
+        "privileged_tier": False,
+        "do_not_duplicate_explorer": True,
+        "hands_off_pr": 2286,
+    }
+
+
+def write_catalog(root, path=None):
+    """Regenerate catalog v2 + row evidence_class deterministically."""
+    raw = _read(root, DEFAULT_CATALOG)
+    try:
+        catalog = json.loads(raw or "{}")
+    except ValueError:
+        catalog = {}
+    if not isinstance(catalog, dict):
+        catalog = {}
+    rows = []
+    for item in catalog.get("rows") or []:
+        if not isinstance(item, dict):
+            continue
+        item = dict(item)
+        item["evidence_class"] = evidence_class(
+            {
+                "header_ok": bool(item.get("magic")) and bool(item.get("n_gate")),
+                "hash_match": bool(item.get("hash_match")),
+                "path": item.get("path"),
+                "name": item.get("name"),
+                "runtime_receipt": item.get("runtime_receipt"),
+                "buyer_receipt": item.get("buyer_receipt"),
+            }
+        )
+        if item.get("runtime_measured") and not item.get("runtime_receipt"):
+            item["runtime_measured"] = False
+        rows.append(item)
+    catalog["rows"] = rows
+    catalog["evidence_classes"] = list(EVIDENCE_CLASSES)
+    catalog["v2"] = build_v2(root)
+    dest = path or os.path.join(root, DEFAULT_CATALOG)
+    with open(dest, "w", encoding="utf-8", newline="\n") as handle:
+        handle.write(json.dumps(catalog, indent=2) + "\n")
+    return dest
 
 
 def parse_excerpt(blob):
@@ -247,6 +472,14 @@ def measure_excerpts(root):
                 "hash_match": bool(sha and expected_sha and sha == expected_sha),
                 "header_ok": bool(parsed.get("ok")),
                 "label": "STRUCTURAL_ONLY",
+                "evidence_class": evidence_class(
+                    {
+                        "header_ok": bool(parsed.get("ok")),
+                        "hash_match": bool(sha and expected_sha and sha == expected_sha),
+                        "path": rel.replace("\\", "/"),
+                        "name": str(exp.get("name") or name[:-4]),
+                    }
+                ),
                 "runtime_measured": False,
             }
         )
@@ -280,6 +513,14 @@ def measure_from_rows(facts):
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
+        "schema_ok": bool(facts.get("schema_ok")),
+        "v2_present": bool(facts.get("v2_present")),
+        "presence_never_escalates": bool(facts.get("presence_never_escalates")),
+        "evidence_classes_strict": bool(facts.get("evidence_classes_strict")),
+        "login_required": bool(facts.get("login_required")),
+        "privileged_tier": bool(facts.get("privileged_tier")),
+        "source_commit": str(facts.get("source_commit") or ""),
+        "source_tree": str(facts.get("source_tree") or ""),
     }
 
 
@@ -377,11 +618,43 @@ def classify(row):
             "state": "NOT_LANDED",
             "note": "this leftover must stay titan NOT_WRITTEN. FINDER-FAILED, never 0.",
         }
+    if row.get("login_required") or row.get("privileged_tier"):
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "login/credential/identity or a privileged action tier appeared. "
+                "Reject that design. Open door. FINDER-FAILED, never 0."
+            ),
+        }
+    if (
+        not row.get("schema_ok")
+        or not row.get("v2_present")
+        or not row.get("presence_never_escalates")
+        or not row.get("evidence_classes_strict")
+    ):
+        return {
+            "state": "NOT_LANDED",
+            "note": (
+                "v2 receipt-gap leftover missing: schema_ok=%s v2=%s "
+                "presence_never_escalates=%s evidence_classes_strict=%s. "
+                "JOJO COLLISION_RESOLVED_SPEC_READY is CLAIMED until the "
+                "five explorer files plus validation_receipt.schema.json "
+                "ship. FINDER-FAILED, never 0."
+                % (
+                    row.get("schema_ok"),
+                    row.get("v2_present"),
+                    row.get("presence_never_escalates"),
+                    row.get("evidence_classes_strict"),
+                )
+            ),
+        }
     return {
         "state": "INTEGRATED",
         "note": (
             "Subzero Artifact Explorer leftover is on this tree. 31/31 public "
-            "excerpts hash-match and stay STRUCTURAL_ONLY. LDA execution is "
+            "excerpts hash-match and stay STRUCTURAL_ONLY. v2 receipts are "
+            "strict STRUCTURAL_ONLY|RUNTIME_MEASURED|CUSTOMER_READY|UNKNOWN. "
+            "Presence never escalates. LDA execution is "
             "BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT. Host training is "
             "NOT_SOLD. A Slack TECHNICAL_HANDOFF is still not the file."
         ),
@@ -407,11 +680,17 @@ def measure_root(root):
     landed_present = [rel for rel in ALREADY_LANDED if _exists(root, rel)]
     landed_missing = [rel for rel in ALREADY_LANDED if not _exists(root, rel)]
     catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+    schema = load_schema(_read(root, SCHEMA_REL))
     excerpt_rows = measure_excerpts(root)
     archetypes = count_archetypes(root)
     hash_match_count = sum(1 for item in excerpt_rows if item.get("hash_match"))
+    live_v2 = build_v2(root)
+    catalog_v2 = catalog.get("v2") or {}
     runtime_sold = bool(catalog.get("label") == "CROSS_PROCESS/RUNTIME_MEASURED") or any(
-        item.get("runtime_measured") or item.get("label") == "CROSS_PROCESS/RUNTIME_MEASURED"
+        item.get("runtime_measured") or item.get("label") in (
+            "CROSS_PROCESS/RUNTIME_MEASURED",
+            "RUNTIME_MEASURED",
+        )
         for item in catalog.get("rows") or []
     )
     host_training_sold = catalog.get("host_training") in ("CUSTOMER_READY", "SOLD", "FINISHED")
@@ -452,6 +731,20 @@ def measure_root(root):
         "search_space": list(SEARCH_SPACE),
         "misses": misses,
         "titan": catalog.get("titan") or "NOT_WRITTEN",
+        "schema_ok": bool(schema.get("ok")),
+        "v2_present": bool(catalog_v2.get("spec_id") == V2_SPEC_ID and catalog_v2.get("writer")),
+        "presence_never_escalates": bool(
+            catalog_v2.get("presence_never_escalates")
+            and live_v2.get("presence_never_escalates")
+            and schema.get("ok")
+        ),
+        "evidence_classes_strict": list(catalog.get("evidence_classes") or []) == list(EVIDENCE_CLASSES)
+        and list(catalog_v2.get("evidence_classes") or []) == list(EVIDENCE_CLASSES)
+        and all(item.get("evidence_class") in EVIDENCE_CLASSES for item in excerpt_rows),
+        "login_required": bool(catalog_v2.get("login_required")) or bool(live_v2.get("login_required")),
+        "privileged_tier": bool(catalog_v2.get("privileged_tier")) or bool(live_v2.get("privileged_tier")),
+        "source_commit": live_v2.get("source_commit") or "",
+        "source_tree": live_v2.get("source_tree") or "",
     }
     row = measure_from_rows(facts)
     row.update(
@@ -515,11 +808,20 @@ def self_test():
                 "no_gate": True,
                 "calibration_ok": True,
                 "titan": "NOT_WRITTEN",
+                "schema_ok": True,
+                "v2_present": True,
+                "presence_never_escalates": True,
+                "evidence_classes_strict": True,
             }
         )
     )
     assert sold["state"] == "NOT_LANDED", sold
     assert "host training" in sold["note"].lower(), sold
+    assert evidence_class({"malformed": True}) == "UNKNOWN"
+    assert evidence_class({"missing": True}) == "UNKNOWN"
+    assert evidence_class({"presence_only": True, "header_ok": True, "hash_match": True}) == "STRUCTURAL_ONLY"
+    assert evidence_class({"runtime_receipt": {"kind": "nope"}, "path": "x"}) == "UNKNOWN"
+    assert evidence_class({"login_required": True, "header_ok": True, "hash_match": True}) == "UNKNOWN"
     return "ok"
 
 
@@ -527,9 +829,18 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Measure Subzero Artifact Explorer leftover")
     parser.add_argument("--root", default=DEFAULT_ROOT)
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument(
+        "--write-catalog",
+        action="store_true",
+        help="deterministically regenerate catalog v2 + row evidence_class",
+    )
     args = parser.parse_args(argv)
     if args.self_test:
         print(self_test())
+        return 0
+    if args.write_catalog:
+        dest = write_catalog(args.root)
+        print(dest)
         return 0
     row = measure_root(args.root)
     verdict = classify(row)

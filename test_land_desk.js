@@ -794,7 +794,7 @@ assert.ok(html.indexOf("103831308164") >= 0, "desk must name the current measure
 assert.ok(html.indexOf("1787638151.184599") >= 0, "desk must cite the duplicate-append incident");
 assert.ok(html.indexOf("1787638509.277739") >= 0, "desk must cite the Claude-verdict containment order");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825bs/.test(html), "desk must share the current-main/Titan cache key after heavy-lanes leftover");
+assert.ok(/20260825bt/.test(html), "desk must share the current-main/Titan cache key after explorer-v2 leftover");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -2233,9 +2233,19 @@ var explorerEmpty = api.subzeroExplorerState("");
 assert.strictEqual(explorerEmpty.state, "UNMEASURED");
 var explorerMissing = api.subzeroExplorerState("# empty stub\nno leftover");
 assert.strictEqual(explorerMissing.state, "NOT_LANDED");
-var explorerOk = api.subzeroExplorerState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSTRUCTURAL_ONLY\nBLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT\nno auth\nno gate\n");
+var explorerV1Only = api.subzeroExplorerState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSTRUCTURAL_ONLY\nBLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT\nno auth\nno gate\n");
+assert.strictEqual(explorerV1Only.state, "NOT_LANDED", "v1 explorer leftover without v2 receipt-gap stays NOT_LANDED");
+var explorerOk = api.subzeroExplorerState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\ndef evidence_class(facts):\n    return facts\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nSTRUCTURAL_ONLY\nRUNTIME_MEASURED\nCUSTOMER_READY\nUNKNOWN\nBLOCKED_ON_PUBLISHED_WIDE_RECEIVER_RESULT\nvalidation_receipt.schema.json\npresence_never_escalates\nno auth\nno gate\n");
 assert.strictEqual(explorerOk.state, "INTEGRATED");
 assert.ok(/still not the file/i.test(explorerOk.note), "landed leftover must name Slack as not the file");
+assert.ok(api.isSubzeroExplorerV2Talk, "land.js must classify JOJO explorer v2 receipt-gap leftover talk");
+assert.ok(api.isSubzeroExplorerV2Talk("from: JOJO\nkind: COLLISION_RESOLVED_SPEC_READY\nid: jojo-subzero-explorer-v2-followup-20260825-01\nvalidation_receipt.schema.json\npresence alone must never escalate\n1787647728.185449"), "JOJO v2 follow-up is leftover talk");
+assert.ok(!api.isSubzeroExplorerV2Talk("from: JOJO\nkind: TECHNICAL_HANDOFF\nid: jojo-model-work-profitability-bridge-20260825-01\nread-only Subzero Artifact Explorer. 1787646413.997539"), "v1 explorer handoff is not the v2 leftover");
+var explorerV2Talk = api.completionStateFromText(
+  "from: JOJO\nkind: COLLISION_RESOLVED_SPEC_READY\nid: jojo-subzero-explorer-v2-followup-20260825-01\nDO NOT DUPLICATE LANDED EXPLORER; V2 RECEIPT GAP SPECCED\nvalidation_receipt.schema.json\npresence alone must never escalate\n1787647728.185449"
+);
+assert.strictEqual(explorerV2Talk.state, "CLAIMED");
+assert.ok(/receipt-gap|validation_receipt|presence/i.test(explorerV2Talk.note), "v2 leftover-first must beat the landed v1 explorer");
 assert.ok(html.indexOf('id="subzero-explorer-result"') >= 0, "desk must name the explorer leftover");
 assert.ok(html.indexOf("host/subzero_explorer.py") >= 0, "desk must name the explorer instrument");
 assert.ok(html.indexOf("ground/SUBZERO_EXPLORER.md") >= 0, "desk must link the explorer card");
@@ -2245,6 +2255,9 @@ assert.ok(/Artifact Explorer|STRUCTURAL_ONLY|BLOCKED_ON_PUBLISHED_WIDE_RECEIVER_
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_EXPLORER.md") >= 0, "explorer card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/SUBZERO_EXPLORER.json") >= 0, "explorer catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("subzero.html") >= 0, "explorer door must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("revenue/subzero_buyers/validation_receipt.schema.json") >= 0, "buyer validation schema must stay a canary");
+assert.ok(html.indexOf("1787647728.185449") >= 0, "desk must cite the JOJO v2 follow-up Slack ts");
+assert.ok(html.indexOf("validation_receipt.schema.json") >= 0, "desk must link the v2 schema");
 assert.ok(api.isClaudeComputeTalk, "land.js must classify paid-compute / compiler-farm talk");
 assert.ok(api.claudeComputeState, "land.js must classify the Claude-compute leftover");
 assert.ok(api.isClaudeComputeTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE\nClaude family role: ISOLATED UNTRUSTED BUILD COMPUTE\nOutput is labeled CLAUDE_INTERMEDIATE_UNTRUSTED\ncompiler farm\ncheap Opus 5\nbounded implementation packets\nmust name the non-Claude adjudicator in advance\n1787640367.070179"), "DEMON paid-compute clarification is talk");

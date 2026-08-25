@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/revenue/subzero_buyers/validation_receipt.schema.json",
+  "title": "SUBZERO validation receipts",
+  "description": "Strict buyer and runtime receipts for the Subzero Artifact Explorer v2 gap. File presence is not evidence. No auth. No gate. Possessing the link is authorization. Login, credential, identity, or privileged action tiers are rejected.",
+  "no_auth": true,
+  "no_gate": true,
+  "login_required": false,
+  "privileged_tier": false,
+  "presence_never_escalates": true,
+  "evidence_classes": [
+    "STRUCTURAL_ONLY",
+    "RUNTIME_MEASURED",
+    "CUSTOMER_READY",
+    "UNKNOWN"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "open_door": {
+      "type": "object",
+      "required": ["no_auth", "no_gate", "login_required", "privileged_tier"],
+      "properties": {
+        "no_auth": { "const": true },
+        "no_gate": { "const": true },
+        "login_required": { "const": false },
+        "privileged_tier": { "const": false }
+      }
+    },
+    "runtime_receipt": {
+      "title": "Distinct cross-process runtime receipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "artifact",
+        "sha256",
+        "cross_process",
+        "pid",
+        "host",
+        "no_auth",
+        "no_gate",
+        "login_required",
+        "privileged_tier"
+      ],
+      "properties": {
+        "kind": { "const": "SUBZERO_RUNTIME_RECEIPT" },
+        "artifact": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "cross_process": { "const": true },
+        "pid": { "type": "integer", "minimum": 1 },
+        "host": { "type": "string", "minLength": 1 },
+        "walked": { "type": "boolean" },
+        "no_auth": { "const": true },
+        "no_gate": { "const": true },
+        "login_required": { "const": false },
+        "privileged_tier": { "const": false }
+      }
+    },
+    "buyer_receipt": {
+      "title": "Bound buyer PASS receipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "artifact",
+        "sha256",
+        "status",
+        "bound",
+        "buyer_id",
+        "no_auth",
+        "no_gate",
+        "login_required",
+        "privileged_tier"
+      ],
+      "properties": {
+        "kind": { "const": "SUBZERO_BUYER_VALIDATION" },
+        "artifact": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "status": { "enum": ["PASS", "FAIL", "UNKNOWN"] },
+        "bound": { "type": "boolean" },
+        "buyer_id": { "type": "string", "minLength": 1 },
+        "no_auth": { "const": true },
+        "no_gate": { "const": true },
+        "login_required": { "const": false },
+        "privileged_tier": { "const": false }
+      }
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/$defs/runtime_receipt" },
+    { "$ref": "#/$defs/buyer_receipt" }
+  ]
+}
