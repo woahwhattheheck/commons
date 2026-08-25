@@ -130,6 +130,8 @@
     "ground/PIXEL_HEARTBEAT.json",
     "ground/DEVICE_CHURN.md",
     "ground/DEVICE_CHURN.json",
+    "ground/STRANDED_MAP.md",
+    "ground/STRANDED_MAP.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -396,6 +398,9 @@
     }
     if (api.isDeviceChurnTalk(t)) {
       return { state: "CLAIMED", note: "device-path / no-op-churn talk. Talk is not a land. Gate the executor on a real pending reservation/batch and ship the leftover to current main." };
+    }
+    if (api.isStrandedMapTalk(t)) {
+      return { state: "CLAIMED", note: "real-but-stranded-map talk. Talk is not a land. Measure the six items on current main. Do not take DIO Android CI, JOJO MCP/wake, White Box/Bazaar commercial, or titan write." };
     }
     if (api.isUtilizationTalk(t)) {
       return { state: "CLAIMED", note: "rolling-utilization / grok-capacity-active talk. Talk is not a land. Trace TAKING ids against current main; do not remint the grok46 jobs." };
@@ -748,6 +753,33 @@
 
   api.isPixelHeartbeatTalk = function (text) {
     return /pixel-heartbeat|pixels\/\{name\}\.json|pixels\/\{claim\}\.json|session-state .{0,40}pixels|freshness\/provenance|stale-artifact reconciliation|no fabricated presence|demon-side-harness-offer/i.test(String(text || ""));
+  };
+
+  api.isStrandedMapTalk = function (text) {
+    return /real-but-stranded map|lda\/workflows\/android\.yml|wake_jobs\/ contains only|four mcp surfaces|\$30k pilot|seven offers|posted size stale|later measured growth/i.test(String(text || ""));
+  };
+
+  api.strandedMapState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/stranded_map.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasAndroid = /lda_android/.test(body) && /gh_android/.test(body);
+    var hasWake = /wake_job_json/.test(body);
+    var hasMcp = /mcp_surfaces/.test(body);
+    var hasTitan = /titan_later_size/.test(body);
+    if (hasMeasure && hasClassify && hasAndroid && hasWake && hasMcp && hasTitan) {
+      return {
+        state: "INTEGRATED",
+        note: "stranded-map leftover is on this file. Six items measured. Assigned lanes stay unshipped. titan NOT_WRITTEN."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/stranded_map.py missing the census. Real-but-stranded-map talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.grokHarnessState = function (text) {
@@ -1205,6 +1237,7 @@
   var staleOut = document.getElementById("stale-spec-result");
   var pixelOut = document.getElementById("pixel-heartbeat-result");
   var deviceChurnOut = document.getElementById("device-churn-result");
+  var strandedOut = document.getElementById("stranded-map-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1636,6 +1669,12 @@
     deviceChurnOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintStrandedMap(result) {
+    if (!strandedOut) return;
+    strandedOut.setAttribute("data-tone", api.toneFor(result.state));
+    strandedOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -2019,6 +2058,33 @@
     });
   }
 
+  function loadStrandedMap(sha) {
+    if (!strandedOut) return Promise.resolve(null);
+    strandedOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/stranded_map.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/stranded_map.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/stranded_map.py absent at the measured main SHA. Real-but-stranded-map talk is CLAIMED." };
+        paintStrandedMap(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintStrandedMap(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.strandedMapState(body);
+        paintStrandedMap(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintStrandedMap(err);
+      return err;
+    });
+  }
+
   function loadTitanPacket(sha) {
     if (!titanOut) return Promise.resolve(null);
     titanOut.innerHTML = "<b>UNMEASURED</b><p>Reading titan_move_packet.json at the official SHA…</p>";
@@ -2169,6 +2235,7 @@
     loadStaleSpec(sha);
     loadPixelHeartbeat(sha);
     loadDeviceChurn(sha);
+    loadStrandedMap(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {

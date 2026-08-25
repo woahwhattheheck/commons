@@ -1,0 +1,66 @@
+{
+  "source_id": "rivet-ship-stranded-map-20260825-01",
+  "slack_ts": "1787635487.642039",
+  "kind": "STRANDED_MAP",
+  "titan": "NOT_WRITTEN",
+  "titan_packet_size": 103812669582,
+  "titan_later_size": 103831308164,
+  "titan_later_source": "Slack 1787634746.313679 first-numbers readout of C:\\llm\\models\\titan.gguf",
+  "items": [
+    {
+      "id": "android_ci",
+      "lda_workflow": "lda/workflows/android.yml",
+      "gh_workflow": ".github/workflows/android.yml",
+      "claim": "DIO",
+      "note": "lda workflow present; GitHub Actions only runs .github/workflows"
+    },
+    {
+      "id": "wake_jobs",
+      "path": "wake_jobs/",
+      "claim": "JOJO",
+      "note": "directory has .gitignore and README.md; no wake_jobs/{id}.json"
+    },
+    {
+      "id": "mcp_surfaces",
+      "paths": [
+        "commons_mcp.py",
+        "independent_commons_mcp/",
+        "door/src/mcp.server.ts",
+        "mcp_server/"
+      ],
+      "inventory": "ground/MCP_INVENTORY.json",
+      "claim": "JOJO",
+      "note": "four surfaces exist; one canonical inventory is absent"
+    },
+    {
+      "id": "whitebox",
+      "status": "PROPOSED",
+      "source": "muhl/whitebox/whitebox.py",
+      "claim": "commercial owner",
+      "note": "pilot contract named; no customer/paid/delivery receipt on this tree"
+    },
+    {
+      "id": "bazaar",
+      "catalog": "bazaar.json",
+      "offer_count": 7,
+      "copy_node": "bazaar/nodes/CURSOR_GROK/SEED0.mno",
+      "claim": "commercial owner",
+      "note": "seven offers; copy-node dest is absent"
+    },
+    {
+      "id": "titan_size",
+      "packet": "excerpts/20260823/titan_move_packet.json",
+      "claim": "DIO titan truth",
+      "note": "packet live_size_after 103812669582; later measured 103831308164. Reconcile lineage before another write."
+    }
+  ],
+  "hands_off": [
+    "DIO Android CI placement",
+    "JOJO MCP/wake routing",
+    "White Box / Bazaar commercial next step",
+    "titan.gguf write",
+    "DEMON 8-bit/pixel flight recorder",
+    "CML PR 2108",
+    "pixel-heartbeat leftover"
+  ]
+}
