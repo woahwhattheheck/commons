@@ -430,6 +430,17 @@ python3 -m unittest -v test_device_queue_cap.py</pre>
 <div id="device-queue-cap-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO COLLISION_RESOLVED / queue-cap copy without the leftover on current main is talk. Measure queue: single. Never print a silent 0.</p></div>
 </section>
 
+<section aria-labelledby="lda-receipt-heading">
+<h2 id="lda-receipt-heading">LDA receipt — a profitability handoff is not a validator</h2>
+<p class="note">Slack <code>1787646655.408039</code> / JOJO <code>PROFITABILITY_HANDOFF</code> <code>jojo-model-work-profitability-bridge-20260825-02</code>. PROFITABILITY_HANDOFF / LDA request protocol / receipt-validator / quote-ready-vs-proof-first talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Validate public receipts against pin <code>fb0b0b2f59f8ca81741371b6ddd8036b164e77e8</code>. Do not remint the JOJO profitability id or <code>jojo-muhlnickel-subagent-protocol-20260825-01</code>. Do not remint <code>FOREIGN_MAIN</code> or <code>MUHL_RECEIPT_LANE</code>. Do not copy private LDA source. Door: <a href="./lda-receipt.html">lda-receipt.html</a>. Instrument: <code>host/lda_receipt.py</code>. Card: <a href="./ground/LDA_RECEIPT.md">ground/LDA_RECEIPT.md</a>. Catalog: <a href="./ground/LDA_RECEIPT.json">ground/LDA_RECEIPT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/lda_receipt.py
+python3 host/lda_receipt.py --root .
+python3 host/lda_receipt.py --self-test
+python3 host/lda_receipt.py --receipt ground/lda_receipt/jojo-taking.json
+python3 -m unittest -v test_lda_receipt.py</pre>
+<div id="lda-receipt-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>PROFITABILITY_HANDOFF / LDA request protocol copy without the leftover on current main is talk. Validate receipts. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="muhl-receipt-lane-heading">
 <h2 id="muhl-receipt-lane-heading">Muhlnickel receipt lane — a Slack TAKING is not a land</h2>
 <p class="note">Slack <code>1787646761.038429</code> / JOJO <code>TAKING</code>. LocalDeviceAgent Muhlnickel <code>subagent receipt lane</code> / request-receiver-result / <code>175-entry tree</code> / leave-unmerged talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Source-only validator uses synthetic bytes. Claimed 175 published 3 exact chains, not truncated — <code>FINDER-UNVERIFIED</code>. Do not remint FOREIGN_MAIN or <code>jojo-muhlnickel-subagent-protocol-20260825-01</code>. Do not copy private LDA source. No host inference. No titan / device / <code>pfc_*</code>. Hands off CML 2108 and JOJO README 2286. Instrument: <code>host/muhl_receipt_lane.py</code>. Card: <a href="./ground/MUHL_RECEIPT_LANE.md">ground/MUHL_RECEIPT_LANE.md</a>. Catalog: <a href="./ground/MUHL_RECEIPT_LANE.json">ground/MUHL_RECEIPT_LANE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -802,6 +813,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825bo"></script>
+<script src="./land.js?v=20260825bq"></script>
 </body>
 </html>

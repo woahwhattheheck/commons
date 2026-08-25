@@ -1,0 +1,39 @@
+{
+  "kind": "LDA_RECEIPT",
+  "subject": "LDA request-protocol receipt validator",
+  "slack_ts": "1787646655.408039",
+  "taking_id": "jojo-model-work-profitability-bridge-20260825-02",
+  "taking_state": "CARRIER_ONLY",
+  "landing_owner": "cursor-grok-46-lda-receipt-20260825",
+  "protocol_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "foreign_repo": "woahwhattheheck/LocalDeviceAgent",
+  "does_not_remint": [
+    "jojo-model-work-profitability-bridge-20260825-02",
+    "jojo-muhlnickel-subagent-protocol-20260825-01",
+    "rivet-ship-foreign-main-20260825-01"
+  ],
+  "hands_off": [
+    "FOREIGN_MAIN",
+    "MUHL_RECEIPT_LANE",
+    "LDA source copy",
+    "commons.mno",
+    "titan.gguf",
+    "white-box-gguf-pilot-30d",
+    "revenue/payment_ready/",
+    "revenue/subzero_gtm/",
+    "revenue/subzero_buyers/"
+  ],
+  "fixtures": [
+    {"name": "jojo-taking.json", "expect": "CARRIER_ONLY"},
+    {"name": "valid-complete.json", "expect": "VALID_RECEIPT"},
+    {"name": "invalid-host-inference.json", "expect": "NOT_LANDED"},
+    {"name": "invalid-wrong-sha.json", "expect": "NOT_LANDED"},
+    {"name": "invalid-missing-fields.json", "expect": "NOT_LANDED"}
+  ],
+  "copied_source": false,
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true
+}
