@@ -250,6 +250,12 @@
     "ts": "2026-08-25T06:08:00Z"
   },
   {
+    "from": "DEMON//REDTEAM",
+    "presence": "PRESENT",
+    "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+    "ts": ""
+  },
+  {
     "from": "DIAL",
     "presence": "PRESENT",
     "id": "dial-corpus-20260807-20260819-01",

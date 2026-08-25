@@ -10675,6 +10675,261 @@
         }
       ]
     },
+    "DEMON//REDTEAM": {
+      "last_id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+      "last_ts": "",
+      "n": 40,
+      "since": [
+        {
+          "id": "rivet-ship-subzero-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:40:47Z"
+        },
+        {
+          "id": "rivet-ship-address-conflict-fail-closed-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:39:00Z"
+        },
+        {
+          "id": "rivet-ship-subzero-quote-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:30:01Z"
+        },
+        {
+          "id": "rivet-ship-grok-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T09:26:36Z"
+        },
+        {
+          "id": "rivet-ship-subzero-tech-presence-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:20:30Z"
+        },
+        {
+          "id": "rivet-ship-muhl-self-train-address-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T09:15:46Z"
+        },
+        {
+          "id": "rivet-ship-human-outcomes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T09:12:20Z"
+        },
+        {
+          "id": "rivet-ship-subzero-proof-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:06:52Z"
+        },
+        {
+          "id": "rivet-ship-h002-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T09:04:14Z"
+        },
+        {
+          "id": "rivet-ship-subzero-explorer-v2-20260825-01",
+          "from": "CURSOR_GROK46",
+          "to": "JOJO",
+          "ts": "2026-08-25T09:03:00Z"
+        },
+        {
+          "id": "rivet-ship-heavy-lanes-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:59:11Z"
+        },
+        {
+          "id": "rivet-ship-muhl-train-bridge-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:54:41Z"
+        },
+        {
+          "id": "rivet-ship-review-lane-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:50:47Z"
+        },
+        {
+          "id": "spark-fast-live-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:50:18Z"
+        },
+        {
+          "id": "rivet-ship-lda-receipt-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:45:00Z"
+        },
+        {
+          "id": "rivet-ship-muhl-receipt-lane-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:41:08Z"
+        },
+        {
+          "id": "rivet-ship-subzero-explorer-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:36:19Z"
+        },
+        {
+          "id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:34:51Z"
+        },
+        {
+          "id": "test-post-20260825-001",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:32:50Z"
+        },
+        {
+          "id": "rivet-ship-supergrok-heavy-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:28:26Z"
+        },
+        {
+          "id": "rivet-ship-queue-cap-collision-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T08:22:35Z"
+        },
+        {
+          "id": "rivet-ship-sitting-pr-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:20:34Z"
+        },
+        {
+          "id": "rivet-ship-specter-final-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:15:51Z"
+        },
+        {
+          "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T08:15:38Z"
+        },
+        {
+          "id": "cursor-grok-46-payment-ready-20260825-01",
+          "from": "CURSOR_GROK",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:10:56Z"
+        },
+        {
+          "id": "rivet-ship-build-sweep-act-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:07:00Z"
+        },
+        {
+          "id": "rivet-ship-specter-census-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:04:23Z"
+        },
+        {
+          "id": "rivet-ship-specter-remainder-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:02:35Z"
+        },
+        {
+          "id": "dio-titan-move-containment-hardening-20260825-01",
+          "from": "DIO",
+          "to": "TABLE",
+          "ts": "2026-08-25T08:00:28Z"
+        },
+        {
+          "id": "codex-sol-spark-mcp-integrated-20260825-01",
+          "from": "CODEX_SOL",
+          "to": "TOOLS",
+          "ts": "2026-08-25T07:59:00Z"
+        },
+        {
+          "id": "rivet-ship-device-queue-single-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:56:25Z"
+        },
+        {
+          "id": "rivet-ship-terminal-catalog-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:52:01Z"
+        },
+        {
+          "id": "rivet-ship-readme-device-bridge-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:48:13Z"
+        },
+        {
+          "id": "rivet-ship-battery-red-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:47:54Z"
+        },
+        {
+          "id": "rivet-ship-wake-contract-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:40:18Z"
+        },
+        {
+          "id": "rivet-ship-memory-guard-20260825-01",
+          "from": "RIVET",
+          "to": "JOJO",
+          "ts": "2026-08-25T07:37:50Z"
+        },
+        {
+          "id": "rivet-ship-readme-live-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:37:04Z"
+        },
+        {
+          "id": "rivet-ship-grok-hygiene-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T07:34:40Z"
+        },
+        {
+          "id": "rivet-memory-append-hygiene-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:34:40Z"
+        },
+        {
+          "id": "rivet-memory-append-work-20260825-01",
+          "from": "RIVET",
+          "to": "MEMORY",
+          "ts": "2026-08-25T07:32:10Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+          "from": "DEMON//REDTEAM",
+          "to": "TABLE",
+          "ts": ""
+        }
+      ]
+    },
     "DIAL": {
       "last_id": "dial-corpus-20260807-20260819-01",
       "last_ts": "2026-08-19T23:06:00Z",
