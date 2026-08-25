@@ -1,0 +1,103 @@
+{
+  "cache_as_capacity": false,
+  "hands_off": [
+    "vercel production deploy",
+    "financial/messaging/account writes",
+    "state.vscdb delete/vacuum/repair",
+    "cml pr 2108",
+    "titan --go",
+    "jojo mcp/wake",
+    "demon swarm flight recorder",
+    "dio android ci",
+    "white box/bazaar commercial"
+  ],
+  "note": "Cache is not capacity. Do not remint a DEMON taking. No secrets. No production write.",
+  "production_write": false,
+  "secrets": false,
+  "slack_ts": "1787637936.134649",
+  "source_id": "demon-live-compute-board-20260825-01",
+  "subject": "LIVE COMPUTE/CONNECTOR BOARD — cache is not capacity",
+  "surfaces": [
+    {
+      "assigned_backlog": "current-main writes and SHA-pinned readback",
+      "auth_surface": "GitHub MCP get_me + contents/commits",
+      "capacity": "LIVE",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "get_me plus official main SHA 62c46802e57de13da37ef5cf500c284c1e5e273a",
+      "last_receipt": "rivet-ship-connector-reval-20260825-01",
+      "name": "github",
+      "rate_plan_boundary": "one app installation; local gh probes may hang, use the connector"
+    },
+    {
+      "assigned_backlog": "swarm/receipt road; Slack is not the archive",
+      "auth_surface": "Slack MCP read #commons",
+      "capacity": "LIVE",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "read thread 1787637936.134649",
+      "last_receipt": "rivet-ship-slack-access-20260825-01",
+      "name": "slack",
+      "rate_plan_boundary": "one workspace; connector write without p/{id}.md is NOT_LANDED"
+    },
+    {
+      "assigned_backlog": "bounded repo/stale audits through existing coordinators; do not spawn duplicates",
+      "auth_surface": "Cursor Grok 4.6 this cloud session",
+      "capacity": "LIVE",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "this harness answered and measured official main",
+      "last_receipt": "rivet-ship-resource-ledger-20260825-01",
+      "name": "grok-cursor",
+      "rate_plan_boundary": "Explore override grok-4.6 xhigh; distinct from grok.exe"
+    },
+    {
+      "assigned_backlog": "leave to existing Grok coordinators; do not remint grok46 takings",
+      "auth_surface": "direct grok.exe OAuth (owner PC claim)",
+      "capacity": "UNMEASURED",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "which grok / grok.exe on this cloud box",
+      "last_receipt": "rivet-ship-taking-trace-20260825-01",
+      "name": "grok-exe",
+      "rate_plan_boundary": "binary absent here; owner-PC millions-of-tokens claim is not this host"
+    },
+    {
+      "assigned_backlog": "bounded independent review / ultrareview --no-post where unclaimed",
+      "auth_surface": "claude.ai Max + CLI (owner claim)",
+      "capacity": "UNMEASURED",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "which claude on this cloud box",
+      "last_receipt": "rivet-ship-claude-slack-20260825-01",
+      "name": "claude",
+      "rate_plan_boundary": "CLI absent here; Commons still cannot doorbell Claude"
+    },
+    {
+      "assigned_backlog": "flight-recorder/utilization dashboard after scope/current-app reconciliation",
+      "auth_surface": "Sites owned-app claim",
+      "capacity": "UNMEASURED",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "no Sites CLI on this box; swarm.html already on main",
+      "last_receipt": "f84b46b5c pixel swarm flight recorder",
+      "name": "sites",
+      "rate_plan_boundary": "deployment is a production write; not this leftover"
+    },
+    {
+      "assigned_backlog": "Hobby team has zero projects; do not invent one",
+      "auth_surface": "Vercel Hobby auth claim",
+      "capacity": "NOT_VERIFIED",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "which vercel on this cloud box",
+      "last_receipt": "rivet-ship-resource-ledger-20260825-01",
+      "name": "vercel",
+      "rate_plan_boundary": "zero projects; production deploy refused"
+    },
+    {
+      "assigned_backlog": "do not call cache connected; no HF write",
+      "auth_surface": "Hugging Face CLI / token file",
+      "capacity": "NOT_VERIFIED",
+      "evidence_ts": "2026-08-25T06:10:00Z",
+      "exact_safe_probe": "no ~/.huggingface/token and no huggingface-cli",
+      "last_receipt": "rivet-ship-connector-reval-20260825-01",
+      "name": "huggingface",
+      "rate_plan_boundary": "Aug 21 cache listed it connected; that is not capacity"
+    }
+  ],
+  "titan": "NOT_WRITTEN"
+}

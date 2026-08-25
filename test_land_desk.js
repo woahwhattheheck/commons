@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825y/.test(html), "desk must bust the slack-receipt cache key");
+assert.ok(/20260825z/.test(html), "desk must bust the resource-ledger cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -974,6 +974,38 @@ assert.ok(html.indexOf("1787637151.916759") >= 0, "desk must cite the connector-
 assert.ok(/connector-utilization|provisioned != live|mcp\.json-empty|state\.vscdb/i.test(html), "desk must name connector talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.md") >= 0, "connector-reval card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONNECTOR_REVAL.json") >= 0, "connector-reval catalog must stay a canary");
+assert.ok(api.isResourceLedgerTalk, "land.js must classify live-compute-board / cache-as-capacity talk");
+assert.ok(api.resourceLedgerState, "land.js must classify the resource-ledger leftover");
+assert.ok(api.isResourceLedgerTalk("LIVE COMPUTE/CONNECTOR BOARD — USE THESE, DO NOT COUNT CACHE AS CAPACITY. Keep a live resource ledger. Five high-value surfaces. Hugging Face specifically is NOT verified. Sites/Vercel."), "live-compute-board copy is talk");
+assert.ok(!api.isResourceLedgerTalk("make sure people do more than talk about shit"), "ship-talk is not the resource-ledger leftover");
+assert.ok(!api.isResourceLedgerTalk("DEMON connector-utilization report — 39 enabled services; 23 cached connected. mcp.json is empty. provisioned != live."), "connector copy is not the resource-ledger leftover");
+assert.ok(!api.isResourceLedgerTalk("DEMON rolling utilization report — GROK CAPACITY IS ACTIVE. four responsive grok.exe sessions."), "grok-capacity copy is not the resource-ledger leftover");
+assert.ok(!api.isConnectorRevalTalk("LIVE COMPUTE/CONNECTOR BOARD — DO NOT COUNT CACHE AS CAPACITY. live resource ledger. Hugging Face specifically is NOT verified."), "resource-ledger copy is not connector leftover");
+var ledgerTalk = api.completionStateFromText(
+  "LIVE COMPUTE/CONNECTOR BOARD — USE THESE, DO NOT COUNT CACHE AS CAPACITY. Keep a live resource ledger. Five high-value surfaces. Hugging Face specifically is NOT verified. grok.exe OAuth is authenticated."
+);
+assert.strictEqual(ledgerTalk.state, "CLAIMED");
+assert.ok(/live-compute-board|cache-as-capacity|resource-ledger/i.test(ledgerTalk.note), "resource-ledger-without-SHA must stay CLAIMED and beat utilization");
+var ledgerDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nresource-ledger leftover landed"
+);
+assert.strictEqual(ledgerDone.state, "INTEGRATED", "completion words still beat resource-ledger talk");
+var ledgerEmpty = api.resourceLedgerState("");
+assert.strictEqual(ledgerEmpty.state, "UNMEASURED");
+var ledgerMissing = api.resourceLedgerState("# empty stub\nno census");
+assert.strictEqual(ledgerMissing.state, "NOT_LANDED");
+var ledgerOk = api.resourceLedgerState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nREQUIRED_FIELDS = ('evidence_ts',)\ncache is not capacity\nNOT_VERIFIED\n");
+assert.strictEqual(ledgerOk.state, "INTEGRATED");
+assert.ok(/Cache is not capacity/i.test(ledgerOk.note), "landed leftover must name cache is not capacity");
+assert.ok(html.indexOf('id="resource-ledger-result"') >= 0, "desk must name the resource-ledger leftover");
+assert.ok(html.indexOf("host/resource_ledger.py") >= 0, "desk must name the resource-ledger instrument");
+assert.ok(html.indexOf("ground/RESOURCE_LEDGER.md") >= 0, "desk must link the resource-ledger card");
+assert.ok(html.indexOf("ground/RESOURCE_LEDGER.json") >= 0, "desk must link the resource-ledger catalog");
+assert.ok(html.indexOf("ledger.html") >= 0, "desk must name the live ledger door");
+assert.ok(html.indexOf("1787637936.134649") >= 0, "desk must cite the live-compute-board Slack ts");
+assert.ok(/cache is not capacity|live resource ledger|huggingface-not-verified/i.test(html), "desk must name resource-ledger talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RESOURCE_LEDGER.md") >= 0, "resource-ledger card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/RESOURCE_LEDGER.json") >= 0, "resource-ledger catalog must stay a canary");
 assert.ok(api.isRenderContractTalk, "land.js must classify SPECTER / workflow-contract talk");
 assert.ok(api.renderContractState, "land.js must classify the render-check workflow contract");
 assert.ok(api.isRenderContractTalk("SPECTER TAKING — render-QA execution lane. I found no live render_check claim and will prove the actual workflow contract."), "SPECTER taking is workflow-contract talk");
