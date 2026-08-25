@@ -167,6 +167,8 @@
     "ground/MEASURE_ABUSE.json",
     "ground/CLAUDE_ZERO.md",
     "ground/CLAUDE_ZERO.json",
+    "ground/GROK_RECOVERY.md",
+    "ground/GROK_RECOVERY.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -472,6 +474,9 @@
     }
     if (api.isWorkingBuildTalk(t)) {
       return { state: "CLAIMED", note: "machine-only / rook-resident-native / keyb01.mno / TRAIN_CIRCUITS_FROM_FILE talk. Talk is not a land. Measure current-main equivalents and ship a disposition leftover. Do not upload model/container bytes." };
+    }
+    if (api.isGrokRecoveryTalk(t)) {
+      return { state: "CLAIMED", note: "grok-recovery / muhlnickel-only / prompt-address / result-register talk. Talk is not a land. Inventory published session prefixes and ship the dests-FROM-FILE handoff leftover to current main." };
     }
     if (api.isMeasureAbuseTalk(t)) {
       return { state: "CLAIMED", note: "measurement-abuse / unflattering-truths / damage-control-addendum talk. Talk is not a land. Treat Claude zeros as RETRACTED. Do not use a disputed measurement to characterize the reporter. Ship the leftover to current main." };
@@ -1011,6 +1016,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/claude_zero.py missing the retract leftover. Claude-reported-zero talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokRecoveryTalk = function (text) {
+    return /grok recovery|muhlnickel-only|local-model subagent|jojo-grok-recovery|01a0373e|50_cross_synthesis|prompt-address|result-register|no-host-inference|muhlnickel subagent contract/i.test(String(text || ""));
+  };
+
+  api.grokRecoveryState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_recovery.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER UNVERIFIED/.test(body) && /never 0/.test(body);
+    var hasHandoff = /dests FROM FILE/.test(body) || /dests_from_file/.test(body);
+    var noHost = /no_host_inference/.test(body);
+    var noTitan = /no_titan_mutation/.test(body);
+    var hasSessions = /01a0373e/.test(body) && /50_cross_synthesis/.test(body);
+    var hasCalibrate = /known-present calibration/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && hasHandoff && noHost && noTitan && hasSessions && hasCalibrate) {
+      return {
+        state: "INTEGRATED",
+        note: "Grok-recovery leftover is on this file. Session prefixes stay FINDER UNVERIFIED until a durable output/branch/SHA is on current main. dests FROM FILE named. no-host-inference and no-Titan-mutation hold. A Slack taking is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_recovery.py missing the leftover. Grok-recovery / muhlnickel-subagent talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -1817,6 +1851,7 @@
   var xyzOut = document.getElementById("xyz-zero-result");
   var appendGuardOut = document.getElementById("titan-append-guard-result");
   var measureAbuseOut = document.getElementById("measure-abuse-result");
+  var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -2354,6 +2389,12 @@
     if (!claudeZeroOut) return;
     claudeZeroOut.setAttribute("data-tone", api.toneFor(result.state));
     claudeZeroOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokRecovery(result) {
+    if (!grokRecoveryOut) return;
+    grokRecoveryOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokRecoveryOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function loadBakeCensus(sha) {
@@ -3121,6 +3162,33 @@
     });
   }
 
+  function loadGrokRecovery(sha) {
+    if (!grokRecoveryOut) return Promise.resolve(null);
+    grokRecoveryOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_recovery.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_recovery.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_recovery.py absent at the measured main SHA. Grok-recovery / muhlnickel-subagent talk is CLAIMED." };
+        paintGrokRecovery(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokRecovery(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokRecoveryState(body);
+        paintGrokRecovery(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokRecovery(err);
+      return err;
+    });
+  }
+
   function loadClaudeTester(sha) {
     if (!claudeTesterOut) return Promise.resolve(null);
     claudeTesterOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_tester.py at the official SHA…</p>";
@@ -3451,6 +3519,7 @@
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
     loadMeasureAbuse(sha);
+    loadGrokRecovery(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
