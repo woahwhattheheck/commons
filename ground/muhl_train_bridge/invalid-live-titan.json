@@ -1,0 +1,11 @@
+{
+  "kind": "MUHL_TRAIN_PACKET",
+  "source_index": "p/bryce-action-pad-open-door-directive-20260822-01.md",
+  "process": "train",
+  "bytes": "53594e544845544943",
+  "host_inference": false,
+  "titan": "WRITTEN",
+  "live_device": false,
+  "live_model": false,
+  "live_container": false
+}

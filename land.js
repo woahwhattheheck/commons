@@ -220,6 +220,9 @@
     "ground/LDA_RECEIPT.json",
     "ground/REVIEW_LANE.md",
     "ground/REVIEW_LANE.json",
+    "ground/MUHL_TRAIN_BRIDGE.md",
+    "ground/MUHL_TRAIN_BRIDGE.json",
+    "muhl-train.html",
     "ground/DEVICE_CANARY.md",
     "ground/DEVICE_CANARY.json",
     "ground/MEMORY_SHIP.md",
@@ -450,6 +453,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isMuhlTrainBridgeTalk(t)) {
+      return { state: "CLAIMED", note: "TAKING_BACKEND_SWARM / CLEAN GROK / H-006 Muhlnickel training bridge / no-write-tools talk. Talk is not a land. Ship the source-indexed synthetic training-bridge leftover to current main. Do not remint H-005 Subzero artifacts, H-007 LDA_RECEIPT, or the JOJO swarm id." };
     }
     if (api.isReviewLaneTalk(t)) {
       return { state: "CLAIMED", note: "JOJO SHIPPED / review lane / LDA PR #3 / not-merged talk. Talk is not a land. Official LDA main still lacks the receipt path. Name the PR CANDIDATE. Do not remint FOREIGN_MAIN, MUHL_RECEIPT_LANE, or LDA_RECEIPT. Do not copy private LDA source." };
@@ -867,6 +873,37 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isMuhlTrainBridgeTalk = function (text) {
+    return /TAKING_BACKEND_SWARM|jojo-clean-grok-modelwork-swarm-20260825-01|1787647412\.543649|CLEAN GROK 4\.6|no bash\/write tools|muhlnickel training bridge|muhl_train_bridge|backend-swarm leftover|H-006/i.test(String(text || ""));
+  };
+
+  api.muhlTrainBridgeState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/muhl_train_bridge.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasValidate = /def validate_packet/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesPin = /6a934ed9d07c293296fead0f403fbbcb3afc15a9/.test(body);
+    var namesAncestor = /ancestor is not current head/.test(body);
+    var namesStates = /SYNTHETIC_OK/.test(body) && /CARRIER_ONLY/.test(body);
+    var namesH006 = /H-006/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasValidate && hasMiss && neverZero && namesPin && namesAncestor && namesStates && namesH006 && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Muhlnickel training-bridge leftover is on this file. Fixtures classify CARRIER_ONLY / SYNTHETIC_OK / NOT_LANDED. A Slack TAKING_BACKEND_SWARM is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/muhl_train_bridge.py missing the leftover. TAKING_BACKEND_SWARM / H-006 / no-write-tools talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3230,6 +3267,7 @@
   var deviceQueueCapOut = document.getElementById("device-queue-cap-result");
   var ldaReceiptOut = document.getElementById("lda-receipt-result");
   var reviewLaneOut = document.getElementById("review-lane-result");
+  var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
   var muhlReceiptLaneOut = document.getElementById("muhl-receipt-lane-result");
   var superGrokHeavyOut = document.getElementById("supergrok-heavy-result");
   var buildSweepActOut = document.getElementById("build-sweep-act-result");
@@ -3911,6 +3949,12 @@
     if (!reviewLaneOut) return;
     reviewLaneOut.setAttribute("data-tone", api.toneFor(result.state));
     reviewLaneOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintMuhlTrainBridge(result) {
+    if (!muhlTrainBridgeOut) return;
+    muhlTrainBridgeOut.setAttribute("data-tone", api.toneFor(result.state));
+    muhlTrainBridgeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintMuhlReceiptLane(result) {
@@ -4796,6 +4840,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintReviewLane(err);
+      return err;
+    });
+  }
+
+  function loadMuhlTrainBridge(sha) {
+    if (!muhlTrainBridgeOut) return Promise.resolve(null);
+    muhlTrainBridgeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/muhl_train_bridge.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/muhl_train_bridge.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/muhl_train_bridge.py absent at the measured main SHA. TAKING_BACKEND_SWARM / H-006 / no-write-tools talk is CLAIMED." };
+        paintMuhlTrainBridge(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintMuhlTrainBridge(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.muhlTrainBridgeState(body);
+        paintMuhlTrainBridge(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintMuhlTrainBridge(err);
       return err;
     });
   }
@@ -6010,6 +6081,7 @@
     loadSubzeroTech(sha);
     loadSubzeroExplorer(sha);
     loadSittingPr(sha);
+    loadMuhlTrainBridge(sha);
     loadLdaReceipt(sha);
     loadReviewLane(sha);
     loadMuhlReceiptLane(sha);
