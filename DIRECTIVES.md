@@ -379,6 +379,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_tech.py` · `node test_land_desk.js` · `python3 open_door_guard.py --diff origin/main HEAD` · `python3 host/subzero_explorer.py`
 **Note:** Draft PR 2354 was CANDIDATE. Replay onto current main. Do not remint organs 27–28 / item 45 / item 51 / item 58 packet / `rivet-ship-subzero-explorer-v2-packet-20260825-01` / #2340 / #2329 binder. No auth. No gate. No tiers. Talk is not a land.
 
+### 64. Grok-app route — a Slack routing line is not a land
+> *"Guys stop routing away from grok app and to cursor I dont want to burn cursor tokens like I want to burn the grok.com tokens"* / *"Cursor agent tell them I said use grok more use cursor less, for the next 24 hours"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
+
+**Asked:** 08-25T14:58 Slack `1787669923.780099` + tell-them `1787669986.483149` + ship-talk · **Status:** LANDED this commit
+**Landed:** `ground/GROK_APP_ROUTE.md` · `ground/GROK_APP_ROUTE.json` · `host/grok_app_route.py` · `memory/GROK_APP_ROUTE.md` · land leftover-first + `grokAppRouteState`
+**Receipt:** `python3 test_grok_app_route.py` · `node test_land_desk.js` · `python3 host/grok_app_route.py`
+**Note:** Window `2026-08-25T14:58:43Z` → `2026-08-26T14:59:46Z`. Prefer grok.com / Grok app. Burn grok.com tokens. Cursor is not the default route. Cursor doorbell stays. Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

@@ -243,6 +243,8 @@
     "ground/GROK_RECEIPT.json",
     "ground/H009.md",
     "ground/H009.json",
+    "ground/GROK_APP_ROUTE.md",
+    "ground/GROK_APP_ROUTE.json",
     "ground/DIO_CRLF.md",
     "ground/DIO_CRLF.json",
     "ground/DEVICE_CANARY.md",
@@ -475,6 +477,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isGrokAppRouteTalk(t)) {
+      return { state: "CLAIMED", note: "Bryce grok-app / grok.com-tokens / use-grok-more / use-cursor-less / next-24-hours talk. Talk is not a land. Ship the grok-app-route leftover to current main. Prefer grok.com / Grok app. Burn grok.com tokens, not Cursor tokens. Window ends 2026-08-26T14:59:46Z. Do not remint SUPERGROK_HEAVY, GROK_HYGIENE, GROK_HARNESS, or GROK_RECEIPT." };
     }
     if (api.isExplorerFailClosedTalk(t)) {
       return { state: "CLAIMED", note: "JOJO INDEPENDENT REVIEW / #2325 EXACT HEAD BLOCKED / missing-card / stale-binding / invalid-receipt talk. Talk is not a land. Ship the explorer fail-closed leftover to current main. Missing cards and stale pins must not PASS. Invalid timestamps and list-shaped receipts must not escalate. Do not remint the explorer v2 packet, #2340, or #2329 binder." };
@@ -957,6 +962,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokAppRouteTalk = function (text) {
+    return /1787669923\.780099|1787669986\.483149|stop routing away from grok app|use grok more use cursor less|grok\.com tokens|burn cursor tokens|GROK_APP_ROUTE|grok-app-route leftover/i.test(String(text || ""));
+  };
+
+  api.grokAppRouteState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_app_route.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasWindow = /def window_state/.test(body) && /WINDOW_ACTIVE/.test(body) && /WINDOW_EXPIRED/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesRoute = /grok\.com tokens/.test(body) && /use grok more/.test(body) && /use cursor less/.test(body);
+    var namesWindow = /2026-08-26T14:59:46Z/.test(body) || /WINDOW_UNTIL/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasWindow && hasMiss && neverZero && namesRoute && namesWindow && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "grok-app-route leftover is on this file. Prefer grok.com / Grok app for the named 24-hour window. Burn grok.com tokens, not Cursor tokens. A Slack routing line is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_app_route.py missing the leftover. Grok-app / grok.com-tokens / use-grok-more talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3615,6 +3649,7 @@
   var subzeroQuoteOut = document.getElementById("subzero-quote-result");
   var subzeroReceiptOut = document.getElementById("subzero-receipt-result");
   var grokReceiptOut = document.getElementById("grok-receipt-result");
+  var grokAppRouteOut = document.getElementById("grok-app-route-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4341,6 +4376,12 @@
     if (!grokReceiptOut) return;
     grokReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
     grokReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokAppRoute(result) {
+    if (!grokAppRouteOut) return;
+    grokAppRouteOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokAppRouteOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5292,6 +5333,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadGrokAppRoute(sha) {
+    if (!grokAppRouteOut) return Promise.resolve(null);
+    grokAppRouteOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_app_route.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_app_route.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_app_route.py absent at the measured main SHA. Grok-app / grok.com-tokens / use-grok-more talk is CLAIMED." };
+        paintGrokAppRoute(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokAppRoute(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokAppRouteState(body);
+        paintGrokAppRoute(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokAppRoute(err);
       return err;
     });
   }
@@ -6696,6 +6764,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadGrokAppRoute(sha);
     loadGrokReceipt(sha);
     loadDioCrlf(sha);
     loadSubzeroReceipt(sha);

@@ -1,0 +1,40 @@
+{
+  "slack_ts": "1787669923.780099",
+  "slack_ts_tell": "1787669986.483149",
+  "kind": "GROK_APP_ROUTE",
+  "subject": "Use grok.com more, Cursor less, for 24 hours",
+  "window_start": "2026-08-25T14:58:43Z",
+  "window_until": "2026-08-26T14:59:46Z",
+  "prefer": "grok.com / Grok app / Grok Build",
+  "burn": "grok.com tokens",
+  "do_not_burn": "Cursor tokens as the default route",
+  "already_landed": [
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/GROK_HYGIENE.md",
+    "ground/GROK_HARNESS.md",
+    "ground/GROK_RECEIPT.md",
+    "ground/SITTING_REMINT.md",
+    "ground/HEAVY_LANES.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-supergrok-heavy-20260825-01",
+    "rivet-ship-grok-hygiene-20260825-01",
+    "rivet-ship-grok-harness-20260825-01",
+    "rivet-ship-grok-receipt-20260825-01",
+    "rivet-ship-sitting-remint-20260825-01",
+    "rivet-ship-heavy-lanes-20260825-01",
+    "ground/SUPERGROK_HEAVY.md",
+    "ground/GROK_HYGIENE.md",
+    "ground/GROK_HARNESS.md",
+    "ground/GROK_RECEIPT.md"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2320"
+  ]
+}
