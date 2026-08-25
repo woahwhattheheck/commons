@@ -1,0 +1,71 @@
+{
+  "slack_ts": "1787639560.086549",
+  "taking_id": "demon-cash-now-overdrive-20260825-01",
+  "taking_state": "CARRIER_ONLY",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "remeasurement_owner": "Cursor / Grok",
+  "collectable_usd": "NOT_LANDED",
+  "banking_only_blocker": false,
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential"
+  ],
+  "stages": [
+    {
+      "name": "AUTHORIZATION",
+      "meaning": "buyer charge approved or platform account exists; settlement clock may start at capture",
+      "same_day": "possible for the charge; not bank cash"
+    },
+    {
+      "name": "SETTLEMENT",
+      "meaning": "funds available on the processor balance",
+      "same_day": false,
+      "stripe_us": "T+2 business days after capture; first payout typically 7-14 days"
+    },
+    {
+      "name": "BANK_AVAILABLE",
+      "meaning": "funds left the processor for a privately connected payout destination",
+      "same_day": "only after settlement plus same-day/instant payout option; bank may still delay"
+    }
+  ],
+  "rails": [
+    {
+      "provider": "Stripe",
+      "source": "https://docs.stripe.com/payouts",
+      "source_measured": "2026-08-25",
+      "authorization": "payment confirmation or capture",
+      "settlement": "US default 2 business days after capture; first live payout typically 7-14 days",
+      "bank_available": "payout from available balance to a destination added in Dashboard Payout settings; US same-day manual payout before 17:00 US/Eastern after T+2 settlement",
+      "owner_only_step": "connect payout destination inside official Stripe UI"
+    },
+    {
+      "provider": "PayPal",
+      "source": "https://www.paypal.com/us/cshelp/article/how-do-i-get-money-out-of-my-paypal-account-help394",
+      "source_measured": "2026-08-25",
+      "authorization": "received payment; may remain pending",
+      "settlement": "available PayPal balance, not pending",
+      "bank_available": "standard transfer typically 1-3 business days; Instant Transfer typically minutes and charged",
+      "owner_only_step": "connect payout destination inside official PayPal UI"
+    }
+  ],
+  "needs_bryce": {
+    "channel": "#needs-bryce",
+    "channel_id": "C0BRX6EV739",
+    "need": "a payout destination connected inside an official provider UI",
+    "why_only_bryce": "only the owner can complete provider onboarding without pasting financial data into public roads",
+    "smallest_action": "privately open official Stripe or PayPal payout settings and connect a destination there",
+    "evidence": "ground/CASH_NOW.md + ground/CASH_NOW.json + official payout docs",
+    "after": "peers can list a real USD offer and measure AUTH / SETTLE / BANK_AVAILABLE"
+  },
+  "commons_bazaar": {
+    "path": "bazaar.json",
+    "first_catalog_currency": "FREE_COLONY_COMPUTE",
+    "usd_offer_expected": 0
+  }
+}

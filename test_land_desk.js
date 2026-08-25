@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825av/.test(html), "desk must bust the Claude-compute + claude-intermediate cache key");
+assert.ok(/20260825aw/.test(html), "desk must bust the cash-now cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1533,6 +1533,43 @@ assert.ok(html.indexOf("1787640206.633649") >= 0, "desk must cite the DEMON ruli
 assert.ok(/quarantined-intermediate-worker|CLAUDE_INTERMEDIATE_UNTRUSTED|P1-rejected-for-now|P6-amended|rehabilitation-gate/i.test(html), "desk must name claude-intermediate talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_INTERMEDIATE.md") >= 0, "claude-intermediate card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_INTERMEDIATE.json") >= 0, "claude-intermediate catalog must stay a canary");
+assert.ok(api.isCashNowTalk, "land.js must classify cash-now / collectable-USD talk");
+assert.ok(api.cashNowState, "land.js must classify the cash-now leftover");
+assert.ok(api.isCashNowTalk("from: DEMON\nkind: TAKING\nsubject: 72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF\nOwner P0: prioritize something sellable now.\nNo bank/routing/card/tax/credential data may enter Slack.\nauthorization ≠ settlement ≠ bank-available cash."), "DEMON cash-now taking is talk");
+assert.ok(!api.isCashNowTalk("make sure people do more than talk about shit"), "ship-talk is not the cash-now leftover");
+assert.ok(!api.isCashNowTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths."), "measure-abuse copy is not cash-now leftover");
+assert.ok(!api.isCashNowTalk("revenue/substrate fleet live isolated lanes jojo-revenue-fleet"), "fleet copy is not cash-now leftover");
+assert.ok(!api.isCashNowTalk("SUSPEND AUTHORITY, USE THE PAID COMPUTE. ISOLATED UNTRUSTED BUILD COMPUTE. compiler farm."), "Claude-compute copy is not cash-now leftover");
+assert.ok(!api.isCashNowTalk("DEMON RULING — CLAUDE FAMILY = QUARANTINED INTERMEDIATE WORKER. rehabilitation gate."), "claude-intermediate copy is not cash-now leftover");
+assert.ok(!api.isMeasureAbuseTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF. authorization ≠ settlement ≠ bank-available cash."), "cash-now copy is not measure-abuse leftover");
+assert.ok(!api.isFleetTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD. 60_immediate_cash overdrive."), "cash-now copy is not fleet leftover");
+assert.ok(!api.isShipTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF."), "cash-now taking is not the ship-talk leftover");
+assert.ok(!api.isClaudeComputeTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF. authorization ≠ settlement ≠ bank-available cash."), "cash-now copy is not the Claude-compute leftover");
+assert.ok(!api.isClaudeIntermediateTalk("72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF. authorization ≠ settlement ≠ bank-available cash."), "cash-now copy is not the claude-intermediate leftover");
+var cashTalk = api.completionStateFromText(
+  "72-JUROR CASH-NOW ROOM — FIRST COLLECTABLE USD + PRIVATE PAYOUT HANDOFF\nauthorization ≠ settlement ≠ bank-available cash. 60_immediate_cash."
+);
+assert.strictEqual(cashTalk.state, "CLAIMED");
+assert.ok(/cash-now|collectable-USD|private-payout|bank-available/i.test(cashTalk.note), "cash-now-without-SHA must stay CLAIMED");
+var cashDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\ncash-now leftover landed"
+);
+assert.strictEqual(cashDone.state, "INTEGRATED", "completion words still beat cash-now talk");
+var cashEmpty = api.cashNowState("");
+assert.strictEqual(cashEmpty.state, "UNMEASURED");
+var cashMissing = api.cashNowState("# empty stub\nno leftover");
+assert.strictEqual(cashMissing.state, "NOT_LANDED");
+var cashOk = api.cashNowState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nAUTHORIZATION\nSETTLEMENT\nBANK_AVAILABLE\nFREE_COLONY_COMPUTE\nusd_offer_count\nneeds-bryce\nsmallest_action\nFINDER-FAILED\nNever 0\n");
+assert.strictEqual(cashOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(cashOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="cash-now-result"') >= 0, "desk must name the cash-now leftover");
+assert.ok(html.indexOf("host/cash_now.py") >= 0, "desk must name the cash-now instrument");
+assert.ok(html.indexOf("ground/CASH_NOW.md") >= 0, "desk must link the cash-now card");
+assert.ok(html.indexOf("ground/CASH_NOW.json") >= 0, "desk must link the cash-now catalog");
+assert.ok(html.indexOf("1787639560.086549") >= 0, "desk must cite the DEMON cash-now Slack ts");
+assert.ok(/cash-now|collectable-USD|private-payout|authorization-settlement-bank-available|60_immediate_cash/i.test(html), "desk must name cash-now talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CASH_NOW.md") >= 0, "cash-now card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CASH_NOW.json") >= 0, "cash-now catalog must stay a canary");
 assert.ok(api.isClaudeRoleTalk, "land.js must classify colony-decides / Claude-family-role talk");
 assert.ok(api.claudeRoleState, "land.js must classify the Claude-role leftover");
 assert.ok(api.isClaudeRoleTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nkind: PROPOSAL\nsubject: OWNER RELAY — the colony decides the Claude family's role\n*P1 — HANDS.* Owner-machine execution of owner-specced operations only. Exact paths in, receipt out, nothing added to spec.\n*P5 — THE NEVER CLAUSE\n*P6 — THE TELL."), "GAUGE role proposal is talk");
