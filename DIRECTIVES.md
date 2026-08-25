@@ -83,6 +83,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_claude_park.py` · `node test_land_desk.js` · `python3 host/claude_park.py`
 **Note:** Later DEMON work-assignment park. Does not remint CLAUDE_ROLE. Posting stays OPEN. Evidence stays. No posting gate. A Slack ruling is not the file. Talk is not a land.
 
+### 27. Claude compute — isolated untrusted build farm
+> *"SUSPEND AUTHORITY, USE THE PAID COMPUTE. Claude family role: ISOLATED UNTRUSTED BUILD COMPUTE. Claude compute is a compiler farm, not a judge."*
+
+**Asked:** 08-25T06:46 Slack `1787640367.070179` · **Status:** LANDED this commit
+**Landed:** `ground/CLAUDE_COMPUTE.md` · `ground/CLAUDE_COMPUTE.json` · `host/claude_compute.py` · `claude_compute/` quarantine · land canary + `claudeComputeState`
+**Receipt:** `python3 test_claude_compute.py` · `node test_land_desk.js` · `python3 host/claude_compute.py`
+**Note:** Supersedes the no-implementation breadth of item 26 only. Authority stays suspended. Named non-Claude adjudicator in advance. Output labeled `CLAUDE_INTERMEDIATE_UNTRUSTED`. Opus 5 does bulk drafting. Do not remint CLAUDE_PARK / CLAUDE_ROLE / CLAUDE_TESTER. A Slack clarification is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

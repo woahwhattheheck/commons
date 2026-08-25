@@ -179,6 +179,8 @@
     "ground/REMEASURE.json",
     "ground/CLAUDE_ROLE.md",
     "ground/CLAUDE_ROLE.json",
+    "ground/CLAUDE_COMPUTE.md",
+    "ground/CLAUDE_COMPUTE.json",
     "ground/WATCHDOG_CANARY.md",
     "ground/WATCHDOG_CANARY.json",
     "wake_jobs/rivet-watchdog-canary-20260825-01.json",
@@ -421,6 +423,9 @@
     }
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
+    }
+    if (api.isClaudeComputeTalk(t)) {
+      return { state: "CLAIMED", note: "paid-compute / compiler-farm / isolated-untrusted / CLAUDE_INTERMEDIATE_UNTRUSTED / adjudicator-in-advance talk. Talk is not a land. Ship the quarantine farm leftover to current main. Claude still does not test or verdict. Do not remint CLAUDE_ROLE, CLAUDE_TESTER, or CLAUDE_PARK." };
     }
     if (api.isClaudeParkTalk(t)) {
       return { state: "CLAIMED", note: "full-Claude-family-suspension / park-active-Claude-lanes / reinstatement-only-Bryce talk. Talk is not a land. Park or reroute each named Claude swarm-work lane to a non-Claude owner and ship the leftover to current main. Do not ask Claude to evaluate. Posting stays OPEN." };
@@ -709,6 +714,33 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isClaudeComputeTalk = function (text) {
+    return /isolated untrusted build compute|claude_intermediate_untrusted|compiler farm|use the paid compute|cheap opus 5|bounded implementation packets|adjudicator in advance|1787640367\.070179|suspend authority, use the paid compute/i.test(String(text || ""));
+  };
+
+  api.claudeComputeState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_compute.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasFarm = /ISOLATED_UNTRUSTED_BUILD_COMPUTE/.test(body) && /CLAUDE_INTERMEDIATE_UNTRUSTED/.test(body);
+    var hasPacket = /adjudicator in advance/i.test(body) && /claude may not self-adjudicate/i.test(body);
+    var hasToken = /opus 5/i.test(body) && /never spend claude tokens deciding/i.test(body);
+    var noGate = /no_auth/.test(body) && /no_gate/.test(body) && /open door/i.test(body);
+    if (hasMeasure && hasClassify && hasFarm && hasPacket && hasToken && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "Claude-compute leftover is on this file. Isolated untrusted farm + quarantine + named non-Claude adjudicator in advance. A Slack clarification is still not the file. A packet is CANDIDATE, never canonical."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_compute.py missing the leftover. Paid-compute / compiler-farm talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2143,6 +2175,7 @@
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var claudeRoleOut = document.getElementById("claude-role-result");
+  var claudeComputeOut = document.getElementById("claude-compute-result");
   var containmentOut = document.getElementById("containment-result");
   var watchdogCanaryOut = document.getElementById("watchdog-canary-result");
   var branchReviewOut = document.getElementById("branch-review-result");
@@ -2725,6 +2758,12 @@
     if (!claudeRoleOut) return;
     claudeRoleOut.setAttribute("data-tone", api.toneFor(result.state));
     claudeRoleOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudeCompute(result) {
+    if (!claudeComputeOut) return;
+    claudeComputeOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeComputeOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintContainment(result) {
@@ -3506,6 +3545,33 @@
     });
   }
 
+  function loadClaudeCompute(sha) {
+    if (!claudeComputeOut) return Promise.resolve(null);
+    claudeComputeOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_compute.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_compute.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_compute.py absent at the measured main SHA. Paid-compute / compiler-farm talk is CLAIMED." };
+        paintClaudeCompute(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudeCompute(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeComputeState(body);
+        paintClaudeCompute(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudeCompute(err);
+      return err;
+    });
+  }
+
   function loadClaudeRole(sha) {
     if (!claudeRoleOut) return Promise.resolve(null);
     claudeRoleOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_role.py at the official SHA…</p>";
@@ -4117,6 +4183,7 @@
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
     loadClaudeRole(sha);
+    loadClaudeCompute(sha);
     loadContainment(sha);
     loadWatchdogCanary(sha);
     loadBranchReview(sha);

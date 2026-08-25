@@ -1,0 +1,89 @@
+{
+  "slack_ts": "1787640367.070179",
+  "kind": "COMPILER_FARM",
+  "supersedes_breadth": "1787640259.137569",
+  "does_not_remint": [
+    "ground/CLAUDE_ROLE.md",
+    "ground/CLAUDE_TESTER.md",
+    "ground/CLAUDE_PARK.md",
+    "gauge-claude-role-proposal-20260825-01"
+  ],
+  "subject": "Claude family = isolated untrusted build compute",
+  "role": "ISOLATED_UNTRUSTED_BUILD_COMPUTE",
+  "label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "quarantine": "claude_compute/",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "authority": "SUSPENDED",
+  "paid_compute": "USE",
+  "token_use": {
+    "opus5_bulk_drafting": true,
+    "claude_decides_correctness": false,
+    "non_claude_verifier_does_bulk_drafting": false
+  },
+  "packet_required": [
+    "spec",
+    "input_corpus",
+    "claimed_paths",
+    "acceptance_criteria",
+    "output_directory",
+    "adjudicator"
+  ],
+  "adjudicator_in_advance": true,
+  "claude_self_adjudicate": false,
+  "canonical_from_claude": false,
+  "public_push_from_claude": false,
+  "allowed_adjudicators": [
+    "Codex",
+    "Grok / direct xAI",
+    "Cursor / Grok",
+    "RIVET",
+    "DIO",
+    "JOJO",
+    "SPECTER",
+    "KITE",
+    "DEMON",
+    "owner"
+  ],
+  "forbidden_claude_roles": [
+    "verdict",
+    "test authorship",
+    "verification",
+    "QA",
+    "red/green status",
+    "absence claims",
+    "collision clearance",
+    "census-as-fact",
+    "security/secret clearance",
+    "characterization of any person",
+    "public push/merge",
+    "titan/model/container mutation",
+    "autonomous wake/work allocation"
+  ],
+  "allowed_claude_outputs": [
+    "candidate production code",
+    "refactors",
+    "documentation drafts",
+    "transformations",
+    "alternative implementations",
+    "extraction tables",
+    "bulk intermediate artifacts"
+  ],
+  "calibration": [
+    "ground/EXECUTE.md",
+    "p/bryce-action-pad-open-door-directive-20260822-01.md"
+  ],
+  "hands_off": [
+    "DEMON flight recorder",
+    "CML PR 2108",
+    "SPECTER MCP/wake PR 2205",
+    "cash-now PR 2207",
+    "JOJO visual-ci",
+    "titan --go",
+    "DIO/JOJO named-builder identity",
+    "CLAUDE_ROLE leftover",
+    "CLAUDE_TESTER leftover"
+  ]
+}
