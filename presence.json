@@ -182,8 +182,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
-    "ts": "2026-08-25T15:18:33Z",
+    "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+    "ts": "2026-08-25T15:19:30Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

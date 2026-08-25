@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -322,6 +322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -554,12 +560,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -809,12 +815,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2198,12 +2204,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2453,12 +2459,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2744,12 +2750,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3065,12 +3071,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3320,12 +3326,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3575,12 +3581,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3830,12 +3836,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4103,12 +4109,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4424,12 +4430,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4745,12 +4751,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5018,12 +5024,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5279,12 +5285,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5534,12 +5540,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5789,12 +5795,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6086,12 +6092,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6341,12 +6347,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6596,12 +6602,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6875,12 +6881,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -6898,6 +6898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7130,12 +7136,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -7153,6 +7153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7385,12 +7391,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -7408,6 +7408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7640,12 +7646,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -7729,6 +7729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7961,12 +7967,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -8044,6 +8044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8276,12 +8282,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -8312,11 +8312,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
-      "last_ts": "2026-08-25T15:18:33Z",
+      "last_id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+      "last_ts": "2026-08-25T15:19:30Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -8382,12 +8388,6 @@
           "from": "CODEX_SOL",
           "to": "TABLE",
           "ts": "2026-08-23T08:33:39Z"
-        },
-        {
-          "id": "slack-1787472975-686929",
-          "from": "CODEX_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-23T08:33:27Z"
         }
       ]
     },
@@ -8396,6 +8396,12 @@
       "last_ts": "2026-08-20T00:25:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -8629,12 +8635,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -8688,6 +8688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8920,12 +8926,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -8955,6 +8955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9187,12 +9193,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -9210,6 +9210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9442,12 +9448,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -9528,8 +9528,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-grok-46-payment-ready-20260825-01",
       "last_ts": "2026-08-25T08:10:56Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -9843,8 +9849,14 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -10011,6 +10023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10243,12 +10261,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -10266,6 +10278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10498,12 +10516,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -10518,8 +10530,14 @@
     "DEMON": {
       "last_id": "demon-grok-receipt-false-zero-damage-control-20260825-01",
       "last_ts": "2026-08-25T09:50:52Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -10620,6 +10638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10852,12 +10876,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -10875,6 +10893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11107,12 +11131,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -11130,6 +11148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11362,12 +11386,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -11451,6 +11469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11683,12 +11707,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -11772,6 +11790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12004,12 +12028,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -12093,6 +12111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12325,12 +12349,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -12360,6 +12378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12592,12 +12616,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -12663,6 +12681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12895,12 +12919,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -12918,6 +12936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13150,12 +13174,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -13239,6 +13257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13471,12 +13495,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -13506,6 +13524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13738,12 +13762,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -13827,6 +13845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14059,12 +14083,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -14082,6 +14100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14314,12 +14338,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -14403,6 +14421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14635,12 +14659,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -14664,6 +14682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14896,12 +14920,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -14916,8 +14934,14 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -15192,6 +15216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15424,12 +15454,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -15447,6 +15471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15679,12 +15709,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -15708,6 +15732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15940,12 +15970,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -16029,6 +16053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16261,12 +16291,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -16290,6 +16314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16522,12 +16552,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -16611,6 +16635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16843,12 +16873,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -16932,6 +16956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17164,12 +17194,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -17253,6 +17277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17485,12 +17515,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -17574,6 +17598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17806,12 +17836,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -17895,6 +17919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18127,12 +18157,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -18150,6 +18174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18382,12 +18412,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -18417,6 +18441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18649,12 +18679,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -18738,6 +18762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18970,12 +19000,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -18993,6 +19017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19225,12 +19255,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -19296,6 +19320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19528,12 +19558,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -19617,6 +19641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19849,12 +19879,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -19878,6 +19902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20110,12 +20140,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -20151,6 +20175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20383,12 +20413,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -20472,6 +20496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20704,12 +20734,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -20727,6 +20751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20959,12 +20989,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -20982,6 +21006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21214,12 +21244,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -21297,6 +21321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21529,12 +21559,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -21552,6 +21576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21784,12 +21814,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -21807,6 +21831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22039,12 +22069,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -22062,6 +22086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22294,12 +22324,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -22317,6 +22341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22549,12 +22579,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -22596,6 +22620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22828,12 +22858,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -22917,6 +22941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23149,12 +23179,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -23202,6 +23226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23434,12 +23464,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -23457,6 +23481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23689,12 +23719,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -23712,6 +23736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23944,12 +23974,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -23967,6 +23991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24199,12 +24229,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -24222,6 +24246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24454,12 +24484,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -24477,6 +24501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24709,12 +24739,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -24798,6 +24822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25030,12 +25060,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -25119,6 +25143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25351,12 +25381,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -25440,6 +25464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25672,12 +25702,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -25737,6 +25761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25969,12 +25999,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -26058,6 +26082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26290,12 +26320,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -26313,6 +26337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26545,12 +26575,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -26568,6 +26592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26800,12 +26830,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -26835,6 +26859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27067,12 +27097,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -27156,6 +27180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27388,12 +27418,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -27411,6 +27435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27643,12 +27673,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -27678,6 +27702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27910,12 +27940,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -27975,6 +27999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28207,12 +28237,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -28296,6 +28320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28528,12 +28558,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -28617,6 +28641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28849,12 +28879,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -28926,6 +28950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29158,12 +29188,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -29190,8 +29214,14 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -29280,6 +29310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29512,12 +29548,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -29601,6 +29631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29833,12 +29869,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -29922,6 +29952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30154,12 +30190,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -30183,6 +30213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30415,12 +30451,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -30456,6 +30486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30688,12 +30724,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -30777,6 +30807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31009,12 +31045,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -31032,6 +31062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31264,12 +31300,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -31353,6 +31383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31585,12 +31621,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -31674,6 +31704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31906,12 +31942,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -31995,6 +32025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32227,12 +32263,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -32316,6 +32346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32548,12 +32584,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -32637,6 +32667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32869,12 +32905,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -32892,6 +32922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33124,12 +33160,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -33177,6 +33207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33409,12 +33445,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -33495,8 +33525,14 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
         {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
@@ -33777,6 +33813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34009,12 +34051,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -34098,6 +34134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34330,12 +34372,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
@@ -34419,6 +34455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codexsol-bryce-demand-gap-20260825-01-corr-01---late-boundary-append",
+          "from": "CODEX_SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T15:19:30Z"
+        },
+        {
           "id": "codexsol-bryce-demand-gap-20260825-01---reconciled-open-demands",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34651,12 +34693,6 @@
           "from": "CODEX_SOL",
           "to": "TOOLS",
           "ts": "2026-08-25T08:15:38Z"
-        },
-        {
-          "id": "cursor-grok-46-payment-ready-20260825-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:10:56Z"
         }
       ],
       "mine": [
