@@ -26,6 +26,8 @@ FIELD_RE = re.compile(r"^([A-Za-z][A-Za-z0-9_]{1,40}):\s*(.*)$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9._-]{1,120}$")
 HTTPS_RE = re.compile(r"^https://[^\s]+$", re.IGNORECASE)
 URL_RE = re.compile(r"https?://\S+", re.IGNORECASE)
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+OPAQUE_REFERENCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{7,159}$")
 SENSITIVE_PATTERNS = (
     re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b"),
     re.compile(r"\b(?:\d[ -]?){13,19}\b"),
@@ -75,6 +77,20 @@ def safe_inbound_path(root: Path, inbound_id: str) -> Path:
     expected_parent = (root / "p").resolve()
     if candidate.parent != expected_parent:
         raise ValueError("inbound path escaped p/")
+    return candidate
+
+
+def safe_repo_file(root: Path, relative: str) -> Path:
+    path = Path(relative)
+    if path.is_absolute() or any(part == ".." for part in path.parts):
+        raise ValueError("evidence path must stay inside the Commons root")
+    candidate = (root / path).resolve()
+    try:
+        candidate.relative_to(root.resolve())
+    except ValueError as error:
+        raise ValueError("evidence path escaped Commons root") from error
+    if not candidate.is_file():
+        raise ValueError(f"evidence file missing: {relative}")
     return candidate
 
 
@@ -211,6 +227,149 @@ def purchase_intent_receipt(root: Path, inbound_id: str | None) -> dict[str, Any
     }
 
 
+STAGE_CONTRACT = {
+    "QUOTE": {
+        "prior_stage": "PURCHASE_INTENT",
+        "prior_state": "RECORDED",
+        "state": "OFFERED",
+        "next_stage": "ACCEPTANCE",
+    },
+    "ACCEPTANCE": {
+        "prior_stage": "QUOTE",
+        "prior_state": "OFFERED",
+        "state": "ACCEPTED",
+        "next_stage": "DELIVERY",
+    },
+    "DELIVERY": {
+        "prior_stage": "ACCEPTANCE",
+        "prior_state": "ACCEPTED",
+        "state": "DELIVERED",
+        "next_stage": "PROCESSOR_REFERENCE",
+    },
+    "PROCESSOR_REFERENCE": {
+        "prior_stage": "DELIVERY",
+        "prior_state": "DELIVERED",
+        "state": "REFERENCE_RECORDED",
+        "next_stage": "BANK_AVAILABLE",
+    },
+}
+
+
+def _checked_artifact(artifact: Any, expected_kind: str) -> dict[str, Any]:
+    if not isinstance(artifact, dict):
+        raise ValueError(f"{expected_kind} artifact missing")
+    reference = artifact.get("reference")
+    digest = artifact.get("sha256")
+    if artifact.get("kind") != expected_kind:
+        raise ValueError(f"artifact kind must be {expected_kind}")
+    if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
+        raise ValueError("artifact reference must be an opaque, secret-free reference")
+    if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
+        raise ValueError("artifact sha256 must be exact")
+    return {"kind": expected_kind, "reference": reference, "sha256": digest, "status": "VERIFIED"}
+
+
+def advance_receipt(root: Path, stage: str, previous_receipt_path: str, evidence_path: str) -> dict[str, Any]:
+    """Build a deterministic later-stage receipt from secret-free evidence metadata.
+
+    The referenced quote, signed acceptance, delivery evidence, and processor
+    payload stay owner-private. Commons records only opaque references and exact
+    hashes. These receipts are owner reports; they are not independent cash proof.
+    """
+    if stage not in STAGE_CONTRACT:
+        raise ValueError("stage must be QUOTE, ACCEPTANCE, DELIVERY, or PROCESSOR_REFERENCE")
+    _, _, _, term_hash = validate_contract(root)
+    previous_path = safe_repo_file(root, previous_receipt_path)
+    manifest_path = safe_repo_file(root, evidence_path)
+    previous = json.loads(previous_path.read_text(encoding="utf-8"))
+    manifest_text = manifest_path.read_text(encoding="utf-8")
+    manifest = json.loads(manifest_text)
+    if contains_sensitive_value(manifest_text):
+        raise ValueError("evidence manifest contains a forbidden sensitive value")
+    contract = STAGE_CONTRACT[stage]
+    if previous.get("kind") != "REVENUE_RECOVERY_RECEIPT" or previous.get("offer_id") != OFFER_ID:
+        raise ValueError("previous receipt contract mismatch")
+    if previous.get("stage") != contract["prior_stage"] or previous.get("state") != contract["prior_state"]:
+        raise ValueError("previous receipt is not the required predecessor")
+    if previous.get("cash_claimed") is not False:
+        raise ValueError("previous receipt may not claim cash")
+    if previous.get("source", {}).get("terms_sha256") != term_hash:
+        raise ValueError("previous receipt terms hash mismatch")
+    if manifest.get("schema_version") != "revenue-recovery-evidence/v1" or manifest.get("stage") != stage:
+        raise ValueError("evidence manifest contract mismatch")
+
+    evidence = [{
+        "kind": "PREVIOUS_RECEIPT",
+        "reference": previous_receipt_path.replace("\\", "/"),
+        "sha256": sha256_file(previous_path),
+        "status": "VERIFIED",
+    }]
+    facts = dict(previous["facts"])
+    if stage == "QUOTE":
+        evidence.append(_checked_artifact(manifest.get("artifact"), "QUOTE_ARTIFACT"))
+    elif stage == "ACCEPTANCE":
+        evidence.append(_checked_artifact(manifest.get("artifact"), "SIGNED_ACCEPTANCE"))
+        facts["legal_acceptance"] = "OWNER_REPORTED"
+    elif stage == "DELIVERY":
+        tests = manifest.get("acceptance_tests")
+        if not isinstance(tests, list) or [row.get("id") for row in tests if isinstance(row, dict)] != [f"AT{i}" for i in range(1, 7)]:
+            raise ValueError("delivery requires ordered AT1-AT6 evidence")
+        for row in tests:
+            if row.get("status") != "PASS":
+                raise ValueError("every delivery acceptance test must be PASS")
+            checked = _checked_artifact({
+                "kind": "ACCEPTANCE_TEST",
+                "reference": row.get("reference"),
+                "sha256": row.get("sha256"),
+            }, "ACCEPTANCE_TEST")
+            checked["kind"] = row["id"]
+            evidence.append(checked)
+        facts["legal_acceptance"] = "OWNER_REPORTED"
+        facts["delivery"] = "OWNER_REPORTED"
+    else:
+        provider = manifest.get("provider")
+        reference = manifest.get("opaque_reference")
+        digest = manifest.get("payload_sha256")
+        if provider not in {"Stripe", "PayPal"}:
+            raise ValueError("processor provider must be Stripe or PayPal")
+        if not isinstance(reference, str) or not OPAQUE_REFERENCE_RE.fullmatch(reference):
+            raise ValueError("processor reference must be opaque")
+        if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
+            raise ValueError("processor payload sha256 must be exact")
+        evidence.append({"kind": f"{provider.upper()}_REFERENCE", "reference": reference, "sha256": digest, "status": "REFERENCE_ONLY"})
+        facts["legal_acceptance"] = "OWNER_REPORTED"
+        facts["delivery"] = "OWNER_REPORTED"
+        facts["processor_payment"] = "NOT_LANDED"
+        facts["bank_available"] = "NOT_LANDED"
+        facts["collected_cash_usd"] = 0
+
+    manifest_hash = sha256_file(manifest_path)
+    previous_hash = sha256_file(previous_path)
+    receipt_seed = canonical_json({
+        "stage": stage,
+        "previous_sha256": previous_hash,
+        "manifest_sha256": manifest_hash,
+        "terms_sha256": term_hash,
+    })
+    return {
+        "schema_version": "revenue-recovery/v1",
+        "kind": "REVENUE_RECOVERY_RECEIPT",
+        "receipt_id": f"rr-{stage.lower()}-" + sha256_bytes(receipt_seed)[:24],
+        "offer_id": OFFER_ID,
+        "stage": stage,
+        "state": contract["state"],
+        "source": {
+            "path": evidence_path.replace("\\", "/"),
+            "sha256": manifest_hash,
+            "terms_sha256": term_hash,
+        },
+        "evidence": evidence,
+        "facts": facts,
+        "next_stage": contract["next_stage"],
+        "cash_claimed": False,
+    }
+
+
 def measure(root: Path) -> dict[str, Any]:
     _, recovery, pack_hash, term_hash = validate_contract(root)
     public_path = root / recovery["public_surface"]["path"]
@@ -268,17 +427,26 @@ def self_test() -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", nargs="?", choices=("intent", "measure"), default="measure")
+    parser.add_argument("command", nargs="?", choices=("intent", "advance", "measure"), default="measure")
     parser.add_argument("--root", default=str(Path(__file__).resolve().parents[1]))
     parser.add_argument("--inbound-id")
+    parser.add_argument("--stage", choices=tuple(STAGE_CONTRACT))
+    parser.add_argument("--previous-receipt")
+    parser.add_argument("--evidence-json")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
     try:
-        result = self_test() if args.self_test else (
-            purchase_intent_receipt(Path(args.root).resolve(), args.inbound_id)
-            if args.command == "intent"
-            else measure(Path(args.root).resolve())
-        )
+        root = Path(args.root).resolve()
+        if args.self_test:
+            result = self_test()
+        elif args.command == "intent":
+            result = purchase_intent_receipt(root, args.inbound_id)
+        elif args.command == "advance":
+            if not args.stage or not args.previous_receipt or not args.evidence_json:
+                raise ValueError("advance requires --stage, --previous-receipt, and --evidence-json")
+            result = advance_receipt(root, args.stage, args.previous_receipt, args.evidence_json)
+        else:
+            result = measure(root)
     except (KeyError, OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
         print(json.dumps({"kind": "REVENUE_RECOVERY_ERROR", "error": str(error)}, sort_keys=True))
         return 2

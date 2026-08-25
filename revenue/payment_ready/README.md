@@ -21,6 +21,7 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 | [recovery.json](./recovery.json) | Zero-Cursor purchase-intent → quote → acceptance → delivery → processor-reference pipeline and exact current truth |
 | [current_receipt.json](./current_receipt.json) | Deterministic public receipt; currently NEEDS_BUYER and USD 0 / NOT_LANDED |
 | [receipt.schema.json](./receipt.schema.json) | Secret-free receipt contract; a public receipt never claims cash |
+| [evidence_contract.md](./evidence_contract.md) | Exact secret-free quote, acceptance, AT1–AT6 delivery, and processor-reference inputs |
 | [prospects.json](./prospects.json) | Four primary-source prospect hypotheses, all explicitly not contacted |
 | [outreach.md](./outreach.md) | Unsent distribution messages and response-state receipt fields |
 | [processor_handoff.md](./processor_handoff.md) | Official hosted provider boundary; payout values never enter Commons |

@@ -39,7 +39,7 @@ valuation is `UNMEASURED`. Cursor use for this candidate: `false`.
 
 Verification:
 
-- revenue, payment-ready, and DIO suites: 34 PASS
+- revenue, payment-ready, and DIO suites: 36 PASS
 - revenue recovery self-test: PASS
 - open-door diff guard: PASS
 - diff check: PASS

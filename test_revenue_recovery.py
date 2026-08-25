@@ -148,6 +148,7 @@ class RevenueRecoveryTests(unittest.TestCase):
             "revenue/payment_ready/processor_handoff.md",
             "revenue/payment_ready/current_receipt.json",
             "revenue/payment_ready/integration_inventory.json",
+            "revenue/payment_ready/evidence_contract.md",
         ):
             with self.subTest(relative=relative):
                 self.assertFalse(rr.contains_sensitive_value((ROOT / relative).read_text(encoding="utf-8")))
@@ -168,6 +169,84 @@ class RevenueRecoveryTests(unittest.TestCase):
         self.assertTrue(stripe["private_values_never_enter_commons"])
         self.assertEqual(inventory["first_revenue_result"]["buyer"], "UNKNOWN")
         self.assertEqual(inventory["first_revenue_result"]["collected_cash_usd"], 0)
+
+    def test_full_stage_chain_is_deterministic_and_stops_before_cash(self):
+        temp, root = self.make_root(self.valid_post())
+        self.addCleanup(temp.cleanup)
+        (root / "receipts").mkdir()
+        (root / "evidence").mkdir()
+
+        def write_json(relative, value):
+            (root / relative).write_text(json.dumps(value, sort_keys=True), encoding="utf-8")
+
+        intent = rr.purchase_intent_receipt(root, "buyer-signal")
+        write_json("receipts/intent.json", intent)
+        quote_manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "QUOTE",
+            "artifact": {"kind": "QUOTE_ARTIFACT", "reference": "owner-private:quote-example", "sha256": "a" * 64},
+        }
+        write_json("evidence/quote.json", quote_manifest)
+        quote = rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json")
+        self.assertEqual(quote, rr.advance_receipt(root, "QUOTE", "receipts/intent.json", "evidence/quote.json"))
+        write_json("receipts/quote.json", quote)
+
+        acceptance_manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "ACCEPTANCE",
+            "artifact": {"kind": "SIGNED_ACCEPTANCE", "reference": "owner-private:acceptance-example", "sha256": "b" * 64},
+        }
+        write_json("evidence/acceptance.json", acceptance_manifest)
+        acceptance = rr.advance_receipt(root, "ACCEPTANCE", "receipts/quote.json", "evidence/acceptance.json")
+        self.assertEqual(acceptance["facts"]["legal_acceptance"], "OWNER_REPORTED")
+        write_json("receipts/acceptance.json", acceptance)
+
+        delivery_manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "DELIVERY",
+            "acceptance_tests": [
+                {"id": f"AT{i}", "status": "PASS", "reference": f"owner-private:at{i}-evidence", "sha256": f"{i:x}" * 64}
+                for i in range(1, 7)
+            ],
+        }
+        write_json("evidence/delivery.json", delivery_manifest)
+        delivery = rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", "evidence/delivery.json")
+        self.assertEqual(delivery["facts"]["delivery"], "OWNER_REPORTED")
+        self.assertEqual([row["kind"] for row in delivery["evidence"][1:]], [f"AT{i}" for i in range(1, 7)])
+        write_json("receipts/delivery.json", delivery)
+
+        processor_manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "PROCESSOR_REFERENCE",
+            "provider": "Stripe",
+            "opaque_reference": "stripe:event-example",
+            "payload_sha256": "c" * 64,
+        }
+        write_json("evidence/processor.json", processor_manifest)
+        processor = rr.advance_receipt(root, "PROCESSOR_REFERENCE", "receipts/delivery.json", "evidence/processor.json")
+        self.assertEqual(processor["state"], "REFERENCE_RECORDED")
+        self.assertEqual(processor["facts"]["processor_payment"], "NOT_LANDED")
+        self.assertEqual(processor["facts"]["bank_available"], "NOT_LANDED")
+        self.assertEqual(processor["facts"]["collected_cash_usd"], 0)
+        self.assertFalse(processor["cash_claimed"])
+
+    def test_delivery_rejects_incomplete_acceptance_tests(self):
+        temp, root = self.make_root()
+        self.addCleanup(temp.cleanup)
+        (root / "receipts").mkdir()
+        (root / "evidence").mkdir()
+        prior = rr.purchase_intent_receipt(root, None)
+        prior["stage"] = "ACCEPTANCE"
+        prior["state"] = "ACCEPTED"
+        (root / "receipts/acceptance.json").write_text(json.dumps(prior), encoding="utf-8")
+        manifest = {
+            "schema_version": "revenue-recovery-evidence/v1",
+            "stage": "DELIVERY",
+            "acceptance_tests": [],
+        }
+        (root / "evidence/delivery.json").write_text(json.dumps(manifest), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "AT1-AT6"):
+            rr.advance_receipt(root, "DELIVERY", "receipts/acceptance.json", "evidence/delivery.json")
 
 
 if __name__ == "__main__":

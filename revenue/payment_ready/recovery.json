@@ -92,8 +92,17 @@
   "receipt_contract": {
     "schema": "revenue/payment_ready/receipt.schema.json",
     "instrument": "host/revenue_recovery.py",
+    "evidence_contract": "revenue/payment_ready/evidence_contract.md",
+    "deterministic_stages": [
+      "PURCHASE_INTENT",
+      "QUOTE",
+      "ACCEPTANCE",
+      "DELIVERY",
+      "PROCESSOR_REFERENCE"
+    ],
     "public_receipt_never_proves_legal_acceptance": true,
     "processor_reference_never_proves_bank_available": true,
+    "bank_available_receipt_is_never_automatic": true,
     "independent_cash_evidence_required": true,
     "no_private_values": true
   },
