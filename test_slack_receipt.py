@@ -82,19 +82,23 @@ class TestSlackReceipt(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("still not the file", verdict["note"])
 
-    def test_live_tree_is_carrier_only_for_the_demon_id(self):
+    def test_live_tree_measures_the_demon_claim(self):
         row = measure_root(ROOT)
         self.assertTrue(row["measured"])
         self.assertTrue(row["catalog_present"])
         self.assertEqual(row["source_id"], DEFAULT_ID)
         self.assertEqual(row["source_paths"], list(DEFAULT_PATHS))
         self.assertEqual(row["present_paths"], list(DEFAULT_PATHS))
-        self.assertFalse(row["receipt_present"])
         self.assertEqual(row["receipt_path"], "p/%s.md" % DEFAULT_ID)
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertIn("demon-pixel-swarm-flight-recorder-landed-20260825-01", row["hands_off"])
         verdict = classify(row)
-        self.assertEqual(verdict["state"], "CARRIER_ONLY")
+        if row["receipt_present"]:
+            self.assertEqual(verdict["state"], "INTEGRATED")
+            self.assertIn("still not the file", verdict["note"])
+        else:
+            self.assertEqual(verdict["state"], "CARRIER_ONLY")
+            self.assertIn("mail", verdict["note"])
 
     def test_catalog_names_the_slack_claim(self):
         catalog_path = os.path.join(ROOT, "ground", "SLACK_RECEIPT.json")
