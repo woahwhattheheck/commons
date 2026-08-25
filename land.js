@@ -239,6 +239,10 @@
     "ground/SUBZERO_RECEIPT.md",
     "ground/SUBZERO_RECEIPT.json",
     "subzero-receipt.html",
+    "ground/GROK_RECEIPT.md",
+    "ground/GROK_RECEIPT.json",
+    "ground/H009.md",
+    "ground/H009.json",
     "ground/DIO_CRLF.md",
     "ground/DIO_CRLF.json",
     "ground/DEVICE_CANARY.md",
@@ -471,6 +475,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isGrokReceiptTalk(t)) {
+      return { state: "CLAIMED", note: "HEAVY DAMAGE-CONTROL / exact-one-fence / PR 2320 COLLISION / last-fence talk. Talk is not a land. Last-fence is scratch-smuggling. Do not merge PR 2320. Do not remint rivet-ship-grok-receipt-20260825-01, PIXEL_HEARTBEAT leftover, or STRANDED_MAP leftover." };
     }
     if (api.isDioCrlfTalk(t)) {
       return { state: "CLAIMED", note: "JOJO DIO CHECKPOINT / Windows autocrlf / 798-vs-773 / e4cc1524-vs-15c2a25 / leave-unmerged-PR talk. Talk is not a land. Ship the .gitattributes -text leftover to current main. Canonical blobs still match receipts. Do not remint DIO revenue, Titan containment, SUBZERO quote, or SUBZERO receipt." };
@@ -944,6 +951,35 @@
     return {
       state: "NOT_LANDED",
       note: "host/review_lane.py missing the leftover. JOJO SHIPPED / review lane / LDA PR #3 talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isGrokReceiptTalk = function (text) {
+    return /1787650886\.402809|1787649265\.015869|exact-one-fence|HEAVY DAMAGE-CONTROL UPDATE|HEAVY RECEIPT RECONCILIATION|do not blindly act on ARCHITECT rank 1|Grok receipt normalizer|last-fence is collision|PR 2320 \/ demon\/grok-receipt-catalog-delta is a COLLISION/i.test(String(text || ""));
+  };
+
+  api.grokReceiptState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/grok_receipt.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasNorm = /def normalize_envelope/.test(body) && /exact-one-fence/i.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesCollision = /last-fence is collision/i.test(body) || /PR 2320/.test(body);
+    var namesCand = /Every Grok envelope is CANDIDATE/.test(body) || /every grok envelope is candidate/i.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasNorm && hasMiss && neverZero && namesCollision && namesCand && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "exact-one-fence leftover is on this file. Last-fence PR 2320 stays COLLISION. A Slack damage-control update is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/grok_receipt.py missing the leftover. HEAVY DAMAGE-CONTROL / exact-one-fence / PR 2320 COLLISION talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -3535,6 +3571,7 @@
   var dioCrlfOut = document.getElementById("dio-crlf-result");
   var subzeroQuoteOut = document.getElementById("subzero-quote-result");
   var subzeroReceiptOut = document.getElementById("subzero-receipt-result");
+  var grokReceiptOut = document.getElementById("grok-receipt-result");
   var humanOutcomesOut = document.getElementById("human-outcomes-result");
   var h002Out = document.getElementById("h002-result");
   var muhlTrainBridgeOut = document.getElementById("muhl-train-bridge-result");
@@ -4255,6 +4292,12 @@
     if (!subzeroReceiptOut) return;
     subzeroReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
     subzeroReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintGrokReceipt(result) {
+    if (!grokReceiptOut) return;
+    grokReceiptOut.setAttribute("data-tone", api.toneFor(result.state));
+    grokReceiptOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintH002(result) {
@@ -5206,6 +5249,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintHumanOutcomes(err);
+      return err;
+    });
+  }
+
+  function loadGrokReceipt(sha) {
+    if (!grokReceiptOut) return Promise.resolve(null);
+    grokReceiptOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/grok_receipt.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/grok_receipt.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/grok_receipt.py absent at the measured main SHA. HEAVY DAMAGE-CONTROL / exact-one-fence / PR 2320 COLLISION talk is CLAIMED." };
+        paintGrokReceipt(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintGrokReceipt(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.grokReceiptState(body);
+        paintGrokReceipt(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintGrokReceipt(err);
       return err;
     });
   }
@@ -6583,6 +6653,7 @@
     loadSubzeroExplorer(sha);
     loadSubzeroProof(sha);
     loadSittingPr(sha);
+    loadGrokReceipt(sha);
     loadDioCrlf(sha);
     loadSubzeroReceipt(sha);
     loadSubzeroQuote(sha);

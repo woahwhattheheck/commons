@@ -164,7 +164,11 @@ def inspect_canary(text, live_post_exists):
 
 
 def ls_tree(root, ref):
-    """X: recursive path list from git ls-tree. Empty list is measured empty."""
+    """X: recursive path list from git ls-tree.
+
+    Invalid ref / failed git is FINDER-FAILED, never []. Never [] → 0.
+    """
+    result = {"ok": False, "paths": None, "error": "", "returncode": None}
     try:
         proc = subprocess.run(
             ["git", "ls-tree", "-r", "--name-only", ref],
@@ -173,11 +177,21 @@ def ls_tree(root, ref):
             capture_output=True,
             check=False,
         )
-    except OSError:
-        return []
+    except OSError as exc:
+        result["error"] = "git ls-tree OSError: %s. FINDER-FAILED, never []." % exc
+        return result
+    result["returncode"] = proc.returncode
     if proc.returncode:
-        return []
-    return [line.strip().replace("\\", "/") for line in proc.stdout.splitlines() if line.strip()]
+        err = (proc.stderr or "git ls-tree failed").strip()
+        result["error"] = err + ". FINDER-FAILED, never []."
+        return result
+    result["ok"] = True
+    result["paths"] = [
+        line.strip().replace("\\", "/")
+        for line in proc.stdout.splitlines()
+        if line.strip()
+    ]
+    return result
 
 
 def count_prefix(paths, prefix):
@@ -251,13 +265,31 @@ def measure_from_rows(facts):
         "catalog_present": bool(facts.get("catalog_present")),
         "canary_present": bool(facts.get("canary_present")),
         "canary_lawful": bool(facts.get("canary_lawful")),
-        "tree_count": int(facts.get("tree_count") or 0),
-        "reservation_count": int(facts.get("reservation_count") or 0),
-        "batch_count": int(facts.get("batch_count") or 0),
-        "result_count": int(facts.get("result_count") or 0),
-        "scope_github": int(facts.get("scope_github") or 0),
-        "scope_device": int(facts.get("scope_device") or 0),
-        "parse_failures": int(facts.get("parse_failures") or 0),
+        "tree_count": (
+            None if facts.get("tree_count") is None else int(facts.get("tree_count") or 0)
+        ),
+        "reservation_count": (
+            None
+            if facts.get("reservation_count") is None
+            else int(facts.get("reservation_count") or 0)
+        ),
+        "batch_count": (
+            None if facts.get("batch_count") is None else int(facts.get("batch_count") or 0)
+        ),
+        "result_count": (
+            None if facts.get("result_count") is None else int(facts.get("result_count") or 0)
+        ),
+        "scope_github": (
+            None if facts.get("scope_github") is None else int(facts.get("scope_github") or 0)
+        ),
+        "scope_device": (
+            None if facts.get("scope_device") is None else int(facts.get("scope_device") or 0)
+        ),
+        "parse_failures": (
+            None
+            if facts.get("parse_failures") is None
+            else int(facts.get("parse_failures") or 0)
+        ),
         "found_phrases": list(facts.get("found_phrases") or []),
         "posting_open": bool(facts.get("posting_open")),
         "no_auth": bool(facts.get("no_auth")),
@@ -269,6 +301,9 @@ def measure_from_rows(facts):
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
+        "tree_ok": True if "tree_ok" not in facts else bool(facts.get("tree_ok")),
+        "tree_error": str(facts.get("tree_error") or ""),
+        "tree_count": facts.get("tree_count"),
     }
 
 
@@ -291,6 +326,16 @@ def classify(row):
                 + ", ".join(row.get("calibration_hits") or [])
                 + ". Search-zero testing is instrument failure, not absence proof. "
                 "FINDER-FAILED, never 0."
+            ),
+        }
+    if row.get("tree_ok") is False:
+        return {
+            "state": "UNMEASURED",
+            "note": (
+                "git ls-tree failed: "
+                + str(row.get("tree_error") or "invalid ref")
+                + ". Invalid ref is FINDER-FAILED, never [] → 0 → INTEGRATED. "
+                "Calibration of leftover files is not a tree listing. Never 0."
             ),
         }
     misses = list(row.get("misses") or [])
@@ -358,17 +403,31 @@ def measure_root(root, ref="HEAD"):
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     live_post = _exists(root, os.path.join("p", CANARY_ID + ".md"))
     canary = inspect_canary(canary_text, live_post)
-    paths = ls_tree(root, ref)
-    scopes = count_result_scopes(root, paths)
+    tree = ls_tree(root, ref)
+    tree_ok = bool(tree.get("ok"))
+    paths = list(tree.get("paths") or []) if tree_ok else []
+    scopes = (
+        count_result_scopes(root, paths)
+        if tree_ok
+        else {
+            "result_count": None,
+            "scope_github": None,
+            "scope_device": None,
+            "scope_other": None,
+            "parse_failures": None,
+        }
+    )
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
     facts = {
         "card_present": bool(card_text) and "lawful canary" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
         "canary_present": bool(canary_text) and bool(canary.get("parsed")),
         "canary_lawful": bool(canary.get("lawful")),
-        "tree_count": len(paths),
-        "reservation_count": count_prefix(paths, RESERVATION_PREFIX),
-        "batch_count": count_prefix(paths, BATCH_PREFIX),
+        "tree_ok": tree_ok,
+        "tree_error": str(tree.get("error") or ""),
+        "tree_count": len(paths) if tree_ok else None,
+        "reservation_count": count_prefix(paths, RESERVATION_PREFIX) if tree_ok else None,
+        "batch_count": count_prefix(paths, BATCH_PREFIX) if tree_ok else None,
         "result_count": scopes["result_count"],
         "scope_github": scopes["scope_github"],
         "scope_device": scopes["scope_device"],
@@ -399,6 +458,8 @@ def measure_root(root, ref="HEAD"):
             "canary_id": facts["canary_id"],
             "canary": canary,
             "ref": ref,
+            "tree_ok": tree_ok,
+            "tree_error": str(tree.get("error") or ""),
             "truncated": False,
         }
     )

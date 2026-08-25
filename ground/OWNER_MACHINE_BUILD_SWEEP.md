@@ -6,7 +6,7 @@ and transient journals stay off Commons.
 
 | Build | Measured state | Utilization / gap | Next ownerable action |
 |---|---|---|---|
-| DEMON flight recorder | **LANDED** at `f84b46b5` ancestor of main | Node test passed; read-only UI with exact-SHA landing rule | Keep; add a current pixel heartbeat emitter. |
+| DEMON flight recorder | **LANDED** at `f84b46b5` ancestor of main | Node test passed; read-only UI with exact-SHA landing rule | Keep; current pixel heartbeat emitter LANDED (`host/pixel_heartbeat_emit.py`). Catalog is generator-backed (`host/pixel_heartbeat.py catalog_from_row`) and includes the RIVET heartbeat row/freshness. |
 | Rook resident/evolution runtime | **LOCAL_WORKING** | 9 verified ticks; continuity/resume true; 588 candidates over 12 generations; best `0.763542` | Land source/spec/tests plus redacted receipts, not transient state. |
 | MORROW rollback controller | **LOCAL_WORKING_HISTORICAL_RECEIPT** | Durable state/rollback; historical self-test says 12 passes | Rerun non-Claude and land code/manifest/tests; journals stay local. |
 | PFC bake boundary scanner | **CLAUDE_INTERMEDIATE_UNTRUSTED** | Completed local artifacts claim 859 regions across seven models versus old heuristic 17 | Preserve; independently sample known offsets, grouping, and bare-zero behavior before landing. |

@@ -87,9 +87,13 @@ class DeviceChurnTests(unittest.TestCase):
         self.assertGreaterEqual(row["result_count"], 0)
         self.assertEqual(row["titan"], "NOT_WRITTEN")
 
-    def test_count_helpers_skip_missing_and_broken(self):
+    def test_count_helpers_missing_dir_is_null(self):
         with tempfile.TemporaryDirectory() as td:
-            self.assertEqual(dc.count_json_files(os.path.join(td, "missing")), 0)
+            missing = dc.list_json_files(os.path.join(td, "missing"))
+            self.assertFalse(missing["ok"])
+            self.assertIsNone(missing["count"])
+            self.assertIn("FINDER-FAILED", missing["error"])
+            self.assertIsNone(dc.count_json_files(os.path.join(td, "missing")))
             results = Path(td) / "results"
             results.mkdir()
             (results / "ok.json").write_text(
@@ -100,7 +104,10 @@ class DeviceChurnTests(unittest.TestCase):
             )
             (results / "broken.json").write_text("{", encoding="utf-8")
             self.assertEqual(dc.count_json_files(str(results)), 3)
-            self.assertEqual(dc.count_scope_device(str(results)), 1)
+            scopes = dc.count_scope_device(str(results))
+            self.assertTrue(scopes["ok"])
+            self.assertEqual(scopes["count"], 1)
+            self.assertEqual(scopes["parse_failures"], 1)
 
     def test_self_test_passes(self):
         self.assertTrue(dc._self_test())
