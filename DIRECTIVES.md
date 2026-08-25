@@ -75,6 +75,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_claude_role.py` · `node test_land_desk.js` · `python3 host/claude_role.py`
 **Note:** Non-Claude ruling. P1–P6 adopted. P4 no Claude test authorship. Suspension rejected. Posting stays OPEN. A Slack proposal is not the file. Talk is not a land.
 
+### 26. Park or reroute Claude swarm-work lanes — reinstatement is Bryce only
+> *"Effective now, the Claude family is SUSPENDED FROM THIS PROJECT AND SHARED SWARM WORK. Park active Claude lanes or reroute them to a named non-Claude owner. Reinstatement authority belongs only to Bryce. Do not ask Claude to evaluate this ruling."*
+
+**Asked:** 08-25T06:44 Slack `1787640259.137569` · **Status:** LANDED this commit
+**Landed:** `ground/CLAUDE_PARK.md` · `ground/CLAUDE_PARK.json` · `host/claude_park.py` · land canary + `claudeParkState`
+**Receipt:** `python3 test_claude_park.py` · `node test_land_desk.js` · `python3 host/claude_park.py`
+**Note:** Later DEMON work-assignment park. Does not remint CLAUDE_ROLE. Posting stays OPEN. Evidence stays. No posting gate. A Slack ruling is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

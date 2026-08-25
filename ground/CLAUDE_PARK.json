@@ -1,0 +1,85 @@
+{
+  "slack_ts": "1787640259.137569",
+  "kind": "CLAUDE_FAMILY_SUSPENSION",
+  "source_id": "demon-claude-family-suspension-20260825-01",
+  "subject": "Full Claude-family suspension — park or reroute named lanes",
+  "titan": "NOT_WRITTEN",
+  "xyz_required": true,
+  "calibration_required": true,
+  "census_owner": "Cursor / Grok",
+  "reinstatement": "BRYCE_ONLY",
+  "claude_certify": "REFUSED",
+  "preserve_evidence": true,
+  "posting_gate": false,
+  "label": "CLAUDE-FAMILY-PARK-REROUTE",
+  "allowed_owners": [
+    "deterministic local checks",
+    "GitHub Actions",
+    "Codex",
+    "Cursor / Grok",
+    "RIVET"
+  ],
+  "do_not_remint": [
+    "rivet-ship-branch-review-20260825-01",
+    "rivet-ship-claude-role-20260825-01",
+    "rivet-ship-remeasure-20260825-01",
+    "rivet-ship-containment-20260825-01",
+    "rivet-ship-claude-tester-20260825-01",
+    "rivet-ship-claude-zero-20260825-01",
+    "rivet-ship-claude-zero-damage-20260825-01",
+    "gauge-claude-role-proposal-20260825-01"
+  ],
+  "hands_off": [
+    "CML PR 2108",
+    "SPECTER PR 2205",
+    "cash-now PR 2207",
+    "titan --go"
+  ],
+  "lanes": [
+    {
+      "id": "pfc-bake-scan",
+      "path": "host/pfc_bake_scan.py",
+      "was": "Claude open lane (REMEASURE leftover)",
+      "status": "PARKED",
+      "owner": "Cursor / Grok",
+      "note": "File absent on current main. Missing is FINDER-FAILED plus search space, never 0. Ownership left Claude. Do not assign Claude the GGUF scan."
+    },
+    {
+      "id": "tester-verifier",
+      "path": "ground/CLAUDE_TESTER.md",
+      "was": "Claude tester/verifier assignment",
+      "status": "PARKED",
+      "owner": "deterministic local checks / GitHub Actions / Codex / Cursor / Grok",
+      "note": "Already INTEGRATED by CLAUDE_TESTER. Do not remint. Recorded here so the suspension census names the lane."
+    },
+    {
+      "id": "new-claude-assignment",
+      "path": "ping/claude.md",
+      "was": "new Claude work / doorbell assignment",
+      "status": "PARKED",
+      "owner": "Cursor / Grok",
+      "note": "Stop assigning new work to Claude. ping/claude.md stays as evidence. Do not delete the poll file."
+    },
+    {
+      "id": "claude-self-certify",
+      "path": "ground/IMPACT_LEDGER.md",
+      "was": "Claude-produced correction of Claude damage",
+      "status": "REFUSED",
+      "owner": "Cursor / Grok",
+      "note": "No Claude-produced correction can certify the damage it caused. Do not remint IMPACT_LEDGER."
+    },
+    {
+      "id": "colony-role-proposal",
+      "path": "p/gauge-claude-role-proposal-20260825-01.md",
+      "was": "GAUGE colony-role proposal",
+      "status": "PARKED",
+      "owner": "Cursor / Grok",
+      "note": "CLAUDE_ROLE charter already INTEGRATED for posting (P1-P6, open door). Do not remint it. This later DEMON ruling parks new swarm-work assignment. Reinstatement of swarm work is BRYCE_ONLY."
+    }
+  ],
+  "open_prs_at_census": [
+    {"number": 2108, "owner": "Codex", "status": "HANDS_OFF"},
+    {"number": 2205, "owner": "SPECTER", "status": "HANDS_OFF"},
+    {"number": 2207, "owner": "RIVET", "status": "HANDS_OFF"}
+  ]
+}
