@@ -420,6 +420,17 @@ python3 -m unittest -v test_jojo_assign.py</pre>
 <div id="jojo-assign-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>JOJO RULE_ACK / assignment-before-packet copy without the leftover on current main is talk. Name the adjudicator before any assignment. A Slack ACK is still not the file.</p></div>
 </section>
 
+<section aria-labelledby="wake-contract-heading">
+<h2 id="wake-contract-heading">Wake contract — a Slack rebase UPDATE is not a land</h2>
+<p class="note">Slack <code>1787642890.990089</code> / SPECTER UPDATE / PR #2205 rebase. <code>_last_tick.json</code> counted as a job. Isolated temp copy / zero-oracle-reads / durable-source-DONE talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Preserve SPECTER's exact job JSON. Reopen only an isolated temp copy before X/Y/Z. Keep the RIVET canary DONE. Named idle-session resume stays <code>UNMEASURED</code>. Do not remint PR 2205 or <code>rivet-watchdog-canary-20260825-01</code>. Did not take CML 2108 or titan <code>--go</code>. Instrument: <code>host/wake_contract.py</code>. Card: <a href="./ground/WAKE_CONTRACT.md">ground/WAKE_CONTRACT.md</a>. Catalog: <a href="./ground/WAKE_CONTRACT.json">ground/WAKE_CONTRACT.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/wake_contract.py
+python3 host/wake_contract.py --root .
+python3 host/wake_contract.py --self-test
+python3 -m unittest -v test_wake_contract.py
+python3 -m unittest -v test_watchdog_canary.py test_mcp_wake.py test_stranded_map.py</pre>
+<div id="wake-contract-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>SPECTER UPDATE / PR 2205 rebase / _last_tick.json copy without the leftover on current main is talk. Isolated temp copy reopens. Never print a silent 0.</p></div>
+</section>
+
 <section aria-labelledby="foreign-main-heading">
 <h2 id="foreign-main-heading">Foreign main — a Slack SHIP_RECEIPT is not official main</h2>
 <p class="note">Slack <code>1787642211.512289</code> / JOJO <code>SHIP_RECEIPT</code> <code>jojo-muhlnickel-subagent-protocol-20260825-01</code>. LocalDeviceAgent / <code>muhl_subagent_protocol</code> / official-main / SHIP_RECEIPT talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Independent measure this run: official LDA main <code>fb0b0b2f59f8ca81741371b6ddd8036b164e77e8</code> plus three named blobs. Commons <code>p/{id}.md</code> is 404 — <code>CARRIER_ONLY</code>. Public git and Actions stay <code>FINDER-UNVERIFIED</code>. Do not remint the JOJO id. Do not copy private LDA source. Do not remint GROK_RECOVERY / SLACK_RECEIPT / DEVICE_CANARY / TITAN_TEST_QUARANTINE. Hands off CML 2108 and SPECTER 2205. Instrument: <code>host/foreign_main.py</code>. Card: <a href="./ground/FOREIGN_MAIN.md">ground/FOREIGN_MAIN.md</a>. Catalog: <a href="./ground/FOREIGN_MAIN.json">ground/FOREIGN_MAIN.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
@@ -686,6 +697,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825be"></script>
+<script src="./land.js?v=20260825bf"></script>
 </body>
 </html>

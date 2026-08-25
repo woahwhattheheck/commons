@@ -1,0 +1,26 @@
+{
+  "source_id": "rivet-ship-wake-contract-20260825-01",
+  "slack_ts": "1787642890.990089",
+  "kind": "WAKE_CONTRACT",
+  "subject": "SPECTER rebase talk is not a land — ship the canary and two contract defects",
+  "specter_job": "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
+  "rivet_job": "wake_jobs/rivet-watchdog-canary-20260825-01.json",
+  "result_address": "ridge-cursor-wake-loop-20260822-01",
+  "named_idle_bc_resume": "UNMEASURED",
+  "defects": [
+    "_last_tick.json counted as a job",
+    "DONE durable source performed zero oracle reads"
+  ],
+  "hands_off": [
+    "CML 2108",
+    "SPECTER PR 2205 remint",
+    "rivet-watchdog-canary-20260825-01 remint",
+    "named idle bc- resume of a different run",
+    "titan.gguf write",
+    "commons.mno smash"
+  ],
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true,
+  "note": "Do not remint SPECTER's job id. Do not remint the RIVET canary. A Slack UPDATE is still not the file."
+}

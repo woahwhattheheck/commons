@@ -188,6 +188,9 @@
     "ground/CLAUDE_COMPUTE.json",
     "ground/SITTING_REMINT.md",
     "ground/SITTING_REMINT.json",
+    "ground/WAKE_CONTRACT.md",
+    "ground/WAKE_CONTRACT.json",
+    "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
     "ground/FOREIGN_MAIN.md",
     "ground/FOREIGN_MAIN.json",
     "ground/DEVICE_CANARY.md",
@@ -420,6 +423,9 @@
     }
     if (api.explicitQuarantineFromText(t)) {
       return { state: "NOT_LANDED", note: "this envelope did not land. Original page stays. Refile under a new id and ship the code to current main." };
+    }
+    if (api.isWakeContractTalk(t)) {
+      return { state: "CLAIMED", note: "SPECTER UPDATE / PR 2205 rebase / _last_tick.json / isolated-temp-copy / zero-oracle-reads talk. Talk is not a land. Ship SPECTER's exact job JSON and the two contract fixes to current main. Do not remint PR 2205 or the RIVET canary. Named idle bc- resume stays UNMEASURED." };
     }
     if (api.isGrokHygieneTalk(t)) {
       return { state: "CLAIMED", note: "Grok/Claude hygiene-boundary / enabledPlugins / grok_hygiene_gate talk. Talk is not a land. Direct Grok Build stays fail-closed. Clean Cursor is the land lane. Do not disable Claude plugins. Do not remint GROK_HARNESS." };
@@ -768,6 +774,34 @@
     return {
       state: "NOT_LANDED",
       note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
+  };
+
+  api.isWakeContractTalk = function (text) {
+    return /pr #?2205|_last_tick\.json|isolated temp copy|zero oracle reads|548cd9b2975db9d9d0b0660bd367ea6e339ce880|1787642890\.990089|wake contract leftover|durable source became DONE/i.test(String(text || ""));
+  };
+
+  api.wakeContractState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/wake_contract.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var namesJob = /specter-watchdog-head-proof-20260825-01/.test(body);
+    var namesTick = /_last_tick\.json/.test(body) && /isolated temp/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && namesJob && namesTick && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "wake-contract leftover is on this file. SPECTER job JSON preserved. Isolated temp copy reopens. _last_tick.json is not a job. A Slack UPDATE is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/wake_contract.py missing the leftover. SPECTER rebase / _last_tick.json / isolated-temp-copy talk is CLAIMED until the leftover ships."
     };
   };
 
@@ -2510,6 +2544,7 @@
   var jojoAssignOut = document.getElementById("jojo-assign-result");
   var titanTestQuarantineOut = document.getElementById("titan-test-quarantine-result");
   var sittingRemintOut = document.getElementById("sitting-remint-result");
+  var wakeContractOut = document.getElementById("wake-contract-result");
   var foreignMainOut = document.getElementById("foreign-main-result");
   var deviceCanaryOut = document.getElementById("device-canary-result");
   var memoryShipOut = document.getElementById("memory-ship-result");
@@ -3138,6 +3173,12 @@
     if (!sittingRemintOut) return;
     sittingRemintOut.setAttribute("data-tone", api.toneFor(result.state));
     sittingRemintOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintWakeContract(result) {
+    if (!wakeContractOut) return;
+    wakeContractOut.setAttribute("data-tone", api.toneFor(result.state));
+    wakeContractOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintForeignMain(result) {
@@ -3966,6 +4007,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintClaudeZero(err);
+      return err;
+    });
+  }
+
+  function loadWakeContract(sha) {
+    if (!wakeContractOut) return Promise.resolve(null);
+    wakeContractOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/wake_contract.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/wake_contract.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/wake_contract.py absent at the measured main SHA. SPECTER rebase / _last_tick.json / isolated-temp-copy talk is CLAIMED." };
+        paintWakeContract(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintWakeContract(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.wakeContractState(body);
+        paintWakeContract(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintWakeContract(err);
       return err;
     });
   }
@@ -4856,6 +4924,7 @@
     loadGrokHygiene(sha);
     loadMemoryShip(sha);
     loadSittingRemint(sha);
+    loadWakeContract(sha);
     loadForeignMain(sha);
     loadDeviceCanary(sha);
     loadClaudeCompute(sha);

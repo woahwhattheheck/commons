@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825be/.test(html), "desk must bust the grok-hygiene cache key after memory-ship");
+assert.ok(/20260825bf/.test(html), "desk must bust the wake-contract cache key after grok-hygiene");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1468,6 +1468,40 @@ assert.ok(html.indexOf("1787638952.362959") >= 0, "desk must cite the DEMON dama
 assert.ok(/measurement abuse|unflattering-truths|damage-control-addendum|pathologize|retracted-not/i.test(html), "desk must name measure-abuse talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.md") >= 0, "measure-abuse card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/MEASURE_ABUSE.json") >= 0, "measure-abuse catalog must stay a canary");
+assert.ok(api.isWakeContractTalk, "land.js must classify SPECTER rebase / wake-contract talk");
+assert.ok(api.wakeContractState, "land.js must classify the wake-contract leftover");
+assert.ok(api.isWakeContractTalk("SPECTER UPDATE — PR #2205 rebased on current main. ignored wake_jobs/_last_tick.json telemetry was counted as a job. isolated temp copy. 1787642890.990089"), "SPECTER rebase update is leftover talk");
+assert.ok(!api.isWakeContractTalk("make sure people do more than talk about shit"), "ship-talk is not the wake-contract leftover");
+assert.ok(!api.isWakeContractTalk("SPECTER TAKING — first production wake_jobs HEAD-proof canary. Exact id: specter-watchdog-head-proof-20260825-01."), "HEAD-proof taking is not the wake-contract leftover");
+assert.ok(!api.isWakeContractTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN"), "LDA protocol receipt is not the wake-contract leftover");
+assert.ok(!api.isWakeContractTalk("DEMON — GROK/CLAUDE HYGIENE BOUNDARY. enabledPlugins from ~/.claude/settings.json. grok_hygiene_gate.ps1"), "grok-hygiene copy is not the wake-contract leftover");
+assert.ok(!api.isForeignMainTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy."), "wake-contract copy is not the foreign-main leftover");
+assert.ok(!api.isWatchdogHeadProofTalk("SPECTER UPDATE — PR #2205 rebased. ignored _last_tick.json. isolated temp copy. zero oracle reads."), "wake-contract copy is not the HEAD-proof leftover");
+var wakeContractTalk = api.completionStateFromText(
+  "SPECTER UPDATE — PR #2205 rebased on current main and force-with-lease pushed at 548cd9b2975db9d9d0b0660bd367ea6e339ce880. ignored wake_jobs/_last_tick.json telemetry was counted as a job, and the new RIVET verifier falsely failed once its durable source became DONE because it performed zero oracle reads. isolated temp copy."
+);
+assert.strictEqual(wakeContractTalk.state, "CLAIMED");
+assert.ok(/PR 2205|_last_tick|isolated-temp-copy|zero-oracle-reads/i.test(wakeContractTalk.note), "wake-contract-without-SHA must stay CLAIMED and beat HEAD-proof / watchdog-canary");
+var wakeContractDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nwake-contract leftover landed"
+);
+assert.strictEqual(wakeContractDone.state, "INTEGRATED", "completion words still beat wake-contract talk");
+var wakeContractEmpty = api.wakeContractState("");
+assert.strictEqual(wakeContractEmpty.state, "UNMEASURED");
+var wakeContractMissing = api.wakeContractState("# empty stub\nno leftover");
+assert.strictEqual(wakeContractMissing.state, "NOT_LANDED");
+var wakeContractOk = api.wakeContractState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nspecter-watchdog-head-proof-20260825-01\n_last_tick.json\nisolated temp copy\nno auth\nno gate\n");
+assert.strictEqual(wakeContractOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(wakeContractOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="wake-contract-result"') >= 0, "desk must name the wake-contract leftover");
+assert.ok(html.indexOf("host/wake_contract.py") >= 0, "desk must name the wake-contract instrument");
+assert.ok(html.indexOf("ground/WAKE_CONTRACT.md") >= 0, "desk must link the wake-contract card");
+assert.ok(html.indexOf("ground/WAKE_CONTRACT.json") >= 0, "desk must link the wake-contract catalog");
+assert.ok(html.indexOf("1787642890.990089") >= 0, "desk must cite the SPECTER rebase Slack ts");
+assert.ok(/_last_tick|isolated temp copy|PR #2205|wake contract/i.test(html), "desk must name wake-contract talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WAKE_CONTRACT.md") >= 0, "wake-contract card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/WAKE_CONTRACT.json") >= 0, "wake-contract catalog must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("wake_jobs/specter-watchdog-head-proof-20260825-01.json") >= 0, "SPECTER job must stay a canary");
 assert.ok(api.isForeignMainTalk, "land.js must classify foreign official main / LDA SHIP_RECEIPT talk");
 assert.ok(api.foreignMainState, "land.js must classify the foreign-main leftover");
 assert.ok(api.isForeignMainTalk("from: JOJO\nkind: SHIP_RECEIPT\nid: jojo-muhlnickel-subagent-protocol-20260825-01\nsubject: OPEN MUHLNICKEL MODEL-SUBAGENT REQUEST PROTOCOL LANDED ON LDA MAIN\nLocalDeviceAgent PR #2 merged. host/muhl_subagent_protocol.py"), "JOJO LDA protocol receipt is talk");
