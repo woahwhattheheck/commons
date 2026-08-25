@@ -12,10 +12,13 @@ The taking was stale. Official main already had
 Do not remint a SPECTER taking file that was never `p/{id}.md`.
 
 The leftover was the contract. Three Chromium runs failed. Last
-push-to-main: [32812516738](https://github.com/woahwhattheheck/commons/actions/runs/32812516738).
+failing push-to-main: [32812516738](https://github.com/woahwhattheheck/commons/actions/runs/32812516738).
 `visual.html` hit `Page.goto: Timeout 45000ms exceeded` while the
-single-thread HTTP server printed `BrokenPipeError`. A YAML file
-that exists is not a passing run.
+single-thread HTTP server printed `BrokenPipeError`. After
+`ThreadingMixIn` shipped, push-to-main
+[32815228177](https://github.com/woahwhattheheck/commons/actions/runs/32815228177)
+succeeded in 1m6s. A YAML file that exists is not a passing run;
+this catalog now names the passing run.
 
 ## Measure
 
