@@ -59,14 +59,14 @@
       "rate_plan_boundary": "binary absent here; owner-PC millions-of-tokens claim is not this host"
     },
     {
-      "assigned_backlog": "bounded independent review / ultrareview --no-post where unclaimed",
+      "assigned_backlog": "informational evidence only; not tester/verifier/QA; route verification to local/GHA/Codex/Grok/Cursor-Grok",
       "auth_surface": "claude.ai Max + CLI (owner claim)",
       "capacity": "UNMEASURED",
-      "evidence_ts": "2026-08-25T06:10:00Z",
-      "exact_safe_probe": "which claude on this cloud box",
-      "last_receipt": "rivet-ship-claude-slack-20260825-01",
+      "evidence_ts": "2026-08-25T06:13:00Z",
+      "exact_safe_probe": "which claude on this cloud box; do not assign tester roles",
+      "last_receipt": "rivet-ship-claude-tester-20260825-01",
       "name": "claude",
-      "rate_plan_boundary": "CLI absent here; Commons still cannot doorbell Claude"
+      "rate_plan_boundary": "CLI absent here; Commons still cannot doorbell Claude; prior Claude verdicts this window UNVERIFIED"
     },
     {
       "assigned_backlog": "flight-recorder/utilization dashboard after scope/current-app reconciliation",

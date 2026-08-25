@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825ac/.test(html), "desk must bust the stale-manifest cache key");
+assert.ok(/20260825ad/.test(html), "desk must bust the claude-tester cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1248,6 +1248,38 @@ assert.ok(html.indexOf("1787638201.498979") >= 0, "desk must cite the DEMON KEYB
 assert.ok(/size-agrees-bytes-do-not|do-not-integrate-as-verified|manifest-verified|post-manifest-mutation/i.test(html), "desk must name stale-manifest talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_MANIFEST.md") >= 0, "stale-manifest card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_MANIFEST.json") >= 0, "stale-manifest catalog must stay a canary");
+assert.ok(api.isClaudeTesterTalk, "land.js must classify stop-using-Claude-testers talk");
+assert.ok(api.claudeTesterState, "land.js must classify the Claude-tester leftover");
+assert.ok(api.isClaudeTesterTalk("from: DEMON\nkind: OWNER_RULE_RELAY\nsubject: STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW\nDirect owner rule: stop using Claudes to test.\nDo not assign Claude models test, verification, red-team-as-verdict.\nPause/retire active Claude tester/verifier lanes.\nSearch-zero testing is instrument failure, not absence proof.\nA bare zero or uncalibrated green result does not count."), "DEMON OWNER_RULE_RELAY is talk");
+assert.ok(!api.isClaudeTesterTalk("make sure people do more than talk about shit"), "ship-talk is not the Claude-tester leftover");
+assert.ok(!api.isClaudeTesterTalk("DEMON PIXEL SWARM FLIGHT RECORDER — LANDED + CURRENT-MAIN VERIFIED. POST-PUSH CURRENT MAIN."), "Slack receipt copy is not the Claude-tester leftover");
+assert.ok(!api.isSlackReceiptTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW. tester/verifier lanes."), "Claude-tester copy is not the Slack-receipt leftover");
+assert.ok(!api.isFleetTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the fleet leftover");
+assert.ok(!api.isFinderZeroTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy without GAUGE phrases is not finder-zero leftover");
+var claudeTalk = api.completionStateFromText(
+  "STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS — EFFECTIVE NOW\nDirect owner rule: stop using Claudes to test. tester/verifier lanes. known-present calibration."
+);
+assert.strictEqual(claudeTalk.state, "CLAIMED");
+assert.ok(/stop-using-Claude-testers|OWNER_RULE_RELAY/i.test(claudeTalk.note), "Claude-tester-without-SHA must stay CLAIMED and beat finder-zero");
+var claudeDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-tester leftover landed"
+);
+assert.strictEqual(claudeDone.state, "INTEGRATED", "completion words still beat Claude-tester talk");
+var claudeEmpty = api.claudeTesterState("");
+assert.strictEqual(claudeEmpty.state, "UNMEASURED");
+var claudeMissing = api.claudeTesterState("# empty stub\nno leftover");
+assert.strictEqual(claudeMissing.state, "NOT_LANDED");
+var claudeOk = api.claudeTesterState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nxyz required\nknown-present calibration\npreserve artifacts\ndoes not erase Claude-authored build artifacts\ndeterministic local checks\nGitHub Actions\nCodex\n");
+assert.strictEqual(claudeOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(claudeOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-tester-result"') >= 0, "desk must name the Claude-tester leftover");
+assert.ok(html.indexOf("host/claude_tester.py") >= 0, "desk must name the Claude-tester instrument");
+assert.ok(html.indexOf("ground/CLAUDE_TESTER.md") >= 0, "desk must link the Claude-tester card");
+assert.ok(html.indexOf("ground/CLAUDE_TESTER.json") >= 0, "desk must link the Claude-tester catalog");
+assert.ok(html.indexOf("1787638370.166649") >= 0, "desk must cite the DEMON OWNER_RULE_RELAY Slack ts");
+assert.ok(/stop using claude|tester\/verifier|search-zero|uncalibrated-green/i.test(html), "desk must name Claude-tester talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.md") >= 0, "Claude-tester card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_TESTER.json") >= 0, "Claude-tester catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");

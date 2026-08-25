@@ -50,6 +50,14 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_read_is_voltage.py` · `node test_land_desk.js` · `grep -n "READ is sufficient voltage" ground/tokens/pfc.md ground/HIS_11.md`
 **Note:** Not a 12th spec item. Talk is not a land.
 
+### 23. Stop using Claude models as testers / verifiers
+> *"Direct owner rule: stop using Claudes to test. Route verification to deterministic local checks, GitHub Actions, Codex, Grok/direct xAI, or Cursor/Grok. Every future test/scan/absence result carries X/Y/Z plus a same-run known-present calibration."*
+
+**Asked:** 08-25T06:12 Slack `1787638370.166649` · **Status:** LANDED this commit
+**Landed:** `ground/CLAUDE_TESTER.md` · `ground/CLAUDE_TESTER.json` · `host/claude_tester.py` · `resources.html` section 3 · `ledger.html` Claude row · land canary + `claudeTesterState`
+**Receipt:** `python3 test_claude_tester.py` · `node test_land_desk.js` · `python3 host/claude_tester.py`
+**Note:** Claude-authored build artifacts stay. Do not remint FINDER_ZERO. A Slack relay is not the file. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
