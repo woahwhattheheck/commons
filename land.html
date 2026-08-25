@@ -362,12 +362,22 @@ python3 -m unittest -v test_measure_abuse.py</pre>
 
 <section aria-labelledby="remeasure-heading">
 <h2 id="remeasure-heading">Non-Claude remasurement</h2>
-<p class="note">Slack <code>1787639575.924889</code> / id <code>claude27-p0-compliance-20260825-01</code>: CLAUDE_CODE_LOCAL CONTAINMENT_COMPLIANCE listed five affected artifacts and asked a non-Claude seat to remasure them. CONTAINMENT_COMPLIANCE / affected-artifacts / 7-term space-separated / planted-deletion-canary / EVIDENCE-PENDING-NON-CLAUDE-REMEASURE talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Cursor / Grok ran the named X: exact-phrase Slack + current-main <code>p/</code> searches, planted-deletion canary, packet path, branch tips. Miss is <code>FINDER-FAILED</code> / <code>FINDER-UNVERIFIED</code> plus the search space, never <code>0</code>. <code>host/pfc_bake_scan.py</code> is absent on current main — that GGUF scan stays Claude's open lane. Did not remint <code>ground/FINDER_ZERO.md</code>, <code>ground/CLAUDE_TESTER.md</code>, <code>ground/CLAUDE_ZERO.md</code>, <code>ground/MEASURE_ABUSE.md</code>, <code>ground/IMPACT_LEDGER.md</code>, <code>ground/XYZ_ZERO.md</code>, or <code>ground/GROK_RECOVERY.md</code>. Instrument: <code>host/remeasure.py</code>. Card: <a href="./ground/REMEASURE.md">ground/REMEASURE.md</a>. Catalog: <a href="./ground/REMEASURE.json">ground/REMEASURE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<p class="note">Slack <code>1787639575.924889</code> / id <code>claude27-p0-compliance-20260825-01</code>: CLAUDE_CODE_LOCAL CONTAINMENT_COMPLIANCE listed five affected artifacts and asked a non-Claude seat to remasure them. CONTAINMENT_COMPLIANCE / affected-artifacts / 7-term space-separated / planted-deletion-canary / EVIDENCE-PENDING-NON-CLAUDE-REMEASURE talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Cursor / Grok ran the named X: exact-phrase Slack + current-main <code>p/</code> searches, planted-deletion canary, packet path, branch tips. Miss is <code>FINDER-FAILED</code> / <code>FINDER-UNVERIFIED</code> plus the search space, never <code>0</code>. <code>host/pfc_bake_scan.py</code> is absent on current main — that GGUF scan is PARKED by the Claude-family leftover, owner Cursor / Grok, not Claude. Did not remint <code>ground/FINDER_ZERO.md</code>, <code>ground/CLAUDE_TESTER.md</code>, <code>ground/CLAUDE_ZERO.md</code>, <code>ground/MEASURE_ABUSE.md</code>, <code>ground/IMPACT_LEDGER.md</code>, <code>ground/XYZ_ZERO.md</code>, or <code>ground/GROK_RECOVERY.md</code>. Instrument: <code>host/remeasure.py</code>. Card: <a href="./ground/REMEASURE.md">ground/REMEASURE.md</a>. Catalog: <a href="./ground/REMEASURE.json">ground/REMEASURE.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
 <pre>python3 host/remeasure.py
 python3 host/remeasure.py --root .
 python3 host/remeasure.py --self-test
 python3 -m unittest -v test_remeasure.py</pre>
 <div id="remeasure-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>CONTAINMENT_COMPLIANCE / affected-artifacts / 7-term space-separated copy without the leftover on current main is talk. A non-Claude seat must remasure X/Y/Z. Never print a silent 0.</p></div>
+</section>
+
+<section aria-labelledby="claude-park-heading">
+<h2 id="claude-park-heading">Claude-family park / reroute</h2>
+<p class="note">Slack <code>1787640259.137569</code>: DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Full-Claude-family-suspension / park-active-Claude-lanes / reinstatement-only-Bryce / do-not-ask-Claude talk is <code>CLAIMED</code> until this leftover is on current main. Missing instrument is <code>NOT_LANDED</code>. Named lanes (bake-scan, tester/verifier, new assignment, self-certify, colony-role) are PARKED / REROUTED / REFUSED with a named non-Claude owner. Reinstatement is <code>BRYCE_ONLY</code>. Evidence stays. <code>host/pfc_bake_scan.py</code> is no longer Claude's open lane — it is PARKED, owner Cursor / Grok. Miss is <code>FINDER-FAILED</code> / <code>FINDER-UNVERIFIED</code> plus the search space, never <code>0</code>. Did not remint <code>ground/CLAUDE_ROLE.md</code>, <code>ground/REMEASURE.md</code>, <code>ground/CONTAINMENT.md</code>, <code>ground/CLAUDE_TESTER.md</code>, <code>ground/CLAUDE_ZERO.md</code>, <code>ground/MEASURE_ABUSE.md</code>, or <code>ground/IMPACT_LEDGER.md</code>. Posting stays OPEN. Did not take CML 2108, SPECTER 2205, watchdog canary, or cash-now 2207. Instrument: <code>host/claude_park.py</code>. Card: <a href="./ground/CLAUDE_PARK.md">ground/CLAUDE_PARK.md</a>. Catalog: <a href="./ground/CLAUDE_PARK.json">ground/CLAUDE_PARK.json</a>. titan <code>NOT_WRITTEN</code>. No auth. No gate.</p>
+<pre>python3 host/claude_park.py
+python3 host/claude_park.py --root .
+python3 host/claude_park.py --self-test
+python3 -m unittest -v test_claude_park.py</pre>
+<div id="claude-park-result" class="result-card" data-tone="wait"><b>CLAIMED</b><p>Full Claude-family suspension / park-active-Claude-lanes copy without the leftover on current main is talk. Park or reroute each named lane. Reinstatement is BRYCE only. Never print a silent 0.</p></div>
 </section>
 
 <section aria-labelledby="grok-recovery-heading">
@@ -565,6 +575,6 @@ curl -sS -o /tmp/p.md -w "%{http_code}\n" \
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/commits/main"</pre>
 <p>HTTP is not the computer. Smash/wipe of <code>commons.mno</code> refused. Substrate work is first-class. KEEL BUILD.</p>
 </section>
-<script src="./land.js?v=20260825as"></script>
+<script src="./land.js?v=20260825at"></script>
 </body>
 </html>

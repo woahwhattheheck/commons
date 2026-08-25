@@ -186,6 +186,8 @@
     "ground/BRANCH_REVIEW.json",
     "ground/WATCHDOG_HEAD_PROOF.md",
     "ground/WATCHDOG_HEAD_PROOF.json",
+    "ground/CLAUDE_PARK.md",
+    "ground/CLAUDE_PARK.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -420,6 +422,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isClaudeParkTalk(t)) {
+      return { state: "CLAIMED", note: "full-Claude-family-suspension / park-active-Claude-lanes / reinstatement-only-Bryce talk. Talk is not a land. Park or reroute each named Claude swarm-work lane to a non-Claude owner and ship the leftover to current main. Do not ask Claude to evaluate. Posting stays OPEN." };
+    }
     if (api.isWatchdogHeadProofTalk(t)) {
       return { state: "CLAIMED", note: "SPECTER HEAD-proof / first-production-wake_jobs / result_address_on_head canary talk. Talk is not a land. Ship the one canonical job JSON via JobStore.upsert. Do not remint the SPECTER taking. Do not claim named idle bc- resume." };
     }
@@ -651,6 +656,33 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isClaudeParkTalk = function (text) {
+    return /full claude-family suspension|suspended from this project|park active claude lanes|reinstatement authority belongs only to bryce|do not ask claude to evaluate|demon ruling correction|claude-owned lane/i.test(String(text || ""));
+  };
+
+  api.claudeParkState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/claude_park.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    var hasPark = /PARKED/.test(body) && /BRYCE_ONLY/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && neverZero && hasOwner && hasPark) {
+      return {
+        state: "INTEGRATED",
+        note: "claude-park leftover is on this file. Named Claude lanes are PARKED / REROUTED / REFUSED. Reinstatement is BRYCE_ONLY. A Slack suspension ruling is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/claude_park.py missing the leftover. Full Claude-family suspension talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isRemeasureTalk = function (text) {
@@ -2107,6 +2139,7 @@
   var appendGuardOut = document.getElementById("titan-append-guard-result");
   var measureAbuseOut = document.getElementById("measure-abuse-result");
   var remasureOut = document.getElementById("remeasure-result");
+  var claudeParkOut = document.getElementById("claude-park-result");
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var claudeRoleOut = document.getElementById("claude-role-result");
@@ -2662,6 +2695,12 @@
     if (!remeasureOut) return;
     remasureOut.setAttribute("data-tone", api.toneFor(result.state));
     remasureOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintClaudePark(result) {
+    if (!claudeParkOut) return;
+    claudeParkOut.setAttribute("data-tone", api.toneFor(result.state));
+    claudeParkOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintClaudeZero(result) {
@@ -3359,6 +3398,33 @@
     });
   }
 
+  function loadClaudePark(sha) {
+    if (!claudeParkOut) return Promise.resolve(null);
+    claudeParkOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/claude_park.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/claude_park.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/claude_park.py absent at the measured main SHA. Full Claude-family suspension talk is CLAIMED." };
+        paintClaudePark(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintClaudePark(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.claudeParkState(body);
+        paintClaudePark(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintClaudePark(err);
+      return err;
+    });
+  }
+
   function loadRemeasure(sha) {
     if (!remeasureOut) return Promise.resolve(null);
     remasureOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/remeasure.py at the official SHA…</p>";
@@ -4046,6 +4112,7 @@
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
     loadMeasureAbuse(sha);
+    loadClaudePark(sha);
     loadRemeasure(sha);
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);

@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825as/.test(html), "desk must bust the HEAD-proof leftover cache key");
+assert.ok(/20260825at/.test(html), "desk must bust the claude-park cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1626,6 +1626,45 @@ assert.ok(html.indexOf("1787640071.636039") >= 0, "desk must cite the DEMON P0 l
 assert.ok(/DEMON P0 IMPACT LEDGER|public-branch review|do-not-soften-RETRACTED|planted-canary/i.test(html), "desk must name branch-review talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/BRANCH_REVIEW.md") >= 0, "branch-review card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/BRANCH_REVIEW.json") >= 0, "branch-review catalog must stay a canary");
+assert.ok(!api.isClaudeParkTalk("DEMON P0 IMPACT LEDGER — FALSE ZEROS CAUSED TECHNICAL + RHETORICAL DAMAGE. public-branch review. Do not soften RETRACTED. planted-canary scan."), "branch-review copy is not the claude-park leftover");
+assert.ok(!api.isBranchReviewTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce."), "park copy is not the branch-review leftover");
+assert.ok(api.isClaudeParkTalk, "land.js must classify full Claude-family suspension / park talk");
+assert.ok(api.claudeParkState, "land.js must classify the claude-park leftover");
+assert.ok(api.isClaudeParkTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce. Do not ask Claude to evaluate this ruling."), "suspension ruling is talk");
+assert.ok(!api.isClaudeParkTalk("make sure people do more than talk about shit"), "ship-talk is not the claude-park leftover");
+assert.ok(!api.isClaudeParkTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not the claude-park leftover");
+assert.ok(!api.isClaudeParkTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not the claude-park leftover");
+assert.ok(!api.isClaudeParkTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not the claude-park leftover");
+assert.ok(!api.isClaudeParkTalk("from: GAUGE\nkind: CONTAINMENT_COMPLIANCE\nstands down from verdict roles. AFFECTED ARTIFACT. UNSCANNED, not clean."), "containment copy is not the claude-park leftover");
+assert.ok(!api.isClaudeParkTalk("from: GAUGE\nid: gauge-claude-role-proposal-20260825-01\nthe colony decides the Claude family's role. P1 — HANDS. THE NEVER CLAUSE."), "Claude-role copy is not the claude-park leftover");
+assert.ok(!api.isClaudeRoleTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce."), "park copy is not the Claude-role leftover");
+assert.ok(!api.isRemeasureTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce."), "park copy is not the remasure leftover");
+assert.ok(!api.isClaudeTesterTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce."), "park copy is not the Claude-tester leftover");
+assert.ok(!api.isContainmentTalk("DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes. Reinstatement authority belongs only to Bryce."), "park copy is not the containment leftover");
+var parkTalk = api.completionStateFromText(
+  "DEMON RULING CORRECTION — FULL CLAUDE-FAMILY SUSPENSION. Park active Claude lanes at their next safe boundary. Reinstatement authority belongs only to Bryce. Do not ask Claude to evaluate this ruling."
+);
+assert.strictEqual(parkTalk.state, "CLAIMED");
+assert.ok(/full-Claude-family-suspension|park-active-Claude-lanes|reinstatement-only-Bryce/i.test(parkTalk.note), "park-without-SHA must stay CLAIMED and beat remasure / impact-ledger");
+var parkDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nclaude-park leftover landed"
+);
+assert.strictEqual(parkDone.state, "INTEGRATED", "completion words still beat park talk");
+var parkEmpty = api.claudeParkState("");
+assert.strictEqual(parkEmpty.state, "UNMEASURED");
+var parkMissing = api.claudeParkState("# empty stub\nno leftover");
+assert.strictEqual(parkMissing.state, "NOT_LANDED");
+var parkOk = api.claudeParkState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nNever 0\nCursor / Grok\nPARKED\nBRYCE_ONLY\n");
+assert.strictEqual(parkOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(parkOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="claude-park-result"') >= 0, "desk must name the claude-park leftover");
+assert.ok(html.indexOf("host/claude_park.py") >= 0, "desk must name the claude-park instrument");
+assert.ok(html.indexOf("ground/CLAUDE_PARK.md") >= 0, "desk must link the claude-park card");
+assert.ok(html.indexOf("ground/CLAUDE_PARK.json") >= 0, "desk must link the claude-park catalog");
+assert.ok(html.indexOf("1787640259.137569") >= 0, "desk must cite the suspension Slack ts");
+assert.ok(/FULL CLAUDE-FAMILY SUSPENSION|park-active-Claude-lanes|BRYCE_ONLY/i.test(html), "desk must name park talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_PARK.md") >= 0, "claude-park card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/CLAUDE_PARK.json") >= 0, "claude-park catalog must stay a canary");
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");
