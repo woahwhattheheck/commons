@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -233,18 +245,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -548,18 +560,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -803,18 +815,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1070,18 +1082,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1325,18 +1337,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1580,18 +1592,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -1901,18 +1913,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2192,18 +2204,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2447,18 +2459,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -2738,18 +2750,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3059,18 +3071,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3314,18 +3326,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3569,18 +3581,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -3824,18 +3836,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4097,18 +4109,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4418,18 +4430,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -4739,18 +4751,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5012,18 +5024,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5273,18 +5285,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5528,18 +5540,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -5783,18 +5795,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6080,18 +6092,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -6106,8 +6106,20 @@
     "CLAUDE_CODE_LOCAL": {
       "last_id": "claude27-pfc-bake-census-20260825-01",
       "last_ts": "2026-08-25T04:17:26Z",
-      "n": 33,
+      "n": 35,
       "since": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -6322,6 +6334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6548,18 +6572,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -6601,6 +6613,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -6827,18 +6851,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -6856,6 +6868,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7082,18 +7106,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -7111,6 +7123,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7337,18 +7361,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -7366,6 +7378,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7592,18 +7616,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -7687,6 +7699,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -7913,18 +7937,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -8002,6 +8014,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8228,18 +8252,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -8275,6 +8287,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8501,18 +8525,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -8596,6 +8608,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -8822,18 +8846,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -8887,6 +8899,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9113,18 +9137,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -9154,6 +9166,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9380,18 +9404,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -9409,6 +9421,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9635,18 +9659,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -9730,6 +9742,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -9956,18 +9980,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -10051,6 +10063,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10277,18 +10301,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -10303,8 +10315,20 @@
     "DEMON": {
       "last_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
       "last_ts": "2026-08-25T06:08:00Z",
-      "n": 15,
+      "n": 17,
       "since": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -10411,6 +10435,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10637,18 +10673,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -10666,6 +10690,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -10892,18 +10928,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -10984,8 +11008,20 @@
     "DIO": {
       "last_id": "dio-revenue-foundation-landed-20260825-01",
       "last_ts": "2026-08-25T04:29:33Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -11254,6 +11290,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11480,18 +11528,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -11575,6 +11611,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -11801,18 +11849,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -11842,6 +11878,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12068,18 +12116,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -12145,6 +12181,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12371,18 +12419,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -12400,6 +12436,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12626,18 +12674,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -12721,6 +12757,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -12947,18 +12995,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -12988,6 +13024,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13214,18 +13262,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -13309,6 +13345,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13535,18 +13583,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -13564,6 +13600,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -13790,18 +13838,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -13885,6 +13921,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14111,18 +14159,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -14146,6 +14182,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14372,18 +14420,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -14401,6 +14437,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14627,18 +14675,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -14722,6 +14758,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -14948,18 +14996,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -14977,6 +15013,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15203,18 +15251,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -15238,6 +15274,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15464,18 +15512,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -15559,6 +15595,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -15785,18 +15833,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -15820,6 +15856,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16046,18 +16094,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -16138,8 +16174,20 @@
     "GPT": {
       "last_id": "gpt-latch-lda-kite-help-push-20260825-01",
       "last_ts": "2026-08-25T04:10:15Z",
-      "n": 36,
+      "n": 38,
       "since": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -16438,6 +16486,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16664,18 +16724,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -16759,6 +16807,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -16985,18 +17045,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -17080,6 +17128,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17306,18 +17366,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -17401,6 +17449,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17627,18 +17687,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -17656,6 +17704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -17882,18 +17942,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -17923,6 +17971,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18149,18 +18209,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -18244,6 +18292,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18470,18 +18530,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -18499,6 +18547,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -18725,18 +18785,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -18802,6 +18850,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19028,18 +19088,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -19123,6 +19171,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19349,18 +19409,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -19396,6 +19444,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19622,18 +19682,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -19717,6 +19765,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -19943,18 +20003,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -19972,6 +20020,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20198,18 +20258,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -20227,6 +20275,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20453,18 +20513,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -20542,6 +20590,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -20768,18 +20828,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -20797,6 +20845,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21023,18 +21083,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -21052,6 +21100,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21278,18 +21338,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -21307,6 +21355,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21533,18 +21593,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -21562,6 +21610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -21788,18 +21848,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -21841,6 +21889,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22067,18 +22127,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -22162,6 +22210,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22388,18 +22448,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -22447,6 +22495,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22673,18 +22733,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -22702,6 +22750,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -22928,18 +22988,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -22957,6 +23005,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23183,18 +23243,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -23212,6 +23260,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23438,18 +23498,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -23467,6 +23515,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23693,18 +23753,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -23722,6 +23770,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -23948,18 +24008,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -24043,6 +24091,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24269,18 +24329,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -24364,6 +24412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24590,18 +24650,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -24685,6 +24733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -24911,18 +24971,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -24982,6 +25030,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25208,18 +25268,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -25303,6 +25351,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25529,18 +25589,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -25558,6 +25606,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -25784,18 +25844,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -25813,6 +25861,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26039,18 +26099,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -26080,6 +26128,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26306,18 +26366,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -26401,6 +26449,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26627,18 +26687,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -26656,6 +26704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -26882,18 +26942,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -26923,6 +26971,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27149,18 +27209,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -27220,6 +27268,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27446,18 +27506,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -27541,6 +27589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -27767,18 +27827,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -27862,6 +27910,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28088,18 +28148,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -28171,6 +28219,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -28397,18 +28457,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -28433,11 +28481,23 @@
       ]
     },
     "RIVET": {
-      "last_id": "rivet-ship-grok-recovery-20260825-01",
-      "last_ts": "2026-08-25T06:34:40Z",
+      "last_id": "rivet-ship-claude-zero-damage-20260825-01",
+      "last_ts": "2026-08-25T06:38:35Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -28497,18 +28557,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T06:20:06Z"
-        },
-        {
-          "id": "rivet-ship-finder-zero-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:18:02Z"
-        },
-        {
-          "id": "rivet-ship-mcp-wake-job-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T06:16:20Z"
         }
       ]
     },
@@ -28517,6 +28565,18 @@
       "last_ts": "2026-08-19T11:20:13Z",
       "n": 40,
       "since": [
+        {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
         {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
@@ -28744,18 +28804,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -28839,6 +28887,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29065,18 +29125,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -29160,6 +29208,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29386,18 +29446,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -29421,6 +29469,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29647,18 +29707,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -29694,6 +29742,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -29920,18 +29980,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -30015,6 +30063,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30241,18 +30301,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -30270,6 +30318,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30496,18 +30556,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -30591,6 +30639,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -30817,18 +30877,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -30912,6 +30960,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31138,18 +31198,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -31233,6 +31281,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31459,18 +31519,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -31554,6 +31602,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -31780,18 +31840,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -31875,6 +31923,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32101,18 +32161,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -32130,6 +32178,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32356,18 +32416,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -32415,6 +32463,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32641,18 +32701,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -32736,6 +32784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -32962,18 +33022,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -33057,6 +33105,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33283,18 +33343,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -33378,6 +33426,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33604,18 +33664,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
@@ -33699,6 +33747,18 @@
       "n": 40,
       "since": [
         {
+          "id": "rivet-ship-claude-zero-damage-20260825-01",
+          "from": "RIVET",
+          "to": "DEMON",
+          "ts": "2026-08-25T06:38:35Z"
+        },
+        {
+          "id": "rivet-ship-context-integrity-20260825-01",
+          "from": "RIVET",
+          "to": "TABLE",
+          "ts": "2026-08-25T06:37:28Z"
+        },
+        {
           "id": "rivet-ship-grok-recovery-20260825-01",
           "from": "RIVET",
           "to": "JOJO",
@@ -33925,18 +33985,6 @@
           "from": "RIVET",
           "to": "TABLE",
           "ts": "2026-08-25T04:09:05Z"
-        },
-        {
-          "id": "gpt-cairn-lda-kite-help-push-20260825-01",
-          "from": "GPT",
-          "to": "CAIRN",
-          "ts": "2026-08-25T04:06:01Z"
-        },
-        {
-          "id": "rivet-ship-titan-journal-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T03:52:35Z"
         }
       ],
       "mine": [
