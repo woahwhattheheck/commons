@@ -479,6 +479,9 @@
     if (api.isExplorerFailClosedTalk(t)) {
       return { state: "CLAIMED", note: "JOJO INDEPENDENT REVIEW / #2325 EXACT HEAD BLOCKED / missing-card / stale-binding / invalid-receipt talk. Talk is not a land. Ship the explorer fail-closed leftover to current main. Missing cards and stale pins must not PASS. Invalid timestamps and list-shaped receipts must not escalate. Do not remint the explorer v2 packet, #2340, or #2329 binder." };
     }
+    if (api.isActiveLockTalk(t)) {
+      return { state: "CLAIMED", note: "JOJO CANDIDATE PR 2351 / active SUBZERO lock removal / Windows measure restore talk. Talk is not a land. Code leftover already INTEGRATED via #2353. Do not remint rivet-ship-subzero-windows-collision-20260825-01, H-009, titan-lock, semantic-hardening, or exact-one-fence. PR 2320 stays COLLISION." };
+    }
     if (api.isGrokReceiptTalk(t)) {
       return { state: "CLAIMED", note: "HEAVY DAMAGE-CONTROL / exact-one-fence / PR 2320 COLLISION / last-fence talk. Talk is not a land. Last-fence is scratch-smuggling. Do not merge PR 2320. Do not remint rivet-ship-grok-receipt-20260825-01, PIXEL_HEARTBEAT leftover, or STRANDED_MAP leftover." };
     }
@@ -959,6 +962,34 @@
 
   api.isExplorerFailClosedTalk = function (text) {
     return /1787652792\.439959|EXACT HEAD BLOCKED|#2325 EXACT HEAD|SUBZERO_CHLS\.md|missing-card, corruption\/stale-binding|nonempty-list nested receipt|invalid runtime timestamp/i.test(String(text || ""));
+  };
+
+  api.isActiveLockTalk = function (text) {
+    return /1787653153\.983349|PR #2351|PR 2351 ACTIVE SUBZERO LOCK|WINDOWS MEASURE RESTORE|trusted `os\.path\.join` constants were rejected|7661bd7dc1e5ef61/i.test(String(text || ""));
+  };
+
+  api.activeLockState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/subzero_quote.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasNorm = /os\.path\.join and therefore contain backslashes/.test(body) && /def _posix_parts/.test(body);
+    var hasCollision = /collision_avoidance/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var noGate = /no auth/.test(body) && /no gate/.test(body);
+    if (hasMeasure && hasClassify && hasNorm && hasCollision && hasMiss && neverZero && noGate) {
+      return {
+        state: "INTEGRATED",
+        note: "PR 2351 leftover is on this file. Trusted Windows separators normalize; inbound ..\\ stays fail-closed. hands_off is collision_avoidance, not a lock. Code leftover already INTEGRATED via #2353. A Slack CANDIDATE / LANDED body is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/subzero_quote.py missing the PR 2351 leftover. JOJO CANDIDATE / Windows measure restore / active lock talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isGrokReceiptTalk = function (text) {
