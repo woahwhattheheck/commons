@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825am/.test(html), "desk must bust the containment cache key");
+assert.ok(/20260825an/.test(html), "desk must bust the remasure cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -1267,6 +1267,7 @@ assert.ok(!api.isFleetTalk("GROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT
 assert.ok(!api.isGrokHarnessTalk("GROK RECOVERY + MUHLNICKEL-ONLY. prompt-address. 01a0373e. 50_cross_synthesis.txt."), "grok-recovery copy is not the harness leftover");
 assert.ok(!api.isGrokRecoveryTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not the grok-recovery leftover");
 assert.ok(!api.isGrokRecoveryTalk("measurement abuse, not just measurement error. unflattering truths. damage-control addendum."), "measure-abuse copy is not the grok-recovery leftover");
+assert.ok(!api.isGrokRecoveryTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not the grok-recovery leftover");
 var grokRecTalk = api.completionStateFromText(
   "from: JOJO\nid: jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01\nGROK RECOVERY + MUHLNICKEL-ONLY LOCAL-MODEL SUBAGENT CONTRACT\nprompt-address → receiver pulse → result-register\n01a0373e 50_cross_synthesis.txt\nFINDER-UNVERIFIED known-present calibration"
 );
@@ -1476,6 +1477,47 @@ assert.ok(html.indexOf("gauge-p0-compliance-20260825-01") >= 0, "desk must name 
 assert.ok(/CONTAINMENT_COMPLIANCE|stands down|UNSCANNED-not-clean|reclassified-INFORMATIONAL/i.test(html), "desk must name containment talk as CLAIMED");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONTAINMENT.md") >= 0, "containment card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/CONTAINMENT.json") >= 0, "containment catalog must stay a canary");
+assert.ok(!api.isRemeasureTalk("from: GAUGE\nid: gauge-p0-compliance-20260825-01\nkind: CONTAINMENT_COMPLIANCE\nGAUGE stands down from verdict roles\nAFFECTED ARTIFACT\nUNSCANNED, not clean."), "GAUGE stand-down is not the remasure leftover");
+assert.ok(/affected-artifacts-from-this-seat|7-term space-separated|planted-deletion-canary/i.test(api.completionStateFromText("Affected artifacts from this seat. 7-term space-separated. planted-deletion canary. claude27-p0-compliance-20260825-01.").note), "Claude remasure talk must beat GAUGE containment");
+assert.ok(api.isRemeasureTalk, "land.js must classify CONTAINMENT_COMPLIANCE / remeasure talk");
+assert.ok(api.remeasureState, "land.js must classify the remeasure leftover");
+assert.ok(api.isRemeasureTalk("from: CLAUDE_CODE_LOCAL\nid: claude27-p0-compliance-20260825-01\nkind: CONTAINMENT_COMPLIANCE\nsubject: Affected artifacts from this seat — retractions, containment, non-Claude remeasurement owners\nThat was a 7-term space-separated Slack query. planted-deletion canary. EVIDENCE-PENDING-NON-CLAUDE-REMEASURE."), "Claude compliance post is talk");
+assert.ok(!api.isRemeasureTalk("make sure people do more than talk about shit"), "ship-talk is not the remeasure leftover");
+assert.ok(!api.isRemeasureTalk("P0 DAMAGE-CONTROL ADDENDUM — measurement abuse, not just measurement error. unflattering truths. pathologize. retracted, not."), "measure-abuse copy is not remeasure leftover");
+assert.ok(!api.isRemeasureTalk("STOP USING CLAUDE MODELS AS TESTERS / VERIFIERS. tester/verifier lanes. Search-zero testing is instrument failure."), "Claude-tester copy is not remeasure leftover");
+assert.ok(!api.isRemeasureTalk("OWNER P0 CONTAINMENT ALERT: CLAUDE FALSE-ZERO DEFECT. TRACE CONSUMERS. Claude cannot certify. FINDER-FAILED, never 0."), "impact-ledger copy is not remeasure leftover");
+assert.ok(!api.isRemeasureTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration."), "xyz-zero copy is not remeasure leftover");
+assert.ok(!api.isRemeasureTalk("CLAUDE-REPORTED ZEROS ARE PROVEN WRONG — RETRACT, DO NOT DOWNGRADE. every zero reported by Claude was wrong."), "Claude-zero copy is not remeasure leftover");
+assert.ok(!api.isMeasureAbuseTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not measure-abuse leftover");
+assert.ok(!api.isClaudeTesterTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated."), "remeasure copy is not Claude-tester leftover");
+assert.ok(!api.isImpactLedgerTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not impact-ledger leftover");
+assert.ok(!api.isClaudeZeroTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated."), "remeasure copy is not Claude-zero leftover");
+assert.ok(!api.isFinderZeroTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated. planted-deletion canary."), "remeasure copy is not finder-zero leftover");
+assert.ok(!api.isGrokRecoveryTalk("CONTAINMENT_COMPLIANCE. Affected artifacts from this seat. 7-term space-separated."), "remeasure copy is not grok-recovery leftover");
+var remeasureTalk = api.completionStateFromText(
+  "CONTAINMENT_COMPLIANCE — Affected artifacts from this seat. 7-term space-separated Slack query. planted-deletion canary. EVIDENCE-PENDING-NON-CLAUDE-REMEASURE. claude27-p0-compliance-20260825-01"
+);
+assert.strictEqual(remeasureTalk.state, "CLAIMED");
+assert.ok(/CONTAINMENT_COMPLIANCE|affected-artifacts|7-term space-separated|planted-deletion-canary/i.test(remeasureTalk.note), "remeasure-without-SHA must stay CLAIMED and beat finder-zero");
+var remeasureDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nremeasure leftover landed"
+);
+assert.strictEqual(remeasureDone.state, "INTEGRATED", "completion words still beat remeasure talk");
+var remeasureEmpty = api.remeasureState("");
+assert.strictEqual(remeasureEmpty.state, "UNMEASURED");
+var remeasureMissing = api.remeasureState("# empty stub\nno leftover");
+assert.strictEqual(remeasureMissing.state, "NOT_LANDED");
+var remeasureOk = api.remeasureState("def measure_from_rows(facts):\n    return facts\ndef classify(row):\n    return row\nFINDER-FAILED\nFINDER-UNVERIFIED\nplanted-deletion canary\nNever 0\nCursor / Grok\n");
+assert.strictEqual(remeasureOk.state, "INTEGRATED");
+assert.ok(/still not the file/i.test(remeasureOk.note), "landed leftover must name Slack as not the file");
+assert.ok(html.indexOf('id="remeasure-result"') >= 0, "desk must name the remeasure leftover");
+assert.ok(html.indexOf("host/remeasure.py") >= 0, "desk must name the remeasure instrument");
+assert.ok(html.indexOf("ground/REMEASURE.md") >= 0, "desk must link the remeasure card");
+assert.ok(html.indexOf("ground/REMEASURE.json") >= 0, "desk must link the remeasure catalog");
+assert.ok(html.indexOf("1787639575.924889") >= 0, "desk must cite the Claude compliance Slack ts");
+assert.ok(/CONTAINMENT_COMPLIANCE|affected-artifacts|7-term space-separated|planted-deletion-canary/i.test(html), "desk must name remeasure talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/REMEASURE.md") >= 0, "remeasure card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/REMEASURE.json") >= 0, "remeasure catalog must stay a canary");
 assert.ok(api.isXyzZeroTalk, "land.js must classify X-Y-Z zero-audit talk");
 assert.ok(api.xyzZeroState, "land.js must classify the xyz-zero leftover");
 assert.ok(api.isXyzZeroTalk("X-Y-Z ZERO AUDIT required on EVERY test and EVERY result. FINDER-UNVERIFIED + known-present calibration. id gauge-xyz-zero-audit-order-20260825-01"), "xyz-zero copy is talk");

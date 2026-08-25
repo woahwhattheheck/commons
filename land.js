@@ -175,6 +175,8 @@
     "ground/CONTEXT_INTEGRITY.json",
     "ground/CONTAINMENT.md",
     "ground/CONTAINMENT.json",
+    "ground/REMEASURE.md",
+    "ground/REMEASURE.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -409,6 +411,9 @@
     if (api.isDesignJam(t)) {
       return { state: "CLAIMED", note: "design jam. Talk is not a land. Ship a path on current main." };
     }
+    if (api.isRemeasureTalk(t)) {
+      return { state: "CLAIMED", note: "affected-artifacts-from-this-seat / 7-term space-separated / planted-deletion-canary talk. Talk is not a land. A non-Claude seat must remasure X/Y/Z plus a same-run known-present calibration and ship the leftover to current main." };
+    }
     if (api.isContainmentTalk(t)) {
       return { state: "CLAIMED", note: "GAUGE stand-down / CONTAINMENT_COMPLIANCE / affected-artifact / UNSCANNED-not-clean talk. Talk is not a land. Ship the named-artifact leftover. Claude output stays INFORMATIONAL. Do not remint the GAUGE ids." };
     }
@@ -625,6 +630,33 @@
 
   api.isWorkingBuildTalk = function (text) {
     return /machine-only working builds|rook-resident-native|keyb01\.mno|TRAIN_CIRCUITS_FROM_FILE|claim provenance-first integration|do not upload model\/container bytes/i.test(String(text || ""));
+  };
+
+  api.isRemeasureTalk = function (text) {
+    return /affected artifacts from this seat|7-term space-separated|planted-deletion canary|claude27-p0-compliance/i.test(String(text || ""));
+  };
+
+  api.remeasureState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/remeasure.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_rows/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasMiss = /FINDER-FAILED/.test(body) && /FINDER-UNVERIFIED/.test(body);
+    var hasCanary = /planted-deletion canary/.test(body) || /planted_deletion_canary/.test(body);
+    var neverZero = /Never 0/.test(body);
+    var hasOwner = /Cursor \/ Grok/.test(body);
+    if (hasMeasure && hasClassify && hasMiss && hasCanary && neverZero && hasOwner) {
+      return {
+        state: "INTEGRATED",
+        note: "remeasure leftover is on this file. Non-Claude X/Y/Z ran. Planted-deletion canary required. Miss is FINDER-FAILED / FINDER-UNVERIFIED, never 0. A Slack CONTAINMENT_COMPLIANCE post is still not the file."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/remeasure.py missing the leftover. Claude affected-artifact remasure talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.isContainmentTalk = function (text) {
@@ -1947,6 +1979,7 @@
   var xyzOut = document.getElementById("xyz-zero-result");
   var appendGuardOut = document.getElementById("titan-append-guard-result");
   var measureAbuseOut = document.getElementById("measure-abuse-result");
+  var remasureOut = document.getElementById("remeasure-result");
   var grokRecoveryOut = document.getElementById("grok-recovery-result");
   var contextIntegrityOut = document.getElementById("context-integrity-result");
   var containmentOut = document.getElementById("containment-result");
@@ -2487,6 +2520,12 @@
     if (!measureAbuseOut) return;
     measureAbuseOut.setAttribute("data-tone", api.toneFor(result.state));
     measureAbuseOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
+  function paintRemeasure(result) {
+    if (!remeasureOut) return;
+    remasureOut.setAttribute("data-tone", api.toneFor(result.state));
+    remasureOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
   function paintClaudeZero(result) {
@@ -3139,6 +3178,33 @@
     });
   }
 
+  function loadRemeasure(sha) {
+    if (!remeasureOut) return Promise.resolve(null);
+    remasureOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/remeasure.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/remeasure.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/remeasure.py absent at the measured main SHA. CONTAINMENT_COMPLIANCE talk is CLAIMED." };
+        paintRemeasure(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintRemeasure(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.remeasureState(body);
+        paintRemeasure(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintRemeasure(err);
+      return err;
+    });
+  }
+
   function loadMeasureAbuse(sha) {
     if (!measureAbuseOut) return Promise.resolve(null);
     measureAbuseOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/measure_abuse.py at the official SHA…</p>";
@@ -3717,6 +3783,7 @@
     loadXyzZero(sha);
     loadTitanAppendGuard(sha);
     loadMeasureAbuse(sha);
+    loadRemeasure(sha);
     loadGrokRecovery(sha);
     loadContextIntegrity(sha);
     loadContainment(sha);
