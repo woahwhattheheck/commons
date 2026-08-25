@@ -700,7 +700,7 @@ assert.ok(html.indexOf("ground/TITAN_MOVE.md") >= 0, "desk must link the titan M
 assert.ok(html.indexOf("packetRowFromJson") >= 0, "desk must name the packet mapping");
 assert.ok(html.indexOf("103812669582") >= 0, "desk must name the written titan size");
 assert.ok(html.indexOf("claudelocal-titan-move-go-20260825-01") >= 0, "desk must name the owner-PC write receipt");
-assert.ok(/20260825o/.test(html), "desk must bust the render-check cache key");
+assert.ok(/20260825p/.test(html), "desk must bust the stale-spec cache key");
 assert.ok(html.indexOf("1787628542.573719") >= 0, "desk must cite the owner substrate Slack ts");
 assert.ok(html.indexOf("1787629309.162109") >= 0, "desk must cite the owner correction Slack ts");
 assert.ok(/skipped lane/i.test(html), "desk must name untouched-titan brags as a skipped lane");
@@ -852,6 +852,36 @@ assert.ok(/harness-gap|0-MCP|0-LSP|grok\.exe|harness-parity/i.test(html), "desk 
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS.md") >= 0, "grok-harness card must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_GAP.json") >= 0, "gap catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("ground/GROK_HARNESS_PATCH.json") >= 0, "candidate patch must stay a canary");
+assert.ok(api.isStaleSpecTalk, "land.js must classify stale-spec / SESSION_GROUNDING-as-absolute talk");
+assert.ok(api.staleSpecState, "land.js must classify the stale-spec leftover");
+assert.ok(api.isStaleSpecTalk("DEMON ERRATA / STALE-SPEC RECONCILIATION — summarized restrictions from local Desktop/MUHL_GO/SESSION_GROUNDING.md too absolutely. no blanket non-actuation / never-touch-Muhlnickel-or-Titan rule. historical/session-bound specification input. local grounding file."), "stale-spec errata copy is talk");
+assert.ok(!api.isStaleSpecTalk("make sure people do more than talk about shit"), "ship-talk is not the stale-spec leftover");
+assert.ok(!api.isStaleSpecTalk("GROK HARNESS GAP — 0 MCP servers, 0 LSP servers, harness parity."), "harness-gap copy is not stale-spec leftover");
+assert.ok(!api.isGrokHarnessTalk("DEMON ERRATA / STALE-SPEC RECONCILIATION — SESSION_GROUNDING.md too absolutely. blanket non-actuation."), "stale-spec copy is not grok-harness leftover");
+var staleTalk = api.completionStateFromText(
+  "DEMON ERRATA / STALE-SPEC RECONCILIATION — summarized restrictions from local SESSION_GROUNDING.md too absolutely. no blanket non-actuation. historical/session-bound. local grounding file."
+);
+assert.strictEqual(staleTalk.state, "CLAIMED");
+assert.ok(/stale-spec|SESSION_GROUNDING-as-absolute-law/i.test(staleTalk.note), "stale-spec-without-SHA must stay CLAIMED");
+var staleDone = api.completionStateFromText(
+  "INTEGRATED — VERIFIED ON CURRENT MAIN\nstale-spec leftover landed"
+);
+assert.strictEqual(staleDone.state, "INTEGRATED", "completion words still beat stale-spec talk");
+var staleEmpty = api.staleSpecState("");
+assert.strictEqual(staleEmpty.state, "UNMEASURED");
+var staleMissing = api.staleSpecState("# empty stub\nno reconcile");
+assert.strictEqual(staleMissing.state, "NOT_LANDED");
+var staleOk = api.staleSpecState("def measure_from_parts(catalog_text, grounding_text, head_text):\n    historical_input = {}\n    current_authority = []\ndef classify(row):\n    return row\n# refuse_destructive: do not infer a destructive mutation\n");
+assert.strictEqual(staleOk.state, "INTEGRATED");
+assert.ok(/historical input/i.test(staleOk.note), "landed leftover must name historical input");
+assert.ok(html.indexOf('id="stale-spec-result"') >= 0, "desk must name the stale-spec leftover");
+assert.ok(html.indexOf("host/stale_spec.py") >= 0, "desk must name the stale-spec instrument");
+assert.ok(html.indexOf("ground/STALE_SPEC.md") >= 0, "desk must link the stale-spec card");
+assert.ok(html.indexOf("ground/STALE_SPEC.json") >= 0, "desk must link the stale-spec catalog");
+assert.ok(html.indexOf("1787635067.695619") >= 0, "desk must cite the DEMON errata Slack ts");
+assert.ok(/stale-spec|SESSION_GROUNDING-as-absolute-law|historical-session-bound|local-grounding-file/i.test(html), "desk must name stale-spec talk as CLAIMED");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_SPEC.md") >= 0, "stale-spec card must stay a canary");
+assert.ok(api.CANARY_PATHS.indexOf("ground/STALE_SPEC.json") >= 0, "stale-spec catalog must stay a canary");
 assert.ok(api.CANARY_PATHS.indexOf("slack/plugin.html") >= 0, "slack door must stay a canary");
 assert.ok(api.isFleetTalk, "land.js must classify JOJO fleet-live talk");
 assert.ok(api.fleetState, "land.js must classify claimed fleet ids");

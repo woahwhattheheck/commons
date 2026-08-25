@@ -124,6 +124,8 @@
     "ground/VERIFY_CITE.json",
     "ground/RENDER_CHECK.md",
     ".github/workflows/render-check.yml",
+    "ground/STALE_SPEC.md",
+    "ground/STALE_SPEC.json",
     "names.html",
     "robots.txt",
     "slack/plugin.html"
@@ -418,6 +420,9 @@
     if (api.isGrokHarnessTalk(t)) {
       return { state: "CLAIMED", note: "grok-harness-gap / 0-MCP / 0-LSP talk. Talk is not a land. Compare ~/.grok to canonical sources, quarantine until SHA/session agree, and ship the leftover. Do not mutate Grok." };
     }
+    if (api.isStaleSpecTalk(t)) {
+      return { state: "CLAIMED", note: "stale-spec / SESSION_GROUNDING-as-absolute-law talk. Talk is not a land. Treat the local file as historical input and ship the leftover to current main." };
+    }
     if (api.isShipTalk(t)) {
       return { state: "CLAIMED", note: "ship-talk without a path. Finish the merge or land a leftover on current main." };
     }
@@ -678,6 +683,32 @@
 
   api.isGrokHarnessTalk = function (text) {
     return /grok harness gap|harness parity|0 mcp servers|0 lsp servers|loaded permissions policy|~\/\.grok|do not mutate\/restart grok|do not mutate or restart grok/i.test(String(text || ""));
+  };
+
+  api.isStaleSpecTalk = function (text) {
+    return /stale-spec|stale spec reconciliation|demon errata|session_grounding\.md too absolutely|blanket non-actuation|never-touch-muhlnickel|historical\/session-bound|local grounding file|summarized restrictions from local/i.test(String(text || ""));
+  };
+
+  api.staleSpecState = function (text) {
+    var body = String(text || "");
+    if (!body.trim()) {
+      return { state: "UNMEASURED", note: "host/stale_spec.py body not read. Absence was not measured." };
+    }
+    var hasMeasure = /def measure_from_parts/.test(body);
+    var hasClassify = /def classify/.test(body);
+    var hasHistorical = /historical_input/.test(body);
+    var hasAuthority = /current_authority/.test(body);
+    var refuseDestructive = /refuse_destructive|destructive mutation/.test(body);
+    if (hasMeasure && hasClassify && hasHistorical && hasAuthority && refuseDestructive) {
+      return {
+        state: "INTEGRATED",
+        note: "stale-spec leftover is on this file. Local SESSION_GROUNDING is historical input. Do not infer a destructive mutation. Never a gate."
+      };
+    }
+    return {
+      state: "NOT_LANDED",
+      note: "host/stale_spec.py missing the reconcile. Stale-spec talk is CLAIMED until the leftover ships."
+    };
   };
 
   api.grokHarnessState = function (text) {
@@ -1111,6 +1142,7 @@
   var grokOut = document.getElementById("grok-harness-result");
   var citeOut = document.getElementById("cite-result");
   var renderOut = document.getElementById("render-result");
+  var staleOut = document.getElementById("stale-spec-result");
   var pathOut = document.getElementById("path-result");
   var talkOut = document.getElementById("talk-result");
   var bakeOut = document.getElementById("bake-result");
@@ -1524,6 +1556,12 @@
     renderOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
   }
 
+  function paintStaleSpec(result) {
+    if (!staleOut) return;
+    staleOut.setAttribute("data-tone", api.toneFor(result.state));
+    staleOut.innerHTML = "<b>" + esc(result.state) + "</b><p>" + esc(result.note) + "</p>";
+  }
+
   function loadBakeCensus(sha) {
     if (!censusOut) return Promise.resolve(null);
     censusOut.innerHTML = "<b>UNMEASURED</b><p>Reading docs/PFC_BAKE_CENSUS.md at the official SHA…</p>";
@@ -1728,6 +1766,33 @@
     }).catch(function (e) {
       var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
       paintTaking(err);
+      return err;
+    });
+  }
+
+  function loadStaleSpec(sha) {
+    if (!staleOut) return Promise.resolve(null);
+    staleOut.innerHTML = "<b>UNMEASURED</b><p>Reading host/stale_spec.py at the official SHA…</p>";
+    var url = RAW + sha + "/host/stale_spec.py";
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (r.status === 404) {
+        var missing = { state: "NOT_LANDED", note: "host/stale_spec.py absent at the measured main SHA. Stale-spec talk is CLAIMED." };
+        paintStaleSpec(missing);
+        return missing;
+      }
+      if (!r.ok) {
+        var failed = { state: "UNMEASURED", note: "lookup failed HTTP " + r.status + ". Absence was not measured." };
+        paintStaleSpec(failed);
+        return failed;
+      }
+      return r.text().then(function (body) {
+        var got = api.staleSpecState(body);
+        paintStaleSpec(got);
+        return got;
+      });
+    }).catch(function (e) {
+      var err = { state: "UNMEASURED", note: "fetch failed (" + e.message + "). Absence was not measured." };
+      paintStaleSpec(err);
       return err;
     });
   }
@@ -1973,6 +2038,7 @@
     loadGrokHarness(sha);
     loadVerifyCite(sha);
     loadRenderCheck(sha);
+    loadStaleSpec(sha);
     loadPulseBake(sha);
     loadCanaries(sha);
     loadIngestSmash(sha).then(function (ingest) {
