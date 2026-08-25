@@ -195,7 +195,9 @@ def safe_rel(rel):
 
 
 def _posix_parts(rel):
-    text = safe_rel(rel)
+    # Internal constants use os.path.join and therefore contain backslashes
+    # on Windows. Normalize them before the same traversal-safe validation.
+    text = safe_rel(str(rel or "").replace("\\", "/"))
     return text.split("/") if text else []
 
 

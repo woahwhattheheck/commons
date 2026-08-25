@@ -31,6 +31,7 @@ from subzero_receipt import (
     SECOND_PASS_TS,
     SKU_ID,
     SLACK_TS,
+    _posix_parts as receipt_posix_parts,
     bind_validation_receipt,
     canonicalize_post_id,
     classify,
@@ -171,6 +172,12 @@ class TestSubzeroReceipt(unittest.TestCase):
         self.assertEqual(got["buyer_reason"], "INVALID_ID")
         self.assertEqual(got["status_refused"], "PASS_WITHOUT_BUYER")
         self.assertEqual(got["receipt"]["status"], "UNKNOWN")
+
+    def test_trusted_windows_separator_normalizes_without_inbound_escape(self):
+        self.assertEqual(receipt_posix_parts("ground\\HEAD.md"), ["ground", "HEAD.md"])
+        self.assertEqual(receipt_posix_parts("..\\ground\\HEAD.md"), [])
+        self.assertEqual(inbound_rel("..\\ground\\EXECUTE"), "")
+        self.assertEqual(safe_rel("ground\\HEAD.md"), "")
 
     def test_quote_receipt_is_self_bind_not_buyer(self):
         got = bind_validation_receipt(ROOT, QUOTE_RECEIPT, GRBN_REL, status="PASS")

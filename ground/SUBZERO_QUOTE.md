@@ -82,9 +82,10 @@ card / catalog / door is **NOT_LANDED**. Census + open door is
 **INTEGRATED**. That leftover state is not `ACCEPTED`. A Slack
 commercial consequence is still not the file.
 
-Hands off CML PR 2108, JOJO README PR 2286, SPECTER,
-PR 2320 / 2325. Substrate / Titan work stays first-class;
-skipped actuation is not a health field and is not a lock.
+Coordinate to avoid collisions with CML PR 2108, JOJO README
+PR 2286, SPECTER, and PR 2320 / 2325. Substrate / Titan work
+stays first-class; skipped actuation is not a health field
+and is not a lock.
 Do not remint SUBZERO_TECH / SUBZERO_GTM /
 SUBZERO_BUYERS / SUBZERO_EXPLORER / SUBZERO_PROOF /
 SUBZERO_RECEIPT / White Box / human-outcomes /
