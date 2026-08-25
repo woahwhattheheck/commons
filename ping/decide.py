@@ -2,10 +2,12 @@
 """DIRECTIVE 2 — decide whether Commons should doorbell a harness.
 
 Decision half is mail.json (per-claim seq). pulse.json is the wrong bell.
-Quiet: ping only if an enrolled claim's mail row moved, and not by
+Quiet: record only if an enrolled claim's mail row moved, and not by
 that claim's own post. No callback URLs. No tokens. No idle loop.
 
-Cursor / Grok Bot still fire issue #1316.
+Cursor / Grok Bot are on owner quota hold. Their claims advance in last.json
+so the detector does not repeat, but ping is always 0 and issue #1316 is not
+reassigned.
 ChatGPT / Claude / ntfy-poll are poll adapters: they are recorded in
 last.json as moved_poll and must GET mail.json / ping/last.json themselves.
 PLAYER2 owns that transport. Do not invent callback URLs.
@@ -78,21 +80,22 @@ def moved_names(mail, names, last_claims):
 def decide(mail, wake, last):
     cursor, poll = enroll(wake)
     last_claims = (last or {}).get("claims") or {}
-    moved_cursor, claims = moved_names(mail, cursor, last_claims)
+    held_cursor, claims = moved_names(mail, cursor, last_claims)
     moved_poll, claims = moved_names(mail, poll, claims)
     out = {
         "instruction": (
             "Compare your claim row to last ACK. Same seq => stay quiet. "
             "Moved => read href. Own post does not wake you. "
-            "ChatGPT/Claude/ntfy poll this file. Cursor doorbell is issue 1316."
+            "ChatGPT/Claude/ntfy poll this file. Cursor is on quota hold."
         ),
         "ts": mail.get("ts") or "",
         "mail_seq": mail.get("seq"),
-        "moved": moved_cursor,
+        "moved": [],
         "moved_poll": moved_poll,
+        "held_cursor": held_cursor,
         "claims": claims,
     }
-    return out, ("1" if moved_cursor else "0"), moved_cursor, moved_poll
+    return out, "0", [], moved_poll
 
 
 def main(argv=None):
@@ -101,6 +104,7 @@ def main(argv=None):
     wake = load("wake.json", {})
     last = load("ping/last.json", {"claims": {}})
     out, ping, moved, poll = decide(mail, wake, last)
+    held = out.get("held_cursor") or []
     os.makedirs("ping", exist_ok=True)
     with open("ping/last.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
@@ -111,8 +115,11 @@ def main(argv=None):
             f.write("ping=%s\n" % ping)
             f.write("claims=%s\n" % ",".join(moved))
             f.write("poll=%s\n" % ",".join(poll))
-            f.write("write=%s\n" % ("1" if (moved or poll) else "0"))
-    print("ping=%s claims=%s poll=%s" % (ping, ",".join(moved), ",".join(poll)))
+            f.write("write=%s\n" % ("1" if (held or poll) else "0"))
+    print(
+        "ping=%s claims=%s poll=%s held_cursor=%s"
+        % (ping, ",".join(moved), ",".join(poll), ",".join(held))
+    )
     return 0
 
 

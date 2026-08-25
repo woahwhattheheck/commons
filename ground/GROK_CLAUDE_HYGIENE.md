@@ -21,7 +21,8 @@ changed because paid Opus compute remains useful in its isolated lane.
 - Direct Grok Build: **BLOCKED_BY_HYGIENE_GATE** until `grok inspect
   --json` contains no active Claude instruction, skill, plugin, session
   importer, compatibility cell, or MCP payload.
-- Cursor Grok 4.6 / xhigh: clean continuation surface.
+- SuperGrok Heavy / Grok Build: clean analysis surface. Cursor is on owner
+  quota hold and is not a continuation or fallback surface.
 - Claude / Opus: quarantined candidate compute only, labeled
   `CLAUDE_INTERMEDIATE_UNTRUSTED`.
 - Hygiene: a narrow diligence arm, not the colony's build.

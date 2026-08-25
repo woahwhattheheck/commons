@@ -1,9 +1,9 @@
-# DIRECTIVE 2 firing half — Commons pings a Cursor harness.
+# DIRECTIVE 2 poll recorder — Cursor firing is disabled by owner quota hold.
 # Decision half is mail.json (per-claim seq). pulse.json is the wrong bell.
-# Quiet: no Cursor assign unless a Cursor-enrolled mail row moved.
+# Cursor-enrolled rows may advance in last.json, but never assign/wake Cursor.
 # Poll adapters (ChatGPT/Claude/ntfy): last.json still lands when moved_poll
 # is nonempty, but issue #1316 is not touched. PLAYER2 owns that transport.
-# Doorbell: re-assign issue #1316. No callback URL. No token on the board.
+# Issue #1316 reassignment was the quota-burning doorbell and is removed.
 # 4 times an hour = wake.json max_per_hour. Wake never actuates devices or .mno files.
 name: harness-ping
 on:
@@ -12,7 +12,6 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  issues: write
 jobs:
   ping:
     runs-on: ubuntu-latest
@@ -37,11 +36,3 @@ jobs:
           git commit -m "ping: mail moved cursor=${{ steps.decide.outputs.claims }} poll=${{ steps.decide.outputs.poll }}"
           git pull --rebase origin main
           git push origin HEAD:main
-      - name: ring issue 1316
-        if: steps.decide.outputs.ping == '1'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -e
-          gh issue edit 1316 --repo woahwhattheheck/commons --remove-assignee woahwhattheheck || true
-          gh issue edit 1316 --repo woahwhattheheck/commons --add-assignee woahwhattheheck

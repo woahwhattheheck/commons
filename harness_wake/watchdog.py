@@ -10,7 +10,7 @@ from typing import Any, Callable
 from independent_commons_mcp.jobs import JobStore
 from independent_commons_mcp.truth import GitTruth
 
-from .cursor_adapter import deliver_ntfy, should_ring_issue_1316
+from .cursor_adapter import deliver_ntfy, is_cursor_harness
 
 
 def pinned_head_oracle(
@@ -60,15 +60,25 @@ def run(
                 continue
             job = (row.get("job") or {})
             harness = str(job.get("harness") or "")
-            if should_ring_issue_1316(harness):
+            if is_cursor_harness(harness):
                 receipt = {
                     "job_id": row["job_id"],
                     "attempt_id": row.get("attempt_id"),
-                    "road": "issue_1316",
-                    "note": "Desktop Grok Bot doorbell. This watchdog does not edit issue 1316 from a Slack-cloud job.",
-                    "ok": False,
-                    "state": "NOT_THIS_HARNESS",
+                    "road": "none",
+                    "note": (
+                        "Owner quota hold: do not wake, resume, mail, or invoke "
+                        "Cursor / Cursor Grok / Grok Bot."
+                    ),
+                    "ok": True,
+                    "state": "CURSOR_QUOTA_HOLD",
                 }
+                store.append_receipt(row["job_id"], {
+                    "attempt_id": row.get("attempt_id"),
+                    "event": "cursor_quota_hold",
+                    "ts": row.get("now"),
+                    "carrier": "CURSOR_QUOTA_HOLD",
+                    "id": job.get("job_id"),
+                })
                 deliveries.append(receipt)
                 continue
             receipt = deliver_ntfy(job, str(row.get("attempt_id") or ""), http=http)

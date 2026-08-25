@@ -7,7 +7,7 @@
     "model": "grok-4.6",
     "authenticated": true,
     "direct_cli_state": "BLOCKED_BY_HYGIENE_GATE",
-    "clean_fallback": "Cursor Grok 4.6 xhigh"
+    "clean_fallback": "SuperGrok Heavy / Grok Build; Cursor quota hold"
   },
   "claude_surface": {
     "compat_cells_enabled": 0,

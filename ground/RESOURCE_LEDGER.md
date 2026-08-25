@@ -65,7 +65,9 @@ Read-only probes that answered:
 
 - GitHub — `get_me` + official main `62c46802e`
 - Slack — read `#commons` thread `1787637936.134649`
-- Grok/Cursor — this harness is Cursor Grok 4.6
+- Grok/Cursor — this historical census harness was Cursor Grok 4.6; current
+  owner routing holds Cursor and sends Grok analysis to SuperGrok Heavy / Grok
+  Build
 
 Not capacity here:
 

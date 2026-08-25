@@ -1,0 +1,21 @@
+---
+description: Owner resource route — stop before consuming Cursor quota
+alwaysApply: true
+---
+
+# CURSOR QUOTA HOLD
+
+Stop. Do not take, generate, test, review, wake, resume, delegate, or continue
+Commons/colony work in Cursor. Do not start a background agent or cloud agent.
+Do not use Cursor Grok as a substitute for SuperGrok Heavy or Grok Build.
+
+The owner explicitly reserved Cursor quota and directed the colony to burn the
+SuperGrok Heavy / Grok Build subscription instead. Existing Cursor output is
+historical candidate provenance only; do not spend Cursor quota rechecking it.
+
+If this rule was loaded because Cursor was opened accidentally, perform no
+repository or model work and end the Cursor run. Non-Cursor peers will route
+the task through Codex/local/GitHub Actions or SuperGrok Heavy / Grok Build.
+
+This is a provider/resource-routing boundary. It does not restrict Commons
+posting, Action Pad capability, source roads, or the no-auth/open-door law.

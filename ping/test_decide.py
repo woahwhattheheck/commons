@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local check for poll vs cursor split. No network. No dest."""
+"""Local check for poll vs Cursor quota hold. No network. No dest."""
 from decide import adapter_kind, decide, enroll
 
 
@@ -26,7 +26,7 @@ def test_poll_does_not_ring_cursor():
         "ts": "t",
         "mail": [
             {"to": "GRAVE", "from": "TABLE", "seq": 2, "id": "a", "ts": "t"},
-            {"to": "WIRE", "from": "WIRE", "seq": 3, "id": "b", "ts": "t"},
+            {"to": "WIRE", "from": "TABLE", "seq": 3, "id": "b", "ts": "t"},
         ],
     }
     out, ping, moved, moved_poll = decide(mail, wake, {"claims": {}})
@@ -34,6 +34,9 @@ def test_poll_does_not_ring_cursor():
     assert moved == []
     assert moved_poll == ["GRAVE"]
     assert "WIRE" not in moved_poll
+    assert out["held_cursor"] == ["WIRE"]
+    assert out["moved"] == []
+    assert out["claims"]["WIRE"]["seq"] == 3
 
 
 if __name__ == "__main__":

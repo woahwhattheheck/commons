@@ -126,7 +126,8 @@ def classify_surface(row, probes=None):
                 "note": (
                     "Claude assigned_backlog still grants tester/verifier/"
                     "review authority. Informational evidence only. "
-                    "Route verification to local/GHA/Codex/Grok/Cursor-Grok."
+                    "Route verification to local/GHA/Codex; route Grok analysis "
+                    "to SuperGrok Heavy / Grok Build. Cursor is on quota hold."
                 ),
             }
         return {

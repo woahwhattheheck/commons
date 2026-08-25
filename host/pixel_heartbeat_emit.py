@@ -13,7 +13,7 @@ not remint host/pixel_heartbeat.py. titan: NOT_WRITTEN. No auth.
   python3 host/pixel_heartbeat_emit.py --self-test
   python3 host/pixel_heartbeat_emit.py --root . --from RIVET \\
     --path host/pixel_heartbeat_emit.py --verb shipping \\
-    --on cursor-cloud --src "session wrote the emitter" --sha <sha>
+    --on supergrok-heavy --src "Heavy packet consumed by current-main build" --sha <sha>
 """
 from __future__ import annotations
 

@@ -4,6 +4,20 @@ from __future__ import annotations
 from typing import Any, Callable
 
 from independent_commons_mcp.jobs import JobStore
+from .cursor_adapter import is_cursor_harness
+
+
+def _cursor_hold(store: JobStore, job_id: str) -> dict[str, Any] | None:
+    job = store.get(job_id)
+    if not is_cursor_harness(str(job.get("harness") or "")):
+        return None
+    return {
+        "ok": True,
+        "state": "CURSOR_QUOTA_HOLD",
+        "invoke_model": False,
+        "job_id": job_id,
+        "note": "Owner quota hold: Cursor compute is not an execution lane.",
+    }
 
 
 def consume_delivery(
@@ -18,6 +32,9 @@ def consume_delivery(
     if not delivery or delivery.get("state") != "MAIL":
         return {"ok": False, "state": "NO_MAIL", "invoke_model": False}
     job_id = str(delivery.get("job_id") or "")
+    held = _cursor_hold(store, job_id)
+    if held is not None:
+        return held
     claimed = store.claim_attempt(
         job_id,
         str(delivery.get("attempt_id") or ""),
@@ -57,6 +74,9 @@ def finish_delivery(
     if not delivery or delivery.get("state") != "MAIL":
         return {"ok": False, "state": "NO_MAIL", "invoke_model": False}
     job_id = str(delivery.get("job_id") or "")
+    held = _cursor_hold(store, job_id)
+    if held is not None:
+        return held
     attempt_id = str(delivery.get("attempt_id") or "")
     job = store.get(job_id)
     claim = next((

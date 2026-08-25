@@ -21,7 +21,12 @@ import unittest
 from concurrent.futures import ThreadPoolExecutor
 
 from harness_wake.callback import consume_delivery, finish_delivery
-from harness_wake.cursor_adapter import claimed_paths, ntfy_payload, should_ring_issue_1316
+from harness_wake.cursor_adapter import (
+    claimed_paths,
+    is_cursor_harness,
+    ntfy_payload,
+    should_ring_issue_1316,
+)
 from harness_wake.watchdog import pinned_head_oracle, run
 from independent_commons_mcp.jobs import JobError, JobStore, utc_now
 from independent_commons_mcp.server import MCPServer
@@ -41,7 +46,7 @@ def fields(**extra):
     data = {
         "job_id": JOB_ID,
         "owner_claim": "RIDGE",
-        "harness": "cursor-slack",
+        "harness": "test-generic",
         "objective": "bounded self-wake: checkpoint then DONE",
         "checkpoint": {"step": 0},
         "next_wake_at": DUE,
@@ -816,12 +821,19 @@ class BoundedSelfWakeTests(unittest.TestCase):
 
     def test_cursor_adapter_does_not_claim_missing_doors(self):
         paths = claimed_paths()
+        self.assertTrue(paths["cursor_quota_hold"])
         self.assertTrue(paths["claimed"]["slack_cursor_app"]["measured"])
+        self.assertFalse(paths["claimed"]["slack_cursor_app"]["enabled"])
         self.assertTrue(paths["claimed"]["subscribe_timer"]["measured"])
+        self.assertFalse(paths["claimed"]["subscribe_timer"]["enabled"])
+        self.assertFalse(paths["claimed"]["ntfy_poll"]["enabled"])
         self.assertFalse(paths["unmeasured"]["named_idle_bc_resume"]["measured"])
         self.assertFalse(paths["unmeasured"]["claude_slack_app"]["claimed"])
-        self.assertTrue(should_ring_issue_1316("cursor-desktop grok bot"))
+        self.assertFalse(should_ring_issue_1316("cursor-desktop grok bot"))
         self.assertFalse(should_ring_issue_1316("cursor-slack"))
+        self.assertTrue(is_cursor_harness("cursor-slack"))
+        self.assertTrue(is_cursor_harness("Grok Bot / wire"))
+        self.assertFalse(is_cursor_harness("test-generic"))
         payload = ntfy_payload({"job_id": JOB_ID, "owner_claim": "RIDGE", "harness": "cursor-slack"}, JOB_ID + "-a01")
         self.assertEqual(payload["job_id"], JOB_ID)
         self.assertEqual(payload["id"], JOB_ID)
@@ -848,6 +860,37 @@ class SchedulerDeliveryTests(unittest.TestCase):
 
     def tearDown(self):
         self.tmp.cleanup()
+
+    def test_cursor_quota_hold_blocks_mail_callback_and_model(self):
+        self.store.upsert(fields(harness="cursor-slack"))
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+        )
+        self.assertEqual(summary["wake_count"], 1)
+        self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(summary["deliveries"][0]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(self.http.calls, [])
+        mail = {
+            "state": "MAIL",
+            "job_id": JOB_ID,
+            "attempt_id": summary["jobs"][0]["attempt_id"],
+        }
+        before = self.store.get(JOB_ID)
+        consumed = consume_delivery(
+            self.store, mail, now=WATCHDOG, pages=self.pages
+        )
+        self.assertEqual(consumed["state"], "CURSOR_QUOTA_HOLD")
+        self.assertFalse(consumed["invoke_model"])
+        finished = finish_delivery(
+            self.store, mail, now=WATCHDOG, pages=self.pages
+        )
+        self.assertEqual(finished["state"], "CURSOR_QUOTA_HOLD")
+        self.assertFalse(finished["invoke_model"])
+        self.assertEqual(self.store.get(JOB_ID), before)
 
     def test_unchanged_checkpoint_wakes_after_backoff(self):
         self.store.upsert(fields())

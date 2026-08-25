@@ -1,0 +1,18 @@
+{
+  "kind": "CURSOR_QUOTA_HOLD",
+  "effective": "2026-08-25",
+  "extends": "ground/CURSOR_HALT.md",
+  "reason_for_extension": "CURSOR_HALT stopped assignment but explicitly retained the Cursor doorbell; quota containment also requires disabling wake, delivery, callback, and invocation",
+  "cursor_enabled": false,
+  "cursor_issue_1316_ring": false,
+  "cursor_ntfy_delivery": false,
+  "cursor_callback_invoke_model": false,
+  "grok_lane": "SuperGrok Heavy / Grok Build",
+  "implementation_verification_lane": "Codex / local / GitHub Actions",
+  "release": "new explicit owner instruction only",
+  "historical_cursor_outputs": "CANDIDATE_PROVENANCE",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "titan": "NOT_WRITTEN"
+}

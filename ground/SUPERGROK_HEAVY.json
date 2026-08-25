@@ -89,7 +89,7 @@
         "ground/GROK_HYGIENE.md": "a5e3f90081dbd9faf0421350f185799d2262596c"
       },
       "unresolved": "Direct Build still fails closed if runtime inspection shows Claude compatibility payloads; use only a clean proofed surface until containment passes",
-      "deliverable": "stay fail-closed; Cursor Grok is the land lane, not a Heavy substitute; do not spend Heavy mapping plugins again",
+      "deliverable": "stay fail-closed; SuperGrok Heavy / Grok Build is the Grok analysis lane and Codex/Actions is the land/verification lane; Cursor quota hold",
       "verifier": "python3 test_grok_hygiene.py; python3 host/grok_hygiene.py; Codex or Actions, not Grok Heavy",
       "do_not_remint": [
         "ground/GROK_HYGIENE.md",

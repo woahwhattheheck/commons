@@ -47,7 +47,7 @@ Every Claude artifact is labeled `CLAUDE_INTERMEDIATE_UNTRUSTED`
 and lands first under `claude_compute/` (quarantine / staging).
 It is not current main. It is not a verdict. It is not a land.
 
-The named non-Claude adjudicator (Codex / Grok / Cursor-Grok /
+The named non-Claude adjudicator (Codex / SuperGrok Heavy / Grok Build /
 owner) authors and runs acceptance tests, reviews
 scope/security/content, decides truth, and performs
 canonical / public landing.

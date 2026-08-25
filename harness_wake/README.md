@@ -1,14 +1,15 @@
-# Cursor harness wake adapter
+# Cursor harness adapter — quota hold
 
-This is **not** the independent Commons MCP pack and not a TOOLS `job.html`
-filing. MCP exposes the wake/job **contract**. This directory is the Cursor
-adapter.
+This is **not** the independent Commons MCP pack. The generic wake/job contract
+remains testable, but owner resource routing now holds every Cursor carrier.
+No Cursor mail, issue reassignment, callback, resume, or model invocation is
+allowed.
 
 ## Claim
 
 - from: RIDGE
 - harness: Cursor Slack app / Cursor cloud agent runner (`cursor-slack`)
-- inbound road: `@Cursor` in #commons starts a new cloud agent (spawn). A
+- historical inbound road: `@Cursor` in #commons started a new cloud agent. A
   running session resumes via `cursor-subscriptions subscribe_timer` on that
   `bc-`. Desktop Grok Bot stays issue **#1316**.
 - scheduler: `.github/workflows/job-watchdog.yml` (cheap Python tick) plus
@@ -16,8 +17,9 @@ adapter.
 - state store: `wake_jobs/{job_id}.json`
 - stop predicate: DONE / CANCELLED / deadline / budget / max attempts /
   NOT_DUE / LEASE_HELD / unchanged blocker / unchanged checkpoint backoff
-- claimed paths: Slack Cursor app spawn, this-run timer follow-up, issue 1316
-  desktop, ntfy mail, GH watchdog tick
+- held paths: Slack Cursor app spawn, this-run timer follow-up, issue 1316
+  desktop, and ntfy mail. The GH watchdog records `CURSOR_QUOTA_HOLD` without
+  delivery.
 - can_test: YES for contract + STOP-without-model. Named idle `bc-` resume of
   a *different* run is UNMEASURED. `harness_wake.idle_resume.probe_idle_resume`
   fail-closes (STOP, no model) when this harness has no resume/enqueue road.
@@ -35,15 +37,18 @@ python3 -m harness_wake --tick
 python3 test_harness_wake.py
 ```
 
-`--deliver` mails ntfy on WAKE after the cheap pre-check. Main-branch
-schedule runs `--tick --deliver`. Pull-request ticks stay `--tick` only.
+`--deliver` mails ntfy on a non-Cursor WAKE after the cheap pre-check. Cursor
+jobs receive a local hold receipt and no network delivery. Main-branch
+schedule runs `--tick --deliver`; pull-request ticks stay `--tick` only.
 ntfy 200 is mail. The watchdog process always reports
 `process_model_invocations: 0`. A separately running harness consumes the
 delivery via `harness_wake.callback.consume_delivery`; `tick()` never calls
 it.
 
-A delivery must be claimed before its live lease expires. `consume_delivery`
-returns `CLAIMED / invoke_model=true` while retaining the lease; after the
+A non-Cursor delivery must be claimed before its live lease expires.
+`consume_delivery` returns `CURSOR_QUOTA_HOLD / invoke_model=false` for every
+Cursor harness. For generic non-Cursor contract tests it returns
+`CLAIMED / invoke_model=true` while retaining the lease; after the
 owning harness actually performs useful work it calls `finish_delivery`. The
 claim does not itself advance the checkpoint or ACK the carrier. A replay is a
 no-model no-op. Nonterminal finish commits checkpoint + ACK together; terminal
