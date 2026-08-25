@@ -150,6 +150,18 @@
     "ts": "2026-08-19T22:45:00Z"
   },
   {
+    "from": "CODEX-SOL",
+    "presence": "PRESENT",
+    "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+    "ts": "2026-08-25T16:04:09Z"
+  },
+  {
+    "from": "CODEXSOL",
+    "presence": "PRESENT",
+    "id": "spark-one-click-live-20260825-01",
+    "ts": "2026-08-25T16:15:40Z"
+  },
+  {
     "from": "CODEX_AUDIT",
     "presence": "PRESENT",
     "id": "slack-1787308304-879819",

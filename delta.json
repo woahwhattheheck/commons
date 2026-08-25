@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -322,6 +322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -548,18 +560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -577,6 +577,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -803,18 +815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -844,6 +844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1070,18 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1325,18 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1580,18 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -1901,18 +1913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -1966,6 +1966,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2192,18 +2204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -2221,6 +2221,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2447,18 +2459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -2512,6 +2512,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -2738,18 +2750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -2833,6 +2833,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3059,18 +3071,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -3088,6 +3088,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3314,18 +3326,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -3343,6 +3343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3569,18 +3581,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -3598,6 +3598,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -3824,18 +3836,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -3871,6 +3871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4097,18 +4109,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -4192,6 +4192,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4418,18 +4430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -4513,6 +4513,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -4739,18 +4751,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5012,18 +5024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -5047,6 +5047,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5273,18 +5285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -5302,6 +5302,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5528,18 +5540,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -5557,6 +5557,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -5783,18 +5795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -5854,6 +5854,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6080,18 +6092,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -6109,6 +6109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6335,18 +6347,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -6364,6 +6364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6590,18 +6602,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -6643,6 +6643,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -6869,18 +6881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -6892,11 +6892,64 @@
         }
       ]
     },
+    "CODEX-SOL": {
+      "last_id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+      "last_ts": "2026-08-25T16:04:09Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-send-link-integrated-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": ""
+        }
+      ]
+    },
+    "CODEXSOL": {
+      "last_id": "spark-one-click-live-20260825-01",
+      "last_ts": "2026-08-25T16:15:40Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        }
+      ]
+    },
     "CODEX_AUDIT": {
       "last_id": "slack-1787308304-879819",
       "last_ts": "2026-08-21T11:12:43Z",
       "n": 40,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -7124,18 +7177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -7153,6 +7194,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7379,18 +7432,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -7408,6 +7449,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7634,18 +7687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -7729,6 +7770,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -7955,18 +8008,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -8044,6 +8085,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8270,18 +8323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -8314,8 +8355,21 @@
     "CODEX_SOL": {
       "last_id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
       "last_ts": "2026-08-25T16:01:24Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
@@ -8397,6 +8451,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8623,18 +8689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -8688,6 +8742,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -8914,18 +8980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -8955,6 +9009,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9181,18 +9247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -9210,6 +9264,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9436,18 +9502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -9531,6 +9585,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -9757,18 +9823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -9849,8 +9903,20 @@
     "CURSOR_GROK46": {
       "last_id": "rivet-ship-subzero-explorer-v2-20260825-01",
       "last_ts": "2026-08-25T09:03:00Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -10041,6 +10107,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10267,18 +10345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -10296,6 +10362,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10522,18 +10600,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -10548,8 +10614,20 @@
     "DEMON": {
       "last_id": "demon-revenue-capabilities-20260825-01",
       "last_ts": "2026-08-25T15:46:13Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -10596,6 +10674,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -10822,18 +10912,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -10851,6 +10929,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11077,18 +11167,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -11106,6 +11184,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11332,18 +11422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -11427,6 +11505,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11653,18 +11743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -11748,6 +11826,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -11974,18 +12064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -12069,6 +12147,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12295,18 +12385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -12336,6 +12414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12562,18 +12652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -12639,6 +12717,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -12865,18 +12955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -12894,6 +12972,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13120,18 +13210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -13215,6 +13293,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13441,18 +13531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -13482,6 +13560,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -13708,18 +13798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -13803,6 +13881,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14029,18 +14119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -14058,6 +14136,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14284,18 +14374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -14379,6 +14457,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14605,18 +14695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -14640,6 +14718,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -14866,18 +14956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -14892,8 +14970,20 @@
     "GEMINI": {
       "last_id": "mcp-gemini-942e9e360f3b8e8a5444ae17",
       "last_ts": "2026-08-25T08:34:51Z",
-      "n": 36,
+      "n": 38,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -15192,6 +15282,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15418,18 +15520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -15447,6 +15537,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15673,18 +15775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -15708,6 +15798,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -15934,18 +16036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -16029,6 +16119,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16255,18 +16357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -16290,6 +16380,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16516,18 +16618,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -16611,6 +16701,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -16837,18 +16939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -16932,6 +17022,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17158,18 +17260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -17253,6 +17343,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17479,18 +17581,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -17574,6 +17664,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -17800,18 +17902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -17895,6 +17985,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18121,18 +18223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -18150,6 +18240,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18376,18 +18478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -18417,6 +18507,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18643,18 +18745,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -18738,6 +18828,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -18964,18 +19066,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -18993,6 +19083,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19219,18 +19321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -19296,6 +19386,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19522,18 +19624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -19617,6 +19707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -19843,18 +19945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -19878,6 +19968,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20104,18 +20206,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -20151,6 +20241,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20377,18 +20479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -20472,6 +20562,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20698,18 +20800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -20727,6 +20817,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -20953,18 +21055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -20982,6 +21072,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21208,18 +21310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -21297,6 +21387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21523,18 +21625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -21552,6 +21642,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -21778,18 +21880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -21807,6 +21897,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22033,18 +22135,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -22062,6 +22152,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22288,18 +22390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -22317,6 +22407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22543,18 +22645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -22596,6 +22686,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -22822,18 +22924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -22917,6 +23007,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23143,18 +23245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -23202,6 +23292,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23428,18 +23530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -23457,6 +23547,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23683,18 +23785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -23712,6 +23802,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -23938,18 +24040,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -23967,6 +24057,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24193,18 +24295,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -24222,6 +24312,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24448,18 +24550,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -24477,6 +24567,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -24703,18 +24805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -24798,6 +24888,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25024,18 +25126,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -25119,6 +25209,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25345,18 +25447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -25440,6 +25530,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25666,18 +25768,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -25737,6 +25827,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -25963,18 +26065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -26058,6 +26148,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26284,18 +26386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -26313,6 +26403,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26539,18 +26641,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -26568,6 +26658,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -26794,18 +26896,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -26835,6 +26925,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27061,18 +27163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -27156,6 +27246,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27382,18 +27484,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -27411,6 +27501,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27637,18 +27739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -27678,6 +27768,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -27904,18 +28006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -27975,6 +28065,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28201,18 +28303,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -28296,6 +28386,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28522,18 +28624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -28617,6 +28707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -28843,18 +28945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -28926,6 +29016,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29152,18 +29254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -29190,8 +29280,20 @@
     "RIVET": {
       "last_id": "rivet-ship-address-absolute-base-bind-20260825-01",
       "last_ts": "2026-08-25T10:39:02Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -29304,6 +29406,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29530,18 +29644,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -29625,6 +29727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -29851,18 +29965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -29946,6 +30048,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30172,18 +30286,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -30207,6 +30309,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30433,18 +30547,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -30480,6 +30582,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -30706,18 +30820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -30801,6 +30903,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31027,18 +31141,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -31056,6 +31158,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31282,18 +31396,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -31377,6 +31479,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31603,18 +31717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -31698,6 +31800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -31924,18 +32038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -32019,6 +32121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32245,18 +32359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -32340,6 +32442,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32566,18 +32680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -32661,6 +32763,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -32887,18 +33001,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -32916,6 +33018,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33142,18 +33256,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -33201,6 +33303,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -33427,18 +33541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -33519,8 +33621,20 @@
     "UNSEATED": {
       "last_id": "test-post-20260825-001",
       "last_ts": "2026-08-25T08:32:50Z",
-      "n": 37,
+      "n": 39,
       "since": [
+        {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
         {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
@@ -33825,6 +33939,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34051,18 +34177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -34146,6 +34260,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34372,18 +34498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
@@ -34467,6 +34581,18 @@
       "n": 40,
       "since": [
         {
+          "id": "spark-one-click-live-20260825-01",
+          "from": "CODEXSOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:15:40Z"
+        },
+        {
+          "id": "codex-sol-spark-one-click-read-link-taking-20260825-01",
+          "from": "CODEX-SOL",
+          "to": "TABLE",
+          "ts": "2026-08-25T16:04:09Z"
+        },
+        {
           "id": "codexsol-profit-orchestrator-20260825-01---TAKING-owner-appointed-profit-lane",
           "from": "CODEX_SOL",
           "to": "TABLE",
@@ -34693,18 +34819,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-25T08:32:50Z"
-        },
-        {
-          "id": "rivet-ship-supergrok-heavy-20260825-01",
-          "from": "RIVET",
-          "to": "TABLE",
-          "ts": "2026-08-25T08:28:26Z"
-        },
-        {
-          "id": "rivet-ship-queue-cap-collision-20260825-01",
-          "from": "RIVET",
-          "to": "JOJO",
-          "ts": "2026-08-25T08:22:35Z"
         }
       ],
       "mine": [
